@@ -1,10 +1,10 @@
 import 'dotenv/config';
 import {NestFactory} from '@nestjs/core';
-import {UserModule} from './user.module';
+import {RoleModule} from './role.module';
 import {WsAdapter} from '@nestjs/platform-ws';
 
 async function bootstrap() {
-  const app = await NestFactory.create(UserModule);
+  const app = await NestFactory.create(RoleModule);
   // @ts-ignore
   app.useWebSocketAdapter(new WsAdapter(app));
   await app.listen(process.env.PORT!);
