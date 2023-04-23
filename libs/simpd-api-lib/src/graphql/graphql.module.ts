@@ -7,7 +7,7 @@ import { GraphQLModule as NestGraphQLModule } from '@nestjs/graphql';
 
 @Module({})
 export class GraphQLModule {
-  forRoot(options: GraphQLOptions): DynamicModule {
+  static forRoot(options: GraphQLOptions): DynamicModule {
     return {
       module: GraphQLModule,
       imports: [

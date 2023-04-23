@@ -1,10 +1,8 @@
 import { Entity } from 'typeorm';
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
-export interface DatabaseModuleOptions {
-  host: string;
-  username: string;
-  password: string;
-  database: string;
-  ssl: boolean;
+export type DatabaseModuleOptions = DatabaseModuleCustomOptions & TypeOrmModuleOptions
+
+export interface DatabaseModuleCustomOptions {
   entities: typeof Entity[];
 }

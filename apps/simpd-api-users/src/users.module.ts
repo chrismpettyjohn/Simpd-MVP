@@ -3,8 +3,10 @@ import { GraphQLModule, DatabaseModule } from '@simpd/api-lib';
 
 @Module({
   imports: [
-    GraphQLModule,
-    DatabaseModule,
-  ]
+    GraphQLModule.forRoot({}),
+    DatabaseModule.forRoot({
+      entities: []
+    })
+  ],
 })
 export class UsersModule { }
