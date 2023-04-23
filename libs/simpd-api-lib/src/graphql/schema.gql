@@ -2,37 +2,30 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type RoleModel {
+type SessionModel {
   id: Float
-  name: String
-  description: String
+  userID: String
 }
 
 type Query {
-  role(filter: RoleFilterByOneInput!): RoleModel!
-  roles(filter: RoleFilterByManyInput): [RoleModel!]!
+  session(filter: SessionFilterByOneInput!): SessionModel!
+  sessions(filter: SessionFilterByManyInput): [SessionModel!]!
 }
 
-input RoleFilterByOneInput {
+input SessionFilterByOneInput {
   id: Float
 }
 
-input RoleFilterByManyInput {
+input SessionFilterByManyInput {
   ids: [Float!]
+  userIDs: [Float!]
 }
 
 type Mutation {
-  roleCreate(input: RoleCreateInput!): RoleModel!
-  roleUpdate(filter: RoleFilterByOneInput!, input: RoleUpdateInput!): Boolean!
-  roleDelete(filter: RoleFilterByOneInput!): Boolean!
+  sessionCreate(input: SessionCreateInput!): SessionModel!
+  sessionDelete(filter: SessionFilterByOneInput!): Boolean!
 }
 
-input RoleCreateInput {
-  name: String!
-  description: String!
-}
-
-input RoleUpdateInput {
-  name: String
-  description: String
+input SessionCreateInput {
+  userID: Float!
 }

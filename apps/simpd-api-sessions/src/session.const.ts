@@ -1,0 +1,2 @@
+const EIGHT_HOURS = 8 * 60 * 60 * 1000;
+export const DEFAULT_SESSION_LENGTH = EIGHT_HOURS;

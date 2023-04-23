@@ -1,4 +1,5 @@
 export * from './common/common.module';
+export * from './common/date.helpers';
 export * from './common/hash.service';
 export * from './database/base.repository';
 export * from './database/database.const';

@@ -12,6 +12,9 @@
       "@simpd/api-roles": [
         "apps/simpd-api-roles/src"
       ],
+      "@simpd/api-sessions": [
+        "apps/simpd-api-sessions/src"
+      ],
       "@simpd/web-app": [
         "apps/simpd-web-app/src"
       ],
