@@ -1,7 +1,7 @@
 import 'dotenv/config';
-import { NestFactory } from '@nestjs/core';
-import { UsersModule } from './users.module';
-import { WsAdapter } from '@nestjs/platform-ws';
+import {NestFactory} from '@nestjs/core';
+import {UsersModule} from './users.module';
+import {WsAdapter} from '@nestjs/platform-ws';
 
 async function bootstrap() {
   const app = await NestFactory.create(UsersModule);

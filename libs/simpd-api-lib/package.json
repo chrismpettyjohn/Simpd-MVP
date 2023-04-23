@@ -12,9 +12,11 @@
     "compile": "tsc -p tsconfig.build.json"
   },
   "dependencies": {
+    "bcryptjs": "2.4.3",
     "pg": "8.10.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "2.4.2",
     "@nestjs/common": "*",
     "@nestjs/core": "*",
     "@nestjs/graphql": "*",

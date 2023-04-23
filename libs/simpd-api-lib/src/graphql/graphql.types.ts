@@ -1,5 +1,3 @@
-import { GqlModuleOptions } from "@nestjs/graphql";
+import {GqlModuleOptions} from '@nestjs/graphql';
 
-export interface GraphQLOptions extends GqlModuleOptions {
-
-}
+export interface GraphQLOptions extends GqlModuleOptions {}
