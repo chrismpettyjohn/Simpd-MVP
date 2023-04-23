@@ -1,18 +1,18 @@
 import {Module} from '@nestjs/common';
-import {UserEntity} from './user.entity';
-import {UserRepository} from './user.repository';
+import {RoleEntity} from './role.entity';
+import {RoleResolver} from './role.resolver';
+import {RoleRepository} from './role.repository';
 import {GraphQLModule, DatabaseModule, CommonModule} from '@simpd/api-lib';
-import {UserResolver} from './user.resolver';
 
 @Module({
   imports: [
     CommonModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
-      entities: [UserEntity],
+      entities: [RoleEntity],
       synchronize: true,
     }),
   ],
-  providers: [UserRepository, UserResolver],
+  providers: [RoleRepository, RoleResolver],
 })
-export class UsersModule {}
+export class RoleModule {}

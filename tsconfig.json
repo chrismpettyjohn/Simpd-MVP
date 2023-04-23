@@ -9,6 +9,9 @@
       "@simpd/api-users": [
         "apps/simpd-api-users/src"
       ],
+      "@simpd/api-roles": [
+        "apps/simpd-api-roles/src"
+      ],
       "@simpd/web-app": [
         "apps/simpd-web-app/src"
       ],
