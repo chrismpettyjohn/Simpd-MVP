@@ -11,8 +11,8 @@
     "purge": "lerna exec -- rm -rf node_modules && lerna exec -- rm -rf dist && rm -rf yarn.lock && rm -rf node_modules && rm -rf yarn.lock"
   },
   "devDependencies": {
-    "@types/node": "18.15.11",
-    "@typescript-eslint/eslint-plugin": "5.58.0",
+    "@types/node": "18.16.0",
+    "@typescript-eslint/eslint-plugin": "5.59.0",
     "babel-eslint": "10.1.0",
     "eslint-config-react-app": "7.0.1",
     "eslint-plugin-flowtype": "8.0.3",
