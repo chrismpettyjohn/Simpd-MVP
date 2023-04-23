@@ -7,7 +7,7 @@ import {GraphQLModule as NestGraphQLModule} from '@nestjs/graphql';
 
 @Module({})
 export class GraphQLModule {
-  static forRoot(options: GraphQLOptions): DynamicModule {
+  static forRoot(options?: GraphQLOptions): DynamicModule {
     return {
       module: GraphQLModule,
       imports: [
@@ -16,7 +16,7 @@ export class GraphQLModule {
           autoSchemaFile: resolve(__dirname, './schema.gql'),
           fieldResolverEnhancers: [
             'guards',
-            ...(options.fieldResolverEnhancers ?? []),
+            ...(options?.fieldResolverEnhancers ?? []),
           ],
           playground: GRAPHQL_PLAYGROUND,
           ...options,
