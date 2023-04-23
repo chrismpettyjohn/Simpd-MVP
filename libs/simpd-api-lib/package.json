@@ -7,7 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "yarn run clean && yarn run compile",
+    "build": "pnpm run clean && pnpm run compile",
     "clean": "rimraf -rf ./dist && rimraf -rf ./build",
     "compile": "tsc -p tsconfig.build.json"
   },
