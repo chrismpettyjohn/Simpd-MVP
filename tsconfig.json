@@ -1,0 +1,25 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@simpd/api": [
+        "apps/simpd-api/src"
+      ],
+      "@simpd/app": [
+        "apps/simpd-app/src"
+      ],
+      "@simpd/types": [
+        "libs/types/src"
+      ],
+      "@simpd/web": [
+        "libs/web/src"
+      ]
+    },
+    "noEmit": true
+  },
+  "include": [
+    "apps",
+    "libs"
+  ]
+}
