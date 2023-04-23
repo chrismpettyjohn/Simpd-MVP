@@ -3,18 +3,24 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@simpd/api": [
-        "apps/simpd-api/src"
+      "@simpd/api-gateway": [
+        "apps/simpd-api-gateway/src"
       ],
-      "@simpd/app": [
-        "apps/simpd-app/src"
+      "@simpd/api-users": [
+        "apps/simpd-api-users/src"
       ],
-      "@simpd/types": [
-        "libs/types/src"
+      "@simpd/web-app": [
+        "apps/simpd-web-app/src"
       ],
-      "@simpd/web": [
-        "libs/web/src"
-      ]
+      "@simpd/api-lib": [
+        "libs/simpd-api-lib/src"
+      ],
+      "@simpd/types-lib": [
+        "libs/simpd-types-lib/src"
+      ],
+      "@simpd/web-lib": [
+        "libs/simpd-web-lib/src"
+      ],
     },
     "noEmit": true
   },
