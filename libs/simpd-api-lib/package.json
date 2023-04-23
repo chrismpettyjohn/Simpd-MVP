@@ -11,15 +11,27 @@
     "clean": "rimraf -rf ./dist && rimraf -rf ./build",
     "compile": "tsc -p tsconfig.build.json"
   },
-  "dependencies": {},
+  "dependencies": {
+    "mysql2": "3.2.3"
+  },
   "devDependencies": {
     "@nestjs/common": "*",
     "@nestjs/core": "*",
-    "@nestjs/platform-express": "*"
+    "@nestjs/graphql": "*",
+    "@nestjs/apollo": "*",
+    "@nestjs/typeorm": "*",
+    "@nestjs/platform-express": "*",
+    "@apollo/server": "*",
+    "typeorm": "*"
   },
   "peerDependencies": {
     "@nestjs/common": "*",
     "@nestjs/core": "*",
-    "@nestjs/platform-express": "*"
+    "@nestjs/graphql": "*",
+    "@nestjs/apollo": "*",
+    "@nestjs/typeorm": "*",
+    "@nestjs/platform-express": "*",
+    "@apollo/server": "*",
+    "typeorm": "*"
   }
 }
