@@ -7,10 +7,7 @@ import {
 } from 'typeorm';
 
 export abstract class BaseRepository<Entity extends ObjectLiteral> {
-  constructor(
-    readonly repo: Repository<Entity>,
-    readonly eagerRelations: string[]
-  ) {}
+  constructor(readonly repo: Repository<Entity>) {}
 
   async create(newEntity: Entity): Promise<Entity> {
     const newObject = await this.repo.save(newEntity);
@@ -21,7 +18,7 @@ export abstract class BaseRepository<Entity extends ObjectLiteral> {
     }
 
     // @ts-ignore It's expected for entities to have an `id`
-    return this.findOneOrFail({id: newObject.id!});
+    return this.findOneOrFail({where: {id: newObject.id!}});
   }
 
   find({...opts}: FindManyOptions<Entity>): Promise<Entity[]> {
