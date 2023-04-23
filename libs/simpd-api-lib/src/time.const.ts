@@ -1,3 +1,0 @@
-export const ONE_MINUTE_IN_MS = 60000;
-
-export const TWENTY_MINUTES_IN_MS = ONE_MINUTE_IN_MS * 20;
