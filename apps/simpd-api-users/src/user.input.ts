@@ -1,12 +1,21 @@
 import {Field, InputType} from '@nestjs/graphql';
 
 @InputType()
-export class UserFilterInput {
+export class UserFilterByManyInput {
   @Field(() => [Number], {nullable: true})
   ids?: number[];
 
   @Field(() => [String], {nullable: true})
   emails?: string[];
+}
+
+@InputType()
+export class UserFilterByOneInput {
+  @Field(() => Number, {nullable: true})
+  id?: number;
+
+  @Field(() => String, {nullable: true})
+  email?: string;
 }
 
 @InputType()

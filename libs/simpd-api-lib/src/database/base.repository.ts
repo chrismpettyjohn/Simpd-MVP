@@ -18,7 +18,7 @@ export abstract class BaseRepository<Entity extends ObjectLiteral> {
     }
 
     // @ts-ignore It's expected for entities to have an `id`
-    return this.findOneOrFail({id: newObject.id!});
+    return this.findOneOrFail({where: {id: newObject.id!}});
   }
 
   find({...opts}: FindManyOptions<Entity>): Promise<Entity[]> {

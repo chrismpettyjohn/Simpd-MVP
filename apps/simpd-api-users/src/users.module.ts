@@ -10,6 +10,7 @@ import {UserResolver} from './user.resolver';
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
       entities: [UserEntity],
+      synchronize: true,
     }),
   ],
   providers: [UserRepository, UserResolver],

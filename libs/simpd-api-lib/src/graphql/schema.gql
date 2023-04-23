@@ -8,19 +8,24 @@ type UserModel {
 }
 
 type Query {
-  user(id: Float!): UserModel!
-  users(filter: UserFilterInput!): [UserModel!]!
+  user(filter: UserFilterByOneInput!): UserModel!
+  users(filter: UserFilterByManyInput): [UserModel!]!
 }
 
-input UserFilterInput {
+input UserFilterByOneInput {
+  id: Float
+  email: String
+}
+
+input UserFilterByManyInput {
   ids: [Float!]
   emails: [String!]
 }
 
 type Mutation {
-  userCreate(newUser: UserCreateInput!): UserModel!
-  userUpdate(id: Float!, userChanges: UserUpdateInput!): Boolean!
-  userDelete(id: Float!): Boolean!
+  userCreate(input: UserCreateInput!): UserModel!
+  userUpdate(filter: UserFilterByOneInput!, input: UserUpdateInput!): Boolean!
+  userDelete(filter: UserFilterByOneInput!): Boolean!
 }
 
 input UserCreateInput {
