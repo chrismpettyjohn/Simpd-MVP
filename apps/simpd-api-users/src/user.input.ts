@@ -1,4 +1,13 @@
-import { Field, InputType } from '@nestjs/graphql';
+import {Field, InputType} from '@nestjs/graphql';
+
+@InputType()
+export class UserFilterInput {
+  @Field(() => [Number], {nullable: true})
+  ids?: number[];
+
+  @Field(() => [String], {nullable: true})
+  emails?: string[];
+}
 
 @InputType()
 export class UserCreateInput {
@@ -7,4 +16,13 @@ export class UserCreateInput {
 
   @Field(() => String)
   password!: string;
+}
+
+@InputType()
+export class UserUpdateInput {
+  @Field(() => String, {nullable: true})
+  email?: string;
+
+  @Field(() => String, {nullable: true})
+  password?: string;
 }

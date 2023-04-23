@@ -1,11 +1,11 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import {Field, ObjectType} from '@nestjs/graphql';
 
 @ObjectType()
 export class UserModel {
-  @Field({ nullable: true })
+  @Field({nullable: true})
   id?: number;
 
   // TODO: Add Privacy Guard
-  @Field({ nullable: true })
+  @Field({nullable: true})
   email?: string;
 }

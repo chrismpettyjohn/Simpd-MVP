@@ -7,10 +7,7 @@ import {
 } from 'typeorm';
 
 export abstract class BaseRepository<Entity extends ObjectLiteral> {
-  constructor(
-    readonly repo: Repository<Entity>,
-    readonly eagerRelations: string[]
-  ) {}
+  constructor(readonly repo: Repository<Entity>) {}
 
   async create(newEntity: Entity): Promise<Entity> {
     const newObject = await this.repo.save(newEntity);
