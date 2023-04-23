@@ -26,7 +26,8 @@
     "graphql-subscriptions": "2.0.0",
     "rxjs": "7.8.0",
     "class-validator": "0.14.0",
-    "dataloader": "2.2.2"
+    "dataloader": "2.2.2",
+    "@simpd/api-lib": "workspace:*"
   },
   "devDependencies": {
     "class-transformer": "0.5.1",
