@@ -1,13 +1,13 @@
-import {TypeOrmModule} from '@nestjs/typeorm';
-import {DynamicModule, Module} from '@nestjs/common';
-import {DatabaseModuleOptions} from './database.types';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { DynamicModule, Module } from '@nestjs/common';
+import { DatabaseModuleOptions } from './database.types';
 import {
   DATABASE_HOST,
   DATABASE_NAME,
   DATABASE_PASSWORD,
   DATABASE_SSL,
   DATABASE_USERNAME,
-} from './database.const';
+} from '../common/environment.const';
 
 @Module({})
 export class DatabaseModule {

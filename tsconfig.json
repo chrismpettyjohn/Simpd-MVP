@@ -6,14 +6,14 @@
       "@simpd/api-gateway": [
         "apps/simpd-api-gateway/src"
       ],
-      "@simpd/api-users": [
-        "apps/simpd-api-users/src"
+      "@simpd/api-user": [
+        "apps/simpd-api-user/src"
       ],
-      "@simpd/api-roles": [
-        "apps/simpd-api-roles/src"
+      "@simpd/api-role": [
+        "apps/simpd-api-role/src"
       ],
-      "@simpd/api-sessions": [
-        "apps/simpd-api-sessions/src"
+      "@simpd/api-session": [
+        "apps/simpd-api-session/src"
       ],
       "@simpd/web-app": [
         "apps/simpd-web-app/src"
