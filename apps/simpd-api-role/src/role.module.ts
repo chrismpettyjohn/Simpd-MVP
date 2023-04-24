@@ -3,6 +3,7 @@ import {RoleEntity} from './role.entity';
 import {RoleResolver} from './role.resolver';
 import {RoleRepository} from './role.repository';
 import {GraphQLModule, DatabaseModule, CommonModule} from '@simpd/api-lib';
+import {RoleController} from './role.controller';
 
 @Module({
   imports: [
@@ -14,5 +15,6 @@ import {GraphQLModule, DatabaseModule, CommonModule} from '@simpd/api-lib';
     }),
   ],
   providers: [RoleRepository, RoleResolver],
+  controllers: [RoleController],
 })
 export class RoleModule {}

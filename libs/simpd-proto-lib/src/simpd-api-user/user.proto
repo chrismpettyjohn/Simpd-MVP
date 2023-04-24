@@ -4,8 +4,7 @@ package simpd.user;
 
 message User {
     int64 id = 1;
-    string name = 2;
-    string description = 3;
+    string email = 2;
 }
 
 message UserFindOneInput {

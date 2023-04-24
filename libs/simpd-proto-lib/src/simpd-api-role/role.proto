@@ -13,5 +13,5 @@ message RoleFindOneInput {
 }
 
 service RoleService {
-    rpc GetRole (RoleFindOneInput) returns (Role) {}
+    rpc FindOne (RoleFindOneInput) returns (Role) {}
 }

@@ -32,7 +32,8 @@
     "rxjs": "7.8.0",
     "class-validator": "0.14.0",
     "dataloader": "2.2.2",
-    "@simpd/api-lib": "workspace:*"
+    "@simpd/api-lib": "workspace:*",
+    "@simpd/proto-lib": "workspace:*"
   },
   "devDependencies": {
     "class-transformer": "0.5.1",

@@ -2,7 +2,7 @@ import 'dotenv/config';
 import {NestFactory} from '@nestjs/core';
 import {UserModule} from './user.module';
 import {MicroserviceOptions, Transport} from '@nestjs/microservices';
-import {USER_SERVICE_NAME, USER_SERVICE_PROTO} from '@simpd/api-lib';
+import {USER_SERVICE_PACKAGE, USER_SERVICE_PROTO} from '@simpd/api-lib';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
@@ -10,7 +10,7 @@ async function bootstrap() {
     {
       transport: Transport.GRPC,
       options: {
-        package: USER_SERVICE_NAME,
+        package: USER_SERVICE_PACKAGE,
         protoPath: USER_SERVICE_PROTO,
       },
     }

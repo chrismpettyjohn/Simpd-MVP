@@ -21,6 +21,9 @@
       "@simpd/api-lib": [
         "libs/simpd-api-lib/src"
       ],
+      "@simpd/proto-lib": [
+        "libs/simpd-proto-lib/src"
+      ],
       "@simpd/web-lib": [
         "libs/simpd-web-lib/src"
       ],

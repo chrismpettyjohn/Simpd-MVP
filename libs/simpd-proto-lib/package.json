@@ -1,0 +1,14 @@
+{
+  "name": "@simpd/proto-lib",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/types",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pnpm run clean && pnpm run compile",
+    "clean": "rimraf -rf ./dist && rimraf -rf ./build",
+    "compile": "tsc -p tsconfig.build.json"
+  }
+}

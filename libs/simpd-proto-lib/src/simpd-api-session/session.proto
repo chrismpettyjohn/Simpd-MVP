@@ -4,8 +4,7 @@ package simpd.session;
 
 message Session {
     int64 id = 1;
-    string name = 2;
-    string description = 3;
+    string userID = 2;
 }
 
 message SessionFindOneInput {
