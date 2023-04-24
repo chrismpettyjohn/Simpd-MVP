@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package com.role;
+
+message User {
+    int64 id = 1;
+    string name = 2;
+    string description = 3;
+}
+
+message UserFindOneInput {
+    int64 id = 1;
+}
+
+service UserService {
+    rpc GetUser (UserFindOneInput) returns (User) {}
+}

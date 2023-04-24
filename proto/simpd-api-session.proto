@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package com.role;
+
+message Session {
+    int64 id = 1;
+    string name = 2;
+    string description = 3;
+}
+
+message SessionFindOneInput {
+    int64 id = 1;
+}
+
+service SessionService {
+    rpc GetSession (SessionFindOneInput) returns (Session) {}
+}
