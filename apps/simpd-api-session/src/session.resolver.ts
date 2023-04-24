@@ -1,19 +1,19 @@
-import { In } from 'typeorm';
-import { SessionModel } from './session.model';
-import { SessionEntity } from './session.entity';
-import { SessionRepository } from './session.repository';
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import {In} from 'typeorm';
+import {SessionModel} from './session.model';
+import {SessionEntity} from './session.entity';
+import {SessionRepository} from './session.repository';
+import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 import {
   SessionCreateInput,
   SessionFilterByManyInput,
   SessionFilterByOneInput,
 } from './session.input';
-import { addTime } from '@simpd/api-lib';
-import { DEFAULT_SESSION_LENGTH } from './session.const';
+import {addTime} from '@simpd/api-lib';
+import {DEFAULT_SESSION_LENGTH} from './session.const';
 
 @Resolver(() => SessionModel)
 export class SessionResolver {
-  constructor(private readonly sessionRepo: SessionRepository) { }
+  constructor(private readonly sessionRepo: SessionRepository) {}
 
   @Query(() => SessionModel)
   async session(
@@ -26,7 +26,7 @@ export class SessionResolver {
 
   @Query(() => [SessionModel])
   sessions(
-    @Args('filter', { type: () => SessionFilterByManyInput, nullable: true })
+    @Args('filter', {type: () => SessionFilterByManyInput, nullable: true})
     filter?: SessionFilterByManyInput
   ): Promise<SessionEntity[]> {
     return this.sessionRepo.find({
@@ -37,7 +37,9 @@ export class SessionResolver {
   }
 
   @Mutation(() => SessionModel)
-  async sessionCreate(@Args('input') input: SessionCreateInput): Promise<SessionEntity> {
+  async sessionCreate(
+    @Args('input') input: SessionCreateInput
+  ): Promise<SessionEntity> {
     const currentTime = new Date();
     const expiresAt = addTime(currentTime, DEFAULT_SESSION_LENGTH);
     const newSession = await this.sessionRepo.create({

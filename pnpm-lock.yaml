@@ -117,7 +117,7 @@ importers:
         specifier: 5.0.4
         version: 5.0.4
 
-  apps/simpd-api-roles:
+  apps/simpd-api-role:
     dependencies:
       '@apollo/server':
         specifier: 4.7.0
@@ -196,7 +196,7 @@ importers:
         specifier: 5.0.4
         version: 5.0.4
 
-  apps/simpd-api-sessions:
+  apps/simpd-api-session:
     dependencies:
       '@apollo/server':
         specifier: 4.7.0
@@ -275,7 +275,7 @@ importers:
         specifier: 5.0.4
         version: 5.0.4
 
-  apps/simpd-api-users:
+  apps/simpd-api-user:
     dependencies:
       '@apollo/server':
         specifier: 4.7.0

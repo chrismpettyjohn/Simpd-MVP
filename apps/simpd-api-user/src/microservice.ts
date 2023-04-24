@@ -1,17 +1,17 @@
 import 'dotenv/config';
 import {NestFactory} from '@nestjs/core';
-import {RoleModule} from './role.module';
-import {ROLE_SERVICE_NAME, ROLE_SERVICE_PROTO} from '@simpd/api-lib';
+import {UserModule} from './user.module';
 import {MicroserviceOptions, Transport} from '@nestjs/microservices';
+import {USER_SERVICE_NAME, USER_SERVICE_PROTO} from '@simpd/api-lib';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-    RoleModule,
+    UserModule,
     {
       transport: Transport.GRPC,
       options: {
-        package: ROLE_SERVICE_NAME,
-        protoPath: ROLE_SERVICE_PROTO,
+        package: USER_SERVICE_NAME,
+        protoPath: USER_SERVICE_PROTO,
       },
     }
   );

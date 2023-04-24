@@ -1,8 +1,8 @@
 import 'dotenv/config';
-import { NestFactory } from '@nestjs/core';
-import { UserModule } from './user.module';
-import { WsAdapter } from '@nestjs/platform-ws';
-import { USER_SERVICE_PORT } from '@simpd/api-lib';
+import {NestFactory} from '@nestjs/core';
+import {UserModule} from './user.module';
+import {WsAdapter} from '@nestjs/platform-ws';
+import {USER_SERVICE_PORT} from '@simpd/api-lib';
 
 async function bootstrap() {
   const app = await NestFactory.create(UserModule);

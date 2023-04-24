@@ -7,8 +7,10 @@
     "dist"
   ],
   "scripts": {
-    "start": "node_modules/.bin/ts-node -r tsconfig-paths/register src/web-server.ts",
-    "start:dev": "nodemon --exec pnpm run start"
+    "web-server:start": "node_modules/.bin/ts-node -r tsconfig-paths/register src/web-server.ts",
+    "web-server:dev": "nodemon --exec pnpm run web-server:start",
+    "microservice:start": "node_modules/.bin/ts-node -r tsconfig-paths/register src/microservice.ts",
+    "microservice:dev": "nodemon --exec pnpm run microservice:start"
   },
   "dependencies": {
     "@nestjs/common": "9.4.0",

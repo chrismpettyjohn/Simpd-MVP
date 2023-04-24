@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { SessionEntity } from './session.entity';
-import { SessionResolver } from './session.resolver';
-import { SessionRepository } from './session.repository';
-import { GraphQLModule, DatabaseModule, CommonModule } from '@simpd/api-lib';
+import {Module} from '@nestjs/common';
+import {SessionEntity} from './session.entity';
+import {SessionResolver} from './session.resolver';
+import {SessionRepository} from './session.repository';
+import {GraphQLModule, DatabaseModule, CommonModule} from '@simpd/api-lib';
 
 @Module({
   imports: [
@@ -15,4 +15,4 @@ import { GraphQLModule, DatabaseModule, CommonModule } from '@simpd/api-lib';
   ],
   providers: [SessionRepository, SessionResolver],
 })
-export class SessionModule { }
+export class SessionModule {}

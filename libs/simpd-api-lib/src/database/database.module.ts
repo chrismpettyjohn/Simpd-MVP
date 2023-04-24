@@ -1,6 +1,6 @@
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { DynamicModule, Module } from '@nestjs/common';
-import { DatabaseModuleOptions } from './database.types';
+import {TypeOrmModule} from '@nestjs/typeorm';
+import {DynamicModule, Module} from '@nestjs/common';
+import {DatabaseModuleOptions} from './database.types';
 import {
   DATABASE_HOST,
   DATABASE_NAME,
