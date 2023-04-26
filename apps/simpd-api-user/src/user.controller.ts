@@ -2,8 +2,7 @@ import {Controller} from '@nestjs/common';
 import {UserRepository} from './user.repository';
 import {userEntityToUserWire} from './user.wire';
 import {GrpcMethod} from '@nestjs/microservices';
-import {USER_SERVICE_NAME} from '@simpd/api-lib';
-import {User, UserFindOneInput} from '@simpd/proto-lib';
+import {User, UserFindOneInput, USER_SERVICE_NAME} from '@simpd/proto-lib';
 
 @Controller()
 export class UserController {

@@ -1,0 +1,13 @@
+import {resolveProto} from '../helpers';
+
+export const GATEWAY_SERVICE_NAME = 'GatewayService';
+export const GATEWAY_SERVICE_WEB_SERVER_PORT = 3000;
+export const GATEWAY_SERVICE_MICROSERVICE_PORT = 3001;
+export const GATEWAY_SERVICE_PACKAGE = 'simpd.gateway';
+export const GATEWAY_SERVICE_PROTO = resolveProto(GATEWAY_SERVICE_PACKAGE);
+export const GATEWAY_SERVICE_WEB_SERVER_ADDRESS =
+  process.env.GATEWAY_SERVICE_WEB_SERVER_ADDRESS ??
+  `http://localhost:${GATEWAY_SERVICE_WEB_SERVER_PORT}/graphql`;
+export const GATEWAY_SERVICE_MICROSERVICE_ADDRESS =
+  process.env.GATEWAY_SERVICE_MICROSERVICE_ADDRESS ??
+  `localhost:${GATEWAY_SERVICE_MICROSERVICE_PORT}`;

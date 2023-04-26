@@ -1,9 +1,12 @@
 import {Controller} from '@nestjs/common';
 import {GrpcMethod} from '@nestjs/microservices';
-import {SESSION_SERVICE_NAME} from '@simpd/api-lib';
 import {SessionRepository} from './session.repository';
 import {sessionEntityToSessionWire} from './session.wire';
-import {Session, SessionFindOneInput} from '@simpd/proto-lib';
+import {
+  Session,
+  SessionFindOneInput,
+  SESSION_SERVICE_NAME,
+} from '@simpd/proto-lib';
 
 @Controller()
 export class SessionController {

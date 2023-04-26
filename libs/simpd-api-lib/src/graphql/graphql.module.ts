@@ -2,8 +2,8 @@ import {resolve} from 'path';
 import {GraphQLOptions} from './graphql.types';
 import {GRAPHQL_PLAYGROUND} from './graphql.const';
 import {DynamicModule, Module} from '@nestjs/common';
-import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo';
 import {GraphQLModule as NestGraphQLModule} from '@nestjs/graphql';
+import {ApolloDriverConfig, ApolloFederationDriver} from '@nestjs/apollo';
 
 @Module({})
 export class GraphQLModule {
@@ -12,13 +12,17 @@ export class GraphQLModule {
       module: GraphQLModule,
       imports: [
         NestGraphQLModule.forRoot<ApolloDriverConfig>({
-          driver: ApolloDriver,
-          autoSchemaFile: resolve(__dirname, './schema.gql'),
+          driver: ApolloFederationDriver,
+          autoSchemaFile: {
+            path: resolve(__dirname, './schema.gql'),
+            federation: 2,
+          },
           fieldResolverEnhancers: [
             'guards',
             ...(options?.fieldResolverEnhancers ?? []),
           ],
           playground: GRAPHQL_PLAYGROUND,
+          introspection: GRAPHQL_PLAYGROUND,
           ...options,
         }),
       ],

@@ -1,22 +1,22 @@
 import 'dotenv/config';
 import {NestFactory} from '@nestjs/core';
-import {SessionModule} from './session.module';
+import {GatewayModule} from './gateway.module';
 import {MicroserviceOptions, Transport} from '@nestjs/microservices';
 import {
-  SESSION_SERVICE_MICROSERVICE_ADDRESS,
-  SESSION_SERVICE_PACKAGE,
-  SESSION_SERVICE_PROTO,
+  GATEWAY_SERVICE_MICROSERVICE_ADDRESS,
+  GATEWAY_SERVICE_PACKAGE,
+  GATEWAY_SERVICE_PROTO,
 } from '@simpd/proto-lib';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-    SessionModule,
+    GatewayModule,
     {
       transport: Transport.GRPC,
       options: {
-        url: SESSION_SERVICE_MICROSERVICE_ADDRESS,
-        package: SESSION_SERVICE_PACKAGE,
-        protoPath: SESSION_SERVICE_PROTO,
+        url: GATEWAY_SERVICE_MICROSERVICE_ADDRESS,
+        package: GATEWAY_SERVICE_PACKAGE,
+        protoPath: GATEWAY_SERVICE_PROTO,
       },
     }
   );

@@ -2,8 +2,7 @@ import {Controller} from '@nestjs/common';
 import {RoleRepository} from './role.repository';
 import {roleEntityToRoleWire} from './role.wire';
 import {GrpcMethod} from '@nestjs/microservices';
-import {ROLE_SERVICE_NAME} from '@simpd/api-lib';
-import {Role, RoleFindOneInput} from '@simpd/proto-lib';
+import {Role, RoleFindOneInput, ROLE_SERVICE_NAME} from '@simpd/proto-lib';
 
 @Controller()
 export class RoleController {

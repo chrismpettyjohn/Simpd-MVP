@@ -1,0 +1,13 @@
+import {resolveProto} from '../helpers';
+
+export const SESSION_SERVICE_NAME = 'SessionService';
+export const SESSION_SERVICE_WEB_SERVER_PORT = 3004;
+export const SESSION_SERVICE_MICROSERVICE_SERVICE_PORT = 3005;
+export const SESSION_SERVICE_PACKAGE = 'simpd.session';
+export const SESSION_SERVICE_PROTO = resolveProto(SESSION_SERVICE_PACKAGE);
+export const SESSION_SERVICE_WEB_SERVER_ADDRESS =
+  process.env.SESSION_SERVICE_WEB_SERVER_ADDRESS ??
+  `http://localhost:${SESSION_SERVICE_WEB_SERVER_PORT}/graphql`;
+export const SESSION_SERVICE_MICROSERVICE_ADDRESS =
+  process.env.SESSION_SERVICE_MICROSERVICE_ADDRESS ??
+  `grpc://localhost:${SESSION_SERVICE_MICROSERVICE_SERVICE_PORT}`;
