@@ -1,4 +1,4 @@
 import {Inject} from '@nestjs/common';
-import {PROFILE_SERVICE_NAME} from './profile.const';
+import {SVC_PROFILE_NAME} from './profile.const';
 
-export const ProfileClient = () => Inject(PROFILE_SERVICE_NAME);
+export const ProfileClient = () => Inject(SVC_PROFILE_NAME);

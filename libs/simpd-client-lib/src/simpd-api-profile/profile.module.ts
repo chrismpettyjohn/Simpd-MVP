@@ -2,20 +2,20 @@ import {Module} from '@nestjs/common';
 import {UserClientService} from './profile-client.service';
 import {ClientsModule, Transport} from '@nestjs/microservices';
 import {
-  USER_SERVICE_MICROSERVICE_HOST,
-  USER_SERVICE_MICROSERVICE_PORT,
-  USER_SERVICE_NAME,
+  SVC_USER_MICROSERVICE_HOST,
+  SVC_USER_MICROSERVICE_PORT,
+  SVC_USER_NAME,
 } from './profile.const';
 
 @Module({
   imports: [
     ClientsModule.register([
       {
-        name: USER_SERVICE_NAME,
+        name: SVC_USER_NAME,
         transport: Transport.NATS,
         options: {
           servers: [
-            `nats://${USER_SERVICE_MICROSERVICE_HOST}:${USER_SERVICE_MICROSERVICE_PORT}`,
+            `nats://${SVC_USER_MICROSERVICE_HOST}:${SVC_USER_MICROSERVICE_PORT}`,
           ],
         },
       },

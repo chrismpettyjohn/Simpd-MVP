@@ -1,6 +1,6 @@
 import {Inject} from '@nestjs/common';
-import {ROLE_SERVICE_NAME} from './role.const';
+import {SVC_ROLE_NAME} from './role.const';
 
 export const UseRoleClient = (): any => {
-  return Inject(`${ROLE_SERVICE_NAME}.PACKAGE`.toUpperCase());
+  return Inject(`${SVC_ROLE_NAME}.PACKAGE`.toUpperCase());
 };

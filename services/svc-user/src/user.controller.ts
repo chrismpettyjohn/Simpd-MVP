@@ -3,7 +3,7 @@ import {UserRepository} from './user.repository';
 import {userEntityToUserWire} from './user.wire';
 import {GrpcMethod} from '@nestjs/microservices';
 import {
-  USER_SERVICE_INTERNAL_EVENT_FIND_ONE_BY_ID,
+  SVC_USER_INTERNAL_EVENT_FIND_ONE_BY_ID,
   UserFindOneInput,
   UserWire,
 } from '@simpd/client-lib';
@@ -12,7 +12,7 @@ import {
 export class UserController {
   constructor(private readonly userRepo: UserRepository) {}
 
-  @GrpcMethod(USER_SERVICE_INTERNAL_EVENT_FIND_ONE_BY_ID)
+  @GrpcMethod(SVC_USER_INTERNAL_EVENT_FIND_ONE_BY_ID)
   async userFindOneByID(data: UserFindOneInput): Promise<UserWire> {
     const matchingRole = await this.userRepo.findOneOrFail({
       where: {

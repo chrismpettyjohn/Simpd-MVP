@@ -8,9 +8,9 @@ import {ExpressAdapter} from '@nestjs/platform-express';
 import {NestApplication, NestFactory} from '@nestjs/core';
 import {MicroserviceOptions, Transport} from '@nestjs/microservices';
 import {
-  USER_SERVICE_MICROSERVICE_HOST,
-  USER_SERVICE_MICROSERVICE_PORT,
-  USER_SERVICE_WEB_SERVER_PORT,
+  SVC_USER_MICROSERVICE_HOST,
+  SVC_USER_MICROSERVICE_PORT,
+  SVC_USER_WEB_SERVER_PORT,
 } from '@simpd/client-lib';
 
 async function bootstrap() {
@@ -34,7 +34,7 @@ async function bootstrap() {
     transport: Transport.NATS,
     options: {
       servers: [
-        `nats://${USER_SERVICE_MICROSERVICE_HOST}:${USER_SERVICE_MICROSERVICE_PORT}`,
+        `nats://${SVC_USER_MICROSERVICE_HOST}:${SVC_USER_MICROSERVICE_PORT}`,
       ],
     },
   });
@@ -43,7 +43,7 @@ async function bootstrap() {
 
   await app.init();
 
-  await server.listen(USER_SERVICE_WEB_SERVER_PORT);
+  await server.listen(SVC_USER_WEB_SERVER_PORT);
 }
 
 bootstrap();

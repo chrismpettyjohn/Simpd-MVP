@@ -2,20 +2,20 @@ import {Module} from '@nestjs/common';
 import {RoleClientService} from './role-client.service';
 import {ClientsModule, Transport} from '@nestjs/microservices';
 import {
-  ROLE_SERVICE_MICROSERVICE_HOST,
-  ROLE_SERVICE_MICROSERVICE_PORT,
-  ROLE_SERVICE_NAME,
+  SVC_ROLE_MICROSERVICE_HOST,
+  SVC_ROLE_MICROSERVICE_PORT,
+  SVC_ROLE_NAME,
 } from './role.const';
 
 @Module({
   imports: [
     ClientsModule.register([
       {
-        name: ROLE_SERVICE_NAME,
+        name: SVC_ROLE_NAME,
         transport: Transport.NATS,
         options: {
           servers: [
-            `nats://${ROLE_SERVICE_MICROSERVICE_HOST}:${ROLE_SERVICE_MICROSERVICE_PORT}`,
+            `nats://${SVC_ROLE_MICROSERVICE_HOST}:${SVC_ROLE_MICROSERVICE_PORT}`,
           ],
         },
       },

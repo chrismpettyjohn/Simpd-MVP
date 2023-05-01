@@ -8,9 +8,9 @@ import {ExpressAdapter} from '@nestjs/platform-express';
 import {NestApplication, NestFactory} from '@nestjs/core';
 import {MicroserviceOptions, Transport} from '@nestjs/microservices';
 import {
-  ROLE_SERVICE_MICROSERVICE_HOST,
-  ROLE_SERVICE_MICROSERVICE_PORT,
-  ROLE_SERVICE_WEB_SERVER_PORT,
+  SVC_ROLE_MICROSERVICE_HOST,
+  SVC_ROLE_MICROSERVICE_PORT,
+  SVC_ROLE_WEB_SERVER_PORT,
 } from '@simpd/client-lib';
 
 async function bootstrap() {
@@ -34,14 +34,14 @@ async function bootstrap() {
     transport: Transport.NATS,
     options: {
       servers: [
-        `nats://${ROLE_SERVICE_MICROSERVICE_HOST}:${ROLE_SERVICE_MICROSERVICE_PORT}`,
+        `nats://${SVC_ROLE_MICROSERVICE_HOST}:${SVC_ROLE_MICROSERVICE_PORT}`,
       ],
     },
   });
 
   await app.startAllMicroservices();
 
-  await server.listen(ROLE_SERVICE_WEB_SERVER_PORT);
+  await server.listen(SVC_ROLE_WEB_SERVER_PORT);
 }
 
 bootstrap();

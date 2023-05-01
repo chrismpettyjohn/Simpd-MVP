@@ -6,7 +6,7 @@ import {GatewayModule} from './gateway.module';
 import Spdy, {Server, ServerOptions} from 'spdy';
 import {ExpressAdapter} from '@nestjs/platform-express';
 import {NestApplication, NestFactory} from '@nestjs/core';
-import {GATEWAY_SERVICE_WEB_SERVER_PORT} from '@simpd/client-lib';
+import {SVC_GATEWAY_WEB_SERVER_PORT} from '@simpd/client-lib';
 
 async function bootstrap() {
   const expressApp: Express.Express = Express();
@@ -27,7 +27,7 @@ async function bootstrap() {
 
   await app.init();
 
-  await server.listen(GATEWAY_SERVICE_WEB_SERVER_PORT);
+  await server.listen(SVC_GATEWAY_WEB_SERVER_PORT);
 }
 
 bootstrap();

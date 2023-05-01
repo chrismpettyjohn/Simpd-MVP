@@ -3,9 +3,9 @@ import {NestFactory} from '@nestjs/core';
 import {GatewayModule} from './gateway.module';
 import {MicroserviceOptions, Transport} from '@nestjs/microservices';
 import {
-  GATEWAY_SERVICE_MICROSERVICE_ADDRESS,
-  GATEWAY_SERVICE_PACKAGE,
-  GATEWAY_SERVICE_PROTO,
+  SVC_GATEWAY_MICROSERVICE_ADDRESS,
+  SVC_GATEWAY_PACKAGE,
+  SVC_GATEWAY_PROTO,
 } from '@simpd/proto-lib';
 
 async function bootstrap() {
@@ -14,9 +14,9 @@ async function bootstrap() {
     {
       transport: Transport.GRPC,
       options: {
-        url: GATEWAY_SERVICE_MICROSERVICE_ADDRESS,
-        package: GATEWAY_SERVICE_PACKAGE,
-        protoPath: GATEWAY_SERVICE_PROTO,
+        url: SVC_GATEWAY_MICROSERVICE_ADDRESS,
+        package: SVC_GATEWAY_PACKAGE,
+        protoPath: SVC_GATEWAY_PROTO,
       },
     }
   );
