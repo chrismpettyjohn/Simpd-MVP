@@ -11,7 +11,7 @@ import {
   SESSION_SERVICE_MICROSERVICE_PORT,
   SESSION_SERVICE_WEB_SERVER_PORT,
   SESSION_SERVICE_NAME,
-} from '@simpd/client-lib';
+} from '@simpd/lib-client';
 
 async function bootstrap() {
   const expressApp: Express.Express = Express();

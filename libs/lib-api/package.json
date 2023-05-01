@@ -1,5 +1,5 @@
 {
-  "name": "@simpd/api-lib",
+  "name": "@simpd/lib-api",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/types",
@@ -30,7 +30,7 @@
     "@nestjs/jwt": "*",
     "express": "*",
     "@types/express": "4.17.17",
-    "@simpd/client-lib": "workspace:*",
+    "@simpd/lib-client": "workspace:*",
     "rxjs": "*"
   },
   "peerDependencies": {
@@ -44,7 +44,7 @@
     "@apollo/server": "*",
     "typeorm": "*",
     "express": "*",
-    "@simpd/client-lib": "workspace:*",
+    "@simpd/lib-client": "workspace:*",
     "rxjs": "*"
   }
 }

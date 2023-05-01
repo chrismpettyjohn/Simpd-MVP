@@ -1,14 +1,14 @@
-import {Reflector} from '@nestjs/core';
-import {RoleScopesWire} from '@simpd/client-lib';
-import {Injectable, CanActivate, ExecutionContext} from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
+import { RoleScopesWire } from '@simpd/lib-client';
+import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import {
   getRequestFromExecutionContext,
   RequestWithSession,
-} from '@simpd/api-lib';
+} from '@simpd/lib-api';
 
 @Injectable()
 export class RoleHasRequiredScopeGuard implements CanActivate {
-  constructor(private readonly reflector: Reflector) {}
+  constructor(private readonly reflector: Reflector) { }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const requiredScope: keyof RoleScopesWire = this.reflector.get(

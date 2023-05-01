@@ -21,14 +21,11 @@
       "@simpd/app-web": [
         "apps/app-web/src"
       ],
-      "@simpd/api-lib": [
-        "libs/simpd-api-lib/src"
+      "@simpd/lib-api": [
+        "libs/lib-api/src"
       ],
-      "@simpd/client-lib": [
-        "libs/simpd-client-lib/src"
-      ],
-      "@simpd/web-lib": [
-        "libs/simpd-web-lib/src"
+      "@simpd/lib-client": [
+        "libs/lib-client/src"
       ],
     },
     "noEmit": true

@@ -1,14 +1,14 @@
-import {Module} from '@nestjs/common';
-import {RoleEntity} from './role.entity';
-import {RoleResolver} from './role.resolver';
-import {RoleRepository} from './role.repository';
-import {RoleController} from './role.controller';
+import { Module } from '@nestjs/common';
+import { RoleEntity } from './role.entity';
+import { RoleResolver } from './role.resolver';
+import { RoleRepository } from './role.repository';
+import { RoleController } from './role.controller';
 import {
   GraphQLModule,
   DatabaseModule,
   CommonModule,
   SessionModule,
-} from '@simpd/api-lib';
+} from '@simpd/lib-api';
 
 @Module({
   imports: [
@@ -23,4 +23,4 @@ import {
   providers: [RoleRepository, RoleResolver],
   controllers: [RoleController],
 })
-export class RoleModule {}
+export class RoleModule { }

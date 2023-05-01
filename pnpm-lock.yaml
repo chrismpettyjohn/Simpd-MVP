@@ -108,7 +108,7 @@ importers:
         specifier: 4.2.0
         version: 4.2.0(typescript@5.0.4)(vite@4.2.1)
 
-  libs/simpd-api-lib:
+  libs/lib-api:
     dependencies:
       '@golevelup/nestjs-rabbitmq':
         specifier: 3.6.0
@@ -147,9 +147,9 @@ importers:
       '@nestjs/typeorm':
         specifier: '*'
         version: 9.0.1(@nestjs/common@9.4.0)(@nestjs/core@9.4.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)(typeorm@0.3.15)
-      '@simpd/client-lib':
+      '@simpd/lib-client':
         specifier: workspace:*
-        version: link:../simpd-client-lib
+        version: link:../lib-client
       '@types/bcryptjs':
         specifier: 2.4.2
         version: 2.4.2
@@ -166,7 +166,7 @@ importers:
         specifier: '*'
         version: 0.3.15(pg@8.10.0)
 
-  libs/simpd-client-lib:
+  libs/lib-client:
     devDependencies:
       '@nestjs/common':
         specifier: '*'
@@ -213,9 +213,9 @@ importers:
       '@nestjs/typeorm':
         specifier: 9.0.1
         version: 9.0.1(@nestjs/common@9.4.0)(@nestjs/core@9.4.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)(typeorm@0.3.15)
-      '@simpd/client-lib':
+      '@simpd/lib-client':
         specifier: workspace:*
-        version: link:../../libs/simpd-client-lib
+        version: link:../../libs/lib-client
       class-validator:
         specifier: 0.14.0
         version: 0.14.0
@@ -292,12 +292,12 @@ importers:
       '@nestjs/typeorm':
         specifier: 9.0.1
         version: 9.0.1(@nestjs/common@9.4.0)(@nestjs/core@9.4.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)(typeorm@0.3.15)
-      '@simpd/api-lib':
+      '@simpd/lib-api':
         specifier: workspace:*
-        version: link:../../libs/simpd-api-lib
-      '@simpd/client-lib':
+        version: link:../../libs/lib-api
+      '@simpd/lib-client':
         specifier: workspace:*
-        version: link:../../libs/simpd-client-lib
+        version: link:../../libs/lib-client
       class-validator:
         specifier: 0.14.0
         version: 0.14.0
@@ -374,12 +374,12 @@ importers:
       '@nestjs/typeorm':
         specifier: 9.0.1
         version: 9.0.1(@nestjs/common@9.4.0)(@nestjs/core@9.4.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)(typeorm@0.3.15)
-      '@simpd/api-lib':
+      '@simpd/lib-api':
         specifier: workspace:*
-        version: link:../../libs/simpd-api-lib
-      '@simpd/client-lib':
+        version: link:../../libs/lib-api
+      '@simpd/lib-client':
         specifier: workspace:*
-        version: link:../../libs/simpd-client-lib
+        version: link:../../libs/lib-client
       class-validator:
         specifier: 0.14.0
         version: 0.14.0
@@ -456,12 +456,12 @@ importers:
       '@nestjs/typeorm':
         specifier: 9.0.1
         version: 9.0.1(@nestjs/common@9.4.0)(@nestjs/core@9.4.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)(typeorm@0.3.15)
-      '@simpd/api-lib':
+      '@simpd/lib-api':
         specifier: workspace:*
-        version: link:../../libs/simpd-api-lib
-      '@simpd/client-lib':
+        version: link:../../libs/lib-api
+      '@simpd/lib-client':
         specifier: workspace:*
-        version: link:../../libs/simpd-client-lib
+        version: link:../../libs/lib-client
       class-validator:
         specifier: 0.14.0
         version: 0.14.0
@@ -538,12 +538,12 @@ importers:
       '@nestjs/typeorm':
         specifier: 9.0.1
         version: 9.0.1(@nestjs/common@9.4.0)(@nestjs/core@9.4.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)(typeorm@0.3.15)
-      '@simpd/api-lib':
+      '@simpd/lib-api':
         specifier: workspace:*
-        version: link:../../libs/simpd-api-lib
-      '@simpd/client-lib':
+        version: link:../../libs/lib-api
+      '@simpd/lib-client':
         specifier: workspace:*
-        version: link:../../libs/simpd-client-lib
+        version: link:../../libs/lib-client
       class-validator:
         specifier: 0.14.0
         version: 0.14.0

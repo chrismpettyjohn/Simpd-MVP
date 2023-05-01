@@ -1,4 +1,4 @@
-import {join} from 'path';
+import { join } from 'path';
 
 const SERVICE_PACKAGE_PREFIX = 'simpd.';
 
@@ -13,7 +13,7 @@ export function resolveProto(serviceName: string): string {
     '..',
     '..',
     'libs',
-    'simpd-client-lib',
+    'simpd-lib-client',
     'src',
     `simpd-api-${serviceNameWithoutPrefix}/${serviceNameWithoutPrefix}.proto`
   );

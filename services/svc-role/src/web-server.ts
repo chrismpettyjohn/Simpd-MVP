@@ -1,17 +1,17 @@
 import 'dotenv/config';
 import Express from 'express';
-import {readFileSync} from 'fs';
-import {RoleModule} from './role.module';
-import {WsAdapter} from '@nestjs/platform-ws';
-import Spdy, {Server, ServerOptions} from 'spdy';
-import {ExpressAdapter} from '@nestjs/platform-express';
-import {NestApplication, NestFactory} from '@nestjs/core';
-import {MicroserviceOptions, Transport} from '@nestjs/microservices';
+import { readFileSync } from 'fs';
+import { RoleModule } from './role.module';
+import { WsAdapter } from '@nestjs/platform-ws';
+import Spdy, { Server, ServerOptions } from 'spdy';
+import { ExpressAdapter } from '@nestjs/platform-express';
+import { NestApplication, NestFactory } from '@nestjs/core';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import {
   SVC_ROLE_MICROSERVICE_HOST,
   SVC_ROLE_MICROSERVICE_PORT,
   SVC_ROLE_WEB_SERVER_PORT,
-} from '@simpd/client-lib';
+} from '@simpd/lib-client';
 
 async function bootstrap() {
   const expressApp: Express.Express = Express();

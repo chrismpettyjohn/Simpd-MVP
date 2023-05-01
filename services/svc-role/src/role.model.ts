@@ -1,5 +1,5 @@
-import {RoleScopesWire} from '@simpd/client-lib';
-import {Field, ObjectType} from '@nestjs/graphql';
+import { RoleScopesWire } from '@simpd/lib-client';
+import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class RoleScopesModel implements RoleScopesWire {
@@ -12,15 +12,15 @@ export class RoleScopesModel implements RoleScopesWire {
 
 @ObjectType()
 export class RoleModel {
-  @Field({nullable: true})
+  @Field({ nullable: true })
   id?: number;
 
-  @Field({nullable: true})
+  @Field({ nullable: true })
   name?: string;
 
-  @Field({nullable: true})
+  @Field({ nullable: true })
   description?: string;
 
-  @Field(() => RoleScopesModel, {nullable: true})
+  @Field(() => RoleScopesModel, { nullable: true })
   scopes?: RoleScopesModel;
 }

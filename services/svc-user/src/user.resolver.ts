@@ -1,10 +1,10 @@
-import {In} from 'typeorm';
-import {UserModel} from './user.model';
-import {UserEntity} from './user.entity';
-import {HashService} from '@simpd/api-lib';
-import {UserRepository} from './user.repository';
-import {DEFAULT_USER_ROLE_ID} from './user.const';
-import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
+import { In } from 'typeorm';
+import { UserModel } from './user.model';
+import { UserEntity } from './user.entity';
+import { HashService } from '@simpd/lib-api';
+import { UserRepository } from './user.repository';
+import { DEFAULT_USER_ROLE_ID } from './user.const';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import {
   UserCreateInput,
   UserFilterByManyInput,
@@ -17,7 +17,7 @@ export class UserResolver {
   constructor(
     private readonly userRepo: UserRepository,
     private readonly hashService: HashService
-  ) {}
+  ) { }
 
   @Query(() => UserModel)
   async user(
@@ -30,7 +30,7 @@ export class UserResolver {
 
   @Query(() => [UserModel])
   users(
-    @Args('filter', {type: () => UserFilterByManyInput, nullable: true})
+    @Args('filter', { type: () => UserFilterByManyInput, nullable: true })
     filter?: UserFilterByManyInput
   ): Promise<UserEntity[]> {
     return this.userRepo.find({

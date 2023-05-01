@@ -1,16 +1,16 @@
-import {Controller} from '@nestjs/common';
-import {UserRepository} from './user.repository';
-import {userEntityToUserWire} from './user.wire';
-import {GrpcMethod} from '@nestjs/microservices';
+import { Controller } from '@nestjs/common';
+import { UserRepository } from './user.repository';
+import { userEntityToUserWire } from './user.wire';
+import { GrpcMethod } from '@nestjs/microservices';
 import {
   SVC_USER_INTERNAL_EVENT_FIND_ONE_BY_ID,
   UserFindOneInput,
   UserWire,
-} from '@simpd/client-lib';
+} from '@simpd/lib-client';
 
 @Controller()
 export class UserController {
-  constructor(private readonly userRepo: UserRepository) {}
+  constructor(private readonly userRepo: UserRepository) { }
 
   @GrpcMethod(SVC_USER_INTERNAL_EVENT_FIND_ONE_BY_ID)
   async userFindOneByID(data: UserFindOneInput): Promise<UserWire> {

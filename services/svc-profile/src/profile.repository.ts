@@ -1,8 +1,8 @@
-import {Repository} from 'typeorm';
-import {ProfileEntity} from './profile.entity';
-import {Injectable} from '@nestjs/common';
-import {BaseRepository} from '@simpd/api-lib';
-import {InjectRepository} from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { ProfileEntity } from './profile.entity';
+import { Injectable } from '@nestjs/common';
+import { BaseRepository } from '@simpd/lib-api';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class ProfileRepository extends BaseRepository<ProfileEntity> {

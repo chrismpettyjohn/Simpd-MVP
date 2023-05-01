@@ -6,7 +6,7 @@ import { GatewayModule } from './gateway.module';
 import Spdy, { Server, ServerOptions } from 'spdy';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { NestApplication, NestFactory } from '@nestjs/core';
-import { SVC_GATEWAY_WEB_SERVER_PORT } from '@simpd/client-lib';
+import { SVC_GATEWAY_WEB_SERVER_PORT } from '@simpd/lib-client';
 
 async function bootstrap() {
   const expressApp: Express.Express = Express();

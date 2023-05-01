@@ -11,7 +11,7 @@ import {
   SVC_USER_MICROSERVICE_HOST,
   SVC_USER_MICROSERVICE_PORT,
   SVC_USER_WEB_SERVER_PORT,
-} from '@simpd/client-lib';
+} from '@simpd/lib-client';
 
 async function bootstrap() {
   const expressApp: Express.Express = Express();

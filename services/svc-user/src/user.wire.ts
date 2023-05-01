@@ -1,5 +1,5 @@
-import {UserWire} from '@simpd/client-lib';
-import {UserEntity} from './user.entity';
+import { UserWire } from '@simpd/lib-client';
+import { UserEntity } from './user.entity';
 
 export function userEntityToUserWire(userEntity: UserEntity): UserWire {
   return {
