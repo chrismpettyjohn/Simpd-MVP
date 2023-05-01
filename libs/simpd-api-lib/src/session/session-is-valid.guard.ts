@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 
 @Injectable()
-export class HasSessionGuard implements CanActivate {
+export class SessionIsValidGuard implements CanActivate {
   constructor(
     private readonly jwtService: JwtService,
     private readonly sessionClientService: SessionClientService

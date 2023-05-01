@@ -1,3 +1,4 @@
+import {RoleScopesWire} from '@simpd/client-lib';
 import {
   Column,
   CreateDateColumn,
@@ -17,6 +18,9 @@ export class RoleEntity {
 
   @Column({type: 'text'})
   description!: string;
+
+  @Column({type: 'json'})
+  scopes!: RoleScopesWire;
 
   @CreateDateColumn({name: 'created_at', type: 'timestamp'})
   createdAt?: Date;

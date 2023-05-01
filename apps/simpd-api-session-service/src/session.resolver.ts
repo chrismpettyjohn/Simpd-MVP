@@ -1,30 +1,21 @@
 import {In} from 'typeorm';
-import {addTime} from '@simpd/api-lib';
-import {JwtService} from '@nestjs/jwt';
 import {SessionModel} from './session.model';
 import {SessionEntity} from './session.entity';
+import {SessionService} from './session.service';
 import {SessionRepository} from './session.repository';
-import {DEFAULT_SESSION_LENGTH} from './session.const';
 import {GetSession, HasSession, SessionContents} from '@simpd/api-lib';
 import {
   SessionCreateInput,
   SessionFilterByManyInput,
   SessionFilterByOneInput,
 } from './session.input';
-import {
-  Args,
-  Context,
-  GraphQLExecutionContext,
-  Mutation,
-  Query,
-  Resolver,
-} from '@nestjs/graphql';
+import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 
 @Resolver(() => SessionModel)
 export class SessionResolver {
   constructor(
-    private readonly jwtService: JwtService,
-    private readonly sessionRepo: SessionRepository
+    private readonly sessionRepo: SessionRepository,
+    private readonly sessionService: SessionService
   ) {}
 
   @Query(() => SessionModel, {nullable: true})
@@ -60,24 +51,13 @@ export class SessionResolver {
 
   @Mutation(() => String)
   async sessionCreate(
-    @Args('input') input: SessionCreateInput,
-    @Context() context: GraphQLExecutionContext
+    @Args('input') input: SessionCreateInput
   ): Promise<string> {
-    const currentTime = new Date();
-    const expiresAt = addTime(currentTime, DEFAULT_SESSION_LENGTH);
-    const newSession = await this.sessionRepo.create({
-      userID: input.userID,
-      expiresAt,
-    });
-
-    const sessionContents: SessionContents = {
-      userID: newSession.userID,
-      profileID: 1, // TODO
-      sessionID: newSession.id!,
-      expiresAt: +newSession.expiresAt,
-    };
-
-    return this.jwtService.sign(sessionContents);
+    const userSession = await this.sessionService.createNewSession(
+      input.userID
+    );
+    const sessionJWT = this.sessionService.generateBearerToken(userSession);
+    return sessionJWT;
   }
 
   @Mutation(() => Boolean)

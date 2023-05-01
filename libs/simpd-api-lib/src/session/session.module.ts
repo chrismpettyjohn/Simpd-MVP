@@ -1,6 +1,6 @@
 import {Module} from '@nestjs/common';
 import {JwtModule} from '@nestjs/jwt';
-import {HasSessionGuard} from './has-session.guard';
+import {SessionIsValidGuard} from './session-is-valid.guard';
 import {SessionClientModule} from '@simpd/client-lib';
 import {JWT_EXPIRES, JWT_SECRET} from './session.const';
 
@@ -14,7 +14,7 @@ import {JWT_EXPIRES, JWT_SECRET} from './session.const';
     }),
     SessionClientModule,
   ],
-  providers: [HasSessionGuard],
-  exports: [HasSessionGuard, JwtModule, SessionClientModule],
+  providers: [SessionIsValidGuard],
+  exports: [SessionIsValidGuard, JwtModule, SessionClientModule],
 })
 export class SessionModule {}

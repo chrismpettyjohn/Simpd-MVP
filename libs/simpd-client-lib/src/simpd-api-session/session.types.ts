@@ -1,6 +1,6 @@
 import {Observable} from 'rxjs';
 
-export interface Session {
+export interface SessionWire {
   id: number;
   userID: number;
 }
@@ -10,5 +10,5 @@ export interface SessionFindOneInput {
 }
 
 export interface SessionService {
-  GetSession(input: SessionFindOneInput): Observable<Session | null>;
+  GetSession(input: SessionFindOneInput): Observable<SessionWire | null>;
 }

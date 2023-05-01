@@ -1,4 +1,14 @@
+import {RoleScopesWire} from '@simpd/client-lib';
 import {Field, ObjectType} from '@nestjs/graphql';
+
+@ObjectType()
+export class RoleScopesModel implements RoleScopesWire {
+  @Field(() => Boolean, {
+    nullable: true,
+    description: 'User can create profile',
+  })
+  profileCreate!: boolean;
+}
 
 @ObjectType()
 export class RoleModel {
@@ -10,4 +20,7 @@ export class RoleModel {
 
   @Field({nullable: true})
   description?: string;
+
+  @Field(() => RoleScopesModel, {nullable: true})
+  scopes?: RoleScopesModel;
 }
