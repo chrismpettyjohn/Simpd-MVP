@@ -1,27 +1,27 @@
 import {Module} from '@nestjs/common';
-import {UserClientService} from './profile-client.service';
+import {ProfileClientService} from './profile-client.service';
 import {ClientsModule, Transport} from '@nestjs/microservices';
 import {
-  SVC_USER_MICROSERVICE_HOST,
-  SVC_USER_MICROSERVICE_PORT,
-  SVC_USER_NAME,
+  SVC_PROFILE_MICROSERVICE_HOST,
+  SVC_PROFILE_MICROSERVICE_PORT,
+  SVC_PROFILE_NAME,
 } from './profile.const';
 
 @Module({
   imports: [
     ClientsModule.register([
       {
-        name: SVC_USER_NAME,
+        name: SVC_PROFILE_NAME,
         transport: Transport.NATS,
         options: {
           servers: [
-            `nats://${SVC_USER_MICROSERVICE_HOST}:${SVC_USER_MICROSERVICE_PORT}`,
+            `nats://${SVC_PROFILE_MICROSERVICE_HOST}:${SVC_PROFILE_MICROSERVICE_PORT}`,
           ],
         },
       },
     ]),
   ],
-  providers: [UserClientService],
-  exports: [UserClientService],
+  providers: [ProfileClientService],
+  exports: [ProfileClientService],
 })
 export class UserClientModule {}
