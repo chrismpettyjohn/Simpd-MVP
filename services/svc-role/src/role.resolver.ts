@@ -40,14 +40,12 @@ export class RoleResolver {
     const newRole = await this.roleRepo.create({
       name: input.name,
       description: input.description,
-      scopes: {
-        profileCreate: false,
-      },
+      scopes: input.scopes,
     });
     return newRole;
   }
 
-  @Mutation(() => Boolean)
+  @Mutation(() => RoleModel)
   async roleUpdate(
     @Args('filter') filter: RoleFilterByOneInput,
     @Args('input') input: RoleUpdateInput

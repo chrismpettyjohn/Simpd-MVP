@@ -1,4 +1,5 @@
 import {Field, InputType} from '@nestjs/graphql';
+import {RoleScopesWire} from '@simpd/lib-client';
 
 @InputType()
 export class RoleFilterByManyInput {
@@ -13,12 +14,21 @@ export class RoleFilterByOneInput {
 }
 
 @InputType()
+export class RoleScopesInput implements RoleScopesWire {
+  @Field(() => Boolean)
+  profileCreate!: boolean;
+}
+
+@InputType()
 export class RoleCreateInput {
   @Field(() => String)
   name!: string;
 
   @Field(() => String)
   description!: string;
+
+  @Field(() => RoleScopesInput)
+  scopes!: RoleScopesInput;
 }
 
 @InputType()
@@ -28,4 +38,7 @@ export class RoleUpdateInput {
 
   @Field(() => String, {nullable: true})
   description?: string;
+
+  @Field(() => RoleScopesInput, {nullable: true})
+  scopes?: RoleScopesInput;
 }
