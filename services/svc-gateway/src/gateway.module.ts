@@ -5,6 +5,7 @@ import {
   SVC_PROFILE_NAME,
   SVC_PROFILE_WEB_ADDRESS,
 } from 'libs/lib-client/src/svc-profile/profile.const';
+import {AuthenticatedDataSource} from './authenticated-datasource';
 import {ApolloGatewayDriver, ApolloGatewayDriverConfig} from '@nestjs/apollo';
 import {
   SVC_ROLE_NAME,
@@ -28,6 +29,9 @@ import {
             {name: SVC_SESSION_NAME, url: SVC_SESSION_WEB_ADDRESS},
           ],
         }),
+        buildService({name, url}) {
+          return new AuthenticatedDataSource({url});
+        },
       },
     }),
   ],

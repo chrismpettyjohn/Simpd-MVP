@@ -1,5 +1,5 @@
 import {Controller} from '@nestjs/common';
-import {GrpcMethod} from '@nestjs/microservices';
+import {MessagePattern} from '@nestjs/microservices';
 import {ProfileRepository} from './profile.repository';
 import {profileEntityToProfileWire} from './profile.wire';
 import {
@@ -12,7 +12,7 @@ import {
 export class ProfileController {
   constructor(private readonly profileRepo: ProfileRepository) {}
 
-  @GrpcMethod(SVC_USER_INTERNAL_EVENT_FIND_ONE_BY_ID)
+  @MessagePattern(SVC_USER_INTERNAL_EVENT_FIND_ONE_BY_ID)
   async profileFindOneByID(data: ProfileFindOneInput): Promise<ProfileWire> {
     const matchingRole = await this.profileRepo.findOneOrFail({
       where: {
