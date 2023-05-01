@@ -1,5 +1,5 @@
 {
-  "name": "@simpd/api-user-service",
+  "name": "@simpd/svc-user",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/types",

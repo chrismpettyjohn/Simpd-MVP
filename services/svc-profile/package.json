@@ -1,5 +1,5 @@
 {
-  "name": "@simpd/api-session-service",
+  "name": "@simpd/svc-profile",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/types",

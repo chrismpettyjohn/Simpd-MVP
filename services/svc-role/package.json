@@ -1,5 +1,5 @@
 {
-  "name": "@simpd/api-profile-service",
+  "name": "@simpd/svc-role",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/types",
