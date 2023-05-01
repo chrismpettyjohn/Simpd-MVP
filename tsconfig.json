@@ -6,6 +6,9 @@
       "@simpd/api-gateway-service": [
         "apps/simpd-api-gateway-service/src"
       ],
+      "@simpd/api-profile-service": [
+        "apps/simpd-api-profile-service/src"
+      ],
       "@simpd/api-user-service": [
         "apps/simpd-api-user-service/src"
       ],

@@ -1,4 +1,7 @@
 export * from './simpd-api-gateway/gateway.const';
+export * from './simpd-api-profile/profile-client.decorator';
+export * from './simpd-api-profile/profile-client.types';
+export * from './simpd-api-profile/profile-client.service';
 export * from './simpd-api-role/role-client.decorator';
 export * from './simpd-api-role/role-client.types';
 export * from './simpd-api-role/role-client.service';
