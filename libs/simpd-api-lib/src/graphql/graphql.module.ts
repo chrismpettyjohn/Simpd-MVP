@@ -21,7 +21,11 @@ export class GraphQLModule {
             'guards',
             ...(options?.fieldResolverEnhancers ?? []),
           ],
-          playground: GRAPHQL_PLAYGROUND,
+          playground: GRAPHQL_PLAYGROUND && {
+            settings: {
+              'request.credentials': 'include',
+            },
+          },
           introspection: GRAPHQL_PLAYGROUND,
           ...options,
         }),

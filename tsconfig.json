@@ -3,17 +3,17 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@simpd/api-gateway": [
-        "apps/simpd-api-gateway/src"
+      "@simpd/api-gateway-service": [
+        "apps/simpd-api-gateway-service/src"
       ],
-      "@simpd/api-user": [
-        "apps/simpd-api-user/src"
+      "@simpd/api-user-service": [
+        "apps/simpd-api-user-service/src"
       ],
-      "@simpd/api-role": [
-        "apps/simpd-api-role/src"
+      "@simpd/api-role-service": [
+        "apps/simpd-api-role-service/src"
       ],
-      "@simpd/api-session": [
-        "apps/simpd-api-session/src"
+      "@simpd/api-session-service": [
+        "apps/simpd-api-session-service/src"
       ],
       "@simpd/web-app": [
         "apps/simpd-web-app/src"
@@ -21,8 +21,8 @@
       "@simpd/api-lib": [
         "libs/simpd-api-lib/src"
       ],
-      "@simpd/proto-lib": [
-        "libs/simpd-proto-lib/src"
+      "@simpd/client-lib": [
+        "libs/simpd-client-lib/src"
       ],
       "@simpd/web-lib": [
         "libs/simpd-web-lib/src"

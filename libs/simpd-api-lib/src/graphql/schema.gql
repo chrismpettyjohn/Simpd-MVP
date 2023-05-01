@@ -8,6 +8,7 @@ type SessionModel {
 }
 
 type Query {
+  me: SessionModel
   session(filter: SessionFilterByOneInput!): SessionModel!
   sessions(filter: SessionFilterByManyInput): [SessionModel!]!
 }
@@ -22,7 +23,7 @@ input SessionFilterByManyInput {
 }
 
 type Mutation {
-  sessionCreate(input: SessionCreateInput!): SessionModel!
+  sessionCreate(input: SessionCreateInput!): String!
   sessionDelete(filter: SessionFilterByOneInput!): Boolean!
 }
 

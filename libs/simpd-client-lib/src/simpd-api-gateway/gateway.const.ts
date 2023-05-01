@@ -1,0 +1,5 @@
+export const GATEWAY_SERVICE_NAME = 'GatewayService';
+export const GATEWAY_SERVICE_WEB_SERVER_PORT = 3000;
+export const GATEWAY_SERVICE_WEB_SERVER_ADDRESS =
+  process.env.GATEWAY_SERVICE_WEB_SERVER_ADDRESS ??
+  `http://localhost:${GATEWAY_SERVICE_WEB_SERVER_PORT}/graphql`;
