@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { ProfileEntity } from './profile.entity';
-import { ProfileResolver } from './profile.resolver';
-import { ProfileController } from './profile.controller';
-import { ProfileRepository } from './profile.repository';
+import {Module} from '@nestjs/common';
+import {ProfileEntity} from './profile.entity';
+import {ProfileResolver} from './profile.resolver';
+import {ProfileController} from './profile.controller';
+import {ProfileRepository} from './profile.repository';
 import {
   GraphQLModule,
   DatabaseModule,
@@ -23,4 +23,4 @@ import {
   providers: [ProfileRepository, ProfileResolver],
   controllers: [ProfileController],
 })
-export class ProfileModule { }
+export class ProfileModule {}

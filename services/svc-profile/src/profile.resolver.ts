@@ -1,10 +1,10 @@
-import { In } from 'typeorm';
-import { ProfileModel } from './profile.model';
-import { SessionWire } from '@simpd/lib-client';
-import { ProfileEntity } from './profile.entity';
-import { GetSession, HasSession } from '@simpd/lib-api';
-import { ProfileRepository } from './profile.repository';
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import {In} from 'typeorm';
+import {ProfileModel} from './profile.model';
+import {SessionWire} from '@simpd/lib-client';
+import {ProfileEntity} from './profile.entity';
+import {GetSession, HasSession} from '@simpd/lib-api';
+import {ProfileRepository} from './profile.repository';
+import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 import {
   ProfileCreateInput,
   ProfileFilterByManyInput,
@@ -13,7 +13,7 @@ import {
 
 @Resolver(() => ProfileModel)
 export class ProfileResolver {
-  constructor(private readonly profileRepo: ProfileRepository) { }
+  constructor(private readonly profileRepo: ProfileRepository) {}
 
   @Query(() => ProfileModel)
   async profile(
@@ -26,7 +26,7 @@ export class ProfileResolver {
 
   @Query(() => [ProfileModel])
   profiles(
-    @Args('filter', { type: () => ProfileFilterByManyInput, nullable: true })
+    @Args('filter', {type: () => ProfileFilterByManyInput, nullable: true})
     filter?: ProfileFilterByManyInput
   ): Promise<ProfileEntity[]> {
     return this.profileRepo.find({

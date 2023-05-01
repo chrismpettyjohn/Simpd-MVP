@@ -1,8 +1,8 @@
-import { In } from 'typeorm';
-import { RoleModel } from './role.model';
-import { RoleEntity } from './role.entity';
-import { RoleRepository } from './role.repository';
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import {In} from 'typeorm';
+import {RoleModel} from './role.model';
+import {RoleEntity} from './role.entity';
+import {RoleRepository} from './role.repository';
+import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 import {
   RoleCreateInput,
   RoleFilterByManyInput,
@@ -12,7 +12,7 @@ import {
 
 @Resolver(() => RoleModel)
 export class RoleResolver {
-  constructor(private readonly roleRepo: RoleRepository) { }
+  constructor(private readonly roleRepo: RoleRepository) {}
 
   @Query(() => RoleModel)
   async role(
@@ -25,7 +25,7 @@ export class RoleResolver {
 
   @Query(() => [RoleModel])
   roles(
-    @Args('filter', { type: () => RoleFilterByManyInput, nullable: true })
+    @Args('filter', {type: () => RoleFilterByManyInput, nullable: true})
     filter?: RoleFilterByManyInput
   ): Promise<RoleEntity[]> {
     return this.roleRepo.find({
@@ -41,7 +41,7 @@ export class RoleResolver {
       name: input.name,
       description: input.description,
       scopes: {
-        profileCreate: false
+        profileCreate: false,
       },
     });
     return newRole;

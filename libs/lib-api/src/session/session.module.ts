@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { JwtModule } from '@nestjs/jwt';
-import { SessionIsValidGuard } from './session-is-valid.guard';
-import { SessionClientModule } from '@simpd/lib-client';
-import { JWT_EXPIRES, JWT_SECRET } from './session.const';
+import {Module} from '@nestjs/common';
+import {JwtModule} from '@nestjs/jwt';
+import {SessionIsValidGuard} from './session-is-valid.guard';
+import {SessionClientModule} from '@simpd/lib-client';
+import {JWT_EXPIRES, JWT_SECRET} from './session.const';
 
 @Module({
   imports: [
@@ -17,4 +17,4 @@ import { JWT_EXPIRES, JWT_SECRET } from './session.const';
   providers: [SessionIsValidGuard],
   exports: [SessionIsValidGuard, JwtModule, SessionClientModule],
 })
-export class SessionModule { }
+export class SessionModule {}

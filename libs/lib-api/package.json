@@ -17,7 +17,7 @@
     "@golevelup/nestjs-rabbitmq": "3.6.0"
   },
   "devDependencies": {
-    "@types/bcryptjs": "2.4.2",
+    "@types/bcryptjs": "*",
     "@nestjs/common": "*",
     "@nestjs/core": "*",
     "@nestjs/graphql": "*",
@@ -29,9 +29,11 @@
     "@nestjs/microservices": "*",
     "@nestjs/jwt": "*",
     "express": "*",
-    "@types/express": "4.17.17",
+    "@types/express": "*",
     "@simpd/lib-client": "workspace:*",
-    "rxjs": "*"
+    "rxjs": "*",
+    "spdy": "*",
+    "@types/spdy": "*"
   },
   "peerDependencies": {
     "@nestjs/common": "*",
@@ -45,6 +47,7 @@
     "typeorm": "*",
     "express": "*",
     "@simpd/lib-client": "workspace:*",
-    "rxjs": "*"
+    "rxjs": "*",
+    "spdy": "*"
   }
 }

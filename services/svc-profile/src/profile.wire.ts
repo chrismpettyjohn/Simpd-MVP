@@ -1,5 +1,5 @@
-import { ProfileWire } from '@simpd/lib-client';
-import { ProfileEntity } from './profile.entity';
+import {ProfileWire} from '@simpd/lib-client';
+import {ProfileEntity} from './profile.entity';
 
 export function userEntityToProfileWire(
   userEntity: ProfileEntity

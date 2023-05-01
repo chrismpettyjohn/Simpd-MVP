@@ -1,7 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { RoleRepository } from './role.repository';
-import { roleEntityToRoleWire } from './role.wire';
-import { MessagePattern } from '@nestjs/microservices';
+import {Controller} from '@nestjs/common';
+import {RoleRepository} from './role.repository';
+import {roleEntityToRoleWire} from './role.wire';
+import {MessagePattern} from '@nestjs/microservices';
 import {
   SVC_ROLE_INTERNAL_EVENT_FIND_ONE_BY_ID,
   RoleFindOneInput,
@@ -10,7 +10,7 @@ import {
 
 @Controller()
 export class RoleController {
-  constructor(private readonly roleRepo: RoleRepository) { }
+  constructor(private readonly roleRepo: RoleRepository) {}
 
   @MessagePattern(SVC_ROLE_INTERNAL_EVENT_FIND_ONE_BY_ID)
   async roleFindOneByID(data: RoleFindOneInput): Promise<RoleWire> {

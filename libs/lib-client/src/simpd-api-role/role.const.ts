@@ -1,13 +1,10 @@
-import { RoleScopes } from "./role-client.types";
+import {RoleScopes} from './role-client.types';
 
 export const SVC_ROLE_NAME = 'RoleService';
 export const SVC_ROLE_WEB_SERVER_PORT = 3002;
-export const SVC_ROLE_MICROSERVICE_PORT = 4222;
 export const SVC_ROLE_WEB_ADDRESS =
   process.env.SVC_ROLE_WEB_ADDRESS ??
   `https://localhost:${SVC_ROLE_WEB_SERVER_PORT}/graphql`;
-export const SVC_ROLE_MICROSERVICE_HOST =
-  process.env.SVC_ROLE_MICROSERVICE_HOST ?? 'localhost';
 
 export const SVC_ROLE_INTERNAL_EVENT_FIND_ONE_BY_ID = 'roleFindOneByID';
 

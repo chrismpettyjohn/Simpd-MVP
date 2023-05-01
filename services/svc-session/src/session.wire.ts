@@ -1,5 +1,5 @@
-import { SessionWire } from '@simpd/lib-client';
-import { SessionEntity } from './session.entity';
+import {SessionWire} from '@simpd/lib-client';
+import {SessionEntity} from './session.entity';
 
 export function sessionEntityToSessionWire(
   sessionEntity: SessionEntity

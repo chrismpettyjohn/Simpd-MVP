@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { UserEntity } from './user.entity';
-import { UserResolver } from './user.resolver';
-import { UserController } from './user.controller';
-import { UserRepository } from './user.repository';
+import {Module} from '@nestjs/common';
+import {UserEntity} from './user.entity';
+import {UserResolver} from './user.resolver';
+import {UserController} from './user.controller';
+import {UserRepository} from './user.repository';
 import {
   GraphQLModule,
   DatabaseModule,
@@ -23,4 +23,4 @@ import {
   providers: [UserRepository, UserResolver],
   controllers: [UserController],
 })
-export class UserModule { }
+export class UserModule {}

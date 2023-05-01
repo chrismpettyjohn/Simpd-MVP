@@ -1,5 +1,5 @@
-import { Request } from 'express';
-import { RoleScopesWire } from '@simpd/lib-client';
+import {Request} from 'express';
+import {RoleScopesWire} from '@simpd/lib-client';
 
 export interface SessionContents {
   userID: number;

@@ -1,4 +1,4 @@
-import { join } from 'path';
+import {join} from 'path';
 
 const SERVICE_PACKAGE_PREFIX = 'simpd.';
 

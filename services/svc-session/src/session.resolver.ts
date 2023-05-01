@@ -1,24 +1,24 @@
-import { In } from 'typeorm';
-import { SessionModel } from './session.model';
-import { SessionEntity } from './session.entity';
-import { SessionService } from './session.service';
-import { SessionRepository } from './session.repository';
-import { GetSession, HasSession, SessionContents } from '@simpd/lib-api';
+import {In} from 'typeorm';
+import {SessionModel} from './session.model';
+import {SessionEntity} from './session.entity';
+import {SessionService} from './session.service';
+import {SessionRepository} from './session.repository';
+import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {
   SessionCreateInput,
   SessionFilterByManyInput,
   SessionFilterByOneInput,
 } from './session.input';
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 
 @Resolver(() => SessionModel)
 export class SessionResolver {
   constructor(
     private readonly sessionRepo: SessionRepository,
     private readonly sessionService: SessionService
-  ) { }
+  ) {}
 
-  @Query(() => SessionModel, { nullable: true })
+  @Query(() => SessionModel, {nullable: true})
   @HasSession()
   async me(@GetSession() session: SessionContents): Promise<SessionEntity> {
     return this.sessionRepo.findOneOrFail({
@@ -39,7 +39,7 @@ export class SessionResolver {
 
   @Query(() => [SessionModel])
   sessions(
-    @Args('filter', { type: () => SessionFilterByManyInput, nullable: true })
+    @Args('filter', {type: () => SessionFilterByManyInput, nullable: true})
     filter?: SessionFilterByManyInput
   ): Promise<SessionEntity[]> {
     return this.sessionRepo.find({

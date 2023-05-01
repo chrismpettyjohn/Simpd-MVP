@@ -1,4 +1,4 @@
-import { RoleScopesWire } from '@simpd/lib-client';
+import {RoleScopesWire} from '@simpd/lib-client';
 import {
   Column,
   CreateDateColumn,
@@ -8,7 +8,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity({ name: 'roles', schema: 'roles' })
+@Entity({name: 'roles', schema: 'roles'})
 export class RoleEntity {
   @PrimaryGeneratedColumn()
   id?: number;
@@ -16,18 +16,18 @@ export class RoleEntity {
   @Column()
   name!: string;
 
-  @Column({ type: 'text' })
+  @Column({type: 'text'})
   description!: string;
 
-  @Column({ type: 'json' })
+  @Column({type: 'json'})
   scopes!: RoleScopesWire;
 
-  @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
+  @CreateDateColumn({name: 'created_at', type: 'timestamp'})
   createdAt?: Date;
 
-  @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
+  @UpdateDateColumn({name: 'updated_at', type: 'timestamp'})
   updatedAt?: Date;
 
-  @DeleteDateColumn({ name: 'deleted_at', type: 'timestamp' })
+  @DeleteDateColumn({name: 'deleted_at', type: 'timestamp'})
   deletedAt?: Date;
 }
