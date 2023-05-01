@@ -6,3 +6,5 @@ export const USER_SERVICE_WEB_SERVER_ADDRESS =
   `https://localhost:${USER_SERVICE_WEB_SERVER_PORT}/graphql`;
 export const USER_SERVICE_MICROSERVICE_HOST =
   process.env.USER_SERVICE_MICROSERVICE_HOST ?? 'localhost';
+
+export const USER_SERVICE_INTERNAL_EVENT_FIND_ONE_BY_ID = 'userFindOneByID';

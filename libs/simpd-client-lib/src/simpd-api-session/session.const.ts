@@ -6,3 +6,6 @@ export const SESSION_SERVICE_WEB_SERVER_ADDRESS =
   `https://localhost:${SESSION_SERVICE_WEB_SERVER_PORT}/graphql`;
 export const SESSION_SERVICE_MICROSERVICE_HOST =
   process.env.SESSION_SERVICE_MICROSERVICE_HOST ?? 'localhost';
+
+export const SESSION_SERVICE_INTERNAL_EVENT_FIND_ONE_BY_ID =
+  'sessionFindOneByID';

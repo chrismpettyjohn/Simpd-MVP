@@ -2,13 +2,17 @@ import {Controller} from '@nestjs/common';
 import {MessagePattern} from '@nestjs/microservices';
 import {SessionRepository} from './session.repository';
 import {sessionEntityToSessionWire} from './session.wire';
-import {SessionFindOneInput, SessionWire} from '@simpd/client-lib';
+import {
+  SESSION_SERVICE_INTERNAL_EVENT_FIND_ONE_BY_ID,
+  SessionFindOneInput,
+  SessionWire,
+} from '@simpd/client-lib';
 
 @Controller()
 export class SessionController {
   constructor(private readonly sessionRepo: SessionRepository) {}
 
-  @MessagePattern('sessionFindOneByID')
+  @MessagePattern(SESSION_SERVICE_INTERNAL_EVENT_FIND_ONE_BY_ID)
   async findOneByID(data: SessionFindOneInput): Promise<SessionWire> {
     const matchingRole = await this.sessionRepo.findOneOrFail({
       where: {
