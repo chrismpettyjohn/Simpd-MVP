@@ -2,38 +2,31 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type UserModel {
+type SessionModel {
   id: Float
-  email: String
+  userID: String
 }
 
 type Query {
-  user(filter: UserFilterByOneInput!): UserModel!
-  users(filter: UserFilterByManyInput): [UserModel!]!
+  me: SessionModel
+  session(filter: SessionFilterByOneInput!): SessionModel!
+  sessions(filter: SessionFilterByManyInput): [SessionModel!]!
 }
 
-input UserFilterByOneInput {
+input SessionFilterByOneInput {
   id: Float
-  email: String
 }
 
-input UserFilterByManyInput {
+input SessionFilterByManyInput {
   ids: [Float!]
-  emails: [String!]
+  userIDs: [Float!]
 }
 
 type Mutation {
-  userCreate(input: UserCreateInput!): UserModel!
-  userUpdate(filter: UserFilterByOneInput!, input: UserUpdateInput!): Boolean!
-  userDelete(filter: UserFilterByOneInput!): Boolean!
+  sessionCreate(input: SessionCreateInput!): String!
+  sessionDelete(filter: SessionFilterByOneInput!): Boolean!
 }
 
-input UserCreateInput {
-  email: String!
-  password: String!
-}
-
-input UserUpdateInput {
-  email: String
-  password: String
+input SessionCreateInput {
+  userID: Float!
 }

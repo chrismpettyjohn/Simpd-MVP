@@ -1,12 +1,12 @@
 import 'dotenv/config';
 import Express from 'express';
-import {readFileSync} from 'fs';
-import {UserModule} from './user.module';
-import {WsAdapter} from '@nestjs/platform-ws';
-import Spdy, {Server, ServerOptions} from 'spdy';
-import {ExpressAdapter} from '@nestjs/platform-express';
-import {NestApplication, NestFactory} from '@nestjs/core';
-import {MicroserviceOptions, Transport} from '@nestjs/microservices';
+import { readFileSync } from 'fs';
+import { UserModule } from './user.module';
+import { WsAdapter } from '@nestjs/platform-ws';
+import Spdy, { Server, ServerOptions } from 'spdy';
+import { ExpressAdapter } from '@nestjs/platform-express';
+import { NestApplication, NestFactory } from '@nestjs/core';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import {
   SVC_USER_MICROSERVICE_HOST,
   SVC_USER_MICROSERVICE_PORT,
@@ -38,8 +38,6 @@ async function bootstrap() {
       ],
     },
   });
-
-  await app.startAllMicroservices();
 
   await app.init();
 

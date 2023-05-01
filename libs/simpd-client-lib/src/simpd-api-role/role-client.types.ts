@@ -8,6 +8,8 @@ export interface RoleScopesWire {
   profileCreate: boolean;
 }
 
+export type RoleScopes = keyof RoleScopesWire;
+
 export interface RoleFindOneInput {
   id: number;
 }
