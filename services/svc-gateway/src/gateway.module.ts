@@ -1,7 +1,7 @@
-import {Module} from '@nestjs/common';
-import {GraphQLModule} from '@nestjs/graphql';
-import {IntrospectAndCompose} from '@apollo/gateway';
-import {ApolloGatewayDriver, ApolloGatewayDriverConfig} from '@nestjs/apollo';
+import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { IntrospectAndCompose } from '@apollo/gateway';
+import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
 import {
   SVC_ROLE_NAME,
   SVC_ROLE_WEB_ADDRESS,
@@ -16,10 +16,11 @@ import {
     GraphQLModule.forRoot<ApolloGatewayDriverConfig>({
       driver: ApolloGatewayDriver,
       gateway: {
+
         supergraphSdl: new IntrospectAndCompose({
           subgraphs: [
-            {name: SVC_USER_NAME, url: SVC_USER_WEB_SERVER_ADDRESS},
-            {name: SVC_ROLE_NAME, url: SVC_ROLE_WEB_ADDRESS},
+            { name: SVC_USER_NAME, url: SVC_USER_WEB_SERVER_ADDRESS },
+            { name: SVC_ROLE_NAME, url: SVC_ROLE_WEB_ADDRESS },
             {
               name: SESSION_SERVICE_NAME,
               url: SESSION_SERVICE_WEB_SERVER_ADDRESS,
@@ -30,4 +31,4 @@ import {
     }),
   ],
 })
-export class GatewayModule {}
+export class GatewayModule { }
