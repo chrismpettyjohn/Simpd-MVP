@@ -1,8 +1,7 @@
-export const SESSION_SERVICE_NAME = 'SessionService';
-export const SESSION_SERVICE_WEB_SERVER_PORT = 3004;
-export const SESSION_SERVICE_WEB_SERVER_ADDRESS =
-  process.env.SESSION_SERVICE_WEB_SERVER_ADDRESS ??
-  `https://localhost:${SESSION_SERVICE_WEB_SERVER_PORT}/graphql`;
+export const SVC_SESSION_NAME = 'SessionService';
+export const SVC_SESSION_WEB_PORT = 3004;
+export const SVC_SESSION_WEB_ADDRESS =
+  process.env.SVC_SESSION_WEB_ADDRESS ??
+  `http://localhost:${SVC_SESSION_WEB_PORT}/graphql`;
 
-export const SESSION_SERVICE_INTERNAL_EVENT_FIND_ONE_BY_ID =
-  'sessionFindOneByID';
+export const SVC_SESSION_INTERNAL_EVENT_FIND_ONE_BY_ID = 'sessionFindOneByID';

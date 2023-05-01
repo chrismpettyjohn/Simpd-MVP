@@ -2,10 +2,12 @@ import {Field, ObjectType} from '@nestjs/graphql';
 
 @ObjectType()
 export class ProfileModel {
-  @Field({nullable: true})
+  @Field(() => Number, {nullable: true})
   id?: number;
 
-  // TODO: Add Privacy Guard
-  @Field({nullable: true})
-  email?: string;
+  @Field(() => Number, {nullable: true})
+  userID?: string; // TODO: Add Privacy Guard
+
+  @Field(() => String, {nullable: true})
+  username?: string;
 }

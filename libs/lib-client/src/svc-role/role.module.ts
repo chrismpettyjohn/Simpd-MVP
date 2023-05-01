@@ -1,10 +1,8 @@
-import { Module } from '@nestjs/common';
-import { RoleClientService } from './role-client.service';
-import { ClientsModule, Transport } from '@nestjs/microservices';
-import {
-  SVC_ROLE_NAME,
-} from './role.const';
-import { NATS_ADDRESS } from '../constants';
+import {Module} from '@nestjs/common';
+import {RoleClientService} from './role-client.service';
+import {ClientsModule, Transport} from '@nestjs/microservices';
+import {SVC_ROLE_NAME} from './role.const';
+import {NATS_ADDRESS} from '../constants';
 
 @Module({
   imports: [
@@ -13,9 +11,7 @@ import { NATS_ADDRESS } from '../constants';
         name: SVC_ROLE_NAME,
         transport: Transport.NATS,
         options: {
-          servers: [
-            NATS_ADDRESS
-          ],
+          servers: [NATS_ADDRESS],
         },
       },
     ]),
@@ -23,4 +19,4 @@ import { NATS_ADDRESS } from '../constants';
   providers: [RoleClientService],
   exports: [RoleClientService],
 })
-export class RoleClientModule { }
+export class RoleClientModule {}

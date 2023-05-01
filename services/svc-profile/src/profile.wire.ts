@@ -1,11 +1,12 @@
 import {ProfileWire} from '@simpd/lib-client';
 import {ProfileEntity} from './profile.entity';
 
-export function userEntityToProfileWire(
-  userEntity: ProfileEntity
+export function profileEntityToProfileWire(
+  profileEntity: ProfileEntity
 ): ProfileWire {
   return {
-    id: userEntity.id!,
-    email: userEntity.email,
+    id: profileEntity.id!,
+    userID: profileEntity.userID,
+    username: profileEntity.username,
   };
 }

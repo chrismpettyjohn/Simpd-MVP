@@ -1,4 +1,4 @@
 import {Inject} from '@nestjs/common';
-import {SESSION_SERVICE_NAME} from './session.const';
+import {SVC_SESSION_NAME} from './session.const';
 
-export const SessionClient = () => Inject(SESSION_SERVICE_NAME);
+export const SessionClient = () => Inject(SVC_SESSION_NAME);

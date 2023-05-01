@@ -1,6 +1,6 @@
 import {Inject} from '@nestjs/common';
 import {ClientProxy} from '@nestjs/microservices';
-import {SESSION_SERVICE_NAME} from './session.const';
+import {SVC_SESSION_NAME} from './session.const';
 
 export const UseSessionClient: () => ClientProxy = () =>
-  Inject(SESSION_SERVICE_NAME) as any;
+  Inject(SVC_SESSION_NAME) as any;

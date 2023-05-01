@@ -1,5 +1,6 @@
 import 'dotenv/config';
-import {SessionModule, bootstrapService} from '@simpd/lib-api';
-import {SESSION_SERVICE_WEB_SERVER_PORT} from '@simpd/lib-client';
+import {bootstrapService} from '@simpd/lib-api';
+import {SessionServiceModule} from './session.module';
+import {SVC_SESSION_WEB_PORT} from '@simpd/lib-client';
 
-bootstrapService(SessionModule, SESSION_SERVICE_WEB_SERVER_PORT);
+bootstrapService(SessionServiceModule, SVC_SESSION_WEB_PORT);
