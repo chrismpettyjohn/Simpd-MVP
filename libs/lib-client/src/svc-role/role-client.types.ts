@@ -6,6 +6,7 @@ export interface RoleWire {
 
 export interface RoleScopesWire {
   profileCreate: boolean;
+  bypassUserPrivacy: boolean;
 }
 
 export type RoleScopes = keyof RoleScopesWire;

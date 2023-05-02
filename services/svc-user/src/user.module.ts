@@ -1,9 +1,10 @@
 import {Module} from '@nestjs/common';
 import {UserEntity} from './user.entity';
-import {UserResolver} from './user.resolver';
 import {UserService} from './user-service';
+import {UserResolver} from './user.resolver';
 import {UserController} from './user.controller';
 import {UserRepository} from './user.repository';
+import {RoleClientModule} from '@simpd/lib-client';
 import {
   GraphQLModule,
   DatabaseModule,
@@ -15,6 +16,7 @@ import {
   imports: [
     CommonModule,
     SessionModule,
+    RoleClientModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
       entities: [UserEntity],

@@ -1,10 +1,34 @@
+import {UserRepository} from './user.repository';
+import {RoleClientService} from '@simpd/lib-client';
 import {Injectable, UnauthorizedException} from '@nestjs/common';
 
 @Injectable()
 export class UserService {
-  canAccessUser(authenticatedUserID: number, requestedUserID: number) {
-    if (authenticatedUserID !== requestedUserID) {
-      throw new UnauthorizedException();
+  constructor(
+    private readonly userRepo: UserRepository,
+    private readonly roleClientService: RoleClientService
+  ) {}
+
+  async canAccessUser(
+    authenticatedUserID: number,
+    requestedUserID: number
+  ): Promise<boolean> {
+    if (authenticatedUserID === requestedUserID) {
+      return true;
     }
+
+    const authenticatedUser = await this.userRepo.findOneOrFail({
+      where: {id: authenticatedUserID},
+    });
+
+    const authenticatedRole = await this.roleClientService.findOneByID({
+      id: authenticatedUser.roleID,
+    });
+
+    if (authenticatedRole.scopes.bypassUserPrivacy) {
+      return true;
+    }
+
+    throw new UnauthorizedException();
   }
 }
