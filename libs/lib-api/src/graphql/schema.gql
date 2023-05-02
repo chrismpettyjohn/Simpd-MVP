@@ -2,38 +2,26 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type UserModel {
+type PostModel {
   id: Float
-  email: String
+  userID: Float
+  username: String
 }
 
 type Query {
-  user(filter: UserFilterByOneInput!): UserModel!
-  users(filter: UserFilterByManyInput): [UserModel!]!
+  post(filter: PostFilterByOneInput!): PostModel!
+  posts(filter: PostFilterByManyInput): [PostModel!]!
 }
 
-input UserFilterByOneInput {
+input PostFilterByOneInput {
   id: Float
-  email: String
 }
 
-input UserFilterByManyInput {
+input PostFilterByManyInput {
   ids: [Float!]
-  emails: [String!]
+  userIDs: [Float!]
 }
 
 type Mutation {
-  userCreate(input: UserCreateInput!): UserModel!
-  userUpdate(filter: UserFilterByOneInput!, input: UserUpdateInput!): Boolean!
-  userDelete(filter: UserFilterByOneInput!): Boolean!
-}
-
-input UserCreateInput {
-  email: String!
-  password: String!
-}
-
-input UserUpdateInput {
-  email: String
-  password: String
+  postDelete(filter: PostFilterByOneInput!): Boolean!
 }

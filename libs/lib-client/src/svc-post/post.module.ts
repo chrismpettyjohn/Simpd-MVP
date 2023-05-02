@@ -1,7 +1,7 @@
 import {Module} from '@nestjs/common';
 import {NATS_ADDRESS} from '../constants';
-import {SVC_PROFILE_NAME} from './profile.const';
-import {ProfileClientService} from './profile-client.service';
+import {SVC_PROFILE_NAME} from './post.const';
+import {PostClientService} from './post-client.service';
 import {ClientsModule, Transport} from '@nestjs/microservices';
 
 @Module({
@@ -16,7 +16,7 @@ import {ClientsModule, Transport} from '@nestjs/microservices';
       },
     ]),
   ],
-  providers: [ProfileClientService],
-  exports: [ProfileClientService],
+  providers: [PostClientService],
+  exports: [PostClientService],
 })
-export class ProfileClientModule {}
+export class PostClientModule {}

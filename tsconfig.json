@@ -6,6 +6,9 @@
       "@simpd/svc-gateway": [
         "services/svc-gateway/src"
       ],
+      "@simpd/svc-post": [
+        "services/svc-post/src"
+      ],
       "@simpd/svc-profile": [
         "services/svc-profile/src"
       ],
