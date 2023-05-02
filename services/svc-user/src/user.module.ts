@@ -1,6 +1,7 @@
 import {Module} from '@nestjs/common';
 import {UserEntity} from './user.entity';
 import {UserResolver} from './user.resolver';
+import {UserService} from './user-service';
 import {UserController} from './user.controller';
 import {UserRepository} from './user.repository';
 import {
@@ -20,7 +21,7 @@ import {
       synchronize: true,
     }),
   ],
-  providers: [UserRepository, UserResolver],
+  providers: [UserRepository, UserResolver, UserService],
   controllers: [UserController],
 })
 export class UserModule {}

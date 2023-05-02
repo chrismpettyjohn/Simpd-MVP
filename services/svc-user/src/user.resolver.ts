@@ -1,10 +1,23 @@
 import {In} from 'typeorm';
 import {UserModel} from './user.model';
 import {UserEntity} from './user.entity';
-import {HashService} from '@simpd/lib-api';
+import {UserService} from './user-service';
 import {UserRepository} from './user.repository';
 import {DEFAULT_USER_ROLE_ID} from './user.const';
-import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
+import {
+  GetSession,
+  HasSession,
+  HashService,
+  SessionContents,
+} from '@simpd/lib-api';
+import {
+  Args,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
 import {
   UserCreateInput,
   UserFilterByManyInput,
@@ -16,8 +29,18 @@ import {
 export class UserResolver {
   constructor(
     private readonly userRepo: UserRepository,
+    private readonly userService: UserService,
     private readonly hashService: HashService
   ) {}
+  @HasSession()
+  @ResolveField(() => String, {nullable: true})
+  email(
+    @GetSession() session: SessionContents,
+    @Parent() user: UserEntity
+  ): string {
+    this.userService.canAccessUser(session.userID, user.id!);
+    return user.email;
+  }
 
   @Query(() => UserModel)
   async user(
