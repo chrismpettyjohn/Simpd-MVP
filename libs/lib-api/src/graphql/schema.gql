@@ -2,15 +2,20 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type PostModel {
+interface BasePostModel {
   id: Float
   userID: Float
-  username: String
+}
+
+type PostWithTextModel {
+  id: Float
+  userID: Float
+  content: String
 }
 
 type Query {
-  post(filter: PostFilterByOneInput!): PostModel!
-  posts(filter: PostFilterByManyInput): [PostModel!]!
+  post(filter: PostFilterByOneInput!): BasePostModel!
+  posts(filter: PostFilterByManyInput): [BasePostModel!]!
 }
 
 input PostFilterByOneInput {
@@ -23,5 +28,10 @@ input PostFilterByManyInput {
 }
 
 type Mutation {
+  postWithTextCreate(input: PostWithTextCreateInput!): PostWithTextModel!
   postDelete(filter: PostFilterByOneInput!): Boolean!
+}
+
+input PostWithTextCreateInput {
+  content: String!
 }

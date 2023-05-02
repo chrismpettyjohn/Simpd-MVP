@@ -15,7 +15,8 @@ export class PostFilterByOneInput {
   id?: number;
 }
 
-// @InputType()
-// export class PostCreateInput {
-
-// }
+@InputType()
+export class PostWithTextCreateInput {
+  @Field(() => String)
+  content!: string;
+}

@@ -4,7 +4,6 @@ export * from './svc-profile/profile-client.service';
 export * from './svc-profile/profile-client.types';
 export * from './svc-profile/profile.const';
 export * from './svc-profile/profile.module';
-export * from './svc-profile/profile.const';
 export * from './svc-post/post-client.decorator';
 export * from './svc-post/post-client.types';
 export * from './svc-post/post-client.service';

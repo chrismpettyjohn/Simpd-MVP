@@ -15,6 +15,10 @@ import {
   SVC_USER_NAME,
   SVC_USER_WEB_ADDRESS,
 } from '@simpd/lib-client';
+import {
+  SVC_POST_NAME,
+  SVC_POST_WEB_ADDRESS,
+} from 'libs/lib-client/src/svc-post/post.const';
 
 @Module({
   imports: [
@@ -23,6 +27,7 @@ import {
       gateway: {
         supergraphSdl: new IntrospectAndCompose({
           subgraphs: [
+            {name: SVC_POST_NAME, url: SVC_POST_WEB_ADDRESS},
             {name: SVC_USER_NAME, url: SVC_USER_WEB_ADDRESS},
             {name: SVC_ROLE_NAME, url: SVC_ROLE_WEB_ADDRESS},
             {name: SVC_PROFILE_NAME, url: SVC_PROFILE_WEB_ADDRESS},

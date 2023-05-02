@@ -1,17 +1,30 @@
 import {In} from 'typeorm';
-import {PostModel} from './post.model';
-import {SessionWire} from '@simpd/lib-client';
 import {PostEntity} from './post.entity';
-import {GetSession, HasSession} from '@simpd/lib-api';
 import {PostRepository} from './post.repository';
+import {GetSession, HasSession} from '@simpd/lib-api';
+import {BasePostModel, PostWithTextModel} from './post.model';
 import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
-import {PostFilterByManyInput, PostFilterByOneInput} from './post.input';
+import {
+  PostType,
+  PostWire,
+  PostWithTextWire,
+  SessionWire,
+} from '@simpd/lib-client';
+import {
+  PostFilterByManyInput,
+  PostFilterByOneInput,
+  PostWithTextCreateInput,
+} from './post.input';
+import {postEntityToPostWithTextWire} from './post.wire';
 
-@Resolver(() => PostModel)
+@Resolver(() => BasePostModel)
 export class PostResolver {
-  constructor(private readonly postRepo: PostRepository) {}
+  constructor(
+    private readonly postRepo: PostRepository<PostWire>,
+    private readonly textPostRepo: PostRepository<PostWithTextWire>
+  ) {}
 
-  @Query(() => PostModel)
+  @Query(() => BasePostModel)
   async post(
     @Args('filter') filter: PostFilterByOneInput
   ): Promise<PostEntity> {
@@ -20,7 +33,7 @@ export class PostResolver {
     });
   }
 
-  @Query(() => [PostModel])
+  @Query(() => [BasePostModel])
   posts(
     @Args('filter', {type: () => PostFilterByManyInput, nullable: true})
     filter?: PostFilterByManyInput
@@ -33,17 +46,21 @@ export class PostResolver {
     });
   }
 
-  // @Mutation(() => PostModel)
-  // @HasSession()
-  // async postCreate(
-  //   @GetSession() session: SessionWire,
-  //   @Args('input') input: PostCreateInput
-  // ): Promise<PostEntity> {
-  //   const newPost = await this.postRepo.create({
-  //     userID: session.userID,
-  //   });
-  //   return newPost;
-  // }
+  @Mutation(() => PostWithTextModel)
+  @HasSession()
+  async postWithTextCreate(
+    @GetSession() session: SessionWire,
+    @Args('input') input: PostWithTextCreateInput
+  ): Promise<PostWithTextWire> {
+    const newTextPost = await this.textPostRepo.create({
+      userID: session.userID,
+      postData: {
+        content: input.content,
+      },
+      postType: PostType.Text,
+    });
+    return postEntityToPostWithTextWire(newTextPost);
+  }
 
   @Mutation(() => Boolean)
   async postDelete(@Args('filter') filter: PostFilterByOneInput) {

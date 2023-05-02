@@ -1,13 +1,16 @@
-import {Field, ObjectType} from '@nestjs/graphql';
+import {Field, InterfaceType, ObjectType} from '@nestjs/graphql';
 
-@ObjectType()
-export class PostModel {
+@InterfaceType()
+export class BasePostModel {
   @Field(() => Number, {nullable: true})
   id?: number;
 
   @Field(() => Number, {nullable: true})
   userID?: string; // TODO: Add Privacy Guard
+}
 
+@ObjectType()
+export class PostWithTextModel extends BasePostModel {
   @Field(() => String, {nullable: true})
-  username?: string;
+  content?: string;
 }
