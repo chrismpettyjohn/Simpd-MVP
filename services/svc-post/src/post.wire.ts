@@ -18,7 +18,7 @@ export function postEntityToBasePost(postEntity: PostEntity): BasePost {
   return {
     id: postEntity.id!,
     type: postEntity.postType,
-    userID: postEntity.userID,
+    profileID: postEntity.profileID,
   };
 }
 

@@ -3,6 +3,7 @@ import {PostEntity} from './post.entity';
 import {PostResolver} from './post.resolver';
 import {PostController} from './post.controller';
 import {PostRepository} from './post.repository';
+import {ProfileClientModule} from '@simpd/lib-client';
 import {
   GraphQLModule,
   DatabaseModule,
@@ -14,6 +15,7 @@ import {
   imports: [
     CommonModule,
     SessionModule,
+    ProfileClientModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
       entities: [PostEntity],

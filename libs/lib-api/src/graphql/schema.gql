@@ -2,36 +2,34 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-interface BasePostModel {
+type ProfileModel {
   id: Float
   userID: Float
-}
-
-type PostWithTextModel {
-  id: Float
-  userID: Float
-  content: String
+  username: String
 }
 
 type Query {
-  post(filter: PostFilterByOneInput!): BasePostModel!
-  posts(filter: PostFilterByManyInput): [BasePostModel!]!
+  profile(filter: ProfileFilterByOneInput!): ProfileModel!
+  profiles(filter: ProfileFilterByManyInput): [ProfileModel!]!
 }
 
-input PostFilterByOneInput {
+input ProfileFilterByOneInput {
   id: Float
+  userIDs: [Float!]
+  usernames: [String!]
 }
 
-input PostFilterByManyInput {
+input ProfileFilterByManyInput {
   ids: [Float!]
   userIDs: [Float!]
+  usernames: [String!]
 }
 
 type Mutation {
-  postWithTextCreate(input: PostWithTextCreateInput!): PostWithTextModel!
-  postDelete(filter: PostFilterByOneInput!): Boolean!
+  profileCreate(input: ProfileCreateInput!): ProfileModel!
+  profileDelete(filter: ProfileFilterByOneInput!): Boolean!
 }
 
-input PostWithTextCreateInput {
-  content: String!
+input ProfileCreateInput {
+  username: String!
 }

@@ -5,6 +5,6 @@ export interface ProfileWire {
 }
 
 export interface ProfileFindOneInput {
-  id: number;
-  username: string;
+  id?: number;
+  username?: string;
 }

@@ -6,7 +6,7 @@ export class PostFilterByManyInput {
   ids?: number[];
 
   @Field(() => [Number], {nullable: true})
-  userIDs?: number[];
+  profileIDs?: number[];
 }
 
 @InputType()
@@ -19,4 +19,7 @@ export class PostFilterByOneInput {
 export class PostWithTextCreateInput {
   @Field(() => String)
   content!: string;
+
+  @Field(() => Number)
+  profileID!: number;
 }

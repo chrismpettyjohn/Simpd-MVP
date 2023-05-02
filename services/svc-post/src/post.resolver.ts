@@ -1,13 +1,16 @@
 import {In} from 'typeorm';
 import {PostEntity} from './post.entity';
 import {PostRepository} from './post.repository';
+import {BadRequestException, UnauthorizedException} from '@nestjs/common';
 import {GetSession, HasSession} from '@simpd/lib-api';
+import {postEntityToPostWithTextWire} from './post.wire';
 import {BasePostModel, PostWithTextModel} from './post.model';
 import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 import {
   PostType,
   PostWire,
   PostWithTextWire,
+  ProfileClientService,
   SessionWire,
 } from '@simpd/lib-client';
 import {
@@ -15,12 +18,12 @@ import {
   PostFilterByOneInput,
   PostWithTextCreateInput,
 } from './post.input';
-import {postEntityToPostWithTextWire} from './post.wire';
 
 @Resolver(() => BasePostModel)
 export class PostResolver {
   constructor(
     private readonly postRepo: PostRepository<PostWire>,
+    private readonly profileClientService: ProfileClientService,
     private readonly textPostRepo: PostRepository<PostWithTextWire>
   ) {}
 
@@ -41,7 +44,7 @@ export class PostResolver {
     return this.postRepo.find({
       where: {
         id: filter?.ids && In(filter.ids),
-        userID: filter?.userIDs && In(filter.userIDs),
+        profileID: filter?.profileIDs && In(filter.profileIDs),
       },
     });
   }
@@ -52,8 +55,16 @@ export class PostResolver {
     @GetSession() session: SessionWire,
     @Args('input') input: PostWithTextCreateInput
   ): Promise<PostWithTextWire> {
+    const matchingProfile = await this.profileClientService.findOneByID({
+      id: input.profileID,
+    });
+
+    if (matchingProfile?.userID !== session.userID) {
+      throw new UnauthorizedException();
+    }
+
     const newTextPost = await this.textPostRepo.create({
-      userID: session.userID,
+      profileID: matchingProfile.id,
       postData: {
         content: input.content,
       },

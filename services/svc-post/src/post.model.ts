@@ -6,7 +6,7 @@ export class BasePostModel {
   id?: number;
 
   @Field(() => Number, {nullable: true})
-  userID?: string; // TODO: Add Privacy Guard
+  profileID?: string; // TODO: Add Privacy Guard
 }
 
 @ObjectType()

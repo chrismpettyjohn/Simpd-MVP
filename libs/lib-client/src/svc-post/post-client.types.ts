@@ -4,7 +4,7 @@ export enum PostType {
 
 export interface BasePost {
   id: number;
-  userID: number;
+  profileID: number;
   type: PostType;
 }
 

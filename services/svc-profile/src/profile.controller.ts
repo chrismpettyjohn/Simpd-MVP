@@ -3,16 +3,16 @@ import {MessagePattern} from '@nestjs/microservices';
 import {ProfileRepository} from './profile.repository';
 import {profileEntityToProfileWire} from './profile.wire';
 import {
-  SVC_USER_INTERNAL_EVENT_FIND_ONE_BY_ID,
   ProfileFindOneInput,
   ProfileWire,
+  SVC_PROFILE_INTERNAL_EVENT_FIND_ONE_BY_ID,
 } from '@simpd/lib-client';
 
 @Controller()
 export class ProfileController {
   constructor(private readonly profileRepo: ProfileRepository) {}
 
-  @MessagePattern(SVC_USER_INTERNAL_EVENT_FIND_ONE_BY_ID)
+  @MessagePattern(SVC_PROFILE_INTERNAL_EVENT_FIND_ONE_BY_ID)
   async profileFindOneByID(data: ProfileFindOneInput): Promise<ProfileWire> {
     const matchingRole = await this.profileRepo.findOneOrFail({
       where: {

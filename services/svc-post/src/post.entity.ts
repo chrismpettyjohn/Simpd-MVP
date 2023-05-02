@@ -6,14 +6,14 @@ export class PostEntity<PostData extends PostWire = PostWire> {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column({name: 'user_id'})
+  @Column({name: 'profile_id'})
   @Index()
-  userID!: number;
+  profileID!: number;
 
   @Column({name: 'post_type', type: 'varchar'})
   @Index()
   postType!: PostType;
 
   @Column({name: 'post_data', type: 'json'})
-  postData!: Omit<PostData, 'type' | 'userID' | 'id'>;
+  postData!: Omit<PostData, 'type' | 'profileID' | 'id'>;
 }
