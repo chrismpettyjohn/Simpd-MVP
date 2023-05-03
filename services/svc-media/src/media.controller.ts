@@ -10,7 +10,7 @@ import {
 
 @Controller()
 export class MediaController {
-  constructor(private readonly mediaRepo: MediaRepository<any>) {}
+  constructor(private readonly mediaRepo: MediaRepository) {}
 
   @MessagePattern(SVC_USER_INTERNAL_EVENT_FIND_ONE_BY_ID)
   async mediaFindOneByID(data: MediaFindOneInput): Promise<MediaWire> {

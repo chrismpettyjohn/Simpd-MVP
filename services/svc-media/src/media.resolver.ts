@@ -1,10 +1,9 @@
 import {In} from 'typeorm';
-import {MediaEntity} from './media.entity';
+import {MediaModel} from './media.model';
 import {MediaRepository} from './media.repository';
+import {mediaEntityToMediaWire} from './media.wire';
 import {UnauthorizedException} from '@nestjs/common';
 import {GetSession, HasSession} from '@simpd/lib-api';
-import {mediaEntityToMediaWithTextWire} from './media.wire';
-import {BaseMediaModel, MediaWithTextModel} from './media.model';
 import {
   Args,
   Mutation,
@@ -12,25 +11,18 @@ import {
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
+import {MediaType, ProfileClientService, SessionWire} from '@simpd/lib-client';
 import {
-  MediaType,
-  MediaWire,
-  MediaWithTextWire,
-  ProfileClientService,
-  SessionWire,
-} from '@simpd/lib-client';
-import {
+  MediaCreateInput,
   MediaFilterByManyInput,
   MediaFilterByOneInput,
-  MediaWithTextCreateInput,
 } from './media.input';
 
-@Resolver(() => BaseMediaModel)
+@Resolver(() => MediaModel)
 export class MediaResolver {
   constructor(
-    private readonly mediaRepo: MediaRepository<MediaWire>,
-    private readonly profileClientService: ProfileClientService,
-    private readonly textMediaRepo: MediaRepository<MediaWithTextWire>
+    private readonly mediaRepo: MediaRepository,
+    private readonly profileClientService: ProfileClientService
   ) {}
 
   // TODO: Add Privacy Guard
@@ -38,38 +30,40 @@ export class MediaResolver {
   resolveReference(reference: {
     __typename: string;
     id: number;
-  }): Promise<MediaEntity> {
+  }): Promise<MediaModel> {
     return this.media({id: reference.id});
   }
 
-  @Query(() => BaseMediaModel)
+  @Query(() => MediaModel)
   async media(
     @Args('filter') filter: MediaFilterByOneInput
-  ): Promise<MediaEntity> {
-    return this.mediaRepo.findOneOrFail({
+  ): Promise<MediaModel> {
+    const matchingMedia = await this.mediaRepo.findOneOrFail({
       where: filter,
     });
+    return mediaEntityToMediaWire(matchingMedia);
   }
 
-  @Query(() => [BaseMediaModel])
-  medias(
+  @Query(() => [MediaModel])
+  async medias(
     @Args('filter', {type: () => MediaFilterByManyInput, nullable: true})
     filter?: MediaFilterByManyInput
-  ): Promise<MediaEntity[]> {
-    return this.mediaRepo.find({
+  ): Promise<MediaModel[]> {
+    const matchingMedia = await this.mediaRepo.find({
       where: {
         id: filter?.ids && In(filter.ids),
         profileID: filter?.profileIDs && In(filter.profileIDs),
       },
     });
+    return matchingMedia.map(mediaEntityToMediaWire);
   }
 
-  @Mutation(() => MediaWithTextModel)
+  @Mutation(() => MediaModel)
   @HasSession()
-  async mediaWithTextCreate(
+  async mediaCreate(
     @GetSession() session: SessionWire,
-    @Args('input') input: MediaWithTextCreateInput
-  ): Promise<MediaWithTextWire> {
+    @Args('input') input: MediaCreateInput
+  ): Promise<MediaModel> {
     const matchingProfile = await this.profileClientService.findOneByID({
       id: input.profileID,
     });
@@ -78,14 +72,18 @@ export class MediaResolver {
       throw new UnauthorizedException();
     }
 
-    const newTextMedia = await this.textMediaRepo.create({
+    const newMedia = await this.mediaRepo.create({
       profileID: matchingProfile.id,
-      mediaData: {
-        content: input.content,
+      mediaDetails: {
+        sizeInBytes: 0,
+        originalFileName: '',
       },
-      mediaType: MediaType.Text,
+      mediaLocation: {
+        awsS3Location: '',
+      },
+      mediaType: MediaType.Image,
     });
-    return mediaEntityToMediaWithTextWire(newTextMedia);
+    return mediaEntityToMediaWire(newMedia);
   }
 
   @Mutation(() => Boolean)

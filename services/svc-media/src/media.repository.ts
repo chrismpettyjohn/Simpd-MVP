@@ -1,17 +1,20 @@
 import {Repository} from 'typeorm';
-import {MediaWire} from '@simpd/lib-client';
-import {MediaEntity} from './media.entity';
 import {Injectable} from '@nestjs/common';
+import {MediaEntity} from './media.entity';
+import {MediaType} from '@simpd/lib-client';
 import {BaseRepository} from '@simpd/lib-api';
 import {InjectRepository} from '@nestjs/typeorm';
+import {registerEnumType} from '@nestjs/graphql';
 
 @Injectable()
-export class MediaRepository<
-  MediaData extends MediaWire
-> extends BaseRepository<MediaEntity<MediaData>> {
+export class MediaRepository extends BaseRepository<MediaEntity> {
   constructor(
-    @InjectRepository(MediaEntity) mediaRepo: Repository<MediaEntity<MediaData>>
+    @InjectRepository(MediaEntity) mediaRepo: Repository<MediaEntity>
   ) {
     super(mediaRepo);
   }
 }
+
+registerEnumType(MediaType, {
+  name: 'MediaType',
+});
