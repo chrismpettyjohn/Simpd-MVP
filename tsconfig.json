@@ -24,6 +24,9 @@
       "@simpd/svc-session": [
         "services/svc-session/src"
       ],
+      "@simpd/svc-tag": [
+        "services/svc-tag/src"
+      ],
       "@simpd/app-web": [
         "apps/app-web/src"
       ],
