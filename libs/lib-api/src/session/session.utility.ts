@@ -5,5 +5,7 @@ import {GqlExecutionContext} from '@nestjs/graphql';
 export function getRequestFromExecutionContext(
   executionContext: ExecutionContext
 ): RequestWithSession {
-  return GqlExecutionContext.create(executionContext).getContext().req;
+  return executionContext.getType() === 'http'
+    ? executionContext.switchToHttp().getRequest()
+    : GqlExecutionContext.create(executionContext).getContext().req;
 }
