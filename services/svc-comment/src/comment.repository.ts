@@ -1,13 +1,13 @@
 import {Repository} from 'typeorm';
-import {ReportEntity} from './report.entity';
+import {CommentEntity} from './comment.entity';
 import {Injectable} from '@nestjs/common';
 import {BaseRepository} from '@simpd/lib-api';
 import {InjectRepository} from '@nestjs/typeorm';
 
 @Injectable()
-export class ReportRepository extends BaseRepository<ReportEntity> {
+export class CommentRepository extends BaseRepository<CommentEntity> {
   constructor(
-    @InjectRepository(ReportEntity) userRepo: Repository<ReportEntity>
+    @InjectRepository(CommentEntity) userRepo: Repository<CommentEntity>
   ) {
     super(userRepo);
   }

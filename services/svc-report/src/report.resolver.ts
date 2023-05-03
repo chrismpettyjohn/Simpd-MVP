@@ -1,8 +1,8 @@
-import { In } from 'typeorm';
-import { ReportModel } from './report.model';
-import { ReportEntity } from './report.entity';
-import { HasSession } from '@simpd/lib-api';
-import { ReportRepository } from './report.repository';
+import {In} from 'typeorm';
+import {ReportModel} from './report.model';
+import {ReportEntity} from './report.entity';
+import {HasSession} from '@simpd/lib-api';
+import {ReportRepository} from './report.repository';
 import {
   Args,
   Mutation,
@@ -18,18 +18,20 @@ import {
 
 @Resolver(() => ReportModel)
 export class ReportResolver {
-  constructor(private readonly reportRepo: ReportRepository) { }
+  constructor(private readonly reportRepo: ReportRepository) {}
 
   @ResolveReference()
   resolveReference(reference: {
     __typename: string;
     id: number;
   }): Promise<ReportEntity> {
-    return this.report({ id: reference.id });
+    return this.report({id: reference.id});
   }
 
   @Query(() => ReportModel)
-  async report(@Args('filter') filter: ReportFilterByOneInput): Promise<ReportEntity> {
+  async report(
+    @Args('filter') filter: ReportFilterByOneInput
+  ): Promise<ReportEntity> {
     return this.reportRepo.findOneOrFail({
       where: filter,
     });
@@ -37,7 +39,7 @@ export class ReportResolver {
 
   @Query(() => [ReportModel])
   reports(
-    @Args('filter', { type: () => ReportFilterByManyInput, nullable: true })
+    @Args('filter', {type: () => ReportFilterByManyInput, nullable: true})
     filter?: ReportFilterByManyInput
   ): Promise<ReportEntity[]> {
     return this.reportRepo.find({
@@ -50,7 +52,9 @@ export class ReportResolver {
 
   @Mutation(() => ReportModel)
   @HasSession()
-  async reportCreate(@Args('input') input: ReportCreateInput): Promise<ReportEntity> {
+  async reportCreate(
+    @Args('input') input: ReportCreateInput
+  ): Promise<ReportEntity> {
     const newReport = await this.reportRepo.create({
       key: input.key,
       name: input.name,

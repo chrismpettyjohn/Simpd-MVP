@@ -2,7 +2,7 @@ import {Directive, Field, ObjectType} from '@nestjs/graphql';
 
 @ObjectType()
 @Directive('@key(fields: "id")')
-export class ReportModel {
+export class CommentModel {
   @Field(() => Number, {nullable: true})
   id?: number;
 

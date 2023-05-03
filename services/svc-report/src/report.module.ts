@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { ReportEntity } from './report.entity';
-import { ReportResolver } from './report.resolver';
-import { ReportController } from './report.controller';
-import { ReportRepository } from './report.repository';
+import {Module} from '@nestjs/common';
+import {ReportEntity} from './report.entity';
+import {ReportResolver} from './report.resolver';
+import {ReportController} from './report.controller';
+import {ReportRepository} from './report.repository';
 import {
   GraphQLModule,
   DatabaseModule,
@@ -23,4 +23,4 @@ import {
   providers: [ReportRepository, ReportResolver],
   controllers: [ReportController],
 })
-export class ReportModule { }
+export class ReportModule {}

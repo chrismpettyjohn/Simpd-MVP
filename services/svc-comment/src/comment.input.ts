@@ -1,7 +1,7 @@
 import {Field, InputType} from '@nestjs/graphql';
 
 @InputType()
-export class ReportFilterByManyInput {
+export class CommentFilterByManyInput {
   @Field(() => [Number], {nullable: true})
   ids?: number[];
 
@@ -10,7 +10,7 @@ export class ReportFilterByManyInput {
 }
 
 @InputType()
-export class ReportFilterByOneInput {
+export class CommentFilterByOneInput {
   @Field(() => Number, {nullable: true})
   id?: number;
 
@@ -19,7 +19,7 @@ export class ReportFilterByOneInput {
 }
 
 @InputType()
-export class ReportCreateInput {
+export class CommentCreateInput {
   @Field(() => String)
   key!: string;
 
