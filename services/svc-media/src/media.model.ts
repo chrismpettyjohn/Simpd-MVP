@@ -18,7 +18,10 @@ export class MediaDetailsModel implements MediaDetails {
 @ObjectType()
 export class MediaLocationModel implements MediaLocation {
   @Field(() => String, {nullable: true})
-  awsS3Location!: string;
+  awsS3Bucket!: string;
+
+  @Field(() => String, {nullable: true})
+  awsS3Key!: string;
 }
 
 @ObjectType()

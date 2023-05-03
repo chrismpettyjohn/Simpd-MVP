@@ -11,7 +11,8 @@ export function mediaEntityToMediaWire(mediaEntity: MediaEntity): MediaWire {
       originalFileName: mediaEntity.mediaDetails.originalFileName,
     },
     location: {
-      awsS3Location: mediaEntity.mediaLocation.awsS3Location,
+      awsS3Key: mediaEntity.mediaLocation.awsS3Key,
+      awsS3Bucket: mediaEntity.mediaLocation.awsS3Bucket,
     },
   };
 }

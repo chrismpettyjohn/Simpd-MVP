@@ -33,7 +33,10 @@ export class MediaDetailsInput implements MediaDetails {
 @InputType()
 export class MediaLocationInput implements MediaLocation {
   @Field(() => String)
-  awsS3Location!: string;
+  awsS3Bucket!: string;
+
+  @Field(() => String)
+  awsS3Key!: string;
 }
 
 @InputType()

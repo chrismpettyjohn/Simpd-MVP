@@ -1,6 +1,6 @@
 export interface AwsS3CreateUploadUrlInput {
-  userID: number;
-  profileID: number;
+  bucket: string;
+  key: string;
 }
 
 export interface AwsS3CreateUploadUrlResponse {
@@ -8,11 +8,12 @@ export interface AwsS3CreateUploadUrlResponse {
 }
 
 export interface AwsS3ViewUrlInput {
-  s3Key: string;
+  bucket: string;
+  key: string;
 }
 
 export interface AwsS3ViewUrlResponse {
-  fileUrl: string;
+  viewUrl: string;
 }
 
 export interface AWSService {

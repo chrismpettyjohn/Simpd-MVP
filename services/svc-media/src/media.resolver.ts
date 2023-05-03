@@ -79,7 +79,8 @@ export class MediaResolver {
         originalFileName: '',
       },
       mediaLocation: {
-        awsS3Location: '',
+        awsS3Key: '',
+        awsS3Bucket: '',
       },
       mediaType: MediaType.Image,
     });

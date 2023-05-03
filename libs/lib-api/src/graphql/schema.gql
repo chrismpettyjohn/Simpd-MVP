@@ -2,55 +2,62 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type RoleScopesModel {
-  """User can create profile"""
-  profileCreate: Boolean
-
-  """
-  User can create bypass privacy restrictions.  Typically reserved for Administrative Purposes.
-  """
-  bypassUserPrivacy: Boolean
+type MediaDetailsModel {
+  sizeInBytes: Float
+  originalFileName: String
 }
 
-type RoleModel {
+type MediaLocationModel {
+  awsS3Bucket: String
+  awsS3Key: String
+}
+
+type MediaModel {
   id: Float
-  name: String
-  description: String
-  scopes: RoleScopesModel
+  type: MediaType
+  profileID: Float
+  details: MediaDetailsModel
+  location: MediaLocationModel
+}
+
+enum MediaType {
+  Image
+  Video
+  Other
 }
 
 type Query {
-  role(filter: RoleFilterByOneInput!): RoleModel!
-  roles(filter: RoleFilterByManyInput): [RoleModel!]!
+  media(filter: MediaFilterByOneInput!): MediaModel!
+  medias(filter: MediaFilterByManyInput): [MediaModel!]!
 }
 
-input RoleFilterByOneInput {
+input MediaFilterByOneInput {
   id: Float
 }
 
-input RoleFilterByManyInput {
+input MediaFilterByManyInput {
   ids: [Float!]
+  profileIDs: [Float!]
 }
 
 type Mutation {
-  roleCreate(input: RoleCreateInput!): RoleModel!
-  roleUpdate(filter: RoleFilterByOneInput!, input: RoleUpdateInput!): RoleModel!
-  roleDelete(filter: RoleFilterByOneInput!): Boolean!
+  mediaCreate(input: MediaCreateInput!): MediaModel!
+  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
 }
 
-input RoleCreateInput {
-  name: String!
-  description: String!
-  scopes: RoleScopesInput!
+input MediaCreateInput {
+  type: MediaType!
+  profileID: Float!
+  details: MediaDetailsInput!
+  location: MediaLocationInput!
 }
 
-input RoleScopesInput {
-  profileCreate: Boolean!
-  bypassUserPrivacy: Boolean!
+input MediaDetailsInput {
+  sizeInBytes: Float!
+  originalFileName: String!
 }
 
-input RoleUpdateInput {
-  name: String
-  description: String
-  scopes: RoleScopesInput
+input MediaLocationInput {
+  awsS3Bucket: String!
+  awsS3Key: String!
 }

@@ -5,7 +5,8 @@ export enum MediaType {
 }
 
 export interface MediaLocation {
-  awsS3Location: string;
+  awsS3Bucket: string;
+  awsS3Key: string;
 }
 
 export interface MediaDetails {
