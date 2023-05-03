@@ -18,6 +18,9 @@
       "@simpd/svc-profile": [
         "services/svc-profile/src"
       ],
+      "@simpd/svc-reaction": [
+        "services/svc-reaction/src"
+      ],
       "@simpd/svc-report": [
         "services/svc-report/src"
       ],
