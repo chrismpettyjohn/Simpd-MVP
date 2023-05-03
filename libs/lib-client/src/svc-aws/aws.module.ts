@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { NATS_ADDRESS } from '../constants';
-import { SVC_AWS_NAME } from './aws.const';
-import { AWSClientService } from './aws-client.service';
-import { ClientsModule, Transport } from '@nestjs/microservices';
+import {Module} from '@nestjs/common';
+import {NATS_ADDRESS} from '../constants';
+import {SVC_AWS_NAME} from './aws.const';
+import {AWSClientService} from './aws-client.service';
+import {ClientsModule, Transport} from '@nestjs/microservices';
 
 @Module({
   imports: [
@@ -19,4 +19,4 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
   providers: [AWSClientService],
   exports: [AWSClientService],
 })
-export class AWSClientModule { }
+export class AWSClientModule {}

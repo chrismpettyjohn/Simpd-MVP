@@ -1,9 +1,9 @@
-import { In } from 'typeorm';
-import { AWSModel } from './aws.model';
-import { SessionWire } from '@simpd/lib-client';
-import { AWSEntity } from './aws.entity';
-import { GetSession, HasSession } from '@simpd/lib-api';
-import { AWSRepository } from './aws.repository';
+import {In} from 'typeorm';
+import {AWSModel} from './aws.model';
+import {SessionWire} from '@simpd/lib-client';
+import {AWSEntity} from './aws.entity';
+import {GetSession, HasSession} from '@simpd/lib-api';
+import {AWSRepository} from './aws.repository';
 import {
   Args,
   Mutation,
@@ -19,7 +19,7 @@ import {
 
 @Resolver(() => AWSModel)
 export class AWSResolver {
-  constructor(private readonly awsRepo: AWSRepository) { }
+  constructor(private readonly awsRepo: AWSRepository) {}
 
   // TODO: Add Privacy Guard
   @ResolveReference()
@@ -27,13 +27,11 @@ export class AWSResolver {
     __typename: string;
     id: number;
   }): Promise<AWSEntity> {
-    return this.aws({ id: reference.id });
+    return this.aws({id: reference.id});
   }
 
   @Query(() => AWSModel)
-  async aws(
-    @Args('filter') filter: AWSFilterByOneInput
-  ): Promise<AWSEntity> {
+  async aws(@Args('filter') filter: AWSFilterByOneInput): Promise<AWSEntity> {
     return this.awsRepo.findOneOrFail({
       where: filter,
     });
@@ -41,7 +39,7 @@ export class AWSResolver {
 
   @Query(() => [AWSModel])
   awss(
-    @Args('filter', { type: () => AWSFilterByManyInput, nullable: true })
+    @Args('filter', {type: () => AWSFilterByManyInput, nullable: true})
     filter?: AWSFilterByManyInput
   ): Promise<AWSEntity[]> {
     return this.awsRepo.find({

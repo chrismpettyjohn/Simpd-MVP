@@ -4,4 +4,5 @@ export const SVC_AWS_WEB_ADDRESS =
   process.env.SVC_AWS_WEB_ADDRESS ??
   `http://localhost:${SVC_AWS_WEB_PORT}/graphql`;
 
-export const SVC_AWS_INTERNAL_EVENT_FIND_ONE_BY_ID = 'awsFindOneByID';
+export const SVC_AWS_INTERNAL_EVENT_CREATE_UPLOAD_URL = 'awsCreateUploadUrl';
+export const SVC_AWS_INTERNAL_EVENT_CREATE_VIEW_URL = 'awsCreateViewUrl';
