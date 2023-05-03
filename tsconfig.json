@@ -6,11 +6,17 @@
       "@simpd/svc-comment": [
         "services/svc-comment/src"
       ],
+      "@simpd/svc-form": [
+        "services/svc-form/src"
+      ],
       "@simpd/svc-gateway": [
         "services/svc-gateway/src"
       ],
       "@simpd/svc-media": [
         "services/svc-media/src"
+      ],
+      "@simpd/svc-message": [
+        "services/svc-message/src"
       ],
       "@simpd/svc-post": [
         "services/svc-post/src"
