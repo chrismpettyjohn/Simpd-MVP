@@ -9,7 +9,7 @@ import {
 } from '@simpd/lib-client';
 
 @Controller()
-export class MediaController {
+export class MediaInternalController {
   constructor(private readonly mediaRepo: MediaRepository) {}
 
   @MessagePattern(SVC_USER_INTERNAL_EVENT_FIND_ONE_BY_ID)

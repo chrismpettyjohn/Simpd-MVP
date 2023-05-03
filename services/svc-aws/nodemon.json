@@ -1,8 +1,0 @@
-{
-  "watch": [
-    "src/",
-    "../../proto/",
-    "../../libs/simpd-lib-api/src"
-  ],
-  "ext": "ts"
-}

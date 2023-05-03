@@ -1,9 +1,12 @@
 import {Module} from '@nestjs/common';
 import {MediaEntity} from './media.entity';
 import {MediaResolver} from './media.resolver';
-import {MediaController} from './media.controller';
 import {MediaRepository} from './media.repository';
 import {ProfileClientModule} from '@simpd/lib-client';
+import {MulterModule} from '@nestjs/platform-express';
+import {MediaAwsS3MulterService} from './media-multer.service';
+import {MediaExternalController} from './media.external.controller';
+import {MediaInternalController} from './media.internal.controller';
 import {
   GraphQLModule,
   DatabaseModule,
@@ -21,8 +24,12 @@ import {
       entities: [MediaEntity],
       synchronize: true,
     }),
+    MulterModule.registerAsync({
+      imports: [],
+      useClass: MediaAwsS3MulterService,
+    }),
   ],
   providers: [MediaRepository, MediaResolver],
-  controllers: [MediaController],
+  controllers: [MediaInternalController, MediaExternalController],
 })
 export class MediaModule {}

@@ -40,16 +40,7 @@ export class MediaLocationInput implements MediaLocation {
 }
 
 @InputType()
-export class MediaCreateInput implements BaseMediaImageInput {
-  @Field(() => MediaType)
-  type!: MediaType;
-
+export class MediaCreateInput {
   @Field(() => Number)
   profileID!: number;
-
-  @Field(() => MediaDetailsInput)
-  details!: MediaDetailsInput;
-
-  @Field(() => MediaLocationInput)
-  location!: MediaLocationInput;
 }

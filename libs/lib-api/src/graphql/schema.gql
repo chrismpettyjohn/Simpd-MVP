@@ -41,23 +41,5 @@ input MediaFilterByManyInput {
 }
 
 type Mutation {
-  mediaCreate(input: MediaCreateInput!): MediaModel!
   mediaDelete(filter: MediaFilterByOneInput!): Boolean!
-}
-
-input MediaCreateInput {
-  type: MediaType!
-  profileID: Float!
-  details: MediaDetailsInput!
-  location: MediaLocationInput!
-}
-
-input MediaDetailsInput {
-  sizeInBytes: Float!
-  originalFileName: String!
-}
-
-input MediaLocationInput {
-  awsS3Bucket: String!
-  awsS3Key: String!
 }

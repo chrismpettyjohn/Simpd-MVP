@@ -2,8 +2,7 @@ import {In} from 'typeorm';
 import {MediaModel} from './media.model';
 import {MediaRepository} from './media.repository';
 import {mediaEntityToMediaWire} from './media.wire';
-import {UnauthorizedException} from '@nestjs/common';
-import {GetSession, HasSession} from '@simpd/lib-api';
+import {MediaFilterByManyInput, MediaFilterByOneInput} from './media.input';
 import {
   Args,
   Mutation,
@@ -11,19 +10,10 @@ import {
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
-import {MediaType, ProfileClientService, SessionWire} from '@simpd/lib-client';
-import {
-  MediaCreateInput,
-  MediaFilterByManyInput,
-  MediaFilterByOneInput,
-} from './media.input';
 
 @Resolver(() => MediaModel)
 export class MediaResolver {
-  constructor(
-    private readonly mediaRepo: MediaRepository,
-    private readonly profileClientService: ProfileClientService
-  ) {}
+  constructor(private readonly mediaRepo: MediaRepository) {}
 
   // TODO: Add Privacy Guard
   @ResolveReference()
@@ -56,35 +46,6 @@ export class MediaResolver {
       },
     });
     return matchingMedia.map(mediaEntityToMediaWire);
-  }
-
-  @Mutation(() => MediaModel)
-  @HasSession()
-  async mediaCreate(
-    @GetSession() session: SessionWire,
-    @Args('input') input: MediaCreateInput
-  ): Promise<MediaModel> {
-    const matchingProfile = await this.profileClientService.findOneByID({
-      id: input.profileID,
-    });
-
-    if (matchingProfile?.userID !== session.userID) {
-      throw new UnauthorizedException();
-    }
-
-    const newMedia = await this.mediaRepo.create({
-      profileID: matchingProfile.id,
-      mediaDetails: {
-        sizeInBytes: 0,
-        originalFileName: '',
-      },
-      mediaLocation: {
-        awsS3Key: '',
-        awsS3Bucket: '',
-      },
-      mediaType: MediaType.Image,
-    });
-    return mediaEntityToMediaWire(newMedia);
   }
 
   @Mutation(() => Boolean)
