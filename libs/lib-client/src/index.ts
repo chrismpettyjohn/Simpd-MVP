@@ -1,4 +1,7 @@
 export * from './svc-gateway/gateway.const';
+export * from './svc-media/media-client.decorator';
+export * from './svc-media/media-client.types';
+export * from './svc-media/media-client.service';
 export * from './svc-profile/profile-client.decorator';
 export * from './svc-profile/profile-client.service';
 export * from './svc-profile/profile-client.types';
