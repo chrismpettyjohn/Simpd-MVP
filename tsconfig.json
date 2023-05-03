@@ -3,6 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@simpd/svc-aws": [
+        "services/svc-aws/src"
+      ],
       "@simpd/svc-gateway": [
         "services/svc-gateway/src"
       ],
