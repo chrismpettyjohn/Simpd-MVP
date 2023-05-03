@@ -15,6 +15,9 @@
       "@simpd/svc-profile": [
         "services/svc-profile/src"
       ],
+      "@simpd/svc-report": [
+        "services/svc-report/src"
+      ],
       "@simpd/svc-user": [
         "services/svc-user/src"
       ],
