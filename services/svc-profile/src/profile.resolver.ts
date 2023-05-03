@@ -4,7 +4,13 @@ import {SessionWire} from '@simpd/lib-client';
 import {ProfileEntity} from './profile.entity';
 import {GetSession, HasSession} from '@simpd/lib-api';
 import {ProfileRepository} from './profile.repository';
-import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Query,
+  ResolveReference,
+  Resolver,
+} from '@nestjs/graphql';
 import {
   ProfileCreateInput,
   ProfileFilterByManyInput,
@@ -14,6 +20,15 @@ import {
 @Resolver(() => ProfileModel)
 export class ProfileResolver {
   constructor(private readonly profileRepo: ProfileRepository) {}
+
+  // TODO: Add Privacy Guard
+  @ResolveReference()
+  resolveReference(reference: {
+    __typename: string;
+    id: number;
+  }): Promise<ProfileEntity> {
+    return this.profile({id: reference.id});
+  }
 
   @Query(() => ProfileModel)
   async profile(

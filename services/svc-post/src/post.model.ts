@@ -1,6 +1,7 @@
-import {Field, InterfaceType, ObjectType} from '@nestjs/graphql';
+import {Directive, Field, InterfaceType, ObjectType} from '@nestjs/graphql';
 
 @InterfaceType()
+@Directive('@key(fields: "id")')
 export class BasePostModel {
   @Field(() => Number, {nullable: true})
   id?: number;

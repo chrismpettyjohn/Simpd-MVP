@@ -1,6 +1,7 @@
-import {Field, ObjectType} from '@nestjs/graphql';
+import {Directive, Field, ObjectType} from '@nestjs/graphql';
 
 @ObjectType()
+@Directive('@key(fields: "id")')
 export class ProfileModel {
   @Field(() => Number, {nullable: true})
   id?: number;

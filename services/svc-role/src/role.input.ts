@@ -17,6 +17,9 @@ export class RoleFilterByOneInput {
 export class RoleScopesInput implements RoleScopesWire {
   @Field(() => Boolean)
   profileCreate!: boolean;
+
+  @Field(() => Boolean)
+  bypassUserPrivacy!: boolean;
 }
 
 @InputType()

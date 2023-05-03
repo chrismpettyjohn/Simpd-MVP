@@ -16,6 +16,7 @@ import {
   Parent,
   Query,
   ResolveField,
+  ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
 import {
@@ -32,6 +33,7 @@ export class UserResolver {
     private readonly userService: UserService,
     private readonly hashService: HashService
   ) {}
+
   @HasSession()
   @ResolveField(() => String, {nullable: true})
   email(
@@ -40,6 +42,14 @@ export class UserResolver {
   ): string {
     this.userService.canAccessUser(session.userID, user.id!);
     return user.email;
+  }
+
+  @ResolveReference()
+  resolveReference(reference: {
+    __typename: string;
+    id: number;
+  }): Promise<UserModel> {
+    return this.user({id: reference.id});
   }
 
   @Query(() => UserModel)

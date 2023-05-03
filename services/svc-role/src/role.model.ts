@@ -1,5 +1,5 @@
 import {RoleScopesWire} from '@simpd/lib-client';
-import {Field, ObjectType} from '@nestjs/graphql';
+import {Directive, Field, ObjectType} from '@nestjs/graphql';
 
 @ObjectType()
 export class RoleScopesModel implements RoleScopesWire {
@@ -8,9 +8,17 @@ export class RoleScopesModel implements RoleScopesWire {
     description: 'User can create profile',
   })
   profileCreate!: boolean;
+
+  @Field(() => Boolean, {
+    nullable: true,
+    description:
+      'User can create bypass privacy restrictions.  Typically reserved for Administrative Purposes.',
+  })
+  bypassUserPrivacy!: boolean;
 }
 
 @ObjectType()
+@Directive('@key(fields: "id")')
 export class RoleModel {
   @Field({nullable: true})
   id?: number;

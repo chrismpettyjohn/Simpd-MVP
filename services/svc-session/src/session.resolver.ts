@@ -5,11 +5,17 @@ import {SessionService} from './session.service';
 import {SessionRepository} from './session.repository';
 import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {
+  Args,
+  Mutation,
+  Query,
+  ResolveReference,
+  Resolver,
+} from '@nestjs/graphql';
+import {
   SessionCreateInput,
   SessionFilterByManyInput,
   SessionFilterByOneInput,
 } from './session.input';
-import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 
 @Resolver(() => SessionModel)
 export class SessionResolver {
@@ -17,6 +23,15 @@ export class SessionResolver {
     private readonly sessionRepo: SessionRepository,
     private readonly sessionService: SessionService
   ) {}
+
+  // TODO: Add privacy guard
+  @ResolveReference()
+  resolveReference(reference: {
+    __typename: string;
+    id: number;
+  }): Promise<SessionEntity> {
+    return this.session({id: reference.id});
+  }
 
   @Query(() => SessionModel, {nullable: true})
   @HasSession()

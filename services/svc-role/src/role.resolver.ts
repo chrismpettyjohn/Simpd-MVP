@@ -2,7 +2,13 @@ import {In} from 'typeorm';
 import {RoleModel} from './role.model';
 import {RoleEntity} from './role.entity';
 import {RoleRepository} from './role.repository';
-import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Query,
+  ResolveReference,
+  Resolver,
+} from '@nestjs/graphql';
 import {
   RoleCreateInput,
   RoleFilterByManyInput,
@@ -13,6 +19,14 @@ import {
 @Resolver(() => RoleModel)
 export class RoleResolver {
   constructor(private readonly roleRepo: RoleRepository) {}
+
+  @ResolveReference()
+  resolveReference(reference: {
+    __typename: string;
+    id: number;
+  }): Promise<RoleEntity> {
+    return this.role({id: reference.id});
+  }
 
   @Query(() => RoleModel)
   async role(

@@ -1,11 +1,17 @@
 import {In} from 'typeorm';
 import {PostEntity} from './post.entity';
 import {PostRepository} from './post.repository';
-import {BadRequestException, UnauthorizedException} from '@nestjs/common';
+import {UnauthorizedException} from '@nestjs/common';
 import {GetSession, HasSession} from '@simpd/lib-api';
 import {postEntityToPostWithTextWire} from './post.wire';
 import {BasePostModel, PostWithTextModel} from './post.model';
-import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Query,
+  ResolveReference,
+  Resolver,
+} from '@nestjs/graphql';
 import {
   PostType,
   PostWire,
@@ -26,6 +32,15 @@ export class PostResolver {
     private readonly profileClientService: ProfileClientService,
     private readonly textPostRepo: PostRepository<PostWithTextWire>
   ) {}
+
+  // TODO: Add Privacy Guard
+  @ResolveReference()
+  resolveReference(reference: {
+    __typename: string;
+    id: number;
+  }): Promise<PostEntity> {
+    return this.post({id: reference.id});
+  }
 
   @Query(() => BasePostModel)
   async post(
