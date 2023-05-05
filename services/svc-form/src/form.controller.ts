@@ -1,5 +1,5 @@
 import {Controller} from '@nestjs/common';
-import {FormPattern} from '@nestjs/microservices';
+import {MessagePattern} from '@nestjs/microservices';
 import {FormRepository} from './form.repository';
 import {formEntityToFormWire} from './form.wire';
 import {
@@ -12,7 +12,7 @@ import {
 export class FormController {
   constructor(private readonly formRepo: FormRepository) {}
 
-  @FormPattern(SVC_PROFILE_INTERNAL_EVENT_FIND_ONE_BY_ID)
+  @MessagePattern(SVC_PROFILE_INTERNAL_EVENT_FIND_ONE_BY_ID)
   async formFindOneByID(data: FormFindOneInput): Promise<FormWire> {
     const matchingRole = await this.formRepo.findOneOrFail({
       where: {

@@ -19,4 +19,7 @@ export class FormFilterByOneInput {
 }
 
 @InputType()
-export class FormCreateInput {}
+export class FormCreateInput {
+  @Field(() => String)
+  name!: string;
+}

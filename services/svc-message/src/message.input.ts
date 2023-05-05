@@ -19,4 +19,7 @@ export class MessageFilterByOneInput {
 }
 
 @InputType()
-export class MessageCreateInput {}
+export class MessageCreateInput {
+  @Field(() => Number)
+  recipientID!: number;
+}

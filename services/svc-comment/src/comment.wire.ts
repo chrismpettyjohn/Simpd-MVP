@@ -6,8 +6,5 @@ export function commentEntityToCommentWire(
 ): CommentWire {
   return {
     id: commentEntity.id!,
-    key: commentEntity.key,
-    name: commentEntity.name,
-    description: commentEntity.description,
   };
 }

@@ -2,34 +2,35 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ProfileModel {
+type TagModel {
   id: Float
-  userID: Float
-  username: String
+  key: String
+  name: String
+  description: String
 }
 
 type Query {
-  profile(filter: ProfileFilterByOneInput!): ProfileModel!
-  profiles(filter: ProfileFilterByManyInput): [ProfileModel!]!
+  tag(filter: TagFilterByOneInput!): TagModel!
+  tags(filter: TagFilterByManyInput): [TagModel!]!
 }
 
-input ProfileFilterByOneInput {
+input TagFilterByOneInput {
   id: Float
-  userIDs: [Float!]
-  usernames: [String!]
+  keys: [String!]
 }
 
-input ProfileFilterByManyInput {
+input TagFilterByManyInput {
   ids: [Float!]
-  userIDs: [Float!]
-  usernames: [String!]
+  keys: [String!]
 }
 
 type Mutation {
-  profileCreate(input: ProfileCreateInput!): ProfileModel!
-  profileDelete(filter: ProfileFilterByOneInput!): Boolean!
+  tagCreate(input: TagCreateInput!): TagModel!
+  tagDelete(filter: TagFilterByOneInput!): Boolean!
 }
 
-input ProfileCreateInput {
-  username: String!
+input TagCreateInput {
+  key: String!
+  name: String!
+  description: String!
 }

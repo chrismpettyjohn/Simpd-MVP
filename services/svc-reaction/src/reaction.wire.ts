@@ -6,8 +6,5 @@ export function reactionEntityToReactionWire(
 ): ReactionWire {
   return {
     id: reactionEntity.id!,
-    key: reactionEntity.key,
-    name: reactionEntity.name,
-    description: reactionEntity.description,
   };
 }

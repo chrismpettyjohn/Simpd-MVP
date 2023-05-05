@@ -6,8 +6,5 @@ export function reportEntityToReportWire(
 ): ReportWire {
   return {
     id: reportEntity.id!,
-    key: reportEntity.key,
-    name: reportEntity.name,
-    description: reportEntity.description,
   };
 }
