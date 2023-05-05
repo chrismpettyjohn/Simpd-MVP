@@ -1,6 +1,7 @@
 import {Module} from '@nestjs/common';
 import {CommentEntity} from './comment.entity';
 import {CommentResolver} from './comment.resolver';
+import {ProfileClientModule} from '@simpd/lib-client';
 import {CommentController} from './comment.controller';
 import {CommentRepository} from './comment.repository';
 import {
@@ -14,6 +15,7 @@ import {
   imports: [
     CommonModule,
     SessionModule,
+    ProfileClientModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
       entities: [CommentEntity],

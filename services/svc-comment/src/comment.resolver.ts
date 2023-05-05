@@ -1,8 +1,10 @@
 import {In} from 'typeorm';
 import {CommentModel} from './comment.model';
 import {CommentEntity} from './comment.entity';
-import {HasSession} from '@simpd/lib-api';
+import {UnauthorizedException} from '@nestjs/common';
+import {ProfileClientService} from '@simpd/lib-client';
 import {CommentRepository} from './comment.repository';
+import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {
   Args,
   Mutation,
@@ -18,7 +20,10 @@ import {
 
 @Resolver(() => CommentModel)
 export class CommentResolver {
-  constructor(private readonly commentRepo: CommentRepository) {}
+  constructor(
+    private readonly commentRepo: CommentRepository,
+    private readonly profileClientService: ProfileClientService
+  ) {}
 
   @ResolveReference()
   resolveReference(reference: {
@@ -54,12 +59,24 @@ export class CommentResolver {
   @Mutation(() => CommentModel)
   @HasSession()
   async commentCreate(
+    @GetSession() session: SessionContents,
     @Args('input') input: CommentCreateInput
   ): Promise<CommentEntity> {
+    const matchingProfile = await this.profileClientService.findOneByID({
+      id: input.profileID,
+    });
+
+    const userOwnsProfile = matchingProfile.userID === session.userID;
+
+    if (!userOwnsProfile) {
+      throw new UnauthorizedException();
+    }
+
     const newComment = await this.commentRepo.create({
       serviceKey: input.serviceKey,
       resourceID: input.resourceID,
       comment: input.comment,
+      profileID: input.profileID,
     });
     return newComment;
   }

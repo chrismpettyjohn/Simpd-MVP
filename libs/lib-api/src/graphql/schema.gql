@@ -5,8 +5,9 @@
 type CommentModel {
   id: Float
   serviceKey: String
-  resourceID: String
+  resourceID: Float
   comment: String
+  profileID: Float
 }
 
 type Query {
@@ -31,6 +32,7 @@ type Mutation {
 }
 
 input CommentCreateInput {
+  profileID: Float!
   serviceKey: String!
   resourceID: Float!
   comment: String!

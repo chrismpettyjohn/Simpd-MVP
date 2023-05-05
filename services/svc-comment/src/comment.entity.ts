@@ -13,9 +13,9 @@ export class CommentEntity {
   @Index()
   resourceID!: number;
 
-  @Column({name: 'user_id'})
+  @Column({name: 'profile_id'})
   @Index()
-  userID!: number;
+  profileID!: number;
 
   @Column({type: 'text'})
   comment!: string;

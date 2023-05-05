@@ -3,7 +3,7 @@ export interface CommentWire {
   serviceKey: string;
   resourceID: number;
   comment: string;
-  userID: number;
+  profileID: number;
 }
 
 export interface CommentFindOneInput {

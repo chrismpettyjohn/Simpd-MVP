@@ -9,6 +9,6 @@ export function commentEntityToCommentWire(
     serviceKey: commentEntity.serviceKey,
     resourceID: commentEntity.resourceID,
     comment: commentEntity.comment,
-    userID: commentEntity.userID,
+    profileID: commentEntity.profileID,
   };
 }

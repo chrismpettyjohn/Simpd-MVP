@@ -9,9 +9,12 @@ export class CommentModel {
   @Field(() => String, {nullable: true})
   serviceKey?: string;
 
-  @Field(() => String, {nullable: true})
-  resourceID?: string;
+  @Field(() => Number, {nullable: true})
+  resourceID?: number;
 
   @Field(() => String, {nullable: true})
   comment?: string;
+
+  @Field(() => Number, {nullable: true})
+  profileID?: number;
 }

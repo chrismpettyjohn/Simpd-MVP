@@ -23,6 +23,9 @@ export class CommentFilterByOneInput {
 
 @InputType()
 export class CommentCreateInput {
+  @Field(() => Number)
+  profileID!: number;
+
   @Field(() => String)
   serviceKey!: string;
 
