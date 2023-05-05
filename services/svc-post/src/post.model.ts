@@ -15,3 +15,15 @@ export class PostWithTextModel extends BasePostModel {
   @Field(() => String, {nullable: true})
   content?: string;
 }
+
+@ObjectType()
+export class PostWithImageModel extends BasePostModel {
+  @Field(() => Number, {nullable: true})
+  profileID?: string;
+
+  @Field(() => Number, {nullable: true})
+  mediaID?: string;
+
+  @Field(() => String, {nullable: true})
+  caption?: string;
+}

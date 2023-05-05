@@ -17,9 +17,21 @@ export class PostFilterByOneInput {
 
 @InputType()
 export class PostWithTextCreateInput {
-  @Field(() => String)
-  content!: string;
-
   @Field(() => Number)
   profileID!: number;
+
+  @Field(() => String)
+  content!: string;
+}
+
+@InputType()
+export class PostWithImageCreateInput {
+  @Field(() => Number)
+  profileID!: number;
+
+  @Field(() => Number)
+  mediaID!: number;
+
+  @Field(() => String)
+  caption!: string;
 }

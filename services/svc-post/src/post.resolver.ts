@@ -3,8 +3,15 @@ import {PostEntity} from './post.entity';
 import {PostRepository} from './post.repository';
 import {UnauthorizedException} from '@nestjs/common';
 import {GetSession, HasSession} from '@simpd/lib-api';
-import {postEntityToPostWithTextWire} from './post.wire';
-import {BasePostModel, PostWithTextModel} from './post.model';
+import {
+  postEntityToPostWithImageWire,
+  postEntityToPostWithTextWire,
+} from './post.wire';
+import {
+  BasePostModel,
+  PostWithImageModel,
+  PostWithTextModel,
+} from './post.model';
 import {
   Args,
   Mutation,
@@ -13,8 +20,10 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import {
+  MediaClientService,
   PostType,
   PostWire,
+  PostWithImageWire,
   PostWithTextWire,
   ProfileClientService,
   SessionWire,
@@ -22,6 +31,7 @@ import {
 import {
   PostFilterByManyInput,
   PostFilterByOneInput,
+  PostWithImageCreateInput,
   PostWithTextCreateInput,
 } from './post.input';
 
@@ -29,8 +39,10 @@ import {
 export class PostResolver {
   constructor(
     private readonly postRepo: PostRepository<PostWire>,
+    private readonly mediaClientService: MediaClientService,
     private readonly profileClientService: ProfileClientService,
-    private readonly textPostRepo: PostRepository<PostWithTextWire>
+    private readonly textPostRepo: PostRepository<PostWithTextWire>,
+    private readonly imagePostRepo: PostRepository<PostWithImageWire>
   ) {}
 
   // TODO: Add Privacy Guard
@@ -86,6 +98,37 @@ export class PostResolver {
       postType: PostType.Text,
     });
     return postEntityToPostWithTextWire(newTextPost);
+  }
+
+  @Mutation(() => PostWithImageModel)
+  @HasSession()
+  async postWithImageCreate(
+    @GetSession() session: SessionWire,
+    @Args('input') input: PostWithImageCreateInput
+  ): Promise<PostWithImageWire> {
+    const [matchingProfile, matchingImage] = await Promise.all([
+      this.profileClientService.findOneByID({
+        id: input.profileID,
+      }),
+      this.mediaClientService.findOneByID({id: input.mediaID}),
+    ]);
+
+    const userOwnsProfile = matchingProfile?.userID !== session.userID;
+    const userOwnsMedia = matchingImage?.profileID === matchingProfile?.id;
+
+    if (!userOwnsProfile || !userOwnsMedia) {
+      throw new UnauthorizedException();
+    }
+
+    const newImagePost = await this.imagePostRepo.create({
+      profileID: matchingProfile.id,
+      postData: {
+        mediaID: input.mediaID,
+        caption: input.caption,
+      },
+      postType: PostType.Image,
+    });
+    return postEntityToPostWithImageWire(newImagePost);
   }
 
   @Mutation(() => Boolean)
