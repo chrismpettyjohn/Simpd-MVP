@@ -5,14 +5,14 @@ import {reportEntityToReportWire} from './report.wire';
 import {
   ReportFindOneInput,
   ReportWire,
-  SVC_PROFILE_INTERNAL_EVENT_FIND_ONE_BY_ID,
+  SVC_REPORT_INTERNAL_EVENT_FIND_ONE_BY_ID,
 } from '@simpd/lib-client';
 
 @Controller()
 export class ReportController {
   constructor(private readonly reportRepo: ReportRepository) {}
 
-  @MessagePattern(SVC_PROFILE_INTERNAL_EVENT_FIND_ONE_BY_ID)
+  @MessagePattern(SVC_REPORT_INTERNAL_EVENT_FIND_ONE_BY_ID)
   async reportFindOneByID(data: ReportFindOneInput): Promise<ReportWire> {
     const matchingRole = await this.reportRepo.findOneOrFail({
       where: {

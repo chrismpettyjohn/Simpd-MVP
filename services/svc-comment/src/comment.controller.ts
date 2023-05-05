@@ -5,14 +5,14 @@ import {commentEntityToCommentWire} from './comment.wire';
 import {
   CommentFindOneInput,
   CommentWire,
-  SVC_PROFILE_INTERNAL_EVENT_FIND_ONE_BY_ID,
+  SVC_COMMENT_INTERNAL_EVENT_FIND_ONE_BY_ID,
 } from '@simpd/lib-client';
 
 @Controller()
 export class CommentController {
   constructor(private readonly commentRepo: CommentRepository) {}
 
-  @MessagePattern(SVC_PROFILE_INTERNAL_EVENT_FIND_ONE_BY_ID)
+  @MessagePattern(SVC_COMMENT_INTERNAL_EVENT_FIND_ONE_BY_ID)
   async commentFindOneByID(data: CommentFindOneInput): Promise<CommentWire> {
     const matchingRole = await this.commentRepo.findOneOrFail({
       where: {

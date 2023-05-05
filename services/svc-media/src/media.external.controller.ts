@@ -13,6 +13,7 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
+import {AWS_S3_BUCKET} from './media.constant';
 
 @Controller('media')
 export class MediaExternalController {
@@ -37,17 +38,15 @@ export class MediaExternalController {
       throw new UnauthorizedException();
     }
 
-    console.log(file);
-
     const newMedia = await this.mediaRepo.create({
       profileID: matchingProfile.id,
       mediaDetails: {
         sizeInBytes: 0,
-        originalFileName: '',
+        originalFileName: file.originalname,
       },
       mediaLocation: {
-        awsS3Key: '',
-        awsS3Bucket: '',
+        awsS3Key: file.key,
+        awsS3Bucket: AWS_S3_BUCKET,
       },
       mediaType: MediaType.Image,
     });
