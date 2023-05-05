@@ -1,4 +1,5 @@
 import {Directive, Field, ObjectType} from '@nestjs/graphql';
+import {ReactionType} from '@simpd/lib-client';
 
 @ObjectType()
 @Directive('@key(fields: "id")')
@@ -7,11 +8,11 @@ export class ReactionModel {
   id?: number;
 
   @Field(() => String, {nullable: true})
-  key?: string;
+  serviceKey!: string;
 
-  @Field(() => String, {nullable: true})
-  name?: string;
+  @Field(() => Number, {nullable: true})
+  resourceID!: number;
 
-  @Field(() => String, {nullable: true})
-  description?: string;
+  @Field(() => ReactionType, {nullable: true})
+  reaction!: ReactionType;
 }

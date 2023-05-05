@@ -1,4 +1,5 @@
 import {Field, InputType} from '@nestjs/graphql';
+import {ReactionType} from '@simpd/lib-client';
 
 @InputType()
 export class ReactionFilterByManyInput {
@@ -21,11 +22,11 @@ export class ReactionFilterByOneInput {
 @InputType()
 export class ReactionCreateInput {
   @Field(() => String)
-  key!: string;
+  serviceKey!: string;
 
-  @Field(() => String)
-  name!: string;
+  @Field(() => Number)
+  resourceID!: number;
 
-  @Field(() => String)
-  description!: string;
+  @Field(() => ReactionType)
+  reaction!: ReactionType;
 }
