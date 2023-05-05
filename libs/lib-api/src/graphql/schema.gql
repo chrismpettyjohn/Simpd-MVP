@@ -2,37 +2,36 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-interface BasePostModel {
+type CommentModel {
   id: Float
-  profileID: Float
-}
-
-type PostWithTextModel {
-  id: Float
-  profileID: Float
-  content: String
+  serviceKey: String
+  resourceID: String
+  comment: String
 }
 
 type Query {
-  post(filter: PostFilterByOneInput!): BasePostModel!
-  posts(filter: PostFilterByManyInput): [BasePostModel!]!
+  comment(filter: CommentFilterByOneInput!): CommentModel!
+  comments(filter: CommentFilterByManyInput): [CommentModel!]!
 }
 
-input PostFilterByOneInput {
+input CommentFilterByOneInput {
   id: Float
+  keys: [String!]
 }
 
-input PostFilterByManyInput {
+input CommentFilterByManyInput {
   ids: [Float!]
-  profileIDs: [Float!]
+  serviceKey: String
+  resourceIDs: [Float!]!
 }
 
 type Mutation {
-  postWithTextCreate(input: PostWithTextCreateInput!): PostWithTextModel!
-  postDelete(filter: PostFilterByOneInput!): Boolean!
+  commentCreate(input: CommentCreateInput!): CommentModel!
+  commentDelete(filter: CommentFilterByOneInput!): Boolean!
 }
 
-input PostWithTextCreateInput {
-  profileID: Float!
-  content: String!
+input CommentCreateInput {
+  serviceKey: String!
+  resourceID: Float!
+  comment: String!
 }

@@ -5,13 +5,18 @@ export class CommentEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column({unique: true})
+  @Column({name: 'service_key'})
   @Index()
-  key!: string;
+  serviceKey!: string;
 
-  @Column()
-  name!: string;
+  @Column({name: 'resource_id'})
+  @Index()
+  resourceID!: number;
+
+  @Column({name: 'user_id'})
+  @Index()
+  userID!: number;
 
   @Column({type: 'text'})
-  description!: string;
+  comment!: string;
 }

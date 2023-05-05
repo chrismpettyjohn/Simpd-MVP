@@ -6,5 +6,9 @@ export function commentEntityToCommentWire(
 ): CommentWire {
   return {
     id: commentEntity.id!,
+    serviceKey: commentEntity.serviceKey,
+    resourceID: commentEntity.resourceID,
+    comment: commentEntity.comment,
+    userID: commentEntity.userID,
   };
 }

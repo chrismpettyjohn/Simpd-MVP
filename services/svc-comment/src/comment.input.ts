@@ -5,8 +5,11 @@ export class CommentFilterByManyInput {
   @Field(() => [Number], {nullable: true})
   ids?: number[];
 
-  @Field(() => [String], {nullable: true})
-  keys?: string[];
+  @Field(() => String, {nullable: true})
+  serviceKey?: string;
+
+  @Field(() => [Number])
+  resourceIDs!: number[];
 }
 
 @InputType()
@@ -21,11 +24,11 @@ export class CommentFilterByOneInput {
 @InputType()
 export class CommentCreateInput {
   @Field(() => String)
-  key!: string;
+  serviceKey!: string;
+
+  @Field(() => Number)
+  resourceID!: number;
 
   @Field(() => String)
-  name!: string;
-
-  @Field(() => String)
-  description!: string;
+  comment!: string;
 }

@@ -45,7 +45,8 @@ export class CommentResolver {
     return this.commentRepo.find({
       where: {
         id: filter?.ids && In(filter.ids),
-        key: filter?.keys && In(filter.keys),
+        serviceKey: filter?.serviceKey,
+        resourceID: filter?.resourceIDs && In(filter.resourceIDs),
       },
     });
   }
@@ -56,9 +57,9 @@ export class CommentResolver {
     @Args('input') input: CommentCreateInput
   ): Promise<CommentEntity> {
     const newComment = await this.commentRepo.create({
-      key: input.key,
-      name: input.name,
-      description: input.description,
+      serviceKey: input.serviceKey,
+      resourceID: input.resourceID,
+      comment: input.comment,
     });
     return newComment;
   }

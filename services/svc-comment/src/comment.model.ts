@@ -7,11 +7,11 @@ export class CommentModel {
   id?: number;
 
   @Field(() => String, {nullable: true})
-  key?: string;
+  serviceKey?: string;
 
   @Field(() => String, {nullable: true})
-  name?: string;
+  resourceID?: string;
 
   @Field(() => String, {nullable: true})
-  description?: string;
+  comment?: string;
 }
