@@ -1,10 +1,8 @@
 import {Reflector} from '@nestjs/core';
 import {RoleScopesWire} from '@simpd/lib-client';
+import {RequestWithSession} from '../session/session.types';
 import {Injectable, CanActivate, ExecutionContext} from '@nestjs/common';
-import {
-  getRequestFromExecutionContext,
-  RequestWithSession,
-} from '@simpd/lib-api';
+import {getRequestFromExecutionContext} from '../session/session.utility';
 
 @Injectable()
 export class RoleHasRequiredScopeGuard implements CanActivate {
