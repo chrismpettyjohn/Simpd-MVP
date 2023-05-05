@@ -1,0 +1,64 @@
+{
+  "apps": [
+    {
+      "name": "svc-comment",
+      "script": "pnpm",
+      "args": "run web-server:dev"
+    },
+    {
+      "name": "svc-form",
+      "script": "pnpm",
+      "args": "run web-server:dev"
+    },
+    {
+      "name": "svc-media",
+      "script": "pnpm",
+      "args": "run web-server:dev"
+    },
+    {
+      "name": "svc-message",
+      "script": "pnpm",
+      "args": "run web-server:dev"
+    },
+    {
+      "name": "svc-post",
+      "script": "pnpm",
+      "args": "run web-server:dev"
+    },
+    {
+      "name": "svc-profile",
+      "script": "pnpm",
+      "args": "run web-server:dev"
+    },
+    {
+      "name": "svc-reaction",
+      "script": "pnpm",
+      "args": "run web-server:dev"
+    },
+    {
+      "name": "svc-report",
+      "script": "pnpm",
+      "args": "run web-server:dev"
+    },
+    {
+      "name": "svc-role",
+      "script": "pnpm",
+      "args": "run web-server:dev"
+    },
+    {
+      "name": "svc-session",
+      "script": "pnpm",
+      "args": "run web-server:dev"
+    },
+    {
+      "name": "svc-tag",
+      "script": "pnpm",
+      "args": "run web-server:dev"
+    },
+    {
+      "name": "svc-user",
+      "script": "pnpm",
+      "args": "run web-server:dev"
+    }
+  ]
+}

@@ -2,35 +2,44 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type TagModel {
+type MediaDetailsModel {
+  sizeInBytes: Float
+  originalFileName: String
+}
+
+type MediaLocationModel {
+  awsS3Bucket: String
+  awsS3Key: String
+}
+
+type MediaModel {
   id: Float
-  key: String
-  name: String
-  description: String
+  type: MediaType
+  profileID: Float
+  details: MediaDetailsModel
+  location: MediaLocationModel
+}
+
+enum MediaType {
+  Image
+  Video
+  Other
 }
 
 type Query {
-  tag(filter: TagFilterByOneInput!): TagModel!
-  tags(filter: TagFilterByManyInput): [TagModel!]!
+  media(filter: MediaFilterByOneInput!): MediaModel!
+  medias(filter: MediaFilterByManyInput): [MediaModel!]!
 }
 
-input TagFilterByOneInput {
+input MediaFilterByOneInput {
   id: Float
-  keys: [String!]
 }
 
-input TagFilterByManyInput {
+input MediaFilterByManyInput {
   ids: [Float!]
-  keys: [String!]
+  profileIDs: [Float!]
 }
 
 type Mutation {
-  tagCreate(input: TagCreateInput!): TagModel!
-  tagDelete(filter: TagFilterByOneInput!): Boolean!
-}
-
-input TagCreateInput {
-  key: String!
-  name: String!
-  description: String!
+  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
 }
