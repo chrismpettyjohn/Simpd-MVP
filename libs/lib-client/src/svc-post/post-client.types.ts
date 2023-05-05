@@ -1,6 +1,7 @@
 export enum PostType {
   Text = 'text',
   Image = 'image',
+  Video = 'video',
 }
 
 export interface BasePost {
@@ -14,17 +15,28 @@ export interface BasePostWithText {
   content: string;
 }
 
+export type PostWithTextWire = BasePost & BasePostWithText;
+
 export interface BasePostWithImage {
   type: PostType.Image;
   mediaID: number;
   caption: string;
 }
 
-export type PostWithTextWire = BasePost & BasePostWithText;
-
 export type PostWithImageWire = BasePost & BasePostWithImage;
 
-export type PostSubset = PostWithTextWire | PostWithImageWire;
+export interface BasePostWithVideo {
+  type: PostType.Video;
+  mediaID: number;
+  caption: string;
+}
+
+export type PostWithVideoWire = BasePost & BasePostWithVideo;
+
+export type PostSubset =
+  | PostWithTextWire
+  | PostWithImageWire
+  | PostWithVideoWire;
 
 export type PostWire = BasePost & PostSubset;
 

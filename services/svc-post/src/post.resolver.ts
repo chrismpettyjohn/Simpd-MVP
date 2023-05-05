@@ -1,16 +1,18 @@
 import {In} from 'typeorm';
 import {PostEntity} from './post.entity';
 import {PostRepository} from './post.repository';
-import {UnauthorizedException} from '@nestjs/common';
+import {UnauthorizedException, BadRequestException} from '@nestjs/common';
 import {GetSession, HasSession} from '@simpd/lib-api';
 import {
   postEntityToPostWithImageWire,
   postEntityToPostWithTextWire,
+  postEntityToPostWithVideoWire,
 } from './post.wire';
 import {
   BasePostModel,
   PostWithImageModel,
   PostWithTextModel,
+  PostWithVideoModel,
 } from './post.model';
 import {
   Args,
@@ -21,10 +23,12 @@ import {
 } from '@nestjs/graphql';
 import {
   MediaClientService,
+  MediaType,
   PostType,
   PostWire,
   PostWithImageWire,
   PostWithTextWire,
+  PostWithVideoWire,
   ProfileClientService,
   SessionWire,
 } from '@simpd/lib-client';
@@ -33,16 +37,27 @@ import {
   PostFilterByOneInput,
   PostWithImageCreateInput,
   PostWithTextCreateInput,
+  PostWithVideoCreateInput,
 } from './post.input';
 
 @Resolver(() => BasePostModel)
 export class PostResolver {
   constructor(
-    private readonly postRepo: PostRepository<PostWire>,
+    private readonly postRepo: PostRepository<any, any>,
     private readonly mediaClientService: MediaClientService,
     private readonly profileClientService: ProfileClientService,
-    private readonly textPostRepo: PostRepository<PostWithTextWire>,
-    private readonly imagePostRepo: PostRepository<PostWithImageWire>
+    private readonly textPostRepo: PostRepository<
+      PostWithTextWire,
+      PostType.Text
+    >,
+    private readonly imagePostRepo: PostRepository<
+      PostWithImageWire,
+      PostType.Image
+    >,
+    private readonly videoPostRepo: PostRepository<
+      PostWithImageWire,
+      PostType.Video
+    >
   ) {}
 
   // TODO: Add Privacy Guard
@@ -120,6 +135,12 @@ export class PostResolver {
       throw new UnauthorizedException();
     }
 
+    const mediaIsImage = matchingImage?.type === MediaType.Image;
+
+    if (!mediaIsImage) {
+      throw new BadRequestException('media is not image');
+    }
+
     const newImagePost = await this.imagePostRepo.create({
       profileID: matchingProfile.id,
       postData: {
@@ -129,6 +150,43 @@ export class PostResolver {
       postType: PostType.Image,
     });
     return postEntityToPostWithImageWire(newImagePost);
+  }
+
+  @Mutation(() => PostWithVideoModel)
+  @HasSession()
+  async postWithVideoCreate(
+    @GetSession() session: SessionWire,
+    @Args('input') input: PostWithVideoCreateInput
+  ): Promise<PostWithVideoWire> {
+    const [matchingProfile, matchingVideo] = await Promise.all([
+      this.profileClientService.findOneByID({
+        id: input.profileID,
+      }),
+      this.mediaClientService.findOneByID({id: input.mediaID}),
+    ]);
+
+    const userOwnsProfile = matchingProfile?.userID !== session.userID;
+    const userOwnsMedia = matchingVideo?.profileID === matchingProfile?.id;
+
+    if (!userOwnsProfile || !userOwnsMedia) {
+      throw new UnauthorizedException();
+    }
+
+    const mediaIsVideo = matchingVideo?.type === MediaType.Video;
+
+    if (!mediaIsVideo) {
+      throw new BadRequestException('media is not image');
+    }
+
+    const newVideoPosty = await this.videoPostRepo.create({
+      profileID: matchingProfile.id,
+      postData: {
+        mediaID: input.mediaID,
+        caption: input.caption,
+      },
+      postType: PostType.Video,
+    });
+    return postEntityToPostWithVideoWire(newVideoPosty);
   }
 
   @Mutation(() => Boolean)

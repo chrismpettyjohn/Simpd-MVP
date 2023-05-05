@@ -35,3 +35,15 @@ export class PostWithImageCreateInput {
   @Field(() => String)
   caption!: string;
 }
+
+@InputType()
+export class PostWithVideoCreateInput {
+  @Field(() => Number)
+  profileID!: number;
+
+  @Field(() => Number)
+  mediaID!: number;
+
+  @Field(() => String)
+  caption!: string;
+}

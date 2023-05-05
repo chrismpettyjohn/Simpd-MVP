@@ -27,3 +27,15 @@ export class PostWithImageModel extends BasePostModel {
   @Field(() => String, {nullable: true})
   caption?: string;
 }
+
+@ObjectType()
+export class PostWithVideoModel extends BasePostModel {
+  @Field(() => Number, {nullable: true})
+  profileID?: string;
+
+  @Field(() => Number, {nullable: true})
+  mediaID?: string;
+
+  @Field(() => String, {nullable: true})
+  caption?: string;
+}
