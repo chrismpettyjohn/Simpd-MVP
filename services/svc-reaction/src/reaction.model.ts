@@ -9,6 +9,8 @@ export class ReactionModel {
 
   @Field(() => String, {nullable: true})
   serviceKey!: string;
+  @Field(() => Number, {nullable: true})
+  profileID!: number;
 
   @Field(() => Number, {nullable: true})
   resourceID!: number;

@@ -7,7 +7,7 @@ export interface ReactionWire {
   serviceKey: string;
   resourceID: number;
   reaction: ReactionType;
-  userID: number;
+  profileID: number;
 }
 
 export interface ReactionFindOneInput {

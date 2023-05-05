@@ -19,4 +19,4 @@ import {ClientsModule, Transport} from '@nestjs/microservices';
   providers: [MediaClientService],
   exports: [MediaClientService],
 })
-export class PostClientModule {}
+export class MediaClientModule {}

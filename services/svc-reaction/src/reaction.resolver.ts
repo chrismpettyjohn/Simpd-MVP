@@ -1,8 +1,15 @@
 import {In} from 'typeorm';
+import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {ReactionModel} from './reaction.model';
 import {ReactionEntity} from './reaction.entity';
-import {HasSession} from '@simpd/lib-api';
+import {UnauthorizedException} from '@nestjs/common';
+import {ProfileClientService} from '@simpd/lib-client';
 import {ReactionRepository} from './reaction.repository';
+import {
+  ReactionCreateInput,
+  ReactionFilterByManyInput,
+  ReactionFilterByOneInput,
+} from './reaction.input';
 import {
   Args,
   Mutation,
@@ -10,15 +17,13 @@ import {
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
-import {
-  ReactionCreateInput,
-  ReactionFilterByManyInput,
-  ReactionFilterByOneInput,
-} from './reaction.input';
 
 @Resolver(() => ReactionModel)
 export class ReactionResolver {
-  constructor(private readonly reactionRepo: ReactionRepository) {}
+  constructor(
+    private readonly reactionRepo: ReactionRepository,
+    private readonly profileClientService: ProfileClientService
+  ) {}
 
   @ResolveReference()
   resolveReference(reference: {
@@ -45,7 +50,8 @@ export class ReactionResolver {
     return this.reactionRepo.find({
       where: {
         id: filter?.ids && In(filter.ids),
-        key: filter?.keys && In(filter.keys),
+        serviceKey: filter?.serviceKey,
+        resourceID: filter?.resourceIDs && In(filter?.resourceIDs),
       },
     });
   }
@@ -53,12 +59,23 @@ export class ReactionResolver {
   @Mutation(() => ReactionModel)
   @HasSession()
   async reactionCreate(
+    @GetSession() session: SessionContents,
     @Args('input') input: ReactionCreateInput
   ): Promise<ReactionEntity> {
+    const matchingProfile = await this.profileClientService.findOneByID({
+      id: input.profileID,
+    });
+
+    const userOwnsProfile = matchingProfile.userID === session.userID;
+
+    if (!userOwnsProfile) {
+      throw new UnauthorizedException();
+    }
     const newReaction = await this.reactionRepo.create({
-      key: input.key,
-      name: input.name,
-      description: input.description,
+      serviceKey: input.serviceKey,
+      resourceID: input.resourceID,
+      profileID: input.profileID,
+      reaction: input.reaction,
     });
     return newReaction;
   }

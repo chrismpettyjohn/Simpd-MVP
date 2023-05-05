@@ -9,6 +9,6 @@ export function reactionEntityToReactionWire(
     serviceKey: reactionEntity.serviceKey,
     resourceID: reactionEntity.resourceID,
     reaction: reactionEntity.reaction,
-    userID: reactionEntity.userID,
+    profileID: reactionEntity.profileID,
   };
 }

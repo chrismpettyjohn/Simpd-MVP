@@ -9,11 +9,13 @@ import {
   CommonModule,
   SessionModule,
 } from '@simpd/lib-api';
+import {ProfileClientModule} from '@simpd/lib-client';
 
 @Module({
   imports: [
     CommonModule,
     SessionModule,
+    ProfileClientModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
       entities: [ReactionEntity],

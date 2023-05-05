@@ -2,38 +2,100 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type CommentModel {
+interface BasePostModel {
   id: Float
-  serviceKey: String
-  resourceID: Float
-  comment: String
   profileID: Float
 }
 
-type Query {
-  comment(filter: CommentFilterByOneInput!): CommentModel!
-  comments(filter: CommentFilterByManyInput): [CommentModel!]!
-}
-
-input CommentFilterByOneInput {
+type PostWithTextModel {
   id: Float
-  keys: [String!]
+  profileID: Float
+  content: String
 }
 
-input CommentFilterByManyInput {
+type PostWithImageModel {
+  id: Float
+  profileID: Float
+  mediaID: Float
+  caption: String
+}
+
+type PostWithVideoModel {
+  id: Float
+  profileID: Float
+  mediaID: Float
+  caption: String
+}
+
+type PostWithAlbumModel {
+  id: Float
+  profileID: Float
+  mediaIDs: [Float!]
+  caption: String
+}
+
+type PostWithSharedContentModel {
+  id: Float
+  profileID: Float
+  resourceType: PostSharedContentType
+  resourceID: Float
+  caption: String
+}
+
+enum PostSharedContentType {
+  Post
+  Media
+}
+
+type Query {
+  post(filter: PostFilterByOneInput!): BasePostModel!
+  posts(filter: PostFilterByManyInput): [BasePostModel!]!
+}
+
+input PostFilterByOneInput {
+  id: Float
+}
+
+input PostFilterByManyInput {
   ids: [Float!]
-  serviceKey: String
-  resourceIDs: [Float!]!
+  profileIDs: [Float!]
 }
 
 type Mutation {
-  commentCreate(input: CommentCreateInput!): CommentModel!
-  commentDelete(filter: CommentFilterByOneInput!): Boolean!
+  postWithTextCreate(input: PostWithTextCreateInput!): PostWithTextModel!
+  postWithImageCreate(input: PostWithImageCreateInput!): PostWithImageModel!
+  postWithVideoCreate(input: PostWithVideoCreateInput!): PostWithVideoModel!
+  postWithAlbumCreate(input: PostWithAlbumInput!): PostWithAlbumModel!
+  postWithSharedContentCreate(input: PostWithSharedContentInput!): PostWithSharedContentModel!
+  postDelete(filter: PostFilterByOneInput!): Boolean!
 }
 
-input CommentCreateInput {
+input PostWithTextCreateInput {
   profileID: Float!
-  serviceKey: String!
+  content: String!
+}
+
+input PostWithImageCreateInput {
+  profileID: Float!
+  mediaID: Float!
+  caption: String!
+}
+
+input PostWithVideoCreateInput {
+  profileID: Float!
+  mediaID: Float!
+  caption: String!
+}
+
+input PostWithAlbumInput {
+  profileID: Float!
+  mediaIDs: [Float!]!
+  caption: String!
+}
+
+input PostWithSharedContentInput {
+  profileID: Float!
+  resourceType: PostSharedContentType!
   resourceID: Float!
-  comment: String!
+  caption: String!
 }

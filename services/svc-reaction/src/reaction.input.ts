@@ -6,8 +6,11 @@ export class ReactionFilterByManyInput {
   @Field(() => [Number], {nullable: true})
   ids?: number[];
 
-  @Field(() => [String], {nullable: true})
-  keys?: string[];
+  @Field(() => String, {nullable: true})
+  serviceKey?: string;
+
+  @Field(() => [Number], {nullable: true})
+  resourceIDs?: number[];
 }
 
 @InputType()
@@ -23,6 +26,9 @@ export class ReactionFilterByOneInput {
 export class ReactionCreateInput {
   @Field(() => String)
   serviceKey!: string;
+
+  @Field(() => Number)
+  profileID!: number;
 
   @Field(() => Number)
   resourceID!: number;
