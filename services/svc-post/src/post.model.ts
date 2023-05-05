@@ -22,7 +22,7 @@ export class PostWithImageModel extends BasePostModel {
   profileID?: string;
 
   @Field(() => Number, {nullable: true})
-  mediaID?: string;
+  mediaID?: number;
 
   @Field(() => String, {nullable: true})
   caption?: string;
@@ -34,7 +34,19 @@ export class PostWithVideoModel extends BasePostModel {
   profileID?: string;
 
   @Field(() => Number, {nullable: true})
-  mediaID?: string;
+  mediaID?: number;
+
+  @Field(() => String, {nullable: true})
+  caption?: string;
+}
+
+@ObjectType()
+export class PostWithAlbumModel extends BasePostModel {
+  @Field(() => Number, {nullable: true})
+  profileID?: string;
+
+  @Field(() => [Number!], {nullable: true})
+  mediaIDs?: number[];
 
   @Field(() => String, {nullable: true})
   caption?: string;

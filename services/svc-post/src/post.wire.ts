@@ -3,6 +3,7 @@ import {
   BasePost,
   PostType,
   PostWire,
+  PostWithAlbumWire,
   PostWithImageWire,
   PostWithTextWire,
   PostWithVideoWire,
@@ -21,6 +22,10 @@ export function postEntityToPostWire(
 
   if (postEntity.postType === PostType.Video) {
     return postEntityToPostWithImageWire(postEntity);
+  }
+
+  if (postEntity.postType === PostType.Album) {
+    return postEntityToPostWithAlbumWire(postEntity);
   }
 
   throw new Error('Invalid post type');
@@ -62,6 +67,17 @@ export function postEntityToPostWithVideoWire(
     ...postEntityToBasePost(postEntity),
     type: postEntity.postType,
     mediaID: postEntity.postData.mediaID,
+    caption: postEntity.postData.caption,
+  };
+}
+
+export function postEntityToPostWithAlbumWire(
+  postEntity: PostEntity<PostWithAlbumWire, PostType.Album>
+): PostWithAlbumWire {
+  return {
+    ...postEntityToBasePost(postEntity),
+    type: postEntity.postType,
+    mediaIDs: postEntity.postData.mediaIDs,
     caption: postEntity.postData.caption,
   };
 }

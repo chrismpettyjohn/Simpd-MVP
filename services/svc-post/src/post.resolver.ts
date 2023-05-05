@@ -4,12 +4,14 @@ import {PostRepository} from './post.repository';
 import {UnauthorizedException, BadRequestException} from '@nestjs/common';
 import {GetSession, HasSession} from '@simpd/lib-api';
 import {
+  postEntityToPostWithAlbumWire,
   postEntityToPostWithImageWire,
   postEntityToPostWithTextWire,
   postEntityToPostWithVideoWire,
 } from './post.wire';
 import {
   BasePostModel,
+  PostWithAlbumModel,
   PostWithImageModel,
   PostWithTextModel,
   PostWithVideoModel,
@@ -26,6 +28,7 @@ import {
   MediaType,
   PostType,
   PostWire,
+  PostWithAlbumWire,
   PostWithImageWire,
   PostWithTextWire,
   PostWithVideoWire,
@@ -35,6 +38,7 @@ import {
 import {
   PostFilterByManyInput,
   PostFilterByOneInput,
+  PostWithAlbumInput,
   PostWithImageCreateInput,
   PostWithTextCreateInput,
   PostWithVideoCreateInput,
@@ -57,6 +61,10 @@ export class PostResolver {
     private readonly videoPostRepo: PostRepository<
       PostWithImageWire,
       PostType.Video
+    >,
+    private readonly albumPostRepo: PostRepository<
+      PostWithAlbumWire,
+      PostType.Album
     >
   ) {}
 
@@ -178,7 +186,7 @@ export class PostResolver {
       throw new BadRequestException('media is not image');
     }
 
-    const newVideoPosty = await this.videoPostRepo.create({
+    const newVideoPost = await this.videoPostRepo.create({
       profileID: matchingProfile.id,
       postData: {
         mediaID: input.mediaID,
@@ -186,7 +194,49 @@ export class PostResolver {
       },
       postType: PostType.Video,
     });
-    return postEntityToPostWithVideoWire(newVideoPosty);
+    return postEntityToPostWithVideoWire(newVideoPost);
+  }
+
+  @Mutation(() => PostWithAlbumModel)
+  @HasSession()
+  async postWithAlbumCreate(
+    @GetSession() session: SessionWire,
+    @Args('input') input: PostWithAlbumInput
+  ): Promise<PostWithAlbumWire> {
+    const matchingProfile = await this.profileClientService.findOneByID({
+      id: input.profileID,
+    });
+
+    const userOwnsProfile = matchingProfile?.userID !== session.userID;
+
+    if (!userOwnsProfile) {
+      throw new UnauthorizedException();
+    }
+
+    const matchingMedia = await Promise.all(
+      input.mediaIDs.map(_ => this.mediaClientService.findOneByID({id: _}))
+    );
+
+    const mediaOwnedByProfile = matchingMedia.filter(
+      _ => _.profileID === matchingProfile.id
+    );
+
+    const userOwnsAllMedia =
+      mediaOwnedByProfile.length === input.mediaIDs.length;
+
+    if (!userOwnsAllMedia) {
+      throw new UnauthorizedException();
+    }
+
+    const newAlbumPost = await this.albumPostRepo.create({
+      profileID: matchingProfile.id,
+      postData: {
+        mediaIDs: input.mediaIDs,
+        caption: input.caption,
+      },
+      postType: PostType.Album,
+    });
+    return postEntityToPostWithAlbumWire(newAlbumPost);
   }
 
   @Mutation(() => Boolean)

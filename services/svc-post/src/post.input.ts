@@ -47,3 +47,15 @@ export class PostWithVideoCreateInput {
   @Field(() => String)
   caption!: string;
 }
+
+@InputType()
+export class PostWithAlbumInput {
+  @Field(() => Number)
+  profileID!: number;
+
+  @Field(() => [Number!])
+  mediaIDs!: number[];
+
+  @Field(() => String)
+  caption!: string;
+}

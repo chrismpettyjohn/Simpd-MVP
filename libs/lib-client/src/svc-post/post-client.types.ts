@@ -2,6 +2,7 @@ export enum PostType {
   Text = 'text',
   Image = 'image',
   Video = 'video',
+  Album = 'album',
 }
 
 export interface BasePost {
@@ -25,6 +26,14 @@ export interface BasePostWithImage {
 
 export type PostWithImageWire = BasePost & BasePostWithImage;
 
+export interface BasePostWithAlbum {
+  type: PostType.Album;
+  mediaIDs: number[];
+  caption: string;
+}
+
+export type PostWithAlbumWire = BasePost & BasePostWithAlbum;
+
 export interface BasePostWithVideo {
   type: PostType.Video;
   mediaID: number;
@@ -36,7 +45,8 @@ export type PostWithVideoWire = BasePost & BasePostWithVideo;
 export type PostSubset =
   | PostWithTextWire
   | PostWithImageWire
-  | PostWithVideoWire;
+  | PostWithVideoWire
+  | PostWithAlbumWire;
 
 export type PostWire = BasePost & PostSubset;
 
