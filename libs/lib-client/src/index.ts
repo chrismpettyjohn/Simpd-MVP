@@ -12,6 +12,7 @@ export * from './svc-gateway/gateway.const';
 export * from './svc-media/media-client.decorator';
 export * from './svc-media/media-client.types';
 export * from './svc-media/media-client.service';
+export * from './svc-media/media.const';
 export * from './svc-message/message-client.decorator';
 export * from './svc-message/message-client.service';
 export * from './svc-message/message-client.types';

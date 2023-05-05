@@ -5,20 +5,20 @@ import {tagEntityToTagWire} from './tag.wire';
 import {
   TagFindOneInput,
   TagWire,
-  SVC_PROFILE_INTERNAL_EVENT_FIND_ONE_BY_ID,
+  SVC_TAG_INTERNAL_EVENT_FIND_ONE_BY_ID,
 } from '@simpd/lib-client';
 
 @Controller()
 export class TagController {
   constructor(private readonly tagRepo: TagRepository) {}
 
-  @MessagePattern(SVC_PROFILE_INTERNAL_EVENT_FIND_ONE_BY_ID)
+  @MessagePattern(SVC_TAG_INTERNAL_EVENT_FIND_ONE_BY_ID)
   async tagFindOneByID(data: TagFindOneInput): Promise<TagWire> {
-    const matchingRole = await this.tagRepo.findOneOrFail({
+    const matchingTag = await this.tagRepo.findOneOrFail({
       where: {
         id: data.id,
       },
     });
-    return tagEntityToTagWire(matchingRole);
+    return tagEntityToTagWire(matchingTag);
   }
 }

@@ -4,73 +4,80 @@
       "name": "svc-comment",
       "cwd": "./services/svc-comment",
       "script": "pnpm",
-      "args": "run web-server:dev"
+      "args": "run web-server:start"
     },
     {
       "name": "svc-form",
       "cwd": "./services/svc-form",
       "script": "pnpm",
-      "args": "run web-server:dev"
+      "args": "run web-server:start"
     },
     {
       "name": "svc-media",
       "cwd": "./services/svc-media",
       "script": "pnpm",
-      "args": "run web-server:dev"
+      "args": "run web-server:start"
     },
     {
       "name": "svc-message",
       "cwd": "./services/svc-message",
       "script": "pnpm",
-      "args": "run web-server:dev"
+      "args": "run web-server:start"
     },
     {
       "name": "svc-post",
       "cwd": "./services/svc-post",
       "script": "pnpm",
-      "args": "run web-server:dev"
+      "args": "run web-server:start"
     },
     {
       "name": "svc-profile",
       "cwd": "./services/svc-profile",
       "script": "pnpm",
-      "args": "run web-server:dev"
+      "args": "run web-server:start"
     },
     {
       "name": "svc-reaction",
       "cwd": "./services/svc-reaction",
       "script": "pnpm",
-      "args": "run web-server:dev"
+      "args": "run web-server:start"
     },
     {
       "name": "svc-report",
       "cwd": "./services/svc-report",
       "script": "pnpm",
-      "args": "run web-server:dev"
+      "args": "run web-server:start"
     },
     {
       "name": "svc-role",
       "cwd": "./services/svc-role",
       "script": "pnpm",
-      "args": "run web-server:dev"
+      "args": "run web-server:start"
     },
     {
       "name": "svc-session",
       "cwd": "./services/svc-session",
       "script": "pnpm",
-      "args": "run web-server:dev"
+      "args": "run web-server:start"
     },
     {
       "name": "svc-tag",
       "cwd": "./services/svc-tag",
       "script": "pnpm",
-      "args": "run web-server:dev"
+      "args": "run web-server:start"
     },
     {
       "name": "svc-user",
       "cwd": "./services/svc-user",
       "script": "pnpm",
-      "args": "run web-server:dev"
+      "args": "run web-server:start"
+    },
+    {
+      "name": "svc-gateway",
+      "cwd": "./services/svc-gateway",
+      "script": "pnpm",
+      "args": "run web-server:start",
+      "autorestart": true
     }
   ]
 }

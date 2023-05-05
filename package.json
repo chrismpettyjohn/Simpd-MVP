@@ -10,7 +10,7 @@
     "purge": "lerna exec -- rm -rf node_modules && lerna exec -- rm -rf dist && rm -rf yarn.lock && rm -rf node_modules && rm -rf yarn.lock",
     "dev:start": "pm2 start process.json",
     "dev:restart": "pm2 restart process.json",
-    "dev:stop": "pm2 stop all"
+    "dev:stop": "pm2 stop all && pm2 delete all"
   },
   "devDependencies": {
     "@types/node": "18.16.0",
