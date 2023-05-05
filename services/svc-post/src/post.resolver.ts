@@ -143,7 +143,7 @@ export class PostResolver {
       this.mediaClientService.findOneByID({id: input.mediaID}),
     ]);
 
-    const userOwnsProfile = matchingProfile?.userID !== session.userID;
+    const userOwnsProfile = matchingProfile?.userID === session.userID;
     const userOwnsMedia = matchingImage?.profileID === matchingProfile?.id;
 
     if (!userOwnsProfile || !userOwnsMedia) {
@@ -180,7 +180,7 @@ export class PostResolver {
       this.mediaClientService.findOneByID({id: input.mediaID}),
     ]);
 
-    const userOwnsProfile = matchingProfile?.userID !== session.userID;
+    const userOwnsProfile = matchingProfile?.userID === session.userID;
     const userOwnsMedia = matchingVideo?.profileID === matchingProfile?.id;
 
     if (!userOwnsProfile || !userOwnsMedia) {
@@ -214,7 +214,7 @@ export class PostResolver {
       id: input.profileID,
     });
 
-    const userOwnsProfile = matchingProfile?.userID !== session.userID;
+    const userOwnsProfile = matchingProfile?.userID === session.userID;
 
     if (!userOwnsProfile) {
       throw new UnauthorizedException();
@@ -256,7 +256,7 @@ export class PostResolver {
       id: input.profileID,
     });
 
-    const userOwnsProfile = matchingProfile?.userID !== session.userID;
+    const userOwnsProfile = matchingProfile?.userID === session.userID;
 
     if (!userOwnsProfile) {
       throw new UnauthorizedException();
