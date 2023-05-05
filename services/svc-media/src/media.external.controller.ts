@@ -6,6 +6,7 @@ import {FileInterceptor} from '@nestjs/platform-express';
 import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {MediaType, MediaWire, ProfileClientService} from '@simpd/lib-client';
 import {
+  BadRequestException,
   Body,
   Controller,
   Post,
@@ -13,7 +14,6 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import {AWS_S3_BUCKET} from './media.constant';
 
 @Controller('media')
 export class MediaExternalController {
@@ -38,17 +38,27 @@ export class MediaExternalController {
       throw new UnauthorizedException();
     }
 
+    const isImage = file.mimetype.indexOf('image') > -1;
+    const isVideo = file.mimetype.indexOf('video') > -1;
+
+    if (!isImage && !isVideo) {
+      // TODO: Delete file from AWS
+      throw new BadRequestException();
+    }
+
+    const fileType = isImage ? MediaType.Image : MediaType.Video;
+
     const newMedia = await this.mediaRepo.create({
       profileID: matchingProfile.id,
       mediaDetails: {
-        sizeInBytes: 0,
+        sizeInBytes: file.size,
         originalFileName: file.originalname,
       },
       mediaLocation: {
         awsS3Key: file.key,
-        awsS3Bucket: AWS_S3_BUCKET,
+        awsS3Bucket: file.bucket,
       },
-      mediaType: MediaType.Image,
+      mediaType: fileType,
     });
     return mediaEntityToMediaWire(newMedia);
   }

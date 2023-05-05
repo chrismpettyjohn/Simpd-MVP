@@ -2,100 +2,44 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-interface BasePostModel {
-  id: Float
-  profileID: Float
+type MediaDetailsModel {
+  sizeInBytes: Float
+  originalFileName: String
 }
 
-type PostWithTextModel {
-  id: Float
-  profileID: Float
-  content: String
+type MediaLocationModel {
+  awsS3Bucket: String
+  awsS3Key: String
 }
 
-type PostWithImageModel {
+type MediaModel {
   id: Float
+  type: MediaType
   profileID: Float
-  mediaID: Float
-  caption: String
+  details: MediaDetailsModel
+  location: MediaLocationModel
 }
 
-type PostWithVideoModel {
-  id: Float
-  profileID: Float
-  mediaID: Float
-  caption: String
-}
-
-type PostWithAlbumModel {
-  id: Float
-  profileID: Float
-  mediaIDs: [Float!]
-  caption: String
-}
-
-type PostWithSharedContentModel {
-  id: Float
-  profileID: Float
-  resourceType: PostSharedContentType
-  resourceID: Float
-  caption: String
-}
-
-enum PostSharedContentType {
-  Post
-  Media
+enum MediaType {
+  Image
+  Video
+  Other
 }
 
 type Query {
-  post(filter: PostFilterByOneInput!): BasePostModel!
-  posts(filter: PostFilterByManyInput): [BasePostModel!]!
+  media(filter: MediaFilterByOneInput!): MediaModel!
+  medias(filter: MediaFilterByManyInput): [MediaModel!]!
 }
 
-input PostFilterByOneInput {
+input MediaFilterByOneInput {
   id: Float
 }
 
-input PostFilterByManyInput {
+input MediaFilterByManyInput {
   ids: [Float!]
   profileIDs: [Float!]
 }
 
 type Mutation {
-  postWithTextCreate(input: PostWithTextCreateInput!): PostWithTextModel!
-  postWithImageCreate(input: PostWithImageCreateInput!): PostWithImageModel!
-  postWithVideoCreate(input: PostWithVideoCreateInput!): PostWithVideoModel!
-  postWithAlbumCreate(input: PostWithAlbumInput!): PostWithAlbumModel!
-  postWithSharedContentCreate(input: PostWithSharedContentInput!): PostWithSharedContentModel!
-  postDelete(filter: PostFilterByOneInput!): Boolean!
-}
-
-input PostWithTextCreateInput {
-  profileID: Float!
-  content: String!
-}
-
-input PostWithImageCreateInput {
-  profileID: Float!
-  mediaID: Float!
-  caption: String!
-}
-
-input PostWithVideoCreateInput {
-  profileID: Float!
-  mediaID: Float!
-  caption: String!
-}
-
-input PostWithAlbumInput {
-  profileID: Float!
-  mediaIDs: [Float!]!
-  caption: String!
-}
-
-input PostWithSharedContentInput {
-  profileID: Float!
-  resourceType: PostSharedContentType!
-  resourceID: Float!
-  caption: String!
+  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
 }
