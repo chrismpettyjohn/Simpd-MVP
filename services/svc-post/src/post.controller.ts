@@ -7,7 +7,7 @@ import {SVC_POST_INTERNAL_EVENT_FIND_ONE_BY_ID} from 'libs/lib-client/src/svc-po
 
 @Controller()
 export class PostController {
-  constructor(private readonly postRepo: PostRepository<any>) {}
+  constructor(private readonly postRepo: PostRepository<any, any>) {}
 
   @MessagePattern(SVC_POST_INTERNAL_EVENT_FIND_ONE_BY_ID)
   async postFindOneByID(data: PostFindOneInput): Promise<PostWire> {

@@ -5,6 +5,7 @@ import {
   PostWire,
   PostWithAlbumWire,
   PostWithImageWire,
+  PostWithSharedContentWire,
   PostWithTextWire,
   PostWithVideoWire,
 } from '@simpd/lib-client';
@@ -26,6 +27,10 @@ export function postEntityToPostWire(
 
   if (postEntity.postType === PostType.Album) {
     return postEntityToPostWithAlbumWire(postEntity);
+  }
+
+  if (postEntity.postType === PostType.SharedContent) {
+    return postEntityToPostWithSharedContentWire(postEntity);
   }
 
   throw new Error('Invalid post type');
@@ -78,6 +83,18 @@ export function postEntityToPostWithAlbumWire(
     ...postEntityToBasePost(postEntity),
     type: postEntity.postType,
     mediaIDs: postEntity.postData.mediaIDs,
+    caption: postEntity.postData.caption,
+  };
+}
+
+export function postEntityToPostWithSharedContentWire(
+  postEntity: PostEntity<PostWithSharedContentWire, PostType.SharedContent>
+): PostWithSharedContentWire {
+  return {
+    ...postEntityToBasePost(postEntity),
+    type: postEntity.postType,
+    resourceType: postEntity.postData.resourceType,
+    resourceID: postEntity.postData.resourceID,
     caption: postEntity.postData.caption,
   };
 }

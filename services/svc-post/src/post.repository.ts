@@ -1,9 +1,10 @@
 import {Repository} from 'typeorm';
-import {PostType, PostWire} from '@simpd/lib-client';
 import {PostEntity} from './post.entity';
 import {Injectable} from '@nestjs/common';
 import {BaseRepository} from '@simpd/lib-api';
 import {InjectRepository} from '@nestjs/typeorm';
+import {registerEnumType} from '@nestjs/graphql';
+import {PostSharedContentType, PostType, PostWire} from '@simpd/lib-client';
 
 @Injectable()
 export class PostRepository<
@@ -16,3 +17,11 @@ export class PostRepository<
     super(postRepo);
   }
 }
+
+registerEnumType(PostType, {
+  name: 'PostType',
+});
+
+registerEnumType(PostSharedContentType, {
+  name: 'PostSharedContentType',
+});

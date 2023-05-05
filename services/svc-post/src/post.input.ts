@@ -1,4 +1,5 @@
 import {Field, InputType} from '@nestjs/graphql';
+import {PostSharedContentType} from '@simpd/lib-client';
 
 @InputType()
 export class PostFilterByManyInput {
@@ -55,6 +56,21 @@ export class PostWithAlbumInput {
 
   @Field(() => [Number!])
   mediaIDs!: number[];
+
+  @Field(() => String)
+  caption!: string;
+}
+
+@InputType()
+export class PostWithSharedContentInput {
+  @Field(() => Number)
+  profileID!: number;
+
+  @Field(() => PostSharedContentType)
+  resourceType!: PostSharedContentType;
+
+  @Field(() => Number)
+  resourceID!: number;
 
   @Field(() => String)
   caption!: string;

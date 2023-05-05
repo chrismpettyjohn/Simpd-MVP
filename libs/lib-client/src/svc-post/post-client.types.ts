@@ -3,6 +3,7 @@ export enum PostType {
   Image = 'image',
   Video = 'video',
   Album = 'album',
+  SharedContent = 'shared_content',
 }
 
 export interface BasePost {
@@ -42,11 +43,26 @@ export interface BasePostWithVideo {
 
 export type PostWithVideoWire = BasePost & BasePostWithVideo;
 
+export enum PostSharedContentType {
+  Post = 'post',
+  Media = 'media',
+}
+
+export interface BasePostWithSharedContent {
+  type: PostType.SharedContent;
+  resourceType: PostSharedContentType;
+  resourceID: number;
+  caption: string;
+}
+
+export type PostWithSharedContentWire = BasePost & BasePostWithSharedContent;
+
 export type PostSubset =
   | PostWithTextWire
   | PostWithImageWire
   | PostWithVideoWire
-  | PostWithAlbumWire;
+  | PostWithAlbumWire
+  | PostWithSharedContentWire;
 
 export type PostWire = BasePost & PostSubset;
 

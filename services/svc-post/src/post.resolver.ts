@@ -1,11 +1,12 @@
 import {In} from 'typeorm';
 import {PostEntity} from './post.entity';
 import {PostRepository} from './post.repository';
-import {UnauthorizedException, BadRequestException} from '@nestjs/common';
 import {GetSession, HasSession} from '@simpd/lib-api';
+import {UnauthorizedException, BadRequestException} from '@nestjs/common';
 import {
   postEntityToPostWithAlbumWire,
   postEntityToPostWithImageWire,
+  postEntityToPostWithSharedContentWire,
   postEntityToPostWithTextWire,
   postEntityToPostWithVideoWire,
 } from './post.wire';
@@ -13,6 +14,7 @@ import {
   BasePostModel,
   PostWithAlbumModel,
   PostWithImageModel,
+  PostWithSharedContentModel,
   PostWithTextModel,
   PostWithVideoModel,
 } from './post.model';
@@ -27,9 +29,9 @@ import {
   MediaClientService,
   MediaType,
   PostType,
-  PostWire,
   PostWithAlbumWire,
   PostWithImageWire,
+  PostWithSharedContentWire,
   PostWithTextWire,
   PostWithVideoWire,
   ProfileClientService,
@@ -40,6 +42,7 @@ import {
   PostFilterByOneInput,
   PostWithAlbumInput,
   PostWithImageCreateInput,
+  PostWithSharedContentInput,
   PostWithTextCreateInput,
   PostWithVideoCreateInput,
 } from './post.input';
@@ -65,6 +68,10 @@ export class PostResolver {
     private readonly albumPostRepo: PostRepository<
       PostWithAlbumWire,
       PostType.Album
+    >,
+    private readonly sharedContentPostRepo: PostRepository<
+      PostWithSharedContentWire,
+      PostType.SharedContent
     >
   ) {}
 
@@ -237,6 +244,36 @@ export class PostResolver {
       postType: PostType.Album,
     });
     return postEntityToPostWithAlbumWire(newAlbumPost);
+  }
+
+  @Mutation(() => PostWithSharedContentModel)
+  @HasSession()
+  async postWithSharedContentCreate(
+    @GetSession() session: SessionWire,
+    @Args('input') input: PostWithSharedContentInput
+  ): Promise<PostWithSharedContentWire> {
+    const matchingProfile = await this.profileClientService.findOneByID({
+      id: input.profileID,
+    });
+
+    const userOwnsProfile = matchingProfile?.userID !== session.userID;
+
+    if (!userOwnsProfile) {
+      throw new UnauthorizedException();
+    }
+
+    // TODO: Implement privacy check
+
+    const newSharedContentPost = await this.sharedContentPostRepo.create({
+      profileID: matchingProfile.id,
+      postData: {
+        resourceType: input.resourceType,
+        resourceID: input.resourceID,
+        caption: input.caption,
+      },
+      postType: PostType.SharedContent,
+    });
+    return postEntityToPostWithSharedContentWire(newSharedContentPost);
   }
 
   @Mutation(() => Boolean)

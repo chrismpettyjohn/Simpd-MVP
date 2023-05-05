@@ -1,3 +1,4 @@
+import {PostSharedContentType} from '@simpd/lib-client';
 import {Directive, Field, InterfaceType, ObjectType} from '@nestjs/graphql';
 
 @InterfaceType()
@@ -7,7 +8,7 @@ export class BasePostModel {
   id?: number;
 
   @Field(() => Number, {nullable: true})
-  profileID?: string; // TODO: Add Privacy Guard
+  profileID?: number; // TODO: Add Privacy Guard
 }
 
 @ObjectType()
@@ -19,9 +20,6 @@ export class PostWithTextModel extends BasePostModel {
 @ObjectType()
 export class PostWithImageModel extends BasePostModel {
   @Field(() => Number, {nullable: true})
-  profileID?: string;
-
-  @Field(() => Number, {nullable: true})
   mediaID?: number;
 
   @Field(() => String, {nullable: true})
@@ -31,9 +29,6 @@ export class PostWithImageModel extends BasePostModel {
 @ObjectType()
 export class PostWithVideoModel extends BasePostModel {
   @Field(() => Number, {nullable: true})
-  profileID?: string;
-
-  @Field(() => Number, {nullable: true})
   mediaID?: number;
 
   @Field(() => String, {nullable: true})
@@ -42,11 +37,20 @@ export class PostWithVideoModel extends BasePostModel {
 
 @ObjectType()
 export class PostWithAlbumModel extends BasePostModel {
-  @Field(() => Number, {nullable: true})
-  profileID?: string;
-
   @Field(() => [Number!], {nullable: true})
   mediaIDs?: number[];
+
+  @Field(() => String, {nullable: true})
+  caption?: string;
+}
+
+@ObjectType()
+export class PostWithSharedContentModel extends BasePostModel {
+  @Field(() => PostSharedContentType, {nullable: true})
+  resourceType?: PostSharedContentType;
+
+  @Field(() => Number, {nullable: true})
+  resourceID?: number;
 
   @Field(() => String, {nullable: true})
   caption?: string;
