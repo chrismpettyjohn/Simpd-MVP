@@ -1,13 +1,13 @@
 import {Column, Entity, Index, PrimaryGeneratedColumn} from 'typeorm';
 
-@Entity({name: 'subscriptionGroups', schema: 'subscriptionGroups'})
+@Entity({name: 'subscription-groups', schema: 'subscription-groups'})
 export class SubscriptionGroupEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column({unique: true})
+  @Column({name: 'profile_id'})
   @Index()
-  key!: string;
+  profileID!: number;
 
   @Column()
   name!: string;

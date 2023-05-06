@@ -1,11 +1,11 @@
 export interface SubscriptionGroupWire {
   id: number;
-  key: string;
+  profileID: number;
   name: string;
   description: string;
 }
 
 export interface SubscriptionGroupFindOneInput {
-  id?: number;
-  key?: string;
+  id: number;
+  profileID: number;
 }
