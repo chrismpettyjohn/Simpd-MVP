@@ -1,10 +1,10 @@
-import {MediaCreateDTO} from './media.dto';
-import {IUploadedFile} from './media.types';
-import {MediaRepository} from './media.repository';
-import {mediaEntityToMediaWire} from './media.wire';
-import {FileInterceptor} from '@nestjs/platform-express';
-import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
-import {MediaType, MediaWire, ProfileClientService} from '@simpd/lib-client';
+import { MediaCreateDTO } from './media.dto';
+import { IUploadedFile } from './media.types';
+import { MediaRepository } from './media.repository';
+import { mediaEntityToMediaWire } from './media.wire';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { GetSession, HasSession, SessionContents } from '@simpd/lib-api';
+import { MediaType, MediaWire, ProfileClientService } from '@simpd/lib-client';
 import {
   BadRequestException,
   Body,
@@ -20,7 +20,7 @@ export class MediaExternalController {
   constructor(
     private readonly mediaRepo: MediaRepository,
     private readonly profileClientService: ProfileClientService
-  ) {}
+  ) { }
 
   @Post()
   @HasSession()
