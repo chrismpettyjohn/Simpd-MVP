@@ -21,6 +21,9 @@
       "@simpd/svc-post": [
         "services/svc-post/src"
       ],
+      "@simpd/svc-privacy": [
+        "services/svc-privacy/src"
+      ],
       "@simpd/svc-profile": [
         "services/svc-profile/src"
       ],
@@ -38,6 +41,9 @@
       ],
       "@simpd/svc-session": [
         "services/svc-session/src"
+      ],
+      "@simpd/svc-subscription-group": [
+        "services/svc-subscription-group/src"
       ],
       "@simpd/svc-tag": [
         "services/svc-tag/src"
