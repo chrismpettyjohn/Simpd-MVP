@@ -1,8 +1,8 @@
-import {Module} from '@nestjs/common';
-import {GraphQLModule} from '@nestjs/graphql';
-import {IntrospectAndCompose} from '@apollo/gateway';
-import {AuthenticatedDataSource} from './authenticated-datasource';
-import {ApolloGatewayDriver, ApolloGatewayDriverConfig} from '@nestjs/apollo';
+import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { IntrospectAndCompose } from '@apollo/gateway';
+import { AuthenticatedDataSource } from './authenticated-datasource';
+import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
 import {
   SVC_MEDIA_NAME,
   SVC_MEDIA_WEB_ADDRESS,
@@ -22,6 +22,7 @@ import {
   SVC_FORM_WEB_ADDRESS,
   SVC_MESSAGE_NAME,
   SVC_MESSAGE_WEB_ADDRESS,
+  SVC_PRIVACY_WEB_ADDRESS,
   SVC_REACTION_NAME,
   SVC_REACTION_WEB_ADDRESS,
   SVC_REPORT_NAME,
@@ -30,6 +31,8 @@ import {
   SVC_ROLE_WEB_ADDRESS,
   SVC_SESSION_NAME,
   SVC_SESSION_WEB_ADDRESS,
+  SVC_SUBSCRIPTION_GROUP_NAME,
+  SVC_SUBSCRIPTION_GROUP_WEB_ADDRESS,
   SVC_TAG_NAME,
   SVC_TAG_WEB_ADDRESS,
   SVC_USER_NAME,
@@ -43,25 +46,27 @@ import {
       gateway: {
         supergraphSdl: new IntrospectAndCompose({
           subgraphs: [
-            {name: SVC_COMMENT_NAME, url: SVC_COMMENT_WEB_ADDRESS},
-            {name: SVC_FORM_NAME, url: SVC_FORM_WEB_ADDRESS},
-            {name: SVC_POST_NAME, url: SVC_POST_WEB_ADDRESS},
-            {name: SVC_USER_NAME, url: SVC_USER_WEB_ADDRESS},
-            {name: SVC_ROLE_NAME, url: SVC_ROLE_WEB_ADDRESS},
-            {name: SVC_MEDIA_NAME, url: SVC_MEDIA_WEB_ADDRESS},
-            {name: SVC_MESSAGE_NAME, url: SVC_MESSAGE_WEB_ADDRESS},
-            {name: SVC_PROFILE_NAME, url: SVC_PROFILE_WEB_ADDRESS},
-            {name: SVC_REACTION_NAME, url: SVC_REACTION_WEB_ADDRESS},
-            {name: SVC_REPORT_NAME, url: SVC_REPORT_WEB_ADDRESS},
-            {name: SVC_SESSION_NAME, url: SVC_SESSION_WEB_ADDRESS},
-            {name: SVC_TAG_NAME, url: SVC_TAG_WEB_ADDRESS},
+            { name: SVC_COMMENT_NAME, url: SVC_COMMENT_WEB_ADDRESS },
+            { name: SVC_FORM_NAME, url: SVC_FORM_WEB_ADDRESS },
+            { name: SVC_POST_NAME, url: SVC_POST_WEB_ADDRESS },
+            { name: SVC_USER_NAME, url: SVC_USER_WEB_ADDRESS },
+            { name: SVC_ROLE_NAME, url: SVC_ROLE_WEB_ADDRESS },
+            { name: SVC_MEDIA_NAME, url: SVC_MEDIA_WEB_ADDRESS },
+            { name: SVC_MESSAGE_NAME, url: SVC_MESSAGE_WEB_ADDRESS },
+            { name: SVC_PROFILE_NAME, url: SVC_PROFILE_WEB_ADDRESS },
+            { name: SVC_REACTION_NAME, url: SVC_REACTION_WEB_ADDRESS },
+            { name: SVC_REPORT_NAME, url: SVC_REPORT_WEB_ADDRESS },
+            { name: SVC_SESSION_NAME, url: SVC_SESSION_WEB_ADDRESS },
+            { name: SVC_TAG_NAME, url: SVC_TAG_WEB_ADDRESS },
+            { name: SVC_PRIVACY_WEB_ADDRESS, url: SVC_PRIVACY_WEB_ADDRESS },
+            { name: SVC_SUBSCRIPTION_GROUP_NAME, url: SVC_SUBSCRIPTION_GROUP_WEB_ADDRESS }
           ],
         }),
-        buildService({name, url}) {
-          return new AuthenticatedDataSource({url});
+        buildService({ name, url }) {
+          return new AuthenticatedDataSource({ url });
         },
       },
     }),
   ],
 })
-export class GatewayModule {}
+export class GatewayModule { }
