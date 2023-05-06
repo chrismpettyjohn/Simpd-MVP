@@ -54,6 +54,7 @@ export * from './svc-session/session.const';
 export * from './svc-session/session.module';
 export * from './svc-subscription-group/subscription-group-client.decorator';
 export * from './svc-subscription-group/subscription-group-client.service';
+export * from './svc-subscription-group/subscription-group-client.types';
 export * from './svc-subscription-group/subscription-group.const';
 export * from './svc-subscription-group/subscription-group.module';
 export * from './svc-tag/tag-client.decorator';

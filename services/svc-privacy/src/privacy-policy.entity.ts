@@ -1,7 +1,7 @@
 import {Column, Entity, Index, PrimaryGeneratedColumn} from 'typeorm';
 
-@Entity({name: 'Privacys', schema: 'Privacys'})
-export class PrivacyEntity {
+@Entity({name: 'privacy_policies', schema: 'privacy'})
+export class PrivacyPolicyEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 

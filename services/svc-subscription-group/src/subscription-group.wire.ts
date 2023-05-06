@@ -6,7 +6,7 @@ export function subscriptionGroupEntityToSubscriptionGroupWire(
 ): SubscriptionGroupWire {
   return {
     id: subscriptionGroupEntity.id!,
-    key: subscriptionGroupEntity.key,
+    profileID: subscriptionGroupEntity.profileID,
     name: subscriptionGroupEntity.name,
     description: subscriptionGroupEntity.description,
   };

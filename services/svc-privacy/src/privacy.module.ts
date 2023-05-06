@@ -1,5 +1,5 @@
 import {Module} from '@nestjs/common';
-import {PrivacyEntity} from './privacy.entity';
+import {PrivacyPolicyEntity} from './privacy-policy.entity';
 import {PrivacyResolver} from './privacy.resolver';
 import {PrivacyController} from './privacy.controller';
 import {PrivacyRepository} from './privacy.repository';
@@ -16,7 +16,7 @@ import {
     SessionModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
-      entities: [PrivacyEntity],
+      entities: [PrivacyPolicyEntity],
       synchronize: true,
     }),
   ],

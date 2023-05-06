@@ -6,8 +6,8 @@ export class SubscriptionGroupModel {
   @Field(() => Number, {nullable: true})
   id?: number;
 
-  @Field(() => String, {nullable: true})
-  key?: string;
+  @Field(() => Number, {nullable: true})
+  profileID?: number;
 
   @Field(() => String, {nullable: true})
   name?: string;

@@ -6,22 +6,22 @@ export class SubscriptionGroupFilterByManyInput {
   ids?: number[];
 
   @Field(() => [String], {nullable: true})
-  keys?: string[];
+  profileIDs!: string[];
 }
 
 @InputType()
 export class SubscriptionGroupFilterByOneInput {
-  @Field(() => Number, {nullable: true})
-  id?: number;
+  @Field(() => Number)
+  id!: number;
 
-  @Field(() => [String], {nullable: true})
-  keys?: string[];
+  @Field(() => Number)
+  profileID!: number;
 }
 
 @InputType()
 export class SubscriptionGroupCreateInput {
-  @Field(() => String)
-  key!: string;
+  @Field(() => Number)
+  profileID!: number;
 
   @Field(() => String)
   name!: string;

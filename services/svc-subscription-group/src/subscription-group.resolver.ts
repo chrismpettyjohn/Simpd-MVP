@@ -1,7 +1,8 @@
 import {In} from 'typeorm';
+import {UnauthorizedException} from '@nestjs/common';
 import {SubscriptionGroupModel} from './subscription-group.model';
 import {SubscriptionGroupEntity} from './subscription-group.entity';
-import {HasSession} from '@simpd/lib-api';
+import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {SubscriptionGroupRepository} from './subscription-group.repository';
 import {
   Args,
@@ -15,11 +16,13 @@ import {
   SubscriptionGroupFilterByManyInput,
   SubscriptionGroupFilterByOneInput,
 } from './subscription-group.input';
+import {ProfileClientService} from '@simpd/lib-client';
 
 @Resolver(() => SubscriptionGroupModel)
 export class SubscriptionGroupResolver {
   constructor(
-    private readonly subscriptionGroupRepo: SubscriptionGroupRepository
+    private readonly subscriptionGroupRepo: SubscriptionGroupRepository,
+    private readonly profileClientService: ProfileClientService
   ) {}
 
   @ResolveReference()
@@ -27,7 +30,11 @@ export class SubscriptionGroupResolver {
     __typename: string;
     id: number;
   }): Promise<SubscriptionGroupEntity> {
-    return this.subscriptionGroup({id: reference.id});
+    return this.subscriptionGroupRepo.findOneOrFail({
+      where: {
+        id: reference.id,
+      },
+    });
   }
 
   @Query(() => SubscriptionGroupModel)
@@ -50,7 +57,7 @@ export class SubscriptionGroupResolver {
     return this.subscriptionGroupRepo.find({
       where: {
         id: filter?.ids && In(filter.ids),
-        key: filter?.keys && In(filter.keys),
+        profileID: filter?.profileIDs && In(filter.profileIDs),
       },
     });
   }
@@ -58,10 +65,21 @@ export class SubscriptionGroupResolver {
   @Mutation(() => SubscriptionGroupModel)
   @HasSession()
   async subscriptionGroupCreate(
+    @GetSession() session: SessionContents,
     @Args('input') input: SubscriptionGroupCreateInput
   ): Promise<SubscriptionGroupEntity> {
+    const matchingProfile = await this.profileClientService.findOneByID({
+      id: input.profileID,
+    });
+
+    const userOwnsProfile = matchingProfile.userID === session.userID;
+
+    if (!userOwnsProfile) {
+      throw new UnauthorizedException();
+    }
+
     const newSubscriptionGroup = await this.subscriptionGroupRepo.create({
-      key: input.key,
+      profileID: input.profileID,
       name: input.name,
       description: input.description,
     });

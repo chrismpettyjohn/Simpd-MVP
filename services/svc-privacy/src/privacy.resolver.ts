@@ -1,6 +1,6 @@
 import {In} from 'typeorm';
 import {PrivacyModel} from './privacy.model';
-import {PrivacyEntity} from './privacy.entity';
+import {PrivacyPolicyEntity} from './privacy-policy.entity';
 import {HasSession} from '@simpd/lib-api';
 import {PrivacyRepository} from './privacy.repository';
 import {
@@ -24,14 +24,14 @@ export class PrivacyResolver {
   resolveReference(reference: {
     __typename: string;
     id: number;
-  }): Promise<PrivacyEntity> {
+  }): Promise<PrivacyPolicyEntity> {
     return this.privacy({id: reference.id});
   }
 
   @Query(() => PrivacyModel)
   async privacy(
     @Args('filter') filter: PrivacyFilterByOneInput
-  ): Promise<PrivacyEntity> {
+  ): Promise<PrivacyPolicyEntity> {
     return this.privacyRepo.findOneOrFail({
       where: filter,
     });
@@ -41,7 +41,7 @@ export class PrivacyResolver {
   privacys(
     @Args('filter', {type: () => PrivacyFilterByManyInput, nullable: true})
     filter?: PrivacyFilterByManyInput
-  ): Promise<PrivacyEntity[]> {
+  ): Promise<PrivacyPolicyEntity[]> {
     return this.privacyRepo.find({
       where: {
         id: filter?.ids && In(filter.ids),
@@ -54,7 +54,7 @@ export class PrivacyResolver {
   @HasSession()
   async privacyCreate(
     @Args('input') input: PrivacyCreateInput
-  ): Promise<PrivacyEntity> {
+  ): Promise<PrivacyPolicyEntity> {
     const newPrivacy = await this.privacyRepo.create({
       key: input.key,
       name: input.name,

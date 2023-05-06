@@ -1,8 +1,8 @@
 import {PrivacyWire} from '@simpd/lib-client';
-import {PrivacyEntity} from './privacy.entity';
+import {PrivacyPolicyEntity} from './privacy-policy.entity';
 
-export function PrivacyEntityToPrivacyWire(
-  PrivacyEntity: PrivacyEntity
+export function privacyEntityToPrivacyWire(
+  PrivacyEntity: PrivacyPolicyEntity
 ): PrivacyWire {
   return {
     id: PrivacyEntity.id!,
