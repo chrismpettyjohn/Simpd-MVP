@@ -6,5 +6,6 @@ export function userEntityToUserWire(userEntity: UserEntity): UserWire {
     id: userEntity.id!,
     email: userEntity.email,
     roleID: userEntity.roleID,
+    subscriptionGroupIDs: userEntity.subscriptionGroupIDs,
   };
 }

@@ -1,7 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
-import { ReactionRepository } from './reaction.repository';
-import { reactionEntityToReactionWire } from './reaction.wire';
+import {Controller} from '@nestjs/common';
+import {MessagePattern} from '@nestjs/microservices';
+import {ReactionRepository} from './reaction.repository';
+import {reactionEntityToReactionWire} from './reaction.wire';
 import {
   ReactionFindOneInput,
   ReactionWire,
@@ -10,7 +10,7 @@ import {
 
 @Controller()
 export class ReactionController {
-  constructor(private readonly reactionRepo: ReactionRepository) { }
+  constructor(private readonly reactionRepo: ReactionRepository) {}
 
   @MessagePattern(SVC_REACTION_INTERNAL_EVENT_FIND_ONE)
   async reactionFindOneByID(data: ReactionFindOneInput): Promise<ReactionWire> {

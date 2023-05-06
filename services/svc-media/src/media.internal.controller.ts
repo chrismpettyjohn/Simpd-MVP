@@ -1,7 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { MediaRepository } from './media.repository';
-import { mediaEntityToMediaWire } from './media.wire';
-import { MessagePattern } from '@nestjs/microservices';
+import {Controller} from '@nestjs/common';
+import {MediaRepository} from './media.repository';
+import {mediaEntityToMediaWire} from './media.wire';
+import {MessagePattern} from '@nestjs/microservices';
 import {
   MediaFindOneInput,
   MediaWire,
@@ -10,7 +10,7 @@ import {
 
 @Controller()
 export class MediaInternalController {
-  constructor(private readonly mediaRepo: MediaRepository) { }
+  constructor(private readonly mediaRepo: MediaRepository) {}
 
   @MessagePattern(SVC_MEDIA_INTERNAL_EVENT_FIND_ONE)
   async mediaFindOneByID(data: MediaFindOneInput): Promise<MediaWire> {

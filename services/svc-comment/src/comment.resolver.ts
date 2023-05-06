@@ -1,10 +1,10 @@
-import { In } from 'typeorm';
-import { CommentModel } from './comment.model';
-import { CommentEntity } from './comment.entity';
-import { UnauthorizedException } from '@nestjs/common';
-import { ProfileClientService } from '@simpd/lib-client';
-import { CommentRepository } from './comment.repository';
-import { GetSession, HasSession, SessionContents } from '@simpd/lib-api';
+import {In} from 'typeorm';
+import {CommentModel} from './comment.model';
+import {CommentEntity} from './comment.entity';
+import {UnauthorizedException} from '@nestjs/common';
+import {ProfileClientService} from '@simpd/lib-client';
+import {CommentRepository} from './comment.repository';
+import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {
   Args,
   Mutation,
@@ -23,14 +23,14 @@ export class CommentResolver {
   constructor(
     private readonly commentRepo: CommentRepository,
     private readonly profileClientService: ProfileClientService
-  ) { }
+  ) {}
 
   @ResolveReference()
   resolveReference(reference: {
     __typename: string;
     id: number;
   }): Promise<CommentEntity> {
-    return this.comment({ id: reference.id });
+    return this.comment({id: reference.id});
   }
 
   @Query(() => CommentModel)
@@ -44,7 +44,7 @@ export class CommentResolver {
 
   @Query(() => [CommentModel])
   comments(
-    @Args('filter', { type: () => CommentFilterByManyInput, nullable: true })
+    @Args('filter', {type: () => CommentFilterByManyInput, nullable: true})
     filter?: CommentFilterByManyInput
   ): Promise<CommentEntity[]> {
     return this.commentRepo.find({

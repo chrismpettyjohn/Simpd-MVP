@@ -11,7 +11,6 @@ export interface PrivacyWire {
 }
 
 export interface PrivacyFindOneInput {
-  id: number;
   resourceID: number;
 }
 
@@ -22,4 +21,7 @@ export interface PrivacyCreateOneInput {
   policy: PrivacyPolicy;
 }
 
-export type PrivacyUpdateOneInput = Omit<Partial<PrivacyCreateOneInput>, 'resourceID'>;
+export type PrivacyUpdateOneInput = Omit<
+  Partial<PrivacyCreateOneInput>,
+  'resourceID'
+>;

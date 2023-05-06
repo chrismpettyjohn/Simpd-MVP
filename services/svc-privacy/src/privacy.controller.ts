@@ -1,7 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
-import { PrivacyRepository } from './privacy.repository';
-import { privacyEntityToPrivacyWire } from './privacy.wire';
+import {Controller} from '@nestjs/common';
+import {MessagePattern} from '@nestjs/microservices';
+import {PrivacyRepository} from './privacy.repository';
+import {privacyEntityToPrivacyWire} from './privacy.wire';
 import {
   PrivacyCreateOneInput,
   PrivacyFindOneInput,
@@ -14,7 +14,7 @@ import {
 
 @Controller()
 export class PrivacyController {
-  constructor(private readonly privacyRepo: PrivacyRepository) { }
+  constructor(private readonly privacyRepo: PrivacyRepository) {}
 
   @MessagePattern(SVC_PRIVACY_INTERNAL_EVENT_FIND_ONE)
   async privacyFindOneByID(data: PrivacyFindOneInput): Promise<PrivacyWire> {
@@ -39,16 +39,22 @@ export class PrivacyController {
   }
 
   @MessagePattern(SVC_PRIVACY_INTERNAL_EVENT_UPDATE_ONE)
-  async privacyUpdateOne(filter: PrivacyFindOneInput, input: PrivacyCreateOneInput): Promise<boolean> {
-    await this.privacyRepo.update({
-      id: filter.id,
-      resourceID: filter.resourceID,
-    }, {
-      resourceID: input.resourceID,
-      name: input.name,
-      description: input.description,
-      policy: input.policy,
-    });
+  async privacyUpdateOne(
+    filter: PrivacyFindOneInput,
+    input: PrivacyCreateOneInput
+  ): Promise<boolean> {
+    await this.privacyRepo.update(
+      {
+        id: filter.id,
+        resourceID: filter.resourceID,
+      },
+      {
+        resourceID: input.resourceID,
+        name: input.name,
+        description: input.description,
+        policy: input.policy,
+      }
+    );
     return true;
   }
 

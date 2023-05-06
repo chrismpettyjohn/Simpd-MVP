@@ -1,9 +1,9 @@
-import { In } from 'typeorm';
-import { UnauthorizedException } from '@nestjs/common';
-import { SubscriptionGroupModel } from './subscription-group.model';
-import { SubscriptionGroupEntity } from './subscription-group.entity';
-import { GetSession, HasSession, SessionContents } from '@simpd/lib-api';
-import { SubscriptionGroupRepository } from './subscription-group.repository';
+import {In} from 'typeorm';
+import {UnauthorizedException} from '@nestjs/common';
+import {SubscriptionGroupModel} from './subscription-group.model';
+import {SubscriptionGroupEntity} from './subscription-group.entity';
+import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
+import {SubscriptionGroupRepository} from './subscription-group.repository';
 import {
   Args,
   Mutation,
@@ -16,14 +16,14 @@ import {
   SubscriptionGroupFilterByManyInput,
   SubscriptionGroupFilterByOneInput,
 } from './subscription-group.input';
-import { ProfileClientService } from '@simpd/lib-client';
+import {ProfileClientService} from '@simpd/lib-client';
 
 @Resolver(() => SubscriptionGroupModel)
 export class SubscriptionGroupResolver {
   constructor(
     private readonly subscriptionGroupRepo: SubscriptionGroupRepository,
     private readonly profileClientService: ProfileClientService
-  ) { }
+  ) {}
 
   @ResolveReference()
   resolveReference(reference: {

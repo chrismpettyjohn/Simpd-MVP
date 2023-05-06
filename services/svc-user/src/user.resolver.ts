@@ -80,6 +80,7 @@ export class UserResolver {
       roleID: DEFAULT_USER_ROLE_ID,
       email: input.email,
       hashedPassword: this.hashService.generate(input.password),
+      subscriptionGroupIDs: [],
     });
     return newUser;
   }

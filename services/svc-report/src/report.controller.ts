@@ -1,7 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
-import { ReportRepository } from './report.repository';
-import { reportEntityToReportWire } from './report.wire';
+import {Controller} from '@nestjs/common';
+import {MessagePattern} from '@nestjs/microservices';
+import {ReportRepository} from './report.repository';
+import {reportEntityToReportWire} from './report.wire';
 import {
   ReportFindOneInput,
   ReportWire,
@@ -10,7 +10,7 @@ import {
 
 @Controller()
 export class ReportController {
-  constructor(private readonly reportRepo: ReportRepository) { }
+  constructor(private readonly reportRepo: ReportRepository) {}
 
   @MessagePattern(SVC_REPORT_INTERNAL_EVENT_FIND_ONE)
   async reportFindOneByID(data: ReportFindOneInput): Promise<ReportWire> {

@@ -1,7 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
-import { SubscriptionGroupRepository } from './subscription-group.repository';
-import { subscriptionGroupEntityToSubscriptionGroupWire } from './subscription-group.wire';
+import {Controller} from '@nestjs/common';
+import {MessagePattern} from '@nestjs/microservices';
+import {SubscriptionGroupRepository} from './subscription-group.repository';
+import {subscriptionGroupEntityToSubscriptionGroupWire} from './subscription-group.wire';
 import {
   SubscriptionGroupFindOneInput,
   SubscriptionGroupWire,
@@ -12,7 +12,7 @@ import {
 export class SubscriptionGroupController {
   constructor(
     private readonly subscriptionGroupRepo: SubscriptionGroupRepository
-  ) { }
+  ) {}
 
   @MessagePattern(SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE)
   async subscriptionGroupFindOneByID(

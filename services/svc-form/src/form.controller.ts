@@ -1,7 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
-import { FormRepository } from './form.repository';
-import { formEntityToFormWire } from './form.wire';
+import {Controller} from '@nestjs/common';
+import {MessagePattern} from '@nestjs/microservices';
+import {FormRepository} from './form.repository';
+import {formEntityToFormWire} from './form.wire';
 import {
   FormFindOneInput,
   FormWire,
@@ -10,7 +10,7 @@ import {
 
 @Controller()
 export class FormController {
-  constructor(private readonly formRepo: FormRepository) { }
+  constructor(private readonly formRepo: FormRepository) {}
 
   @MessagePattern(SVC_FORM_INTERNAL_EVENT_FIND_ONE)
   async formFindOneByID(data: FormFindOneInput): Promise<FormWire> {

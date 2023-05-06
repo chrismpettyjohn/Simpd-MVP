@@ -2,12 +2,13 @@ import {PrivacyWire} from '@simpd/lib-client';
 import {PrivacyPolicyEntity} from './privacy-policy.entity';
 
 export function privacyEntityToPrivacyWire(
-  PrivacyEntity: PrivacyPolicyEntity
+  privacyEntity: PrivacyPolicyEntity
 ): PrivacyWire {
   return {
-    id: PrivacyEntity.id!,
-    key: PrivacyEntity.key,
-    name: PrivacyEntity.name,
-    description: PrivacyEntity.description,
+    id: privacyEntity.id!,
+    resourceID: privacyEntity.resourceID,
+    name: privacyEntity.name,
+    description: privacyEntity.description,
+    policy: privacyEntity.policy,
   };
 }

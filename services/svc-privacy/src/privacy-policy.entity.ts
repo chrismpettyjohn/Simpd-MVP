@@ -1,21 +1,21 @@
-import { PrivacyPolicy } from '@simpd/lib-client';
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {PrivacyPolicy} from '@simpd/lib-client';
+import {Column, Entity, Index, PrimaryGeneratedColumn} from 'typeorm';
 
-@Entity({ name: 'privacy_policies', schema: 'privacy' })
+@Entity({name: 'privacy_policies', schema: 'privacy'})
 export class PrivacyPolicyEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column({ name: 'resource_id' })
+  @Column({name: 'resource_id'})
   @Index()
   resourceID!: number;
 
   @Column()
   name!: string;
 
-  @Column({ type: 'text' })
+  @Column({type: 'text'})
   description!: string;
 
-  @Column({ type: 'json' })
+  @Column({type: 'json'})
   policy!: PrivacyPolicy;
 }

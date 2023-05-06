@@ -1,8 +1,8 @@
-import { In } from 'typeorm';
-import { PostEntity } from './post.entity';
-import { PostRepository } from './post.repository';
-import { GetSession, HasSession } from '@simpd/lib-api';
-import { UnauthorizedException, BadRequestException } from '@nestjs/common';
+import {In} from 'typeorm';
+import {PostEntity} from './post.entity';
+import {PostRepository} from './post.repository';
+import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
+import {UnauthorizedException, BadRequestException} from '@nestjs/common';
 import {
   postEntityToPostWithAlbumWire,
   postEntityToPostWithImageWire,
@@ -46,11 +46,13 @@ import {
   PostWithTextCreateInput,
   PostWithVideoCreateInput,
 } from './post.input';
+import {PostPrivacyService} from './post-privacy.service';
 
 @Resolver(() => BasePostModel)
 export class PostResolver {
   constructor(
     private readonly postRepo: PostRepository<any, any>,
+    private readonly postPrivacyService: PostPrivacyService,
     private readonly mediaClientService: MediaClientService,
     private readonly profileClientService: ProfileClientService,
     private readonly textPostRepo: PostRepository<
@@ -73,37 +75,59 @@ export class PostResolver {
       PostWithSharedContentWire,
       PostType.SharedContent
     >
-  ) { }
+  ) {}
 
-  // TODO: Add Privacy Guard
   @ResolveReference()
-  resolveReference(reference: {
-    __typename: string;
-    id: number;
-  }): Promise<PostEntity> {
-    return this.post({ id: reference.id });
+  @HasSession()
+  resolveReference(
+    @GetSession() session: SessionContents,
+    reference: {
+      __typename: string;
+      id: number;
+    }
+  ): Promise<PostEntity> {
+    return this.post(session, {id: reference.id});
   }
 
   @Query(() => BasePostModel)
+  @HasSession()
   async post(
+    @GetSession() session: SessionContents,
     @Args('filter') filter: PostFilterByOneInput
   ): Promise<PostEntity> {
+    await this.postPrivacyService.profileCanAccessPost(
+      session.profileID,
+      filter.id
+    );
     return this.postRepo.findOneOrFail({
       where: filter,
     });
   }
 
   @Query(() => [BasePostModel])
-  posts(
-    @Args('filter', { type: () => PostFilterByManyInput, nullable: true })
+  @HasSession()
+  async posts(
+    @GetSession() session: SessionContents,
+    @Args('filter', {type: () => PostFilterByManyInput, nullable: true})
     filter?: PostFilterByManyInput
   ): Promise<PostEntity[]> {
-    return this.postRepo.find({
+    const matchingPosts = await this.postRepo.find({
       where: {
         id: filter?.ids && In(filter.ids),
         profileID: filter?.profileIDs && In(filter.profileIDs),
       },
     });
+
+    await Promise.all(
+      matchingPosts.map(post =>
+        this.postPrivacyService.profileCanAccessPost(
+          session.profileID,
+          post.id!
+        )
+      )
+    );
+
+    return matchingPosts;
   }
 
   @Mutation(() => PostWithTextModel)
@@ -140,7 +164,7 @@ export class PostResolver {
       this.profileClientService.findOne({
         id: input.profileID,
       }),
-      this.mediaClientService.findOne({ id: input.mediaID }),
+      this.mediaClientService.findOne({id: input.mediaID}),
     ]);
 
     const userOwnsProfile = matchingProfile?.userID === session.userID;
@@ -177,7 +201,7 @@ export class PostResolver {
       this.profileClientService.findOne({
         id: input.profileID,
       }),
-      this.mediaClientService.findOne({ id: input.mediaID }),
+      this.mediaClientService.findOne({id: input.mediaID}),
     ]);
 
     const userOwnsProfile = matchingProfile?.userID === session.userID;
@@ -221,7 +245,7 @@ export class PostResolver {
     }
 
     const matchingMedia = await Promise.all(
-      input.mediaIDs.map(_ => this.mediaClientService.findOne({ id: _ }))
+      input.mediaIDs.map(_ => this.mediaClientService.findOne({id: _}))
     );
 
     const mediaOwnedByProfile = matchingMedia.filter(

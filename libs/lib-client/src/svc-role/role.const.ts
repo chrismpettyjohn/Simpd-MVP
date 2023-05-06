@@ -1,4 +1,4 @@
-import { RoleScopes } from './role-client.types';
+import {RoleScopes} from './role-client.types';
 
 export const SVC_ROLE_NAME = 'RoleService';
 export const SVC_ROLE_WEB_SERVER_PORT = 3002;

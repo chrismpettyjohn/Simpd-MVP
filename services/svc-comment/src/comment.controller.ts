@@ -1,7 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
-import { CommentRepository } from './comment.repository';
-import { commentEntityToCommentWire } from './comment.wire';
+import {Controller} from '@nestjs/common';
+import {MessagePattern} from '@nestjs/microservices';
+import {CommentRepository} from './comment.repository';
+import {commentEntityToCommentWire} from './comment.wire';
 import {
   CommentFindOneInput,
   CommentWire,
@@ -10,7 +10,7 @@ import {
 
 @Controller()
 export class CommentController {
-  constructor(private readonly commentRepo: CommentRepository) { }
+  constructor(private readonly commentRepo: CommentRepository) {}
 
   @MessagePattern(SVC_COMMENT_INTERNAL_EVENT_FIND_ONE)
   async commentFindOneByID(data: CommentFindOneInput): Promise<CommentWire> {

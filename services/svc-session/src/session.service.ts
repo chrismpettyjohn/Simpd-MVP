@@ -1,9 +1,9 @@
-import { addTime } from '@simpd/lib-api';
-import { JwtService } from '@nestjs/jwt';
-import { SessionContents } from '@simpd/lib-api';
-import { SessionRepository } from './session.repository';
-import { DEFAULT_SESSION_LENGTH } from './session.const';
-import { RoleClientService, UserClientService } from '@simpd/lib-client';
+import {addTime} from '@simpd/lib-api';
+import {JwtService} from '@nestjs/jwt';
+import {SessionContents} from '@simpd/lib-api';
+import {SessionRepository} from './session.repository';
+import {DEFAULT_SESSION_LENGTH} from './session.const';
+import {RoleClientService, UserClientService} from '@simpd/lib-client';
 import {
   InternalServerErrorException,
   NotFoundException,
@@ -17,13 +17,13 @@ export class SessionService {
     private readonly sessionRepo: SessionRepository,
     private readonly userClientService: UserClientService,
     private readonly roleClientService: RoleClientService
-  ) { }
+  ) {}
 
   async createNewSession(userID: number): Promise<SessionContents> {
     const currentTime = new Date();
     const expiresAt = addTime(currentTime, DEFAULT_SESSION_LENGTH);
 
-    const user = await this.userClientService.findOne({ id: userID });
+    const user = await this.userClientService.findOne({id: userID});
 
     if (!user) {
       throw new NotFoundException(`User ${userID} does not exist`);

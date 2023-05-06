@@ -1,8 +1,8 @@
-import { In } from 'typeorm';
-import { PrivacyModel } from './privacy.model';
-import { PrivacyPolicyEntity } from './privacy-policy.entity';
-import { HasSession } from '@simpd/lib-api';
-import { PrivacyRepository } from './privacy.repository';
+import {In} from 'typeorm';
+import {PrivacyModel} from './privacy.model';
+import {PrivacyPolicyEntity} from './privacy-policy.entity';
+import {HasSession} from '@simpd/lib-api';
+import {PrivacyRepository} from './privacy.repository';
 import {
   Args,
   Mutation,
@@ -18,14 +18,14 @@ import {
 
 @Resolver(() => PrivacyModel)
 export class PrivacyResolver {
-  constructor(private readonly privacyRepo: PrivacyRepository) { }
+  constructor(private readonly privacyRepo: PrivacyRepository) {}
 
   @ResolveReference()
   resolveReference(reference: {
     __typename: string;
     id: number;
   }): Promise<PrivacyPolicyEntity> {
-    return this.privacy({ id: reference.id });
+    return this.privacy({id: reference.id});
   }
 
   @Query(() => PrivacyModel)
@@ -39,7 +39,7 @@ export class PrivacyResolver {
 
   @Query(() => [PrivacyModel])
   privacys(
-    @Args('filter', { type: () => PrivacyFilterByManyInput, nullable: true })
+    @Args('filter', {type: () => PrivacyFilterByManyInput, nullable: true})
     filter?: PrivacyFilterByManyInput
   ): Promise<PrivacyPolicyEntity[]> {
     return this.privacyRepo.find({
@@ -49,7 +49,6 @@ export class PrivacyResolver {
       },
     });
   }
-
 
   @Mutation(() => Boolean)
   async privacyDelete(@Args('filter') filter: PrivacyFilterByOneInput) {

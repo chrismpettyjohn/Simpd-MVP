@@ -1,7 +1,11 @@
-import { lastValueFrom } from 'rxjs';
-import { Inject, Injectable } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
-import { PrivacyCreateOneInput, PrivacyFindOneInput, PrivacyWire } from './privacy-client.types';
+import {lastValueFrom} from 'rxjs';
+import {Inject, Injectable} from '@nestjs/common';
+import {ClientProxy} from '@nestjs/microservices';
+import {
+  PrivacyCreateOneInput,
+  PrivacyFindOneInput,
+  PrivacyWire,
+} from './privacy-client.types';
 import {
   SVC_PRIVACY_INTERNAL_EVENT_CREATE_ONE,
   SVC_PRIVACY_INTERNAL_EVENT_DELETE_ONE,
@@ -12,12 +16,12 @@ import {
 
 @Injectable()
 export class PrivacyClientService {
-  constructor(@Inject(SVC_PRIVACY_NAME) private client: ClientProxy) { }
+  constructor(@Inject(SVC_PRIVACY_NAME) private client: ClientProxy) {}
 
-  async findOne({ id }: PrivacyFindOneInput): Promise<PrivacyWire> {
+  async findOne(input: PrivacyFindOneInput): Promise<PrivacyWire> {
     const matchingPrivacy$ = this.client.send(
       SVC_PRIVACY_INTERNAL_EVENT_FIND_ONE,
-      { id }
+      {input}
     );
     return await lastValueFrom(matchingPrivacy$);
   }
@@ -25,25 +29,26 @@ export class PrivacyClientService {
   async createOne(input: PrivacyCreateOneInput): Promise<PrivacyWire> {
     const createdPrivacy$ = this.client.send(
       SVC_PRIVACY_INTERNAL_EVENT_CREATE_ONE,
-      { input }
+      {input}
     );
     return await lastValueFrom(createdPrivacy$);
   }
 
-
-  async updateOne(filter: PrivacyFindOneInput, input: PrivacyCreateOneInput): Promise<boolean> {
+  async updateOne(
+    filter: PrivacyFindOneInput,
+    input: PrivacyCreateOneInput
+  ): Promise<boolean> {
     const createdPrivacy$ = this.client.send(
       SVC_PRIVACY_INTERNAL_EVENT_UPDATE_ONE,
-      { filter, input }
+      {filter, input}
     );
     return await lastValueFrom(createdPrivacy$);
   }
-
 
   async deleteOne(filter: PrivacyFindOneInput): Promise<boolean> {
     const createdPrivacy$ = this.client.send(
       SVC_PRIVACY_INTERNAL_EVENT_DELETE_ONE,
-      { filter }
+      {filter}
     );
     return await lastValueFrom(createdPrivacy$);
   }

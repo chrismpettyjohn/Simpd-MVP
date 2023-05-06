@@ -2,55 +2,39 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type RoleScopesModel {
-  """User can create profile"""
-  profileCreate: Boolean
-
-  """
-  User can create bypass privacy restrictions.  Typically reserved for Administrative Purposes.
-  """
-  bypassUserPrivacy: Boolean
-}
-
-type RoleModel {
+type UserModel {
   id: Float
-  name: String
-  description: String
-  scopes: RoleScopesModel
+  email: String
+  subscriptionGroupIDs: [Float!]
 }
 
 type Query {
-  role(filter: RoleFilterByOneInput!): RoleModel!
-  roles(filter: RoleFilterByManyInput): [RoleModel!]!
+  user(filter: UserFilterByOneInput!): UserModel!
+  users(filter: UserFilterByManyInput): [UserModel!]!
 }
 
-input RoleFilterByOneInput {
+input UserFilterByOneInput {
   id: Float
+  email: String
 }
 
-input RoleFilterByManyInput {
+input UserFilterByManyInput {
   ids: [Float!]
+  emails: [String!]
 }
 
 type Mutation {
-  roleCreate(input: RoleCreateInput!): RoleModel!
-  roleUpdate(filter: RoleFilterByOneInput!, input: RoleUpdateInput!): RoleModel!
-  roleDelete(filter: RoleFilterByOneInput!): Boolean!
+  userCreate(input: UserCreateInput!): UserModel!
+  userUpdate(filter: UserFilterByOneInput!, input: UserUpdateInput!): Boolean!
+  userDelete(filter: UserFilterByOneInput!): Boolean!
 }
 
-input RoleCreateInput {
-  name: String!
-  description: String!
-  scopes: RoleScopesInput!
+input UserCreateInput {
+  email: String!
+  password: String!
 }
 
-input RoleScopesInput {
-  profileCreate: Boolean!
-  bypassUserPrivacy: Boolean!
-}
-
-input RoleUpdateInput {
-  name: String
-  description: String
-  scopes: RoleScopesInput
+input UserUpdateInput {
+  email: String
+  password: String
 }

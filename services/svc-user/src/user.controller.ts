@@ -1,7 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { UserRepository } from './user.repository';
-import { userEntityToUserWire } from './user.wire';
-import { MessagePattern } from '@nestjs/microservices';
+import {Controller} from '@nestjs/common';
+import {UserRepository} from './user.repository';
+import {userEntityToUserWire} from './user.wire';
+import {MessagePattern} from '@nestjs/microservices';
 import {
   SVC_USER_INTERNAL_EVENT_FIND_ONE,
   UserFindOneInput,
@@ -10,7 +10,7 @@ import {
 
 @Controller()
 export class UserController {
-  constructor(private readonly userRepo: UserRepository) { }
+  constructor(private readonly userRepo: UserRepository) {}
 
   @MessagePattern(SVC_USER_INTERNAL_EVENT_FIND_ONE)
   async userFindOneByID(data: UserFindOneInput): Promise<UserWire> {

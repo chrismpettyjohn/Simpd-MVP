@@ -1,7 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
-import { ProfileRepository } from './profile.repository';
-import { profileEntityToProfileWire } from './profile.wire';
+import {Controller} from '@nestjs/common';
+import {MessagePattern} from '@nestjs/microservices';
+import {ProfileRepository} from './profile.repository';
+import {profileEntityToProfileWire} from './profile.wire';
 import {
   ProfileFindOneInput,
   ProfileWire,
@@ -10,7 +10,7 @@ import {
 
 @Controller()
 export class ProfileController {
-  constructor(private readonly profileRepo: ProfileRepository) { }
+  constructor(private readonly profileRepo: ProfileRepository) {}
 
   @MessagePattern(SVC_PROFILE_INTERNAL_EVENT_FIND_ONE)
   async profileFindOneByID(data: ProfileFindOneInput): Promise<ProfileWire> {

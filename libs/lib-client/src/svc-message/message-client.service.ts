@@ -1,7 +1,7 @@
-import { lastValueFrom } from 'rxjs';
-import { Inject, Injectable } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
-import { MessageFindOneInput, MessageWire } from './message-client.types';
+import {lastValueFrom} from 'rxjs';
+import {Inject, Injectable} from '@nestjs/common';
+import {ClientProxy} from '@nestjs/microservices';
+import {MessageFindOneInput, MessageWire} from './message-client.types';
 import {
   SVC_MESSAGE_INTERNAL_EVENT_FIND_ONE,
   SVC_MESSAGE_NAME,
@@ -9,12 +9,12 @@ import {
 
 @Injectable()
 export class MessageClientService {
-  constructor(@Inject(SVC_MESSAGE_NAME) private client: ClientProxy) { }
+  constructor(@Inject(SVC_MESSAGE_NAME) private client: ClientProxy) {}
 
-  async findOne({ id }: MessageFindOneInput): Promise<MessageWire> {
+  async findOne({id}: MessageFindOneInput): Promise<MessageWire> {
     const matchingMessage$ = this.client.send(
       SVC_MESSAGE_INTERNAL_EVENT_FIND_ONE,
-      { id }
+      {id}
     );
     return await lastValueFrom(matchingMessage$);
   }

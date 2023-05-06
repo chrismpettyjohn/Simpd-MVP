@@ -12,8 +12,8 @@ export class PostFilterByManyInput {
 
 @InputType()
 export class PostFilterByOneInput {
-  @Field(() => Number, {nullable: true})
-  id?: number;
+  @Field(() => Number)
+  id!: number;
 }
 
 @InputType()

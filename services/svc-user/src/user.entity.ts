@@ -13,4 +13,7 @@ export class UserEntity {
 
   @Column({name: 'role_id'})
   roleID!: number;
+
+  @Column({name: 'subscription_group_ids', type: 'json', default: []})
+  subscriptionGroupIDs!: number[];
 }
