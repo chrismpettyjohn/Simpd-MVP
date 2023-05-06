@@ -4,4 +4,4 @@ export const SVC_SESSION_WEB_ADDRESS =
   process.env.SVC_SESSION_WEB_ADDRESS ??
   `http://localhost:${SVC_SESSION_WEB_PORT}/graphql`;
 
-export const SVC_SESSION_INTERNAL_EVENT_FIND_ONE_BY_ID = 'sessionFindOneByID';
+export const SVC_SESSION_INTERNAL_EVENT_FIND_ONE = 'sessionFindOneByID';

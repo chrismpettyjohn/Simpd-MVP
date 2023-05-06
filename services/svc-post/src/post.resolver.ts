@@ -1,8 +1,8 @@
-import {In} from 'typeorm';
-import {PostEntity} from './post.entity';
-import {PostRepository} from './post.repository';
-import {GetSession, HasSession} from '@simpd/lib-api';
-import {UnauthorizedException, BadRequestException} from '@nestjs/common';
+import { In } from 'typeorm';
+import { PostEntity } from './post.entity';
+import { PostRepository } from './post.repository';
+import { GetSession, HasSession } from '@simpd/lib-api';
+import { UnauthorizedException, BadRequestException } from '@nestjs/common';
 import {
   postEntityToPostWithAlbumWire,
   postEntityToPostWithImageWire,
@@ -73,7 +73,7 @@ export class PostResolver {
       PostWithSharedContentWire,
       PostType.SharedContent
     >
-  ) {}
+  ) { }
 
   // TODO: Add Privacy Guard
   @ResolveReference()
@@ -81,7 +81,7 @@ export class PostResolver {
     __typename: string;
     id: number;
   }): Promise<PostEntity> {
-    return this.post({id: reference.id});
+    return this.post({ id: reference.id });
   }
 
   @Query(() => BasePostModel)
@@ -95,7 +95,7 @@ export class PostResolver {
 
   @Query(() => [BasePostModel])
   posts(
-    @Args('filter', {type: () => PostFilterByManyInput, nullable: true})
+    @Args('filter', { type: () => PostFilterByManyInput, nullable: true })
     filter?: PostFilterByManyInput
   ): Promise<PostEntity[]> {
     return this.postRepo.find({
@@ -112,7 +112,7 @@ export class PostResolver {
     @GetSession() session: SessionWire,
     @Args('input') input: PostWithTextCreateInput
   ): Promise<PostWithTextWire> {
-    const matchingProfile = await this.profileClientService.findOneByID({
+    const matchingProfile = await this.profileClientService.findOne({
       id: input.profileID,
     });
 
@@ -137,10 +137,10 @@ export class PostResolver {
     @Args('input') input: PostWithImageCreateInput
   ): Promise<PostWithImageWire> {
     const [matchingProfile, matchingImage] = await Promise.all([
-      this.profileClientService.findOneByID({
+      this.profileClientService.findOne({
         id: input.profileID,
       }),
-      this.mediaClientService.findOneByID({id: input.mediaID}),
+      this.mediaClientService.findOne({ id: input.mediaID }),
     ]);
 
     const userOwnsProfile = matchingProfile?.userID === session.userID;
@@ -174,10 +174,10 @@ export class PostResolver {
     @Args('input') input: PostWithVideoCreateInput
   ): Promise<PostWithVideoWire> {
     const [matchingProfile, matchingVideo] = await Promise.all([
-      this.profileClientService.findOneByID({
+      this.profileClientService.findOne({
         id: input.profileID,
       }),
-      this.mediaClientService.findOneByID({id: input.mediaID}),
+      this.mediaClientService.findOne({ id: input.mediaID }),
     ]);
 
     const userOwnsProfile = matchingProfile?.userID === session.userID;
@@ -210,7 +210,7 @@ export class PostResolver {
     @GetSession() session: SessionWire,
     @Args('input') input: PostWithAlbumInput
   ): Promise<PostWithAlbumWire> {
-    const matchingProfile = await this.profileClientService.findOneByID({
+    const matchingProfile = await this.profileClientService.findOne({
       id: input.profileID,
     });
 
@@ -221,7 +221,7 @@ export class PostResolver {
     }
 
     const matchingMedia = await Promise.all(
-      input.mediaIDs.map(_ => this.mediaClientService.findOneByID({id: _}))
+      input.mediaIDs.map(_ => this.mediaClientService.findOne({ id: _ }))
     );
 
     const mediaOwnedByProfile = matchingMedia.filter(
@@ -252,7 +252,7 @@ export class PostResolver {
     @GetSession() session: SessionWire,
     @Args('input') input: PostWithSharedContentInput
   ): Promise<PostWithSharedContentWire> {
-    const matchingProfile = await this.profileClientService.findOneByID({
+    const matchingProfile = await this.profileClientService.findOne({
       id: input.profileID,
     });
 

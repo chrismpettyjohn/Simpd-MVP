@@ -4,4 +4,4 @@ export const SVC_COMMENT_WEB_ADDRESS =
   process.env.SVC_COMMENT_WEB_ADDRESS ??
   `http://localhost:${SVC_COMMENT_WEB_PORT}/graphql`;
 
-export const SVC_COMMENT_INTERNAL_EVENT_FIND_ONE_BY_ID = 'commentFindOneByID';
+export const SVC_COMMENT_INTERNAL_EVENT_FIND_ONE = 'commentFindOneByID';

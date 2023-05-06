@@ -1,10 +1,10 @@
-import {In} from 'typeorm';
-import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
-import {ReactionModel} from './reaction.model';
-import {ReactionEntity} from './reaction.entity';
-import {UnauthorizedException} from '@nestjs/common';
-import {ProfileClientService} from '@simpd/lib-client';
-import {ReactionRepository} from './reaction.repository';
+import { In } from 'typeorm';
+import { GetSession, HasSession, SessionContents } from '@simpd/lib-api';
+import { ReactionModel } from './reaction.model';
+import { ReactionEntity } from './reaction.entity';
+import { UnauthorizedException } from '@nestjs/common';
+import { ProfileClientService } from '@simpd/lib-client';
+import { ReactionRepository } from './reaction.repository';
 import {
   ReactionCreateInput,
   ReactionFilterByManyInput,
@@ -23,14 +23,14 @@ export class ReactionResolver {
   constructor(
     private readonly reactionRepo: ReactionRepository,
     private readonly profileClientService: ProfileClientService
-  ) {}
+  ) { }
 
   @ResolveReference()
   resolveReference(reference: {
     __typename: string;
     id: number;
   }): Promise<ReactionEntity> {
-    return this.reaction({id: reference.id});
+    return this.reaction({ id: reference.id });
   }
 
   @Query(() => ReactionModel)
@@ -44,7 +44,7 @@ export class ReactionResolver {
 
   @Query(() => [ReactionModel])
   reactions(
-    @Args('filter', {type: () => ReactionFilterByManyInput, nullable: true})
+    @Args('filter', { type: () => ReactionFilterByManyInput, nullable: true })
     filter?: ReactionFilterByManyInput
   ): Promise<ReactionEntity[]> {
     return this.reactionRepo.find({
@@ -62,7 +62,7 @@ export class ReactionResolver {
     @GetSession() session: SessionContents,
     @Args('input') input: ReactionCreateInput
   ): Promise<ReactionEntity> {
-    const matchingProfile = await this.profileClientService.findOneByID({
+    const matchingProfile = await this.profileClientService.findOne({
       id: input.profileID,
     });
 

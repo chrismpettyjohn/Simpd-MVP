@@ -1,13 +1,13 @@
-import {UserRepository} from './user.repository';
-import {RoleClientService} from '@simpd/lib-client';
-import {Injectable, UnauthorizedException} from '@nestjs/common';
+import { UserRepository } from './user.repository';
+import { RoleClientService } from '@simpd/lib-client';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 @Injectable()
 export class UserService {
   constructor(
     private readonly userRepo: UserRepository,
     private readonly roleClientService: RoleClientService
-  ) {}
+  ) { }
 
   async canAccessUser(
     authenticatedUserID: number,
@@ -18,10 +18,10 @@ export class UserService {
     }
 
     const authenticatedUser = await this.userRepo.findOneOrFail({
-      where: {id: authenticatedUserID},
+      where: { id: authenticatedUserID },
     });
 
-    const authenticatedRole = await this.roleClientService.findOneByID({
+    const authenticatedRole = await this.roleClientService.findOne({
       id: authenticatedUser.roleID,
     });
 

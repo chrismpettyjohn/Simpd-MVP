@@ -1,12 +1,12 @@
-import {lastValueFrom} from 'rxjs';
-import {Inject, Injectable} from '@nestjs/common';
-import {ClientProxy} from '@nestjs/microservices';
+import { lastValueFrom } from 'rxjs';
+import { Inject, Injectable } from '@nestjs/common';
+import { ClientProxy } from '@nestjs/microservices';
 import {
   SubscriptionGroupFindOneInput,
   SubscriptionGroupWire,
 } from './subscription-group-client.types';
 import {
-  SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE_BY_ID,
+  SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE,
   SVC_SUBSCRIPTION_GROUP_NAME,
 } from './subscription-group.const';
 
@@ -14,14 +14,14 @@ import {
 export class SubscriptionGroupClientService {
   constructor(
     @Inject(SVC_SUBSCRIPTION_GROUP_NAME) private client: ClientProxy
-  ) {}
+  ) { }
 
-  async findOneByID({
+  async findOne({
     id,
   }: SubscriptionGroupFindOneInput): Promise<SubscriptionGroupWire> {
     const matchingSubscriptionGroup$ = this.client.send(
-      SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE_BY_ID,
-      {id}
+      SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE,
+      { id }
     );
     return await lastValueFrom(matchingSubscriptionGroup$);
   }

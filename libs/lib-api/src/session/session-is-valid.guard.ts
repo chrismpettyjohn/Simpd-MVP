@@ -1,8 +1,8 @@
-import {Request} from 'express';
-import {JwtService} from '@nestjs/jwt';
-import {SessionContents} from './session.types';
-import {SessionClientService} from '@simpd/lib-client';
-import {getRequestFromExecutionContext} from './session.utility';
+import { Request } from 'express';
+import { JwtService } from '@nestjs/jwt';
+import { SessionContents } from './session.types';
+import { SessionClientService } from '@simpd/lib-client';
+import { getRequestFromExecutionContext } from './session.utility';
 import {
   Injectable,
   CanActivate,
@@ -15,7 +15,7 @@ export class SessionIsValidGuard implements CanActivate {
   constructor(
     private readonly jwtService: JwtService,
     private readonly sessionClientService: SessionClientService
-  ) {}
+  ) { }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request: Request = getRequestFromExecutionContext(context);
@@ -35,7 +35,7 @@ export class SessionIsValidGuard implements CanActivate {
       return false;
     }
 
-    const matchingSession = await this.sessionClientService.findOneByID({
+    const matchingSession = await this.sessionClientService.findOne({
       id: parsedBearerToken.sessionID,
     });
 

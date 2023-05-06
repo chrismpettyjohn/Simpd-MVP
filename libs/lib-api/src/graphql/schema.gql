@@ -2,35 +2,55 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type PrivacyModel {
+type RoleScopesModel {
+  """User can create profile"""
+  profileCreate: Boolean
+
+  """
+  User can create bypass privacy restrictions.  Typically reserved for Administrative Purposes.
+  """
+  bypassUserPrivacy: Boolean
+}
+
+type RoleModel {
   id: Float
-  key: String
   name: String
   description: String
+  scopes: RoleScopesModel
 }
 
 type Query {
-  privacy(filter: PrivacyFilterByOneInput!): PrivacyModel!
-  privacys(filter: PrivacyFilterByManyInput): [PrivacyModel!]!
+  role(filter: RoleFilterByOneInput!): RoleModel!
+  roles(filter: RoleFilterByManyInput): [RoleModel!]!
 }
 
-input PrivacyFilterByOneInput {
+input RoleFilterByOneInput {
   id: Float
-  keys: [String!]
 }
 
-input PrivacyFilterByManyInput {
+input RoleFilterByManyInput {
   ids: [Float!]
-  keys: [String!]
 }
 
 type Mutation {
-  privacyCreate(input: PrivacyCreateInput!): PrivacyModel!
-  privacyDelete(filter: PrivacyFilterByOneInput!): Boolean!
+  roleCreate(input: RoleCreateInput!): RoleModel!
+  roleUpdate(filter: RoleFilterByOneInput!, input: RoleUpdateInput!): RoleModel!
+  roleDelete(filter: RoleFilterByOneInput!): Boolean!
 }
 
-input PrivacyCreateInput {
-  key: String!
+input RoleCreateInput {
   name: String!
   description: String!
+  scopes: RoleScopesInput!
+}
+
+input RoleScopesInput {
+  profileCreate: Boolean!
+  bypassUserPrivacy: Boolean!
+}
+
+input RoleUpdateInput {
+  name: String
+  description: String
+  scopes: RoleScopesInput
 }
