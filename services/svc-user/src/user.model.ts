@@ -9,7 +9,4 @@ export class UserModel {
   // TODO: Add Privacy Guard
   @Field({nullable: true})
   email?: string;
-
-  @Field(() => [Number], {nullable: true})
-  subscriptionGroupIDs!: number[];
 }

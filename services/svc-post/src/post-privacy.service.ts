@@ -1,4 +1,5 @@
 import {PostRepository} from './post.repository';
+import {SVC_POST_NAME} from 'libs/lib-client/src/svc-post/post.const';
 import {PrivacyClientService, ProfileClientService} from '@simpd/lib-client';
 import {
   Injectable,
@@ -23,7 +24,10 @@ export class PostPrivacyService {
             id: postID,
           },
         }),
-        this.privacyClientService.findOne({resourceID: postID}),
+        this.privacyClientService.findOne({
+          serviceKey: SVC_POST_NAME,
+          resourceID: postID,
+        }),
       ]);
 
     const [profileExists, postExists, privacyPolicyExists] = [

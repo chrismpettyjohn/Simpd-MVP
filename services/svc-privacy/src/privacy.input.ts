@@ -27,6 +27,9 @@ export class PrivacyPolicyInput implements PrivacyPolicy {
 
 @InputType()
 export class PrivacyCreateInput {
+  @Field(() => String)
+  serviceKey!: string;
+
   @Field(() => Number)
   resourceID!: number;
 

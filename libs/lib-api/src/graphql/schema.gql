@@ -2,39 +2,34 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type UserModel {
+type ProfileModel {
   id: Float
-  email: String
-  subscriptionGroupIDs: [Float!]
+  userID: Float
+  username: String
 }
 
 type Query {
-  user(filter: UserFilterByOneInput!): UserModel!
-  users(filter: UserFilterByManyInput): [UserModel!]!
+  profile(filter: ProfileFilterByOneInput!): ProfileModel!
+  profiles(filter: ProfileFilterByManyInput): [ProfileModel!]!
 }
 
-input UserFilterByOneInput {
+input ProfileFilterByOneInput {
   id: Float
-  email: String
+  userIDs: [Float!]
+  usernames: [String!]
 }
 
-input UserFilterByManyInput {
+input ProfileFilterByManyInput {
   ids: [Float!]
-  emails: [String!]
+  userIDs: [Float!]
+  usernames: [String!]
 }
 
 type Mutation {
-  userCreate(input: UserCreateInput!): UserModel!
-  userUpdate(filter: UserFilterByOneInput!, input: UserUpdateInput!): Boolean!
-  userDelete(filter: UserFilterByOneInput!): Boolean!
+  profileCreate(input: ProfileCreateInput!): ProfileModel!
+  profileDelete(filter: ProfileFilterByOneInput!): Boolean!
 }
 
-input UserCreateInput {
-  email: String!
-  password: String!
-}
-
-input UserUpdateInput {
-  email: String
-  password: String
+input ProfileCreateInput {
+  username: String!
 }

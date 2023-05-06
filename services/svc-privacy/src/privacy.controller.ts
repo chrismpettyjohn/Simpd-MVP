@@ -17,11 +17,11 @@ export class PrivacyController {
   constructor(private readonly privacyRepo: PrivacyRepository) {}
 
   @MessagePattern(SVC_PRIVACY_INTERNAL_EVENT_FIND_ONE)
-  async privacyFindOneByID(data: PrivacyFindOneInput): Promise<PrivacyWire> {
+  async privacyFindOneByID(filter: PrivacyFindOneInput): Promise<PrivacyWire> {
     const matchingPrivacy = await this.privacyRepo.findOneOrFail({
       where: {
-        id: data.id,
-        resourceID: data.resourceID,
+        serviceKey: filter.serviceKey,
+        resourceID: filter.resourceID,
       },
     });
     return privacyEntityToPrivacyWire(matchingPrivacy);
@@ -30,6 +30,7 @@ export class PrivacyController {
   @MessagePattern(SVC_PRIVACY_INTERNAL_EVENT_CREATE_ONE)
   async privacyCreateOne(input: PrivacyCreateOneInput): Promise<PrivacyWire> {
     const newPrivacy = await this.privacyRepo.create({
+      serviceKey: input.serviceKey,
       resourceID: input.resourceID,
       name: input.name,
       description: input.description,
@@ -45,7 +46,7 @@ export class PrivacyController {
   ): Promise<boolean> {
     await this.privacyRepo.update(
       {
-        id: filter.id,
+        serviceKey: filter.serviceKey,
         resourceID: filter.resourceID,
       },
       {

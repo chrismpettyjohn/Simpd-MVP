@@ -6,6 +6,7 @@ export function privacyEntityToPrivacyWire(
 ): PrivacyWire {
   return {
     id: privacyEntity.id!,
+    serviceKey: privacyEntity.serviceKey,
     resourceID: privacyEntity.resourceID,
     name: privacyEntity.name,
     description: privacyEntity.description,

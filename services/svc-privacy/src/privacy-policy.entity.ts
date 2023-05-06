@@ -6,6 +6,10 @@ export class PrivacyPolicyEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 
+  @Column({name: 'service_key'})
+  @Index()
+  serviceKey!: string;
+
   @Column({name: 'resource_id'})
   @Index()
   resourceID!: number;

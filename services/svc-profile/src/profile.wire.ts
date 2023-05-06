@@ -8,5 +8,6 @@ export function profileEntityToProfileWire(
     id: profileEntity.id!,
     userID: profileEntity.userID,
     username: profileEntity.username,
+    subscriptionGroupIDs: profileEntity.subscriptionGroupIDs,
   };
 }

@@ -4,6 +4,7 @@ export interface PrivacyPolicy {
 
 export interface PrivacyWire {
   id: number;
+  serviceKey: string;
   resourceID: number;
   name: string;
   description: string;
@@ -11,10 +12,12 @@ export interface PrivacyWire {
 }
 
 export interface PrivacyFindOneInput {
+  serviceKey: string;
   resourceID: number;
 }
 
 export interface PrivacyCreateOneInput {
+  serviceKey: string;
   resourceID: number;
   name: string;
   description: string;
