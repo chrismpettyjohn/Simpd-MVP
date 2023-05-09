@@ -1,36 +1,39 @@
 import React from 'react'
 import './NotificationCard.css';
+import { NotificationCardAuthorElement, NotificationCardAuthorInfoContainer, NotificationCardElement, NotificationCardIconElement, NotificationCardTextContainer } from './NotificationCard.sty';
 
 export function NotificationCard() {
   return (
-    <div className="notification-card-container">
-      <div className="notification-card-container1">
+    <NotificationCardElement>
+      <NotificationCardAuthorElement>
         <img
           alt="FairLan's profile picture"
           src="https://i.imgur.com/CesvKGF.png"
           className="notification-card-image"
         />
-        <div className="notification-card-container2">
-          <h1 className="notification-card-text">
+        <NotificationCardAuthorInfoContainer>
+          <h1>
             FairLan
           </h1>
-          <span className="notification-card-text1">
+          <span>
             @FairLan
           </span>
-        </div>
-      </div>
-      <h1 className="notification-card-text2">
-        <span className="">
-          Reacted to your comment
+        </NotificationCardAuthorInfoContainer>
+      </NotificationCardAuthorElement>
+      <NotificationCardTextContainer>
+        <h1 className="author-container">
+          Reacted to your comment:
+        </h1>
+        <span className="message-content">
+          <code>yes mami</code>
         </span>
-        <span className="notification-card-text4">&quot;yes mami&quot;</span>
-      </h1>
-      <svg viewBox="0 0 1024 1024" className="notification-card-icon">
+      </NotificationCardTextContainer>
+      <NotificationCardIconElement viewBox="0 0 1024 1024" className="notification-card-icon">
         <path
-          d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+          d="M426 384q208 30 321 159t149 311q-154-218-470-218v174l-298-298 298-298v170z"
           className=""
         ></path>
-      </svg>
-    </div>
+      </NotificationCardIconElement>
+    </NotificationCardElement>
   )
 }

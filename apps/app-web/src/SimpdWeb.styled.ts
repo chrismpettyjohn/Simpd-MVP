@@ -8,6 +8,7 @@ export interface SimpdWebTheme {
     primary: string;
   }
   fontSize: {
+    halfUnit: string;
     oneUnit: string;
     twoUnits: string;
   }
@@ -43,6 +44,7 @@ export const simpdWebTheme: SimpdWebTheme = {
     primary: 'Maven Pro'
   },
   fontSize: {
+    halfUnit: '.8rem',
     oneUnit: '1.25rem',
     twoUnits: '1.83rem',
   },

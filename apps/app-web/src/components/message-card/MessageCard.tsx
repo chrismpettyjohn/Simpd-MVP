@@ -1,23 +1,11 @@
 import React from 'react'
-import { MessageCardAuthorElement, MessageCardAuthorInfoContainer, MessageCardElement, MessageCardTextContainer, MessageIconElement } from './MessageCard.styled.ts';
+import { AuthorBlockSmall } from '../author-block-small/AuthorBlockSmall';
+import { MessageCardElement, MessageCardTextContainer, MessageIconElement } from './MessageCard.sty';
 
 export function MessageCard() {
   return (
     <MessageCardElement>
-      <MessageCardAuthorElement>
-        <img
-          alt="FairLan Posted"
-          src="https://i.imgur.com/CesvKGF.png"
-        />
-        <MessageCardAuthorInfoContainer>
-          <h1>
-            FairLan
-          </h1>
-          <span>
-            @FairLan
-          </span>
-        </MessageCardAuthorInfoContainer>
-      </MessageCardAuthorElement>
+      <AuthorBlockSmall />
       <MessageCardTextContainer>
         <h1 className="author-container">
           They Said:
