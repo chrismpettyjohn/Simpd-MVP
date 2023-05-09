@@ -1,3 +1,4 @@
+import './style.css'
 import React from 'react';
 import { SimpdWeb } from './SimpdWeb';
 import { createRoot } from 'react-dom/client';

@@ -1,0 +1,108 @@
+.message-card-container {
+  flex: 0 0 auto;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  position: relative;
+  box-shadow: 5px 5px 10px 10px #1c1c1e;
+  transition: 0.3s;
+  align-items: center;
+  border-color: var(--dl-color-simpd-s40);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: var(--dl-radius-radius-radius8);
+  padding-right: 16px;
+  justify-content: space-between;
+  background-color: var(--dl-color-simpd-s20);
+  margin-bottom: var(--dl-space-space-twounits);
+}
+
+.message-card-container:hover {
+  box-shadow: 5px 5px 10px 10px #711b1e;
+  border-color: var(--dl-color-simpd-brand);
+}
+
+.message-card-container1 {
+  flex: 0 0 auto;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.message-card-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-color: var(--dl-color-simpd-s30);
+  border-width: 2px;
+  border-radius: var(--dl-radius-radius-round);
+}
+
+.message-card-container2 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  align-items: center;
+  margin-left: var(--dl-space-space-twounits);
+  justify-content: flex-start;
+}
+
+.message-card-text {
+  color: var(--dl-color-simpd-s90);
+  font-size: 1.83rem;
+  font-family: Maven Pro;
+}
+
+.message-card-text1 {
+  color: var(--dl-color-simpd-s50);
+  font-size: 1.25rem;
+  font-family: Maven Pro;
+}
+
+.message-card-container3 {
+  flex: 0 0 auto;
+  width: 60%;
+  height: auto;
+  align-items: center;
+  margin-left: var(--dl-space-space-twounits);
+  justify-content: flex-start;
+}
+
+.message-card-text2 {
+  color: var(--dl-color-simpd-s50);
+  width: 100%;
+  font-size: 1rem;
+  font-family: Maven Pro;
+}
+
+.message-card-text5 {
+  color: var(--dl-color-simpd-s90);
+  font-size: 1.25rem;
+  font-family: Maven Pro;
+}
+
+.message-card-icon {
+  fill: var(--dl-color-simpd-s90);
+  width: var(--dl-size-size-icontwo);
+  cursor: pointer;
+  height: var(--dl-size-size-icontwo);
+  transition: 0.3s;
+}
+
+.message-card-icon:hover {
+  fill: var(--dl-color-simpd-brand);
+}
+
+.message-card-root-class-name {
+  margin-top: var(--dl-space-space-twounits);
+}
+
+.message-card-root-class-name1 {
+  margin-top: var(--dl-space-space-twounits);
+}
+
+.message-card-root-class-name2 {
+  margin-top: var(--dl-space-space-twounits);
+}
