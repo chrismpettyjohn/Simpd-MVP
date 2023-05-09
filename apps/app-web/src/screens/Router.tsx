@@ -4,15 +4,15 @@ import { MessagesScreen } from './messages/Messages';
 import { DashboardScreen } from './dashboard/Dashboard';
 import { FavoritesScreen } from './favorites/Favorites';
 import { UserProfileScreen } from './user-profile/UserProfile';
-import { LandingPageScreen } from './landing-page/LandingPage';
 import { PageNotFoundScreen } from './page-not-found/PageNotFound';
 import { NotificationsScreen } from './notifications/Notifications';
 import { SettingsProfileScreen } from './settings-profile/SettingsProfile';
+import { SignInScreen } from './sign-in/SignIn';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
-    path: '/',
-    view: LandingPageScreen,
+    path: '/sign-in',
+    view: SignInScreen,
   },
   {
     path: '/dashboard',

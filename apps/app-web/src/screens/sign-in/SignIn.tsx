@@ -1,11 +1,11 @@
 import React from 'react'
-import './LandingPage.css';
+import './SignIn.css';
 import { Helmet } from 'react-helmet';
 import { Footer } from 'components/footer/Footer';
 import { PostCard } from 'components/post-card/PostCard';
 import { SiteHeader } from 'components/site-header/SiteHeader';
 
-export function LandingPageScreen() {
+export function SignInScreen() {
   return (
     <div className="landing-page-container">
       <Helmet>

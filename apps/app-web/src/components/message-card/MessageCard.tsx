@@ -1,39 +1,37 @@
 import React from 'react'
-import './MessageCard.css';
+import { MessageCardAuthorElement, MessageCardAuthorInfoContainer, MessageCardElement, MessageCardTextContainer, MessageIconElement } from './MessageCard.styled.ts';
 
 export function MessageCard() {
   return (
-    <div className="message-card-container">
-      <div className="message-card-container1">
+    <MessageCardElement>
+      <MessageCardAuthorElement>
         <img
           alt="FairLan Posted"
           src="https://i.imgur.com/CesvKGF.png"
-          className="message-card-image"
         />
-        <div className="message-card-container2">
-          <h1 className="message-card-text">
+        <MessageCardAuthorInfoContainer>
+          <h1>
             FairLan
           </h1>
-          <span className="message-card-text1">
+          <span>
             @FairLan
           </span>
-        </div>
-      </div>
-      <div className="message-card-container3">
-        <h1 className="message-card-text2">
-          <span className="">They said:</span>
-          <br className=""></br>
+        </MessageCardAuthorInfoContainer>
+      </MessageCardAuthorElement>
+      <MessageCardTextContainer>
+        <h1 className="author-container">
+          They Said:
         </h1>
-        <span className="message-card-text5">
+        <span className="message-content">
           r u an asparagus
         </span>
-      </div>
-      <svg viewBox="0 0 1024 1024" className="message-card-icon">
+      </MessageCardTextContainer>
+      <MessageIconElement viewBox="0 0 1024 1024" className="message-card-icon">
         <path
           d="M426 384q208 30 321 159t149 311q-154-218-470-218v174l-298-298 298-298v170z"
           className=""
         ></path>
-      </svg>
-    </div>
+      </MessageIconElement>
+    </MessageCardElement>
   )
 }
