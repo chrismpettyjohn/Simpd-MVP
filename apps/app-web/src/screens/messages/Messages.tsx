@@ -2,7 +2,8 @@ import './Messages.css';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { MessageCard } from 'components/message-card/MessageCard';
-import { MessagesContainer, MessagesPageHeader } from './Messages.sty';
+import { MessagesContainer } from './Messages.sty';
+import { PageTitle } from 'components/page-title/PageTitle';
 
 export function MessagesScreen() {
   return (
@@ -11,14 +12,13 @@ export function MessagesScreen() {
         <title>Messages - Simpd</title>
         <meta property="og:title" content="Messages - Simpd" />
       </Helmet>
-      <MessagesPageHeader>
-        <h1 className="messages-text">Messages</h1>
+      <PageTitle title="Messages">
         <input
           type="text"
           placeholder="Search messages"
           className="messages-textinput input"
         />
-      </MessagesPageHeader>
+      </PageTitle>
       <MessagesContainer>
         <MessageCard />
         <MessageCard />

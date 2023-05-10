@@ -1,6 +1,7 @@
 import React from 'react'
 import './PageNotFound.css';
 import { Helmet } from 'react-helmet'
+import { PageTitle } from 'components/page-title/PageTitle';
 
 export function PageNotFoundScreen() {
   return (
@@ -9,9 +10,7 @@ export function PageNotFoundScreen() {
         <title>Page-Not-Found - Simpd</title>
         <meta property="og:title" content="Page-Not-Found - Simpd" />
       </Helmet>
-      <div className="page-not-found-container1">
-        <h1 className="page-not-found-text">Not Found</h1>
-      </div>
+      <PageTitle title="Page Not Found" />
     </div>
   )
 }

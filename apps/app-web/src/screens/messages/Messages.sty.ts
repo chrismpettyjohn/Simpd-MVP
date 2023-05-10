@@ -1,14 +1,5 @@
 import { styled } from "styled-components";
 
-export const MessagesPageHeader = styled.div`
-  flex: 0 0 auto;
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`
-
 export const MessagesContainer = styled.div`
   flex: 0 0 auto;
   width: 100%;

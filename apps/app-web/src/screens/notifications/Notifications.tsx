@@ -3,6 +3,7 @@ import './Notifications.css';
 import { Helmet } from 'react-helmet'
 import { NotificationCard } from 'components/notification-card/NotificationCard';
 import { NotificationContainer, NotificationElement } from './Notifications.sty';
+import { PageTitle } from 'components/page-title/PageTitle';
 
 export function NotificationsScreen() {
   return (
@@ -12,9 +13,7 @@ export function NotificationsScreen() {
         <meta property="og:title" content="Notifications - Simpd" />
       </Helmet>
       <NotificationElement>
-        <div className="notifications-container2">
-          <h1 className="notifications-text">Notifications</h1>
-        </div>
+        <PageTitle title="Notifications" />
         <NotificationContainer>
           <NotificationCard />
           <NotificationCard />

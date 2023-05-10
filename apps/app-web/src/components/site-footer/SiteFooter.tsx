@@ -1,7 +1,7 @@
 import React from 'react'
-import { FooterElement } from './Footer.sty';
+import { FooterElement } from './SiteFooter.sty';
 
-export function Footer() {
+export function SiteFooter() {
   return (
     <FooterElement>
       © 2023 simpd
