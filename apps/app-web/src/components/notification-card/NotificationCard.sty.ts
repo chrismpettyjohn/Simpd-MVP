@@ -77,11 +77,15 @@ export const NotificationCardTextContainer = styled.div`
 
   h1 {
     font-size:  ${({ theme }) => theme.fontSize.oneUnit};
+    font-family: ${({ theme }) => theme.fontFamily.primary};
+    color: ${({ theme }) => theme.color.s90};
     margin-bottom: 0px;
   }
 
   .message-content {
     font-size:  ${({ theme }) => theme.fontSize.halfUnit};
+    font-family: ${({ theme }) => theme.fontFamily.primary};
+    color: ${({ theme }) => theme.color.s90};
   }
 `
 

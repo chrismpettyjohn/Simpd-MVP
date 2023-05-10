@@ -1,5 +1,4 @@
 import React from 'react'
-import './Notifications.css';
 import { Helmet } from 'react-helmet'
 import { NotificationCard } from 'components/notification-card/NotificationCard';
 import { NotificationContainer, NotificationElement } from './Notifications.sty';

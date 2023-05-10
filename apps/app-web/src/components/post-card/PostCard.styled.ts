@@ -12,10 +12,10 @@ export const PostCardElement = styled.div`
   transition: 0.3s;
   align-items: center;
   border-radius: ${({ theme }) => theme.radius.four};
+  margin-top: ${({ theme }) => theme.space.twoUnits};
   flex-direction: column;
   justify-content: center;
   background-color: ${({ theme }) => theme.color.s30};
-  margin-bottom: ${({ theme }) => theme.space.twoUnits};
 
   &:hover {
     box-shadow: 5px 5px 10px 10px #711b1e;

@@ -1,5 +1,4 @@
 import React from 'react'
-import './PageNotFound.css';
 import { Helmet } from 'react-helmet'
 import { PageTitle } from 'components/page-title/PageTitle';
 
