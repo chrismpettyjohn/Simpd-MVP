@@ -57,6 +57,9 @@
       "@simpd/lib-client": [
         "libs/lib-client/src"
       ],
+      "@simpd/lib-web": [
+        "libs/lib-web/src"
+      ],
     },
     "noEmit": true
   },
