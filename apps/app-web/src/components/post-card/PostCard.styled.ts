@@ -6,35 +6,36 @@ export const PostCardElement = styled.div`
   cursor: pointer;
   height: 100%;
   display: flex;
-  padding: var(--dl-space-space-twounits);
   position: relative;
   box-shadow: 5px 5px 10px 10px #1c1c1e;
   max-height: 800px;
   transition: 0.3s;
   align-items: center;
-  border-radius: var(--dl-radius-radius-radius4);
+  border-radius: ${({ theme }) => theme.radius.four};
   flex-direction: column;
   justify-content: center;
-  background-color: var(--dl-color-simpd-s30);
-  margin-bottom: var(--dl-space-space-twounits);
+  background-color: ${({ theme }) => theme.color.s30};
+  margin-bottom: ${({ theme }) => theme.space.twoUnits};
 
   &:hover {
     box-shadow: 5px 5px 10px 10px #711b1e;
   }
+`
 
-  .post-card-image {
+export const PostCardContent = styled.div`
+  padding: ${({ theme }) => theme.space.twoUnits};
+`
+
+export const PostCardImage = styled.img`
     width: 100%;
     height: 400px;
     object-fit: cover;
-  }
+`
 
-  .post-card-text {
-    color: var(--dl-color-simpd-s90);
+export const PostCardText = styled.div`
+    color: ${({ theme }) => theme.color.s90};
     width: 100%;
     font-size: 1rem;
-    margin-top: var(--dl-space-space-twounits);
+    margin-top: ${({ theme }) => theme.space.twoUnits};
     font-family: Maven Pro;
-  }
-
-}
 `

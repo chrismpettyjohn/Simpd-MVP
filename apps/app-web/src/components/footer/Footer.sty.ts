@@ -4,7 +4,6 @@ export const FooterElement = styled.footer`
   width: 100%;
   display: flex;
   position: relative;
-  max-width: 100%;
   align-items: center;
   padding-top: ${({ theme }) => theme.space.twoUnits};
   padding-left: ${({ theme }) => theme.space.threeUnits};

@@ -9,17 +9,18 @@
   flex-direction: column;
   background-color: var(--dl-color-gray-black);
 }
+
 .settings-profile-container01 {
   flex: 0 0 auto;
   height: 100%;
   display: flex;
-  max-width: var(--dl-size-size-maxwidth);
   align-self: center;
   margin-top: var(--dl-space-space-twounits);
   align-items: center;
   flex-direction: column;
   justify-content: center;
 }
+
 .settings-profile-text {
   color: var(--dl-color-simpd-s90);
   font-size: 1.83rem;
@@ -27,6 +28,7 @@
   font-family: Maven Pro;
   margin-bottom: var(--dl-space-space-twounits);
 }
+
 .settings-profile-settings-navigation {
   width: 100%;
   height: 100%;
@@ -42,6 +44,7 @@
   justify-content: space-between;
   background-color: var(--dl-color-simpd-s20);
 }
+
 .settings-profile-icon {
   fill: var(--dl-color-simpd-s90);
   width: var(--dl-size-size-icontwo);
@@ -49,9 +52,11 @@
   height: var(--dl-size-size-icontwo);
   transition: 0.3s;
 }
+
 .settings-profile-icon:hover {
   fill: var(--dl-color-simpd-brand);
 }
+
 .settings-profile-icon02 {
   fill: var(--dl-color-simpd-s90);
   width: var(--dl-size-size-icontwo);
@@ -59,9 +64,11 @@
   height: var(--dl-size-size-icontwo);
   transition: 0.3s;
 }
+
 .settings-profile-icon02:hover {
   fill: var(--dl-color-simpd-brand);
 }
+
 .settings-profile-icon04 {
   fill: var(--dl-color-simpd-s90);
   width: var(--dl-size-size-icontwo);
@@ -69,9 +76,11 @@
   height: var(--dl-size-size-icontwo);
   transition: 0.3s;
 }
+
 .settings-profile-icon04:hover {
   fill: var(--dl-color-simpd-brand);
 }
+
 .settings-profile-icon06 {
   fill: var(--dl-color-simpd-s90);
   width: var(--dl-size-size-icontwo);
@@ -79,9 +88,11 @@
   height: var(--dl-size-size-icontwo);
   transition: 0.3s;
 }
+
 .settings-profile-icon06:hover {
   fill: var(--dl-color-simpd-brand);
 }
+
 .settings-profile-icon08 {
   fill: var(--dl-color-simpd-s90);
   width: var(--dl-size-size-icontwo);
@@ -89,9 +100,11 @@
   height: var(--dl-size-size-icontwo);
   transition: 0.3s;
 }
+
 .settings-profile-icon08:hover {
   fill: var(--dl-color-simpd-brand);
 }
+
 .settings-profile-container02 {
   flex: 0 0 auto;
   width: 100%;
@@ -105,6 +118,7 @@
   justify-content: center;
   background-color: #1C1C1E;
 }
+
 .settings-profile-container03 {
   flex: 0 0 auto;
   width: 100%;
@@ -118,6 +132,7 @@
   justify-content: space-between;
   background-color: var(--dl-color-simpd-s30);
 }
+
 .settings-profile-container04 {
   flex: 0 0 auto;
   width: auto;
@@ -126,6 +141,7 @@
   align-items: space-between;
   flex-direction: column;
 }
+
 .settings-profile-container05 {
   flex: 0 0 auto;
   width: 100%;
@@ -134,11 +150,13 @@
   align-items: center;
   justify-content: center;
 }
+
 .settings-profile-text01 {
   color: var(--dl-color-simpd-s90);
   font-size: 2rem;
   font-family: Maven Pro;
 }
+
 .settings-profile-icon10 {
   fill: var(--dl-color-simpd-s90);
   width: var(--dl-size-size-icontwo);
@@ -146,9 +164,11 @@
   height: var(--dl-size-size-icontwo);
   transition: 0.3s;
 }
+
 .settings-profile-icon10:hover {
   fill: var(--dl-color-simpd-brand);
 }
+
 .settings-profile-container06 {
   flex: 0 0 auto;
   width: 100%;
@@ -157,11 +177,13 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .settings-profile-icon12 {
   fill: var(--dl-color-gray-white);
   width: 2rem;
   height: 2rem;
 }
+
 .settings-profile-container07 {
   flex: 0 0 auto;
   width: 100%;
@@ -177,10 +199,12 @@
   justify-content: center;
   background-color: #1C1C1E;
 }
+
 .settings-profile-container08 {
   width: 100%;
   height: 100%;
 }
+
 .settings-profile-text02 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
@@ -188,6 +212,7 @@
   font-family: Maven Pro;
   font-weight: 500;
 }
+
 .settings-profile-textinput {
   color: var(--dl-color-gray-white);
   width: 100%;
@@ -197,11 +222,13 @@
   border-color: var(--dl-color-simpd-s40);
   background-color: var(--dl-color-simpd-s30);
 }
+
 .settings-profile-container09 {
   width: 100%;
   height: 100%;
   margin-top: var(--dl-space-space-twounits);
 }
+
 .settings-profile-text03 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
@@ -209,6 +236,7 @@
   font-family: Maven Pro;
   font-weight: 500;
 }
+
 .settings-profile-textinput1 {
   color: var(--dl-color-gray-white);
   width: 100%;
@@ -218,11 +246,13 @@
   border-color: var(--dl-color-simpd-s40);
   background-color: var(--dl-color-simpd-s30);
 }
+
 .settings-profile-container10 {
   width: 100%;
   height: 100%;
   margin-top: var(--dl-space-space-twounits);
 }
+
 .settings-profile-text04 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
@@ -230,6 +260,7 @@
   font-family: Maven Pro;
   font-weight: 500;
 }
+
 .settings-profile-textarea {
   width: 100%;
   height: var(--dl-size-size-medium);
@@ -239,11 +270,13 @@
   border-color: var(--dl-color-simpd-s40);
   background-color: var(--dl-color-simpd-s30);
 }
+
 .settings-profile-container11 {
   width: 100%;
   height: 100%;
   margin-top: var(--dl-space-space-twounits);
 }
+
 .settings-profile-text05 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
@@ -251,6 +284,7 @@
   font-family: Maven Pro;
   font-weight: 500;
 }
+
 .settings-profile-textinput2 {
   color: var(--dl-color-gray-white);
   width: 100%;
@@ -260,11 +294,13 @@
   border-color: var(--dl-color-simpd-s40);
   background-color: var(--dl-color-simpd-s30);
 }
+
 .settings-profile-container12 {
   width: 100%;
   height: 100%;
   margin-top: var(--dl-space-space-twounits);
 }
+
 .settings-profile-text06 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
@@ -272,6 +308,7 @@
   font-family: Maven Pro;
   font-weight: 500;
 }
+
 .settings-profile-textinput3 {
   color: var(--dl-color-gray-white);
   width: 100%;
@@ -281,11 +318,13 @@
   border-color: var(--dl-color-simpd-s40);
   background-color: var(--dl-color-simpd-s30);
 }
+
 .settings-profile-container13 {
   width: 100%;
   height: 100%;
   margin-top: var(--dl-space-space-twounits);
 }
+
 .settings-profile-text07 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
@@ -293,6 +332,7 @@
   font-family: Maven Pro;
   font-weight: 500;
 }
+
 .settings-profile-textinput4 {
   color: var(--dl-color-gray-white);
   width: 100%;
@@ -302,6 +342,7 @@
   border-color: var(--dl-color-simpd-s40);
   background-color: var(--dl-color-simpd-s30);
 }
+
 .settings-profile-container14 {
   flex: 0 0 auto;
   width: 100%;
@@ -315,6 +356,7 @@
   justify-content: center;
   background-color: var(--dl-color-simpd-s20);
 }
+
 .settings-profile-container15 {
   flex: 0 0 auto;
   width: 100%;
@@ -328,11 +370,13 @@
   justify-content: space-between;
   background-color: var(--dl-color-simpd-s30);
 }
+
 .settings-profile-text08 {
   color: var(--dl-color-simpd-s90);
   font-size: 2rem;
   font-family: Maven Pro;
 }
+
 .settings-profile-icon14 {
   fill: var(--dl-color-simpd-s90);
   width: 3rem;
@@ -340,9 +384,11 @@
   height: 3rem;
   transition: 0.3s;
 }
+
 .settings-profile-icon14:hover {
   fill: var(--dl-color-simpd-brand);
 }
+
 .settings-profile-container16 {
   flex: 0 0 auto;
   width: 100%;
@@ -355,11 +401,13 @@
   padding-bottom: var(--dl-space-space-halfunit);
   justify-content: space-between;
 }
+
 .settings-profile-text09 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
   font-family: Maven Pro;
 }
+
 .settings-profile-container17 {
   flex: 0 0 auto;
   width: 100%;
@@ -373,6 +421,7 @@
   justify-content: center;
   background-color: var(--dl-color-simpd-s20);
 }
+
 .settings-profile-container18 {
   flex: 0 0 auto;
   width: 100%;
@@ -386,11 +435,13 @@
   justify-content: space-between;
   background-color: var(--dl-color-simpd-s30);
 }
+
 .settings-profile-text10 {
   color: var(--dl-color-simpd-s90);
   font-size: 2rem;
   font-family: Maven Pro;
 }
+
 .settings-profile-icon16 {
   fill: var(--dl-color-simpd-s90);
   width: 3rem;
@@ -398,9 +449,11 @@
   height: 3rem;
   transition: 0.3s;
 }
+
 .settings-profile-icon16:hover {
   fill: var(--dl-color-simpd-brand);
 }
+
 .settings-profile-container19 {
   flex: 0 0 auto;
   width: 100%;
@@ -413,11 +466,13 @@
   padding-bottom: var(--dl-space-space-halfunit);
   justify-content: space-between;
 }
+
 .settings-profile-text11 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
   font-family: Maven Pro;
 }
+
 .settings-profile-container20 {
   flex: 0 0 auto;
   width: 100%;
@@ -431,6 +486,7 @@
   justify-content: center;
   background-color: var(--dl-color-simpd-s20);
 }
+
 .settings-profile-container21 {
   flex: 0 0 auto;
   width: 100%;
@@ -444,11 +500,13 @@
   justify-content: space-between;
   background-color: var(--dl-color-simpd-s30);
 }
+
 .settings-profile-text12 {
   color: var(--dl-color-simpd-s90);
   font-size: 2rem;
   font-family: Maven Pro;
 }
+
 .settings-profile-icon18 {
   fill: var(--dl-color-simpd-s90);
   width: 3rem;
@@ -456,9 +514,11 @@
   height: 3rem;
   transition: 0.3s;
 }
+
 .settings-profile-icon18:hover {
   fill: var(--dl-color-simpd-brand);
 }
+
 .settings-profile-container22 {
   flex: 0 0 auto;
   width: 100%;
@@ -471,11 +531,13 @@
   padding-bottom: var(--dl-space-space-halfunit);
   justify-content: space-between;
 }
+
 .settings-profile-text13 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
   font-family: Maven Pro;
 }
+
 @media(max-width: 479px) {
   .settings-profile-container {
     padding: var(--dl-space-space-halfunit);

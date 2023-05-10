@@ -9,23 +9,25 @@
   flex-direction: column;
   background-color: var(--dl-color-gray-black);
 }
+
 .user-profile-container01 {
   flex: 0 0 auto;
   height: 100%;
   display: flex;
-  max-width: var(--dl-size-size-maxwidth);
   align-self: center;
   margin-top: var(--dl-space-space-twounits);
   align-items: center;
   flex-direction: column;
   justify-content: center;
 }
+
 .user-profile-text {
   color: var(--dl-color-simpd-s90);
   align-self: flex-start;
   font-family: Maven Pro;
   margin-bottom: var(--dl-space-space-twounits);
 }
+
 .user-profile-container02 {
   flex: 0 0 auto;
   width: 100%;
@@ -38,6 +40,7 @@
   justify-content: center;
   background-color: var(--dl-color-simpd-s20);
 }
+
 .user-profile-container03 {
   flex: 0 0 auto;
   width: 100%;
@@ -51,11 +54,13 @@
   justify-content: space-between;
   background-color: var(--dl-color-simpd-s30);
 }
+
 .user-profile-text1 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.83rem;
   font-family: Maven Pro;
 }
+
 .user-profile-icon {
   fill: var(--dl-color-simpd-s90);
   width: var(--dl-size-size-iconone);
@@ -63,9 +68,11 @@
   height: var(--dl-size-size-iconone);
   transition: 0.3s;
 }
+
 .user-profile-icon:hover {
   fill: var(--dl-color-simpd-brand);
 }
+
 .user-profile-container04 {
   flex: 0 0 auto;
   width: 100%;
@@ -78,11 +85,13 @@
   padding-bottom: var(--dl-space-space-halfunit);
   justify-content: space-between;
 }
+
 .user-profile-text2 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.25rem;
   font-family: Maven Pro;
 }
+
 .user-profile-container05 {
   flex: 0 0 auto;
   width: 100%;
@@ -95,6 +104,7 @@
   justify-content: center;
   background-color: var(--dl-color-simpd-s20);
 }
+
 .user-profile-container06 {
   flex: 0 0 auto;
   width: 100%;
@@ -108,11 +118,13 @@
   justify-content: space-between;
   background-color: var(--dl-color-simpd-s30);
 }
+
 .user-profile-text3 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.83rem;
   font-family: Maven Pro;
 }
+
 .user-profile-icon2 {
   fill: var(--dl-color-simpd-s90);
   width: var(--dl-size-size-iconone);
@@ -120,9 +132,11 @@
   height: var(--dl-size-size-iconone);
   transition: 0.3s;
 }
+
 .user-profile-icon2:hover {
   fill: var(--dl-color-simpd-brand);
 }
+
 .user-profile-container07 {
   flex: 0 0 auto;
   width: 100%;
@@ -135,11 +149,13 @@
   padding-bottom: var(--dl-space-space-halfunit);
   justify-content: space-between;
 }
+
 .user-profile-text4 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.25rem;
   font-family: Maven Pro;
 }
+
 .user-profile-container08 {
   flex: 0 0 auto;
   width: 100%;
@@ -152,6 +168,7 @@
   justify-content: center;
   background-color: var(--dl-color-simpd-s20);
 }
+
 .user-profile-container09 {
   flex: 0 0 auto;
   width: 100%;
@@ -165,11 +182,13 @@
   justify-content: space-between;
   background-color: var(--dl-color-simpd-s30);
 }
+
 .user-profile-text5 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.83rem;
   font-family: Maven Pro;
 }
+
 .user-profile-icon4 {
   fill: var(--dl-color-simpd-s90);
   width: var(--dl-size-size-iconone);
@@ -177,9 +196,11 @@
   height: var(--dl-size-size-iconone);
   transition: 0.3s;
 }
+
 .user-profile-icon4:hover {
   fill: var(--dl-color-simpd-brand);
 }
+
 .user-profile-container10 {
   flex: 0 0 auto;
   width: 100%;
@@ -192,11 +213,13 @@
   padding-bottom: var(--dl-space-space-halfunit);
   justify-content: space-between;
 }
+
 .user-profile-text6 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.25rem;
   font-family: Maven Pro;
 }
+
 .user-profile-container11 {
   flex: 0 0 auto;
   width: 100%;
@@ -209,6 +232,7 @@
   justify-content: center;
   background-color: var(--dl-color-simpd-s20);
 }
+
 .user-profile-container12 {
   flex: 0 0 auto;
   width: 100%;
@@ -222,11 +246,13 @@
   justify-content: space-between;
   background-color: var(--dl-color-simpd-s30);
 }
+
 .user-profile-text7 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.83rem;
   font-family: Maven Pro;
 }
+
 .user-profile-icon6 {
   fill: var(--dl-color-simpd-s90);
   width: var(--dl-size-size-iconone);
@@ -234,11 +260,13 @@
   height: var(--dl-size-size-iconone);
   transition: 0.3s;
 }
+
 .user-profile-icon6:hover {
   fill: var(--dl-color-simpd-brand);
   width: 1.83rem;
   height: 1.83rem;
 }
+
 .user-profile-container13 {
   flex: 0 0 auto;
   width: 100%;
@@ -251,11 +279,13 @@
   padding-bottom: var(--dl-space-space-halfunit);
   justify-content: space-between;
 }
+
 .user-profile-text8 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.25rem;
   font-family: Maven Pro;
 }
+
 @media(max-width: 479px) {
   .user-profile-container {
     padding: var(--dl-space-space-halfunit);

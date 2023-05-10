@@ -1,3 +1,5 @@
+import { styled } from "styled-components";
+
 export enum SimpdWebThemeName {
   Brand = 'brand',
 }
@@ -36,6 +38,7 @@ export interface SimpdWebTheme {
     oneUnit: string;
     twoUnits: string;
   }
+  maxWidth: string;
 }
 
 export const simpdWebTheme: SimpdWebTheme = {
@@ -71,5 +74,6 @@ export const simpdWebTheme: SimpdWebTheme = {
   icon: {
     oneUnit: '1.4rem',
     twoUnits: '1.8rem',
-  }
+  },
+  maxWidth: '1400px'
 }
