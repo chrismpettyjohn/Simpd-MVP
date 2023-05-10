@@ -6,6 +6,7 @@ export const SiteHeaderContainer = styled.div`
   height: auto;
   width: 100%;
   border-radius: ${({ theme }) => theme.radius.four};
+  margin-top: ${({ theme }) => theme.space.twoUnits};
 `
 
 export const SiteHeaderBrandContainer = styled.div`

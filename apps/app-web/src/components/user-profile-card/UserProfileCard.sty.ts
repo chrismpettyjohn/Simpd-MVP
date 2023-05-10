@@ -36,6 +36,7 @@ export const UserProfileCardContainer = styled.div`
 
 export const UserProfileCardContent = styled.div`
   padding: ${({ theme }) => theme.space.oneUnit};
+  width: 100%;
 `
 
 export const UserProfileCardCoverPhoto = styled.div`
