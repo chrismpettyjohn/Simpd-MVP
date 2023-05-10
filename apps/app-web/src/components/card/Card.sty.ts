@@ -23,7 +23,6 @@ export const CardHeaderContent = styled.div`
   h1 {
     color: ${({ theme }) => theme.color.s90};
     font-size: 2rem;
-    font-family: Maven Pro;
   }
 
   svg {
@@ -47,6 +46,5 @@ export const CardBody = styled.div`
 export const CardBodyContent = styled.div`
   color: ${({ theme }) => theme.color.s90};
   font-size: 1.5rem;
-  font-family: Maven Pro;
   padding: ${({ theme }) => theme.space.halfUnit};
 `

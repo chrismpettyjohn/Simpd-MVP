@@ -21,7 +21,6 @@ export const SiteHeaderBrandContainer = styled.div`
   font-size: ${({ theme }) => theme.fontSize.twoUnits};
   font-style: normal;
   text-align: center;
-  font-family: Maven Pro;
   font-weight: 600;
   letter-spacing: 4px;
   text-transform: lowercase;

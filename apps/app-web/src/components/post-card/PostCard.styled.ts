@@ -37,5 +37,4 @@ export const PostCardText = styled.div`
     width: 100%;
     font-size: 1rem;
     margin-top: ${({ theme }) => theme.space.twoUnits};
-    font-family: Maven Pro;
 `

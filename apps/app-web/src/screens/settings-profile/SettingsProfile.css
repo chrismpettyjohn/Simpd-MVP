@@ -25,7 +25,6 @@
   color: var(--dl-color-simpd-s90);
   font-size: 1.83rem;
   align-self: flex-start;
-  font-family: Maven Pro;
   margin-bottom: var(--dl-space-space-twounits);
 }
 
@@ -209,7 +208,6 @@
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
   font-style: normal;
-  font-family: Maven Pro;
   font-weight: 500;
 }
 
@@ -218,7 +216,6 @@
   width: 100%;
   font-size: 1.2rem;
   margin-top: var(--dl-space-space-halfunit);
-  font-family: Maven Pro;
   border-color: var(--dl-color-simpd-s40);
   background-color: var(--dl-color-simpd-s30);
 }
@@ -233,7 +230,6 @@
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
   font-style: normal;
-  font-family: Maven Pro;
   font-weight: 500;
 }
 
@@ -242,7 +238,6 @@
   width: 100%;
   font-size: 1.2rem;
   margin-top: var(--dl-space-space-halfunit);
-  font-family: Maven Pro;
   border-color: var(--dl-color-simpd-s40);
   background-color: var(--dl-color-simpd-s30);
 }
@@ -257,7 +252,6 @@
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
   font-style: normal;
-  font-family: Maven Pro;
   font-weight: 500;
 }
 
@@ -266,7 +260,6 @@
   height: var(--dl-size-size-medium);
   font-size: 1.2rem;
   margin-top: var(--dl-space-space-halfunit);
-  font-family: Maven Pro;
   border-color: var(--dl-color-simpd-s40);
   background-color: var(--dl-color-simpd-s30);
 }
@@ -281,7 +274,6 @@
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
   font-style: normal;
-  font-family: Maven Pro;
   font-weight: 500;
 }
 
@@ -290,7 +282,6 @@
   width: 100%;
   font-size: 1.2rem;
   margin-top: var(--dl-space-space-halfunit);
-  font-family: Maven Pro;
   border-color: var(--dl-color-simpd-s40);
   background-color: var(--dl-color-simpd-s30);
 }
@@ -305,7 +296,6 @@
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
   font-style: normal;
-  font-family: Maven Pro;
   font-weight: 500;
 }
 
@@ -314,7 +304,6 @@
   width: 100%;
   font-size: 1.2rem;
   margin-top: var(--dl-space-space-halfunit);
-  font-family: Maven Pro;
   border-color: var(--dl-color-simpd-s40);
   background-color: var(--dl-color-simpd-s30);
 }
@@ -329,7 +318,6 @@
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
   font-style: normal;
-  font-family: Maven Pro;
   font-weight: 500;
 }
 
@@ -338,7 +326,6 @@
   width: 100%;
   font-size: 1.2rem;
   margin-top: var(--dl-space-space-halfunit);
-  font-family: Maven Pro;
   border-color: var(--dl-color-simpd-s40);
   background-color: var(--dl-color-simpd-s30);
 }
@@ -405,7 +392,6 @@
 .settings-profile-text09 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.5rem;
-  font-family: Maven Pro;
 }
 
 

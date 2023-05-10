@@ -44,12 +44,10 @@ export const AuthorBlockUserInfoContainer = styled.div`
     h1 {
       color: var(--dl-color-simpd-s90);
       font-size: 1.25rem;
-      font-family: Maven Pro;
       margin-bottom: 0px;
     }
 
     span {
       font-size: 1rem;
-      font-family: Maven Pro;
     }
 `

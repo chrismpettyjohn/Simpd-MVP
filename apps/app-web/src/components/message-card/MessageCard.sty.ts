@@ -31,7 +31,6 @@ export const MessageCardTextContainer = styled.div`
   align-items: center;
   margin-left: var(--dl-space-space-twounits);
   justify-content: flex-start;
-  font-family: ${({ theme }) => theme.fontFamily.primary};
   color: ${({ theme }) => theme.color.s90};
 
   h1 {

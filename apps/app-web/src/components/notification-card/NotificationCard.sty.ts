@@ -49,7 +49,6 @@ export const NotificationCardAuthorInfoContainer = styled.div`
   align-items: center;
   margin-left: ${({ theme }) => theme.space.twoUnits};
   justify-content: flex-start;
-  font-family: ${({ theme }) => theme.fontFamily.primary};
 
   h1 {
     color: ${({ theme }) => theme.color.s90};
@@ -72,19 +71,16 @@ export const NotificationCardTextContainer = styled.div`
   align-items: center;
   margin-left: var(--dl-space-space-twounits);
   justify-content: flex-start;
-  font-family: ${({ theme }) => theme.fontFamily.primary};
   color: ${({ theme }) => theme.color.s90};
 
   h1 {
     font-size:  ${({ theme }) => theme.fontSize.oneUnit};
-    font-family: ${({ theme }) => theme.fontFamily.primary};
     color: ${({ theme }) => theme.color.s90};
     margin-bottom: 0px;
   }
 
   .message-content {
     font-size:  ${({ theme }) => theme.fontSize.halfUnit};
-    font-family: ${({ theme }) => theme.fontFamily.primary};
     color: ${({ theme }) => theme.color.s90};
   }
 `

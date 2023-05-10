@@ -24,7 +24,6 @@ export const AuthorBlockSmallInfoContainer = styled.div`
   align-items: center;
   margin-left: ${({ theme }) => theme.space.twoUnits};
   justify-content: flex-start;
-  font-family: ${({ theme }) => theme.fontFamily.primary};
 
   h1 {
     color: ${({ theme }) => theme.color.s90};

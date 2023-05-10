@@ -13,7 +13,6 @@ export const PageTitleContainer = styled.div`
   h1 {
     color: ${({ theme }) => theme.color.s90};
     font-size: ${({ theme }) => theme.fontSize.twoUnits};
-    font-family: ${({ theme }) => theme.fontFamily.primary};
     align-self: center;
   }
 
@@ -22,7 +21,6 @@ export const PageTitleContainer = styled.div`
     width: 45%;
     padding: var(--dl-space-space-unit);
     font-size: ${({ theme }) => theme.fontSize.oneUnit};
-    font-family: ${({ theme }) => theme.fontFamily.primary};
     transition: 0.3s;
     border-color: ${({ theme }) => theme.color.s50};
     background-color: ${({ theme }) => theme.color.s30};

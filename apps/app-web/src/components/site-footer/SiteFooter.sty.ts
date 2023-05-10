@@ -14,6 +14,5 @@ export const FooterElement = styled.footer`
   color: ${({ theme }) => theme.color.brand};
   font-size: 1.5rem;
   font-style: normal;
-  font-family: Maven Pro;
   font-weight: 700;
 `

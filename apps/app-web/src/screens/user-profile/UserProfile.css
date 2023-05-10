@@ -24,7 +24,7 @@
 .user-profile-text {
   color: var(--dl-color-simpd-s90);
   align-self: flex-start;
-  font-family: Maven Pro;
+
   margin-bottom: var(--dl-space-space-twounits);
 }
 
@@ -58,7 +58,7 @@
 .user-profile-text1 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.83rem;
-  font-family: Maven Pro;
+
 }
 
 .user-profile-icon {
@@ -89,7 +89,7 @@
 .user-profile-text2 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.25rem;
-  font-family: Maven Pro;
+
 }
 
 .user-profile-container05 {
@@ -122,7 +122,7 @@
 .user-profile-text3 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.83rem;
-  font-family: Maven Pro;
+
 }
 
 .user-profile-icon2 {
@@ -153,7 +153,7 @@
 .user-profile-text4 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.25rem;
-  font-family: Maven Pro;
+
 }
 
 .user-profile-container08 {
@@ -186,7 +186,7 @@
 .user-profile-text5 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.83rem;
-  font-family: Maven Pro;
+
 }
 
 .user-profile-icon4 {
@@ -217,7 +217,7 @@
 .user-profile-text6 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.25rem;
-  font-family: Maven Pro;
+
 }
 
 .user-profile-container11 {
@@ -250,7 +250,7 @@
 .user-profile-text7 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.83rem;
-  font-family: Maven Pro;
+
 }
 
 .user-profile-icon6 {
@@ -283,7 +283,7 @@
 .user-profile-text8 {
   color: var(--dl-color-simpd-s90);
   font-size: 1.25rem;
-  font-family: Maven Pro;
+
 }
 
 @media(max-width: 479px) {

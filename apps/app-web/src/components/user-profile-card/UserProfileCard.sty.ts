@@ -23,14 +23,13 @@ export const UserProfileCardContainer = styled.div`
     color:  ${({ theme }) => theme.color.s90};
     font-size:  ${({ theme }) => theme.fontSize.twoUnits};
     margin-top: ${({ theme }) => theme.space.halfUnit};
-    font-family: Maven Pro;
+    
     margin-bottom: 0px;
   }
 
   span {
     color:  ${({ theme }) => theme.color.s50};
     font-size: ${({ theme }) => theme.fontSize.oneUnit};
-    font-family: Maven Pro;
   }
 `
 
