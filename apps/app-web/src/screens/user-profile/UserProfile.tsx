@@ -1,8 +1,6 @@
 import React from 'react'
 import './UserProfile.css';
 import { Helmet } from 'react-helmet'
-import { Footer } from 'components/footer/Footer';
-import { SiteHeader } from 'components/site-header/SiteHeader';
 import { UserProfileCard } from 'components/user-profile-card/UserProfileCard';
 
 export function UserProfileScreen() {
@@ -12,7 +10,6 @@ export function UserProfileScreen() {
         <title>User-Profile - Simpd</title>
         <meta property="og:title" content="User-Profile - Simpd" />
       </Helmet>
-      <SiteHeader />
       <div className="user-profile-container01">
         <h1 className="user-profile-text">Profile</h1>
         <UserProfileCard />
@@ -77,7 +74,6 @@ export function UserProfileScreen() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   )
 }

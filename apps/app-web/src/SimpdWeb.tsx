@@ -1,20 +1,19 @@
 import React from 'react';
 import { Router } from 'screens/Router';
-import { ThemeProvider, styled } from 'styled-components';
 import { simpdWebTheme } from './SimpdWeb.styled';
+import { Footer } from 'components/footer/Footer';
+import { ThemeProvider, styled } from 'styled-components';
+import { SiteHeader } from 'components/site-header/SiteHeader';
 
 export const SimpdWebContainer = styled.div`
-  height: auto;
-  width: auto;
-  max-width: 100%;
-  max-height: 100%;
+  min-height: 100%;
+  min-width: 100%;
   background: ${({ theme }) => theme.color.black};
 `
 
 export const SimpdWebContentContainer = styled.div`
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
-  max-height: 100%;
   max-width: ${({ theme }) => theme.maxWidth};
   margin: 0 auto;
 `
@@ -24,7 +23,9 @@ export function SimpdWeb() {
     <ThemeProvider theme={simpdWebTheme}>
       <SimpdWebContainer>
         <SimpdWebContentContainer>
+          <SiteHeader />
           <Router />
+          <Footer />
         </SimpdWebContentContainer>
       </SimpdWebContainer>
     </ThemeProvider>

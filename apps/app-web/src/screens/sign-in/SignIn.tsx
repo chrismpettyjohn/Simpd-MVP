@@ -1,9 +1,7 @@
 import React from 'react'
 import './SignIn.css';
 import { Helmet } from 'react-helmet';
-import { Footer } from 'components/footer/Footer';
 import { PostCard } from 'components/post-card/PostCard';
-import { SiteHeader } from 'components/site-header/SiteHeader';
 
 export function SignInScreen() {
   return (
@@ -12,7 +10,6 @@ export function SignInScreen() {
         <title>Simpd</title>
         <meta property="og:title" content="Simpd" />
       </Helmet>
-      <SiteHeader />
       <div className="landing-page-container1">
         <div className="landing-page-container2">
           <h1 className="landing-page-text">Sign in</h1>
@@ -42,7 +39,6 @@ export function SignInScreen() {
         <PostCard />
         <PostCard />
       </div>
-      <Footer />
     </div>
   )
 }

@@ -1,9 +1,7 @@
 import React from 'react'
 import './Favorites.css';
 import { Helmet } from 'react-helmet'
-import { Footer } from 'components/footer/Footer';
 import { PostCard } from 'components/post-card/PostCard';
-import { SiteHeader } from 'components/site-header/SiteHeader';
 
 export function FavoritesScreen() {
   return (
@@ -12,7 +10,6 @@ export function FavoritesScreen() {
         <title>Favorites - Simpd</title>
         <meta property="og:title" content="Favorites - Simpd" />
       </Helmet>
-      <SiteHeader />
       <div className="favorites-container1">
         <div className="favorites-container2">
           <h1 className="favorites-text">Favorites</h1>
@@ -25,7 +22,6 @@ export function FavoritesScreen() {
         </header>
         <PostCard />
       </div>
-      <Footer />
     </div>
   )
 }
