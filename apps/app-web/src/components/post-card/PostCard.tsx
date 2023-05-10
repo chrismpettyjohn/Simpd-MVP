@@ -1,4 +1,3 @@
-import './PostCard.css';
 import React from 'react';
 import { AuthorBlockLarge } from 'components/author-block-large/AuthorBlockLarge';
 import { PostCardContent, PostCardElement, PostCardImage, PostCardText } from './PostCard.styled';

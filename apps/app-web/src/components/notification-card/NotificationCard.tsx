@@ -1,5 +1,4 @@
 import React from 'react'
-import './NotificationCard.css';
 import { NotificationCardAuthorElement, NotificationCardAuthorInfoContainer, NotificationCardElement, NotificationCardIconElement, NotificationCardTextContainer } from './NotificationCard.sty';
 
 export function NotificationCard() {

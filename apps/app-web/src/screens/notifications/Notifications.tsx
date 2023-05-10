@@ -4,27 +4,28 @@ import { Helmet } from 'react-helmet'
 import { Footer } from 'components/footer/Footer';
 import { SiteHeader } from 'components/site-header/SiteHeader';
 import { NotificationCard } from 'components/notification-card/NotificationCard';
+import { NotificationContainer, NotificationElement } from './Notifications.sty';
 
 export function NotificationsScreen() {
   return (
-    <div className="notifications-container">
+    <>
       <Helmet>
         <title>Notifications - Simpd</title>
         <meta property="og:title" content="Notifications - Simpd" />
       </Helmet>
       <SiteHeader />
-      <div className="notifications-container1">
+      <NotificationElement>
         <div className="notifications-container2">
           <h1 className="notifications-text">Notifications</h1>
         </div>
-        <div className="notifications-container3">
+        <NotificationContainer>
           <NotificationCard />
           <NotificationCard />
           <NotificationCard />
           <NotificationCard />
-        </div>
-      </div>
+        </NotificationContainer>
+      </NotificationElement>
       <Footer />
-    </div>
+    </>
   )
 }
