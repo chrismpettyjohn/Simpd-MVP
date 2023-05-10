@@ -8,11 +8,16 @@ import { PageNotFoundScreen } from './page-not-found/PageNotFound';
 import { NotificationsScreen } from './notifications/Notifications';
 import { SettingsProfileScreen } from './settings-profile/SettingsProfile';
 import { SignInScreen } from './sign-in/SignIn';
+import { CreateAccountScreen } from './create-account/CreateAccount';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/sign-in',
     view: SignInScreen,
+  },
+  {
+    path: '/create-account',
+    view: CreateAccountScreen,
   },
   {
     path: '/dashboard',

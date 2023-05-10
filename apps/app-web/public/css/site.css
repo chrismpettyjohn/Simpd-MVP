@@ -8,7 +8,7 @@ body,
   position: relative;
   background: black;
   box-sizing: border-box;
-  font-family: Maven Pro;
+  font-family: Maven Pro !important;
 }
 
 *,

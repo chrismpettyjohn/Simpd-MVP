@@ -46,5 +46,5 @@ export const CardBody = styled.div`
 export const CardBodyContent = styled.div`
   color: ${({ theme }) => theme.color.s90};
   font-size: 1.5rem;
-  padding: ${({ theme }) => theme.space.halfUnit};
+  padding: ${({ theme }) => theme.space.oneUnit};
 `
