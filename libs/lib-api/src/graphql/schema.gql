@@ -2,30 +2,44 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type FormModel {
+type MediaDetailsModel {
+  sizeInBytes: Float
+  originalFileName: String
+}
+
+type MediaLocationModel {
+  awsS3Bucket: String
+  awsS3Key: String
+}
+
+type MediaModel {
   id: Float
+  type: MediaType
+  profileID: Float
+  details: MediaDetailsModel
+  location: MediaLocationModel
+}
+
+enum MediaType {
+  Image
+  Video
+  Other
 }
 
 type Query {
-  form(filter: FormFilterByOneInput!): FormModel!
-  forms(filter: FormFilterByManyInput): [FormModel!]!
+  media(filter: MediaFilterByOneInput!): MediaModel!
+  medias(filter: MediaFilterByManyInput): [MediaModel!]!
 }
 
-input FormFilterByOneInput {
+input MediaFilterByOneInput {
   id: Float
-  keys: [String!]
 }
 
-input FormFilterByManyInput {
+input MediaFilterByManyInput {
   ids: [Float!]
-  keys: [String!]
+  profileIDs: [Float!]
 }
 
 type Mutation {
-  formCreate(input: FormCreateInput!): FormModel!
-  formDelete(filter: FormFilterByOneInput!): Boolean!
-}
-
-input FormCreateInput {
-  name: String!
+  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
 }
