@@ -21,20 +21,20 @@ export class SessionService {
   ) {}
 
   async createNewSession(
-    userID: number,
+    email: string,
     password: string
   ): Promise<SessionContents> {
     const currentTime = new Date();
     const expiresAt = addTime(currentTime, DEFAULT_SESSION_LENGTH);
 
-    const user = await this.userClientService.findOne({id: userID});
+    const user = await this.userClientService.findOne({email});
 
     if (!user) {
-      throw new NotFoundException(`User ${userID} does not exist`);
+      throw new NotFoundException(`User ${email} does not exist`);
     }
 
     const matchingPassword = await this.userClientService.passwordComparison({
-      id: userID,
+      id: user.id,
       password,
     });
 
@@ -53,7 +53,7 @@ export class SessionService {
     }
 
     const newSession = await this.sessionRepo.create({
-      userID,
+      userID: user.id,
       expiresAt,
     });
 

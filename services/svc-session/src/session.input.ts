@@ -17,6 +17,9 @@ export class SessionFilterByOneInput {
 
 @InputType()
 export class SessionCreateInput {
-  @Field(() => Number)
-  userID!: number;
+  @Field(() => String)
+  email!: string;
+
+  @Field(() => String)
+  password!: string;
 }

@@ -5,7 +5,8 @@ export interface UserWire {
 }
 
 export interface UserFindOneInput {
-  id: number;
+  id?: number;
+  email?: string;
 }
 
 export type UserFindOneResponse = UserWire;

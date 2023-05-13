@@ -24,6 +24,7 @@ export class UserController {
     const matchingUser = await this.userRepo.findOneOrFail({
       where: {
         id: data.id,
+        email: data.email,
       },
     });
     return userEntityToUserWire(matchingUser);

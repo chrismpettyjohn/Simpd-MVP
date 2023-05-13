@@ -8,13 +8,13 @@ export interface UseSessionCreateResponse {
   data?: SessionCreateMutationResponse;
 }
 
-export function useSessionCreate({ userID, password }: SessionCreateMutationVariables): UseSessionCreateResponse {
+export function useSessionCreate({ email, password }: SessionCreateMutationVariables): UseSessionCreateResponse {
   const [createSession, { loading, error, data }] = useMutation(SESSION_CREATE_MUTATION);
 
   const onCreateSession = async () => {
     const matchingSession = await createSession({
       variables: {
-        userID,
+        email,
         password
       }
     })
