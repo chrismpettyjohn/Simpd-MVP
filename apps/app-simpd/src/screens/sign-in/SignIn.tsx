@@ -1,25 +1,31 @@
 import './SignIn.css';
 import { Link } from 'wouter';
 import { Helmet } from 'react-helmet';
-import React, { SyntheticEvent, useState } from 'react'
 import { Card } from 'components/card/Card';
 import { PageTitle } from 'components/page-title/PageTitle';
-import { GuestGuard, useSessionCreate } from '@simpd/lib-web';
+import React, { SyntheticEvent, useContext, useState } from 'react'
+import { GuestGuard, sessionContext, useSessionCreate } from '@simpd/lib-web';
 
 export function SignInScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { setSession } = useContext(sessionContext);
   const sessionCreate = useSessionCreate({ email, password });
 
   const isDisabled = !email || !password;
 
-  const onSessionCreate = (event: SyntheticEvent) => {
+  const onSessionCreate = async (event: SyntheticEvent) => {
     event.preventDefault();
     if (isDisabled || sessionCreate.loading) {
       return;
     }
 
-    sessionCreate.execute();
+    try {
+      const newSession = await sessionCreate.execute();
+      setSession(newSession);
+    } catch (e) {
+      alert('Something went wrong')
+    }
   }
 
   return (
