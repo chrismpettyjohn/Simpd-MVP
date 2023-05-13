@@ -7,7 +7,7 @@ export function UserGuard({ children, redirect = false }: UserGuardProps) {
   const { session } = useContext(sessionContext);
 
   if (!session) {
-    return redirect ? <Redirect to="/login" /> : null;
+    return redirect ? <Redirect to="/sign-in" /> : null;
   }
 
   return <>{children}</>;

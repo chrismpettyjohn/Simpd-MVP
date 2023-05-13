@@ -38,11 +38,15 @@ import {
   SVC_USER_NAME,
   SVC_USER_WEB_ADDRESS,
 } from '@simpd/lib-client';
+import {GRAPHQL_PLAYGROUND} from 'libs/lib-api/src/graphql/graphql.const';
 
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloGatewayDriverConfig>({
       driver: ApolloGatewayDriver,
+      server: {
+        introspection: GRAPHQL_PLAYGROUND,
+      },
       gateway: {
         supergraphSdl: new IntrospectAndCompose({
           subgraphs: [

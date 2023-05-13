@@ -1,13 +1,14 @@
 import React from 'react'
 import './SettingsProfile.css';
 import { Helmet } from 'react-helmet'
-import { UserProfileCard } from 'components/user-profile-card/UserProfileCard';
+import { UserGuard } from '@simpd/lib-web';
 import { Card } from 'components/card/Card';
 import { PageTitle } from 'components/page-title/PageTitle';
+import { UserProfileCard } from 'components/user-profile-card/UserProfileCard';
 
 export function SettingsProfileScreen() {
   return (
-    <div className="settings-profile-container">
+    <UserGuard redirect>
       <Helmet>
         <title>Settings-Profile - Simpd</title>
         <meta property="og:title" content="Settings-Profile - Simpd" />
@@ -83,6 +84,6 @@ export function SettingsProfileScreen() {
           Hello
         </div>
       </Card>
-    </div>
+    </UserGuard>
   )
 }

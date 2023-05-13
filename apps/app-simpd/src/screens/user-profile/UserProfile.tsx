@@ -1,12 +1,13 @@
 import React from 'react'
 import './UserProfile.css';
 import { Helmet } from 'react-helmet'
-import { UserProfileCard } from 'components/user-profile-card/UserProfileCard';
+import { UserGuard } from '@simpd/lib-web';
 import { PageTitle } from 'components/page-title/PageTitle';
+import { UserProfileCard } from 'components/user-profile-card/UserProfileCard';
 
 export function UserProfileScreen() {
   return (
-    <div className="user-profile-container">
+    <UserGuard redirect>
       <Helmet>
         <title>User-Profile - Simpd</title>
         <meta property="og:title" content="User-Profile - Simpd" />
@@ -73,6 +74,6 @@ export function UserProfileScreen() {
           <span className="user-profile-text8">pay for my dinner loser</span>
         </div>
       </div>
-    </div>
+    </UserGuard>
   )
 }

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet'
+import { UserGuard } from '@simpd/lib-web';
 import { PostCard } from 'components/post-card/PostCard';
 import { PageTitle } from 'components/page-title/PageTitle';
 
 export function DashboardScreen() {
   return (
-    <>
+    <UserGuard redirect>
       <Helmet>
         <title>Dashboard - Simpd</title>
         <meta property="og:title" content="Dashboard - Simpd" />
@@ -19,6 +20,6 @@ export function DashboardScreen() {
       </PageTitle>
       <PostCard />
       <PostCard />
-    </>
+    </UserGuard>
   )
 }
