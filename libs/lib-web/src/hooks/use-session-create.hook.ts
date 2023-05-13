@@ -1,4 +1,5 @@
 import { useMutation } from "@apollo/client";
+import { LOCAL_STORAGE_SESSION_TOKEN } from "app/app.constant";
 import { SESSION_CREATE_MUTATION, SessionCreateMutationResponse, SessionCreateMutationVariables } from "mutation/session-create.mutation";
 
 export interface UseSessionCreateResponse {
@@ -18,7 +19,8 @@ export function useSessionCreate({ email, password }: SessionCreateMutationVaria
         password
       }
     })
-    return matchingSession.data;
+    localStorage.setItem(LOCAL_STORAGE_SESSION_TOKEN, matchingSession.data.sessionCreate);
+    return matchingSession.data.sessionCreate;
   }
 
   return {

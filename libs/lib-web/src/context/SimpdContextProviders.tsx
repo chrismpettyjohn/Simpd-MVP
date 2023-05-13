@@ -1,9 +1,9 @@
 import React from 'react';
+import { ApolloProvider } from '@apollo/client';
 import { graphqlClient } from 'app/graphql.client';
-import { ApolloProvider } from "@apollo/react-hooks";
+import { ThemeContextProvider } from './theme/ThemeContextProvider';
 import { SessionContextProvider } from './session/SessionContextProvider';
 import { SimpdContextProvidersProps } from './SimpdContextProviders.types';
-import { ThemeContextProvider } from './theme/ThemeContextProvider';
 
 export function SimpdContextProviders({ children }: SimpdContextProvidersProps) {
   return (

@@ -9,14 +9,16 @@ export function SessionContextProvider({ children }: SessionContextProviderProps
   const getSession = useSessionAuthenticated();
   const [session, setSessionState] = useState<SessionAuthenticatedQueryResponse>(null);
 
-  const checkAuthenticatedSession = async () => {
+  const useExistingSession = async () => {
     const checkSession = await getSession.fetch();
+    console.log(checkSession)
     setSessionState(checkSession)
   }
 
   useEffect(() => {
-    checkAuthenticatedSession();
+    useExistingSession();
   }, []);
+
 
   const setSession = (newSession?: any) => {
     setSessionState(newSession);

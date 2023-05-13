@@ -14,7 +14,7 @@ export function useUserFetchOne({ userID }: UserFetchOneQueryVariables): UseFetc
 
   const onFetchUser = async () => {
     const matchingUser = await getUser({ variables: { userID } })
-    return matchingUser.data;
+    return matchingUser.data.user;
   }
 
   return {
