@@ -1,8 +1,17 @@
 import {lastValueFrom} from 'rxjs';
 import {Inject, Injectable} from '@nestjs/common';
 import {ClientProxy} from '@nestjs/microservices';
-import {UserFindOneInput, UserWire} from './user-client.types';
-import {SVC_USER_INTERNAL_EVENT_FIND_ONE, SVC_USER_NAME} from './user.const';
+import {
+  SVC_USER_INTERNAL_EVENT_FIND_ONE,
+  SVC_USER_INTERNAL_EVENT_PASSWORD_COMPARISON,
+  SVC_USER_NAME,
+} from './user.const';
+import {
+  UserFindOneInput,
+  UserPasswordComparisonInput,
+  UserPasswordComparisonResponse,
+  UserWire,
+} from './user-client.types';
 
 @Injectable()
 export class UserClientService {
@@ -13,5 +22,19 @@ export class UserClientService {
       id,
     });
     return await lastValueFrom(matchingUser$);
+  }
+
+  async passwordComparison({
+    id,
+    password,
+  }: UserPasswordComparisonInput): Promise<UserPasswordComparisonResponse> {
+    const matchingPassword$ = this.client.send(
+      SVC_USER_INTERNAL_EVENT_PASSWORD_COMPARISON,
+      {
+        id,
+        password,
+      }
+    );
+    return await lastValueFrom(matchingPassword$);
   }
 }

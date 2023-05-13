@@ -3,7 +3,7 @@ import { USER_FETCH_ONE_QUERY, UserFetchOneQueryResponse, UserFetchOneQueryVaria
 
 
 export interface UseFetchUserQueryResponse {
-  fetch(): void;
+  fetch(): Promise<UserFetchOneQueryResponse>;
   error?: Error;
   loading: boolean;
   data?: UserFetchOneQueryResponse;
@@ -12,8 +12,9 @@ export interface UseFetchUserQueryResponse {
 export function useUserFetchOne({ userID }: UserFetchOneQueryVariables): UseFetchUserQueryResponse {
   const [getUser, { loading, error, data }] = useLazyQuery(USER_FETCH_ONE_QUERY);
 
-  const onFetchUser = () => {
-    getUser({ variables: { userID } })
+  const onFetchUser = async () => {
+    const matchingUser = await getUser({ variables: { userID } })
+    return matchingUser.data;
   }
 
   return {

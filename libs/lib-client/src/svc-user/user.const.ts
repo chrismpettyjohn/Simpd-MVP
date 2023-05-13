@@ -6,3 +6,5 @@ export const SVC_USER_WEB_ADDRESS =
   `http://localhost:${SVC_USER_WEB_PORT}/graphql`;
 
 export const SVC_USER_INTERNAL_EVENT_FIND_ONE = 'userFindOneByID';
+export const SVC_USER_INTERNAL_EVENT_PASSWORD_COMPARISON =
+  'userPasswordComparison';

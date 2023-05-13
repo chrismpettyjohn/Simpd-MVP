@@ -3,7 +3,7 @@ import { SESSION_AUTHENTICATED_QUERY, SessionAuthenticatedQueryResponse } from "
 
 
 export interface UseSessionAuthenticatedResponse {
-  fetch(): void;
+  fetch(): Promise<SessionAuthenticatedQueryResponse>;
   error?: Error;
   loading: boolean;
   data?: SessionAuthenticatedQueryResponse;
@@ -12,8 +12,9 @@ export interface UseSessionAuthenticatedResponse {
 export function useSessionAuthenticated(): UseSessionAuthenticatedResponse {
   const [getSession, { loading, error, data }] = useLazyQuery(SESSION_AUTHENTICATED_QUERY);
 
-  const onFetchSession = () => {
-    getSession()
+  const onFetchSession = async () => {
+    const matchingSession = await getSession()
+    return matchingSession.data;
   }
 
   return {

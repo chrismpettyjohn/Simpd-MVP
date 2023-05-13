@@ -8,6 +8,7 @@ import {
   InternalServerErrorException,
   NotFoundException,
   Injectable,
+  UnauthorizedException,
 } from '@nestjs/common';
 
 @Injectable()
@@ -19,7 +20,10 @@ export class SessionService {
     private readonly roleClientService: RoleClientService
   ) {}
 
-  async createNewSession(userID: number): Promise<SessionContents> {
+  async createNewSession(
+    userID: number,
+    password: string
+  ): Promise<SessionContents> {
     const currentTime = new Date();
     const expiresAt = addTime(currentTime, DEFAULT_SESSION_LENGTH);
 
@@ -27,6 +31,15 @@ export class SessionService {
 
     if (!user) {
       throw new NotFoundException(`User ${userID} does not exist`);
+    }
+
+    const matchingPassword = await this.userClientService.passwordComparison({
+      id: userID,
+      password,
+    });
+
+    if (!matchingPassword.matching) {
+      throw new UnauthorizedException();
     }
 
     const userRole = await this.roleClientService.findOne({

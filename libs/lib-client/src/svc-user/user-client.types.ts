@@ -7,3 +7,15 @@ export interface UserWire {
 export interface UserFindOneInput {
   id: number;
 }
+
+export type UserFindOneResponse = UserWire;
+
+export interface UserPasswordComparisonInput {
+  id: number;
+  password: string;
+}
+
+export interface UserPasswordComparisonResponse {
+  id: number;
+  matching: boolean;
+}

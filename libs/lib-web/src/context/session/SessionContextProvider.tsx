@@ -1,14 +1,29 @@
-import React, { useState } from 'react';
 import { sessionContext } from './SessionContext';
+import React, { useEffect, useState } from 'react';
 import { SessionContextProviderProps } from './SessionContext.types';
+import { useSessionAuthenticated } from 'hooks/use-session-authenticated.hook';
+import { SessionAuthenticatedQueryResponse } from 'queries/session-authenticated.query';
 
 export function SessionContextProvider({ children }: SessionContextProviderProps) {
-  const [loading, setIsLoading] = useState(false);
-  const [session, setSessionState] = useState<any>();
+  const getSession = useSessionAuthenticated();
+  const [session, setSessionState] = useState<SessionAuthenticatedQueryResponse>(null);
+
+  const checkAuthenticatedSession = async () => {
+    const checkSession = await getSession.fetch();
+    setSessionState(checkSession)
+  }
+
+  useEffect(() => {
+    checkAuthenticatedSession();
+  }, []);
 
   const setSession = (newSession?: any) => {
     setSessionState(newSession);
   };
 
-  return <sessionContext.Provider value={{ session, setSession }}>{children}</sessionContext.Provider>;
+  return (
+    <sessionContext.Provider value={{ session, setSession }}>
+      {getSession.loading ? <span style={{ color: 'red' }}>'Loading...</span> : children}
+    </sessionContext.Provider>
+  );
 }

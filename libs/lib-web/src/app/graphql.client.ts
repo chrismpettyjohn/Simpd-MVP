@@ -1,8 +1,10 @@
-import { GRAPHQL_URL } from './app.constant';
-import { from, HttpLink } from '@apollo/client';
-import { RetryLink } from '@apollo/client/link/retry';
+import { GRAPHQL_URL } from "./app.constant";
+import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
 
-export const graphqlClient = from([
-  new RetryLink(),
-  new HttpLink({ uri: GRAPHQL_URL })
-]);
+
+export const graphqlClient = new ApolloClient({
+  link: new HttpLink({
+    uri: GRAPHQL_URL,
+  }),
+  cache: new InMemoryCache(),
+});
