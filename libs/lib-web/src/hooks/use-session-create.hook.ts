@@ -2,7 +2,7 @@ import { useMutation } from "@apollo/client";
 import { SESSION_CREATE_MUTATION, SessionCreateMutationResponse, SessionCreateMutationVariables } from "mutation/session-create.mutation";
 
 export interface UseSessionCreateResponse {
-  run(): Promise<SessionCreateMutationResponse>;
+  execute(): Promise<SessionCreateMutationResponse>;
   error?: Error;
   loading: boolean;
   data?: SessionCreateMutationResponse;
@@ -22,7 +22,7 @@ export function useSessionCreate({ email, password }: SessionCreateMutationVaria
   }
 
   return {
-    run: onCreateSession,
+    execute: onCreateSession,
     error,
     loading,
     data,

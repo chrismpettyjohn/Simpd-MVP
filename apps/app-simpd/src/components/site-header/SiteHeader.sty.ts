@@ -47,9 +47,11 @@ export const SiteHeaderNavigation = styled.nav`
   padding-left: ${({ theme }) => theme.space.threeUnits};
   padding-right: ${({ theme }) => theme.space.threeUnits};
 
-  svg {
+  svg, i {
     cursor: pointer;
+    color: ${({ theme }) => theme.color.s90};
     fill: ${({ theme }) => theme.color.s90};
+    font-size: ${({ theme }) => theme.icon.twoUnits};
     width: ${({ theme }) => theme.icon.twoUnits};
     height: ${({ theme }) => theme.icon.twoUnits};
     transition: 0.3s;
