@@ -9,7 +9,7 @@ export interface UseFetchUserQueryResponse {
   data?: UserFetchOneQueryResponse;
 }
 
-export function useFetchUser({ userID }: UserFetchOneQueryVariables): UseFetchUserQueryResponse {
+export function useUserFetchOne({ userID }: UserFetchOneQueryVariables): UseFetchUserQueryResponse {
   const [getUser, { loading, error, data }] = useLazyQuery(USER_FETCH_ONE_QUERY);
 
   const onFetchUser = () => {
