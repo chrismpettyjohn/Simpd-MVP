@@ -163,8 +163,19 @@
       "watch_delay": 1000
     },
     {
-      "name": "app-web",
-      "cwd": "./apps/app-web",
+      "name": "app-playground",
+      "cwd": "./apps/app-playground",
+      "script": "pnpm",
+      "args": "run start",
+      "watch": [
+        "src",
+        "../libs/**/*"
+      ],
+      "watch_delay": 1000
+    },
+    {
+      "name": "app-simpd",
+      "cwd": "./apps/app-simpd",
       "script": "pnpm",
       "args": "run start",
       "watch": [

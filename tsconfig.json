@@ -48,8 +48,11 @@
       "@simpd/svc-tag": [
         "services/svc-tag/src"
       ],
-      "@simpd/app-web": [
-        "apps/app-web/src"
+      "@simpd/app-simpd": [
+        "apps/app-simpd/src"
+      ],
+      "@simpd/app-playground": [
+        "apps/app-playground/src"
       ],
       "@simpd/lib-api": [
         "libs/lib-api/src"
