@@ -9,4 +9,4 @@ export * from './context/SimpdContextProviders';
 export * from './context/SimpdContextProviders.types';
 export * from './fragments/user.fragment';
 export * from './hooks/fetch-user.hook';
-export * from './queries/fetch-user.query';
+export * from './queries/user-fetch-one.query';
