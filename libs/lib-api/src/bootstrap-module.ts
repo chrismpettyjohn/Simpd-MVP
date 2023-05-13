@@ -1,8 +1,8 @@
 import Express from 'express';
-import {NATS_ADDRESS} from './constants';
-import {ExpressAdapter} from '@nestjs/platform-express';
-import {NestApplication, NestFactory} from '@nestjs/core';
-import {MicroserviceOptions, Transport} from '@nestjs/microservices';
+import { NATS_ADDRESS } from './constants';
+import { ExpressAdapter } from '@nestjs/platform-express';
+import { NestApplication, NestFactory } from '@nestjs/core';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 
 export async function bootstrapDynamicService(module: any, port: number) {
   const expressApp: Express.Express = Express();
@@ -11,6 +11,15 @@ export async function bootstrapDynamicService(module: any, port: number) {
     module,
     new ExpressAdapter(expressApp)
   );
+
+  app.enableCors({
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:5174'
+    ],
+    methods: ['GET', 'POST'],
+    credentials: true,
+  });
 
   await app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.NATS,
