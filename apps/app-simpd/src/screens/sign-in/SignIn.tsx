@@ -1,7 +1,7 @@
 import './SignIn.css';
 import { Link } from 'wouter';
 import { Helmet } from 'react-helmet';
-import React, { useState } from 'react'
+import React, { SyntheticEvent, useState } from 'react'
 import { Card } from 'components/card/Card';
 import { PageTitle } from 'components/page-title/PageTitle';
 import { GuestGuard, useSessionCreate } from '@simpd/lib-web';
@@ -13,8 +13,9 @@ export function SignInScreen() {
 
   const isDisabled = !email || !password;
 
-  const onSessionCreate = () => {
-    if (isDisabled) {
+  const onSessionCreate = (event: SyntheticEvent) => {
+    event.preventDefault();
+    if (isDisabled || sessionCreate.loading) {
       return;
     }
 
@@ -29,7 +30,7 @@ export function SignInScreen() {
       </Helmet>
       <PageTitle title="Sign in" />
       <Card>
-        <form style={{ width: '100%', overflow: 'hidden' }}>
+        <form style={{ width: '100%', overflow: 'hidden' }} onSubmit={onSessionCreate}>
           <label className="landing-page-text1">Email</label>
           <input
             type="email"

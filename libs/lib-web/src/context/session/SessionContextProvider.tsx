@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { SessionContextProviderProps } from './SessionContext.types';
 import { useSessionAuthenticated } from 'hooks/use-session-authenticated.hook';
 import { SessionAuthenticatedQueryResponse } from 'queries/session-authenticated.query';
+import { FullPageLoadingScreen } from 'components/full-page-loading-screen/FullPageLoadingScreen';
 
 export function SessionContextProvider({ children }: SessionContextProviderProps) {
   const getSession = useSessionAuthenticated();
@@ -23,7 +24,7 @@ export function SessionContextProvider({ children }: SessionContextProviderProps
 
   return (
     <sessionContext.Provider value={{ session, setSession }}>
-      {getSession.loading ? <span style={{ color: 'red' }}>'Loading...</span> : children}
+      {getSession.loading ? <FullPageLoadingScreen /> : children}
     </sessionContext.Provider>
   );
 }
