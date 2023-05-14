@@ -1,19 +1,31 @@
+import { Link } from 'wouter';
+import { UserCreateInput } from '@simpd/lib-web';
 import React, { SyntheticEvent, useState } from 'react';
 import { CreateUserFormProps } from './CreateUserForm.types';
-import { UserCreateInput } from 'graphql';
 
 export function CreateUserForm({ loading, onSave }: CreateUserFormProps) {
   const [userDTO, setUserDTO] = useState<UserCreateInput>({
-    email,
+    email: '',
     password: '',
   })
+
+  const onChanges = (changes: Partial<UserCreateInput>) => {
+    setUserDTO(_ => ({
+      ..._,
+      ...changes,
+    }))
+  }
 
   const onSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
     if (loading) {
       return;
     }
-    if ()
+    if (!userDTO.email || !userDTO.password) {
+      return;
+    }
+
+    onSave(userDTO);
   }
 
   return (
@@ -23,6 +35,8 @@ export function CreateUserForm({ loading, onSave }: CreateUserFormProps) {
         type="email"
         placeholder="Email Address"
         className="landing-page-textinput input"
+        value={userDTO.email}
+        onChange={e => onChanges({ email: e.target.value ?? '' })}
       />
       <br />
       <br />
@@ -31,15 +45,11 @@ export function CreateUserForm({ loading, onSave }: CreateUserFormProps) {
         type="password"
         placeholder="Password"
         className="landing-page-textinput1 input"
+        value={userDTO.password}
+        onChange={e => onChanges({ password: e.target.value ?? '' })}
       />
       <br />
       <br />
-      <label className="landing-page-text2">Password Again</label>
-      <input
-        type="password"
-        placeholder="Password Again"
-        className="landing-page-textinput1 input"
-      />
       <div className="landing-page-container4">
         <Link to="/sign-in">
           <button className="landing-page-button button">

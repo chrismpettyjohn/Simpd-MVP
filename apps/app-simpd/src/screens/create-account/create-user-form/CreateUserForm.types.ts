@@ -1,4 +1,4 @@
-import { UserCreateInput } from "graphql";
+import { UserCreateInput } from '@simpd/lib-web';
 
 export interface CreateUserFormProps {
   loading: boolean;
