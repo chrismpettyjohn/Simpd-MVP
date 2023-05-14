@@ -15,7 +15,7 @@ export type UserChangePasswordMutationResponse = string;
 
 export const USER_CHANGE_PASSWORD_MUTATION = gql`
   mutation($userID: Float!, $input: UserChangePasswordInput!) {
-    sessionCreate(
+    userChangePassword(
       filter: {
         id: $userID
       }

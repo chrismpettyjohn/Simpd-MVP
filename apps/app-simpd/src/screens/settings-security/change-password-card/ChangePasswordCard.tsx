@@ -25,7 +25,7 @@ export function ChangePasswordCard() {
       return;
     }
 
-    changePassword.execute({ userID: session!.userID, input: { currentPassword, newPassword, newPasswordAgain } })
+    changePassword.execute({ userID: Number(session!.userID), input: { currentPassword, newPassword, newPasswordAgain } })
   }
 
   return (
@@ -33,7 +33,7 @@ export function ChangePasswordCard() {
       <form onSubmit={onChangePassword}>
         <label className="settings-profile-text02">Current Password</label>
         <input
-          type="text"
+          type="password"
           className="settings-profile-textinput input"
           value={currentPassword}
           onChange={e => setCurrentPassword(e.target.value)}
@@ -41,7 +41,7 @@ export function ChangePasswordCard() {
         <br /><br />
         <label className="settings-profile-text03">New Password</label>
         <input
-          type="text"
+          type="password"
           className="settings-profile-textinput1 input"
           value={newPassword}
           onChange={e => setNewPassword(e.target.value)}
@@ -49,7 +49,7 @@ export function ChangePasswordCard() {
         <br /><br />
         <label className="settings-profile-text04">Confirm New Password</label>
         <input
-          type="text"
+          type="password"
           className="settings-profile-textinput1 input"
           value={newPasswordAgain}
           onChange={e => setNewPasswordAgain(e.target.value)}

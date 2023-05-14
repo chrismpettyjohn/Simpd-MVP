@@ -2,35 +2,45 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ReportModel {
+type UserModel {
   id: Float
-  key: String
-  name: String
-  description: String
+  email: String
 }
 
 type Query {
-  report(filter: ReportFilterByOneInput!): ReportModel!
-  reports(filter: ReportFilterByManyInput): [ReportModel!]!
+  user(filter: UserFilterByOneInput!): UserModel!
+  users(filter: UserFilterByManyInput): [UserModel!]!
 }
 
-input ReportFilterByOneInput {
+input UserFilterByOneInput {
   id: Float
-  keys: [String!]
+  email: String
 }
 
-input ReportFilterByManyInput {
+input UserFilterByManyInput {
   ids: [Float!]
-  keys: [String!]
+  emails: [String!]
 }
 
 type Mutation {
-  reportCreate(input: ReportCreateInput!): ReportModel!
-  reportDelete(filter: ReportFilterByOneInput!): Boolean!
+  userCreate(input: UserCreateInput!): UserModel!
+  userUpdate(filter: UserFilterByOneInput!, input: UserUpdateInput!): UserModel!
+  userChangePassword(filter: UserFilterByOneInput!, input: UserChangePasswordInput!): Boolean!
+  userDelete(filter: UserFilterByOneInput!): Boolean!
 }
 
-input ReportCreateInput {
-  key: String!
-  name: String!
-  description: String!
+input UserCreateInput {
+  email: String!
+  password: String!
+}
+
+input UserUpdateInput {
+  email: String
+  password: String
+}
+
+input UserChangePasswordInput {
+  currentPassword: String!
+  newPassword: String!
+  newPasswordAgain: String!
 }
