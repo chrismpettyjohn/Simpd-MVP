@@ -16,13 +16,11 @@ export function CreateAccountScreen() {
   const isLoading = userCreate.loading || profileCreateRandomized.loading;
 
   const onCreateUser = async (newUserDTO: UserCreateInput) => {
-    alert('test')
     await userCreate.execute(newUserDTO);
-    const bearerToken = await sessionCreate.execute({ email: newUserDTO.email, password: newUserDTO.password });
+    const bearerToken = await sessionCreate.execute(newUserDTO);
     localStorage.setItem(LOCAL_STORAGE_SESSION_TOKEN, bearerToken);
     setSession(bearerToken);
   }
-
 
   const onCreateProfile = async () => {
     const newProfile = await profileCreateRandomized.execute();

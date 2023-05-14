@@ -7,7 +7,7 @@ export interface ProfileCreateRandomizedMutationResponse {
 
 export const PROFILE_CREATE_RANDOMIZED_MUTATION = gql`
   ${PROFILE_FRAGMENT}
-  mutation($input: ProfileCreateInput!) {
+  mutation {
     profileCreateRandomized{
       ...ProfileFragment
     }

@@ -18,7 +18,6 @@ export function CreateUserForm({ loading, onSave }: CreateUserFormProps) {
 
   const onSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    alert('wtf')
     if (loading) {
       return;
     }
@@ -57,7 +56,7 @@ export function CreateUserForm({ loading, onSave }: CreateUserFormProps) {
             Sign in
           </button>
         </Link>
-        <button disabled className="landing-page-button1 button" type="submit">
+        <button disabled={loading} className="landing-page-button1 button" type="submit">
           Create account
         </button>
       </div>

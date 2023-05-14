@@ -15,12 +15,11 @@ export interface UserCreateMutationResponse {
 }
 
 export const USER_CREATE_MUTATION = gql`
-  ${USER_FRAGMENT}
   mutation($input: UserCreateInput!) {
     userCreate(
       input: $input
     ) {
-      ...UserFragment
+      id
     }
   }
 `

@@ -11,18 +11,18 @@ export function SignInScreen() {
   const [, setLocation] = useLocation();
   const [password, setPassword] = useState('');
   const { setSession } = useContext(sessionContext);
-  const sessionCreate = useSessionCreate({ email, password });
+  const sessionCreate = useSessionCreate();
 
   const isDisabled = !email || !password;
 
   const onSessionCreate = async (event: SyntheticEvent) => {
     event.preventDefault();
-    if (isDisabled || sessionCreate.loading) {
+    if (isDisabled || sessionCreate.loading || !email || !password) {
       return;
     }
 
     try {
-      const newSession = await sessionCreate.execute();
+      const newSession = await sessionCreate.execute({ email, password });
       setSession(newSession);
       setLocation('/settings/profile');
     } catch (e) {
