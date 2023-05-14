@@ -32,7 +32,7 @@ export function SessionContextProvider({ children }: SessionContextProviderProps
   const isLoading = loading || getSession.loading
 
   return (
-    <sessionContext.Provider value={{ session, setSession }}>
+    <sessionContext.Provider value={{ session: session ?? undefined, setSession }}>
       {isLoading ? <FullPageLoadingScreen /> : children}
     </sessionContext.Provider>
   );

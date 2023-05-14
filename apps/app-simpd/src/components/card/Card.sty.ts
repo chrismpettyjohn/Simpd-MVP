@@ -28,7 +28,7 @@ export const CardHeaderContent = styled.div`
   svg, i {
     color: ${({ theme }) => theme.color.s90};
     cursor: pointer;
-    font-size: ${({ theme }) => theme.icon.twoUnits};
+    font-size: ${({ theme }) => theme.icon.threeUnits};
 
     &:hover {
       fill: ${({ theme }) => theme.color.brand};

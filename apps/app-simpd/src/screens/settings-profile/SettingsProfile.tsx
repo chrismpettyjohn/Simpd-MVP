@@ -5,6 +5,7 @@ import { UserGuard } from '@simpd/lib-web';
 import { Card } from 'components/card/Card';
 import { PageTitle } from 'components/page-title/PageTitle';
 import { UserProfileCard } from 'components/user-profile-card/UserProfileCard';
+import { CardAccordion } from 'components/card-accordion/CardAccordion';
 
 export function SettingsProfileScreen() {
   return (
@@ -35,7 +36,7 @@ export function SettingsProfileScreen() {
           <path d="M1002.934 817.876l-460.552-394.76c21.448-40.298 33.618-86.282 33.618-135.116 0-159.058-128.942-288-288-288-29.094 0-57.172 4.332-83.646 12.354l166.39 166.39c24.89 24.89 24.89 65.62 0 90.51l-101.49 101.49c-24.89 24.89-65.62 24.89-90.51 0l-166.39-166.39c-8.022 26.474-12.354 54.552-12.354 83.646 0 159.058 128.942 288 288 288 48.834 0 94.818-12.17 135.116-33.62l394.76 460.552c22.908 26.724 62.016 28.226 86.904 3.338l101.492-101.492c24.888-24.888 23.386-63.994-3.338-86.902z"></path>
         </svg>
       </div>
-      <Card header="Profile">
+      <CardAccordion defaultIsOpen header="Profile">
         <label className="settings-profile-text02">Username</label>
         <input
           type="text"
@@ -63,27 +64,27 @@ export function SettingsProfileScreen() {
           type="text"
           className="settings-profile-textinput4 input"
         />
-      </Card>
-      <Card header="Additional Info">
+      </CardAccordion>
+      <CardAccordion header="Additional Info">
         <div style={{ height: 100 }}>
           Hello
         </div>
-      </Card>
-      <Card header="Additional Info">
+      </CardAccordion>
+      <CardAccordion header="Additional Info">
         <div style={{ height: 100 }}>
           Hello
         </div>
-      </Card>
-      <Card header="Additional Info">
+      </CardAccordion>
+      <CardAccordion header="Additional Info">
         <div style={{ height: 100 }}>
           Hello
         </div>
-      </Card>
-      <Card header="Additional Info">
+      </CardAccordion>
+      <CardAccordion header="Additional Info">
         <div style={{ height: 100 }}>
           Hello
         </div>
-      </Card>
+      </CardAccordion>
     </UserGuard>
   )
 }
