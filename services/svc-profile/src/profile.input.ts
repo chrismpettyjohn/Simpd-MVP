@@ -29,3 +29,12 @@ export class ProfileCreateInput {
   @Field(() => String)
   displayName!: string;
 }
+
+@InputType()
+export class ProfileUpdateInput {
+  @Field(() => String, {nullable: true})
+  username?: string;
+
+  @Field(() => String, {nullable: true})
+  displayName?: string;
+}

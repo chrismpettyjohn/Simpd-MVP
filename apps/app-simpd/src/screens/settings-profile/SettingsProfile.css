@@ -44,64 +44,9 @@
   background-color: var(--dl-color-simpd-s20);
 }
 
-.settings-profile-icon {
-  fill: var(--dl-color-simpd-s90);
-  width: var(--dl-size-size-icontwo);
-  cursor: pointer;
-  height: var(--dl-size-size-icontwo);
-  transition: 0.3s;
-}
-
-.settings-profile-icon:hover {
-  fill: var(--dl-color-simpd-brand);
-}
-
-.settings-profile-icon02 {
-  fill: var(--dl-color-simpd-s90);
-  width: var(--dl-size-size-icontwo);
-  cursor: pointer;
-  height: var(--dl-size-size-icontwo);
-  transition: 0.3s;
-}
-
-.settings-profile-icon02:hover {
-  fill: var(--dl-color-simpd-brand);
-}
-
-.settings-profile-icon04 {
-  fill: var(--dl-color-simpd-s90);
-  width: var(--dl-size-size-icontwo);
-  cursor: pointer;
-  height: var(--dl-size-size-icontwo);
-  transition: 0.3s;
-}
-
-.settings-profile-icon04:hover {
-  fill: var(--dl-color-simpd-brand);
-}
-
-.settings-profile-icon06 {
-  fill: var(--dl-color-simpd-s90);
-  width: var(--dl-size-size-icontwo);
-  cursor: pointer;
-  height: var(--dl-size-size-icontwo);
-  transition: 0.3s;
-}
-
-.settings-profile-icon06:hover {
-  fill: var(--dl-color-simpd-brand);
-}
-
-.settings-profile-icon08 {
-  fill: var(--dl-color-simpd-s90);
-  width: var(--dl-size-size-icontwo);
-  cursor: pointer;
-  height: var(--dl-size-size-icontwo);
-  transition: 0.3s;
-}
-
-.settings-profile-icon08:hover {
-  fill: var(--dl-color-simpd-brand);
+.settings-profile-settings-navigation i {
+  font-size: var(--dl-size-size-icontwo);
+  color: var(--dl-color-simpd-s90);
 }
 
 .settings-profile-container02 {

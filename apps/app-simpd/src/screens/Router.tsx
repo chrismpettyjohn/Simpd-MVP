@@ -10,6 +10,7 @@ import { NotificationsScreen } from './notifications/Notifications';
 import { CreateAccountScreen } from './create-account/CreateAccount';
 import { SwitchProfileScreen } from './switch-profile/SwitchProfile';
 import { SettingsProfileScreen } from './settings-profile/SettingsProfile';
+import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -44,6 +45,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/settings/profile',
     view: SettingsProfileScreen,
+  },
+  {
+    path: '/settings/security',
+    view: SettingsSecurityScreen,
   },
   {
     path: '/profiles/:username',
