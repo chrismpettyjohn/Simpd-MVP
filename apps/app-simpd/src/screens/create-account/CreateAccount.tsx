@@ -6,6 +6,8 @@ import { GuestGuard } from '@simpd/lib-web';
 import { PageTitle } from 'components/page-title/PageTitle';
 
 export function CreateAccountScreen() {
+
+
   return (
     <GuestGuard redirect>
       <Helmet>
@@ -14,40 +16,7 @@ export function CreateAccountScreen() {
       </Helmet>
       <PageTitle title="Create account" />
       <Card>
-        <div style={{ width: '100%', overflow: 'hidden' }}>
-          <label className="landing-page-text1">Email</label>
-          <input
-            type="email"
-            placeholder="Email Address"
-            className="landing-page-textinput input"
-          />
-          <br />
-          <br />
-          <label className="landing-page-text2">Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            className="landing-page-textinput1 input"
-          />
-          <br />
-          <br />
-          <label className="landing-page-text2">Password Again</label>
-          <input
-            type="password"
-            placeholder="Password Again"
-            className="landing-page-textinput1 input"
-          />
-          <div className="landing-page-container4">
-            <Link to="/sign-in">
-              <button className="landing-page-button button">
-                Sign in
-              </button>
-            </Link>
-            <button disabled className="landing-page-button1 button">
-              Create an account for free
-            </button>
-          </div>
-        </div>
+
       </Card>
     </GuestGuard>
   )

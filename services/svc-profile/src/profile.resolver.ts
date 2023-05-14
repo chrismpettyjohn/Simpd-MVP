@@ -1,4 +1,5 @@
 import {In} from 'typeorm';
+import RandomWords from 'random-words';
 import {ProfileModel} from './profile.model';
 import {SessionWire} from '@simpd/lib-client';
 import {ProfileEntity} from './profile.entity';
@@ -66,6 +67,29 @@ export class ProfileResolver {
       username: input.username,
       displayName: input.displayName,
       biography: input.biography,
+      location: '',
+      websiteURL: '',
+      wishlistURL: '',
+      subscriptionGroupIDs: [],
+    });
+    return newProfile;
+  }
+
+  @Mutation(() => ProfileModel)
+  @HasSession()
+  async profileCreateRandomized(
+    @GetSession() session: SessionWire
+  ): Promise<ProfileEntity> {
+    const words = RandomWords(3);
+
+    const username = words.join('-');
+    const displayName = username.toUpperCase();
+
+    const newProfile = await this.profileRepo.create({
+      userID: session.userID,
+      username,
+      displayName,
+      biography: '',
       location: '',
       websiteURL: '',
       wishlistURL: '',

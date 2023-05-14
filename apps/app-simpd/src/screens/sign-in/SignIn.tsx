@@ -60,7 +60,7 @@ export function SignInScreen() {
           <div className="landing-page-container4">
             <Link to="/create-account">
               <button className="landing-page-button button" type="button">
-                Create an account for free
+                Create account
               </button>
             </Link>
             <button disabled={isDisabled} className="landing-page-button1 button" type="submit">

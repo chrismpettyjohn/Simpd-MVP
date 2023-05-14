@@ -28,7 +28,8 @@
     "@simpd/lib-api": "workspace:*",
     "@simpd/lib-client": "workspace:*",
     "express": "4.18.2",
-    "nats": "2.13.1"
+    "nats": "2.13.1",
+    "random-words": "1.3.0"
   },
   "devDependencies": {
     "class-transformer": "0.5.1",
