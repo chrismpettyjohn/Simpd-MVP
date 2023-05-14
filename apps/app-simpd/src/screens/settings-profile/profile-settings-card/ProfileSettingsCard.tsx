@@ -1,6 +1,6 @@
 import { Button } from 'components/button/Button';
 import React, { useContext } from 'react';
-import { ProfileEditor } from '../profile-editor/ProfileEditor';
+import { ProfileEditor } from 'components/profile-editor/ProfileEditor';
 import { CardAccordion } from 'components/card-accordion/CardAccordion';
 import { ProfileUpdateInput, sessionContext, useProfileUpdate } from '@simpd/lib-web';
 
