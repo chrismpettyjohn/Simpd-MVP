@@ -73,6 +73,7 @@ export const simpdWebTheme: SimpdWebTheme = {
   icon: {
     oneUnit: '1.4rem',
     twoUnits: '1.8rem',
+    threeUnits: '2.4rem',
   },
   maxWidth: '1400px'
 }

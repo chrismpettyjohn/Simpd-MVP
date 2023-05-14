@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
+import { SessionFragment } from 'fragments/session.fragment';
 
 export interface SessionContext {
   // TODO: Add web specific types from gql
-  session?: any;
+  session?: SessionFragment;
   setSession(newSession?: any): void;
 }
 
