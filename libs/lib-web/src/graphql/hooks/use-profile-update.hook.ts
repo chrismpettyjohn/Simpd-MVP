@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { ProfileFragment } from "fragments/profile.fragment";
-import { PROFILE_UPDATE_MUTATION, ProfileUpdateMutationVariables } from "mutation/profile-update.mutation";
+import { ProfileFragment } from "graphql/fragments/profile.fragment";
+import { PROFILE_UPDATE_MUTATION, ProfileUpdateMutationVariables } from "graphql/mutation/profile-update.mutation";
 
 export interface UseProfileUpdateResponse {
   execute(variables: ProfileUpdateMutationVariables): Promise<ProfileFragment>;

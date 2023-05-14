@@ -1,9 +1,9 @@
 import { sessionContext } from './SessionContext';
 import React, { useEffect, useState } from 'react';
-import { ProfileFragment } from 'fragments/profile.fragment';
-import { SessionFragment } from 'fragments/session.fragment';
+import { ProfileFragment } from 'graphql/fragments/profile.fragment';
+import { SessionFragment } from 'graphql/fragments/session.fragment';
 import { SessionContextProviderProps } from './SessionContext.types';
-import { useSessionAuthenticated } from 'hooks/use-session-authenticated.hook';
+import { useSessionAuthenticated } from 'graphql/hooks/use-session-authenticated.hook';
 import { FullPageLoadingScreen } from 'components/full-page-loading-screen/FullPageLoadingScreen';
 
 export function SessionContextProvider({ children }: SessionContextProviderProps) {

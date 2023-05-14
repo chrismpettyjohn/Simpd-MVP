@@ -1,29 +1,49 @@
-import React, { useContext } from 'react'
+import { useLocation } from 'wouter';
 import { Helmet } from 'react-helmet';
 import { Card } from 'components/card/Card';
+import React, { useContext, useEffect } from 'react'
 import { PageTitle } from 'components/page-title/PageTitle';
 import { CreateUserForm } from './create-user-form/CreateUserForm';
-import { GuestGuard, UserCreateInput, sessionContext, useProfileCreateRandomized, useUserCreate } from '@simpd/lib-web';
+import { GuestGuard, LOCAL_STORAGE_SESSION_TOKEN, UserCreateInput, sessionContext, useProfileCreateRandomized, useSessionCreate, useUserCreate } from '@simpd/lib-web';
 
 export function CreateAccountScreen() {
   const userCreate = useUserCreate();
-  const { setSession } = useContext(sessionContext);
+  const [, setLocation] = useLocation();
+  const sessionCreate = useSessionCreate();
+  const { session, setSession } = useContext(sessionContext);
   const profileCreateRandomized = useProfileCreateRandomized();
 
   const isLoading = userCreate.loading || profileCreateRandomized.loading;
 
   const onCreateUser = async (newUserDTO: UserCreateInput) => {
-    if (isLoading) {
-      return;
-    }
-
-    const newUser = await userCreate.execute(newUserDTO);
-
-
+    alert('test')
+    await userCreate.execute(newUserDTO);
+    const bearerToken = await sessionCreate.execute({ email: newUserDTO.email, password: newUserDTO.password });
+    localStorage.setItem(LOCAL_STORAGE_SESSION_TOKEN, bearerToken);
+    setSession(bearerToken);
   }
 
+
+  const onCreateProfile = async () => {
+    const newProfile = await profileCreateRandomized.execute();
+    setLocation(`/profiles/${newProfile.username}`);
+  }
+
+  useEffect(() => {
+    if (session) {
+      setLocation('/dashboard');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!session || isLoading) {
+      return;
+    }
+    onCreateProfile();
+  }, [session]);
+
   return (
-    <GuestGuard redirect>
+    <>
       <Helmet>
         <title>Simpd</title>
         <meta property="og:title" content="Simpd" />
@@ -32,6 +52,6 @@ export function CreateAccountScreen() {
       <Card>
         <CreateUserForm onSave={onCreateUser} loading={isLoading} />
       </Card>
-    </GuestGuard>
+    </>
   )
 }

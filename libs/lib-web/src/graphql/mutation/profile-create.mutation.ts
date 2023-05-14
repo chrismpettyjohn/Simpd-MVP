@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { PROFILE_FRAGMENT, ProfileFragment } from "fragments/profile.fragment";
+import { PROFILE_FRAGMENT, ProfileFragment } from "graphql/fragments/profile.fragment";
 
 export interface ProfileCreateInput {
   username: string;

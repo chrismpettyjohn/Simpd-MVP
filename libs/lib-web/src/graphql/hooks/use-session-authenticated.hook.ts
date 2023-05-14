@@ -1,5 +1,5 @@
 import { useLazyQuery } from "@apollo/client";
-import { SESSION_AUTHENTICATED_QUERY, SessionAuthenticatedQueryResponse } from "queries/session-authenticated.query";
+import { SESSION_AUTHENTICATED_QUERY, SessionAuthenticatedQueryResponse } from "graphql/queries/session-authenticated.query";
 
 
 export interface UseSessionAuthenticatedResponse {

@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { SessionFragment } from "fragments/session.fragment";
-import { PROFILE_FETCH_ONE_QUERY, ProfileFetchOneQueryResponse, ProfileFetchOneQueryVariables } from "queries/profile-fetch-one.query";
+import { SessionFragment } from "graphql/fragments/session.fragment";
+import { PROFILE_FETCH_ONE_QUERY, ProfileFetchOneQueryResponse, ProfileFetchOneQueryVariables } from "graphql/queries/profile-fetch-one.query";
 import { useEffect } from "react";
 
 export interface UseProfileFetchOneQueryResponse {

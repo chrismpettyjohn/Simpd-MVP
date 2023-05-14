@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { ProfileFragment } from "fragments/profile.fragment";
-import { PROFILE_CREATE_RANDOMIZED_MUTATION, ProfileCreateRandomizedMutationResponse } from "mutation/profile-create-randomized.mutation";
+import { ProfileFragment } from "graphql/fragments/profile.fragment";
+import { PROFILE_CREATE_RANDOMIZED_MUTATION, ProfileCreateRandomizedMutationResponse } from "graphql/mutation/profile-create-randomized.mutation";
 
 export interface UseProfileCreateRandomizedResponse {
   execute(): Promise<ProfileFragment>;

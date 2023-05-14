@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { SessionFragment } from "fragments/session.fragment";
-import { PROFILE_FETCH_MANY_QUERY, ProfileFetchManyQueryResponse, ProfileFetchManyQueryVariables } from "queries/profile-fetch-many.query";
+import { SessionFragment } from "graphql/fragments/session.fragment";
+import { PROFILE_FETCH_MANY_QUERY, ProfileFetchManyQueryResponse, ProfileFetchManyQueryVariables } from "graphql/queries/profile-fetch-many.query";
 
 
 export interface UseProfileFetchManyQueryResponse {
