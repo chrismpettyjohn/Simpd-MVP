@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { sessionContext } from '@simpd/lib-web';
 import { Button } from 'components/button/Button';
-import { ProfileElement } from './ProfileContainer.sty';
+import { ProfileElement, ProfileIndicator } from './ProfileContainer.sty';
 import { ProfileContainerProps } from './ProfileContainer.types';
 
 export function ProfileContainer({ profile }: ProfileContainerProps) {
@@ -16,7 +16,7 @@ export function ProfileContainer({ profile }: ProfileContainerProps) {
   return (
     <ProfileElement>
       <h3>
-        <i className={isActive ? 'fa fa-star' : 'fa fa-circle'} style={{ marginRight: '2rem' }} />
+        <ProfileIndicator className="fa fa-circle" selected={isActive} />
         {profile.username}
       </h3>
       <Button disabled={isActive} onClick={onToggleProfile}>
