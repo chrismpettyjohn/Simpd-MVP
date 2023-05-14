@@ -35,3 +35,15 @@ export class UserUpdateInput {
   @Field(() => String, {nullable: true})
   password?: string;
 }
+
+@InputType()
+export class UserChangePasswordInput {
+  @Field(() => String)
+  currentPassword!: string;
+
+  @Field(() => String)
+  newPassword!: string;
+
+  @Field(() => String)
+  newPasswordAgain!: string;
+}

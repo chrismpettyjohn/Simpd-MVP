@@ -2,50 +2,35 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ProfileModel {
+type ReportModel {
   id: Float
-  userID: Float
-  username: String
-  displayName: String
-  biography: String
-  location: String
-  websiteURL: String
-  wishlistURL: String
+  key: String
+  name: String
+  description: String
 }
 
 type Query {
-  profile(filter: ProfileFilterByOneInput!): ProfileModel!
-  profiles(filter: ProfileFilterByManyInput): [ProfileModel!]!
+  report(filter: ReportFilterByOneInput!): ReportModel!
+  reports(filter: ReportFilterByManyInput): [ReportModel!]!
 }
 
-input ProfileFilterByOneInput {
+input ReportFilterByOneInput {
   id: Float
-  username: String
+  keys: [String!]
 }
 
-input ProfileFilterByManyInput {
+input ReportFilterByManyInput {
   ids: [Float!]
-  userIDs: [Float!]
-  usernames: [String!]
+  keys: [String!]
 }
 
 type Mutation {
-  profileCreate(input: ProfileCreateInput!): ProfileModel!
-  profileUpdate(filter: ProfileFilterByOneInput!, input: ProfileUpdateInput!): ProfileModel!
-  profileDelete(filter: ProfileFilterByOneInput!): Boolean!
+  reportCreate(input: ReportCreateInput!): ReportModel!
+  reportDelete(filter: ReportFilterByOneInput!): Boolean!
 }
 
-input ProfileCreateInput {
-  username: String!
-  displayName: String!
-  biography: String!
-}
-
-input ProfileUpdateInput {
-  username: String
-  displayName: String
-  biography: String
-  location: String
-  websiteURL: String
-  wishlistURL: String
+input ReportCreateInput {
+  key: String!
+  name: String!
+  description: String!
 }

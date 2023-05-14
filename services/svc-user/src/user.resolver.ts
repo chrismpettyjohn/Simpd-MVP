@@ -4,6 +4,7 @@ import {UserEntity} from './user.entity';
 import {UserService} from './user-service';
 import {UserRepository} from './user.repository';
 import {DEFAULT_USER_ROLE_ID} from './user.const';
+import {BadRequestException, UnauthorizedException} from '@nestjs/common';
 import {
   GetSession,
   HasSession,
@@ -20,6 +21,7 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import {
+  UserChangePasswordInput,
   UserCreateInput,
   UserFilterByManyInput,
   UserFilterByOneInput,
@@ -84,13 +86,40 @@ export class UserResolver {
     return newUser;
   }
 
-  @Mutation(() => Boolean)
+  @Mutation(() => UserModel)
   async userUpdate(
     @Args('filter') filter: UserFilterByOneInput,
     @Args('input') input: UserUpdateInput
   ): Promise<UserEntity> {
     await this.userRepo.update(filter, input);
     return this.user(filter);
+  }
+
+  @Mutation(() => Boolean)
+  async userChangePassword(
+    @Args('filter') filter: UserFilterByOneInput,
+    @Args('input') input: UserChangePasswordInput
+  ): Promise<boolean> {
+    const matchingUser = await this.user(filter);
+
+    const currentPasswordMatches = this.hashService.compare(
+      input.currentPassword,
+      matchingUser.hashedPassword
+    );
+
+    if (!currentPasswordMatches) {
+      throw new UnauthorizedException();
+    }
+
+    if (input.newPassword !== input.newPasswordAgain) {
+      throw new BadRequestException();
+    }
+
+    const newPasswordHashed = this.hashService.generate(input.newPassword);
+
+    await this.userRepo.update(filter, {hashedPassword: newPasswordHashed});
+
+    return true;
   }
 
   @Mutation(() => Boolean)

@@ -23,11 +23,13 @@ export * from './hooks/use-profile-fetch-many.hook';
 export * from './hooks/use-profile-fetch-one.hook';
 export * from './hooks/use-profile-update.hook';
 export * from './hooks/use-session-authenticated.hook';
+export * from './hooks/use-user-change-password.hook';
 export * from './hooks/use-session-create.hook';
 export * from './hooks/use-user-fetch-one.hook'
 export * from './mutation/profile-create.mutation';
 export * from './mutation/profile-update.mutation';
 export * from './mutation/session-create.mutation';
+export * from './mutation/user-change-password.mutation';
 export * from './queries/session-authenticated.query';
 export * from './queries/user-fetch-one.query';
 export * from './queries/profile-fetch-many.query';
