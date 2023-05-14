@@ -45,7 +45,6 @@ export function SettingsProfileCreatorScreen() {
       </Helmet>
       <PageTitle title="Create Profile" />
       <Card>
-
         <form onSubmit={onCreateProfile}>
           <label className="settings-profile-text02">Username</label>
           <input
