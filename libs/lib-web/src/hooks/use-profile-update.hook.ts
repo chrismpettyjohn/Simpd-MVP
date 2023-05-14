@@ -9,17 +9,18 @@ export interface UseProfileUpdateResponse {
   data?: ProfileFragment;
 }
 
-export function useProfileUpdate({ id, username }: ProfileUpdateMutationVariables): UseProfileUpdateResponse {
+export function useProfileUpdate({ profileID, username, changes }: ProfileUpdateMutationVariables): UseProfileUpdateResponse {
   const [updateProfile, { loading, error, data }] = useMutation(PROFILE_UPDATE_MUTATION);
 
   const onSaveProfileChanges = async () => {
     const profileChanges = await updateProfile({
       variables: {
-        id,
-        username
+        profileID,
+        username,
+        changes
       }
     })
-    return profileChanges.data.profile;
+    return profileChanges.data.profileUpdate;
   }
 
   return {

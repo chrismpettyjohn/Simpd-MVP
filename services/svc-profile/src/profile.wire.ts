@@ -9,6 +9,10 @@ export function profileEntityToProfileWire(
     userID: profileEntity.userID,
     username: profileEntity.username,
     displayName: profileEntity.displayName,
+    biography: profileEntity.biography,
+    location: profileEntity.location,
+    websiteURL: profileEntity.websiteURL,
+    wishlistURL: profileEntity.wishlistURL,
     subscriptionGroupIDs: profileEntity.subscriptionGroupIDs,
   };
 }

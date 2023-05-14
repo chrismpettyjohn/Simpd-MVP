@@ -16,6 +16,7 @@ import {
   ProfileCreateInput,
   ProfileFilterByManyInput,
   ProfileFilterByOneInput,
+  ProfileUpdateInput,
 } from './profile.input';
 
 @Resolver(() => ProfileModel)
@@ -65,6 +66,7 @@ export class ProfileResolver {
       username: input.username,
       displayName: input.displayName,
       biography: input.biography,
+      location: input.location,
       websiteURL: input.websiteURL,
       wishlistURL: input.wishlistURL,
       subscriptionGroupIDs: [],
@@ -77,7 +79,7 @@ export class ProfileResolver {
   async profileUpdate(
     @GetSession() session: SessionWire,
     @Args('filter') filter: ProfileFilterByOneInput,
-    @Args('input') input: ProfileCreateInput
+    @Args('input') input: ProfileUpdateInput
   ): Promise<ProfileEntity> {
     const matchingProfile = await this.profileRepo.findOneOrFail({
       where: filter,

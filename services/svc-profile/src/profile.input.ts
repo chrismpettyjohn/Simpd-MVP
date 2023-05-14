@@ -33,6 +33,9 @@ export class ProfileCreateInput {
   biography!: string;
 
   @Field(() => String)
+  location!: string;
+
+  @Field(() => String)
   websiteURL!: string;
 
   @Field(() => String)
@@ -49,6 +52,9 @@ export class ProfileUpdateInput {
 
   @Field(() => String, {nullable: true})
   biography?: string;
+
+  @Field(() => String, {nullable: true})
+  location?: string;
 
   @Field(() => String, {nullable: true})
   websiteURL?: string;

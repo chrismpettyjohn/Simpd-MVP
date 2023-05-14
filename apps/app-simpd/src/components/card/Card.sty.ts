@@ -18,7 +18,7 @@ export const CardHeaderContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${({ theme }) => theme.space.halfUnit};
+  padding: ${({ theme }) => theme.space.oneUnit};
 
   h1 {
     color: ${({ theme }) => theme.color.s90};

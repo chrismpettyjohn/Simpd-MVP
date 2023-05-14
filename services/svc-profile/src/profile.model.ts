@@ -19,6 +19,9 @@ export class ProfileModel {
   biography?: string;
 
   @Field(() => String, {nullable: true})
+  location?: string;
+
+  @Field(() => String, {nullable: true})
   websiteURL?: string;
 
   @Field(() => String, {nullable: true})

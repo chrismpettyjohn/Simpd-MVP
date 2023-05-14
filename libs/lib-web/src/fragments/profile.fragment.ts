@@ -6,6 +6,10 @@ export const PROFILE_FRAGMENT = gql`
     userID
     username
     displayName
+    biography
+    location
+    websiteURL
+    wishlistURL
   }
 `
 
@@ -14,4 +18,8 @@ export interface ProfileFragment {
   userID: number;
   username: string;
   displayName: string;
+  biography: string;
+  location: string;
+  websiteURL: string;
+  wishlistURL: string;
 }

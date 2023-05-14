@@ -43,10 +43,9 @@
   text-decoration: none;
 }
 
-.user-profile-card-icon4 {
-  fill: var(--dl-color-simpd-s50);
-  width: 1rem;
-  height: 1rem;
+.user-profile-card-container6 i {
+  color: var(--dl-color-simpd-s50);
+  font-size: 1rem;
   align-self: center;
 }
 

@@ -2,35 +2,44 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ProfileModel {
+type MediaDetailsModel {
+  sizeInBytes: Float
+  originalFileName: String
+}
+
+type MediaLocationModel {
+  awsS3Bucket: String
+  awsS3Key: String
+}
+
+type MediaModel {
   id: Float
-  userID: Float
-  username: String
-  displayName: String
+  type: MediaType
+  profileID: Float
+  details: MediaDetailsModel
+  location: MediaLocationModel
+}
+
+enum MediaType {
+  Image
+  Video
+  Other
 }
 
 type Query {
-  profile(filter: ProfileFilterByOneInput!): ProfileModel!
-  profiles(filter: ProfileFilterByManyInput): [ProfileModel!]!
+  media(filter: MediaFilterByOneInput!): MediaModel!
+  medias(filter: MediaFilterByManyInput): [MediaModel!]!
 }
 
-input ProfileFilterByOneInput {
+input MediaFilterByOneInput {
   id: Float
-  username: String
 }
 
-input ProfileFilterByManyInput {
+input MediaFilterByManyInput {
   ids: [Float!]
-  userIDs: [Float!]
-  usernames: [String!]
+  profileIDs: [Float!]
 }
 
 type Mutation {
-  profileCreate(input: ProfileCreateInput!): ProfileModel!
-  profileDelete(filter: ProfileFilterByOneInput!): Boolean!
-}
-
-input ProfileCreateInput {
-  username: String!
-  displayName: String!
+  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
 }

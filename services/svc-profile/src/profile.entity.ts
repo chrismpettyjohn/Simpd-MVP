@@ -15,13 +15,16 @@ export class ProfileEntity {
   @Column({name: 'display_name'})
   displayName!: string;
 
-  @Column({name: 'biography', type: 'text'})
+  @Column({type: 'text', default: ''})
   biography!: string;
 
-  @Column({name: 'website_url'})
+  @Column({default: ''})
+  location!: string;
+
+  @Column({name: 'website_url', default: ''})
   websiteURL!: string;
 
-  @Column({name: 'wishlist_url'})
+  @Column({name: 'wishlist_url', default: ''})
   wishlistURL!: string;
 
   @Column({name: 'subscription_group_ids', type: 'json', default: []})
