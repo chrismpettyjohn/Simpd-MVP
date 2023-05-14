@@ -2,6 +2,7 @@ export interface ProfileWire {
   id: number;
   userID: number;
   username: string;
+  displayName: string;
   subscriptionGroupIDs: number[];
 }
 

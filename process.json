@@ -7,7 +7,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ],
       "watch_delay": 1000
     },
@@ -18,7 +18,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ],
       "watch_delay": 1000
     },
@@ -29,7 +29,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ],
       "watch_delay": 1000
     },
@@ -40,7 +40,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ],
       "watch_delay": 1000
     },
@@ -51,7 +51,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ],
       "watch_delay": 1000
     },
@@ -62,7 +62,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ],
       "watch_delay": 1000
     },
@@ -73,7 +73,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ],
       "watch_delay": 1000
     },
@@ -84,7 +84,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ],
       "watch_delay": 1000
     },
@@ -95,7 +95,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ],
       "watch_delay": 1000
     },
@@ -117,7 +117,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ],
       "watch_delay": 1000
     },
@@ -128,7 +128,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ]
     },
     {
@@ -138,7 +138,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ]
     },
     {
@@ -148,7 +148,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ]
     },
     {
@@ -158,7 +158,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ],
       "watch_delay": 1000
     },
@@ -169,7 +169,7 @@
       "args": "run start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ],
       "watch_delay": 1000
     },
@@ -180,7 +180,7 @@
       "args": "run start",
       "watch": [
         "src",
-        "../libs/**/*"
+        "../../libs/**/src/**/*"
       ],
       "watch_delay": 1000
     }

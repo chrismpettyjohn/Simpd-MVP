@@ -12,6 +12,9 @@ export class ProfileEntity {
   @Index()
   username!: string;
 
+  @Column({name: 'display_name'})
+  displayName!: string;
+
   @Column({name: 'subscription_group_ids', type: 'json', default: []})
   subscriptionGroupIDs!: number[];
 }

@@ -1,9 +1,11 @@
-import React from 'react'
 import { Link } from 'wouter';
-import { SiteHeaderBrandContainer, SiteHeaderContainer, SiteHeaderElement, SiteHeaderNavigation } from './SiteHeader.sty';
+import React, { useContext } from 'react'
+import { sessionContext } from '@simpd/lib-web';
 import { SwitchProfileButton } from './switch-profile-button/SwitchProfileButton';
+import { SiteHeaderBrandContainer, SiteHeaderContainer, SiteHeaderElement, SiteHeaderNavigation } from './SiteHeader.sty';
 
 export function SiteHeader() {
+  const { profile } = useContext(sessionContext);
   return (
     <SiteHeaderContainer>
       <SwitchProfileButton />
@@ -24,9 +26,13 @@ export function SiteHeader() {
           <Link to="/favorites">
             <i className="fa fa-heart" />
           </Link>
-          <Link to="/profiles/thaii">
-            <i className="fa fa-id-badge" />
-          </Link>
+          {
+            profile && (
+              <Link to={`/profiles/${profile.username}`}>
+                <i className="fa fa-id-badge" />
+              </Link>
+            )
+          }
           <Link to="/settings/profile">
             <i className="fa fa-wrench" />
           </Link>

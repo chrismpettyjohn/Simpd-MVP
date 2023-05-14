@@ -8,6 +8,7 @@ export function profileEntityToProfileWire(
     id: profileEntity.id!,
     userID: profileEntity.userID,
     username: profileEntity.username,
+    displayName: profileEntity.displayName,
     subscriptionGroupIDs: profileEntity.subscriptionGroupIDs,
   };
 }

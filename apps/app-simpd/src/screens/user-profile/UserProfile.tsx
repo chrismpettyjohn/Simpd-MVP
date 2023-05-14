@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './UserProfile.css';
 import { Helmet } from 'react-helmet'
-import { UserGuard } from '@simpd/lib-web';
+import { UserGuard, useProfileFetchOne } from '@simpd/lib-web';
 import { PageTitle } from 'components/page-title/PageTitle';
 import { UserProfileCard } from 'components/user-profile-card/UserProfileCard';
+import { useRoute } from 'wouter';
 
 export function UserProfileScreen() {
+  const [, params] = useRoute<{ username: string }>('/profile/:username');
+  const fetchProfile = useProfileFetchOne({ username: params?.username })
+
+  useEffect(() => {
+    fetchProfile.fetch();
+  }, [params?.username]);
+
   return (
     <UserGuard redirect>
       <Helmet>
@@ -13,7 +21,11 @@ export function UserProfileScreen() {
         <meta property="og:title" content="User-Profile - Simpd" />
       </Helmet>
       <PageTitle title="User Profile" />
-      <UserProfileCard />
+      {
+        fetchProfile.data && (
+          <UserProfileCard profile={fetchProfile.data} />
+        )
+      }
       <div className="user-profile-container02">
         <div className="user-profile-container03">
           <h1 className="user-profile-text1">About</h1>

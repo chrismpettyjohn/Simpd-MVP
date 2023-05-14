@@ -62,6 +62,7 @@ export class ProfileResolver {
     const newProfile = await this.profileRepo.create({
       userID: session.userID,
       username: input.username,
+      displayName: input.displayName,
       subscriptionGroupIDs: [],
     });
     return newProfile;

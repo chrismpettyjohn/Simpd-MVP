@@ -11,4 +11,7 @@ export class ProfileModel {
 
   @Field(() => String, {nullable: true})
   username?: string;
+
+  @Field(() => String, {nullable: true})
+  displayName?: string;
 }

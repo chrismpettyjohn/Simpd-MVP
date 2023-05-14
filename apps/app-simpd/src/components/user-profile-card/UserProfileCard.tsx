@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'wouter';
 import './UserProfileCard.css';
+import { UserProfileCardProps } from './UserProfileCard.types';
 import { UserProfileCardCoverPhoto, UserProfileCardContainer, UserProfileCardInfoContainer, UserProfileCardAvatar, UserProfileCardActionsContainer, UserProfileCardContent } from './UserProfileCard.sty';
 
-export function UserProfileCard() {
+export function UserProfileCard({ profile }: UserProfileCardProps) {
   return (
     <UserProfileCardContainer>
       <UserProfileCardContent>
@@ -25,9 +26,9 @@ export function UserProfileCard() {
             </svg>
           </UserProfileCardActionsContainer>
         </UserProfileCardInfoContainer>
-        <h1>Ping Thai Free</h1>
+        <h1>{profile.displayName}</h1>
         <div className="user-profile-card-container5">
-          <span>@pingthaii</span>
+          <span>{profile.username}</span>
           <span>Seen Yesterday</span>
         </div>
         <span className="user-profile-card-text3">

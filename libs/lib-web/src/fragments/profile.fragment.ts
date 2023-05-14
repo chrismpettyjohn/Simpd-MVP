@@ -5,6 +5,7 @@ export const PROFILE_FRAGMENT = gql`
     id
     userID
     username
+    displayName
   }
 `
 
@@ -12,4 +13,5 @@ export interface ProfileFragment {
   id: number;
   userID: number;
   username: string;
+  displayName: string;
 }

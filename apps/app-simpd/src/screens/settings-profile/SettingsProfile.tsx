@@ -1,21 +1,24 @@
-import React from 'react'
 import './SettingsProfile.css';
 import { Helmet } from 'react-helmet'
-import { UserGuard } from '@simpd/lib-web';
-import { Card } from 'components/card/Card';
+import React, { useContext } from 'react'
 import { PageTitle } from 'components/page-title/PageTitle';
-import { UserProfileCard } from 'components/user-profile-card/UserProfileCard';
+import { ProfileGuard, sessionContext } from '@simpd/lib-web';
 import { CardAccordion } from 'components/card-accordion/CardAccordion';
+import { UserProfileCard } from 'components/user-profile-card/UserProfileCard';
 
 export function SettingsProfileScreen() {
+  const { profile } = useContext(sessionContext);
+
   return (
-    <UserGuard redirect>
+    <ProfileGuard redirect>
       <Helmet>
         <title>Settings-Profile - Simpd</title>
         <meta property="og:title" content="Settings-Profile - Simpd" />
       </Helmet>
       <PageTitle title="Settings" />
-      <UserProfileCard />
+      {
+        profile && <UserProfileCard profile={profile} />
+      }
       <div className="settings-profile-settings-navigation">
         <svg viewBox="0 0 1024 1024" className="settings-profile-icon">
           <path d="M576 706.612v-52.78c70.498-39.728 128-138.772 128-237.832 0-159.058 0-288-192-288s-192 128.942-192 288c0 99.060 57.502 198.104 128 237.832v52.78c-217.102 17.748-384 124.42-384 253.388h896c0-128.968-166.898-235.64-384-253.388z"></path>
@@ -85,6 +88,6 @@ export function SettingsProfileScreen() {
           Hello
         </div>
       </CardAccordion>
-    </UserGuard>
+    </ProfileGuard>
   )
 }
