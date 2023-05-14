@@ -36,6 +36,9 @@ export function SiteHeader() {
           <Link to="/settings/profile">
             <i className="fa fa-wrench" />
           </Link>
+          <Link to="/sign-out">
+            <i className="fa fa-sign-out" />
+          </Link>
         </SiteHeaderNavigation>
       </SiteHeaderElement>
     </SiteHeaderContainer>

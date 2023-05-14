@@ -11,6 +11,7 @@ import { CreateAccountScreen } from './create-account/CreateAccount';
 import { SettingsProfileScreen } from './settings-profile/SettingsProfile';
 import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
 import { SettingsProfileCreatorScreen } from './settings-profile-creator/SettingsProfileCreator';
+import { SignOutScreen } from './sign-out/SignOut';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -20,6 +21,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/create-account',
     view: CreateAccountScreen,
+  },
+  {
+    path: '/sign-out',
+    view: SignOutScreen,
   },
   {
     path: '/dashboard',

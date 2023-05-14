@@ -29,6 +29,9 @@ export function SessionContextProvider({ children }: SessionContextProviderProps
 
   const setSession = (newSession?: SessionFragment) => {
     setSessionState(newSession);
+    if (!newSession) {
+      setProfileState(undefined);
+    }
   };
 
   const setProfile = (newProfile: ProfileFragment) => {
