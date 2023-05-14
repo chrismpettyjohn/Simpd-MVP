@@ -11,6 +11,7 @@ export const ButtonElement = styled.button`
   border-color: var(--dl-color-simpd-s50);
   background-color: var(--dl-color-simpd-s40);
   height: fit-content;
+  width: fit-content;
   padding: ${({ theme }) => theme.space.oneUnit};
 
   &:hover {

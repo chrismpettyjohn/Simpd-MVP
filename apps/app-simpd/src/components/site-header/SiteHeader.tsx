@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'wouter';
 import { SiteHeaderBrandContainer, SiteHeaderContainer, SiteHeaderElement, SiteHeaderNavigation } from './SiteHeader.sty';
+import { SwitchProfileButton } from './switch-profile-button/SwitchProfileButton';
 
 export function SiteHeader() {
   return (
     <SiteHeaderContainer>
+      <SwitchProfileButton />
       <SiteHeaderBrandContainer>
         <h1>Simpd.</h1>
       </SiteHeaderBrandContainer>
