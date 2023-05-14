@@ -10,9 +10,10 @@ export function SwitchProfileButton() {
     <UserGuard>
       <SwitchButtonContainer>
         <Link to="/settings/profile">
-          <Button onClick={() => console.log('switch')} style={{ float: 'right' }}>
-            {profile?.username ?? 'Switch Profile'}
-          </Button>
+          <h3>
+            <i className="fa fa-id-badge" style={{ marginRight: 8 }} />
+            {profile?.username ?? <>Switch Profile</>}
+          </h3>
         </Link>
       </SwitchButtonContainer>
     </UserGuard>
