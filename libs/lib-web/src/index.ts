@@ -18,12 +18,14 @@ export * from './context/SimpdContextProviders.types';
 export * from './fragments/profile.fragment';
 export * from './fragments/user.fragment';
 export * from './fragments/session.fragment';
+export * from './hooks/use-profile-create.hook';
 export * from './hooks/use-profile-fetch-many.hook';
 export * from './hooks/use-profile-fetch-one.hook';
 export * from './hooks/use-profile-update.hook';
 export * from './hooks/use-session-authenticated.hook';
 export * from './hooks/use-session-create.hook';
-export * from './hooks/use-user-fetch-one.hook';
+export * from './hooks/use-user-fetch-one.hook'
+export * from './mutation/profile-create.mutation';
 export * from './mutation/profile-update.mutation';
 export * from './mutation/session-create.mutation';
 export * from './queries/session-authenticated.query';

@@ -31,15 +31,6 @@ export class ProfileCreateInput {
 
   @Field(() => String)
   biography!: string;
-
-  @Field(() => String)
-  location!: string;
-
-  @Field(() => String)
-  websiteURL!: string;
-
-  @Field(() => String)
-  wishlistURL!: string;
 }
 
 @InputType()

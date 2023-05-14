@@ -33,6 +33,7 @@ export function ProfileEditor({ defaultProfile, onSave }: ProfileEditorProps) {
       setIsLoading(false);
     }
   }
+
   return (
     <form onSubmit={onSaveChanges}>
       <label className="settings-profile-text02">Username</label>

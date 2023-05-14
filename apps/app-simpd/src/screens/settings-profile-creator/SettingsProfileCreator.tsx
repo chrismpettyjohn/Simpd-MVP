@@ -1,19 +1,19 @@
+import { useLocation } from 'wouter';
 import { Helmet } from 'react-helmet';
 import { Card } from 'components/card/Card';
 import { Button } from 'components/button/Button';
 import React, { SyntheticEvent, useState } from 'react';
 import { PageTitle } from 'components/page-title/PageTitle';
-import { ProfileUpdateInput, UserGuard } from '@simpd/lib-web';
+import { ProfileCreateInput, ProfileUpdateInput, UserGuard, useProfileCreate } from '@simpd/lib-web';
 
 export function SettingsProfileCreatorScreen() {
+  const [, setLocation] = useLocation();
   const [loading, setIsLoading] = useState(false);
-  const [profileDTO, setProfileDTO] = useState<ProfileUpdateInput>({
+  const createProfile = useProfileCreate();
+  const [profileDTO, setProfileDTO] = useState<ProfileCreateInput>({
     username: '',
     displayName: '',
     biography: '',
-    location: '',
-    websiteURL: '',
-    wishlistURL: '',
   });
 
   const onChanges = (changes: Partial<ProfileUpdateInput>) => {
@@ -23,14 +23,15 @@ export function SettingsProfileCreatorScreen() {
     }))
   }
 
-  const onSaveChanges = async (e: SyntheticEvent) => {
+  const onCreateProfile = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
       setIsLoading(true);
       if (loading) {
         return;
       }
-      //onSave(profileDTO);
+      const newProfile = await createProfile.execute(profileDTO);
+      setLocation(`/profiles/${newProfile.username}`)
     } finally {
       setIsLoading(false);
     }
@@ -45,7 +46,7 @@ export function SettingsProfileCreatorScreen() {
       <PageTitle title="Create Profile" />
       <Card>
 
-        <form onSubmit={onSaveChanges}>
+        <form onSubmit={onCreateProfile}>
           <label className="settings-profile-text02">Username</label>
           <input
             type="text"

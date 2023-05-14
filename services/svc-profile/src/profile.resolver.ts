@@ -66,9 +66,9 @@ export class ProfileResolver {
       username: input.username,
       displayName: input.displayName,
       biography: input.biography,
-      location: input.location,
-      websiteURL: input.websiteURL,
-      wishlistURL: input.wishlistURL,
+      location: '',
+      websiteURL: '',
+      wishlistURL: '',
       subscriptionGroupIDs: [],
     });
     return newProfile;
