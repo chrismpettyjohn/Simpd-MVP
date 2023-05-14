@@ -8,7 +8,6 @@ import { UserProfileScreen } from './user-profile/UserProfile';
 import { PageNotFoundScreen } from './page-not-found/PageNotFound';
 import { NotificationsScreen } from './notifications/Notifications';
 import { CreateAccountScreen } from './create-account/CreateAccount';
-import { SwitchProfileScreen } from './switch-profile/SwitchProfile';
 import { SettingsProfileScreen } from './settings-profile/SettingsProfile';
 import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
 
@@ -20,10 +19,6 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/create-account',
     view: CreateAccountScreen,
-  },
-  {
-    path: '/switch-profile',
-    view: SwitchProfileScreen,
   },
   {
     path: '/dashboard',

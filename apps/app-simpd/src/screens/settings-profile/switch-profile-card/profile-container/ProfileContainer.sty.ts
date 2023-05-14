@@ -5,6 +5,7 @@ export const ProfileElement = styled.div`
   color: ${({ theme }) => theme.color.s90};
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: ${({ theme }) => theme.space.twoUnits};
 `

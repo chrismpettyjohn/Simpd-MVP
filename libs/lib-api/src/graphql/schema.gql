@@ -2,44 +2,53 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type MediaDetailsModel {
-  sizeInBytes: Float
-  originalFileName: String
-}
-
-type MediaLocationModel {
-  awsS3Bucket: String
-  awsS3Key: String
-}
-
-type MediaModel {
+type ProfileModel {
   id: Float
-  type: MediaType
-  profileID: Float
-  details: MediaDetailsModel
-  location: MediaLocationModel
-}
-
-enum MediaType {
-  Image
-  Video
-  Other
+  userID: Float
+  username: String
+  displayName: String
+  biography: String
+  location: String
+  websiteURL: String
+  wishlistURL: String
 }
 
 type Query {
-  media(filter: MediaFilterByOneInput!): MediaModel!
-  medias(filter: MediaFilterByManyInput): [MediaModel!]!
+  profile(filter: ProfileFilterByOneInput!): ProfileModel!
+  profiles(filter: ProfileFilterByManyInput): [ProfileModel!]!
 }
 
-input MediaFilterByOneInput {
+input ProfileFilterByOneInput {
   id: Float
+  username: String
 }
 
-input MediaFilterByManyInput {
+input ProfileFilterByManyInput {
   ids: [Float!]
-  profileIDs: [Float!]
+  userIDs: [Float!]
+  usernames: [String!]
 }
 
 type Mutation {
-  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
+  profileCreate(input: ProfileCreateInput!): ProfileModel!
+  profileUpdate(filter: ProfileFilterByOneInput!, input: ProfileUpdateInput!): ProfileModel!
+  profileDelete(filter: ProfileFilterByOneInput!): Boolean!
+}
+
+input ProfileCreateInput {
+  username: String!
+  displayName: String!
+  biography: String!
+  location: String!
+  websiteURL: String!
+  wishlistURL: String!
+}
+
+input ProfileUpdateInput {
+  username: String
+  displayName: String
+  biography: String
+  location: String
+  websiteURL: String
+  wishlistURL: String
 }

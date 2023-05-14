@@ -15,10 +15,10 @@ export function ProfileContainer({ profile }: ProfileContainerProps) {
 
   return (
     <ProfileElement>
-      <h1>
+      <h3>
         <i className={isActive ? 'fa fa-star' : 'fa fa-circle'} style={{ marginRight: '2rem' }} />
         {profile.username}
-      </h1>
+      </h3>
       <Button disabled={isActive} onClick={onToggleProfile}>
         Use Profile
       </Button>

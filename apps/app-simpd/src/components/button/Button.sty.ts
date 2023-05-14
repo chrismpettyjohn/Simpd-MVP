@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 export const ButtonElement = styled.button`
   color: var(--dl-color-simpd-s90);
   cursor: pointer;
-  font-size: 1.41rem;
+  font-size: ${({ theme }) => theme.fontSize.oneUnit};
   font-style: normal;
   transition: 0.3s;
   font-weight: 500;

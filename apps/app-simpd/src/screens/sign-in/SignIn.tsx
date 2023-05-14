@@ -24,7 +24,7 @@ export function SignInScreen() {
     try {
       const newSession = await sessionCreate.execute();
       setSession(newSession);
-      setLocation('/switch-profile');
+      setLocation('/settings/profile');
     } catch (e) {
       alert('Something went wrong')
     }

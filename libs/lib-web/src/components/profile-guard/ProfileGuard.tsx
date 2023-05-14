@@ -11,7 +11,7 @@ export function ProfileGuard({ children, redirect = false }: ProfileGuardProps) 
   }
 
   if (!profile && redirect) {
-    return <Redirect to="/switch-profile" />
+    return <Redirect to="/settings/profile" />
   }
 
   return !profile ? null : <>{children}</>;
