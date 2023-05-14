@@ -15,6 +15,15 @@ export class ProfileEntity {
   @Column({name: 'display_name'})
   displayName!: string;
 
+  @Column({name: 'biography', type: 'text'})
+  biography!: string;
+
+  @Column({name: 'website_url'})
+  websiteURL!: string;
+
+  @Column({name: 'wishlist_url'})
+  wishlistURL!: string;
+
   @Column({name: 'subscription_group_ids', type: 'json', default: []})
   subscriptionGroupIDs!: number[];
 }

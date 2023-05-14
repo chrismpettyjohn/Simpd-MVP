@@ -14,4 +14,13 @@ export class ProfileModel {
 
   @Field(() => String, {nullable: true})
   displayName?: string;
+
+  @Field(() => String, {nullable: true})
+  biography?: string;
+
+  @Field(() => String, {nullable: true})
+  websiteURL?: string;
+
+  @Field(() => String, {nullable: true})
+  wishlistURL?: string;
 }

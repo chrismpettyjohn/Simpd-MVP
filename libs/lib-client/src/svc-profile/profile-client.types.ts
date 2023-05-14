@@ -3,6 +3,9 @@ export interface ProfileWire {
   userID: number;
   username: string;
   displayName: string;
+  biography: string;
+  websiteURL: string;
+  wishlistURL: string;
   subscriptionGroupIDs: number[];
 }
 

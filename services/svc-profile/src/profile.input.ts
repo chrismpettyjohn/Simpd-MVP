@@ -28,6 +28,15 @@ export class ProfileCreateInput {
 
   @Field(() => String)
   displayName!: string;
+
+  @Field(() => String)
+  biography!: string;
+
+  @Field(() => String)
+  websiteURL!: string;
+
+  @Field(() => String)
+  wishlistURL!: string;
 }
 
 @InputType()
@@ -37,4 +46,13 @@ export class ProfileUpdateInput {
 
   @Field(() => String, {nullable: true})
   displayName?: string;
+
+  @Field(() => String, {nullable: true})
+  biography?: string;
+
+  @Field(() => String, {nullable: true})
+  websiteURL?: string;
+
+  @Field(() => String, {nullable: true})
+  wishlistURL?: string;
 }

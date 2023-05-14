@@ -2,6 +2,7 @@ import {In} from 'typeorm';
 import {ProfileModel} from './profile.model';
 import {SessionWire} from '@simpd/lib-client';
 import {ProfileEntity} from './profile.entity';
+import {UnauthorizedException} from '@nestjs/common';
 import {GetSession, HasSession} from '@simpd/lib-api';
 import {ProfileRepository} from './profile.repository';
 import {
@@ -63,13 +64,52 @@ export class ProfileResolver {
       userID: session.userID,
       username: input.username,
       displayName: input.displayName,
+      biography: input.biography,
+      websiteURL: input.websiteURL,
+      wishlistURL: input.wishlistURL,
       subscriptionGroupIDs: [],
     });
     return newProfile;
   }
 
+  @Mutation(() => ProfileModel)
+  @HasSession()
+  async profileUpdate(
+    @GetSession() session: SessionWire,
+    @Args('filter') filter: ProfileFilterByOneInput,
+    @Args('input') input: ProfileCreateInput
+  ): Promise<ProfileEntity> {
+    const matchingProfile = await this.profileRepo.findOneOrFail({
+      where: filter,
+    });
+
+    if (matchingProfile.userID !== session.userID) {
+      throw new UnauthorizedException();
+    }
+
+    await this.profileRepo.update(
+      {
+        id: filter.id,
+        username: filter.username,
+      },
+      input
+    );
+    return this.profile(filter);
+  }
+
   @Mutation(() => Boolean)
-  async profileDelete(@Args('filter') filter: ProfileFilterByOneInput) {
+  async profileDelete(
+    @GetSession() session: SessionWire,
+    @Args('filter') filter: ProfileFilterByOneInput
+  ) {
+    const matchingProfile = await this.profileRepo.findOneOrFail({
+      where: filter,
+    });
+
+    if (matchingProfile.userID !== session.userID) {
+      throw new UnauthorizedException();
+    }
+
     await this.profileRepo.delete(filter);
     return true;
   }
