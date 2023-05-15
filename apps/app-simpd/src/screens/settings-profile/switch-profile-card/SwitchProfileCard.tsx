@@ -1,9 +1,8 @@
-import { Link } from 'wouter';
-import { Button } from 'components/button/Button';
 import React, { useContext, useEffect } from 'react';
 import { sessionContext, useProfileFetchMany } from '@simpd/lib-web';
 import { CardAccordion } from 'components/card-accordion/CardAccordion';
 import { ProfileContainer } from './profile-container/ProfileContainer';
+import { AddNewProfileButton } from './add-new-profile-button/AddNewProfileButton';
 
 export function SwitchProfileCard() {
   const { session } = useContext(sessionContext);
@@ -29,9 +28,7 @@ export function SwitchProfileCard() {
         ))
       }
       <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
-        <Link to="/settings/profile/create">
-          <Button>Add Profile</Button>
-        </Link>
+        <AddNewProfileButton />
       </div>
     </CardAccordion>
   )

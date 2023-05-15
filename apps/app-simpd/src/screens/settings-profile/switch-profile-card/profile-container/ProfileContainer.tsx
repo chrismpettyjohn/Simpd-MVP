@@ -1,17 +1,23 @@
 import React, { useContext } from 'react';
 import { sessionContext } from '@simpd/lib-web';
 import { Button } from 'components/button/Button';
-import { ProfileElement, ProfileIndicator } from './ProfileContainer.sty';
 import { ProfileContainerProps } from './ProfileContainer.types';
+import { useSwitchProfile } from 'hooks/use-switch-profile.hook';
+import { ProfileElement, ProfileIndicator } from './ProfileContainer.sty';
 
 export function ProfileContainer({ profile }: ProfileContainerProps) {
-  const { profile: activeProfile, setProfile } = useContext(sessionContext);
+  const switchProfile = useSwitchProfile();
+  const { session } = useContext(sessionContext);
 
-  const onToggleProfile = () => {
-    setProfile(profile);
+  const isActive = session?.profileID === profile.id;
+
+  const onSwitchProfile = () => {
+    if (isActive) {
+      return;
+    }
+
+    switchProfile.execute(profile);
   }
-
-  const isActive = activeProfile?.id === profile.id;
 
   return (
     <ProfileElement>
@@ -19,8 +25,10 @@ export function ProfileContainer({ profile }: ProfileContainerProps) {
         <ProfileIndicator className="fa fa-circle" selected={isActive} />
         {profile.username}
       </h3>
-      <Button disabled={isActive} onClick={onToggleProfile}>
-        Use Profile
+      <Button disabled={isActive} onClick={onSwitchProfile}>
+        {
+          switchProfile.loading ? <><i className="fa fa-spinner fa-spin" style={{ marginRight: 4 }} /> Using Profile</> : <>Use Profile</>
+        }
       </Button>
     </ProfileElement>
   )

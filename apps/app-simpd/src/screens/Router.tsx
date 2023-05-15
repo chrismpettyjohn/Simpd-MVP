@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'wouter';
 import { SignInScreen } from './sign-in/SignIn';
+import { SignOutScreen } from './sign-out/SignOut';
 import { MessagesScreen } from './messages/Messages';
 import { DashboardScreen } from './dashboard/Dashboard';
 import { FavoritesScreen } from './favorites/Favorites';
@@ -10,8 +11,6 @@ import { NotificationsScreen } from './notifications/Notifications';
 import { CreateAccountScreen } from './create-account/CreateAccount';
 import { SettingsProfileScreen } from './settings-profile/SettingsProfile';
 import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
-import { SettingsProfileCreatorScreen } from './settings-profile-creator/SettingsProfileCreator';
-import { SignOutScreen } from './sign-out/SignOut';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -46,10 +45,6 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/settings/profile',
     view: SettingsProfileScreen,
-  },
-  {
-    path: '/settings/profile/create',
-    view: SettingsProfileCreatorScreen,
   },
   {
     path: '/settings/security',
