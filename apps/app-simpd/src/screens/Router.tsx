@@ -11,6 +11,7 @@ import { NotificationsScreen } from './notifications/Notifications';
 import { CreateAccountScreen } from './create-account/CreateAccount';
 import { SettingsProfileScreen } from './settings-profile/SettingsProfile';
 import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
+import { SettingsIdentityScreen } from './settings-identity/SettingsIdentity';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -41,6 +42,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/notifications',
     view: NotificationsScreen,
+  },
+  {
+    path: '/settings/identity',
+    view: SettingsIdentityScreen,
   },
   {
     path: '/settings/profile',

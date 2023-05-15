@@ -1,19 +1,26 @@
 import {In} from 'typeorm';
 import {MediaModel} from './media.model';
+import {MediaEntity} from './media.entity';
+import {MediaService} from './media.service';
 import {MediaRepository} from './media.repository';
 import {mediaEntityToMediaWire} from './media.wire';
 import {MediaFilterByManyInput, MediaFilterByOneInput} from './media.input';
 import {
   Args,
   Mutation,
+  Parent,
   Query,
+  ResolveField,
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
 
 @Resolver(() => MediaModel)
 export class MediaResolver {
-  constructor(private readonly mediaRepo: MediaRepository) {}
+  constructor(
+    private readonly mediaRepo: MediaRepository,
+    private readonly mediaService: MediaService
+  ) {}
 
   // TODO: Add Privacy Guard
   @ResolveReference()
@@ -22,6 +29,11 @@ export class MediaResolver {
     id: number;
   }): Promise<MediaModel> {
     return this.media({id: reference.id});
+  }
+
+  @ResolveField()
+  url(@Parent() media: MediaEntity): Promise<string> {
+    return this.mediaService.getUrl(media.mediaLocation.awsS3Key);
   }
 
   @Query(() => MediaModel)

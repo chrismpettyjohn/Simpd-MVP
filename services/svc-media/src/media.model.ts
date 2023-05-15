@@ -1,13 +1,8 @@
 import {Directive, Field, ObjectType} from '@nestjs/graphql';
-import {
-  MediaDetails,
-  MediaLocation,
-  MediaWire as BaseMediaWire,
-  MediaType,
-} from '@simpd/lib-client';
+import {MediaType} from '@simpd/lib-client';
 
 @ObjectType()
-export class MediaDetailsModel implements MediaDetails {
+export class MediaDetailsModel {
   @Field(() => Number, {nullable: true})
   sizeInBytes!: number;
 
@@ -16,17 +11,8 @@ export class MediaDetailsModel implements MediaDetails {
 }
 
 @ObjectType()
-export class MediaLocationModel implements MediaLocation {
-  @Field(() => String, {nullable: true})
-  awsS3Bucket!: string;
-
-  @Field(() => String, {nullable: true})
-  awsS3Key!: string;
-}
-
-@ObjectType()
 @Directive('@key(fields: "id")')
-export class MediaModel implements BaseMediaWire {
+export class MediaModel {
   @Field(() => Number, {nullable: true})
   id!: number;
 
@@ -36,9 +22,9 @@ export class MediaModel implements BaseMediaWire {
   @Field(() => Number, {nullable: true})
   profileID!: number;
 
+  @Field(() => String, {nullable: true})
+  url?: string;
+
   @Field(() => MediaDetailsModel, {nullable: true})
   details!: MediaDetailsModel;
-
-  @Field(() => MediaLocationModel, {nullable: true})
-  location!: MediaLocationModel;
 }

@@ -1,5 +1,6 @@
 import {Module} from '@nestjs/common';
 import {MediaEntity} from './media.entity';
+import {MediaService} from './media.service';
 import {MediaResolver} from './media.resolver';
 import {MediaRepository} from './media.repository';
 import {ProfileClientModule} from '@simpd/lib-client';
@@ -29,7 +30,7 @@ import {
       useClass: MediaAwsS3MulterService,
     }),
   ],
-  providers: [MediaRepository, MediaResolver],
+  providers: [MediaRepository, MediaResolver, MediaService],
   controllers: [MediaInternalController, MediaExternalController],
 })
 export class MediaModule {}

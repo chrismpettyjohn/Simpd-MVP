@@ -1,10 +1,5 @@
 import {Field, InputType} from '@nestjs/graphql';
-import {
-  MediaImageInput as BaseMediaImageInput,
-  MediaDetails,
-  MediaLocation,
-  MediaType,
-} from '@simpd/lib-client';
+import {MediaDetails} from '@simpd/lib-client';
 
 @InputType()
 export class MediaFilterByManyInput {
@@ -28,15 +23,6 @@ export class MediaDetailsInput implements MediaDetails {
 
   @Field(() => String)
   originalFileName!: string;
-}
-
-@InputType()
-export class MediaLocationInput implements MediaLocation {
-  @Field(() => String)
-  awsS3Bucket!: string;
-
-  @Field(() => String)
-  awsS3Key!: string;
 }
 
 @InputType()

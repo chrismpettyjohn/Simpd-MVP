@@ -10,6 +10,8 @@ export const PROFILE_FRAGMENT = gql`
     location
     websiteURL
     wishlistURL
+    coverPhotoMediaID
+    profilePictureMediaID
   }
 `
 
@@ -22,4 +24,6 @@ export interface ProfileFragment {
   location: string;
   websiteURL: string;
   wishlistURL: string;
+  coverPhotoMediaID?: number;
+  profilePictureMediaID?: number;
 }

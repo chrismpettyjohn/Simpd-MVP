@@ -2,57 +2,39 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ProfileModel {
+type MediaDetailsModel {
+  sizeInBytes: Float
+  originalFileName: String
+}
+
+type MediaModel {
   id: Float
-  userID: Float
-  username: String
-  displayName: String
-  biography: String
-  location: String
-  websiteURL: String
-  wishlistURL: String
-  profilePictureMediaID: Float
-  coverPhotoMediaID: Float
+  type: MediaType
+  profileID: Float
+  url: String
+  details: MediaDetailsModel
+}
+
+enum MediaType {
+  Image
+  Video
+  Other
 }
 
 type Query {
-  profile(filter: ProfileFilterByOneInput!): ProfileModel!
-  profiles(filter: ProfileFilterByManyInput): [ProfileModel!]!
+  media(filter: MediaFilterByOneInput!): MediaModel!
+  medias(filter: MediaFilterByManyInput): [MediaModel!]!
 }
 
-input ProfileFilterByOneInput {
+input MediaFilterByOneInput {
   id: Float
-  username: String
 }
 
-input ProfileFilterByManyInput {
+input MediaFilterByManyInput {
   ids: [Float!]
-  userIDs: [Float!]
-  usernames: [String!]
+  profileIDs: [Float!]
 }
 
 type Mutation {
-  profileCreate(input: ProfileCreateInput!): ProfileModel!
-  profileCreateRandomized: ProfileModel!
-  profileUpdate(filter: ProfileFilterByOneInput!, input: ProfileUpdateInput!): ProfileModel!
-  profileDelete(filter: ProfileFilterByOneInput!): Boolean!
-}
-
-input ProfileCreateInput {
-  username: String!
-  displayName: String!
-  biography: String!
-  profilePictureMediaID: Float
-  coverPhotoMediaID: Float
-}
-
-input ProfileUpdateInput {
-  username: String
-  displayName: String
-  biography: String
-  location: String
-  websiteURL: String
-  wishlistURL: String
-  profilePictureMediaID: Float
-  coverPhotoMediaID: Float
+  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
 }
