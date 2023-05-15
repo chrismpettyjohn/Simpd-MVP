@@ -17,23 +17,20 @@ import {
 export class UserClientService {
   constructor(@Inject(SVC_USER_NAME) private client: ClientProxy) {}
 
-  async findOne({id}: UserFindOneInput): Promise<UserWire> {
-    const matchingUser$ = this.client.send(SVC_USER_INTERNAL_EVENT_FIND_ONE, {
-      id,
-    });
+  async findOne(input: UserFindOneInput): Promise<UserWire> {
+    const matchingUser$ = this.client.send(
+      SVC_USER_INTERNAL_EVENT_FIND_ONE,
+      input
+    );
     return await lastValueFrom(matchingUser$);
   }
 
-  async passwordComparison({
-    id,
-    password,
-  }: UserPasswordComparisonInput): Promise<UserPasswordComparisonResponse> {
+  async passwordComparison(
+    input: UserPasswordComparisonInput
+  ): Promise<UserPasswordComparisonResponse> {
     const matchingPassword$ = this.client.send(
       SVC_USER_INTERNAL_EVENT_PASSWORD_COMPARISON,
-      {
-        id,
-        password,
-      }
+      input
     );
     return await lastValueFrom(matchingPassword$);
   }
