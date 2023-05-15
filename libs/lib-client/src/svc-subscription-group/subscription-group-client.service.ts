@@ -16,12 +16,12 @@ export class SubscriptionGroupClientService {
     @Inject(SVC_SUBSCRIPTION_GROUP_NAME) private client: ClientProxy
   ) {}
 
-  async findOne({
-    id,
-  }: SubscriptionGroupFindOneInput): Promise<SubscriptionGroupWire> {
+  async findOne(
+    input: SubscriptionGroupFindOneInput
+  ): Promise<SubscriptionGroupWire> {
     const matchingSubscriptionGroup$ = this.client.send(
       SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE,
-      {id}
+      input
     );
     return await lastValueFrom(matchingSubscriptionGroup$);
   }

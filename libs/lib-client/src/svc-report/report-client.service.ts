@@ -11,10 +11,10 @@ import {
 export class ReportClientService {
   constructor(@Inject(SVC_REPORT_NAME) private client: ClientProxy) {}
 
-  async findOne({id}: ReportFindOneInput): Promise<ReportWire> {
+  async findOne(input: ReportFindOneInput): Promise<ReportWire> {
     const matchingReport$ = this.client.send(
       SVC_REPORT_INTERNAL_EVENT_FIND_ONE,
-      {id}
+      input
     );
     return await lastValueFrom(matchingReport$);
   }

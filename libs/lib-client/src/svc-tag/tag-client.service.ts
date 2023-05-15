@@ -8,10 +8,11 @@ import {SVC_TAG_INTERNAL_EVENT_FIND_ONE, SVC_TAG_NAME} from './tag.const';
 export class TagClientService {
   constructor(@Inject(SVC_TAG_NAME) private client: ClientProxy) {}
 
-  async findOne({id}: TagFindOneInput): Promise<TagWire> {
-    const matchingTag$ = this.client.send(SVC_TAG_INTERNAL_EVENT_FIND_ONE, {
-      id,
-    });
+  async findOne(input: TagFindOneInput): Promise<TagWire> {
+    const matchingTag$ = this.client.send(
+      SVC_TAG_INTERNAL_EVENT_FIND_ONE,
+      input
+    );
     return await lastValueFrom(matchingTag$);
   }
 }

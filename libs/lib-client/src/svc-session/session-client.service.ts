@@ -11,10 +11,10 @@ import {
 export class SessionClientService {
   constructor(@Inject(SVC_SESSION_NAME) private client: ClientProxy) {}
 
-  async findOne({id}: SessionFindOneInput): Promise<SessionWire> {
+  async findOne(input: SessionFindOneInput): Promise<SessionWire> {
     const matchingSession$ = this.client.send(
       SVC_SESSION_INTERNAL_EVENT_FIND_ONE,
-      {id}
+      input
     );
     return await lastValueFrom(matchingSession$);
   }

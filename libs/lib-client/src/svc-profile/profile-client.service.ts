@@ -11,10 +11,10 @@ import {
 export class ProfileClientService {
   constructor(@Inject(SVC_PROFILE_NAME) private client: ClientProxy) {}
 
-  async findOne({id, username}: ProfileFindOneInput): Promise<ProfileWire> {
+  async findOne(input: ProfileFindOneInput): Promise<ProfileWire> {
     const matchingProfile$ = this.client.send(
       SVC_PROFILE_INTERNAL_EVENT_FIND_ONE,
-      {id, username}
+      input
     );
     return await lastValueFrom(matchingProfile$);
   }

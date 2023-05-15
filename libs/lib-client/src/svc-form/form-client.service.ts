@@ -8,10 +8,11 @@ import {SVC_FORM_INTERNAL_EVENT_FIND_ONE, SVC_FORM_NAME} from './form.const';
 export class FormClientService {
   constructor(@Inject(SVC_FORM_NAME) private client: ClientProxy) {}
 
-  async findOne({id}: FormFindOneInput): Promise<FormWire> {
-    const matchingForm$ = this.client.send(SVC_FORM_INTERNAL_EVENT_FIND_ONE, {
-      id,
-    });
+  async findOne(input: FormFindOneInput): Promise<FormWire> {
+    const matchingForm$ = this.client.send(
+      SVC_FORM_INTERNAL_EVENT_FIND_ONE,
+      input
+    );
     return await lastValueFrom(matchingForm$);
   }
 }

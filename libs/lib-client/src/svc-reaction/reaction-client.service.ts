@@ -11,10 +11,10 @@ import {
 export class ReactionClientService {
   constructor(@Inject(SVC_REACTION_NAME) private client: ClientProxy) {}
 
-  async findOne({id}: ReactionFindOneInput): Promise<ReactionWire> {
+  async findOne(input: ReactionFindOneInput): Promise<ReactionWire> {
     const matchingReaction$ = this.client.send(
       SVC_REACTION_INTERNAL_EVENT_FIND_ONE,
-      {id}
+      input
     );
     return await lastValueFrom(matchingReaction$);
   }

@@ -8,10 +8,11 @@ import {SVC_POST_INTERNAL_EVENT_FIND_ONE, SVC_POST_NAME} from './post.const';
 export class PostClientService {
   constructor(@Inject(SVC_POST_NAME) private client: ClientProxy) {}
 
-  async findOne({id}: PostFindOneInput): Promise<PostWire> {
-    const matchingPost$ = this.client.send(SVC_POST_INTERNAL_EVENT_FIND_ONE, {
-      id,
-    });
+  async findOne(input: PostFindOneInput): Promise<PostWire> {
+    const matchingPost$ = this.client.send(
+      SVC_POST_INTERNAL_EVENT_FIND_ONE,
+      input
+    );
     return await lastValueFrom(matchingPost$);
   }
 }

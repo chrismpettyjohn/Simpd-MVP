@@ -8,10 +8,11 @@ import {SVC_MEDIA_INTERNAL_EVENT_FIND_ONE, SVC_MEDIA_NAME} from './media.const';
 export class MediaClientService {
   constructor(@Inject(SVC_MEDIA_NAME) private client: ClientProxy) {}
 
-  async findOne({id}: MediaFindOneInput): Promise<MediaWire> {
-    const matchingMedia$ = this.client.send(SVC_MEDIA_INTERNAL_EVENT_FIND_ONE, {
-      id,
-    });
+  async findOne(input: MediaFindOneInput): Promise<MediaWire> {
+    const matchingMedia$ = this.client.send(
+      SVC_MEDIA_INTERNAL_EVENT_FIND_ONE,
+      input
+    );
     return await lastValueFrom(matchingMedia$);
   }
 }

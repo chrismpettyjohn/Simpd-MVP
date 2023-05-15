@@ -11,10 +11,10 @@ import {
 export class CommentClientService {
   constructor(@Inject(SVC_COMMENT_NAME) private client: ClientProxy) {}
 
-  async findOne({id}: CommentFindOneInput): Promise<CommentWire> {
+  async findOne(input: CommentFindOneInput): Promise<CommentWire> {
     const matchingComment$ = this.client.send(
       SVC_COMMENT_INTERNAL_EVENT_FIND_ONE,
-      {id}
+      input
     );
     return await lastValueFrom(matchingComment$);
   }

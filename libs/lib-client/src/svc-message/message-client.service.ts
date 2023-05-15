@@ -11,10 +11,10 @@ import {
 export class MessageClientService {
   constructor(@Inject(SVC_MESSAGE_NAME) private client: ClientProxy) {}
 
-  async findOne({id}: MessageFindOneInput): Promise<MessageWire> {
+  async findOne(input: MessageFindOneInput): Promise<MessageWire> {
     const matchingMessage$ = this.client.send(
       SVC_MESSAGE_INTERNAL_EVENT_FIND_ONE,
-      {id}
+      input
     );
     return await lastValueFrom(matchingMessage$);
   }

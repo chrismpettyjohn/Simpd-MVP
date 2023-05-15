@@ -8,10 +8,11 @@ import {SVC_ROLE_INTERNAL_EVENT_FIND_ONE, SVC_ROLE_NAME} from './role.const';
 export class RoleClientService {
   constructor(@Inject(SVC_ROLE_NAME) private client: ClientProxy) {}
 
-  async findOne({id}: RoleFindOneInput): Promise<RoleWire> {
-    const matchingRole$ = this.client.send(SVC_ROLE_INTERNAL_EVENT_FIND_ONE, {
-      id,
-    });
+  async findOne(input: RoleFindOneInput): Promise<RoleWire> {
+    const matchingRole$ = this.client.send(
+      SVC_ROLE_INTERNAL_EVENT_FIND_ONE,
+      input
+    );
     return await lastValueFrom(matchingRole$);
   }
 }
