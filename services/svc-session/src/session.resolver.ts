@@ -12,6 +12,7 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import {
+  SessionChangeProfileInput,
   SessionCreateInput,
   SessionFilterByManyInput,
   SessionFilterByOneInput,
@@ -41,6 +42,20 @@ export class SessionResolver {
         id: session.sessionID,
       },
     });
+  }
+
+  @Mutation(() => String, {nullable: true})
+  @HasSession()
+  async sessionChangeProfile(
+    @GetSession() session: SessionContents,
+    @Args('input') input: SessionChangeProfileInput
+  ): Promise<string> {
+    const newSession = await this.sessionService.changeSessionProfile(
+      session,
+      input
+    );
+    const sessionJWT = this.sessionService.generateBearerToken(newSession);
+    return sessionJWT;
   }
 
   @Query(() => SessionModel)

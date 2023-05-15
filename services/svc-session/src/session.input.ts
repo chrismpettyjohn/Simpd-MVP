@@ -26,3 +26,9 @@ export class SessionCreateInput {
   @Field(() => Number, {nullable: true})
   profileID?: number;
 }
+
+@InputType()
+export class SessionChangeProfileInput {
+  @Field(() => Number)
+  profileID!: number;
+}

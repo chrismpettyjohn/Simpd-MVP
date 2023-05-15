@@ -3,6 +3,7 @@ import {JwtService} from '@nestjs/jwt';
 import {SessionContents} from '@simpd/lib-api';
 import {SessionRepository} from './session.repository';
 import {DEFAULT_SESSION_LENGTH} from './session.const';
+import {SessionChangeProfileInput} from './session.input';
 import {
   ProfileClientService,
   RoleClientService,
@@ -92,6 +93,46 @@ export class SessionService {
       sessionID: newSession.id!,
       expiresAt: +newSession.expiresAt,
       scopes: userRole.scopes,
+    };
+  }
+
+  async changeSessionProfile(
+    session: SessionContents,
+    input: SessionChangeProfileInput
+  ): Promise<SessionContents> {
+    const currentTime = new Date();
+    const expiresAt = addTime(currentTime, DEFAULT_SESSION_LENGTH);
+
+    const matchingUser = await this.userClientService.findOne({
+      id: session.userID,
+    });
+
+    const matchingRole = await this.roleClientService.findOne({
+      id: matchingUser.roleID,
+    });
+
+    const matchingProfile = await this.profileClientService.findOne({
+      id: input.profileID,
+    });
+
+    const userOwnsProfile = matchingProfile.userID === session.userID;
+
+    if (!userOwnsProfile) {
+      throw new UnauthorizedException();
+    }
+
+    const newSession = await this.sessionRepo.create({
+      userID: session.userID,
+      profileID: matchingProfile.id!,
+      expiresAt,
+    });
+
+    return {
+      userID: newSession.userID,
+      profileID: matchingProfile.id,
+      sessionID: newSession.id!,
+      expiresAt: +newSession.expiresAt,
+      scopes: matchingRole.scopes,
     };
   }
 
