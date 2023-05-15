@@ -12,7 +12,7 @@ export function AddNewProfileButton() {
       return;
     }
     const newProfile = await profileCreateRandomized.execute();
-    switchProfile.switchProfile(newProfile);
+    switchProfile.execute(newProfile);
   }
 
   return (
