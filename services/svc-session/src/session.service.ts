@@ -121,6 +121,11 @@ export class SessionService {
       throw new UnauthorizedException();
     }
 
+    await this.userClientService.userUpdateOne({
+      filter: {id: matchingUser.id},
+      input: {favoriteProfileID: matchingProfile.id},
+    });
+
     const newSession = await this.sessionRepo.create({
       userID: session.userID,
       profileID: matchingProfile.id!,
