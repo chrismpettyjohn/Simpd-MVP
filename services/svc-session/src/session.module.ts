@@ -4,7 +4,11 @@ import {SessionService} from './session.service';
 import {SessionResolver} from './session.resolver';
 import {SessionController} from './session.controller';
 import {SessionRepository} from './session.repository';
-import {RoleClientModule, UserClientModule} from '@simpd/lib-client';
+import {
+  ProfileClientModule,
+  RoleClientModule,
+  UserClientModule,
+} from '@simpd/lib-client';
 import {
   GraphQLModule,
   DatabaseModule,
@@ -18,6 +22,7 @@ import {
     SessionModule,
     UserClientModule,
     RoleClientModule,
+    ProfileClientModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
       entities: [SessionEntity],

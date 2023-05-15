@@ -17,6 +17,10 @@ export class SessionEntity {
   @Index()
   userID!: number;
 
+  @Column({name: 'profile_id', type: 'int'})
+  @Index()
+  profileID!: number;
+
   @Column({name: 'expires_at', type: 'timestamp'})
   expiresAt!: Date;
 

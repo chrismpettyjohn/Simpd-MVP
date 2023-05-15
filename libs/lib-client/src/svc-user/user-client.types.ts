@@ -2,6 +2,7 @@ export interface UserWire {
   id: number;
   email: string;
   roleID: number;
+  favoriteProfileID?: number;
 }
 
 export interface UserFindOneInput {
@@ -19,4 +20,15 @@ export interface UserPasswordComparisonInput {
 export interface UserPasswordComparisonResponse {
   id: number;
   matching: boolean;
+}
+
+export interface UserUpdateOneInput {
+  email?: string;
+  roleID?: number;
+  favoriteProfileID?: number;
+}
+
+export interface UserUpdateOneParams {
+  filter: UserFindOneInput;
+  input: UserUpdateOneInput;
 }

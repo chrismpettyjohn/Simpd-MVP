@@ -8,4 +8,7 @@ export class SessionModel {
 
   @Field({nullable: true})
   userID?: string;
+
+  @Field({nullable: true})
+  profileID?: string;
 }

@@ -4,12 +4,15 @@ import {ClientProxy} from '@nestjs/microservices';
 import {
   SVC_USER_INTERNAL_EVENT_FIND_ONE,
   SVC_USER_INTERNAL_EVENT_PASSWORD_COMPARISON,
+  SVC_USER_INTERNAL_EVENT_UPDATE_ONE,
   SVC_USER_NAME,
 } from './user.const';
 import {
   UserFindOneInput,
   UserPasswordComparisonInput,
   UserPasswordComparisonResponse,
+  UserUpdateOneInput,
+  UserUpdateOneParams,
   UserWire,
 } from './user-client.types';
 
@@ -33,5 +36,13 @@ export class UserClientService {
       input
     );
     return await lastValueFrom(matchingPassword$);
+  }
+
+  async userUpdateOne(params: UserUpdateOneParams): Promise<boolean> {
+    const userUpdate = this.client.send(
+      SVC_USER_INTERNAL_EVENT_UPDATE_ONE,
+      params
+    );
+    return await lastValueFrom(userUpdate);
   }
 }

@@ -70,7 +70,8 @@ export class SessionResolver {
   ): Promise<string> {
     const userSession = await this.sessionService.createNewSession(
       input.email,
-      input.password
+      input.password,
+      input.profileID
     );
     const sessionJWT = this.sessionService.generateBearerToken(userSession);
     return sessionJWT;

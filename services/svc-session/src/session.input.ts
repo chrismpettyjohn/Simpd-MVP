@@ -22,4 +22,7 @@ export class SessionCreateInput {
 
   @Field(() => String)
   password!: string;
+
+  @Field(() => Number, {nullable: true})
+  profileID?: number;
 }

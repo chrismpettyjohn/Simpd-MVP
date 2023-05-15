@@ -3,12 +3,17 @@ import {JwtService} from '@nestjs/jwt';
 import {SessionContents} from '@simpd/lib-api';
 import {SessionRepository} from './session.repository';
 import {DEFAULT_SESSION_LENGTH} from './session.const';
-import {RoleClientService, UserClientService} from '@simpd/lib-client';
+import {
+  ProfileClientService,
+  RoleClientService,
+  UserClientService,
+} from '@simpd/lib-client';
 import {
   InternalServerErrorException,
   NotFoundException,
   Injectable,
   UnauthorizedException,
+  BadRequestException,
 } from '@nestjs/common';
 
 @Injectable()
@@ -17,12 +22,14 @@ export class SessionService {
     private readonly jwtService: JwtService,
     private readonly sessionRepo: SessionRepository,
     private readonly userClientService: UserClientService,
-    private readonly roleClientService: RoleClientService
+    private readonly roleClientService: RoleClientService,
+    private readonly profileClientService: ProfileClientService
   ) {}
 
   async createNewSession(
     email: string,
-    password: string
+    password: string,
+    profileID?: number
   ): Promise<SessionContents> {
     const currentTime = new Date();
     const expiresAt = addTime(currentTime, DEFAULT_SESSION_LENGTH);
@@ -52,8 +59,23 @@ export class SessionService {
       );
     }
 
+    const selectedProfileID = profileID ?? user?.favoriteProfileID;
+
+    if (!selectedProfileID) {
+      throw new BadRequestException();
+    }
+
+    const matchingProfile = await this.profileClientService.findOne({
+      id: selectedProfileID,
+    });
+
+    if (matchingProfile.userID !== user.id) {
+      throw new UnauthorizedException();
+    }
+
     const newSession = await this.sessionRepo.create({
       userID: user.id,
+      profileID: matchingProfile.id,
       expiresAt,
     });
 

@@ -13,4 +13,7 @@ export class UserEntity {
 
   @Column({name: 'role_id'})
   roleID!: number;
+
+  @Column({name: 'favorite_profile_id', nullable: true})
+  favoriteProfileID?: number;
 }
