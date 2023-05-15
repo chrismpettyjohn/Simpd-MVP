@@ -7,7 +7,8 @@ import { CardAccordion } from 'components/card-accordion/CardAccordion';
 import { UserProfileCard } from 'components/user-profile-card/UserProfileCard';
 
 export function UserProfileScreen() {
-  const [, params] = useRoute<{ username: string }>('/profile/:username');
+  const [, params] = useRoute<{ username: string }>('/profiles/:username');
+
   const fetchProfile = useProfileFetchOne({ username: params?.username })
 
   useEffect(() => {
