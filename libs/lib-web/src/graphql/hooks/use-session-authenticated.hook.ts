@@ -14,7 +14,6 @@ export function useSessionAuthenticated(): UseSessionAuthenticatedResponse {
 
   const onFetchSession = async () => {
     const matchingSession = await getSession()
-    console.log(matchingSession.data)
     return matchingSession.data.me;
   }
 

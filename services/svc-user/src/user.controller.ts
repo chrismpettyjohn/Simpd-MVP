@@ -20,9 +20,7 @@ export class UserController {
   ) {}
 
   @MessagePattern(SVC_USER_INTERNAL_EVENT_FIND_ONE)
-  async userFindOneByID(
-    @Payload() data: UserFindOneInput
-  ): Promise<UserFindOneResponse> {
+  async userFindOneByID(data: UserFindOneInput): Promise<UserFindOneResponse> {
     console.log(data);
 
     const noData = !data.id && !data.email;
