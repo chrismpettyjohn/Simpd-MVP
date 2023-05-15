@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { USER_FRAGMENT, UserFragment } from "graphql/fragments/user.fragment";
+import { UserFragment } from "graphql/fragments/user.fragment";
 
 export interface UserCreateInput {
   email: string;
