@@ -15,7 +15,6 @@ export function SessionContextProvider({ children }: SessionContextProviderProps
   const useExistingSession = async () => {
     try {
       const checkSession = await getSession.fetch();
-      console.log(checkSession)
       setSessionState(checkSession ?? undefined)
     } finally {
       setLoading(false);
