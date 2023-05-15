@@ -3,8 +3,10 @@ import {MessagePattern} from '@nestjs/microservices';
 import {ProfileRepository} from './profile.repository';
 import {profileEntityToProfileWire} from './profile.wire';
 import {
+  ProfileFindManyInput,
   ProfileFindOneInput,
   ProfileWire,
+  SVC_PROFILE_INTERNAL_EVENT_FIND_MANY,
   SVC_PROFILE_INTERNAL_EVENT_FIND_ONE,
 } from '@simpd/lib-client';
 
@@ -13,12 +15,22 @@ export class ProfileController {
   constructor(private readonly profileRepo: ProfileRepository) {}
 
   @MessagePattern(SVC_PROFILE_INTERNAL_EVENT_FIND_ONE)
-  async profileFindOneByID(data: ProfileFindOneInput): Promise<ProfileWire> {
-    const matchingRole = await this.profileRepo.findOneOrFail({
+  async profileFindOne(filter: ProfileFindOneInput): Promise<ProfileWire> {
+    const matchingProfile = await this.profileRepo.findOneOrFail({
       where: {
-        id: data.id,
+        id: filter.id,
       },
     });
-    return profileEntityToProfileWire(matchingRole);
+    return profileEntityToProfileWire(matchingProfile);
+  }
+
+  @MessagePattern(SVC_PROFILE_INTERNAL_EVENT_FIND_MANY)
+  async profileFindMany(filter: ProfileFindManyInput): Promise<ProfileWire[]> {
+    const matchingProfiles = await this.profileRepo.find({
+      where: {
+        userID: filter.userID,
+      },
+    });
+    return matchingProfiles.map(profileEntityToProfileWire);
   }
 }

@@ -59,29 +59,36 @@ export class SessionService {
       );
     }
 
-    const selectedProfileID = profileID ?? user?.favoriteProfileID;
+    const matchingProfiles = await this.profileClientService.findMany({
+      userID: user.id,
+    });
+
+    console.log(matchingProfiles);
+
+    const selectedProfileID =
+      profileID ?? user?.favoriteProfileID ?? matchingProfiles?.[0]?.id;
 
     if (!selectedProfileID) {
       throw new BadRequestException();
     }
 
-    const matchingProfile = await this.profileClientService.findOne({
-      id: selectedProfileID,
-    });
+    const userOwnsSelectedProfile = matchingProfiles.find(
+      _ => _.id === selectedProfileID
+    );
 
-    if (matchingProfile.userID !== user.id) {
+    if (!userOwnsSelectedProfile) {
       throw new UnauthorizedException();
     }
 
     const newSession = await this.sessionRepo.create({
       userID: user.id,
-      profileID: matchingProfile.id,
+      profileID: selectedProfileID,
       expiresAt,
     });
 
     return {
       userID: newSession.userID,
-      profileID: 1, // TODO
+      profileID: selectedProfileID,
       sessionID: newSession.id!,
       expiresAt: +newSession.expiresAt,
       scopes: userRole.scopes,

@@ -1,8 +1,13 @@
 import {lastValueFrom} from 'rxjs';
 import {Inject, Injectable} from '@nestjs/common';
 import {ClientProxy} from '@nestjs/microservices';
-import {ProfileFindOneInput, ProfileWire} from './profile-client.types';
 import {
+  ProfileFindManyInput,
+  ProfileFindOneInput,
+  ProfileWire,
+} from './profile-client.types';
+import {
+  SVC_PROFILE_INTERNAL_EVENT_FIND_MANY,
   SVC_PROFILE_INTERNAL_EVENT_FIND_ONE,
   SVC_PROFILE_NAME,
 } from './profile.const';
@@ -17,5 +22,13 @@ export class ProfileClientService {
       input
     );
     return await lastValueFrom(matchingProfile$);
+  }
+
+  async findMany(input: ProfileFindManyInput): Promise<ProfileWire[]> {
+    const matchingProfiles$ = this.client.send(
+      SVC_PROFILE_INTERNAL_EVENT_FIND_MANY,
+      input
+    );
+    return await lastValueFrom(matchingProfiles$);
   }
 }

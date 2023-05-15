@@ -14,3 +14,7 @@ export interface ProfileFindOneInput {
   id?: number;
   username?: string;
 }
+
+export interface ProfileFindManyInput {
+  userID?: number;
+}
