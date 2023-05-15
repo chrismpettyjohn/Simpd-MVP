@@ -44,3 +44,4 @@ export * from './graphql/queries/session-fetch-one.query';
 export * from './graphql/queries/user-fetch-one.query';
 export * from './graphql/queries/profile-fetch-many.query';
 export * from './graphql/queries/profile-fetch-one.query';
+export * from './hooks/use-media-upload.hook';

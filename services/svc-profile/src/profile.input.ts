@@ -31,6 +31,12 @@ export class ProfileCreateInput {
 
   @Field(() => String)
   biography!: string;
+
+  @Field(() => Number, {nullable: true})
+  profilePictureMediaID?: number;
+
+  @Field(() => Number, {nullable: true})
+  coverPhotoMediaID?: number;
 }
 
 @InputType()
@@ -52,4 +58,10 @@ export class ProfileUpdateInput {
 
   @Field(() => String, {nullable: true})
   wishlistURL?: string;
+
+  @Field(() => Number, {nullable: true})
+  profilePictureMediaID?: number;
+
+  @Field(() => Number, {nullable: true})
+  coverPhotoMediaID?: number;
 }

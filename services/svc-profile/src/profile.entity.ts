@@ -27,6 +27,12 @@ export class ProfileEntity {
   @Column({name: 'wishlist_url', default: ''})
   wishlistURL!: string;
 
+  @Column({name: 'profile_picture_media_id', nullable: true})
+  profilePictureMediaID?: number;
+
+  @Column({name: 'cover_photo_media_id', nullable: true})
+  coverPhotoMediaID?: number;
+
   @Column({name: 'subscription_group_ids', type: 'json', default: []})
   subscriptionGroupIDs!: number[];
 }

@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { ProfileEditor } from 'components/profile-editor/ProfileEditor';
 import { CardAccordion } from 'components/card-accordion/CardAccordion';
 import { ProfileUpdateInput, sessionContext, useProfileFetchOne, useProfileUpdate } from '@simpd/lib-web';
+import { ChangeCoverPhoto } from './change-cover-photo/ChangeCoverPhoto';
 
 export function ProfileSettingsCard() {
   const { session } = useContext(sessionContext);
@@ -21,7 +22,10 @@ export function ProfileSettingsCard() {
     <CardAccordion header="Profile">
       {
         fetchProfile.data && (
-          <ProfileEditor defaultProfile={fetchProfile.data} onSave={onUpateProfile} />
+          <>
+            <ChangeCoverPhoto profile={fetchProfile.data} />
+            <ProfileEditor defaultProfile={fetchProfile.data} onSave={onUpateProfile} />
+          </>
         )
       }
     </CardAccordion>

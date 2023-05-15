@@ -7,6 +7,8 @@ export interface ProfileWire {
   location: string;
   websiteURL: string;
   wishlistURL: string;
+  profilePictureMediaID?: number;
+  coverPhotoMediaID?: number;
   subscriptionGroupIDs: number[];
 }
 

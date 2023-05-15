@@ -2,39 +2,57 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type SessionModel {
+type ProfileModel {
   id: Float
-  userID: String
-  profileID: String
+  userID: Float
+  username: String
+  displayName: String
+  biography: String
+  location: String
+  websiteURL: String
+  wishlistURL: String
+  profilePictureMediaID: Float
+  coverPhotoMediaID: Float
 }
 
 type Query {
-  me: SessionModel
-  session(filter: SessionFilterByOneInput!): SessionModel!
-  sessions(filter: SessionFilterByManyInput): [SessionModel!]!
+  profile(filter: ProfileFilterByOneInput!): ProfileModel!
+  profiles(filter: ProfileFilterByManyInput): [ProfileModel!]!
 }
 
-input SessionFilterByOneInput {
+input ProfileFilterByOneInput {
   id: Float
+  username: String
 }
 
-input SessionFilterByManyInput {
+input ProfileFilterByManyInput {
   ids: [Float!]
   userIDs: [Float!]
+  usernames: [String!]
 }
 
 type Mutation {
-  sessionChangeProfile(input: SessionChangeProfileInput!): String
-  sessionCreate(input: SessionCreateInput!): String!
-  sessionDelete(filter: SessionFilterByOneInput!): Boolean!
+  profileCreate(input: ProfileCreateInput!): ProfileModel!
+  profileCreateRandomized: ProfileModel!
+  profileUpdate(filter: ProfileFilterByOneInput!, input: ProfileUpdateInput!): ProfileModel!
+  profileDelete(filter: ProfileFilterByOneInput!): Boolean!
 }
 
-input SessionChangeProfileInput {
-  profileID: Float!
+input ProfileCreateInput {
+  username: String!
+  displayName: String!
+  biography: String!
+  profilePictureMediaID: Float
+  coverPhotoMediaID: Float
 }
 
-input SessionCreateInput {
-  email: String!
-  password: String!
-  profileID: Float
+input ProfileUpdateInput {
+  username: String
+  displayName: String
+  biography: String
+  location: String
+  websiteURL: String
+  wishlistURL: String
+  profilePictureMediaID: Float
+  coverPhotoMediaID: Float
 }

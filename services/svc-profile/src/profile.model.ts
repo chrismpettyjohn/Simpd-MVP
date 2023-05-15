@@ -26,4 +26,10 @@ export class ProfileModel {
 
   @Field(() => String, {nullable: true})
   wishlistURL?: string;
+
+  @Field(() => Number, {nullable: true})
+  profilePictureMediaID?: number;
+
+  @Field(() => Number, {nullable: true})
+  coverPhotoMediaID?: number;
 }

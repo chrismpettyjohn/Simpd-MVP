@@ -13,6 +13,8 @@ export function profileEntityToProfileWire(
     location: profileEntity.location,
     websiteURL: profileEntity.websiteURL,
     wishlistURL: profileEntity.wishlistURL,
+    profilePictureMediaID: profileEntity.profilePictureMediaID,
+    coverPhotoMediaID: profileEntity.coverPhotoMediaID,
     subscriptionGroupIDs: profileEntity.subscriptionGroupIDs,
   };
 }
