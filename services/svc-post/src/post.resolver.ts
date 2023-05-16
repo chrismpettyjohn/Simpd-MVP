@@ -137,7 +137,7 @@ export class PostResolver {
     @Args('input') input: PostWithTextCreateInput
   ): Promise<PostWithTextWire> {
     const matchingProfile = await this.profileClientService.findOne({
-      id: input.profileID,
+      id: session.profileID,
     });
 
     if (matchingProfile?.userID !== session.userID) {
@@ -162,7 +162,7 @@ export class PostResolver {
   ): Promise<PostWithImageWire> {
     const [matchingProfile, matchingImage] = await Promise.all([
       this.profileClientService.findOne({
-        id: input.profileID,
+        id: session.profileID,
       }),
       this.mediaClientService.findOne({id: input.mediaID}),
     ]);
@@ -199,7 +199,7 @@ export class PostResolver {
   ): Promise<PostWithVideoWire> {
     const [matchingProfile, matchingVideo] = await Promise.all([
       this.profileClientService.findOne({
-        id: input.profileID,
+        id: session.profileID,
       }),
       this.mediaClientService.findOne({id: input.mediaID}),
     ]);
@@ -235,7 +235,7 @@ export class PostResolver {
     @Args('input') input: PostWithAlbumInput
   ): Promise<PostWithAlbumWire> {
     const matchingProfile = await this.profileClientService.findOne({
-      id: input.profileID,
+      id: session.profileID,
     });
 
     const userOwnsProfile = matchingProfile?.userID === session.userID;
@@ -277,7 +277,7 @@ export class PostResolver {
     @Args('input') input: PostWithSharedContentInput
   ): Promise<PostWithSharedContentWire> {
     const matchingProfile = await this.profileClientService.findOne({
-      id: input.profileID,
+      id: session.profileID,
     });
 
     const userOwnsProfile = matchingProfile?.userID === session.userID;

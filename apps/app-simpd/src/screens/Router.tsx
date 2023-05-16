@@ -3,6 +3,7 @@ import { Switch, Route } from 'wouter';
 import { SignInScreen } from './sign-in/SignIn';
 import { SignOutScreen } from './sign-out/SignOut';
 import { MessagesScreen } from './messages/Messages';
+import { ViewPostScreen } from './view-post/ViewPost';
 import { GuestGuard, UserGuard } from '@simpd/lib-web';
 import { DashboardScreen } from './dashboard/Dashboard';
 import { FavoritesScreen } from './favorites/Favorites';
@@ -103,6 +104,14 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
       </UserGuard>
     ),
   },
+  {
+    path: '/posts/:id',
+    view: (
+      <UserGuard redirect>
+        <ViewPostScreen />
+      </UserGuard>
+    )
+  }
 ]
 
 export function Router() {

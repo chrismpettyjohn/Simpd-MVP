@@ -18,18 +18,12 @@ export class PostFilterByOneInput {
 
 @InputType()
 export class PostWithTextCreateInput {
-  @Field(() => Number)
-  profileID!: number;
-
   @Field(() => String)
   content!: string;
 }
 
 @InputType()
 export class PostWithImageCreateInput {
-  @Field(() => Number)
-  profileID!: number;
-
   @Field(() => Number)
   mediaID!: number;
 
@@ -40,9 +34,6 @@ export class PostWithImageCreateInput {
 @InputType()
 export class PostWithVideoCreateInput {
   @Field(() => Number)
-  profileID!: number;
-
-  @Field(() => Number)
   mediaID!: number;
 
   @Field(() => String)
@@ -51,9 +42,6 @@ export class PostWithVideoCreateInput {
 
 @InputType()
 export class PostWithAlbumInput {
-  @Field(() => Number)
-  profileID!: number;
-
   @Field(() => [Number!])
   mediaIDs!: number[];
 
@@ -63,9 +51,6 @@ export class PostWithAlbumInput {
 
 @InputType()
 export class PostWithSharedContentInput {
-  @Field(() => Number)
-  profileID!: number;
-
   @Field(() => PostSharedContentType)
   resourceType!: PostSharedContentType;
 
