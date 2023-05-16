@@ -1,17 +1,17 @@
 import './SignIn.css';
-import { Link, useLocation } from 'wouter';
 import { Helmet } from 'react-helmet';
+import { Link, useLocation } from 'wouter';
 import { Card } from 'components/card/Card';
 import { PageTitle } from 'components/page-title/PageTitle';
+import { sessionContext, useSessionCreate } from '@simpd/lib-web';
 import React, { SyntheticEvent, useContext, useState } from 'react'
-import { GuestGuard, sessionContext, useSessionCreate } from '@simpd/lib-web';
 
 export function SignInScreen() {
-  const [email, setEmail] = useState('');
   const [, setLocation] = useLocation();
+  const [email, setEmail] = useState('');
+  const sessionCreate = useSessionCreate();
   const [password, setPassword] = useState('');
   const { setSession } = useContext(sessionContext);
-  const sessionCreate = useSessionCreate();
 
   const isDisabled = !email || !password;
 
@@ -31,7 +31,7 @@ export function SignInScreen() {
   }
 
   return (
-    <GuestGuard redirect>
+    <>
       <Helmet>
         <title>Simpd</title>
         <meta property="og:title" content="Simpd" />
@@ -71,6 +71,6 @@ export function SignInScreen() {
           </div>
         </form>
       </Card>
-    </GuestGuard>
+    </>
   )
 }

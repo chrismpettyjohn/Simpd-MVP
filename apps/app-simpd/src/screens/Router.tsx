@@ -3,6 +3,7 @@ import { Switch, Route } from 'wouter';
 import { SignInScreen } from './sign-in/SignIn';
 import { SignOutScreen } from './sign-out/SignOut';
 import { MessagesScreen } from './messages/Messages';
+import { GuestGuard, UserGuard } from '@simpd/lib-web';
 import { DashboardScreen } from './dashboard/Dashboard';
 import { FavoritesScreen } from './favorites/Favorites';
 import { UserProfileScreen } from './user-profile/UserProfile';
@@ -16,48 +17,91 @@ import { SettingsIdentityScreen } from './settings-identity/SettingsIdentity';
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/sign-in',
-    view: SignInScreen,
+    view: (
+      <GuestGuard redirect>
+        <SignInScreen />
+      </GuestGuard>
+    ),
   },
   {
     path: '/create-account',
-    view: CreateAccountScreen,
+    view: (
+      <GuestGuard redirect>
+        <CreateAccountScreen />
+      </GuestGuard>
+    ),
   },
   {
     path: '/sign-out',
-    view: SignOutScreen,
+    view: (
+      <UserGuard redirect>
+        <SignOutScreen />
+      </UserGuard>
+    ),
   },
   {
     path: '/dashboard',
-    view: DashboardScreen,
+    view: (
+      <UserGuard redirect>
+        <DashboardScreen />
+      </UserGuard>
+    ),
   },
   {
     path: '/favorites',
-    view: FavoritesScreen,
+    view: (
+      <UserGuard redirect>
+        <FavoritesScreen />
+      </UserGuard>
+    ),
   },
-
   {
     path: '/messages',
-    view: MessagesScreen,
+    view: (
+      <UserGuard redirect>
+        <MessagesScreen />
+      </UserGuard>
+    ),
   },
   {
     path: '/notifications',
-    view: NotificationsScreen,
+    view: (
+      <UserGuard redirect>
+        <NotificationsScreen />
+      </UserGuard>
+    ),
   },
   {
     path: '/settings/identity',
-    view: SettingsIdentityScreen,
+    view: (
+      <UserGuard redirect>
+        <SettingsIdentityScreen />
+      </UserGuard>
+    ),
   },
   {
     path: '/settings/profile',
-    view: SettingsProfileScreen,
+    view: (
+      <UserGuard redirect>
+        <SettingsProfileScreen />
+      </UserGuard>
+    ),
   },
   {
     path: '/settings/security',
-    view: SettingsSecurityScreen,
+    view: (
+      <UserGuard redirect>
+        <SettingsSecurityScreen />
+      </UserGuard>
+    ),
   },
   {
     path: '/profiles/:username',
-    view: UserProfileScreen,
+    view: (
+      <UserGuard redirect>
+        <UserProfileScreen />
+      </UserGuard>
+    ),
   },
 ]
 
@@ -67,7 +111,7 @@ export function Router() {
       <>
         {
           SITE_ROUTES.map(route => (
-            <Route key={`route_${route.path}`} path={route.path} component={route.view} />
+            <Route key={`route_${route.path}`} path={route.path}>{route.view}</Route>
           ))
         }
       </>

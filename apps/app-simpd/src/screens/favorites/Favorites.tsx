@@ -1,13 +1,12 @@
 import React from 'react'
 import './Favorites.css';
 import { Helmet } from 'react-helmet'
-import { UserGuard } from '@simpd/lib-web';
 import { PostCard } from 'components/post-card/PostCard';
 import { PageTitle } from 'components/page-title/PageTitle';
 
 export function FavoritesScreen() {
   return (
-    <UserGuard redirect>
+    <>
       <Helmet>
         <title>Favorites - Simpd</title>
         <meta property="og:title" content="Favorites - Simpd" />
@@ -22,6 +21,6 @@ export function FavoritesScreen() {
         <span className="favorites-text3">Plz More</span>
       </header>
       <PostCard />
-    </UserGuard>
+    </>
   )
 }

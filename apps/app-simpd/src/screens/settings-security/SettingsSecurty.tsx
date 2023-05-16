@@ -1,13 +1,12 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { UserGuard } from '@simpd/lib-web';
 import { PageTitle } from 'components/page-title/PageTitle';
 import { ChangePasswordCard } from './change-password-card/ChangePasswordCard';
 import { SettingsNavigation } from 'components/settings-navigation/SettingsNavigation';
 
 export function SettingsSecurityScreen() {
   return (
-    <UserGuard redirect>
+    <>
       <Helmet>
         <title>Settings - Security - Simpd</title>
         <meta property="og:title" content="Settings - ProSecurityfile - Simpd" />
@@ -15,6 +14,6 @@ export function SettingsSecurityScreen() {
       <PageTitle title="Settings" />
       <SettingsNavigation />
       <ChangePasswordCard />
-    </UserGuard>
+    </>
   )
 }

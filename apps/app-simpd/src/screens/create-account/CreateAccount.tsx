@@ -4,7 +4,7 @@ import { Card } from 'components/card/Card';
 import React, { useContext, useEffect } from 'react'
 import { PageTitle } from 'components/page-title/PageTitle';
 import { CreateUserForm } from './create-user-form/CreateUserForm';
-import { GuestGuard, LOCAL_STORAGE_SESSION_TOKEN, UserCreateInput, sessionContext, useProfileCreateRandomized, useSessionCreate, useUserCreate } from '@simpd/lib-web';
+import { LOCAL_STORAGE_SESSION_TOKEN, UserCreateInput, sessionContext, useProfileCreateRandomized, useSessionCreate, useUserCreate } from '@simpd/lib-web';
 
 export function CreateAccountScreen() {
   const userCreate = useUserCreate();
