@@ -1,6 +1,5 @@
 import {In} from 'typeorm';
 import {MediaModel} from './media.model';
-import {MediaEntity} from './media.entity';
 import {MediaService} from './media.service';
 import {MediaRepository} from './media.repository';
 import {mediaEntityToMediaWire} from './media.wire';
@@ -14,6 +13,7 @@ import {
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
+import {MediaWire} from '@simpd/lib-client';
 
 @Resolver(() => MediaModel)
 export class MediaResolver {
@@ -32,8 +32,8 @@ export class MediaResolver {
   }
 
   @ResolveField()
-  url(@Parent() media: MediaEntity): Promise<string> {
-    return this.mediaService.getUrl(media.mediaLocation.awsS3Key);
+  url(@Parent() media: MediaWire): Promise<string> {
+    return this.mediaService.getUrl(media.location.awsS3Key);
   }
 
   @Query(() => MediaModel)

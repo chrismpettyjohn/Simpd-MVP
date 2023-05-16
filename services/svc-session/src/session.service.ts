@@ -64,8 +64,6 @@ export class SessionService {
       userID: user.id,
     });
 
-    console.log(matchingProfiles);
-
     const selectedProfileID =
       profileID ?? user?.favoriteProfileID ?? matchingProfiles?.[0]?.id;
 

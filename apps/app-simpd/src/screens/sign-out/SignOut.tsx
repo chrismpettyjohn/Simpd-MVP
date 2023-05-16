@@ -7,7 +7,7 @@ export function SignOutScreen() {
 
   useEffect(() => {
     localStorage.removeItem(LOCAL_STORAGE_SESSION_TOKEN);
-    setSession(undefined);
+    setSession(null);
   }, []);
 
   if (session) {

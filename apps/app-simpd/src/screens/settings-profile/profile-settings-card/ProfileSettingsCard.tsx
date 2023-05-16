@@ -8,10 +8,10 @@ import { ProfileUpdateInput, sessionContext, useProfileFetchOne, useProfileUpdat
 export function ProfileSettingsCard() {
   const { session } = useContext(sessionContext);
   const updateProfile = useProfileUpdate();
-  const fetchProfile = useProfileFetchOne(({ id: session.profileID }));
+  const fetchProfile = useProfileFetchOne();
 
   useEffect(() => {
-    fetchProfile.fetch();
+    fetchProfile.fetch({ profileID: session.profileID });
   }, [session.profileID])
 
   const onUpateProfile = async (profileDTO: ProfileUpdateInput) => {

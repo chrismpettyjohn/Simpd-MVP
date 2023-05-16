@@ -3,12 +3,12 @@ import {Directive, Field, ObjectType} from '@nestjs/graphql';
 @ObjectType()
 @Directive('@key(fields: "id")')
 export class SessionModel {
-  @Field({nullable: true})
+  @Field(() => Number, {nullable: true})
   id?: number;
 
-  @Field({nullable: true})
-  userID?: string;
+  @Field(() => Number, {nullable: true})
+  userID?: number;
 
-  @Field({nullable: true})
-  profileID?: string;
+  @Field(() => Number, {nullable: true})
+  profileID?: number;
 }

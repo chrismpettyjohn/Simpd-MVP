@@ -12,13 +12,9 @@ export interface UseProfileUpdateResponse {
 export function useProfileUpdate(): UseProfileUpdateResponse {
   const [updateProfile, { loading, error, data }] = useMutation(PROFILE_UPDATE_MUTATION);
 
-  const onSaveProfileChanges = async ({ profileID, username, changes }: ProfileUpdateMutationVariables) => {
+  const onSaveProfileChanges = async (input: ProfileUpdateMutationVariables) => {
     const profileChanges = await updateProfile({
-      variables: {
-        profileID,
-        username,
-        changes
-      }
+      variables: input
     })
     return profileChanges.data.profileUpdate;
   }

@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 import { PROFILE_FRAGMENT, ProfileFragment } from "graphql/fragments/profile.fragment";
 
 export interface ProfileFetchOneQueryVariables {
-  id?: number;
+  profileID?: number;
   username?: number;
 }
 

@@ -7,17 +7,11 @@ import { FullPageLoadingScreen } from 'components/full-page-loading-screen/FullP
 
 export function SessionContextProvider({ children }: SessionContextProviderProps) {
   const getSession = useSessionAuthenticated();
-  const [loading, setLoading] = useState(true);
-  const [session, setSessionState] = useState<SessionFragment>();
+  const [session, setSessionState] = useState<SessionFragment | null>();
 
   const useExistingSession = async () => {
-    try {
-      const checkSession = await getSession.fetch();
-      console.log(checkSession)
-      setSessionState(checkSession ?? undefined)
-    } finally {
-      setLoading(false);
-    }
+    const checkSession = await getSession.fetch();
+    setSessionState(checkSession);
   }
 
   useEffect(() => {
@@ -29,10 +23,10 @@ export function SessionContextProvider({ children }: SessionContextProviderProps
     setSessionState(newSession);
   };
 
-  const isLoading = loading || getSession.loading
+  const isLoading = session === undefined || getSession.loading
 
   return (
-    <sessionContext.Provider value={{ session: session, setSession }}>
+    <sessionContext.Provider value={{ session: session ?? undefined, setSession }}>
       {isLoading ? <FullPageLoadingScreen /> : children}
     </sessionContext.Provider>
   );

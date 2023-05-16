@@ -11,9 +11,9 @@ const MEDIA_API = 'http://localhost:3012';
 export function useMediaUpload() {
   const [loading, setLoading] = useState(false);
 
-  const bearerToken = localStorage.getItem(LOCAL_STORAGE_SESSION_TOKEN);
-
   const onUpload = async (profileID: number, file: File) => {
+    const bearerToken = localStorage.getItem(LOCAL_STORAGE_SESSION_TOKEN);
+
     if (loading) {
       return;
     }
