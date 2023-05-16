@@ -235,6 +235,9 @@ importers:
       '@nestjs/core':
         specifier: '*'
         version: 9.4.0(@nestjs/common@9.4.0)(@nestjs/microservices@9.4.0)(@nestjs/platform-express@9.4.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)
+      '@nestjs/graphql':
+        specifier: '*'
+        version: 11.0.5(@apollo/subgraph@2.4.2)(@nestjs/common@9.4.0)(@nestjs/core@9.4.0)(class-transformer@0.5.1)(class-validator@0.14.0)(graphql@16.6.0)(reflect-metadata@0.1.13)
       '@nestjs/microservices':
         specifier: '*'
         version: 9.4.0(@nestjs/common@9.4.0)(@nestjs/core@9.4.0)(nats@2.13.1)(reflect-metadata@0.1.13)(rxjs@7.8.0)
@@ -269,9 +272,6 @@ importers:
       graphql-tag:
         specifier: 2.12.6
         version: 2.12.6(graphql@16.6.0)
-      ky:
-        specifier: 0.33.3
-        version: 0.33.3
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -9521,11 +9521,6 @@ packages:
   /kind-of@6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
     engines: {node: '>=0.10.0'}
-    dev: true
-
-  /ky@0.33.3:
-    resolution: {integrity: sha512-CasD9OCEQSFIam2U8efFK81Yeg8vNMTBUqtMOHlrcWQHqUX3HeCl9Dr31u4toV7emlH8Mymk5+9p0lL6mKb/Xw==}
-    engines: {node: '>=14.16'}
     dev: true
 
   /language-subtag-registry@0.3.22:

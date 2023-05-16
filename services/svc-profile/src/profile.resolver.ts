@@ -1,15 +1,17 @@
 import {In} from 'typeorm';
 import RandomWords from 'random-words';
 import {ProfileModel} from './profile.model';
-import {SessionWire} from '@simpd/lib-client';
 import {ProfileEntity} from './profile.entity';
 import {UnauthorizedException} from '@nestjs/common';
 import {GetSession, HasSession} from '@simpd/lib-api';
 import {ProfileRepository} from './profile.repository';
+import {MediaModel, SessionWire} from '@simpd/lib-client';
 import {
   Args,
   Mutation,
+  Parent,
   Query,
+  ResolveField,
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
@@ -31,6 +33,15 @@ export class ProfileResolver {
     id: number;
   }): Promise<ProfileEntity> {
     return this.profile({id: reference.id});
+  }
+
+  @ResolveField(() => MediaModel, {nullable: true})
+  profilePicture(@Parent() profile: ProfileEntity): MediaModel | null {
+    if (!profile.profilePictureMediaID) {
+      return null;
+    }
+
+    return {id: profile.profilePictureMediaID};
   }
 
   @Query(() => ProfileModel)

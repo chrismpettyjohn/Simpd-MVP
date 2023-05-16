@@ -32,14 +32,14 @@ export function ChangeProfilePicture({ profile }: ChangeProfilePictureProps) {
   }
 
   useEffect(() => {
-    onUseCurrentProfilePicture
+    onUseCurrentProfilePicture()
   }, [profile.profilePictureMediaID]);
 
   return (
     <>
       {
         currentProfilePicture && (
-          <img src={currentProfilePicture.url} />
+          <img src={currentProfilePicture.url} style={{ height: 100, width: 100, borderRadius: '100%' }} />
         )
       }
       <input type="file" onChange={onUploadProfilePicture} />

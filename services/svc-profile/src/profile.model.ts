@@ -1,3 +1,4 @@
+import {MediaModel} from '@simpd/lib-client';
 import {Directive, Field, ObjectType} from '@nestjs/graphql';
 
 @ObjectType()
@@ -29,6 +30,9 @@ export class ProfileModel {
 
   @Field(() => Number, {nullable: true})
   profilePictureMediaID?: number;
+
+  @Field(() => MediaModel, {nullable: true})
+  profilePicture?: MediaModel;
 
   @Field(() => Number, {nullable: true})
   coverPhotoMediaID?: number;
