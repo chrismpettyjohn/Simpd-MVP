@@ -10,7 +10,7 @@ export interface UseSessionChangeProfileResponse {
 }
 
 export function useSessionChangeProfile(): UseSessionChangeProfileResponse {
-  const [sessionChangeProfile, { loading, error, data }] = useMutation(SESSION_CHANGE_PROFILE_MUTATION);
+  const [sessionChangeProfile, { loading, error, data }] = useMutation(SESSION_CHANGE_PROFILE_MUTATION, { fetchPolicy: 'no-cache' });
 
   const onSessionChangeProfile = async (input: SessionChangeProfileMutationVariables) => {
     const matchingSession = await sessionChangeProfile({

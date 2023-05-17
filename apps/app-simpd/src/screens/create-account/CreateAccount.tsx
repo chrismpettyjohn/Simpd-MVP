@@ -1,3 +1,4 @@
+import jwtDecode from 'jwt-decode';
 import { useLocation } from 'wouter';
 import { Helmet } from 'react-helmet';
 import { Card } from 'components/card/Card';
@@ -19,7 +20,7 @@ export function CreateAccountScreen() {
     await userCreate.execute(newUserDTO);
     const bearerToken = await sessionCreate.execute(newUserDTO);
     localStorage.setItem(LOCAL_STORAGE_SESSION_TOKEN, bearerToken);
-    setSession(bearerToken);
+    setSession(jwtDecode(bearerToken));
   }
 
   const onCreateProfile = async () => {

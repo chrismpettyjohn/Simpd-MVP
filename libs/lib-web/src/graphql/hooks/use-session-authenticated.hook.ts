@@ -10,7 +10,7 @@ export interface UseSessionAuthenticatedResponse {
 }
 
 export function useSessionAuthenticated(): UseSessionAuthenticatedResponse {
-  const [getSession, { loading, error, data }] = useLazyQuery(SESSION_AUTHENTICATED_QUERY);
+  const [getSession, { loading, error, data }] = useLazyQuery(SESSION_AUTHENTICATED_QUERY, { fetchPolicy: 'no-cache' });
 
   const onFetchSession = async () => {
     const matchingSession = await getSession()

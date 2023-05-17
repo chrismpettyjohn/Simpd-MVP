@@ -1,4 +1,5 @@
 import './SignIn.css';
+import jwtDecode from 'jwt-decode';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'wouter';
 import { Card } from 'components/card/Card';
@@ -23,7 +24,7 @@ export function SignInScreen() {
 
     try {
       const newSession = await sessionCreate.execute({ email, password });
-      setSession(newSession);
+      setSession(jwtDecode(newSession));
       setLocation('/settings/profile');
     } catch (e) {
       alert('Something went wrong')

@@ -10,7 +10,7 @@ export interface UseSessionCreateResponse {
 }
 
 export function useSessionCreate(): UseSessionCreateResponse {
-  const [createSession, { loading, error, data }] = useMutation(SESSION_CREATE_MUTATION);
+  const [createSession, { loading, error, data }] = useMutation(SESSION_CREATE_MUTATION, { fetchPolicy: 'no-cache' });
 
   const onCreateSession = async ({ email, password }: SessionCreateMutationVariables) => {
     const matchingSession = await createSession({

@@ -10,7 +10,7 @@ export interface UseSessionFetchOneQueryResponse {
 }
 
 export function useSessionFetchOne(): UseSessionFetchOneQueryResponse {
-  const [getSession, { loading, error, data }] = useLazyQuery<SessionFetchOneQueryResponse, SessionFetchOneQueryVariables>(SESSION_FETCH_ONE_QUERY);
+  const [getSession, { loading, error, data }] = useLazyQuery<SessionFetchOneQueryResponse, SessionFetchOneQueryVariables>(SESSION_FETCH_ONE_QUERY, { fetchPolicy: 'no-cache' });
 
   const onFetchSession = async (input: SessionFetchOneQueryVariables) => {
     const matchingSession = await getSession({ variables: input })

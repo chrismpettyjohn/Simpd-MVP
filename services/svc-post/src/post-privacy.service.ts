@@ -1,6 +1,6 @@
-import {PostRepository} from './post.repository';
-import {SVC_POST_NAME} from 'libs/lib-client/src/svc-post/post.const';
-import {PrivacyClientService, ProfileClientService} from '@simpd/lib-client';
+import { PostRepository } from './post.repository';
+import { SVC_POST_NAME } from 'libs/lib-client/src/svc-post/post.const';
+import { PrivacyClientService, ProfileClientService } from '@simpd/lib-client';
 import {
   Injectable,
   NotFoundException,
@@ -13,12 +13,12 @@ export class PostPrivacyService {
     private readonly postRepo: PostRepository<any, any>,
     private readonly profileClientService: ProfileClientService,
     private readonly privacyClientService: PrivacyClientService
-  ) {}
+  ) { }
 
   async profileCanAccessPost(profileID: number, postID: number): Promise<void> {
     const [matchingProfile, matchingPost, matchingPrivacyPolicy] =
       await Promise.all([
-        this.profileClientService.findOne({id: profileID}),
+        this.profileClientService.findOne({ id: profileID }),
         this.postRepo.findOneOrFail({
           where: {
             id: postID,
@@ -47,7 +47,7 @@ export class PostPrivacyService {
 
     const profileHasAllowedSubscriptionGroup =
       matchingProfile.subscriptionGroupIDs.filter(subGroupID =>
-        matchingPrivacyPolicy.policy.allowedSubscriptionGroupIDs.includes(
+        matchingPrivacyPolicy!.policy.allowedSubscriptionGroupIDs.includes(
           subGroupID
         )
       ).length > 0;

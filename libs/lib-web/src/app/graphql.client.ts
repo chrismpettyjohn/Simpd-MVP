@@ -2,9 +2,8 @@ import { GRAPHQL_URL, LOCAL_STORAGE_SESSION_TOKEN } from "./app.constant";
 import { setContext } from "@apollo/client/link/context";
 import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 
-
 const httpLink = createHttpLink({
-  uri: GRAPHQL_URL
+  uri: GRAPHQL_URL,
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -19,5 +18,5 @@ const authLink = setContext((_, { headers }) => {
 
 export const graphqlClient = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });

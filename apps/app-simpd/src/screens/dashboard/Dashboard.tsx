@@ -1,9 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet'
-import { PostCard } from 'components/post-card/PostCard';
 import { PageTitle } from 'components/page-title/PageTitle';
-import { Button } from 'components/button/Button';
-import { Link } from 'wouter';
+import { UserTimelineGrid } from './user-timeline-grid/UserTimelineGrid';
 import { CreateNewPostCard } from 'components/create-new-post-card/CreateNewPostCard';
 
 export function DashboardScreen() {
@@ -21,8 +19,7 @@ export function DashboardScreen() {
         />
       </PageTitle>
       <CreateNewPostCard />
-      <PostCard />
-      <PostCard />
+      <UserTimelineGrid />
     </>
   )
 }
