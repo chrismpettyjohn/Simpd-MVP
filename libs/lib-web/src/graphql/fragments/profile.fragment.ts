@@ -1,6 +1,8 @@
 import gql from "graphql-tag";
+import { MEDIA_FRAGMENT, MediaFragment } from "./media.fragment";
 
 export const PROFILE_FRAGMENT = gql`
+  ${MEDIA_FRAGMENT}
   fragment ProfileFragment on ProfileModel {
     id
     userID
@@ -11,7 +13,13 @@ export const PROFILE_FRAGMENT = gql`
     websiteURL
     wishlistURL
     coverPhotoMediaID
+    coverPhoto {
+      ...MediaFragment
+    }
     profilePictureMediaID
+    profilePicture {
+      ...MediaFragment
+    }
   }
 `
 
@@ -25,5 +33,7 @@ export interface ProfileFragment {
   websiteURL: string;
   wishlistURL: string;
   coverPhotoMediaID?: number;
+  coverPhoto?: MediaFragment;
   profilePictureMediaID?: number;
+  profilePicture?: MediaFragment;
 }

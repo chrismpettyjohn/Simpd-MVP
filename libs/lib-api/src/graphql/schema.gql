@@ -2,105 +2,45 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ProfileModel {
-  id: Float!
-}
-
-type BasePostModel {
+type UserModel {
   id: Float
-  profileID: Float
-  profile: ProfileModel
-}
-
-type PostWithTextModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  content: String
-}
-
-type PostWithImageModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  mediaID: Float
-  caption: String
-}
-
-type PostWithVideoModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  mediaID: Float
-  caption: String
-}
-
-type PostWithAlbumModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  mediaIDs: [Float!]
-  caption: String
-}
-
-type PostWithSharedContentModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  resourceType: PostSharedContentType
-  resourceID: Float
-  caption: String
-}
-
-enum PostSharedContentType {
-  Post
-  Media
+  email: String
 }
 
 type Query {
-  post(filter: PostFilterByOneInput!): BasePostModel!
-  posts(filter: PostFilterByManyInput): [BasePostModel!]!
+  user(filter: UserFilterByOneInput!): UserModel!
+  users(filter: UserFilterByManyInput): [UserModel!]!
 }
 
-input PostFilterByOneInput {
-  id: Float!
+input UserFilterByOneInput {
+  id: Float
+  email: String
 }
 
-input PostFilterByManyInput {
+input UserFilterByManyInput {
   ids: [Float!]
-  profileIDs: [Float!]
+  emails: [String!]
 }
 
 type Mutation {
-  postWithTextCreate(input: PostWithTextCreateInput!): PostWithTextModel!
-  postWithImageCreate(input: PostWithImageCreateInput!): PostWithImageModel!
-  postWithVideoCreate(input: PostWithVideoCreateInput!): PostWithVideoModel!
-  postWithAlbumCreate(input: PostWithAlbumInput!): PostWithAlbumModel!
-  postWithSharedContentCreate(input: PostWithSharedContentInput!): PostWithSharedContentModel!
-  postDelete(filter: PostFilterByOneInput!): Boolean!
+  userCreate(input: UserCreateInput!): UserModel!
+  userUpdate(filter: UserFilterByOneInput!, input: UserUpdateInput!): UserModel!
+  userChangePassword(filter: UserFilterByOneInput!, input: UserChangePasswordInput!): Boolean!
+  userDelete(filter: UserFilterByOneInput!): Boolean!
 }
 
-input PostWithTextCreateInput {
-  content: String!
+input UserCreateInput {
+  email: String!
+  password: String!
 }
 
-input PostWithImageCreateInput {
-  mediaID: Float!
-  caption: String!
+input UserUpdateInput {
+  email: String
+  password: String
 }
 
-input PostWithVideoCreateInput {
-  mediaID: Float!
-  caption: String!
-}
-
-input PostWithAlbumInput {
-  mediaIDs: [Float!]!
-  caption: String!
-}
-
-input PostWithSharedContentInput {
-  resourceType: PostSharedContentType!
-  resourceID: Float!
-  caption: String!
+input UserChangePasswordInput {
+  currentPassword: String!
+  newPassword: String!
+  newPasswordAgain: String!
 }

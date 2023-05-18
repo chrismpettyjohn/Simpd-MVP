@@ -23,6 +23,7 @@ export const PostCardElement = styled.div`
 `
 
 export const PostCardContent = styled.div`
+  width: 100%;
   padding: ${({ theme }) => theme.space.twoUnits};
 `
 

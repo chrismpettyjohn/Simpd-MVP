@@ -36,11 +36,10 @@ export function postEntityToPostWire(
   throw new Error('Invalid post type');
 }
 
-export function postEntityToBasePost(
-  postEntity: PostEntity
-): Omit<BasePost, 'type'> {
+export function postEntityToBasePost(postEntity: PostEntity): BasePost {
   return {
     id: postEntity.id!,
+    type: postEntity.postType,
     profileID: postEntity.profileID,
   };
 }
@@ -50,8 +49,9 @@ export function postEntityToPostWithTextWire(
 ): PostWithTextWire {
   return {
     ...postEntityToBasePost(postEntity),
+    type: postEntity.postType,
     content: postEntity.postData.content,
-  } as any;
+  };
 }
 
 export function postEntityToPostWithImageWire(

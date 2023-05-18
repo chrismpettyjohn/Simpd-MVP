@@ -23,7 +23,7 @@ export function UserTimelineGrid() {
     <>
       {
         postFetchMany.data?.map(_ => (
-          <PostCard key={`timeline_post_${_.id}`} />
+          <PostCard key={`timeline_post_${_.id}`} post={_} />
         ))
       }
     </>

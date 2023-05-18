@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { BASE_POST_FRAGMENT, BasePostFragment } from "graphql/fragments/post.fragment";
+import { POST_WITH_TEXT_FRAGMENT, PostWithTextFragment } from "graphql/fragments/post.fragment";
 
 export interface PostFetchManyQueryVariables {
   ids?: number[];
@@ -7,18 +7,18 @@ export interface PostFetchManyQueryVariables {
 }
 
 export interface PostFetchManyQueryResponse {
-  posts: BasePostFragment[];
+  posts: PostWithTextFragment[];
 }
 
 export const POST_FETCH_MANY_QUERY = gql`
-  ${BASE_POST_FRAGMENT}
+  ${POST_WITH_TEXT_FRAGMENT}
   query($profileIDs: [Float!]) {
     posts(
       filter: {
         profileIDs: $profileIDs
       }
     ) {
-      ...BasePostFragment
+      ...PostWithTextFragment
     }
   }
 `

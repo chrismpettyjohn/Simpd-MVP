@@ -1,21 +1,25 @@
 import React from 'react';
+import { Link } from 'wouter';
+import { AuthorBlockLargeProps } from './AuthorBlockLarge.types';
 import { AuthorBlockLargeElement, AuthorBlockUserInfoContainer } from './AuthorBlockLarge.sty';
 
-export function AuthorBlockLarge() {
+export function AuthorBlockLarge({ profile }: AuthorBlockLargeProps) {
   return (
-    <AuthorBlockLargeElement>
-      <img
-        src="https://i.imgur.com/CesvKGF.png"
-        className="post-card-image1"
-      />
-      <AuthorBlockUserInfoContainer>
-        <h1>
-          FairLan
-        </h1>
-        <span>
-          @FairLan
-        </span>
-      </AuthorBlockUserInfoContainer>
-    </AuthorBlockLargeElement>
+    <Link to={`/profiles/${profile.username}`}>
+      <AuthorBlockLargeElement>
+        <img
+          src={profile.profilePicture?.url}
+          className="post-card-image1"
+        />
+        <AuthorBlockUserInfoContainer>
+          <h1>
+            {profile.displayName}
+          </h1>
+          <span>
+            @{profile.username}
+          </span>
+        </AuthorBlockUserInfoContainer>
+      </AuthorBlockLargeElement>
+    </Link>
   )
 }

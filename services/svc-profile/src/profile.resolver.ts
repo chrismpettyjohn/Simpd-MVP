@@ -44,6 +44,15 @@ export class ProfileResolver {
     return {id: profile.profilePictureMediaID};
   }
 
+  @ResolveField(() => MediaModel, {nullable: true})
+  coverPhoto(@Parent() profile: ProfileEntity): MediaModel | null {
+    if (!profile.coverPhotoMediaID) {
+      return null;
+    }
+
+    return {id: profile.coverPhotoMediaID};
+  }
+
   @Query(() => ProfileModel)
   async profile(
     @Args('filter') filter: ProfileFilterByOneInput

@@ -1,7 +1,6 @@
 import React from 'react'
 import './Favorites.css';
 import { Helmet } from 'react-helmet'
-import { PostCard } from 'components/post-card/PostCard';
 import { PageTitle } from 'components/page-title/PageTitle';
 
 export function FavoritesScreen() {
@@ -20,7 +19,6 @@ export function FavoritesScreen() {
         <span className="favorites-text2">Oh Yeah</span>
         <span className="favorites-text3">Plz More</span>
       </header>
-      <PostCard />
     </>
   )
 }

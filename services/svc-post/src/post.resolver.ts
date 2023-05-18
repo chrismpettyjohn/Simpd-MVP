@@ -4,6 +4,7 @@ import {PostRepository} from './post.repository';
 import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {UnauthorizedException, BadRequestException} from '@nestjs/common';
 import {
+  postEntityToPostWire,
   postEntityToPostWithAlbumWire,
   postEntityToPostWithImageWire,
   postEntityToPostWithSharedContentWire,
@@ -11,7 +12,7 @@ import {
   postEntityToPostWithVideoWire,
 } from './post.wire';
 import {
-  BasePostModel,
+  PostUnion,
   PostWithAlbumModel,
   PostWithImageModel,
   PostWithSharedContentModel,
@@ -31,6 +32,7 @@ import {
   MediaClientService,
   MediaType,
   PostType,
+  PostWire,
   PostWithAlbumWire,
   PostWithImageWire,
   PostWithSharedContentWire,
@@ -51,7 +53,7 @@ import {
 } from './post.input';
 import {PostPrivacyService} from './post-privacy.service';
 
-@Resolver(() => BasePostModel)
+@Resolver(() => PostUnion)
 export class PostResolver {
   constructor(
     private readonly postRepo: PostRepository<any, any>,
@@ -80,10 +82,10 @@ export class PostResolver {
     >
   ) {}
 
-  @ResolveField(() => ProfileModel, {nullable: true})
-  profile(@Parent() post: PostEntity): ProfileModel | null {
-    return {id: post.profileID};
-  }
+  // @ResolveField(() => ProfileModel, { nullable: true })
+  // profile(@Parent() post: PostEntity): ProfileModel | null {
+  //   return { id: post.profileID };
+  // }
 
   @ResolveReference()
   @HasSession()
@@ -97,7 +99,7 @@ export class PostResolver {
     return this.post(session, {id: reference.id});
   }
 
-  @Query(() => BasePostModel)
+  @Query(() => PostUnion)
   @HasSession()
   async post(
     @GetSession() session: SessionContents,
@@ -112,13 +114,13 @@ export class PostResolver {
     });
   }
 
-  @Query(() => [BasePostModel])
+  @Query(() => [PostUnion])
   @HasSession()
   async posts(
     @GetSession() session: SessionContents,
     @Args('filter', {type: () => PostFilterByManyInput, nullable: true})
     filter?: PostFilterByManyInput
-  ): Promise<PostEntity[]> {
+  ): Promise<PostWire[]> {
     const matchingPosts = await this.postRepo.find({
       where: {
         id: filter?.ids && In(filter.ids),
@@ -135,7 +137,7 @@ export class PostResolver {
       )
     );
 
-    return matchingPosts;
+    return matchingPosts.map(postEntityToPostWire);
   }
 
   @Mutation(() => PostWithTextModel)

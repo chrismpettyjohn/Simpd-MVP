@@ -36,4 +36,7 @@ export class ProfileModel {
 
   @Field(() => Number, {nullable: true})
   coverPhotoMediaID?: number;
+
+  @Field(() => MediaModel, {nullable: true})
+  coverPhoto?: MediaModel;
 }
