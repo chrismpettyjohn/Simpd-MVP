@@ -16,6 +16,7 @@ const getPostCardElement = (post: PostFragment) => {
 
 export function PostCard({ post }: PostCardProps) {
   const postContent = useMemo(() => getPostCardElement(post), [post]);
+  console.log(post)
   return (
     <PostCardElement>
       <PostCardContent>
