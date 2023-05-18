@@ -6,8 +6,6 @@ export function UserTimelineGrid() {
   const postFetchMany = usePostFetchMany();
   const { session } = useContext(sessionContext);
 
-  console.log(session)
-
   useEffect(() => {
     postFetchMany.fetch({ profileIDs: [session!.profileID] });
   }, []);

@@ -1,9 +1,9 @@
-import { In } from 'typeorm';
-import { SessionModel } from './session.model';
-import { SessionEntity } from './session.entity';
-import { SessionService } from './session.service';
-import { SessionRepository } from './session.repository';
-import { GetSession, HasSession, SessionContents } from '@simpd/lib-api';
+import {In} from 'typeorm';
+import {SessionModel} from './session.model';
+import {SessionEntity} from './session.entity';
+import {SessionService} from './session.service';
+import {SessionRepository} from './session.repository';
+import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {
   Args,
   Mutation,
@@ -23,7 +23,7 @@ export class SessionResolver {
   constructor(
     private readonly sessionRepo: SessionRepository,
     private readonly sessionService: SessionService
-  ) { }
+  ) {}
 
   // TODO: Add privacy guard
   @ResolveReference()
@@ -31,13 +31,12 @@ export class SessionResolver {
     __typename: string;
     id: number;
   }): Promise<SessionEntity> {
-    return this.session({ id: reference.id });
+    return this.session({id: reference.id});
   }
 
-  @Query(() => SessionModel, { nullable: true })
+  @Query(() => SessionModel, {nullable: true})
   @HasSession()
   async me(@GetSession() session: SessionContents): Promise<SessionEntity> {
-    console.log(session)
     return this.sessionRepo.findOneOrFail({
       where: {
         id: session.sessionID,
@@ -45,7 +44,7 @@ export class SessionResolver {
     });
   }
 
-  @Mutation(() => String, { nullable: true })
+  @Mutation(() => String, {nullable: true})
   @HasSession()
   async sessionChangeProfile(
     @GetSession() session: SessionContents,
@@ -70,7 +69,7 @@ export class SessionResolver {
 
   @Query(() => [SessionModel])
   sessions(
-    @Args('filter', { type: () => SessionFilterByManyInput, nullable: true })
+    @Args('filter', {type: () => SessionFilterByManyInput, nullable: true})
     filter?: SessionFilterByManyInput
   ): Promise<SessionEntity[]> {
     return this.sessionRepo.find({

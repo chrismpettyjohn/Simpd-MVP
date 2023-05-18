@@ -1,7 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
-import { PrivacyRepository } from './privacy.repository';
-import { privacyEntityToPrivacyWire } from './privacy.wire';
+import {Controller} from '@nestjs/common';
+import {MessagePattern} from '@nestjs/microservices';
+import {PrivacyRepository} from './privacy.repository';
+import {privacyEntityToPrivacyWire} from './privacy.wire';
 import {
   PrivacyCreateOneInput,
   PrivacyFindOneInput,
@@ -14,10 +14,12 @@ import {
 
 @Controller()
 export class PrivacyController {
-  constructor(private readonly privacyRepo: PrivacyRepository) { }
+  constructor(private readonly privacyRepo: PrivacyRepository) {}
 
   @MessagePattern(SVC_PRIVACY_INTERNAL_EVENT_FIND_ONE)
-  async privacyFindOneByID(filter: PrivacyFindOneInput): Promise<PrivacyWire | null> {
+  async privacyFindOneByID(
+    filter: PrivacyFindOneInput
+  ): Promise<PrivacyWire | null> {
     const matchingPrivacy = await this.privacyRepo.findOne({
       where: {
         serviceKey: filter.serviceKey,

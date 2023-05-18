@@ -1,5 +1,5 @@
 export interface SessionWire {
-  id: number;
+  sessionID: number;
   userID: number;
   profileID: number;
   expiresAt: number;

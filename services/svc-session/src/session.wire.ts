@@ -5,7 +5,7 @@ export function sessionEntityToSessionWire(
   sessionEntity: SessionEntity
 ): SessionWire {
   return {
-    id: sessionEntity.id!,
+    sessionID: sessionEntity.id!,
     userID: sessionEntity.userID,
     profileID: sessionEntity.profileID,
     expiresAt: sessionEntity.expiresAt.getHours(),

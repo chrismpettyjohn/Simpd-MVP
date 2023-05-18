@@ -2,39 +2,95 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type MediaDetailsModel {
-  sizeInBytes: Float
-  originalFileName: String
-}
-
-type MediaModel {
+type BasePostModel {
   id: Float
-  type: MediaType
   profileID: Float
-  url: String
-  details: MediaDetailsModel
 }
 
-enum MediaType {
-  Image
-  Video
-  Other
+type PostWithTextModel {
+  id: Float
+  profileID: Float
+  content: String
+}
+
+type PostWithImageModel {
+  id: Float
+  profileID: Float
+  mediaID: Float
+  caption: String
+}
+
+type PostWithVideoModel {
+  id: Float
+  profileID: Float
+  mediaID: Float
+  caption: String
+}
+
+type PostWithAlbumModel {
+  id: Float
+  profileID: Float
+  mediaIDs: [Float!]
+  caption: String
+}
+
+type PostWithSharedContentModel {
+  id: Float
+  profileID: Float
+  resourceType: PostSharedContentType
+  resourceID: Float
+  caption: String
+}
+
+enum PostSharedContentType {
+  Post
+  Media
 }
 
 type Query {
-  media(filter: MediaFilterByOneInput!): MediaModel!
-  medias(filter: MediaFilterByManyInput): [MediaModel!]!
+  post(filter: PostFilterByOneInput!): BasePostModel!
+  posts(filter: PostFilterByManyInput): [BasePostModel!]!
 }
 
-input MediaFilterByOneInput {
-  id: Float
+input PostFilterByOneInput {
+  id: Float!
 }
 
-input MediaFilterByManyInput {
+input PostFilterByManyInput {
   ids: [Float!]
   profileIDs: [Float!]
 }
 
 type Mutation {
-  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
+  postWithTextCreate(input: PostWithTextCreateInput!): PostWithTextModel!
+  postWithImageCreate(input: PostWithImageCreateInput!): PostWithImageModel!
+  postWithVideoCreate(input: PostWithVideoCreateInput!): PostWithVideoModel!
+  postWithAlbumCreate(input: PostWithAlbumInput!): PostWithAlbumModel!
+  postWithSharedContentCreate(input: PostWithSharedContentInput!): PostWithSharedContentModel!
+  postDelete(filter: PostFilterByOneInput!): Boolean!
+}
+
+input PostWithTextCreateInput {
+  content: String!
+}
+
+input PostWithImageCreateInput {
+  mediaID: Float!
+  caption: String!
+}
+
+input PostWithVideoCreateInput {
+  mediaID: Float!
+  caption: String!
+}
+
+input PostWithAlbumInput {
+  mediaIDs: [Float!]!
+  caption: String!
+}
+
+input PostWithSharedContentInput {
+  resourceType: PostSharedContentType!
+  resourceID: Float!
+  caption: String!
 }
