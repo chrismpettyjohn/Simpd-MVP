@@ -1,4 +1,4 @@
-import {PostSharedContentType} from '@simpd/lib-client';
+import {PostSharedContentType, ProfileModel} from '@simpd/lib-client';
 import {Directive, Field, InterfaceType, ObjectType} from '@nestjs/graphql';
 
 @ObjectType()
@@ -8,7 +8,10 @@ export class BasePostModel {
   id?: number;
 
   @Field(() => Number, {nullable: true})
-  profileID?: number; // TODO: Add Privacy Guard
+  profileID?: number;
+
+  @Field(() => ProfileModel, {nullable: true})
+  profile?: ProfileModel;
 }
 
 @ObjectType()

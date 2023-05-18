@@ -21,7 +21,9 @@ import {
 import {
   Args,
   Mutation,
+  Parent,
   Query,
+  ResolveField,
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
@@ -35,6 +37,7 @@ import {
   PostWithTextWire,
   PostWithVideoWire,
   ProfileClientService,
+  ProfileModel,
   SessionWire,
 } from '@simpd/lib-client';
 import {
@@ -76,6 +79,11 @@ export class PostResolver {
       PostType.SharedContent
     >
   ) {}
+
+  @ResolveField(() => ProfileModel, {nullable: true})
+  profile(@Parent() post: PostEntity): ProfileModel | null {
+    return {id: post.profileID};
+  }
 
   @ResolveReference()
   @HasSession()

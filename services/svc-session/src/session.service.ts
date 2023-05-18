@@ -131,9 +131,9 @@ export class SessionService {
     });
 
     return {
+      sessionID: newSession.id!,
       userID: newSession.userID,
       profileID: matchingProfile.id,
-      sessionID: newSession.id!,
       expiresAt: +newSession.expiresAt,
       scopes: matchingRole.scopes,
     };

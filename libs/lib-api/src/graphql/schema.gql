@@ -2,20 +2,27 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type ProfileModel {
+  id: Float!
+}
+
 type BasePostModel {
   id: Float
   profileID: Float
+  profile: ProfileModel
 }
 
 type PostWithTextModel {
   id: Float
   profileID: Float
+  profile: ProfileModel
   content: String
 }
 
 type PostWithImageModel {
   id: Float
   profileID: Float
+  profile: ProfileModel
   mediaID: Float
   caption: String
 }
@@ -23,6 +30,7 @@ type PostWithImageModel {
 type PostWithVideoModel {
   id: Float
   profileID: Float
+  profile: ProfileModel
   mediaID: Float
   caption: String
 }
@@ -30,6 +38,7 @@ type PostWithVideoModel {
 type PostWithAlbumModel {
   id: Float
   profileID: Float
+  profile: ProfileModel
   mediaIDs: [Float!]
   caption: String
 }
@@ -37,6 +46,7 @@ type PostWithAlbumModel {
 type PostWithSharedContentModel {
   id: Float
   profileID: Float
+  profile: ProfileModel
   resourceType: PostSharedContentType
   resourceID: Float
   caption: String
