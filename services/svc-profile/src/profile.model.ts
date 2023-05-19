@@ -8,7 +8,7 @@ export class ProfileModel {
   id?: number;
 
   @Field(() => Number, {nullable: true})
-  userID?: string; // TODO: Add Privacy Guard
+  userID?: number;
 
   @Field(() => String, {nullable: true})
   username?: string;

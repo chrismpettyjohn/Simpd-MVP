@@ -7,7 +7,9 @@ import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {
   Args,
   Mutation,
+  Parent,
   Query,
+  ResolveField,
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
@@ -17,6 +19,7 @@ import {
   SessionFilterByManyInput,
   SessionFilterByOneInput,
 } from './session.input';
+import {ProfileModel} from '@simpd/lib-client';
 
 @Resolver(() => SessionModel)
 export class SessionResolver {
@@ -42,6 +45,13 @@ export class SessionResolver {
         id: session.sessionID,
       },
     });
+  }
+
+  @ResolveField(() => ProfileModel, {nullable: true})
+  profile(@Parent() session: SessionEntity): ProfileModel {
+    return {
+      id: session.profileID,
+    };
   }
 
   @Mutation(() => String, {nullable: true})

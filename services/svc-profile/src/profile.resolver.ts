@@ -31,7 +31,7 @@ export class ProfileResolver {
   resolveReference(reference: {
     __typename: string;
     id: number;
-  }): Promise<ProfileEntity> {
+  }): Promise<ProfileModel> {
     return this.profile({id: reference.id});
   }
 
@@ -81,7 +81,7 @@ export class ProfileResolver {
   async profileCreate(
     @GetSession() session: SessionWire,
     @Args('input') input: ProfileCreateInput
-  ): Promise<ProfileEntity> {
+  ): Promise<ProfileModel> {
     const newProfile = await this.profileRepo.create({
       userID: session.userID,
       username: input.username,
@@ -99,7 +99,7 @@ export class ProfileResolver {
   @HasSession()
   async profileCreateRandomized(
     @GetSession() session: SessionWire
-  ): Promise<ProfileEntity> {
+  ): Promise<ProfileModel> {
     const words = RandomWords(3);
 
     const username = words.join('-');
@@ -124,7 +124,7 @@ export class ProfileResolver {
     @GetSession() session: SessionWire,
     @Args('filter') filter: ProfileFilterByOneInput,
     @Args('input') input: ProfileUpdateInput
-  ): Promise<ProfileEntity> {
+  ): Promise<ProfileModel> {
     const matchingProfile = await this.profileRepo.findOneOrFail({
       where: filter,
     });

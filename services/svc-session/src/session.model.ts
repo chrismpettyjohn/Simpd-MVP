@@ -1,4 +1,5 @@
 import {Directive, Field, ObjectType} from '@nestjs/graphql';
+import {ProfileModel} from '@simpd/lib-client';
 
 @ObjectType()
 @Directive('@key(fields: "id")')
@@ -11,4 +12,7 @@ export class SessionModel {
 
   @Field(() => Number, {nullable: true})
   profileID?: number;
+
+  @Field(() => ProfileModel, {nullable: true})
+  profile?: ProfileModel;
 }

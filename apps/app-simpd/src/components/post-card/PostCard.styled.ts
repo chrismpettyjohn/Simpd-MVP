@@ -37,5 +37,4 @@ export const PostCardText = styled.div`
     color: ${({ theme }) => theme.color.s90};
     width: 100%;
     font-size: 1rem;
-    margin-top: ${({ theme }) => theme.space.twoUnits};
 `

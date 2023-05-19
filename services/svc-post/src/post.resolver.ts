@@ -90,7 +90,7 @@ export class PostResolver {
       __typename: string;
       id: number;
     }
-  ): Promise<PostEntity> {
+  ): Promise<PostWire> {
     return this.post(session, {id: reference.id});
   }
 
@@ -99,14 +99,15 @@ export class PostResolver {
   async post(
     @GetSession() session: SessionContents,
     @Args('filter') filter: PostFilterByOneInput
-  ): Promise<PostEntity> {
+  ): Promise<PostWire> {
     await this.postPrivacyService.profileCanAccessPost(
       session.profileID,
       filter.id
     );
-    return this.postRepo.findOneOrFail({
+    const post = await this.postRepo.findOneOrFail({
       where: filter,
     });
+    return postEntityToPostWire(post);
   }
 
   @Query(() => [PostUnion])

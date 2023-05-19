@@ -66,7 +66,8 @@ export const UserProfileCardAvatar = styled.div`
   height: 100px;
   display: flex;
   margin-top: -25px;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   border-radius: var(--dl-radius-radius-round);
   background-size: cover;
   background-image: url('https://public.onlyfans.com/files/thumbs/c144/4/4o/4os/4osikoyok2x0ggsk9zkwqveeazjncc9i1665495937/183673060/avatar.jpg');
