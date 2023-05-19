@@ -18,5 +18,5 @@ export class PostEntity<
   postType!: Type;
 
   @Column({name: 'post_data', type: 'json'})
-  postData!: Omit<Data, 'type' | 'profileID' | 'id'>;
+  postData!: Omit<Data, 'type' | 'profileID' | 'id' | 'profile'>;
 }

@@ -15,11 +15,11 @@ export class PostWithTextModel {
   @Field(() => Number, {nullable: true})
   profileID?: number;
 
-  @Field(() => PostType, {nullable: true})
-  type?: PostType.Text;
-
   @Field(() => ProfileModel, {nullable: true})
   profile?: ProfileModel;
+
+  @Field(() => PostType, {nullable: true})
+  type?: PostType.Text;
 
   @Field(() => String, {nullable: true})
   content?: string;
@@ -56,11 +56,11 @@ export class PostWithVideoModel {
   @Field(() => Number, {nullable: true})
   profileID?: number;
 
-  @Field(() => PostType, {nullable: true})
-  type?: PostType.Video;
-
   @Field(() => ProfileModel, {nullable: true})
   profile?: ProfileModel;
+
+  @Field(() => PostType, {nullable: true})
+  type?: PostType.Video;
 
   @Field(() => Number, {nullable: true})
   mediaID?: number;
@@ -78,11 +78,11 @@ export class PostWithAlbumModel {
   @Field(() => Number, {nullable: true})
   profileID?: number;
 
-  @Field(() => PostType, {nullable: true})
-  type?: PostType.Album;
-
   @Field(() => ProfileModel, {nullable: true})
   profile?: ProfileModel;
+
+  @Field(() => PostType, {nullable: true})
+  type?: PostType.Album;
 
   @Field(() => [Number!], {nullable: true})
   mediaIDs?: number[];
@@ -100,11 +100,11 @@ export class PostWithSharedContentModel {
   @Field(() => Number, {nullable: true})
   profileID?: number;
 
-  @Field(() => PostType, {nullable: true})
-  type?: PostType.SharedContent;
-
   @Field(() => ProfileModel, {nullable: true})
   profile?: ProfileModel;
+
+  @Field(() => PostType, {nullable: true})
+  type?: PostType.SharedContent;
 
   @Field(() => PostSharedContentType, {nullable: true})
   resourceType?: PostSharedContentType;

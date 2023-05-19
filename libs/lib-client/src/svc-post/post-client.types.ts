@@ -1,3 +1,5 @@
+import {ProfileModel} from '../svc-profile/profile.model';
+
 export enum PostType {
   Text = 'text',
   Image = 'image',
@@ -9,6 +11,7 @@ export enum PostType {
 export interface BasePost {
   id: number;
   profileID: number;
+  profile: ProfileModel;
   type: PostType;
 }
 

@@ -2,63 +2,114 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type MediaModel {
+type ProfileModel {
   id: Float!
 }
 
-type ProfileModel {
+type PostWithTextModel {
   id: Float
-  userID: Float
-  username: String
-  displayName: String
-  biography: String
-  location: String
-  websiteURL: String
-  wishlistURL: String
-  profilePictureMediaID: Float
-  profilePicture: MediaModel
-  coverPhotoMediaID: Float
-  coverPhoto: MediaModel
+  profileID: Float
+  profile: ProfileModel
+  type: PostType
+  content: String
+}
+
+enum PostType {
+  Text
+  Image
+  Video
+  Album
+  SharedContent
+}
+
+type PostWithImageModel {
+  id: Float
+  profileID: Float
+  profile: ProfileModel
+  type: PostType
+  mediaID: Float
+  caption: String
+}
+
+type PostWithVideoModel {
+  id: Float
+  profileID: Float
+  profile: ProfileModel
+  type: PostType
+  mediaID: Float
+  caption: String
+}
+
+type PostWithAlbumModel {
+  id: Float
+  profileID: Float
+  profile: ProfileModel
+  type: PostType
+  mediaIDs: [Float!]
+  caption: String
+}
+
+type PostWithSharedContentModel {
+  id: Float
+  profileID: Float
+  profile: ProfileModel
+  type: PostType
+  resourceType: PostSharedContentType
+  resourceID: Float
+  caption: String
+}
+
+enum PostSharedContentType {
+  Post
+  Media
 }
 
 type Query {
-  profile(filter: ProfileFilterByOneInput!): ProfileModel!
-  profiles(filter: ProfileFilterByManyInput): [ProfileModel!]!
+  post(filter: PostFilterByOneInput!): PostUnion!
+  posts(filter: PostFilterByManyInput): [PostUnion!]!
 }
 
-input ProfileFilterByOneInput {
-  id: Float
-  username: String
+union PostUnion = PostWithTextModel | PostWithImageModel | PostWithVideoModel | PostWithAlbumModel | PostWithSharedContentModel
+
+input PostFilterByOneInput {
+  id: Float!
 }
 
-input ProfileFilterByManyInput {
+input PostFilterByManyInput {
   ids: [Float!]
-  userIDs: [Float!]
-  usernames: [String!]
+  profileIDs: [Float!]
 }
 
 type Mutation {
-  profileCreate(input: ProfileCreateInput!): ProfileModel!
-  profileCreateRandomized: ProfileModel!
-  profileUpdate(filter: ProfileFilterByOneInput!, input: ProfileUpdateInput!): ProfileModel!
-  profileDelete(filter: ProfileFilterByOneInput!): Boolean!
+  postWithTextCreate(input: PostWithTextCreateInput!): PostWithTextModel!
+  postWithImageCreate(input: PostWithImageCreateInput!): PostWithImageModel!
+  postWithVideoCreate(input: PostWithVideoCreateInput!): PostWithVideoModel!
+  postWithAlbumCreate(input: PostWithAlbumInput!): PostWithAlbumModel!
+  postWithSharedContentCreate(input: PostWithSharedContentInput!): PostWithSharedContentModel!
+  postDelete(filter: PostFilterByOneInput!): Boolean!
 }
 
-input ProfileCreateInput {
-  username: String!
-  displayName: String!
-  biography: String!
-  profilePictureMediaID: Float
-  coverPhotoMediaID: Float
+input PostWithTextCreateInput {
+  content: String!
 }
 
-input ProfileUpdateInput {
-  username: String
-  displayName: String
-  biography: String
-  location: String
-  websiteURL: String
-  wishlistURL: String
-  profilePictureMediaID: Float
-  coverPhotoMediaID: Float
+input PostWithImageCreateInput {
+  mediaID: Float!
+  caption: String!
+}
+
+input PostWithVideoCreateInput {
+  mediaID: Float!
+  caption: String!
+}
+
+input PostWithAlbumInput {
+  mediaIDs: [Float!]!
+  caption: String!
+}
+
+input PostWithSharedContentInput {
+  resourceType: PostSharedContentType!
+  resourceID: Float!
+  caption: String!
 }
