@@ -24,8 +24,12 @@ export function ProfileSettingsCard() {
         fetchProfile.data && (
           <>
             <CardAccordion defaultIsOpen header="Change Picture">
-              <ChangeProfilePicture profile={fetchProfile.data} />
-              <ChangeCoverPhoto profile={fetchProfile.data} />
+              <div style={{ width: '100%' }}>
+                <ChangeProfilePicture profile={fetchProfile.data} />
+              </div>
+              <div style={{ width: '100%', marginTop: '2rem' }}>
+                <ChangeCoverPhoto profile={fetchProfile.data} />
+              </div>
             </CardAccordion>
             <CardAccordion header="Update Profile">
               <ProfileEditor defaultProfile={fetchProfile.data} onSave={onUpateProfile} />

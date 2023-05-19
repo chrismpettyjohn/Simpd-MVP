@@ -1,23 +1,48 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { ChangeCoverPhotoProps } from './ChangeCoverPhoto.types';
-import { useMediaUpload } from '@simpd/lib-web';
+import { MediaFragment, useMediaFetchOne, useMediaUpload, useProfileUpdate } from '@simpd/lib-web';
 
 export function ChangeCoverPhoto({ profile }: ChangeCoverPhotoProps) {
   const mediaUpload = useMediaUpload();
-  const [newCoverPhoto, setNewCoverPhoto] = useState<File>();
+  const mediaFetchOne = useMediaFetchOne();
+  const profileUpdate = useProfileUpdate();
+  const [currentCoverPhoto, setCurrentCoverPhoto] = useState<MediaFragment>();
 
-  const onUploadCoverPhoto = async (e: SyntheticEvent) => {
+  const onUploadCoverPhoto = async (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    if (!newCoverPhoto) {
-      return;
-    }
-    await mediaUpload.onUpload(profile.id, newCoverPhoto);
+    const newPhoto = e.target.files![0];
+    const newPhotoMediaID = await mediaUpload.onUpload(profile.id, newPhoto);
+    const newMedia = await mediaFetchOne.fetch({ mediaID: newPhotoMediaID });
+    await profileUpdate.execute({
+      profileID: profile.id,
+      username: profile.username,
+      changes: {
+        coverPhotoMediaID: newMedia.id
+      }
+    })
+    setCurrentCoverPhoto(newMedia);
   }
 
+  const onUseCurrentCoverPhoto = async () => {
+    if (!profile.coverPhotoMediaID) {
+      return;
+    }
+    const currentPhoto = await mediaFetchOne.fetch({ mediaID: profile.coverPhotoMediaID });
+    setCurrentCoverPhoto(currentPhoto);
+  }
+
+  useEffect(() => {
+    onUseCurrentCoverPhoto()
+  }, [profile.coverPhotoMediaID]);
+
   return (
-    <form onSubmit={onUploadCoverPhoto}>
-      <input type="file" onChange={e => setNewCoverPhoto(e.target?.files?.[0])} />
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      {
+        currentCoverPhoto && (
+          <img src={currentCoverPhoto.url} style={{ height: 200, width: '100%', borderRadius: 4 }} />
+        )
+      }
+      <input type="file" onChange={onUploadCoverPhoto} />
+    </>
   )
 }
