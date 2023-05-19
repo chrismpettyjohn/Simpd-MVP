@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { PostWithTextFragment } from "graphql/fragments/post.fragment";
+import { POST_WITH_TEXT_FRAGMENT, PostWithTextFragment } from "graphql/fragments/post.fragment";
 
 export interface PostWithTextCreateInput {
   content: string;
@@ -14,12 +14,12 @@ export interface PostWithTextCreateMutationResponse {
 }
 
 export const POST_WITH_TEXT_CREATE_MUTATION = gql`
+  ${POST_WITH_TEXT_FRAGMENT}
   mutation($input: PostWithTextCreateInput!) {
     postWithTextCreate(
       input: $input
     ) {
-      id
-      profileID
+      ...PostWithTextFragment
     }
   }
 `

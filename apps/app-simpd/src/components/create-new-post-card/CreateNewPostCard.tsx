@@ -1,11 +1,10 @@
-import { useLocation } from 'wouter';
 import { Card } from 'components/card/Card';
 import { Button } from 'components/button/Button';
 import { usePostWithTextCreate } from '@simpd/lib-web';
 import React, { SyntheticEvent, useState } from 'react';
+import { CreateNewPostCardProps } from './CreateNewPostCard.types';
 
-export function CreateNewPostCard() {
-  const [, setLocation] = useLocation();
+export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
   const [content, setContent] = useState('');
   const postWithTextCreate = usePostWithTextCreate();
 
@@ -17,7 +16,7 @@ export function CreateNewPostCard() {
     }
 
     const newPost = await postWithTextCreate.execute({ content });
-    setLocation(`/posts/${newPost.id}`)
+    onCreate(newPost);
   }
 
   return (
