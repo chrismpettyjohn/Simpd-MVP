@@ -17,6 +17,7 @@ export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
 
     const newPost = await postWithTextCreate.execute({ content });
     onCreate(newPost);
+    setContent('');
   }
 
   return (

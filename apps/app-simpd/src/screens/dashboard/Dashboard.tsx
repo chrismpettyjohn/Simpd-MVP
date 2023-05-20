@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet'
+import { toast } from 'react-toastify';
 import { PostCard } from 'components/post-card/PostCard';
 import { PageTitle } from 'components/page-title/PageTitle';
 import React, { useContext, useEffect, useState } from 'react';
@@ -17,6 +18,7 @@ export function DashboardScreen() {
 
   const onAddPost = (newPost: PostFragment) => {
     setPosts(_ => [newPost, ..._]);
+    toast.success('🥳 Your post was created!');
   }
 
   useEffect(() => {
