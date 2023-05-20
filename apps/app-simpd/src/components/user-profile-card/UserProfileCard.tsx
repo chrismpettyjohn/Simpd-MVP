@@ -5,8 +5,9 @@ import { ProfileFragment, sessionContext } from '@simpd/lib-web';
 import { ChangeCoverPhoto } from './change-cover-photo/ChangeCoverPhoto';
 import { ChangeProfilePicture } from './change-profile-picture/ChangeProfilePicture';
 import { UserProfileCardCoverPhoto, UserProfileCardContainer, UserProfileCardInfoContainer, UserProfileCardAvatar, UserProfileCardActionsContainer, UserProfileCardContent } from './UserProfileCard.sty';
+import { Link } from 'wouter';
 
-export function UserProfileCard({ profile, onChanges = () => null }: UserProfileCardProps) {
+export function UserProfileCard({ allowChanges = true, profile, onChanges = () => null }: UserProfileCardProps) {
   const { session, setSession } = useContext(sessionContext);
   const isAuthenticatedAsProfile = session?.profileID === profile.id;
 
@@ -27,17 +28,21 @@ export function UserProfileCard({ profile, onChanges = () => null }: UserProfile
   return (
     <UserProfileCardContainer>
       <UserProfileCardContent>
-        <UserProfileCardCoverPhoto backgroundUrl={profile.coverPhoto?.url ?? ''}>
-          {
-            isAuthenticatedAsProfile && <ChangeCoverPhoto profile={profile} onChange={onUpdateProfilePicture} />
-          }
-        </UserProfileCardCoverPhoto>
-        <UserProfileCardInfoContainer>
-          <UserProfileCardAvatar backgroundUrl={profile.profilePicture?.url ?? ''}>
+        <Link to={`/profiles/${profile.username}`}>
+          <UserProfileCardCoverPhoto backgroundUrl={profile.coverPhoto?.url ?? ''}>
             {
-              isAuthenticatedAsProfile && <ChangeProfilePicture profile={profile} onChange={onUpdateCoverPhoto} />
+              allowChanges && isAuthenticatedAsProfile && <ChangeCoverPhoto profile={profile} onChange={onUpdateProfilePicture} />
             }
-          </UserProfileCardAvatar>
+          </UserProfileCardCoverPhoto>
+        </Link>
+        <UserProfileCardInfoContainer>
+          <Link to={`/profiles/${profile.username}`}>
+            <UserProfileCardAvatar backgroundUrl={profile.profilePicture?.url ?? ''}>
+              {
+                allowChanges && isAuthenticatedAsProfile && <ChangeProfilePicture profile={profile} onChange={onUpdateCoverPhoto} />
+              }
+            </UserProfileCardAvatar>
+          </Link>
           {
             !isAuthenticatedAsProfile && (
               <UserProfileCardActionsContainer>

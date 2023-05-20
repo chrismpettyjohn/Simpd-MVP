@@ -1,6 +1,5 @@
 import { Link } from 'wouter';
 import React, { useContext } from 'react';
-import { Button } from 'components/button/Button';
 import { sessionContext } from '@simpd/lib-web';
 import { SiteHeaderLink } from '../SiteHeader.sty';
 

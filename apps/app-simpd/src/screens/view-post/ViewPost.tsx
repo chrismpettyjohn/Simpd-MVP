@@ -34,7 +34,7 @@ export function ViewPostScreen() {
         <meta property="og:title" content="View Post - Simpd" />
       </Helmet>
       <PageTitle title="View Post" />
-      <UserProfileCard profile={fetchPost.data!.profile} />
+      <UserProfileCard allowChanges={false} profile={fetchPost.data!.profile} />
       <PostCard post={fetchPost.data} hideAuthor />
       <CardAccordion header="Comments">
         Coming soon

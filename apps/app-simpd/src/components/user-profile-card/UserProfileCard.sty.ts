@@ -42,6 +42,7 @@ export const UserProfileCardCoverPhoto = styled.div <{ backgroundUrl: string }>`
   flex: 0 0 auto;
   width: 100%;
   height: 200px;
+  cursor: pointer;
   display: flex;
   align-items: center;
   border-radius: ${({ theme }) => theme.radius.four};
@@ -62,6 +63,7 @@ export const UserProfileCardInfoContainer = styled.div`
 export const UserProfileCardAvatar = styled.div <{ backgroundUrl: string }>`
   flex: 0 0 auto;
   width: 100px;
+  cursor: pointer;
   border: 2px dashed rgba(120, 120, 120, 0.4);
   height: 100px;
   display: flex;
