@@ -4,12 +4,14 @@ import {ClientProxy} from '@nestjs/microservices';
 import {
   ReactionCreateOneInput,
   ReactionCreateOneResponse,
+  ReactionDeleteOneResponse,
   ReactionFindManyInput,
   ReactionFindOneInput,
   ReactionWire,
 } from './reaction-client.types';
 import {
   SVC_REACTION_INTERNAL_EVENT_CREATE_ONE,
+  SVC_REACTION_INTERNAL_EVENT_DELETE_ONE,
   SVC_REACTION_INTERNAL_EVENT_FIND_MANY,
   SVC_REACTION_INTERNAL_EVENT_FIND_ONE,
   SVC_REACTION_NAME,
@@ -29,18 +31,28 @@ export class ReactionClientService {
     return await lastValueFrom(newReaction$);
   }
 
-  async findOne(input: ReactionFindOneInput): Promise<ReactionWire> {
+  async findOne(filter: ReactionFindOneInput): Promise<ReactionWire> {
     const matchingReaction$ = this.client.send(
       SVC_REACTION_INTERNAL_EVENT_FIND_ONE,
-      input
+      filter
     );
     return await lastValueFrom(matchingReaction$);
   }
 
-  async findMany(input: ReactionFindManyInput): Promise<ReactionWire[]> {
+  async findMany(filter: ReactionFindManyInput): Promise<ReactionWire[]> {
     const matchingReaction$ = this.client.send(
       SVC_REACTION_INTERNAL_EVENT_FIND_MANY,
-      input
+      filter
+    );
+    return await lastValueFrom(matchingReaction$);
+  }
+
+  async deleteOne(
+    filter: ReactionFindManyInput
+  ): Promise<ReactionDeleteOneResponse> {
+    const matchingReaction$ = this.client.send(
+      SVC_REACTION_INTERNAL_EVENT_DELETE_ONE,
+      filter
     );
     return await lastValueFrom(matchingReaction$);
   }

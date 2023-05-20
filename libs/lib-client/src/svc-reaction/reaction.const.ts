@@ -7,3 +7,4 @@ export const SVC_REACTION_WEB_ADDRESS =
 export const SVC_REACTION_INTERNAL_EVENT_FIND_ONE = 'reactionFindOne';
 export const SVC_REACTION_INTERNAL_EVENT_FIND_MANY = 'reactionFindMany';
 export const SVC_REACTION_INTERNAL_EVENT_CREATE_ONE = 'reactionCreateOne';
+export const SVC_REACTION_INTERNAL_EVENT_DELETE_ONE = 'reactionDeleteOne';

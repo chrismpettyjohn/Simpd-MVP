@@ -26,6 +26,7 @@ export * from './svc-profile/profile-client.types';
 export * from './svc-profile/profile.const';
 export * from './svc-profile/profile.model';
 export * from './svc-profile/profile.module';
+export * from './svc-reaction/base-reaction-client.service';
 export * from './svc-reaction/reaction-client.decorator';
 export * from './svc-reaction/reaction-client.service';
 export * from './svc-reaction/reaction-client.types';

@@ -1,5 +1,4 @@
 import {In} from 'typeorm';
-import {PostEntity} from './post.entity';
 import {PostRepository} from './post.repository';
 import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {UnauthorizedException, BadRequestException} from '@nestjs/common';
@@ -22,9 +21,8 @@ import {
 import {
   Args,
   Mutation,
-  Parent,
+  ObjectType,
   Query,
-  ResolveField,
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
@@ -39,7 +37,6 @@ import {
   PostWithTextWire,
   PostWithVideoWire,
   ProfileClientService,
-  ProfileModel,
   SessionWire,
 } from '@simpd/lib-client';
 import {

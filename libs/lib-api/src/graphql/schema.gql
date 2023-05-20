@@ -2,38 +2,127 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type CommentModel {
+type ProfileModel {
+  id: Float!
+}
+
+type PostWithTextModel {
   id: Float
-  serviceKey: String
-  resourceID: Float
-  comment: String
   profileID: Float
+  profile: ProfileModel
+  type: PostType
+  content: String
+}
+
+enum PostType {
+  Text
+  Image
+  Video
+  Album
+  SharedContent
+}
+
+type PostWithImageModel {
+  id: Float
+  profileID: Float
+  profile: ProfileModel
+  type: PostType
+  mediaID: Float
+  caption: String
+}
+
+type PostWithVideoModel {
+  id: Float
+  profileID: Float
+  profile: ProfileModel
+  type: PostType
+  mediaID: Float
+  caption: String
+}
+
+type PostWithAlbumModel {
+  id: Float
+  profileID: Float
+  profile: ProfileModel
+  type: PostType
+  mediaIDs: [Float!]
+  caption: String
+}
+
+type PostWithSharedContentModel {
+  id: Float
+  profileID: Float
+  profile: ProfileModel
+  type: PostType
+  resourceType: PostSharedContentType
+  resourceID: Float
+  caption: String
+}
+
+enum PostSharedContentType {
+  Post
+  Media
 }
 
 type Query {
-  comment(filter: CommentFilterByOneInput!): CommentModel!
-  comments(filter: CommentFilterByManyInput): [CommentModel!]!
+  post(filter: PostFilterByOneInput!): PostUnion!
+  posts(filter: PostFilterByManyInput): [PostUnion!]!
+  postReaction(filter: PostFilterByOneInput!): PostUnion!
+  postReactions(filter: PostFilterByManyInput!): [PostUnion!]!
 }
 
-input CommentFilterByOneInput {
-  id: Float
-  keys: [String!]
+union PostUnion = PostWithTextModel | PostWithImageModel | PostWithVideoModel | PostWithAlbumModel | PostWithSharedContentModel
+
+input PostFilterByOneInput {
+  id: Float!
 }
 
-input CommentFilterByManyInput {
+input PostFilterByManyInput {
   ids: [Float!]
-  serviceKey: String
-  resourceIDs: [Float!]!
+  profileIDs: [Float!]
 }
 
 type Mutation {
-  commentCreate(input: CommentCreateInput!): CommentModel!
-  commentDelete(filter: CommentFilterByOneInput!): Boolean!
+  postWithTextCreate(input: PostWithTextCreateInput!): PostWithTextModel!
+  postWithImageCreate(input: PostWithImageCreateInput!): PostWithImageModel!
+  postWithVideoCreate(input: PostWithVideoCreateInput!): PostWithVideoModel!
+  postWithAlbumCreate(input: PostWithAlbumInput!): PostWithAlbumModel!
+  postWithSharedContentCreate(input: PostWithSharedContentInput!): PostWithSharedContentModel!
+  postDelete(filter: PostFilterByOneInput!): Boolean!
+  postReactionCreate(input: PostReactionInput!): PostWithTextModel!
+  postReactionDelete(filter: PostFilterByOneInput!): Boolean!
 }
 
-input CommentCreateInput {
-  profileID: Float!
-  serviceKey: String!
+input PostWithTextCreateInput {
+  content: String!
+}
+
+input PostWithImageCreateInput {
+  mediaID: Float!
+  caption: String!
+}
+
+input PostWithVideoCreateInput {
+  mediaID: Float!
+  caption: String!
+}
+
+input PostWithAlbumInput {
+  mediaIDs: [Float!]!
+  caption: String!
+}
+
+input PostWithSharedContentInput {
+  resourceType: PostSharedContentType!
   resourceID: Float!
-  comment: String!
+  caption: String!
+}
+
+input PostReactionInput {
+  postID: Float!
+  reaction: ReactionType!
+}
+
+enum ReactionType {
+  Like
 }

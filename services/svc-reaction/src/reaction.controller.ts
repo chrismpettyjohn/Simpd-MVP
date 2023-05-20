@@ -6,10 +6,12 @@ import {reactionEntityToReactionWire} from './reaction.wire';
 import {
   ReactionCreateOneInput,
   ReactionCreateOneResponse,
+  ReactionDeleteOneResponse,
   ReactionFindManyInput,
   ReactionFindOneInput,
   ReactionWire,
   SVC_REACTION_INTERNAL_EVENT_CREATE_ONE,
+  SVC_REACTION_INTERNAL_EVENT_DELETE_ONE,
   SVC_REACTION_INTERNAL_EVENT_FIND_MANY,
   SVC_REACTION_INTERNAL_EVENT_FIND_ONE,
 } from '@simpd/lib-client';
@@ -58,5 +60,21 @@ export class ReactionController {
       },
     });
     return matchingReactions.map(reactionEntityToReactionWire);
+  }
+
+  @MessagePattern(SVC_REACTION_INTERNAL_EVENT_DELETE_ONE)
+  async reactionDeleteOne(
+    filter: ReactionFindOneInput
+  ): Promise<ReactionDeleteOneResponse> {
+    try {
+      await this.reactionRepo.delete(filter);
+      return {
+        success: true,
+      };
+    } finally {
+      return {
+        success: false,
+      };
+    }
   }
 }

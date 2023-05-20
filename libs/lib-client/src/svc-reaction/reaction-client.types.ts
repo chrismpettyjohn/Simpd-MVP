@@ -33,3 +33,7 @@ export interface ReactionCreateOneResponse {
   success: boolean;
   reaction?: ReactionWire;
 }
+
+export interface ReactionDeleteOneResponse {
+  success: boolean;
+}

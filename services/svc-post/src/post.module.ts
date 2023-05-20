@@ -4,10 +4,13 @@ import {PostResolver} from './post.resolver';
 import {PostController} from './post.controller';
 import {PostRepository} from './post.repository';
 import {PostPrivacyService} from './post-privacy.service';
+import {PostReactionService} from './post-reaction.service';
+import {PostReactionResolver} from './post-reaction.resolver';
 import {
   MediaClientModule,
   PrivacyClientModule,
   ProfileClientModule,
+  ReactionClientModule,
 } from '@simpd/lib-client';
 import {
   GraphQLModule,
@@ -23,13 +26,20 @@ import {
     ProfileClientModule,
     PrivacyClientModule,
     MediaClientModule,
+    ReactionClientModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
       entities: [PostEntity],
       synchronize: true,
     }),
   ],
-  providers: [PostRepository, PostResolver, PostPrivacyService],
+  providers: [
+    PostRepository,
+    PostResolver,
+    PostPrivacyService,
+    PostReactionService,
+    PostReactionResolver,
+  ],
   controllers: [PostController],
 })
 export class PostModule {}

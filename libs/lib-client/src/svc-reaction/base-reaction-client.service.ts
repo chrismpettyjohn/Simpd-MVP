@@ -4,6 +4,7 @@ import {
   ReactionFindOneInput,
   ReactionFindManyInput,
   ReactionWire,
+  ReactionDeleteOneResponse,
 } from './reaction-client.types';
 
 export class BaseReactionClientService {
@@ -40,6 +41,15 @@ export class BaseReactionClientService {
     filter: Omit<ReactionFindManyInput, 'serviceKey'>
   ): Promise<ReactionWire[]> {
     return await this.reactionClientService.findMany({
+      ...filter,
+      serviceKey: this.serviceKey,
+    });
+  }
+
+  async deleteOne(
+    filter: Omit<ReactionFindOneInput, 'serviceKey'>
+  ): Promise<ReactionDeleteOneResponse> {
+    return await this.reactionClientService.deleteOne({
       ...filter,
       serviceKey: this.serviceKey,
     });
