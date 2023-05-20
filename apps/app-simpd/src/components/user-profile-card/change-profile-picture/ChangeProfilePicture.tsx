@@ -2,6 +2,7 @@ import React, { ChangeEvent, useRef } from 'react';
 import { UserProfileChangeMediaIcon } from '../UserProfileCard.sty';
 import { ChangeProfilePictureProps } from './ChangeProfilePicture.types';
 import { useMediaFetchOne, useMediaUpload, useProfileUpdate } from '@simpd/lib-web';
+import { createPortal } from 'react-dom';
 
 export function ChangeProfilePicture({ profile, onChange }: ChangeProfilePictureProps) {
   const mediaUpload = useMediaUpload();
@@ -31,7 +32,7 @@ export function ChangeProfilePicture({ profile, onChange }: ChangeProfilePicture
   return (
     <>
       <UserProfileChangeMediaIcon className="fa fa-file-import" onClick={onSelectFile} />
-      <input style={{ visibility: 'hidden' }} type="file" onChange={onUploadProfilePicture} ref={inputRef} />
+      {createPortal(<input style={{ visibility: 'hidden' }} type="file" onChange={onUploadProfilePicture} ref={inputRef} />, document.body)}
     </>
   )
 }

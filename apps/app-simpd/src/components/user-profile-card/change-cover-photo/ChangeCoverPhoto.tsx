@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import React, { ChangeEvent, useRef } from 'react';
 import { UserProfileChangeMediaIcon } from '../UserProfileCard.sty';
 import { ChangeCoverPhotoProps } from './ChangeCoverPhoto.types';
@@ -31,7 +32,7 @@ export function ChangeCoverPhoto({ profile, onChange }: ChangeCoverPhotoProps) {
   return (
     <>
       <UserProfileChangeMediaIcon className="fa fa-file-import" onClick={onSelectFile} />
-      <input style={{ visibility: 'hidden' }} type="file" onChange={onUploadCoverPhoto} ref={inputRef} />
+      {createPortal(<input style={{ visibility: 'hidden' }} type="file" onChange={onUploadCoverPhoto} ref={inputRef} />, document.body)}
     </>
   )
 }

@@ -1,7 +1,7 @@
 import './UserProfileCard.css';
 import React, { useContext } from 'react'
-import { MediaFragment, ProfileFragment, sessionContext } from '@simpd/lib-web';
 import { UserProfileCardProps } from './UserProfileCard.types';
+import { ProfileFragment, sessionContext } from '@simpd/lib-web';
 import { ChangeCoverPhoto } from './change-cover-photo/ChangeCoverPhoto';
 import { ChangeProfilePicture } from './change-profile-picture/ChangeProfilePicture';
 import { UserProfileCardCoverPhoto, UserProfileCardContainer, UserProfileCardInfoContainer, UserProfileCardAvatar, UserProfileCardActionsContainer, UserProfileCardContent } from './UserProfileCard.sty';
