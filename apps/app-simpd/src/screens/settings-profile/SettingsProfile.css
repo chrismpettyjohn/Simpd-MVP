@@ -35,6 +35,7 @@
   background: 100%;
   box-shadow: 5px 5px 10px 10px #1c1c1e;
   margin-top: var(--dl-space-space-twounits);
+  margin-bottom: var(--dl-space-space-twounits);
   align-items: center;
   padding-top: var(--dl-space-space-unit);
   padding-left: var(--dl-space-space-twounits);
