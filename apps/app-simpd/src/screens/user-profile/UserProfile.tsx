@@ -1,26 +1,35 @@
 import { useRoute } from 'wouter';
 import { Helmet } from 'react-helmet'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PostCard } from 'components/post-card/PostCard';
 import { PageTitle } from 'components/page-title/PageTitle';
-import { usePostFetchMany, useProfileFetchOne } from '@simpd/lib-web';
 import { UserProfileCard } from 'components/user-profile-card/UserProfileCard';
+import { ProfileFragment, usePostFetchMany, useProfileFetchOne } from '@simpd/lib-web';
 
 export function UserProfileScreen() {
   const fetchPosts = usePostFetchMany();
   const fetchProfile = useProfileFetchOne()
+  const [userProfile, setUserProfile] = useState<ProfileFragment>();
   const [, params] = useRoute<{ username: string }>('/profiles/:username');
 
-  const loadUserProfile = async () => {
+  const onFetchProfile = async () => {
     const profile = await fetchProfile.fetch({ username: params!.username });
+    setUserProfile(profile);
     await fetchPosts.fetch({ profileIDs: [profile.id] });
+  }
+
+  const onUpdateProfile = (profileChanges: Partial<ProfileFragment>) => {
+    setUserProfile(_ => ({
+      ..._!,
+      ...profileChanges
+    }))
   }
 
   useEffect(() => {
     if (!params?.username) {
       return;
     }
-    loadUserProfile();
+    onFetchProfile();
   }, [params?.username]);
 
   return (
@@ -31,8 +40,8 @@ export function UserProfileScreen() {
       </Helmet>
       <PageTitle title="User Profile" />
       {
-        fetchProfile.data && (
-          <UserProfileCard profile={fetchProfile.data} />
+        userProfile && (
+          <UserProfileCard profile={userProfile} onChanges={onUpdateProfile} />
         )
       }
       {

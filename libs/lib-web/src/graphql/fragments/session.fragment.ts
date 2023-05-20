@@ -19,3 +19,16 @@ export interface SessionFragment {
   profileID: number;
   profile: ProfileFragment;
 }
+
+export interface RoleScopesWire {
+  profileCreate: boolean;
+  bypassUserPrivacy: boolean;
+}
+
+export interface SessionContents {
+  userID: number;
+  profileID: number;
+  sessionID: number;
+  expiresAt: number;
+  scopes: RoleScopesWire;
+}

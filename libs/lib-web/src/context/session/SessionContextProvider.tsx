@@ -20,7 +20,16 @@ export function SessionContextProvider({ children }: SessionContextProviderProps
 
 
   const setSession = (newSession?: SessionFragment) => {
-    setSessionState(newSession);
+    setSessionState(_ => {
+      if (!newSession) {
+        return null;
+      }
+
+      return {
+        ..._!,
+        ...newSession,
+      }
+    });
   };
 
   const isLoading = session === undefined || getSession.loading

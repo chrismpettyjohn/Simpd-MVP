@@ -38,7 +38,7 @@ export const UserProfileCardContent = styled.div`
   width: 100%;
 `
 
-export const UserProfileCardCoverPhoto = styled.div`
+export const UserProfileCardCoverPhoto = styled.div <{ backgroundUrl: string }>`
   flex: 0 0 auto;
   width: 100%;
   height: 200px;
@@ -47,7 +47,7 @@ export const UserProfileCardCoverPhoto = styled.div`
   border-radius: ${({ theme }) => theme.radius.four};
   background-size: cover;
   justify-content: center;
-  background-image: linear-gradient(315deg, rgb(189, 195, 199) 0.00%, rgba(0, 0, 0, 0.2) 1.00%, rgb(0, 0, 0) 100.00%), url('https://public.onlyfans.com/files/thumbs/w480/b/b6/b60/b60sywfzotblrjc4gpl0wou0f2osfh331665495938/183673060/header.jpg');
+  background-image: ${({ backgroundUrl }) => `linear-gradient(315deg, rgb(189, 195, 199) 0.00%, rgba(0, 0, 0, 0.2) 1.00%, rgb(0, 0, 0) 100.00%), url('${backgroundUrl}')`};
 `
 
 export const UserProfileCardInfoContainer = styled.div`
@@ -59,7 +59,7 @@ export const UserProfileCardInfoContainer = styled.div`
   justify-content: space-between;
 `
 
-export const UserProfileCardAvatar = styled.div`
+export const UserProfileCardAvatar = styled.div <{ backgroundUrl: string }>`
   flex: 0 0 auto;
   width: 100px;
   border: 2px dashed rgba(120, 120, 120, 0.4);
@@ -70,7 +70,7 @@ export const UserProfileCardAvatar = styled.div`
   justify-content: center;
   border-radius: var(--dl-radius-radius-round);
   background-size: cover;
-  background-image: url('https://public.onlyfans.com/files/thumbs/c144/4/4o/4os/4osikoyok2x0ggsk9zkwqveeazjncc9i1665495937/183673060/avatar.jpg');
+  background-image: ${({ backgroundUrl }) => `url('${backgroundUrl}')`};
 `
 
 export const UserProfileCardActionsContainer = styled.div`
@@ -81,15 +81,22 @@ export const UserProfileCardActionsContainer = styled.div`
   display: flex;
   padding:${({ theme }) => theme.space.twoUnits};
 
-  svg {
-    fill: var(--dl-color-simpd-s90);
-    width: var(--dl-size-size-icontwo);
+  i {
+    color: ${({ theme }) => theme.color.s90};
+    font-size: ${({ theme }) => theme.icon.twoUnits};
     cursor: pointer;
-    height: var(--dl-size-size-icontwo);
-    transition: 0.3s;
 
     &:hover {
-        fill: var(--dl-color-simpd-brand);
+        color: ${({ theme }) => theme.color.brand};
     }
+  }
+`
+
+export const UserProfileChangeMediaIcon = styled.i`
+  cursor: pointer;
+  color: ${({ theme }) => theme.color.s90};
+  font-size: ${({ theme }) => theme.icon.threeUnits};
+  &:hover {
+    color: ${({ theme }) => theme.color.brand};
   }
 `

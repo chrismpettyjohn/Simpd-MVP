@@ -4,13 +4,14 @@ import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'wouter';
 import { Card } from 'components/card/Card';
 import { PageTitle } from 'components/page-title/PageTitle';
-import { sessionContext, useSessionCreate } from '@simpd/lib-web';
 import React, { SyntheticEvent, useContext, useState } from 'react'
+import { SessionContents, sessionContext, useProfileFetchOne, useSessionCreate } from '@simpd/lib-web';
 
 export function SignInScreen() {
   const [, setLocation] = useLocation();
   const [email, setEmail] = useState('');
   const sessionCreate = useSessionCreate();
+  const profileFetch = useProfileFetchOne();
   const [password, setPassword] = useState('');
   const { setSession } = useContext(sessionContext);
 
@@ -24,7 +25,9 @@ export function SignInScreen() {
 
     try {
       const newSession = await sessionCreate.execute({ email, password });
-      setSession(jwtDecode(newSession));
+      const sessionContents: SessionContents = jwtDecode(newSession);
+      const matchingProfile = await profileFetch.fetch({ id: sessionContents.profileID })
+      setSession({ ...sessionContents, profile: matchingProfile });
       setLocation('/settings/profile');
     } catch (e) {
       alert('Something went wrong')
