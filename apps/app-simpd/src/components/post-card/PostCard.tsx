@@ -2,7 +2,7 @@ import { Link } from 'wouter';
 import React, { useMemo } from 'react';
 import { PostCardProps } from './PostCard.types';
 import { PostFragment, PostType } from '@simpd/lib-web';
-import { PostCardContent, PostCardElement } from './PostCard.styled';
+import { PostCardContent, PostCardElement, PostStatElement, PostStatsContainer } from './PostCard.styled';
 import { TextPostContent } from './text-post-content/TextPostContent';
 import { AuthorBlockLarge } from 'components/author-block-large/AuthorBlockLarge';
 
@@ -20,8 +20,29 @@ export function PostCard({ post, hideAuthor = false }: PostCardProps) {
     <Link to={`/posts/${post.id}`}>
       <PostCardElement>
         <PostCardContent>
-          {postContent}
           {!hideAuthor && <AuthorBlockLarge profile={post.profile} />}
+
+          {postContent}
+          <PostStatsContainer>
+            <PostStatElement>
+              <h3>20</h3>
+              <p>
+                <i className="fa fa-thumbs-up" />
+              </p>
+            </PostStatElement>
+            <PostStatElement>
+              <h3>20</h3>
+              <p>
+                <i className="fa fa-heart" />
+              </p>
+            </PostStatElement>
+            <PostStatElement>
+              <h3>20</h3>
+              <p>
+                <i className="fa fa-share" />
+              </p>
+            </PostStatElement>
+          </PostStatsContainer>
         </PostCardContent>
       </PostCardElement>
     </Link>

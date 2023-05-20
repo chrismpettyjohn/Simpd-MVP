@@ -36,5 +36,32 @@ export const PostCardImage = styled.img`
 export const PostCardText = styled.div`
     color: ${({ theme }) => theme.color.s90};
     width: 100%;
-    font-size: 1rem;
+    font-size: ${({ theme }) => theme.fontSize.oneUnit};
+    padding-left: ${({ theme }) => theme.space.halfUnit};
+    padding-right: ${({ theme }) => theme.space.halfUnit};
+`
+
+export const PostStatsContainer = styled.div`
+  background: ${({ theme }) => theme.color.s40};
+  border-radius: ${({ theme }) => theme.radius.eight};
+  display: flex;
+  justify-content: space-between;
+  padding-left: ${({ theme }) => theme.space.twoUnits};
+  padding-right: ${({ theme }) => theme.space.twoUnits};
+  margin-top: ${({ theme }) => theme.space.twoUnits};
+  width: 100%;
+`
+
+export const PostStatElement = styled.div`
+  color: ${({ theme }) => theme.color.s90};
+  text-align: center;
+
+  h3 {
+    font-size: ${({ theme }) => theme.fontSize.oneUnit};
+  }
+  p {
+    font-size: ${({ theme }) => theme.icon.halfUnit};
+    margin-top:${({ theme }) => `-${theme.space.oneUnit}`};
+
+  }
 `

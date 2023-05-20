@@ -31,6 +31,7 @@ export interface SimpdWebTheme {
   radius: {
     four: string;
     eight: string;
+    round: string;
   };
   icon: {
     oneUnit: string;
@@ -68,7 +69,8 @@ export const simpdWebTheme: SimpdWebTheme = {
   },
   radius: {
     four: '4px',
-    eight: '8pxs',
+    eight: '8px',
+    round: '100%',
   },
   icon: {
     oneUnit: '1.4rem',
