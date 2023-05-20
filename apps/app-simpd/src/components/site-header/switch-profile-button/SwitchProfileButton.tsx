@@ -7,7 +7,7 @@ import { SiteHeaderLink } from '../SiteHeader.sty';
 export function SwitchProfileButton() {
   const { session: { profile } } = useContext(sessionContext);
   return (
-    <Link to="/settings/profile">
+    <Link to={`/profiles/${profile.username}`}>
       <SiteHeaderLink>
         <i className="fa fa-id-badge" style={{ marginRight: 8 }} />
         {profile?.username ?? <>Switch Profile</>}
