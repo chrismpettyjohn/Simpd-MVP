@@ -63,3 +63,28 @@ export const SiteHeaderNavigation = styled.nav`
     }
   }
 `
+
+export const SiteHeaderTools = styled.div`
+  color: ${({ theme }) => theme.color.s90};
+  display: flex;
+  gap: ${({ theme }) => theme.space.oneUnit};
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: ${({ theme }) => theme.space.oneUnit};
+
+  h3 {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
+
+export const SiteHeaderLink = styled.a`
+  color: ${({ theme }) => theme.color.s90};
+  text-decoration: none;
+  &:hover {
+      color: ${({ theme }) => theme.color.brand};
+  }
+`

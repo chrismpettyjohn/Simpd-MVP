@@ -2,12 +2,22 @@ import React from 'react'
 import { Link } from 'wouter';
 import { UserGuard } from '@simpd/lib-web';
 import { SwitchProfileButton } from './switch-profile-button/SwitchProfileButton';
-import { SiteHeaderBrandContainer, SiteHeaderContainer, SiteHeaderElement, SiteHeaderNavigation } from './SiteHeader.sty';
+import { SiteHeaderBrandContainer, SiteHeaderContainer, SiteHeaderElement, SiteHeaderLink, SiteHeaderNavigation, SiteHeaderTools } from './SiteHeader.sty';
 
 export function SiteHeader() {
   return (
     <SiteHeaderContainer>
-      <SwitchProfileButton />
+      <UserGuard>
+        <SiteHeaderTools>
+          <Link className="link" to="/notifications">
+            <SiteHeaderLink>
+              <i className="fa fa-bell" />
+            </SiteHeaderLink>
+          </Link>
+          <SwitchProfileButton />
+
+        </SiteHeaderTools>
+      </UserGuard>
       <SiteHeaderBrandContainer>
         <h1>Simpd.</h1>
       </SiteHeaderBrandContainer>
@@ -15,9 +25,6 @@ export function SiteHeader() {
         <SiteHeaderNavigation>
           <Link to="/dashboard">
             <i className="fa fa-home" />
-          </Link>
-          <Link to="/notifications">
-            <i className="fa fa-bell" />
           </Link>
           <Link to="/messages">
             <i className="fa fa-comment" />
