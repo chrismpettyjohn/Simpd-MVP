@@ -5,21 +5,12 @@ import {ReactionType} from '@simpd/lib-client';
 export class ReactionFilterByManyInput {
   @Field(() => [Number], {nullable: true})
   ids?: number[];
-
-  @Field(() => String, {nullable: true})
-  serviceKey?: string;
-
-  @Field(() => [Number], {nullable: true})
-  resourceIDs?: number[];
 }
 
 @InputType()
 export class ReactionFilterByOneInput {
   @Field(() => Number, {nullable: true})
   id?: number;
-
-  @Field(() => [String], {nullable: true})
-  keys?: string[];
 }
 
 @InputType()

@@ -95,7 +95,8 @@ export const SiteHeaderLink = styled.a`
   text-decoration: none;
   padding-bottom: 2px;
   border-bottom: 2px solid transparent;
-
+  align-items: center;
+  
   &:hover {
       border-color: ${({ theme }) => theme.color.brand};
   }

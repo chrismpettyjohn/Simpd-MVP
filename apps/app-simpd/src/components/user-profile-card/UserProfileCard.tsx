@@ -51,6 +51,15 @@ export function UserProfileCard({ allowChanges = true, profile, onChanges = () =
               </UserProfileCardActionsContainer>
             )
           }
+          {
+            isAuthenticatedAsProfile && (
+              <UserProfileCardActionsContainer>
+                <Link to="/settings/profile">
+                  <i className="fa fa-pencil" />
+                </Link>
+              </UserProfileCardActionsContainer>
+            )
+          }
         </UserProfileCardInfoContainer>
         <h1>{profile.displayName}</h1>
         <div className="user-profile-card-container5">

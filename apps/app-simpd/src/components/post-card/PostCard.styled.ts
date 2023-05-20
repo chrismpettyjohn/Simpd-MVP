@@ -53,7 +53,9 @@ export const PostStatsContainer = styled.div`
 `
 
 export const PostStatElement = styled.div`
+  padding: ${({ theme }) => theme.space.halfUnit};
   color: ${({ theme }) => theme.color.s90};
+  cursor: pointer;
   text-align: center;
 
   h3 {
@@ -62,6 +64,11 @@ export const PostStatElement = styled.div`
   p {
     font-size: ${({ theme }) => theme.icon.halfUnit};
     margin-top:${({ theme }) => `-${theme.space.oneUnit}`};
-
+  }
+  
+  &:hover {
+    p, h3 {
+      color: ${({ theme }) => theme.color.brand};
+    }
   }
 `

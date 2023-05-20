@@ -1,4 +1,12 @@
-import {Column, Entity, Index, PrimaryGeneratedColumn} from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  Index,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity({name: 'reports', schema: 'reports'})
 export class ReportEntity {
@@ -14,4 +22,13 @@ export class ReportEntity {
 
   @Column({type: 'text'})
   description!: string;
+
+  @CreateDateColumn({name: 'created_at', type: 'timestamp'})
+  createdAt?: Date;
+
+  @UpdateDateColumn({name: 'updated_at', type: 'timestamp'})
+  updatedAt?: Date;
+
+  @DeleteDateColumn({name: 'deleted_at', type: 'timestamp'})
+  deletedAt?: Date;
 }

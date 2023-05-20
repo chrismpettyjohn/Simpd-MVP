@@ -1,25 +1,36 @@
-import React from 'react'
 import { Link } from 'wouter';
-import { UserGuard } from '@simpd/lib-web';
-import { SwitchProfileButton } from './switch-profile-button/SwitchProfileButton';
+import React, { useContext } from 'react'
+import { UserGuard, sessionContext } from '@simpd/lib-web';
 import { SiteHeaderBrandContainer, SiteHeaderContainer, SiteHeaderElement, SiteHeaderLink, SiteHeaderNavigation, SiteHeaderTools, SiteHeaderToolsContainer } from './SiteHeader.sty';
 
 export function SiteHeader() {
+  const { session: { profile } } = useContext(sessionContext);
   return (
     <SiteHeaderContainer>
       <UserGuard>
         <SiteHeaderToolsContainer>
           <SiteHeaderTools>
-            <SwitchProfileButton />
+            <Link to={`/profiles/${profile.username}`}>
+              <SiteHeaderLink>
+                <i className="fa fa-id-badge" style={{ marginRight: 8 }} />
+                {profile?.username ?? <>Switch Profile</>}
+              </SiteHeaderLink>
+            </Link>
             <Link className="link" to="/notifications">
               <SiteHeaderLink>
-                <i className="fa fa-bell" style={{ marginRight: 4 }} />
+                <i className="fa fa-bell" style={{ marginRight: 8 }} />
                 Updates
+              </SiteHeaderLink>
+            </Link>
+            <Link to="/settings/identity">
+              <SiteHeaderLink>
+                <i className="fa fa-wrench" style={{ marginRight: 8 }} />
+                Settings
               </SiteHeaderLink>
             </Link>
             <Link to="/sign-out">
               <SiteHeaderLink>
-                <i className="fa fa-sign-out" style={{ marginTop: 4, marginRight: 4 }} />
+                <i className="fa fa-sign-out" style={{ marginRight: 8 }} />
                 Sign Out
               </SiteHeaderLink>
             </Link>

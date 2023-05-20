@@ -2,41 +2,38 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type MessageModel {
+type CommentModel {
   id: Float
-  sendingProfileID: Float
-  receivingProfileID: Float
-  content: String
-  readAt: DateTime
-  createdAt: DateTime
-  updatedAt: DateTime
+  serviceKey: String
+  resourceID: Float
+  comment: String
+  profileID: Float
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type Query {
-  message(filter: MessageFilterByOneInput!): MessageModel!
-  messages(filter: MessageFilterByManyInput): [MessageModel!]!
+  comment(filter: CommentFilterByOneInput!): CommentModel!
+  comments(filter: CommentFilterByManyInput): [CommentModel!]!
 }
 
-input MessageFilterByOneInput {
+input CommentFilterByOneInput {
   id: Float
+  keys: [String!]
 }
 
-input MessageFilterByManyInput {
+input CommentFilterByManyInput {
   ids: [Float!]
-  usernames: [String!]
+  serviceKey: String
+  resourceIDs: [Float!]!
 }
 
 type Mutation {
-  messageCreate(input: MessageCreateInput!): MessageModel!
-  messageDelete(filter: MessageFilterByOneInput!): Boolean!
+  commentCreate(input: CommentCreateInput!): CommentModel!
+  commentDelete(filter: CommentFilterByOneInput!): Boolean!
 }
 
-input MessageCreateInput {
-  receivingProfileID: Float!
-  content: String!
+input CommentCreateInput {
+  profileID: Float!
+  serviceKey: String!
+  resourceID: Float!
+  comment: String!
 }

@@ -1,5 +1,13 @@
 import {MediaDetails, MediaLocation, MediaType} from '@simpd/lib-client';
-import {Column, Entity, Index, PrimaryGeneratedColumn} from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  DeleteDateColumn,
+} from 'typeorm';
 
 @Entity({name: 'media', schema: 'media'})
 export class MediaEntity {
@@ -19,4 +27,13 @@ export class MediaEntity {
 
   @Column({name: 'media_location', type: 'json'})
   mediaLocation!: MediaLocation;
+
+  @CreateDateColumn({name: 'created_at', type: 'timestamp'})
+  createdAt?: Date;
+
+  @UpdateDateColumn({name: 'updated_at', type: 'timestamp'})
+  updatedAt?: Date;
+
+  @DeleteDateColumn({name: 'deleted_at', type: 'timestamp'})
+  deletedAt?: Date;
 }

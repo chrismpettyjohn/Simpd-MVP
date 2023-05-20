@@ -85,7 +85,7 @@ export const UserProfileCardActionsContainer = styled.div`
 
   i {
     color: ${({ theme }) => theme.color.s90};
-    font-size: ${({ theme }) => theme.icon.twoUnits};
+    font-size: ${({ theme }) => theme.icon.oneUnit};
     cursor: pointer;
 
     &:hover {

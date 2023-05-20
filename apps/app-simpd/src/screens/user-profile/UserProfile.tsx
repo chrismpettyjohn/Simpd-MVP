@@ -45,7 +45,7 @@ export function UserProfileScreen() {
         )
       }
       {
-        fetchPosts.data?.map(_ => <PostCard key={`profile_post_${_.id}`} post={_} />)
+        fetchPosts.data?.map(_ => <PostCard key={`profile_post_${_.id}`} post={_} hideAuthor />)
       }
     </>
   )
