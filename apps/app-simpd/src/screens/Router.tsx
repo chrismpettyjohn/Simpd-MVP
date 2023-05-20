@@ -11,9 +11,11 @@ import { UserProfileScreen } from './user-profile/UserProfile';
 import { PageNotFoundScreen } from './page-not-found/PageNotFound';
 import { NotificationsScreen } from './notifications/Notifications';
 import { CreateAccountScreen } from './create-account/CreateAccount';
+import { MessageThreadScreen } from './message-thread/MessageThread';
 import { SettingsProfileScreen } from './settings-profile/SettingsProfile';
 import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
 import { SettingsIdentityScreen } from './settings-identity/SettingsIdentity';
+import { MessageStartThreadScreen } from './message-start-thread/MessageStartThread';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -65,6 +67,22 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     ),
   },
   {
+    path: '/messages/create',
+    view: (
+      <UserGuard redirect>
+        <MessageStartThreadScreen />
+      </UserGuard>
+    )
+  },
+  {
+    path: '/messages/threads/:username',
+    view: (
+      <UserGuard redirect>
+        <MessageThreadScreen />
+      </UserGuard>
+    )
+  },
+  {
     path: '/notifications',
     view: (
       <UserGuard redirect>
@@ -111,7 +129,7 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
         <ViewPostScreen />
       </UserGuard>
     )
-  }
+  },
 ]
 
 export function Router() {

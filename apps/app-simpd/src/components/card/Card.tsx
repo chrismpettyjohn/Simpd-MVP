@@ -2,9 +2,9 @@ import React from 'react';
 import { CardProps } from './Card.types';
 import { CardBody, CardBodyContent, CardContainer, CardHeader, CardHeaderContent } from './Card.sty';
 
-export function Card({ header, children }: CardProps) {
+export function Card({ header, children, ...props }: CardProps) {
   return (
-    <CardContainer>
+    <CardContainer {...props}>
       <CardHeader>
         {
           header && (
