@@ -2,39 +2,41 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type MediaDetailsModel {
-  sizeInBytes: Float
-  originalFileName: String
-}
-
-type MediaModel {
+type MessageModel {
   id: Float
-  type: MediaType
-  profileID: Float
-  url: String
-  details: MediaDetailsModel
+  sendingProfileID: Float
+  receivingProfileID: Float
+  content: String
+  readAt: DateTime
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
-enum MediaType {
-  Image
-  Video
-  Other
-}
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type Query {
-  media(filter: MediaFilterByOneInput!): MediaModel!
-  medias(filter: MediaFilterByManyInput): [MediaModel!]!
+  message(filter: MessageFilterByOneInput!): MessageModel!
+  messages(filter: MessageFilterByManyInput): [MessageModel!]!
 }
 
-input MediaFilterByOneInput {
+input MessageFilterByOneInput {
   id: Float
 }
 
-input MediaFilterByManyInput {
+input MessageFilterByManyInput {
   ids: [Float!]
-  profileIDs: [Float!]
+  usernames: [String!]
 }
 
 type Mutation {
-  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
+  messageCreate(input: MessageCreateInput!): MessageModel!
+  messageDelete(filter: MessageFilterByOneInput!): Boolean!
+}
+
+input MessageCreateInput {
+  receivingProfileID: Float!
+  content: String!
 }

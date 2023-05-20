@@ -9,10 +9,8 @@ export function SwitchProfileButton() {
   return (
     <Link to="/settings/profile">
       <SiteHeaderLink>
-        <h3>
-          <i className="fa fa-id-badge" style={{ marginRight: 8 }} />
-          {profile?.username ?? <>Switch Profile</>}
-        </h3>
+        <i className="fa fa-id-badge" style={{ marginRight: 8 }} />
+        {profile?.username ?? <>Switch Profile</>}
       </SiteHeaderLink>
     </Link>
   )

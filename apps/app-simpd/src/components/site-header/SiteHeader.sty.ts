@@ -64,13 +64,21 @@ export const SiteHeaderNavigation = styled.nav`
   }
 `
 
+export const SiteHeaderToolsContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+`
+
 export const SiteHeaderTools = styled.div`
+  background: ${({ theme }) => theme.color.s40};
+  border-radius:  ${({ theme }) => theme.radius.four};
   color: ${({ theme }) => theme.color.s90};
   display: flex;
-  gap: ${({ theme }) => theme.space.oneUnit};
+  padding: ${({ theme }) => theme.space.oneUnit};
+  gap: ${({ theme }) => theme.space.twoUnits};
   align-items: center;
-  justify-content: flex-end;
-  width: 100%;
+  width: fit-content;
   margin-bottom: ${({ theme }) => theme.space.oneUnit};
 
   h3 {
@@ -83,8 +91,12 @@ export const SiteHeaderTools = styled.div`
 
 export const SiteHeaderLink = styled.a`
   color: ${({ theme }) => theme.color.s90};
+  font-weight: 500;
   text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+
   &:hover {
-      color: ${({ theme }) => theme.color.brand};
+      border-color: ${({ theme }) => theme.color.brand};
   }
 `
