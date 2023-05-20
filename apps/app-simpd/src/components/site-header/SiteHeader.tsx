@@ -40,11 +40,6 @@ export function SiteHeader() {
           <Link to="/favorites">
             <i className="fa fa-heart" />
           </Link>
-          <UserGuard>
-            <Link to="/sign-out">
-              <i className="fa fa-sign-out" />
-            </Link>
-          </UserGuard>
         </SiteHeaderNavigation>
       </SiteHeaderElement>
     </SiteHeaderContainer>
