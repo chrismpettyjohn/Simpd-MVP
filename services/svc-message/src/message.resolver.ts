@@ -1,7 +1,7 @@
 import {In} from 'typeorm';
 import {MessageModel} from './message.model';
 import {MessageEntity} from './message.entity';
-import {HasSession} from '@simpd/lib-api';
+import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {MessageRepository} from './message.repository';
 import {
   Args,
@@ -52,9 +52,14 @@ export class MessageResolver {
   @Mutation(() => MessageModel)
   @HasSession()
   async messageCreate(
+    @GetSession() session: SessionContents,
     @Args('input') input: MessageCreateInput
   ): Promise<MessageEntity> {
-    const newMessage = await this.messageRepo.create({});
+    const newMessage = await this.messageRepo.create({
+      sendingProfileID: session.profileID,
+      receivingProfileID: input.receivingProfileID,
+      content: input.content,
+    });
     return newMessage;
   }
 

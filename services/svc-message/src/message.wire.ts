@@ -6,5 +6,11 @@ export function messageEntityToMessageWire(
 ): MessageWire {
   return {
     id: messageEntity.id!,
+    sendingProfileID: messageEntity.sendingProfileID,
+    receivingProfileID: messageEntity.receivingProfileID,
+    content: messageEntity.content,
+    readAt: messageEntity.readAt?.toDateString(),
+    createdAt: messageEntity.createdAt!.toDateString(),
+    updatedAt: messageEntity.updatedAt?.toDateString(),
   };
 }

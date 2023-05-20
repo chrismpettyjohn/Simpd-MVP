@@ -6,20 +6,20 @@ export class MessageFilterByManyInput {
   ids?: number[];
 
   @Field(() => [String], {nullable: true})
-  keys?: string[];
+  usernames?: string[];
 }
 
 @InputType()
 export class MessageFilterByOneInput {
   @Field(() => Number, {nullable: true})
   id?: number;
-
-  @Field(() => [String], {nullable: true})
-  keys?: string[];
 }
 
 @InputType()
 export class MessageCreateInput {
   @Field(() => Number)
-  recipientID!: number;
+  receivingProfileID!: number;
+
+  @Field(() => String)
+  content!: string;
 }

@@ -24,6 +24,9 @@ export class MessageEntity {
   @Column({type: 'text'})
   content!: string;
 
+  @Column({name: 'read_at', type: 'timestamp', nullable: true})
+  readAt?: Date;
+
   @CreateDateColumn({name: 'created_at', type: 'timestamp'})
   createdAt?: Date;
 
