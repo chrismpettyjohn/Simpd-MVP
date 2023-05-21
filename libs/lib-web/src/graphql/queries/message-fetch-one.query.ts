@@ -1,6 +1,7 @@
 import gql from "graphql-tag";
 import { MESSAGE_FRAGMENT, MessageFragment } from "graphql/fragments/message.fragment";
 
+
 export interface MessageFetchOneQueryVariables {
   id: number[];
 }

@@ -66,7 +66,7 @@ export class PrivacyController {
 
   @MessagePattern(SVC_PRIVACY_INTERNAL_EVENT_DELETE_ONE)
   async privacyDeleteOne(filter: PrivacyFindOneInput): Promise<boolean> {
-    await this.privacyRepo.delete(filter);
+    await this.privacyRepo.softDelete(filter);
     return true;
   }
 }

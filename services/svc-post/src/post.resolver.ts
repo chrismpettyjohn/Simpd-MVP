@@ -305,7 +305,7 @@ export class PostResolver {
 
   @Mutation(() => Boolean)
   async postDelete(@Args('filter') filter: PostFilterByOneInput) {
-    await this.postRepo.delete(filter);
+    await this.postRepo.softDelete(filter);
     return true;
   }
 }

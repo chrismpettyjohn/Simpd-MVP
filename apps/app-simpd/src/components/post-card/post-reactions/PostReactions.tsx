@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import { PostStatElement } from '../PostCard.styled';
 import { PostReactionsProps } from './PostReactions.types';
-import { ReactionType, sessionContext, usePostReactionCreate, usePostReactionFetchMany } from '@simpd/lib-web';
+import { ReactionType, sessionContext, usePostReactionCreate, usePostReactionDelete, usePostReactionFetchMany } from '@simpd/lib-web';
 
 export function PostReactions({ post }: PostReactionsProps) {
   const { session } = useContext(sessionContext);
   const postReactionCreate = usePostReactionCreate();
+  const postReactionDelete = usePostReactionDelete();
   const postReactionFetchMany = usePostReactionFetchMany();
 
   const onFetchPostReactions = async () => {
@@ -23,7 +24,7 @@ export function PostReactions({ post }: PostReactionsProps) {
     }
 
     if (userAlreadyLikedPost) {
-      // Delete reaction
+      await postReactionDelete.execute({ postID: post.id })
     }
 
     await onFetchPostReactions();

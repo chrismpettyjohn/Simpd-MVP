@@ -52,7 +52,7 @@ export class PrivacyResolver {
 
   @Mutation(() => Boolean)
   async privacyDelete(@Args('filter') filter: PrivacyFilterByOneInput) {
-    await this.privacyRepo.delete(filter);
+    await this.privacyRepo.softDelete(filter);
     return true;
   }
 }

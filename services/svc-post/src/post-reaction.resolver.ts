@@ -20,7 +20,10 @@ export class PostReactionResolver {
     @Args('filter', {type: () => PostReactionFilterOneInput})
     filter: PostReactionFilterOneInput
   ): Promise<PostReactionModel> {
-    const matchingReaction = await this.postReactionService.findOne(filter);
+    const matchingReaction = await this.postReactionService.findOne({
+      resourceID: filter.postID,
+      profileID: filter.profileID,
+    });
     return reactionWireToPostReactionWire(matchingReaction);
   }
 
@@ -32,6 +35,7 @@ export class PostReactionResolver {
   ): Promise<PostReactionModel[]> {
     const matchingReactions = await this.postReactionService.findMany({
       resourceIDs: filter.postIDs,
+      profileIDs: filter.profileIDs,
     });
     return matchingReactions.map(reactionWireToPostReactionWire);
   }
@@ -51,10 +55,16 @@ export class PostReactionResolver {
   }
 
   @Mutation(() => Boolean)
+  @HasSession()
   async postReactionDelete(
+    @GetSession() session: SessionWire,
     @Args('filter', {type: () => PostReactionFilterOneInput})
     filter: PostReactionFilterOneInput
   ) {
-    return this.postReactionService.deleteOne(filter);
+    await this.postReactionService.deleteOne({
+      resourceID: filter.postID,
+      profileID: session.profileID,
+    });
+    return true;
   }
 }

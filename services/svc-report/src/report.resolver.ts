@@ -65,7 +65,7 @@ export class ReportResolver {
 
   @Mutation(() => Boolean)
   async reportDelete(@Args('filter') filter: ReportFilterByOneInput) {
-    await this.reportRepo.delete(filter);
+    await this.reportRepo.softDelete(filter);
     return true;
   }
 }

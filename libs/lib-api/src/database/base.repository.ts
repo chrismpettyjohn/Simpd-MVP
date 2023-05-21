@@ -44,6 +44,10 @@ export abstract class BaseRepository<Entity extends ObjectLiteral> {
     await this.repo.delete(conditions);
   }
 
+  async softDelete(conditions: FindOptionsWhere<Entity>): Promise<void> {
+    await this.repo.softDelete(conditions);
+  }
+
   getInstance(): Repository<Entity> {
     return this.repo;
   }

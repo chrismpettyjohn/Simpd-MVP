@@ -90,7 +90,7 @@ export class SubscriptionGroupResolver {
   async subscriptionGroupDelete(
     @Args('filter') filter: SubscriptionGroupFilterByOneInput
   ) {
-    await this.subscriptionGroupRepo.delete(filter);
+    await this.subscriptionGroupRepo.softDelete(filter);
     return true;
   }
 }

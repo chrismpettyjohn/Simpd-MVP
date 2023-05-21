@@ -156,7 +156,7 @@ export class ProfileResolver {
       throw new UnauthorizedException();
     }
 
-    await this.profileRepo.delete(filter);
+    await this.profileRepo.softDelete(filter);
     return true;
   }
 }

@@ -61,7 +61,7 @@ export class TagResolver {
 
   @Mutation(() => Boolean)
   async tagDelete(@Args('filter') filter: TagFilterByOneInput) {
-    await this.tagRepo.delete(filter);
+    await this.tagRepo.softDelete(filter);
     return true;
   }
 }

@@ -104,7 +104,7 @@ export class SessionResolver {
 
   @Mutation(() => Boolean)
   async sessionDelete(@Args('filter') filter: SessionFilterByOneInput) {
-    await this.sessionRepo.delete(filter);
+    await this.sessionRepo.softDelete(filter);
     return true;
   }
 }

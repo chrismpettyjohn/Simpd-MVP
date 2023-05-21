@@ -83,7 +83,7 @@ export class CommentResolver {
 
   @Mutation(() => Boolean)
   async commentDelete(@Args('filter') filter: CommentFilterByOneInput) {
-    await this.commentRepo.delete(filter);
+    await this.commentRepo.softDelete(filter);
     return true;
   }
 }

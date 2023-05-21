@@ -62,7 +62,7 @@ export class MediaResolver {
 
   @Mutation(() => Boolean)
   async mediaDelete(@Args('filter') filter: MediaFilterByOneInput) {
-    await this.mediaRepo.delete(filter);
+    await this.mediaRepo.softDelete(filter);
     return true;
   }
 }

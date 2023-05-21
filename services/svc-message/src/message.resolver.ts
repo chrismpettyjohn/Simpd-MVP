@@ -65,7 +65,7 @@ export class MessageResolver {
 
   @Mutation(() => Boolean)
   async messageDelete(@Args('filter') filter: MessageFilterByOneInput) {
-    await this.messageRepo.delete(filter);
+    await this.messageRepo.softDelete(filter);
     return true;
   }
 }

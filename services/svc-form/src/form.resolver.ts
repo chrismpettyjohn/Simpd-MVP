@@ -58,7 +58,7 @@ export class FormResolver {
 
   @Mutation(() => Boolean)
   async formDelete(@Args('filter') filter: FormFilterByOneInput) {
-    await this.formRepo.delete(filter);
+    await this.formRepo.softDelete(filter);
     return true;
   }
 }

@@ -124,7 +124,7 @@ export class UserResolver {
 
   @Mutation(() => Boolean)
   async userDelete(@Args('filter') filter: UserFilterByOneInput) {
-    await this.userRepo.delete(filter);
+    await this.userRepo.softDelete(filter);
     return true;
   }
 }

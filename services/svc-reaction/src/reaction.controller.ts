@@ -64,15 +64,15 @@ export class ReactionController {
   async reactionDeleteOne(
     filter: ReactionFindOneInput
   ): Promise<ReactionDeleteOneResponse> {
-    try {
-      await this.reactionRepo.delete(filter);
-      return {
-        success: true,
-      };
-    } finally {
-      return {
-        success: false,
-      };
-    }
+    console.log(filter);
+    await this.reactionRepo.softDelete({
+      id: filter.id,
+      serviceKey: filter.serviceKey,
+      resourceID: filter.resourceID,
+      profileID: filter.profileID,
+    });
+    return {
+      success: true,
+    };
   }
 }

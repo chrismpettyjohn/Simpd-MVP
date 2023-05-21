@@ -70,7 +70,7 @@ export class RoleResolver {
 
   @Mutation(() => Boolean)
   async roleDelete(@Args('filter') filter: RoleFilterByOneInput) {
-    await this.roleRepo.delete(filter);
+    await this.roleRepo.softDelete(filter);
     return true;
   }
 }

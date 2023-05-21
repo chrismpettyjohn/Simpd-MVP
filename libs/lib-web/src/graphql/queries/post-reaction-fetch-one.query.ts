@@ -1,8 +1,13 @@
 import gql from "graphql-tag";
 import { POST_REACTION_FRAGMENT, PostReactionFragment } from "graphql/fragments/post-reaction.fragment";
 
+export interface PostReactionFilterOneInput {
+  postID?: number;
+  profileID?: number;
+}
+
 export interface PostReactionFetchOneQueryVariables {
-  id: number;
+  filter: PostReactionFilterOneInput;
 }
 
 export interface PostReactionFetchOneQueryResponse {
