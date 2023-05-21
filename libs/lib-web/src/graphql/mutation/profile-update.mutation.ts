@@ -8,11 +8,13 @@ export interface ProfileUpdateInput {
   location?: string;
   websiteURL?: string;
   wishlistURL?: string;
+  profilePictureMediaID?: number;
+  coverPhotoMediaID?: number;
 }
 
 export interface ProfileUpdateMutationVariables {
   profileID?: number;
-  username?: number;
+  username?: string;
   changes?: ProfileUpdateInput;
 }
 

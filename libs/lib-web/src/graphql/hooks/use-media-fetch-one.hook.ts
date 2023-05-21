@@ -1,9 +1,9 @@
 import { useLazyQuery } from "@apollo/client";
 import { MediaFragment } from "../fragments/media.fragment";
-import { MEDIA_FETCH_ONE_QUERY, MediaFetchOneQueryResponse, MediaFetchOneQueryVariables } from "../queries/media-fetch-one.query";
+import { MEDIA_FETCH_ONE_QUERY, MediaFetchOneInput, MediaFetchOneQueryResponse, MediaFetchOneQueryVariables } from "../queries/media-fetch-one.query";
 
 export interface UseFetchMediaQueryResponse {
-  fetch(input: MediaFetchOneQueryVariables): Promise<MediaFragment>;
+  fetch(filter: MediaFetchOneInput): Promise<MediaFragment>;
   error?: Error;
   loading: boolean;
   data?: MediaFragment;
@@ -12,8 +12,8 @@ export interface UseFetchMediaQueryResponse {
 export function useMediaFetchOne(): UseFetchMediaQueryResponse {
   const [getMedia, { loading, error, data }] = useLazyQuery<MediaFetchOneQueryResponse, MediaFetchOneQueryVariables>(MEDIA_FETCH_ONE_QUERY);
 
-  const onFetchMedia = async (filter: MediaFetchOneQueryVariables): Promise<MediaFragment> => {
-    const matchingMedia = await getMedia({ variables: filter });
+  const onFetchMedia = async (filter: MediaFetchOneInput): Promise<MediaFragment> => {
+    const matchingMedia = await getMedia({ variables: { filter } });
     return matchingMedia.data!.media;
   }
 

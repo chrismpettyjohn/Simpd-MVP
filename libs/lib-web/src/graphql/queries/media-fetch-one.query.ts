@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 import { MEDIA_FRAGMENT, MediaFragment } from "../fragments/media.fragment";
 
 export interface MediaFetchOneInput {
-  mediaID?: number;
+  id?: number;
 }
 
 export interface MediaFetchOneQueryVariables {

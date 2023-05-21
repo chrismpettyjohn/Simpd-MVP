@@ -18,7 +18,7 @@ export function ChangeCoverPhoto({ profile, onChange }: ChangeCoverPhotoProps) {
     e.preventDefault();
     const newPhoto = e.target.files![0];
     const newPhotoMediaID = await mediaUpload.onUpload(newPhoto);
-    const newMedia = await mediaFetchOne.fetch({ mediaID: newPhotoMediaID });
+    const newMedia = await mediaFetchOne.fetch({ id: newPhotoMediaID });
     const newProfile = await profileUpdate.execute({
       profileID: profile.id,
       username: profile.username,

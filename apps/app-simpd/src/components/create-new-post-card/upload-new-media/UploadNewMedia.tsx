@@ -17,7 +17,7 @@ export function UploadNewMedia({ onCreation }: UploadNewMediaProps) {
     e.preventDefault();
     const newPhoto = e.target.files![0];
     const newPhotoMediaID = await mediaUpload.onUpload(newPhoto);
-    const newMedia = await mediaFetchOne.fetch({ mediaID: newPhotoMediaID });
+    const newMedia = await mediaFetchOne.fetch({ id: newPhotoMediaID });
 
     if (newMedia.type === MediaType.Other) {
       toast.error(`You can't upload that type of file`);

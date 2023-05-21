@@ -19,7 +19,7 @@ export function SessionContextProvider({ children }: SessionContextProviderProps
   }, []);
 
 
-  const setSession = (newSession?: SessionFragment) => {
+  const setSession = (newSession: SessionFragment | null) => {
     setSessionState(_ => {
       if (!newSession) {
         return null;
