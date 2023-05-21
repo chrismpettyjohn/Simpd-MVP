@@ -85,20 +85,6 @@
   color: var(--dl-color-simpd-brand);
 }
 
-.favorites-text2 {
-  color: var(--dl-color-simpd-s90);
-  cursor: pointer;
-  font-size: 1.41rem;
-  font-style: normal;
-  transition: 0.3s;
-  font-weight: 500;
-  line-height: 1.83rem;
-}
-
-.favorites-text2:hover {
-  color: var(--dl-color-simpd-brand);
-}
-
 .favorites-text3 {
   color: var(--dl-color-simpd-s90);
   cursor: pointer;
