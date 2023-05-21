@@ -6,6 +6,7 @@ export const BOOKMARK_FRAGMENT = gql`
     type
     profileID
     resourceID
+    bookmarkCollectionID
   }
 `
 
@@ -18,4 +19,5 @@ export interface BookmarkFragment {
   type: BookmarkType;
   profileID: number;
   resourceID: number;
+  bookmarkCollectionID: number;
 }
