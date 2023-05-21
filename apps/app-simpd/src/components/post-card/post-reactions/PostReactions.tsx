@@ -21,6 +21,7 @@ export function PostReactions({ post }: PostReactionsProps) {
 
     if (!userAlreadyLikedPost) {
       await postReactionCreate.execute({ postID: post.id, reaction: ReactionType.Like });
+
     }
 
     if (userAlreadyLikedPost) {
@@ -35,11 +36,13 @@ export function PostReactions({ post }: PostReactionsProps) {
     onFetchPostReactions();
   }, [post.id]);
 
+  const isLoading = postReactionFetchMany.loading ?? postReactionCreate.loading ?? postReactionDelete.loading;
+
   return (
     <PostStatElement onClick={onReactToPost}>
       <h3>
         {
-          postReactionFetchMany.loading ? <i className="fa fa-spinner fa-spin" /> : postReactionFetchMany.data?.length ?? 0
+          isLoading ? <i className="fa fa-spinner fa-spin" /> : <>{postReactionFetchMany.data?.length ?? 0}</>
         }
       </h3>
       <p>

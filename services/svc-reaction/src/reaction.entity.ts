@@ -2,7 +2,6 @@ import {ReactionType} from '@simpd/lib-client';
 import {
   Column,
   CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   Index,
   PrimaryGeneratedColumn,
@@ -36,7 +35,4 @@ export class ReactionEntity {
 
   @UpdateDateColumn({name: 'updated_at', type: 'timestamp'})
   updatedAt?: Date;
-
-  @DeleteDateColumn({name: 'deleted_at', type: 'timestamp'})
-  deletedAt?: Date;
 }

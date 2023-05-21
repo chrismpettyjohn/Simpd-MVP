@@ -10,9 +10,12 @@ export interface UsePostReactionFetchManyQueryResponse {
 }
 
 export function usePostReactionFetchMany(): UsePostReactionFetchManyQueryResponse {
-  const [getPostReaction, { loading, error, data }] = useLazyQuery<PostReactionFetchManyQueryResponse, PostReactionFetchManyQueryVariables>(POST_REACTION_FETCH_MANY_QUERY);
+  const [getPostReaction, { loading, error, data, refetch }] = useLazyQuery<PostReactionFetchManyQueryResponse, PostReactionFetchManyQueryVariables>(POST_REACTION_FETCH_MANY_QUERY);
 
   const onFetchPostReaction = async ({ filter }: PostReactionFetchManyQueryVariables) => {
+    if (data) {
+      refetch();
+    }
     const matchingPostReactions = await getPostReaction({ variables: { filter } })
     return matchingPostReactions.data!.postReactions;
   }

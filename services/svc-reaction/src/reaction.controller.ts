@@ -24,6 +24,12 @@ export class ReactionController {
   async reactionCreateOne(
     input: ReactionCreateOneInput
   ): Promise<ReactionCreateOneResponse> {
+    const searchParams: ReactionFindOneInput = {
+      serviceKey: input.serviceKey,
+      resourceID: input.resourceID,
+      profileID: input.profileID,
+    };
+
     const newReaction = await this.reactionRepo.create(input);
     const reaction = reactionEntityToReactionWire(newReaction);
     return {
@@ -64,9 +70,7 @@ export class ReactionController {
   async reactionDeleteOne(
     filter: ReactionFindOneInput
   ): Promise<ReactionDeleteOneResponse> {
-    console.log(filter);
-    await this.reactionRepo.softDelete({
-      id: filter.id,
+    await this.reactionRepo.getInstance().delete({
       serviceKey: filter.serviceKey,
       resourceID: filter.resourceID,
       profileID: filter.profileID,
