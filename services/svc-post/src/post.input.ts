@@ -28,7 +28,7 @@ export class PostWithImageCreateInput {
   mediaID!: number;
 
   @Field(() => String)
-  caption!: string;
+  content!: string;
 }
 
 @InputType()
@@ -37,7 +37,7 @@ export class PostWithVideoCreateInput {
   mediaID!: number;
 
   @Field(() => String)
-  caption!: string;
+  content!: string;
 }
 
 @InputType()
@@ -46,7 +46,7 @@ export class PostWithAlbumInput {
   mediaIDs!: number[];
 
   @Field(() => String)
-  caption!: string;
+  content!: string;
 }
 
 @InputType()
@@ -58,5 +58,5 @@ export class PostWithSharedContentInput {
   resourceID!: number;
 
   @Field(() => String)
-  caption!: string;
+  content!: string;
 }

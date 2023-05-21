@@ -6,12 +6,17 @@ import { PostFragment, PostType } from '@simpd/lib-web';
 import { PostReactions } from './post-reactions/PostReactions';
 import { PostFavorites } from './post-favorites/PostFavorites';
 import { TextPostContent } from './text-post-content/TextPostContent';
+import { ImagePostContent } from './image-post-content/ImagePostContent';
 import { AuthorBlockLarge } from 'components/author-block-large/AuthorBlockLarge';
 import { PostCardContent, PostCardElement, PostStatsContainer } from './PostCard.styled';
 
 const getPostCardElement = (post: PostFragment) => {
   if (post.type === PostType.Text) {
     return <TextPostContent post={post} />;
+  }
+
+  if (post.type === PostType.Image) {
+    return <ImagePostContent post={post as any} />;
   }
 
   throw new Error('Unsupported post type');
@@ -35,5 +40,3 @@ export function PostCard({ post, hideAuthor = false }: PostCardProps) {
     </Link>
   )
 }
-
-//  <PostCardImage src="https://i.imgur.com/CesvKGF.png" />

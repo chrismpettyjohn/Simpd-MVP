@@ -64,7 +64,7 @@ export function postEntityToPostWithImageWire(
     ...postEntityToBasePost(postEntity),
     type: postEntity.postType,
     mediaID: postEntity.postData.mediaID,
-    caption: postEntity.postData.caption,
+    content: postEntity.postData.content,
   };
 }
 
@@ -75,7 +75,7 @@ export function postEntityToPostWithVideoWire(
     ...postEntityToBasePost(postEntity),
     type: postEntity.postType,
     mediaID: postEntity.postData.mediaID,
-    caption: postEntity.postData.caption,
+    content: postEntity.postData.content,
   };
 }
 
@@ -86,7 +86,7 @@ export function postEntityToPostWithAlbumWire(
     ...postEntityToBasePost(postEntity),
     type: postEntity.postType,
     mediaIDs: postEntity.postData.mediaIDs,
-    caption: postEntity.postData.caption,
+    content: postEntity.postData.content,
   };
 }
 
@@ -98,6 +98,6 @@ export function postEntityToPostWithSharedContentWire(
     type: postEntity.postType,
     resourceType: postEntity.postData.resourceType,
     resourceID: postEntity.postData.resourceID,
-    caption: postEntity.postData.caption,
+    content: postEntity.postData.content,
   };
 }

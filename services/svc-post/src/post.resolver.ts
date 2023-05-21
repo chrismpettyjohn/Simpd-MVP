@@ -21,7 +21,6 @@ import {
 import {
   Args,
   Mutation,
-  ObjectType,
   Query,
   ResolveReference,
   Resolver,
@@ -187,7 +186,7 @@ export class PostResolver {
       profileID: matchingProfile.id,
       postData: {
         mediaID: input.mediaID,
-        caption: input.caption,
+        content: input.content,
       },
       postType: PostType.Image,
     });
@@ -224,7 +223,7 @@ export class PostResolver {
       profileID: matchingProfile.id,
       postData: {
         mediaID: input.mediaID,
-        caption: input.caption,
+        content: input.content,
       },
       postType: PostType.Video,
     });
@@ -266,7 +265,7 @@ export class PostResolver {
       profileID: matchingProfile.id,
       postData: {
         mediaIDs: input.mediaIDs,
-        caption: input.caption,
+        content: input.content,
       },
       postType: PostType.Album,
     });
@@ -296,7 +295,7 @@ export class PostResolver {
       postData: {
         resourceType: input.resourceType,
         resourceID: input.resourceID,
-        caption: input.caption,
+        content: input.content,
       },
       postType: PostType.SharedContent,
     });

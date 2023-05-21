@@ -25,7 +25,7 @@ export type PostWithTextWire = BasePost & BasePostWithText;
 export interface BasePostWithImage {
   type: PostType.Image;
   mediaID: number;
-  caption: string;
+  content: string;
 }
 
 export type PostWithImageWire = BasePost & BasePostWithImage;
@@ -33,7 +33,7 @@ export type PostWithImageWire = BasePost & BasePostWithImage;
 export interface BasePostWithAlbum {
   type: PostType.Album;
   mediaIDs: number[];
-  caption: string;
+  content: string;
 }
 
 export type PostWithAlbumWire = BasePost & BasePostWithAlbum;
@@ -41,7 +41,7 @@ export type PostWithAlbumWire = BasePost & BasePostWithAlbum;
 export interface BasePostWithVideo {
   type: PostType.Video;
   mediaID: number;
-  caption: string;
+  content: string;
 }
 
 export type PostWithVideoWire = BasePost & BasePostWithVideo;
@@ -55,7 +55,7 @@ export interface BasePostWithSharedContent {
   type: PostType.SharedContent;
   resourceType: PostSharedContentType;
   resourceID: number;
-  caption: string;
+  content: string;
 }
 
 export type PostWithSharedContentWire = BasePost & BasePostWithSharedContent;

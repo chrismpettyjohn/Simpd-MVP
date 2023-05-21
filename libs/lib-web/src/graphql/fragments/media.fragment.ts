@@ -14,9 +14,9 @@ export const MEDIA_FRAGMENT = gql`
 `
 
 export enum MediaType {
-  Image,
-  Video,
-  Other,
+  Image = 'Image',
+  Video = 'Video',
+  Other = 'Other',
 }
 
 export interface MediaDetailsModel {

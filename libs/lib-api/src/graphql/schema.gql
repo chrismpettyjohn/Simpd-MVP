@@ -2,39 +2,45 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type MediaDetailsModel {
-  sizeInBytes: Float
-  originalFileName: String
-}
-
-type MediaModel {
+type UserModel {
   id: Float
-  type: MediaType
-  profileID: Float
-  url: String
-  details: MediaDetailsModel
-}
-
-enum MediaType {
-  Image
-  Video
-  Other
+  email: String
 }
 
 type Query {
-  media(filter: MediaFilterByOneInput!): MediaModel!
-  medias(filter: MediaFilterByManyInput): [MediaModel!]!
+  user(filter: UserFilterByOneInput!): UserModel!
+  users(filter: UserFilterByManyInput): [UserModel!]!
 }
 
-input MediaFilterByOneInput {
+input UserFilterByOneInput {
   id: Float
+  email: String
 }
 
-input MediaFilterByManyInput {
+input UserFilterByManyInput {
   ids: [Float!]
-  profileIDs: [Float!]
+  emails: [String!]
 }
 
 type Mutation {
-  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
+  userCreate(input: UserCreateInput!): UserModel!
+  userUpdate(filter: UserFilterByOneInput!, input: UserUpdateInput!): UserModel!
+  userChangePassword(filter: UserFilterByOneInput!, input: UserChangePasswordInput!): Boolean!
+  userDelete(filter: UserFilterByOneInput!): Boolean!
+}
+
+input UserCreateInput {
+  email: String!
+  password: String!
+}
+
+input UserUpdateInput {
+  email: String
+  password: String
+}
+
+input UserChangePasswordInput {
+  currentPassword: String!
+  newPassword: String!
+  newPasswordAgain: String!
 }

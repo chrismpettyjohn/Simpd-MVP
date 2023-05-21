@@ -44,7 +44,7 @@ export class PostWithImageModel {
   mediaID?: number;
 
   @Field(() => String, {nullable: true})
-  caption?: string;
+  content?: string;
 }
 
 @ObjectType()
@@ -66,7 +66,7 @@ export class PostWithVideoModel {
   mediaID?: number;
 
   @Field(() => String, {nullable: true})
-  caption?: string;
+  content?: string;
 }
 
 @ObjectType()
@@ -113,7 +113,7 @@ export class PostWithSharedContentModel {
   resourceID?: number;
 
   @Field(() => String, {nullable: true})
-  caption?: string;
+  content?: string;
 }
 
 export const PostUnion = createUnionType({

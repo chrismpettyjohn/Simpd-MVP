@@ -1,7 +1,8 @@
+import { toast } from 'react-toastify';
 import { createPortal } from 'react-dom';
 import React, { ChangeEvent, useRef } from 'react';
 import { UploadNewMediaProps } from './UploadNewMedia.types';
-import { useMediaFetchOne, useMediaUpload } from '@simpd/lib-web';
+import { MediaType, useMediaFetchOne, useMediaUpload } from '@simpd/lib-web';
 
 export function UploadNewMedia({ onCreation }: UploadNewMediaProps) {
   const mediaUpload = useMediaUpload();
@@ -17,6 +18,11 @@ export function UploadNewMedia({ onCreation }: UploadNewMediaProps) {
     const newPhoto = e.target.files![0];
     const newPhotoMediaID = await mediaUpload.onUpload(newPhoto);
     const newMedia = await mediaFetchOne.fetch({ mediaID: newPhotoMediaID });
+
+    if (newMedia.type === MediaType.Other) {
+      toast.error(`You can't upload that type of file`);
+      return;
+    }
     onCreation(newMedia);
   }
 

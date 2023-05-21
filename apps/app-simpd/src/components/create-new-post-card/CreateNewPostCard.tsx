@@ -3,11 +3,14 @@ import { Button } from 'components/button/Button';
 import React, { SyntheticEvent, useState } from 'react';
 import { CreateNewPostCardProps } from './CreateNewPostCard.types';
 import { UploadNewMedia } from './upload-new-media/UploadNewMedia';
-import { MediaFragment, usePostWithTextCreate } from '@simpd/lib-web';
+import { MediaFragment, MediaType, PostFragment, usePostWithAlbumCreate, usePostWithImageCreate, usePostWithTextCreate, usePostWithVideoCreate } from '@simpd/lib-web';
 
 export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
   const [content, setContent] = useState('');
   const postWithTextCreate = usePostWithTextCreate();
+  const postWithImageCreate = usePostWithImageCreate();
+  const postWithVideoCreate = usePostWithVideoCreate();
+  const postWithAlbumCreate = usePostWithAlbumCreate();
   const [media, setMedia] = useState<MediaFragment[]>([]);
 
   const onAddMedia = (newMedia: MediaFragment) => {
@@ -25,7 +28,29 @@ export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
       return;
     }
 
-    const newPost = await postWithTextCreate.execute({ content });
+    let newPost: PostFragment | null = null;
+
+    if (media.length === 0) {
+      newPost = await postWithTextCreate.execute({ content });
+    }
+
+    if (media.length > 1) {
+      const mediaIDs = media.map(_ => _.id);
+      newPost = await postWithAlbumCreate.execute({ content, mediaIDs: mediaIDs });
+    }
+
+    if (media.length === 1 && media[0].type === MediaType.Image) {
+      newPost = await postWithImageCreate.execute({ content, mediaID: media[0].id });
+    }
+
+    if (media.length === 1 && media[0].type === MediaType.Video) {
+      newPost = await postWithVideoCreate.execute({ content, mediaID: media[0].id });
+    }
+
+    if (!newPost) {
+      throw new Error('Failed to create post');
+    }
+
     onCreate(newPost);
     setContent('');
   }
