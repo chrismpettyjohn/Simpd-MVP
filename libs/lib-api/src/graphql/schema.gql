@@ -2,127 +2,39 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ProfileModel {
-  id: Float!
+type MediaDetailsModel {
+  sizeInBytes: Float
+  originalFileName: String
 }
 
-type PostWithTextModel {
+type MediaModel {
   id: Float
+  type: MediaType
   profileID: Float
-  profile: ProfileModel
-  type: PostType
-  content: String
+  url: String
+  details: MediaDetailsModel
 }
 
-enum PostType {
-  Text
+enum MediaType {
   Image
   Video
-  Album
-  SharedContent
-}
-
-type PostWithImageModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  type: PostType
-  mediaID: Float
-  caption: String
-}
-
-type PostWithVideoModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  type: PostType
-  mediaID: Float
-  caption: String
-}
-
-type PostWithAlbumModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  type: PostType
-  mediaIDs: [Float!]
-  caption: String
-}
-
-type PostWithSharedContentModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  type: PostType
-  resourceType: PostSharedContentType
-  resourceID: Float
-  caption: String
-}
-
-enum PostSharedContentType {
-  Post
-  Media
+  Other
 }
 
 type Query {
-  post(filter: PostFilterByOneInput!): PostUnion!
-  posts(filter: PostFilterByManyInput): [PostUnion!]!
-  postReaction(filter: PostFilterByOneInput!): PostUnion!
-  postReactions(filter: PostFilterByManyInput!): [PostUnion!]!
+  media(filter: MediaFilterByOneInput!): MediaModel!
+  medias(filter: MediaFilterByManyInput): [MediaModel!]!
 }
 
-union PostUnion = PostWithTextModel | PostWithImageModel | PostWithVideoModel | PostWithAlbumModel | PostWithSharedContentModel
-
-input PostFilterByOneInput {
-  id: Float!
+input MediaFilterByOneInput {
+  id: Float
 }
 
-input PostFilterByManyInput {
+input MediaFilterByManyInput {
   ids: [Float!]
   profileIDs: [Float!]
 }
 
 type Mutation {
-  postWithTextCreate(input: PostWithTextCreateInput!): PostWithTextModel!
-  postWithImageCreate(input: PostWithImageCreateInput!): PostWithImageModel!
-  postWithVideoCreate(input: PostWithVideoCreateInput!): PostWithVideoModel!
-  postWithAlbumCreate(input: PostWithAlbumInput!): PostWithAlbumModel!
-  postWithSharedContentCreate(input: PostWithSharedContentInput!): PostWithSharedContentModel!
-  postDelete(filter: PostFilterByOneInput!): Boolean!
-  postReactionCreate(input: PostReactionInput!): PostWithTextModel!
-  postReactionDelete(filter: PostFilterByOneInput!): Boolean!
-}
-
-input PostWithTextCreateInput {
-  content: String!
-}
-
-input PostWithImageCreateInput {
-  mediaID: Float!
-  caption: String!
-}
-
-input PostWithVideoCreateInput {
-  mediaID: Float!
-  caption: String!
-}
-
-input PostWithAlbumInput {
-  mediaIDs: [Float!]!
-  caption: String!
-}
-
-input PostWithSharedContentInput {
-  resourceType: PostSharedContentType!
-  resourceID: Float!
-  caption: String!
-}
-
-input PostReactionInput {
-  postID: Float!
-  reaction: ReactionType!
-}
-
-enum ReactionType {
-  Like
+  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
 }

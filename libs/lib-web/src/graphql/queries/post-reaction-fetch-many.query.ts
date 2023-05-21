@@ -1,19 +1,22 @@
 import gql from "graphql-tag";
 import { POST_REACTION_FRAGMENT, PostReactionFragment } from "graphql/fragments/post-reaction.fragment";
 
-export interface PostReactionFetchManyQueryVariables {
-  ids?: number[];
+export interface PostReactionFilterManyInput {
   postIDs?: number[];
   profileIDs?: number[];
 }
 
-export interface PostReactionFetchManyQueryResponse {
-  postReaction: PostReactionFragment;
+export interface PostReactionFetchManyQueryVariables {
+  filter: PostReactionFilterManyInput;
 }
 
-export const POST_REACTION_FETCH_ONE_QUERY = gql`
+export interface PostReactionFetchManyQueryResponse {
+  postReactions: PostReactionFragment[];
+}
+
+export const POST_REACTION_FETCH_MANY_QUERY = gql`
   ${POST_REACTION_FRAGMENT}
-  query($filter: PostReactionFetchManyInput!) {
+  query($filter: PostReactionFilterManyInput!) {
     postReactions(
       filter: $filter
     ) {

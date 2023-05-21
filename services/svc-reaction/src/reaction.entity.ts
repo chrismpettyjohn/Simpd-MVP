@@ -6,10 +6,12 @@ import {
   Entity,
   Index,
   PrimaryGeneratedColumn,
+  Unique,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity({name: 'reactions', schema: 'reactions'})
+@Unique('uniq_reaction_per_resource', ['serviceKey', 'resourceID', 'profileID'])
 export class ReactionEntity {
   @PrimaryGeneratedColumn()
   id?: number;

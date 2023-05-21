@@ -1,41 +1,46 @@
 import {SessionWire} from '@simpd/lib-client';
 import {GetSession, HasSession} from '@simpd/lib-api';
 import {PostReactionModel} from './post-reaction.model';
-import {PostReactionInput} from './post-reaction.input';
 import {PostReactionService} from './post-reaction.service';
-import {reactionWireToPostReactionWire} from './post-reaction.wire';
-import {PostUnion, PostWithTextModel} from './post.model';
 import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
-import {PostFilterByManyInput, PostFilterByOneInput} from './post.input';
+import {reactionWireToPostReactionWire} from './post-reaction.wire';
+import {
+  PostReactionFilterManyInput,
+  PostReactionFilterOneInput,
+  PostReactionCreateInput,
+} from './post-reaction.input';
 
 @Resolver(() => PostReactionModel)
 export class PostReactionResolver {
   constructor(private readonly postReactionService: PostReactionService) {}
 
-  @Query(() => PostUnion)
+  @Query(() => PostReactionModel)
   @HasSession()
   async postReaction(
-    @Args('filter') filter: PostFilterByOneInput
+    @Args('filter', {type: () => PostReactionFilterOneInput})
+    filter: PostReactionFilterOneInput
   ): Promise<PostReactionModel> {
     const matchingReaction = await this.postReactionService.findOne(filter);
     return reactionWireToPostReactionWire(matchingReaction);
   }
 
-  @Query(() => [PostUnion])
+  @Query(() => [PostReactionModel])
   @HasSession()
   async postReactions(
-    @Args('filter', {type: () => PostFilterByManyInput})
-    filter: PostFilterByManyInput
+    @Args('filter', {type: () => PostReactionFilterManyInput})
+    filter: PostReactionFilterManyInput
   ): Promise<PostReactionModel[]> {
-    const matchingReactions = await this.postReactionService.findMany(filter);
+    const matchingReactions = await this.postReactionService.findMany({
+      resourceIDs: filter.postIDs,
+    });
     return matchingReactions.map(reactionWireToPostReactionWire);
   }
 
-  @Mutation(() => PostWithTextModel)
+  @Mutation(() => PostReactionModel)
   @HasSession()
   async postReactionCreate(
     @GetSession() session: SessionWire,
-    @Args('input') input: PostReactionInput
+    @Args('input') input: PostReactionCreateInput
   ): Promise<PostReactionModel> {
     const newReaction = await this.postReactionService.createOne({
       profileID: session.profileID,
@@ -46,7 +51,10 @@ export class PostReactionResolver {
   }
 
   @Mutation(() => Boolean)
-  async postReactionDelete(@Args('filter') filter: PostFilterByOneInput) {
+  async postReactionDelete(
+    @Args('filter', {type: () => PostReactionFilterOneInput})
+    filter: PostReactionFilterOneInput
+  ) {
     return this.postReactionService.deleteOne(filter);
   }
 }

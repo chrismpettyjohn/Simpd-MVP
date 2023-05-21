@@ -24,18 +24,12 @@ export class ReactionController {
   async reactionCreateOne(
     input: ReactionCreateOneInput
   ): Promise<ReactionCreateOneResponse> {
-    try {
-      const newReaction = await this.reactionRepo.create(input);
-      const reaction = reactionEntityToReactionWire(newReaction);
-      return {
-        success: true,
-        reaction,
-      };
-    } finally {
-      return {
-        success: false,
-      };
-    }
+    const newReaction = await this.reactionRepo.create(input);
+    const reaction = reactionEntityToReactionWire(newReaction);
+    return {
+      success: true,
+      reaction,
+    };
   }
 
   @MessagePattern(SVC_REACTION_INTERNAL_EVENT_FIND_ONE)
@@ -43,6 +37,9 @@ export class ReactionController {
     const matchingReaction = await this.reactionRepo.findOneOrFail({
       where: {
         id: filter.id,
+        serviceKey: filter.serviceKey,
+        resourceID: filter.resourceID,
+        profileID: filter.profileID,
       },
     });
     return reactionEntityToReactionWire(matchingReaction);
@@ -57,6 +54,7 @@ export class ReactionController {
         serviceKey: filter.serviceKey,
         id: filter.ids && In(filter.ids),
         resourceID: filter.resourceIDs && In(filter.resourceIDs),
+        profileID: filter.profileIDs && In(filter.profileIDs),
       },
     });
     return matchingReactions.map(reactionEntityToReactionWire);

@@ -11,7 +11,7 @@ export interface PostReactionFetchOneQueryResponse {
 
 export const POST_REACTION_FETCH_ONE_QUERY = gql`
   ${POST_REACTION_FRAGMENT}
-  query($filter: PostReactionFetchOneInput!) {
+  query($filter: PostReactionFilterOneInput!) {
     postReaction(
       filter: $filter
     ) {

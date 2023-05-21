@@ -14,12 +14,14 @@ export interface ReactionFindOneInput {
   serviceKey: string;
   id?: number;
   resourceID?: number;
+  profileID?: number;
 }
 
 export interface ReactionFindManyInput {
   serviceKey: string;
   ids?: number[];
   resourceIDs?: number[];
+  profileIDs?: number[];
 }
 
 export interface ReactionCreateOneInput {
