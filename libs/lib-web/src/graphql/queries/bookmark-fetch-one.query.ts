@@ -16,7 +16,7 @@ export interface BookmarkFetchOneQueryResponse {
 
 export const BOOKMARK_FETCH_ONE_QUERY = gql`
   ${BOOKMARK_FRAGMENT}
-  query($filter: BookmarkFetchOneInput!) {
+  query($filter: BookmarkFindOneInput!) {
     bookmark(
       filter: $filter
     ) {

@@ -48,7 +48,7 @@ export function SiteHeader() {
           <Link to="/messages">
             <i className="fa fa-comment" />
           </Link>
-          <Link to="/favorites">
+          <Link to="/bookmarks">
             <i className="fa fa-heart" />
           </Link>
         </SiteHeaderNavigation>

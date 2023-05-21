@@ -6,7 +6,7 @@ import { MessagesScreen } from './messages/Messages';
 import { ViewPostScreen } from './view-post/ViewPost';
 import { GuestGuard, UserGuard } from '@simpd/lib-web';
 import { DashboardScreen } from './dashboard/Dashboard';
-import { FavoritesScreen } from './favorites/Favorites';
+import { BookmarksScreen } from './bookmarks/Bookmarks';
 import { UserProfileScreen } from './user-profile/UserProfile';
 import { PageNotFoundScreen } from './page-not-found/PageNotFound';
 import { NotificationsScreen } from './notifications/Notifications';
@@ -51,10 +51,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     ),
   },
   {
-    path: '/favorites',
+    path: '/bookmarks',
     view: (
       <UserGuard redirect>
-        <FavoritesScreen />
+        <BookmarksScreen />
       </UserGuard>
     ),
   },
