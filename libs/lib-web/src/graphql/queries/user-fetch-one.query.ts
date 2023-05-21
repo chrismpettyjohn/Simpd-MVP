@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { USER_FRAGMENT, UserFragment } from "graphql/fragments/user.fragment";
+import { USER_FRAGMENT, UserFragment } from "../fragments/user.fragment";
 
 export interface UserFetchOneQueryVariables {
   userID: number;

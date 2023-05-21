@@ -2,16 +2,17 @@ import './SignIn.css';
 import jwtDecode from 'jwt-decode';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'wouter';
-import { Card } from 'components/card/Card';
-import { PageTitle } from 'components/page-title/PageTitle';
+import { Card } from '../../components/card/Card';
+import { PageTitle } from '../../components/page-title/PageTitle';
 import React, { SyntheticEvent, useContext, useState } from 'react'
-import { SessionContents, sessionContext, useProfileFetchOne, useSessionCreate } from '@simpd/lib-web';
+import { SessionContents, sessionContext, useProfileFetchOne, useSessionCreate, useSessionFetchOne } from '@simpd/lib-web';
 
 export function SignInScreen() {
   const [, setLocation] = useLocation();
   const [email, setEmail] = useState('');
   const sessionCreate = useSessionCreate();
   const profileFetch = useProfileFetchOne();
+  const sessionFetchOne = useSessionFetchOne();
   const [password, setPassword] = useState('');
   const { setSession } = useContext(sessionContext);
 
@@ -27,7 +28,8 @@ export function SignInScreen() {
       const newSession = await sessionCreate.execute({ email, password });
       const sessionContents: SessionContents = jwtDecode(newSession);
       const matchingProfile = await profileFetch.fetch({ id: sessionContents.profileID })
-      setSession({ ...sessionContents, profile: matchingProfile });
+      const matchingSession = await sessionFetchOne.fetch({ id: sessionContents.sessionID });
+      setSession({ ...matchingSession, profile: matchingProfile });
       setLocation('/settings/profile');
     } catch (e) {
       alert('Something went wrong')

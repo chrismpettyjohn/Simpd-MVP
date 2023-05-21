@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { POST_WITH_VIDEO_FRAGMENT, PostWithVideoFragment } from "graphql/fragments/post.fragment";
+import { POST_WITH_VIDEO_FRAGMENT, PostWithVideoFragment } from "../fragments/post.fragment";
 
 export interface PostWithVideoCreateInput {
   content: string;

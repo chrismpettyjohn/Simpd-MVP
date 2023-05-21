@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { SessionFragment } from "graphql/fragments/session.fragment";
-import { SESSION_FETCH_ONE_QUERY, SessionFetchOneQueryResponse, SessionFetchOneQueryVariables } from "graphql/queries/session-fetch-one.query";
+import { SessionFragment } from "../fragments/session.fragment";
+import { SESSION_FETCH_ONE_QUERY, SessionFetchOneQueryResponse, SessionFetchOneQueryVariables } from "../queries/session-fetch-one.query";
 
 export interface UseSessionFetchOneQueryResponse {
   fetch(input: SessionFetchOneQueryVariables): Promise<SessionFragment>;

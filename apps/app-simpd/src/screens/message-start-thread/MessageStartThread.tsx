@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card } from 'components/card/Card';
-import { CardBody, CardBodyContent, CardContainer, CardHeader, CardHeaderContent } from 'components/card/Card.sty';
-import { Button } from 'components/button/Button';
+import { Card } from '../../components/card/Card';
+import { CardBody, CardBodyContent, CardContainer } from '../../components/card/Card.sty';
+import { Button } from '../../components/button/Button';
 
 export function MessageStartThreadScreen() {
   return (

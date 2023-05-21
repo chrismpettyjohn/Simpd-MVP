@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { POST_WITH_IMAGE_FRAGMENT, PostWithImageFragment } from "graphql/fragments/post.fragment";
+import { POST_WITH_IMAGE_FRAGMENT, PostWithImageFragment } from "../fragments/post.fragment";
 
 export interface PostWithImageCreateInput {
   content: string;

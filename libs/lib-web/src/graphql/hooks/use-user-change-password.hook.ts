@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { USER_CHANGE_PASSWORD_MUTATION, UserChangePasswordMutationVariables } from "graphql/mutation/user-change-password.mutation";
+import { USER_CHANGE_PASSWORD_MUTATION, UserChangePasswordMutationVariables } from "../mutation/user-change-password.mutation";
 
 export interface UseUserChangePasswordResponse {
   execute({ userID, input }: UserChangePasswordMutationVariables): Promise<void>;

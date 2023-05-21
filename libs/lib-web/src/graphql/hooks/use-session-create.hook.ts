@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { LOCAL_STORAGE_SESSION_TOKEN } from "app/app.constant";
+import { LOCAL_STORAGE_SESSION_TOKEN } from "../../app/app.constant";
 import { SESSION_CREATE_MUTATION, SessionCreateMutationResponse, SessionCreateMutationVariables } from "../mutation/session-create.mutation";
 
 export interface UseSessionCreateResponse {

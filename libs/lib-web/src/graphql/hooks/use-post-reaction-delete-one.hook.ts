@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { PostReactionFilterOneInput } from "graphql/queries/post-reaction-fetch-one.query";
-import { POST_REACTION_DELETE_ONE_MUTATION, PostReactionDeleteMutationResponse, PostReactionDeleteMutationVariables } from "graphql/mutation/post-reaction-delete-one.mutation";
+import { PostReactionFilterOneInput } from "../queries/post-reaction-fetch-one.query";
+import { POST_REACTION_DELETE_ONE_MUTATION, PostReactionDeleteMutationResponse, PostReactionDeleteMutationVariables } from "../mutation/post-reaction-delete-one.mutation";
 
 export interface UsePostReactionDeleteResponse {
   execute(filter: PostReactionFilterOneInput): Promise<boolean>;

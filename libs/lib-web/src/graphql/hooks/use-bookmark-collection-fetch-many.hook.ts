@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { BookmarkCollectionFragment } from "graphql/fragments/bookmark-collection.fragment";
-import { BOOKMARK_COLLECTION_FETCH_MANY_QUERY, BookmarkCollectionFetchManyInput, BookmarkCollectionFetchManyQueryResponse, BookmarkCollectionFetchManyQueryVariables } from "graphql/queries/bookmark-collection-fetch-many.query";
+import { BookmarkCollectionFragment } from "../fragments/bookmark-collection.fragment";
+import { BOOKMARK_COLLECTION_FETCH_MANY_QUERY, BookmarkCollectionFetchManyInput, BookmarkCollectionFetchManyQueryResponse, BookmarkCollectionFetchManyQueryVariables } from "../queries/bookmark-collection-fetch-many.query";
 
 export interface UseFetchBookmarkCollectionFetchManyResponse {
   fetch(filter: BookmarkCollectionFetchManyInput): Promise<BookmarkCollectionFragment[]>;

@@ -2,9 +2,9 @@ import './Messages.css';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { MessagesContainer } from './Messages.sty';
-import { PageTitle } from 'components/page-title/PageTitle';
-import { MessageCard } from 'components/message-card/MessageCard';
-import { Button } from 'components/button/Button';
+import { PageTitle } from '../../components/page-title/PageTitle';
+import { MessageCard } from '../../components/message-card/MessageCard';
+import { Button } from '../../components/button/Button';
 import { Link } from 'wouter';
 
 export function MessagesScreen() {

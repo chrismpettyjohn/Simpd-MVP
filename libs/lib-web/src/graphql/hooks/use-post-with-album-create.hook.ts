@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { PostWithAlbumFragment } from "graphql/fragments/post.fragment";
-import { POST_WITH_ALBUM_CREATE_MUTATION, PostWithAlbumCreateInput, PostWithAlbumCreateMutationResponse, PostWithAlbumCreateMutationVariables } from "graphql/mutation/post-with-album-create.mutation";
+import { PostWithAlbumFragment } from "../fragments/post.fragment";
+import { POST_WITH_ALBUM_CREATE_MUTATION, PostWithAlbumCreateInput, PostWithAlbumCreateMutationResponse, PostWithAlbumCreateMutationVariables } from "../mutation/post-with-album-create.mutation";
 
 export interface UsePostWithAlbumCreateResponse {
   execute(input: PostWithAlbumCreateInput): Promise<PostWithAlbumFragment>;

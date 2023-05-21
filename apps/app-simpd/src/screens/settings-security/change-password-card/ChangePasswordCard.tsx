@@ -1,7 +1,7 @@
-import { Button } from 'components/button/Button';
+import { Button } from '../../../components/button/Button';
 import React, { SyntheticEvent, useContext, useState } from 'react';
 import { sessionContext, useUserChangePassword } from '@simpd/lib-web';
-import { CardAccordion } from 'components/card-accordion/CardAccordion';
+import { CardAccordion } from '../../../components/card-accordion/CardAccordion';
 
 export function ChangePasswordCard() {
   const { session } = useContext(sessionContext);

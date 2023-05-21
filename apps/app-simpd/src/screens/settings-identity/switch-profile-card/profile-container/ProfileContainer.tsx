@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { sessionContext } from '@simpd/lib-web';
-import { Button } from 'components/button/Button';
+import { Button } from '../../../../components/button/Button';
 import { ProfileContainerProps } from './ProfileContainer.types';
 import { useSwitchProfile } from 'hooks/use-switch-profile.hook';
 import { ProfileElement, ProfileIndicator } from './ProfileContainer.sty';

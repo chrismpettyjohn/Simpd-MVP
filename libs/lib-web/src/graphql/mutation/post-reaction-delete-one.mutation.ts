@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { PostReactionFilterOneInput } from "graphql/queries/post-reaction-fetch-one.query";
+import { PostReactionFilterOneInput } from "../queries/post-reaction-fetch-one.query";
 
 export interface PostReactionDeleteMutationVariables {
   filter: PostReactionFilterOneInput;

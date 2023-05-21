@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
-import { UserFragment } from "graphql/fragments/user.fragment";
-import { UserFetchOneQueryVariables } from "graphql/queries/user-fetch-one.query";
+import { UserFragment } from "../fragments/user.fragment";
+import { UserFetchOneQueryVariables } from "../queries/user-fetch-one.query";
 
 export interface UserUpdateInput {
   email: string;

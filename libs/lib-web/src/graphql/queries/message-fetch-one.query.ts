@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { MESSAGE_FRAGMENT, MessageFragment } from "graphql/fragments/message.fragment";
+import { MESSAGE_FRAGMENT, MessageFragment } from "../fragments/message.fragment";
 
 
 export interface MessageFetchOneQueryVariables {

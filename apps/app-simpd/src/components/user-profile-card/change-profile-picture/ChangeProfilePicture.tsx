@@ -1,8 +1,8 @@
+import { createPortal } from 'react-dom';
 import React, { ChangeEvent, useRef } from 'react';
 import { UserProfileChangeMediaIcon } from '../UserProfileCard.sty';
 import { ChangeProfilePictureProps } from './ChangeProfilePicture.types';
 import { useMediaFetchOne, useMediaUpload, useProfileUpdate } from '@simpd/lib-web';
-import { createPortal } from 'react-dom';
 
 export function ChangeProfilePicture({ profile, onChange }: ChangeProfilePictureProps) {
   const mediaUpload = useMediaUpload();
@@ -18,7 +18,7 @@ export function ChangeProfilePicture({ profile, onChange }: ChangeProfilePicture
   const onUploadProfilePicture = async (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const newPhoto = e.target.files![0];
-    const newPhotoMediaID = await mediaUpload.onUpload(profile.id, newPhoto);
+    const newPhotoMediaID = await mediaUpload.onUpload(newPhoto);
     const newMedia = await mediaFetchOne.fetch({ mediaID: newPhotoMediaID });
     const newProfile = await profileUpdate.execute({
       profileID: profile.id,

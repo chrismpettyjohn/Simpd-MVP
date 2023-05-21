@@ -101,4 +101,4 @@ export interface PostWithAlbumFragment extends BasePost {
   mediaIDs: number[];
 }
 
-export type PostFragment = PostWithTextFragment;
+export type PostFragment = PostWithTextFragment | PostWithImageFragment | PostWithVideoFragment | PostWithAlbumFragment;

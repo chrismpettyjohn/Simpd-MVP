@@ -4,16 +4,16 @@ import { UserGuard, sessionContext } from '@simpd/lib-web';
 import { SiteHeaderBrandContainer, SiteHeaderContainer, SiteHeaderElement, SiteHeaderLink, SiteHeaderNavigation, SiteHeaderTools, SiteHeaderToolsContainer } from './SiteHeader.sty';
 
 export function SiteHeader() {
-  const { session: { profile } } = useContext(sessionContext);
+  const { session } = useContext(sessionContext);
   return (
     <SiteHeaderContainer>
       <UserGuard>
         <SiteHeaderToolsContainer>
           <SiteHeaderTools>
-            <Link to={`/profiles/${profile.username}`}>
+            <Link to={`/profiles/${session?.profile?.username}`}>
               <SiteHeaderLink>
                 <i className="fa fa-id-badge" style={{ marginRight: 8 }} />
-                {profile?.username ?? <>Switch Profile</>}
+                {session?.profile?.username ?? <>Switch Profile</>}
               </SiteHeaderLink>
             </Link>
             <Link className="link" to="/notifications">

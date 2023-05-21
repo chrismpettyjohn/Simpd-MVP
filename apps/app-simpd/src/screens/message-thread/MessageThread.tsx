@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRoute } from 'wouter';
-import { Card } from 'components/card/Card';
+import { Card } from '../../components/card/Card';
 
 export function MessageThreadScreen() {
   const [, params] = useRoute<{ username: string }>('/messages/threads/:username');

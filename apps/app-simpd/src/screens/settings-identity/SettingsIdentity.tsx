@@ -1,8 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { PageTitle } from 'components/page-title/PageTitle';
+import { PageTitle } from '../../components/page-title/PageTitle';
 import { SwitchProfileCard } from './switch-profile-card/SwitchProfileCard';
-import { SettingsNavigation } from 'components/settings-navigation/SettingsNavigation';
+import { SettingsNavigation } from '../../components/settings-navigation/SettingsNavigation';
 
 export function SettingsIdentityScreen() {
   return (

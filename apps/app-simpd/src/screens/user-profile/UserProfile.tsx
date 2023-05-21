@@ -1,9 +1,9 @@
 import { useRoute } from 'wouter';
 import { Helmet } from 'react-helmet'
 import React, { useEffect, useState } from 'react'
-import { PostCard } from 'components/post-card/PostCard';
-import { PageTitle } from 'components/page-title/PageTitle';
-import { UserProfileCard } from 'components/user-profile-card/UserProfileCard';
+import { PostCard } from '../../components/post-card/PostCard';
+import { PageTitle } from '../../components/page-title/PageTitle';
+import { UserProfileCard } from '../../components/user-profile-card/UserProfileCard';
 import { ProfileFragment, usePostFetchMany, useProfileFetchOne } from '@simpd/lib-web';
 
 export function UserProfileScreen() {

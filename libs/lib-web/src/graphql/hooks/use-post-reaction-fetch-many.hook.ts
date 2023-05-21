@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { PostReactionFragment } from "graphql/fragments/post-reaction.fragment";
-import { POST_REACTION_FETCH_MANY_QUERY, PostReactionFetchManyQueryResponse, PostReactionFetchManyQueryVariables } from "graphql/queries/post-reaction-fetch-many.query";
+import { PostReactionFragment } from "../fragments/post-reaction.fragment";
+import { POST_REACTION_FETCH_MANY_QUERY, PostReactionFetchManyQueryResponse, PostReactionFetchManyQueryVariables } from "../queries/post-reaction-fetch-many.query";
 
 export interface UsePostReactionFetchManyQueryResponse {
   fetch(filter: PostReactionFetchManyQueryVariables): Promise<PostReactionFragment[]>;

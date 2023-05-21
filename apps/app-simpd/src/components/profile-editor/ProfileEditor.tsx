@@ -1,4 +1,4 @@
-import { Button } from 'components/button/Button';
+import { Button } from '../button/Button';
 import { ProfileUpdateInput } from '@simpd/lib-web';
 import React, { SyntheticEvent, useState } from 'react';
 import { ProfileEditorProps } from './ProfileEditor.types';

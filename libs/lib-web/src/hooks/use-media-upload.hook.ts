@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LOCAL_STORAGE_SESSION_TOKEN } from "app/app.constant";
+import { LOCAL_STORAGE_SESSION_TOKEN } from "../app/app.constant";
 
 export interface useMediaUploadResponse {
   onUpload(file: File): Promise<number>;

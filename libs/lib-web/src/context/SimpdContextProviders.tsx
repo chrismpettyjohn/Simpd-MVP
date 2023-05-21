@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/client';
-import { graphqlClient } from 'app/graphql.client';
+import { graphqlClient } from '../app/graphql.client';
 import { ThemeContextProvider } from './theme/ThemeContextProvider';
 import { SessionContextProvider } from './session/SessionContextProvider';
 import { SimpdContextProvidersProps } from './SimpdContextProviders.types';

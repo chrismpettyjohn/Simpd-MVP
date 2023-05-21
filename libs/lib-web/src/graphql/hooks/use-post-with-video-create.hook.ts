@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { PostWithVideoFragment } from "graphql/fragments/post.fragment";
-import { POST_WITH_VIDEO_CREATE_MUTATION, PostWithVideoCreateInput, PostWithVideoCreateMutationResponse, PostWithVideoCreateMutationVariables } from "graphql/mutation/post-with-video-create.mutation";
+import { PostWithVideoFragment } from "../fragments/post.fragment";
+import { POST_WITH_VIDEO_CREATE_MUTATION, PostWithVideoCreateInput, PostWithVideoCreateMutationResponse, PostWithVideoCreateMutationVariables } from "../mutation/post-with-video-create.mutation";
 
 export interface UsePostWithVideoCreateResponse {
   execute(input: PostWithVideoCreateInput): Promise<PostWithVideoFragment>;

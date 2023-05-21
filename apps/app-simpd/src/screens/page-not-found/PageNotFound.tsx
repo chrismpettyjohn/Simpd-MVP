@@ -1,6 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { PageTitle } from 'components/page-title/PageTitle';
+import { PageTitle } from '../../components/page-title/PageTitle';
 
 export function PageNotFoundScreen() {
   return (

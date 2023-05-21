@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { POST_WITH_TEXT_FRAGMENT, PostWithTextFragment } from "graphql/fragments/post.fragment";
+import { POST_WITH_TEXT_FRAGMENT, PostWithTextFragment } from "../fragments/post.fragment";
 
 export interface PostWithTextCreateInput {
   content: string;

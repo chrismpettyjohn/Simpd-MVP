@@ -1,10 +1,10 @@
 import { Helmet } from 'react-helmet'
 import { toast } from 'react-toastify';
-import { PostCard } from 'components/post-card/PostCard';
-import { PageTitle } from 'components/page-title/PageTitle';
+import { PostCard } from '../../components/post-card/PostCard';
+import { PageTitle } from '../../components/page-title/PageTitle';
 import React, { useContext, useEffect, useState } from 'react';
 import { PostFragment, sessionContext, usePostFetchMany } from '@simpd/lib-web';
-import { CreateNewPostCard } from 'components/create-new-post-card/CreateNewPostCard';
+import { CreateNewPostCard } from '../../components/create-new-post-card/CreateNewPostCard';
 
 export function DashboardScreen() {
   const postFetchMany = usePostFetchMany();

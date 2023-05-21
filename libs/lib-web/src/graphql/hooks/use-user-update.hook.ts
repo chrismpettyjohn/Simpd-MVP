@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { UserUpdateMutationVariables } from "graphql/mutation/user-update.mutation";
-import { USER_FETCH_ONE_QUERY, UserFetchOneQueryVariables } from "graphql/queries/user-fetch-one.query";
+import { UserUpdateMutationVariables } from "../mutation/user-update.mutation";
+import { USER_FETCH_ONE_QUERY, UserFetchOneQueryVariables } from "../queries/user-fetch-one.query";
 
 
 export interface UseUserUpdateMutationResponse {

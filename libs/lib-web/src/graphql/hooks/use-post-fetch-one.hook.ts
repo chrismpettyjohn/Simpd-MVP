@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { PostWithTextFragment } from "graphql/fragments/post.fragment";
-import { POST_FETCH_ONE_QUERY, PostFetchOneQueryResponse, PostFetchOneQueryVariables } from "graphql/queries/post-fetch-one.query";
+import { PostWithTextFragment } from "../fragments/post.fragment";
+import { POST_FETCH_ONE_QUERY, PostFetchOneQueryResponse, PostFetchOneQueryVariables } from "../queries/post-fetch-one.query";
 
 
 export interface UsePostFetchOneQueryResponse {

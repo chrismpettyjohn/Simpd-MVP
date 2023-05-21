@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { PostWithImageFragment } from "graphql/fragments/post.fragment";
-import { POST_WITH_IMAGE_CREATE_MUTATION, PostWithImageCreateInput, PostWithImageCreateMutationResponse, PostWithImageCreateMutationVariables } from "graphql/mutation/post-with-image-create.mutation";
+import { PostWithImageFragment } from "../fragments/post.fragment";
+import { POST_WITH_IMAGE_CREATE_MUTATION, PostWithImageCreateInput, PostWithImageCreateMutationResponse, PostWithImageCreateMutationVariables } from "../mutation/post-with-image-create.mutation";
 
 export interface UsePostWithImageCreateResponse {
   execute(input: PostWithImageCreateInput): Promise<PostWithImageFragment>;

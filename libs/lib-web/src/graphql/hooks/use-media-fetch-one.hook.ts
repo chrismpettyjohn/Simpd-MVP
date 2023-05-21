@@ -1,7 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { MediaFragment } from "graphql/fragments/media.fragment";
-import { MEDIA_FETCH_ONE_QUERY, MediaFetchOneQueryResponse, MediaFetchOneQueryVariables } from "graphql/queries/media-fetch-one.query";
-
+import { MediaFragment } from "../fragments/media.fragment";
+import { MEDIA_FETCH_ONE_QUERY, MediaFetchOneQueryResponse, MediaFetchOneQueryVariables } from "../queries/media-fetch-one.query";
 
 export interface UseFetchMediaQueryResponse {
   fetch(input: MediaFetchOneQueryVariables): Promise<MediaFragment>;
@@ -13,8 +12,8 @@ export interface UseFetchMediaQueryResponse {
 export function useMediaFetchOne(): UseFetchMediaQueryResponse {
   const [getMedia, { loading, error, data }] = useLazyQuery<MediaFetchOneQueryResponse, MediaFetchOneQueryVariables>(MEDIA_FETCH_ONE_QUERY);
 
-  const onFetchMedia = async (input: MediaFetchOneQueryVariables): Promise<MediaFragment> => {
-    const matchingMedia = await getMedia({ variables: { mediaID: input.mediaID } })
+  const onFetchMedia = async (filter: MediaFetchOneQueryVariables): Promise<MediaFragment> => {
+    const matchingMedia = await getMedia({ variables: filter });
     return matchingMedia.data!.media;
   }
 

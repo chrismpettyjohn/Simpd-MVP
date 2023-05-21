@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'components/button/Button';
+import { Button } from '../../../../components/button/Button';
 import { useProfileCreateRandomized } from '@simpd/lib-web';
 import { useSwitchProfile } from 'hooks/use-switch-profile.hook';
 

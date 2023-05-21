@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { MessageFragment } from "graphql/fragments/message.fragment";
-import { MESSAGE_CREATE_MUTATION, MessageCreateInput, MessageCreateMutationResponse, MessageCreateMutationVariables } from "graphql/mutation/message-create-one.mutation";
+import { MessageFragment } from "../fragments/message.fragment";
+import { MESSAGE_CREATE_MUTATION, MessageCreateInput, MessageCreateMutationResponse, MessageCreateMutationVariables } from "../mutation/message-create-one.mutation";
 
 export interface UseMessageCreateResponse {
   execute(input: MessageCreateInput): Promise<MessageFragment>;

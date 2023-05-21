@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { PostWithTextFragment } from "graphql/fragments/post.fragment";
-import { POST_WITH_TEXT_CREATE_MUTATION, PostWithTextCreateInput, PostWithTextCreateMutationResponse, PostWithTextCreateMutationVariables } from "graphql/mutation/post-with-text-create.mutation";
+import { PostWithTextFragment } from "../fragments/post.fragment";
+import { POST_WITH_TEXT_CREATE_MUTATION, PostWithTextCreateInput, PostWithTextCreateMutationResponse, PostWithTextCreateMutationVariables } from "../mutation/post-with-text-create.mutation";
 
 export interface UsePostWithTextCreateResponse {
   execute(input: PostWithTextCreateInput): Promise<PostWithTextFragment>;

@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { ProfileFragment } from "graphql/fragments/profile.fragment";
-import { PROFILE_CREATE_MUTATION, ProfileCreateMutationResponse, ProfileCreateMutationVariables } from "graphql/mutation/profile-create.mutation";
+import { ProfileFragment } from "../fragments/profile.fragment";
+import { PROFILE_CREATE_MUTATION, ProfileCreateMutationResponse, ProfileCreateMutationVariables } from "../mutation/profile-create.mutation";
 
 export interface UseProfileCreateResponse {
   execute(input: ProfileCreateMutationVariables): Promise<ProfileFragment>;
@@ -14,7 +14,7 @@ export function useProfileCreate(): UseProfileCreateResponse {
 
   const onCreateSession = async (input: ProfileCreateMutationVariables) => {
     const matchingSession = await createProfile({
-      variables: { input }
+      variables: input
     })
     return matchingSession.data!.profileCreate;
   }

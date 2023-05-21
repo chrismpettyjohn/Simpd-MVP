@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { BookmarkCollectionFragment } from "graphql/fragments/bookmark-collection.fragment";
-import { BOOKMARK_COLLECTION_CREATE_ONE_RANDOMIZED_MUTATION, BookmarkCollectionCreateRandomizedMutationResponse } from "graphql/mutation/bookmark-collection-create-one-randomized.mutation";
+import { BookmarkCollectionFragment } from "../fragments/bookmark-collection.fragment";
+import { BOOKMARK_COLLECTION_CREATE_ONE_RANDOMIZED_MUTATION, BookmarkCollectionCreateRandomizedMutationResponse } from "../mutation/bookmark-collection-create-one-randomized.mutation";
 
 export interface UseBookmarkCollectionCreateRandomizedResponse {
   execute(): Promise<BookmarkCollectionFragment>;

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { SessionFragment } from 'graphql/fragments/session.fragment';
+import { SessionFragment } from '../../graphql/fragments/session.fragment';
 
 export interface SessionContext {
   session?: SessionFragment;

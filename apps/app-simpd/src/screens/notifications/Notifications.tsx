@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { PageTitle } from 'components/page-title/PageTitle';
-import { NotificationCard } from 'components/notification-card/NotificationCard';
+import { PageTitle } from '../../components/page-title/PageTitle';
+import { NotificationCard } from '../../components/notification-card/NotificationCard';
 import { NotificationContainer, NotificationElement } from './Notifications.sty';
 
 export function NotificationsScreen() {

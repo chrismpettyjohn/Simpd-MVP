@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { BookmarkFragment } from "graphql/fragments/bookmark.fragment";
-import { BOOKMARK_CREATE_ONE_MUTATION, BookmarkCreateInput, BookmarkCreateMutationResponse, BookmarkCreateMutationVariables } from "graphql/mutation/bookmark-create-one.mutation";
+import { BookmarkFragment } from "../fragments/bookmark.fragment";
+import { BOOKMARK_CREATE_ONE_MUTATION, BookmarkCreateInput, BookmarkCreateMutationResponse, BookmarkCreateMutationVariables } from "../mutation/bookmark-create-one.mutation";
 
 export interface UseBookmarkCreateResponse {
   execute(input: BookmarkCreateInput): Promise<BookmarkFragment>;

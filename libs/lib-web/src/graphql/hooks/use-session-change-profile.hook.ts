@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { LOCAL_STORAGE_SESSION_TOKEN } from "app/app.constant";
+import { LOCAL_STORAGE_SESSION_TOKEN } from "../../app/app.constant";
 import { SESSION_CHANGE_PROFILE_MUTATION, SessionChangeProfileMutationResponse, SessionChangeProfileMutationVariables } from "../mutation/session-change-profile.mutation";
 
 export interface UseSessionChangeProfileResponse {

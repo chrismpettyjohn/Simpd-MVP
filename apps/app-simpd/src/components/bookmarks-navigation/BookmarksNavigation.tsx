@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useRoute } from 'wouter';
 import { BookmarkCollectionLink } from './BookmarksNavigation.sty';
 import { BookmarksNavigationProps } from './BookmarksNavigation.types';
-import { AddBookmarkCollection } from 'components/add-bookmark-collection/AddBookmarkCollection';
+import { AddBookmarkCollection } from '../add-bookmark-collection/AddBookmarkCollection';
 
 export function BookmarksNavigation({ bookmarkCollections, onCreation }: BookmarksNavigationProps) {
   const [, params] = useRoute<{ bookmarkCollectionID: string }>('/bookmarks/:bookmarkCollectionID');

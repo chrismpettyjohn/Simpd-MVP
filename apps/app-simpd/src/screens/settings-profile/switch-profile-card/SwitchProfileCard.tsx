@@ -1,18 +1,18 @@
 import React, { useContext, useEffect } from 'react';
 import { sessionContext, useProfileFetchMany } from '@simpd/lib-web';
-import { CardAccordion } from 'components/card-accordion/CardAccordion';
+import { CardAccordion } from '../../../components/card-accordion/CardAccordion';
 import { ProfileContainer } from './profile-container/ProfileContainer';
 import { AddNewProfileButton } from './add-new-profile-button/AddNewProfileButton';
 
 export function SwitchProfileCard() {
   const { session } = useContext(sessionContext);
-  const userProfiles = useProfileFetchMany({ userIDs: [session.userID] })
+  const userProfiles = useProfileFetchMany()
 
   useEffect(() => {
     if (!session?.userID) {
       return;
     }
-    userProfiles.fetch();
+    userProfiles.fetch({ userIDs: [session.userID] });
   }, [session?.userID]);
 
   return (

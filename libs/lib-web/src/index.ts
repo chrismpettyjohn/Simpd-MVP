@@ -3,8 +3,6 @@ export * from './app/graphql.client';
 export * from './components/full-page-loading-screen/FullPageLoadingScreen';
 export * from './components/guest-guard/GuestGuard';
 export * from './components/guest-guard/GuestGuard.types';
-export * from './components/profile-guard/ProfileGuard';
-export * from './components/profile-guard/ProfileGuard.types';
 export * from './components/user-guard/UserGuard';
 export * from './components/user-guard/UserGuard.types';
 export * from './context/session/SessionContext';

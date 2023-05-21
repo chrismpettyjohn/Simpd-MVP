@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { ReactionType } from "graphql/mutation/post-reaction-create-one.mutation";
+import { ReactionType } from "../mutation/post-reaction-create-one.mutation";
 
 export const POST_REACTION_FRAGMENT = gql`
   fragment PostReactionFragment on PostReactionModel {

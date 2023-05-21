@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { BOOKMARK_FRAGMENT, BookmarkFragment, BookmarkType } from "graphql/fragments/bookmark.fragment";
+import { BOOKMARK_FRAGMENT, BookmarkFragment, BookmarkType } from "../fragments/bookmark.fragment";
 
 export interface BookmarkCreateInput {
   type: BookmarkType;

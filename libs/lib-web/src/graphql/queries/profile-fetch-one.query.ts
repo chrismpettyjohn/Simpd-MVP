@@ -1,9 +1,13 @@
 import gql from "graphql-tag";
-import { PROFILE_FRAGMENT, ProfileFragment } from "graphql/fragments/profile.fragment";
+import { PROFILE_FRAGMENT, ProfileFragment } from "../fragments/profile.fragment";
+
+export interface ProfileFetchOneInput {
+  id?: number;
+  username?: string;
+}
 
 export interface ProfileFetchOneQueryVariables {
-  profileID?: number;
-  username?: number;
+  filter: ProfileFetchOneInput;
 }
 
 export interface ProfileFetchOneQueryResponse {
@@ -12,12 +16,9 @@ export interface ProfileFetchOneQueryResponse {
 
 export const PROFILE_FETCH_ONE_QUERY = gql`
   ${PROFILE_FRAGMENT}
-  query($profileID: Float, $username: String) {
+  query($filter: ProfileFetchOneInput!) {
     profile(
-      filter: {
-        id: $profileID
-        username: $username
-      }
+      filter: $filter
     ) {
       ...ProfileFragment
     }

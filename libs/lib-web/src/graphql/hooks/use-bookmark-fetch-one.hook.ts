@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { BookmarkFragment } from "graphql/fragments/bookmark.fragment";
-import { BOOKMARK_FETCH_ONE_QUERY, BookmarkFetchOneInput, BookmarkFetchOneQueryResponse, BookmarkFetchOneQueryVariables } from "graphql/queries/bookmark-fetch-one.query";
+import { BookmarkFragment } from "../fragments/bookmark.fragment";
+import { BOOKMARK_FETCH_ONE_QUERY, BookmarkFetchOneInput, BookmarkFetchOneQueryResponse, BookmarkFetchOneQueryVariables } from "../queries/bookmark-fetch-one.query";
 
 export interface UseFetchBookmarkFetchOneResponse {
   fetch(filter: BookmarkFetchOneInput): Promise<BookmarkFragment>;

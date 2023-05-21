@@ -1,5 +1,5 @@
-import { Card } from 'components/card/Card';
-import { Button } from 'components/button/Button';
+import { Card } from '../card/Card';
+import { Button } from '../button/Button';
 import React, { SyntheticEvent, useState } from 'react';
 import { CreateNewPostCardProps } from './CreateNewPostCard.types';
 import { UploadNewMedia } from './upload-new-media/UploadNewMedia';

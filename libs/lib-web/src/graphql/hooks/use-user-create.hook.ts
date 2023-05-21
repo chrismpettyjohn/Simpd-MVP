@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { UserFragment } from "graphql/fragments/user.fragment";
-import { USER_CREATE_MUTATION, UserCreateInput, UserCreateMutationResponse, UserCreateMutationVariables } from "graphql/mutation/user-create.mutation";
+import { UserFragment } from "../fragments/user.fragment";
+import { USER_CREATE_MUTATION, UserCreateInput, UserCreateMutationResponse, UserCreateMutationVariables } from "../mutation/user-create.mutation";
 
 export interface UseUserCreateHookResponse {
   execute(input: UserCreateInput): Promise<UserFragment>;

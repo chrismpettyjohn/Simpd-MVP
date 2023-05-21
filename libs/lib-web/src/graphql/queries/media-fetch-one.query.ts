@@ -1,8 +1,12 @@
 import gql from "graphql-tag";
-import { MEDIA_FRAGMENT, MediaFragment } from "graphql/fragments/media.fragment";
+import { MEDIA_FRAGMENT, MediaFragment } from "../fragments/media.fragment";
+
+export interface MediaFetchOneInput {
+  mediaID?: number;
+}
 
 export interface MediaFetchOneQueryVariables {
-  mediaID: number;
+  filter: MediaFetchOneInput;
 }
 
 export interface MediaFetchOneQueryResponse {
@@ -11,11 +15,9 @@ export interface MediaFetchOneQueryResponse {
 
 export const MEDIA_FETCH_ONE_QUERY = gql`
   ${MEDIA_FRAGMENT}
-  query($mediaID: Float!) {
+  query($filter: MediaFetchOneInput!) {
     media(
-      filter: {
-        id: $mediaID
-      }
+      filter: $filter
     ) {
       ...MediaFragment
     }

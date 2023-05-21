@@ -7,7 +7,7 @@ import { PostReactions } from './post-reactions/PostReactions';
 import { PostFavorites } from './post-favorites/PostFavorites';
 import { TextPostContent } from './text-post-content/TextPostContent';
 import { ImagePostContent } from './image-post-content/ImagePostContent';
-import { AuthorBlockLarge } from 'components/author-block-large/AuthorBlockLarge';
+import { AuthorBlockLarge } from '../author-block-large/AuthorBlockLarge';
 import { PostCardContent, PostCardElement, PostStatsContainer } from './PostCard.styled';
 
 const getPostCardElement = (post: PostFragment) => {

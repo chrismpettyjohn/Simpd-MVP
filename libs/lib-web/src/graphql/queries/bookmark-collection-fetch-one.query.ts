@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { BOOKMARK_COLLECTION_FRAGMENT, BookmarkCollectionFragment } from "graphql/fragments/bookmark-collection.fragment";
+import { BOOKMARK_COLLECTION_FRAGMENT, BookmarkCollectionFragment } from "../fragments/bookmark-collection.fragment";
 
 export interface BookmarkCollectionFetchOneInput {
   id?: number;

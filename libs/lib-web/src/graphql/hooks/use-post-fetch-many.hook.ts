@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { PostWithTextFragment } from "graphql/fragments/post.fragment";
-import { POST_FETCH_MANY_QUERY, PostFetchManyQueryResponse, PostFetchManyQueryVariables } from "graphql/queries/post-fetch-many.query";
+import { PostWithTextFragment } from "../fragments/post.fragment";
+import { POST_FETCH_MANY_QUERY, PostFetchManyQueryResponse, PostFetchManyQueryVariables } from "../queries/post-fetch-many.query";
 
 
 export interface UsePostFetchManyQueryResponse {

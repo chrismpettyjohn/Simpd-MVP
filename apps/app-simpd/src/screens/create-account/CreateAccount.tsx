@@ -1,17 +1,18 @@
 import jwtDecode from 'jwt-decode';
 import { useLocation } from 'wouter';
 import { Helmet } from 'react-helmet';
-import { Card } from 'components/card/Card';
+import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect } from 'react'
-import { PageTitle } from 'components/page-title/PageTitle';
+import { PageTitle } from '../../components/page-title/PageTitle';
 import { CreateUserForm } from './create-user-form/CreateUserForm';
-import { LOCAL_STORAGE_SESSION_TOKEN, SessionContents, UserCreateInput, sessionContext, useProfileCreateRandomized, useProfileFetchOne, useSessionCreate, useUserCreate, useUserFetchOne } from '@simpd/lib-web';
+import { LOCAL_STORAGE_SESSION_TOKEN, SessionContents, UserCreateInput, sessionContext, useProfileCreateRandomized, useProfileFetchOne, useSessionCreate, useSessionFetchOne, useUserCreate, useUserFetchOne } from '@simpd/lib-web';
 
 export function CreateAccountScreen() {
   const userCreate = useUserCreate();
   const profileFetch = useProfileFetchOne();
   const [, setLocation] = useLocation();
   const sessionCreate = useSessionCreate();
+  const sessionFetchOne = useSessionFetchOne();
   const { session, setSession } = useContext(sessionContext);
   const profileCreateRandomized = useProfileCreateRandomized();
 
@@ -22,8 +23,9 @@ export function CreateAccountScreen() {
     const bearerToken = await sessionCreate.execute(newUserDTO);
     localStorage.setItem(LOCAL_STORAGE_SESSION_TOKEN, bearerToken);
     const sessionContents: SessionContents = jwtDecode(bearerToken);
+    const matchingSession = await sessionFetchOne.fetch({ id: sessionContents.sessionID })
     const matchingProfile = await profileFetch.fetch({ id: sessionContents.profileID })
-    setSession({ ...sessionContents, profile: matchingProfile });
+    setSession({ ...matchingSession, profile: matchingProfile });
   }
 
   const onCreateProfile = async () => {

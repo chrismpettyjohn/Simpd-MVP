@@ -1,8 +1,12 @@
 import gql from "graphql-tag";
-import { PROFILE_FRAGMENT, ProfileFragment } from "graphql/fragments/profile.fragment";
+import { PROFILE_FRAGMENT, ProfileFragment } from "../fragments/profile.fragment";
+
+export interface ProfileFetchManyInput {
+  userIDs?: number[];
+}
 
 export interface ProfileFetchManyQueryVariables {
-  userIDs: number[];
+  filter: ProfileFetchManyInput;
 }
 
 export interface ProfileFetchManyQueryResponse {

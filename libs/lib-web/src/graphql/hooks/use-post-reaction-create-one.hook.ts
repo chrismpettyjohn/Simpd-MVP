@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { PostReactionFragment } from "graphql/fragments/post-reaction.fragment";
-import { POST_REACTION_CREATE_MUTATION, PostReactionCreateInput, PostReactionCreateMutationResponse, PostReactionCreateMutationVariables } from "graphql/mutation/post-reaction-create-one.mutation";
+import { PostReactionFragment } from "../fragments/post-reaction.fragment";
+import { POST_REACTION_CREATE_MUTATION, PostReactionCreateInput, PostReactionCreateMutationResponse, PostReactionCreateMutationVariables } from "../mutation/post-reaction-create-one.mutation";
 
 export interface UsePostReactionCreateResponse {
   execute(input: PostReactionCreateInput): Promise<PostReactionFragment>;

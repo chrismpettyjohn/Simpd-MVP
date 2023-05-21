@@ -1,12 +1,11 @@
 import { useRoute } from 'wouter';
 import { Helmet } from 'react-helmet'
 import React, { useEffect } from 'react'
-import { Card } from 'components/card/Card';
-import { PageTitle } from 'components/page-title/PageTitle';
-import { CardAccordion } from 'components/card-accordion/CardAccordion';
+import { PageTitle } from '../../components/page-title/PageTitle';
+import { CardAccordion } from '../../components/card-accordion/CardAccordion';
 import { FullPageLoadingScreen, usePostFetchOne } from '@simpd/lib-web';
-import { UserProfileCard } from 'components/user-profile-card/UserProfileCard';
-import { PostCard } from 'components/post-card/PostCard';
+import { UserProfileCard } from '../../components/user-profile-card/UserProfileCard';
+import { PostCard } from '../../components/post-card/PostCard';
 
 export function ViewPostScreen() {
   const fetchPost = usePostFetchOne();

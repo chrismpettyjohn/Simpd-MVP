@@ -5,7 +5,7 @@
   "scripts": {
     "build": "yarn run clean && yarn run compile",
     "clean": "rimraf -rf ./dist && rimraf -rf ./build",
-    "compile": "rollup -c && yarn run compile:types",
+    "compile": "vite build && yarn run compile:types",
     "compile:types": "tsc -d -p tsconfig.build.json --emitDeclarationOnly --declarationDir dist/types"
   },
   "devDependencies": {
@@ -19,7 +19,11 @@
     "styled-components": "6.0.0-rc.1",
     "graphql": "16.6.0",
     "graphql-tag": "2.12.6",
-    "@apollo/client": "3.7.12"
+    "@apollo/client": "3.7.12",
+    "vite": "4.2.1",
+    "@vitejs/plugin-react": "3.1.0",
+    "vite-tsconfig-paths": "4.2.0",
+    "@originjs/vite-plugin-commonjs": "1.0.3"
   },
   "peerDependencies": {
     "react": "17.0.1",

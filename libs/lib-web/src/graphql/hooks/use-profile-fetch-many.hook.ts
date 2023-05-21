@@ -1,20 +1,20 @@
 import { useLazyQuery } from "@apollo/client";
-import { SessionFragment } from "graphql/fragments/session.fragment";
-import { PROFILE_FETCH_MANY_QUERY, ProfileFetchManyQueryResponse, ProfileFetchManyQueryVariables } from "graphql/queries/profile-fetch-many.query";
+import { ProfileFragment } from "../fragments/profile.fragment";
+import { PROFILE_FETCH_MANY_QUERY, ProfileFetchManyInput, ProfileFetchManyQueryResponse, ProfileFetchManyQueryVariables } from "../queries/profile-fetch-many.query";
 
 
 export interface UseProfileFetchManyQueryResponse {
-  fetch(): Promise<SessionFragment[]>;
+  fetch(filter: ProfileFetchManyInput): Promise<ProfileFragment[]>;
   error?: Error;
   loading: boolean;
-  data?: SessionFragment[];
+  data?: ProfileFragment[];
 }
 
-export function useProfileFetchMany({ userIDs }: ProfileFetchManyQueryVariables): UseProfileFetchManyQueryResponse {
+export function useProfileFetchMany(): UseProfileFetchManyQueryResponse {
   const [getProfiles, { loading, error, data }] = useLazyQuery<ProfileFetchManyQueryResponse, ProfileFetchManyQueryVariables>(PROFILE_FETCH_MANY_QUERY);
 
-  const onFetchProfiles = async () => {
-    const matchingProfiles = await getProfiles({ variables: { userIDs: userIDs.map(Number) } })
+  const onFetchProfiles = async (filter: ProfileFetchManyInput) => {
+    const matchingProfiles = await getProfiles({ variables: { filter } })
     return matchingProfiles.data!.profiles;
   }
 

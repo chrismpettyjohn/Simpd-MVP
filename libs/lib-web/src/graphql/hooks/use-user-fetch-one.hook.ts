@@ -1,5 +1,5 @@
 import { useLazyQuery } from "@apollo/client";
-import { USER_FETCH_ONE_QUERY, UserFetchOneQueryResponse, UserFetchOneQueryVariables } from "graphql/queries/user-fetch-one.query";
+import { USER_FETCH_ONE_QUERY, UserFetchOneQueryResponse, UserFetchOneQueryVariables } from "../queries/user-fetch-one.query";
 
 
 export interface UseFetchUserQueryResponse {

@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { POST_REACTION_FRAGMENT, PostReactionFragment } from "graphql/fragments/post-reaction.fragment";
+import { POST_REACTION_FRAGMENT, PostReactionFragment } from "../fragments/post-reaction.fragment";
 
 export interface PostReactionFilterManyInput {
   postIDs?: number[];

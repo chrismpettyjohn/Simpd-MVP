@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { POST_WITH_ALBUM_FRAGMENT, PostWithAlbumFragment } from "graphql/fragments/post.fragment";
+import { POST_WITH_ALBUM_FRAGMENT, PostWithAlbumFragment } from "../fragments/post.fragment";
 
 export interface PostWithAlbumCreateInput {
   content: string;
