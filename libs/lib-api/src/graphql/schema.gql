@@ -2,39 +2,46 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type MediaDetailsModel {
-  sizeInBytes: Float
-  originalFileName: String
-}
-
-type MediaModel {
+type BookmarkModel {
   id: Float
-  type: MediaType
+  serviceKey: String
+  resourceID: Float
   profileID: Float
-  url: String
-  details: MediaDetailsModel
-}
-
-enum MediaType {
-  Image
-  Video
-  Other
+  bookmarkCollectionID: Float
 }
 
 type Query {
-  media(filter: MediaFilterByOneInput!): MediaModel!
-  medias(filter: MediaFilterByManyInput): [MediaModel!]!
+  bookmark(filter: BookmarkFindOneInput!): BookmarkModel!
+  bookmarks(filter: BookmarkFindManyInput): [BookmarkModel!]!
 }
 
-input MediaFilterByOneInput {
+input BookmarkFindOneInput {
   id: Float
+  type: BookmarkType
+  profileID: Float
+  resourceID: Float
+  bookmarkCollectionID: Float
 }
 
-input MediaFilterByManyInput {
+enum BookmarkType {
+  Post
+}
+
+input BookmarkFindManyInput {
   ids: [Float!]
+  types: [BookmarkType!]
   profileIDs: [Float!]
+  resourceIDs: [Float!]
+  bookmarkCollectionIDs: [Float!]
 }
 
 type Mutation {
-  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
+  bookmarkCreate(input: BookmarkCreateInput!): BookmarkModel!
+  bookmarkDelete(filter: BookmarkFindOneInput!): Boolean!
+}
+
+input BookmarkCreateInput {
+  type: BookmarkType!
+  resourceID: Float!
+  bookmarkCollectionID: Float!
 }

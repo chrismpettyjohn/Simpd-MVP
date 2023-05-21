@@ -1,8 +1,8 @@
 import {In} from 'typeorm';
 import {BookmarkModel} from './bookmark.model';
 import {BookmarkEntity} from './bookmark.entity';
-import {HasSession} from '@simpd/lib-api';
 import {BookmarkRepository} from './bookmark.repository';
+import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {
   Args,
   Mutation,
@@ -12,8 +12,8 @@ import {
 } from '@nestjs/graphql';
 import {
   BookmarkCreateInput,
-  BookmarkFilterByManyInput,
-  BookmarkFilterByOneInput,
+  BookmarkFindManyInput,
+  BookmarkFindOneInput,
 } from './bookmark.input';
 
 @Resolver(() => BookmarkModel)
@@ -30,7 +30,7 @@ export class BookmarkResolver {
 
   @Query(() => BookmarkModel)
   async bookmark(
-    @Args('filter') filter: BookmarkFilterByOneInput
+    @Args('filter') filter: BookmarkFindOneInput
   ): Promise<BookmarkEntity> {
     return this.bookmarkRepo.findOneOrFail({
       where: filter,
@@ -39,8 +39,8 @@ export class BookmarkResolver {
 
   @Query(() => [BookmarkModel])
   bookmarks(
-    @Args('filter', {type: () => BookmarkFilterByManyInput, nullable: true})
-    filter?: BookmarkFilterByManyInput
+    @Args('filter', {type: () => BookmarkFindManyInput, nullable: true})
+    filter?: BookmarkFindManyInput
   ): Promise<BookmarkEntity[]> {
     return this.bookmarkRepo.find({
       where: {
@@ -52,14 +52,20 @@ export class BookmarkResolver {
   @Mutation(() => BookmarkModel)
   @HasSession()
   async bookmarkCreate(
+    @GetSession() session: SessionContents,
     @Args('input') input: BookmarkCreateInput
   ): Promise<BookmarkEntity> {
-    const newBookmark = await this.bookmarkRepo.create({});
+    const newBookmark = await this.bookmarkRepo.create({
+      type: input.type,
+      profileID: session.profileID,
+      resourceID: input.resourceID,
+      bookmarkCollectionID: input.bookmarkCollectionID,
+    });
     return newBookmark;
   }
 
   @Mutation(() => Boolean)
-  async bookmarkDelete(@Args('filter') filter: BookmarkFilterByOneInput) {
+  async bookmarkDelete(@Args('filter') filter: BookmarkFindOneInput) {
     await this.bookmarkRepo.softDelete(filter);
     return true;
   }

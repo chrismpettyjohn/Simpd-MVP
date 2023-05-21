@@ -6,5 +6,9 @@ export function bookmarkEntityToBookmarkWire(
 ): BookmarkWire {
   return {
     id: bookmarkEntity.id!,
+    type: bookmarkEntity.type,
+    profileID: bookmarkEntity.profileID,
+    resourceID: bookmarkEntity.resourceID,
+    bookmarkCollectionID: bookmarkEntity.bookmarkCollectionID,
   };
 }
