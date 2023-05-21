@@ -23,7 +23,7 @@ export function PostCard({ post, hideAuthor = false }: PostCardProps) {
           {!hideAuthor && <AuthorBlockLarge profile={post.profile} />}
 
           {postContent}
-          <PostStatsContainer>
+          <PostStatsContainer onClick={e => e.stopPropagation()}>
             <PostStatElement>
               <h3>20</h3>
               <p>

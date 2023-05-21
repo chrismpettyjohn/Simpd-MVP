@@ -39,11 +39,13 @@ export const PostCardText = styled.div`
     font-size: ${({ theme }) => theme.fontSize.oneUnit};
     padding-left: ${({ theme }) => theme.space.halfUnit};
     padding-right: ${({ theme }) => theme.space.halfUnit};
+    white-space: pre-line;
 `
 
 export const PostStatsContainer = styled.div`
   background: ${({ theme }) => theme.color.s40};
   border-radius: ${({ theme }) => theme.radius.eight};
+  cursor: auto;
   display: flex;
   justify-content: space-between;
   padding-left: ${({ theme }) => theme.space.twoUnits};

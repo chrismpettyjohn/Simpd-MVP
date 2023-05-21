@@ -11,6 +11,7 @@ export function ChangeProfilePicture({ profile, onChange }: ChangeProfilePicture
   const inputRef = useRef<HTMLInputElement>(null);
 
   const onSelectFile = () => {
+    console.log(inputRef.current);
     inputRef.current?.click();
   }
 
