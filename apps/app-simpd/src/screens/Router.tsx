@@ -6,12 +6,13 @@ import { MessagesScreen } from './messages/Messages';
 import { ViewPostScreen } from './view-post/ViewPost';
 import { GuestGuard, UserGuard } from '@simpd/lib-web';
 import { DashboardScreen } from './dashboard/Dashboard';
-import { BookmarksScreen } from './bookmarks/Bookmarks';
 import { UserProfileScreen } from './user-profile/UserProfile';
 import { PageNotFoundScreen } from './page-not-found/PageNotFound';
 import { NotificationsScreen } from './notifications/Notifications';
 import { CreateAccountScreen } from './create-account/CreateAccount';
 import { MessageThreadScreen } from './message-thread/MessageThread';
+import { ViewBookmarksScreen } from './view-bookmarks/ViewBookmarks';
+import { ListBookmarksScreen } from './list-bookmarks/ListBookmarks';
 import { SettingsProfileScreen } from './settings-profile/SettingsProfile';
 import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
 import { SettingsIdentityScreen } from './settings-identity/SettingsIdentity';
@@ -54,7 +55,15 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     path: '/bookmarks',
     view: (
       <UserGuard redirect>
-        <BookmarksScreen />
+        <ListBookmarksScreen />
+      </UserGuard>
+    ),
+  },
+  {
+    path: '/bookmarks/:bookmarkCollectionID',
+    view: (
+      <UserGuard redirect>
+        <ViewBookmarksScreen />
       </UserGuard>
     ),
   },
