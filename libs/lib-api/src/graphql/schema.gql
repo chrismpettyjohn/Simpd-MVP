@@ -57,6 +57,7 @@ type Mutation {
   bookmarkCreate(input: BookmarkCreateInput!): BookmarkModel!
   bookmarkDelete(filter: BookmarkFindOneInput!): Boolean!
   bookmarkCollectionCreate(input: BookmarkCollectionCreateInput!): BookmarkCollectionModel!
+  bookmarkCollectionCreateRandomized: BookmarkCollectionModel!
   bookmarkCollectionDelete(filter: BookmarkCollectionFindOneInput!): Boolean!
 }
 

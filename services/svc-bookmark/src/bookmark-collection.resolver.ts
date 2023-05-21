@@ -1,4 +1,5 @@
 import {In} from 'typeorm';
+import RandomWords from 'random-words';
 import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {
   Args,
@@ -61,6 +62,21 @@ export class BookmarkCollectionResolver {
     const newBookmarkCollection = await this.bookmarkRepo.create({
       profileID: session.profileID,
       name: input.name,
+    });
+    return newBookmarkCollection;
+  }
+
+  @Mutation(() => BookmarkCollectionModel)
+  @HasSession()
+  async bookmarkCollectionCreateRandomized(
+    @GetSession() session: SessionContents
+  ): Promise<BookmarkCollectionEntity> {
+    const words = RandomWords(1);
+    const bookmarkName = words[0];
+
+    const newBookmarkCollection = await this.bookmarkRepo.create({
+      profileID: session.profileID,
+      name: bookmarkName,
     });
     return newBookmarkCollection;
   }
