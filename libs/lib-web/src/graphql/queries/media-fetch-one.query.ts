@@ -15,7 +15,7 @@ export interface MediaFetchOneQueryResponse {
 
 export const MEDIA_FETCH_ONE_QUERY = gql`
   ${MEDIA_FRAGMENT}
-  query($filter: MediaFetchOneInput!) {
+  query($filter: MediaFilterByOneInput!) {
     media(
       filter: $filter
     ) {

@@ -88,7 +88,7 @@ export class PostWithAlbumModel {
   mediaIDs?: number[];
 
   @Field(() => String, {nullable: true})
-  caption?: string;
+  content?: string;
 }
 
 @ObjectType()

@@ -1,6 +1,5 @@
 import gql from "graphql-tag";
 import { PROFILE_FRAGMENT, ProfileFragment } from "./profile.fragment";
-import { MEDIA_FRAGMENT } from "./media.fragment";
 
 export enum PostType {
   Text = 'Text',
@@ -36,7 +35,6 @@ export interface PostWithTextFragment extends BasePost {
 
 export const POST_WITH_IMAGE_FRAGMENT = gql`
   ${PROFILE_FRAGMENT}
-  ${MEDIA_FRAGMENT}
   fragment PostWithImageFragment on PostWithImageModel {
     id
     type
@@ -46,9 +44,6 @@ export const POST_WITH_IMAGE_FRAGMENT = gql`
     }
     content
     mediaID
-    media: {
-      ...MediaFragment
-    }
   }
 `
 
@@ -69,9 +64,6 @@ export const POST_WITH_VIDEO_FRAGMENT = gql`
     }
     content
     mediaID
-    media: {
-      ...MediaFragment
-    }
   }
 `
 
