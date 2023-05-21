@@ -1,4 +1,3 @@
-import {MediaCreateDTO} from './media.dto';
 import {IUploadedFile} from './media.types';
 import {MediaRepository} from './media.repository';
 import {mediaEntityToMediaWire} from './media.wire';
@@ -7,10 +6,8 @@ import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {MediaType, MediaWire, ProfileClientService} from '@simpd/lib-client';
 import {
   BadRequestException,
-  Body,
   Controller,
   Post,
-  UnauthorizedException,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
@@ -27,17 +24,11 @@ export class MediaExternalController {
   @UseInterceptors(FileInterceptor('file'))
   async mediaCreate(
     @GetSession() session: SessionContents,
-    @UploadedFile() file: IUploadedFile,
-    @Body() input: MediaCreateDTO
+    @UploadedFile() file: IUploadedFile
   ): Promise<MediaWire> {
     const matchingProfile = await this.profileClientService.findOne({
-      id: input.profileID,
+      id: session.profileID,
     });
-
-    if (matchingProfile?.userID !== session.userID) {
-      throw new UnauthorizedException();
-    }
-
     const isImage = file.mimetype.indexOf('image') > -1;
     const isVideo = file.mimetype.indexOf('video') > -1;
 

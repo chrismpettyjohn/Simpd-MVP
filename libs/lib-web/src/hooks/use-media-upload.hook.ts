@@ -11,7 +11,7 @@ const MEDIA_API = 'http://localhost:3012';
 export function useMediaUpload() {
   const [loading, setLoading] = useState(false);
 
-  const onUpload = async (profileID: number, file: File) => {
+  const onUpload = async (file: File) => {
     const bearerToken = localStorage.getItem(LOCAL_STORAGE_SESSION_TOKEN);
 
     if (loading) {
@@ -22,7 +22,6 @@ export function useMediaUpload() {
       setLoading(true);
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('profileID', `${profileID}`);
       const response = await fetch(`${MEDIA_API}/media`, {
         headers: {
           Authorization: `Bearer ${bearerToken}`,
