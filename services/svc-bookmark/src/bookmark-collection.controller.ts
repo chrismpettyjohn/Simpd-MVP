@@ -5,20 +5,22 @@ import {bookmarkEntityToBookmarkWire} from './bookmark.wire';
 import {
   BookmarkFindOneInput,
   BookmarkWire,
-  SVC_BOOKMARK_INTERNAL_EVENT_FIND_ONE,
+  SVC_BOOKMARK_COLLECTION_INTERNAL_EVENT_FIND_ONE,
 } from '@simpd/lib-client';
 
 @Controller()
-export class BookmarkController {
+export class BookmarkCollectionController {
   constructor(private readonly bookmarkRepo: BookmarkRepository) {}
 
-  @MessagePattern(SVC_BOOKMARK_INTERNAL_EVENT_FIND_ONE)
-  async bookmarkFindOneByID(data: BookmarkFindOneInput): Promise<BookmarkWire> {
-    const matchingBookmark = await this.bookmarkRepo.findOneOrFail({
+  @MessagePattern(SVC_BOOKMARK_COLLECTION_INTERNAL_EVENT_FIND_ONE)
+  async bookmarkCollectionFindOne(
+    data: BookmarkFindOneInput
+  ): Promise<BookmarkWire> {
+    const matchingBookmarkCollection = await this.bookmarkRepo.findOneOrFail({
       where: {
         id: data.id,
       },
     });
-    return bookmarkEntityToBookmarkWire(matchingBookmark);
+    return bookmarkEntityToBookmarkWire(matchingBookmarkCollection);
   }
 }

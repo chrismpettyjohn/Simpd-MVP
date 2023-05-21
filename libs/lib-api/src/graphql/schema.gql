@@ -10,9 +10,17 @@ type BookmarkModel {
   bookmarkCollectionID: Float
 }
 
+type BookmarkCollectionModel {
+  id: Float
+  profileID: Float
+  name: String
+}
+
 type Query {
   bookmark(filter: BookmarkFindOneInput!): BookmarkModel!
   bookmarks(filter: BookmarkFindManyInput): [BookmarkModel!]!
+  bookmarkCollection(filter: BookmarkCollectionFindOneInput!): BookmarkCollectionModel!
+  bookmarkCollections(filter: BookmarkCollectionFindManyInput): [BookmarkCollectionModel!]!
 }
 
 input BookmarkFindOneInput {
@@ -35,13 +43,29 @@ input BookmarkFindManyInput {
   bookmarkCollectionIDs: [Float!]
 }
 
+input BookmarkCollectionFindOneInput {
+  id: Float
+  profileID: Float
+}
+
+input BookmarkCollectionFindManyInput {
+  ids: [Float!]
+  profileIDs: [Float!]
+}
+
 type Mutation {
   bookmarkCreate(input: BookmarkCreateInput!): BookmarkModel!
   bookmarkDelete(filter: BookmarkFindOneInput!): Boolean!
+  bookmarkCollectionCreate(input: BookmarkCollectionCreateInput!): BookmarkCollectionModel!
+  bookmarkCollectionDelete(filter: BookmarkCollectionFindOneInput!): Boolean!
 }
 
 input BookmarkCreateInput {
   type: BookmarkType!
   resourceID: Float!
   bookmarkCollectionID: Float!
+}
+
+input BookmarkCollectionCreateInput {
+  name: String!
 }

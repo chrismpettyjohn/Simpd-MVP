@@ -3,6 +3,10 @@ import {BookmarkEntity} from './bookmark.entity';
 import {BookmarkResolver} from './bookmark.resolver';
 import {BookmarkController} from './bookmark.controller';
 import {BookmarkRepository} from './bookmark.repository';
+import {BookmarkCollectionEntity} from './bookmark-collection.entity';
+import {BookmarkCollectionResolver} from './bookmark-collection.resolver';
+import {BookmarkCollectionRepository} from './bookmark-collection.repository';
+import {BookmarkCollectionController} from './bookmark-collection.controller';
 import {
   GraphQLModule,
   DatabaseModule,
@@ -16,11 +20,16 @@ import {
     SessionModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
-      entities: [BookmarkEntity],
+      entities: [BookmarkEntity, BookmarkCollectionEntity],
       synchronize: true,
     }),
   ],
-  providers: [BookmarkRepository, BookmarkResolver],
-  controllers: [BookmarkController],
+  providers: [
+    BookmarkRepository,
+    BookmarkResolver,
+    BookmarkCollectionRepository,
+    BookmarkCollectionResolver,
+  ],
+  controllers: [BookmarkController, BookmarkCollectionController],
 })
 export class BookmarkModule {}

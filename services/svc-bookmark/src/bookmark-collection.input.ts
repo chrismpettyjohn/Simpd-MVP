@@ -1,7 +1,7 @@
 import {Field, InputType} from '@nestjs/graphql';
 
 @InputType()
-export class BookmarkCollectionFilterByManyInput {
+export class BookmarkCollectionFindManyInput {
   @Field(() => [Number], {nullable: true})
   ids?: number[];
 
@@ -10,7 +10,7 @@ export class BookmarkCollectionFilterByManyInput {
 }
 
 @InputType()
-export class BookmarkCollectionFilterByOneInput {
+export class BookmarkCollectionFindOneInput {
   @Field(() => Number, {nullable: true})
   id?: number;
 

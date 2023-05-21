@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 
 @Entity({name: 'bookmark_collections', schema: 'bookmarks'})
-export class BookmarkEntity {
+export class BookmarkCollectionEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 
