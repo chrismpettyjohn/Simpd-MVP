@@ -1,0 +1,40 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type MediaDetailsModel {
+  sizeInBytes: Float
+  originalFileName: String
+}
+
+type MediaModel {
+  id: Float
+  type: MediaType
+  profileID: Float
+  url: String
+  details: MediaDetailsModel
+}
+
+enum MediaType {
+  Image
+  Video
+  Other
+}
+
+type Query {
+  media(filter: MediaFilterByOneInput!): MediaModel!
+  medias(filter: MediaFilterByManyInput): [MediaModel!]!
+}
+
+input MediaFilterByOneInput {
+  id: Float
+}
+
+input MediaFilterByManyInput {
+  ids: [Float!]
+  profileIDs: [Float!]
+}
+
+type Mutation {
+  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
+}
