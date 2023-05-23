@@ -2,6 +2,8 @@ import gql from "graphql-tag";
 import { MESSAGE_FRAGMENT, MessageFragment } from "../fragments/message.fragment";
 
 export interface MessageCreateInput {
+  receivingProfileID: number;
+  content: string;
 }
 
 export interface MessageCreateMutationVariables {

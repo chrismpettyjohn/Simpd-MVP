@@ -10,9 +10,12 @@ export interface UseMessageFetchManyQueryResponse {
 }
 
 export function useMessageFetchMany(): UseMessageFetchManyQueryResponse {
-  const [getMessage, { loading, error, data }] = useLazyQuery<MessageFetchManyQueryResponse, MessageFetchManyQueryVariables>(MESSAGE_FETCH_MANY_QUERY);
+  const [getMessage, { loading, error, data, refetch }] = useLazyQuery<MessageFetchManyQueryResponse, MessageFetchManyQueryVariables>(MESSAGE_FETCH_MANY_QUERY);
 
   const onFetchMessage = async (filter: MessageFetchManyQueryVariables) => {
+    if (data) {
+      await refetch();
+    }
     const matchingMessages = await getMessage({ variables: filter })
     return matchingMessages.data!.messages;
   }

@@ -7,6 +7,7 @@ import { Button } from '../../components/button/Button';
 import { PageTitle } from '../../components/page-title/PageTitle';
 import { FullPageLoadingScreen, useMessageContactFetchMany } from '@simpd/lib-web';
 import { MessagePreviewCard } from 'components/message-preview-card/MessagePreviewCard';
+import { Card } from 'components/card/Card';
 
 export function MessagesScreen() {
   const messageContactFetchMany = useMessageContactFetchMany();
@@ -39,7 +40,7 @@ export function MessagesScreen() {
           </Button>
         </Link>
       </PageTitle>
-      <MessagesContainer>
+      <Card>
         {
           messageContactFetchMany.data?.map(_ => (
             <MessagePreviewCard key={`message_contact_${_.profileID}`} messageContact={_} />
@@ -50,7 +51,7 @@ export function MessagesScreen() {
             <p style={{ fontSize: '1.18rem', color: 'white' }}>No messages to display.</p>
           )
         }
-      </MessagesContainer>
+      </Card>
     </>
   )
 }

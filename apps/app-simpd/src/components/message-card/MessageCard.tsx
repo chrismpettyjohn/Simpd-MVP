@@ -1,19 +1,20 @@
 import React from 'react'
+import { Link } from 'wouter';
+import { MessageCardProps } from './MessageCard.types';
 import { AuthorBlockSmall } from '../author-block-small/AuthorBlockSmall';
 import { MessageCardElement, MessageCardTextContainer, MessageIconElement } from './MessageCard.sty';
-import { Link } from 'wouter';
 
-export function MessageCard() {
+export function MessageCard({ message, profile }: MessageCardProps) {
   return (
-    <Link to={`/messages/threads/lechris`}>
+    <Link to={`/messages/threads/${profile.username}`}>
       <MessageCardElement>
-        <AuthorBlockSmall profile={{ username: 'LOL', displayName: 'WHY' } as any} />
+        <AuthorBlockSmall profile={profile} />
         <MessageCardTextContainer>
           <h1 className="author-container">
             They Said:
           </h1>
           <span className="message-content">
-            r u an asparagus
+            {message.content}
           </span>
         </MessageCardTextContainer>
         <MessageIconElement className="fa fa-share" />
