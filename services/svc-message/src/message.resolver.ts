@@ -1,8 +1,8 @@
 import {In} from 'typeorm';
 import {MessageModel} from './message.model';
 import {MessageEntity} from './message.entity';
-import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {MessageRepository} from './message.repository';
+import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {
   Args,
   Mutation,

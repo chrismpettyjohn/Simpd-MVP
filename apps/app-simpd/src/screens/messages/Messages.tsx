@@ -1,13 +1,24 @@
 import './Messages.css';
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { MessagesContainer } from './Messages.sty';
-import { PageTitle } from '../../components/page-title/PageTitle';
-import { MessageCard } from '../../components/message-card/MessageCard';
-import { Button } from '../../components/button/Button';
 import { Link } from 'wouter';
+import { Helmet } from 'react-helmet';
+import React, { useEffect } from 'react';
+import { MessagesContainer } from './Messages.sty';
+import { Button } from '../../components/button/Button';
+import { PageTitle } from '../../components/page-title/PageTitle';
+import { FullPageLoadingScreen, useMessageContactFetchMany } from '@simpd/lib-web';
+import { MessagePreviewCard } from 'components/message-preview-card/MessagePreviewCard';
 
 export function MessagesScreen() {
+  const messageContactFetchMany = useMessageContactFetchMany();
+
+  useEffect(() => {
+    messageContactFetchMany.fetch();
+  }, []);
+
+  if (messageContactFetchMany.loading) {
+    return <FullPageLoadingScreen />;
+  }
+
   return (
     <>
       <Helmet>
@@ -29,10 +40,16 @@ export function MessagesScreen() {
         </Link>
       </PageTitle>
       <MessagesContainer>
-        <MessageCard />
-        <MessageCard />
-        <MessageCard />
-        <MessageCard />
+        {
+          messageContactFetchMany.data?.map(_ => (
+            <MessagePreviewCard key={`message_contact_${_.profileID}`} messageContact={_} />
+          ))
+        }
+        {
+          !messageContactFetchMany.data?.length && (
+            <p style={{ fontSize: '1.18rem', color: 'white' }}>No messages to display.</p>
+          )
+        }
       </MessagesContainer>
     </>
   )

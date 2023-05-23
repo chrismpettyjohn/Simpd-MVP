@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export const MESSAGE_FRAGMENT = gql`
-  fragment MessageFragment on FragmentModel {
+  fragment MessageFragment on MessageModel {
     id
   }
 `

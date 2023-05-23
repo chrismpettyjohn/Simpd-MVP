@@ -9,6 +9,7 @@ import {
   CommonModule,
   SessionModule,
 } from '@simpd/lib-api';
+import {MessageContactResolver} from './message-contact.resolver';
 
 @Module({
   imports: [
@@ -20,7 +21,7 @@ import {
       synchronize: true,
     }),
   ],
-  providers: [MessageRepository, MessageResolver],
+  providers: [MessageRepository, MessageResolver, MessageContactResolver],
   controllers: [MessageController],
 })
 export class MessageModule {}

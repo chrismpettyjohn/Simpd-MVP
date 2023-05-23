@@ -7,7 +7,7 @@ export function MessageCard() {
   return (
     <Link to={`/messages/threads/lechris`}>
       <MessageCardElement>
-        <AuthorBlockSmall />
+        <AuthorBlockSmall profile={{ username: 'LOL', displayName: 'WHY' } as any} />
         <MessageCardTextContainer>
           <h1 className="author-container">
             They Said:

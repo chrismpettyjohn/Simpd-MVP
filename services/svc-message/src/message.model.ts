@@ -29,3 +29,9 @@ export class MessageModel {
   @Field(() => GraphQLISODateTime, {nullable: true})
   updatedAt?: string;
 }
+
+@ObjectType()
+export class MessageContactModel {
+  @Field(() => Number, {nullable: true})
+  profileID?: number;
+}

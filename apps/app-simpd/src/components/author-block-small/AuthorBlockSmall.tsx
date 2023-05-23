@@ -1,20 +1,21 @@
 import React from 'react';
+import { AuthorBlockSmallProps } from './AuthorBlockSmall.types';
 import { AuthorBlockSmallElement, AuthorBlockSmallInfoContainer } from "./AuthorBlockSmall.sty";
 
-export function AuthorBlockSmall() {
+export function AuthorBlockSmall({ profile }: AuthorBlockSmallProps) {
   return (
     <AuthorBlockSmallElement>
       <img
-        alt="FairLan's profile picture"
-        src="https://i.imgur.com/CesvKGF.png"
+        alt={`${profile.username}'s profile picture`}
+        src={profile.profilePicture?.url}
         className="notification-card-image"
       />
       <AuthorBlockSmallInfoContainer>
         <h1>
-          FairLan
+          {profile.displayName}
         </h1>
         <span>
-          @FairLan
+          @{profile.username}
         </span>
       </AuthorBlockSmallInfoContainer>
     </AuthorBlockSmallElement>

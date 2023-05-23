@@ -2,144 +2,51 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type MessageModel {
+  id: Float
+  sendingProfileID: Float
+  receivingProfileID: Float
+  content: String
+  readAt: DateTime
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type MessageContactModel {
+  profileID: Float
+  profile: ProfileModel!
+}
+
 type ProfileModel {
   id: Float!
 }
 
-type PostWithTextModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  type: PostType
-  content: String
-}
-
-enum PostType {
-  Text
-  Image
-  Video
-  Album
-  SharedContent
-}
-
-type PostWithImageModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  type: PostType
-  mediaID: Float
-  content: String
-}
-
-type PostWithVideoModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  type: PostType
-  mediaID: Float
-  content: String
-}
-
-type PostWithAlbumModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  type: PostType
-  mediaIDs: [Float!]
-  content: String
-}
-
-type PostWithSharedContentModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  type: PostType
-  resourceType: PostSharedContentType
-  resourceID: Float
-  content: String
-}
-
-enum PostSharedContentType {
-  Post
-  Media
-}
-
-type PostReactionModel {
-  id: Float
-  postID: Float
-  profileID: Float
-  reaction: ReactionType
-}
-
-enum ReactionType {
-  Like
-}
-
 type Query {
-  post(filter: PostFilterByOneInput!): PostUnion!
-  posts(filter: PostFilterByManyInput): [PostUnion!]!
-  postReaction(filter: PostReactionFilterOneInput!): PostReactionModel!
-  postReactions(filter: PostReactionFilterManyInput!): [PostReactionModel!]!
+  message(filter: MessageFilterByOneInput!): MessageModel!
+  messages(filter: MessageFilterByManyInput): [MessageModel!]!
+  messageContacts: [MessageContactModel!]!
 }
 
-union PostUnion = PostWithTextModel | PostWithImageModel | PostWithVideoModel | PostWithAlbumModel | PostWithSharedContentModel
-
-input PostFilterByOneInput {
-  id: Float!
+input MessageFilterByOneInput {
+  id: Float
 }
 
-input PostFilterByManyInput {
+input MessageFilterByManyInput {
   ids: [Float!]
-  profileIDs: [Float!]
-}
-
-input PostReactionFilterOneInput {
-  postID: Float
-  profileID: Float
-}
-
-input PostReactionFilterManyInput {
-  postIDs: [Float!]
-  profileIDs: [Float!]
+  usernames: [String!]
 }
 
 type Mutation {
-  postWithTextCreate(input: PostWithTextCreateInput!): PostWithTextModel!
-  postWithImageCreate(input: PostWithImageCreateInput!): PostWithImageModel!
-  postWithVideoCreate(input: PostWithVideoCreateInput!): PostWithVideoModel!
-  postWithAlbumCreate(input: PostWithAlbumInput!): PostWithAlbumModel!
-  postWithSharedContentCreate(input: PostWithSharedContentInput!): PostWithSharedContentModel!
-  postDelete(filter: PostFilterByOneInput!): Boolean!
-  postReactionCreate(input: PostReactionCreateInput!): PostReactionModel!
-  postReactionDelete(filter: PostReactionFilterOneInput!): Boolean!
+  messageCreate(input: MessageCreateInput!): MessageModel!
+  messageDelete(filter: MessageFilterByOneInput!): Boolean!
 }
 
-input PostWithTextCreateInput {
+input MessageCreateInput {
+  receivingProfileID: Float!
   content: String!
-}
-
-input PostWithImageCreateInput {
-  mediaID: Float!
-  content: String!
-}
-
-input PostWithVideoCreateInput {
-  mediaID: Float!
-  content: String!
-}
-
-input PostWithAlbumInput {
-  mediaIDs: [Float!]!
-  content: String!
-}
-
-input PostWithSharedContentInput {
-  resourceType: PostSharedContentType!
-  resourceID: Float!
-  content: String!
-}
-
-input PostReactionCreateInput {
-  postID: Float!
-  reaction: ReactionType!
 }
