@@ -17,9 +17,7 @@ export function MessagePreviewCard({ messageContact }: MessagePreviewCardProps) 
             r u an asparagus
           </span>
         </MessageCardTextContainer>
-        <MessageIconElement viewBox="0 0 1024 1024" className="message-card-icon">
-          <i className="fa fa-share" />
-        </MessageIconElement>
+        <MessageIconElement className="fa fa-share" />
       </MessageCardElement>
     </Link>
   )

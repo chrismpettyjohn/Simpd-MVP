@@ -2,10 +2,11 @@ import { styled } from "styled-components";
 
 export const AuthorBlockSmallElement = styled.div`
   flex: 0 0 auto;
-  width: auto;
+  width: 45%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  overflow: hidden;
 
   img {
     width: 100px;
@@ -19,7 +20,7 @@ export const AuthorBlockSmallElement = styled.div`
 
 export const AuthorBlockSmallInfoContainer = styled.div`
   flex: 0 0 auto;
-  width: auto;
+  width: 100%;
   height: auto;
   align-items: center;
   margin-left: ${({ theme }) => theme.space.twoUnits};

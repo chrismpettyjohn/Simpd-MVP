@@ -17,6 +17,7 @@ export const MessageCardElement = styled.div`
   justify-content: space-between;
   background-color: ${({ theme }) => theme.color.s20};
   margin-bottom: ${({ theme }) => theme.space.twoUnits};
+  overflow: hidden;
 
   &:hover {
    box-shadow: 5px 5px 10px 10px #711b1e;
@@ -26,7 +27,7 @@ export const MessageCardElement = styled.div`
 
 export const MessageCardTextContainer = styled.div`
   flex: 0 0 auto;
-  width: 60%;
+  width: 45%;
   height: auto;
   align-items: center;
   margin-left: var(--dl-space-space-twounits);
@@ -43,15 +44,12 @@ export const MessageCardTextContainer = styled.div`
   }
 `
 
-export const MessageIconElement = styled.svg`
-  fill: ${({ theme }) => theme.color.s90};
-  width: ${({ theme }) => theme.icon.twoUnits};
+export const MessageIconElement = styled.i`
+  color: ${({ theme }) => theme.color.s90};
+  font-size: ${({ theme }) => theme.icon.twoUnits};
   cursor: pointer;
-  height: ${({ theme }) => theme.icon.twoUnits};
-  transition: 0.3s;
-  
   &:hover {
-    fill: ${({ theme }) => theme.color.brand};
+    color: ${({ theme }) => theme.color.brand};
   }
 }
 `

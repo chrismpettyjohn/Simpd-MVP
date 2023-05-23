@@ -16,12 +16,7 @@ export function MessageCard() {
             r u an asparagus
           </span>
         </MessageCardTextContainer>
-        <MessageIconElement viewBox="0 0 1024 1024" className="message-card-icon">
-          <path
-            d="M426 384q208 30 321 159t149 311q-154-218-470-218v174l-298-298 298-298v170z"
-            className=""
-          ></path>
-        </MessageIconElement>
+        <MessageIconElement className="fa fa-share" />
       </MessageCardElement>
     </Link>
   )
