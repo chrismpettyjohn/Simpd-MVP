@@ -1,8 +1,13 @@
 import gql from "graphql-tag";
 import { MESSAGE_FRAGMENT, MessageFragment } from "../fragments/message.fragment";
 
-export interface MessageFetchManyQueryVariables {
+export interface MessageFetchManyQueryInput {
   ids?: number[];
+  receivingProfileID?: number;
+}
+
+export interface MessageFetchManyQueryVariables {
+  filter: MessageFetchManyQueryInput;
 }
 
 export interface MessageFetchManyQueryResponse {
@@ -11,11 +16,9 @@ export interface MessageFetchManyQueryResponse {
 
 export const MESSAGE_FETCH_MANY_QUERY = gql`
   ${MESSAGE_FRAGMENT}
-  query($ids: [Float!]) {
+  query($filter: MessageFilterByManyInput!) {
     messages(
-      filter: {
-        ids: $ids
-      }
+      filter: $filter
     ) {
       ...MessageFragment
     }

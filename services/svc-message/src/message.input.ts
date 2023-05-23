@@ -5,8 +5,8 @@ export class MessageFilterByManyInput {
   @Field(() => [Number], {nullable: true})
   ids?: number[];
 
-  @Field(() => [String], {nullable: true})
-  usernames?: string[];
+  @Field(() => Number, {nullable: true})
+  receivingProfileID?: number;
 }
 
 @InputType()

@@ -6,7 +6,9 @@ import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {
   Args,
   Mutation,
+  Parent,
   Query,
+  ResolveField,
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
@@ -15,6 +17,7 @@ import {
   MessageFilterByManyInput,
   MessageFilterByOneInput,
 } from './message.input';
+import {ProfileModel} from '@simpd/lib-client';
 
 @Resolver(() => MessageModel)
 export class MessageResolver {
@@ -28,6 +31,20 @@ export class MessageResolver {
     return this.message({id: reference.id});
   }
 
+  @ResolveField(() => ProfileModel)
+  sendingProfile(@Parent() message: MessageModel): ProfileModel {
+    return {
+      id: message.sendingProfileID!,
+    };
+  }
+
+  @ResolveField(() => ProfileModel)
+  receivingProfile(@Parent() message: MessageModel): ProfileModel {
+    return {
+      id: message.receivingProfileID!,
+    };
+  }
+
   @Query(() => MessageModel)
   async message(
     @Args('filter') filter: MessageFilterByOneInput
@@ -39,12 +56,13 @@ export class MessageResolver {
 
   @Query(() => [MessageModel])
   messages(
-    @Args('filter', {type: () => MessageFilterByManyInput, nullable: true})
-    filter?: MessageFilterByManyInput
+    @Args('filter')
+    filter: MessageFilterByManyInput
   ): Promise<MessageEntity[]> {
     return this.messageRepo.find({
       where: {
-        id: filter?.ids && In(filter.ids),
+        id: filter.ids && In(filter.ids),
+        receivingProfileID: filter.receivingProfileID,
       },
     });
   }

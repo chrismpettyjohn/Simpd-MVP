@@ -1,11 +1,12 @@
 import { useRoute } from 'wouter';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Card } from '../../components/card/Card';
 import { SendMessageCard } from 'components/send-message-card/SendMessageCard';
-import { FullPageLoadingScreen, useMessageFetchMany, useProfileFetchOne } from '@simpd/lib-web';
+import { FullPageLoadingScreen, sessionContext, useMessageFetchMany, useProfileFetchOne } from '@simpd/lib-web';
 import { MessageCard } from 'components/message-card/MessageCard';
 
 export function MessageThreadScreen() {
+  const { session } = useContext(sessionContext);
   const profileFetchOne = useProfileFetchOne();
   const messageFetchMany = useMessageFetchMany();
 
@@ -48,7 +49,7 @@ export function MessageThreadScreen() {
       <div style={{ height: '45vh', overflow: 'hidden', overflowY: 'auto', padding: 8 }}>
         {
           messageFetchMany.data?.map(_ => (
-            <MessageCard key={`message_card_${_.id}`} message={_} profile={receivingProfile} />
+            <MessageCard key={`message_card_${_.id}`} message={_} profile={_.sendingProfileID === session?.profileID ? session.profile : _.sendingProfile} />
           ))
         }
       </div>
