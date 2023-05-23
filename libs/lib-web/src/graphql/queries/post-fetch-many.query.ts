@@ -21,10 +21,18 @@ export const POST_FETCH_MANY_QUERY = gql`
         profileIDs: $profileIDs
       }
     ) {
-      ...PostWithTextFragment
-      ...PostWithImageFragment
-      ...PostWithVideoFragment
+      ...on PostWithTextModel {
+        ...PostWithTextFragment
+      }
+      ...on PostWithImageModel {
+        ...PostWithImageFragment
+      }
+      ...on PostWithVideoModel {
+        ...PostWithVideoFragment
+      }
+      ...on PostWithAlbumModel {
       ...PostWithAlbumFragment
+      }
     }
   }
 `
