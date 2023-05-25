@@ -96,8 +96,7 @@ export function postEntityToPostWithSharedContentWire(
   return {
     ...postEntityToBasePost(postEntity),
     type: postEntity.postType,
-    resourceType: postEntity.postData.resourceType,
-    resourceID: postEntity.postData.resourceID,
+    postID: postEntity.postData.postID,
     content: postEntity.postData.content,
   };
 }

@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { POST_WITH_ALBUM_FRAGMENT, POST_WITH_IMAGE_FRAGMENT, POST_WITH_TEXT_FRAGMENT, POST_WITH_VIDEO_FRAGMENT, PostWithTextFragment } from "../fragments/post.fragment";
+import { POST_WITH_ALBUM_FRAGMENT, POST_WITH_IMAGE_FRAGMENT, POST_WITH_SHARED_CONTENT_FRAGMENT, POST_WITH_TEXT_FRAGMENT, POST_WITH_VIDEO_FRAGMENT, PostWithTextFragment } from "../fragments/post.fragment";
 
 export interface PostFetchManyQueryVariables {
   ids?: number[];
@@ -15,6 +15,7 @@ export const POST_FETCH_MANY_QUERY = gql`
   ${POST_WITH_IMAGE_FRAGMENT}
   ${POST_WITH_VIDEO_FRAGMENT}
   ${POST_WITH_ALBUM_FRAGMENT}
+  ${POST_WITH_SHARED_CONTENT_FRAGMENT}
   query($profileIDs: [Float!]) {
     posts(
       filter: {
@@ -32,6 +33,9 @@ export const POST_FETCH_MANY_QUERY = gql`
       }
       ...on PostWithAlbumModel {
       ...PostWithAlbumFragment
+      }
+      ...on PostWithSharedContentModel {
+        ...PostWithSharedContentFragment
       }
     }
   }

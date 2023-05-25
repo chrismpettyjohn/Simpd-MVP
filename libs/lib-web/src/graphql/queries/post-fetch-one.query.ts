@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { POST_WITH_ALBUM_FRAGMENT, POST_WITH_IMAGE_FRAGMENT, POST_WITH_TEXT_FRAGMENT, POST_WITH_VIDEO_FRAGMENT, PostWithTextFragment } from "../fragments/post.fragment";
+import { POST_WITH_ALBUM_FRAGMENT, POST_WITH_IMAGE_FRAGMENT, POST_WITH_SHARED_CONTENT_FRAGMENT, POST_WITH_TEXT_FRAGMENT, POST_WITH_VIDEO_FRAGMENT, PostWithTextFragment } from "../fragments/post.fragment";
 
 export interface PostFetchOneQueryVariables {
   id: number;
@@ -14,16 +14,28 @@ export const POST_FETCH_ONE_QUERY = gql`
   ${POST_WITH_IMAGE_FRAGMENT}
   ${POST_WITH_VIDEO_FRAGMENT}
   ${POST_WITH_ALBUM_FRAGMENT}
+  ${POST_WITH_SHARED_CONTENT_FRAGMENT}
   query($id: Float!) {
     post(
       filter: {
         id: $id
       }
     ) {
-      ...PostWithTextFragment
-      ...PostWithImageFragment
-      ...PostWithVideoFragment
+      ...on PostWithTextModel {
+        ...PostWithTextFragment
+      }
+      ...on PostWithImageModel {
+        ...PostWithImageFragment
+      }
+      ...on PostWithVideoModel {
+        ...PostWithVideoFragment
+      }
+      ...on PostWithAlbumModel {
       ...PostWithAlbumFragment
+      }
+      ...on PostWithSharedContentModel {
+        ...PostWithSharedContentFragment
+      }
     }
   }
 `

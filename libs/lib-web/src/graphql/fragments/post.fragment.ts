@@ -6,7 +6,7 @@ export enum PostType {
   Image = 'Image',
   Video = 'Video',
   Album = 'Album',
-  SharedContent = 'shared_content',
+  SharedContent = 'SharedContent',
 }
 
 interface BasePost {
@@ -93,4 +93,24 @@ export interface PostWithAlbumFragment extends BasePost {
   mediaIDs: number[];
 }
 
-export type PostFragment = PostWithTextFragment | PostWithImageFragment | PostWithVideoFragment | PostWithAlbumFragment;
+export const POST_WITH_SHARED_CONTENT_FRAGMENT = gql`
+  ${PROFILE_FRAGMENT}
+  fragment PostWithSharedContentFragment on PostWithSharedContentModel {
+    id
+    type
+    profileID
+    profile {
+      ...ProfileFragment,
+    }
+    content
+    postID
+  }
+`
+
+export interface PostWithSharedContentFragment extends BasePost {
+  type: PostType.SharedContent;
+  content: string;
+  postID: number;
+}
+
+export type PostFragment = PostWithTextFragment | PostWithImageFragment | PostWithVideoFragment | PostWithAlbumFragment | PostWithSharedContentFragment;

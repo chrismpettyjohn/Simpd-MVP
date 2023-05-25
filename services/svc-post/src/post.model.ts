@@ -1,10 +1,5 @@
 import {Directive, Field, ObjectType, createUnionType} from '@nestjs/graphql';
-import {
-  PostSharedContentType,
-  PostType,
-  PostWire,
-  ProfileModel,
-} from '@simpd/lib-client';
+import {PostType, PostWire, ProfileModel} from '@simpd/lib-client';
 
 @ObjectType()
 @Directive('@key(fields: "id")')
@@ -106,11 +101,8 @@ export class PostWithSharedContentModel {
   @Field(() => PostType, {nullable: true})
   type?: PostType.SharedContent;
 
-  @Field(() => PostSharedContentType, {nullable: true})
-  resourceType?: PostSharedContentType;
-
   @Field(() => Number, {nullable: true})
-  resourceID?: number;
+  postID?: number;
 
   @Field(() => String, {nullable: true})
   content?: string;

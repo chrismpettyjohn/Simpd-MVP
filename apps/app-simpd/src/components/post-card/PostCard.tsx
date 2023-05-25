@@ -9,6 +9,7 @@ import { TextPostContent } from './text-post-content/TextPostContent';
 import { ImagePostContent } from './image-post-content/ImagePostContent';
 import { AuthorBlockLarge } from '../author-block-large/AuthorBlockLarge';
 import { PostCardContent, PostCardElement, PostStatsContainer } from './PostCard.styled';
+import { SharedPostContent } from './shared-post-content/SharedPostContent';
 
 const getPostCardElement = (post: PostFragment) => {
   if (post.type === PostType.Text) {
@@ -17,6 +18,10 @@ const getPostCardElement = (post: PostFragment) => {
 
   if (post.type === PostType.Image) {
     return <ImagePostContent post={post as any} />;
+  }
+
+  if (post.type === PostType.SharedContent) {
+    return <SharedPostContent post={post as any} />
   }
 
   throw new Error('Unsupported post type');

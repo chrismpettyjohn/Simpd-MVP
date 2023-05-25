@@ -293,8 +293,7 @@ export class PostResolver {
     const newSharedContentPost = await this.sharedContentPostRepo.create({
       profileID: matchingProfile.id,
       postData: {
-        resourceType: input.resourceType,
-        resourceID: input.resourceID,
+        postID: input.postID,
         content: input.content,
       },
       postType: PostType.SharedContent,

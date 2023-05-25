@@ -46,15 +46,9 @@ export interface BasePostWithVideo {
 
 export type PostWithVideoWire = BasePost & BasePostWithVideo;
 
-export enum PostSharedContentType {
-  Post = 'post',
-  Media = 'media',
-}
-
 export interface BasePostWithSharedContent {
   type: PostType.SharedContent;
-  resourceType: PostSharedContentType;
-  resourceID: number;
+  postID: number;
   content: string;
 }
 
