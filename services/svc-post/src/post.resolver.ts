@@ -11,6 +11,7 @@ import {
   postEntityToPostWithVideoWire,
 } from './post.wire';
 import {
+  PostBaseModel,
   PostUnion,
   PostWithAlbumModel,
   PostWithImageModel,
@@ -90,6 +91,21 @@ export class PostResolver {
     }
   ): Promise<PostWire> {
     return this.post(session, {id: reference.id});
+  }
+
+  @Query(() => Number, {nullable: true})
+  @HasSession()
+  async postShares(
+    @GetSession() session: SessionContents,
+    @Args('filter') filter: PostFilterByOneInput
+  ): Promise<number> {
+    const matchingPost = await this.post(session, filter);
+    const shares: [{count: number}] = await this.postRepo
+      .getInstance()
+      .query(
+        `SELECT COUNT(*) FROM posts.posts WHERE posts.post_data ->> 'postID' = '${matchingPost.id}'`
+      );
+    return shares[0].count;
   }
 
   @Query(() => PostUnion)

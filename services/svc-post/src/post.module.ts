@@ -3,7 +3,6 @@ import {PostEntity} from './post.entity';
 import {PostResolver} from './post.resolver';
 import {PostController} from './post.controller';
 import {PostRepository} from './post.repository';
-import {BasePostResolver} from './base-post.resolver';
 import {PostPrivacyService} from './post-privacy.service';
 import {PostReactionService} from './post-reaction.service';
 import {PostReactionResolver} from './post-reaction.resolver';
@@ -37,7 +36,6 @@ import {
   providers: [
     PostRepository,
     PostResolver,
-    BasePostResolver,
     PostPrivacyService,
     PostReactionService,
     PostReactionResolver,

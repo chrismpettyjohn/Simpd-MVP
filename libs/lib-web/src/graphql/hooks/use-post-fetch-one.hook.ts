@@ -1,10 +1,10 @@
 import { useLazyQuery } from "@apollo/client";
 import { PostWithTextFragment } from "../fragments/post.fragment";
-import { POST_FETCH_ONE_QUERY, PostFetchOneQueryResponse, PostFetchOneQueryVariables } from "../queries/post-fetch-one.query";
+import { POST_FETCH_ONE_QUERY, PostFetchOneInput, PostFetchOneQueryResponse, PostFetchOneQueryVariables } from "../queries/post-fetch-one.query";
 
 
 export interface UsePostFetchOneQueryResponse {
-  fetch(filter: PostFetchOneQueryVariables): Promise<PostWithTextFragment>;
+  fetch(filter: PostFetchOneInput): Promise<PostWithTextFragment>;
   error?: Error;
   loading: boolean;
   data?: PostWithTextFragment;
@@ -13,8 +13,8 @@ export interface UsePostFetchOneQueryResponse {
 export function usePostFetchOne(): UsePostFetchOneQueryResponse {
   const [getPost, { loading, error, data }] = useLazyQuery<PostFetchOneQueryResponse, PostFetchOneQueryVariables>(POST_FETCH_ONE_QUERY);
 
-  const onFetchPost = async (filter: PostFetchOneQueryVariables) => {
-    const matchingPosts = await getPost({ variables: filter })
+  const onFetchPost = async (filter: PostFetchOneInput) => {
+    const matchingPosts = await getPost({ variables: { filter } })
     return matchingPosts.data!.post;
   }
 

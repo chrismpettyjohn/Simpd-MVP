@@ -24,8 +24,6 @@ const getPostCardElement = (post: PostFragment) => {
     return <SharedPostContent post={post as any} />
   }
 
-  console.log(post);
-
   return null;
 }
 

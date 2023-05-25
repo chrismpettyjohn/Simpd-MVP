@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { toast } from 'react-toastify';
 import { PostStatElement } from '../PostCard.styled';
 import { PostSharesProps } from './PostShares.types';
-import { usePostWithSharedContentCreate } from '@simpd/lib-web';
+import { usePostShares, usePostWithSharedContentCreate } from '@simpd/lib-web';
 
 export function PostShares({ post }: PostSharesProps) {
   const [, setLocation] = useLocation();
+  const fetchPostShares = usePostShares();
   const createPostWithSharedContent = usePostWithSharedContentCreate();
 
   const onSharePost = async () => {
@@ -19,9 +20,13 @@ export function PostShares({ post }: PostSharesProps) {
     setLocation(`/posts/${newPost.id}`)
   }
 
+  useEffect(() => {
+    fetchPostShares.fetch({ id: post.id });
+  }, [post]);
+
   return (
     <PostStatElement onClick={onSharePost}>
-      <h3>20</h3>
+      <h3>{fetchPostShares.data ?? 0}</h3>
       <p>
         <i className={createPostWithSharedContent.loading ? 'fa fa-spinner fa-spin' : 'fa fa-share'} />
       </p>

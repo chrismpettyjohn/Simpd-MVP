@@ -27,6 +27,7 @@ export class GraphQLModule {
             },
           },
           introspection: GRAPHQL_PLAYGROUND,
+
           ...options,
         }),
       ],

@@ -21,8 +21,6 @@ export class BaseReactionClientService {
       serviceKey: this.serviceKey,
     });
 
-    console.log(newReaction);
-
     if (!newReaction.success) {
       throw new Error('svc-reaction failed to createOne');
     }

@@ -14,13 +14,11 @@ export function usePostFetchMany(): UsePostFetchManyQueryResponse {
   const [getPosts, { loading, error, data, refetch }] = useLazyQuery<PostFetchManyQueryResponse, PostFetchManyQueryVariables>(POST_FETCH_MANY_QUERY);
 
 
-  console.log(data)
   const onFetchPosts = async (filter: PostFetchManyQueryVariables) => {
     if (data) {
       await refetch();
     }
     const matchingPosts = await getPosts({ variables: filter })
-    console.log('WAAA', matchingPosts);
     return matchingPosts.data!.posts;
   }
 

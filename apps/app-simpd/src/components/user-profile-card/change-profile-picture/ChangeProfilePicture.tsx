@@ -11,8 +11,7 @@ export function ChangeProfilePicture({ profile, onChange }: ChangeProfilePicture
   const inputRef = useRef<HTMLInputElement>(null);
 
   const onSelectFile = () => {
-    console.log(inputRef.current);
-    inputRef.current?.click();
+    inputRef.current!.click();
   }
 
   const onUploadProfilePicture = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,9 +30,9 @@ export function ChangeProfilePicture({ profile, onChange }: ChangeProfilePicture
   }
 
   return (
-    <>
+    <div>
       <UserProfileChangeMediaIcon className="fa fa-file-import" onClick={onSelectFile} />
-      {createPortal(<input style={{ visibility: 'hidden' }} type="file" onChange={onUploadProfilePicture} ref={inputRef} />, document.body)}
-    </>
+      {createPortal(<input id="change-profile-pic-file-inp" style={{ visibility: 'hidden' }} type="file" ref={inputRef} />, document.body)}
+    </div>
   )
 }

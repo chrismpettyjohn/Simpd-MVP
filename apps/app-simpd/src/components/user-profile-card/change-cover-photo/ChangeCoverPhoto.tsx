@@ -32,7 +32,7 @@ export function ChangeCoverPhoto({ profile, onChange }: ChangeCoverPhotoProps) {
   return (
     <>
       <UserProfileChangeMediaIcon className="fa fa-file-import" onClick={onSelectFile} />
-      {createPortal(<input style={{ visibility: 'hidden' }} type="file" onChange={onUploadCoverPhoto} ref={inputRef} />, document.body)}
+      {createPortal(<input id="change-cover-photo-file-inp" style={{ visibility: 'hidden' }} type="file" onChange={onUploadCoverPhoto} ref={inputRef} />, document.body)}
     </>
   )
 }

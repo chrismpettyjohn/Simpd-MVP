@@ -9,33 +9,24 @@ export enum PostType {
   SharedContent = 'SharedContent',
 }
 
-export const POST_BASE_FRAGMENT = gql`
-  ${PROFILE_FRAGMENT}
-  fragment PostBaseFragment on PostBaseModel {
-    id
-    type
-    profileID
-    profile {
-      ...ProfileFragment,
-    }
-    totalShares
-    content
-  }
-`
-
 interface PostBaseFragment {
   id: number;
   profileID: number;
   profile: ProfileFragment;
-  totalShares: number;
   type: PostType;
   content: string;
 }
 
 export const POST_WITH_TEXT_FRAGMENT = gql`
-  ${POST_BASE_FRAGMENT}
+  ${PROFILE_FRAGMENT}
   fragment PostWithTextFragment on PostWithTextModel {
-    ...PostBaseFragment
+    id
+    type
+    profileID
+    profile {
+      ...ProfileFragment
+    }
+    content
   }
 `
 
@@ -45,9 +36,15 @@ export interface PostWithTextFragment extends PostBaseFragment {
 }
 
 export const POST_WITH_IMAGE_FRAGMENT = gql`
-  ${POST_BASE_FRAGMENT}
+  ${PROFILE_FRAGMENT}
   fragment PostWithImageFragment on PostWithImageModel {
-    ...PostBaseFragment
+    id
+    type
+    profileID
+    profile {
+      ...ProfileFragment
+    }
+    content
     mediaID
   }
 `
@@ -59,9 +56,15 @@ export interface PostWithImageFragment extends PostBaseFragment {
 }
 
 export const POST_WITH_VIDEO_FRAGMENT = gql`
-  ${POST_BASE_FRAGMENT}
+  ${PROFILE_FRAGMENT}
   fragment PostWithVideoFragment on PostWithVideoModel {
-    ...PostBaseFragment
+    id
+    type
+    profileID
+    profile {
+      ...ProfileFragment
+    }
+    content
     mediaID
   }
 `
@@ -73,9 +76,15 @@ export interface PostWithVideoFragment extends PostBaseFragment {
 }
 
 export const POST_WITH_ALBUM_FRAGMENT = gql`
-  ${POST_BASE_FRAGMENT}
+  ${PROFILE_FRAGMENT}
   fragment PostWithAlbumFragment on PostWithAlbumModel {
-    ...PostBaseFragment
+    id
+    type
+    profileID
+    profile {
+      ...ProfileFragment
+    }
+    content
     mediaIDs
   }
 `
@@ -87,9 +96,15 @@ export interface PostWithAlbumFragment extends PostBaseFragment {
 }
 
 export const POST_WITH_SHARED_CONTENT_FRAGMENT = gql`
-  ${POST_BASE_FRAGMENT}
+  ${PROFILE_FRAGMENT}
   fragment PostWithSharedContentFragment on PostWithSharedContentModel {
-    ...PostBaseFragment
+    id
+    type
+    profileID
+    profile {
+      ...ProfileFragment
+    }
+    content
     postID
   }
 `

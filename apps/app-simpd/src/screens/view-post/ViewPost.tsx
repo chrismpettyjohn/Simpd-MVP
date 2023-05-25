@@ -24,8 +24,6 @@ export function ViewPostScreen() {
     return <FullPageLoadingScreen />
   }
 
-  console.log(fetchPost.data)
-
   return (
     <>
       <Helmet>

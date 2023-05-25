@@ -113,8 +113,6 @@ export class SessionService {
       id: input.profileID,
     });
 
-    console.log(matchingUser, matchingProfile, session);
-
     const userOwnsProfile = matchingProfile.userID === session.userID;
 
     if (!userOwnsProfile) {
