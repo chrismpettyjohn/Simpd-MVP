@@ -29,7 +29,7 @@ export function ViewBookmarksScreen() {
 
   const bookmarkCollection: BookmarkCollectionFragment | undefined = bookmarkCollectionFetchMany.data?.find(_ => _.id === bookmarkCollectionID);
 
-
+  const activeBookmarks = bookmarkFetchMany.data?.filter(_ => _.bookmarkCollectionID === bookmarkCollection?.id) ?? [];
 
   return (
     <>
@@ -41,9 +41,12 @@ export function ViewBookmarksScreen() {
       <BookmarksNavigation bookmarkCollections={bookmarkCollectionFetchMany.data ?? []} onCreation={onLoadBookmarkCollections} />
       <Card header={bookmarkCollection && bookmarkCollection.name}>
         {isLoading && <i className="fa fa-spinner fa-spin" />}
-        {bookmarkFetchMany.data?.map(_ => (
+        {activeBookmarks.map(_ => (
           <BookmarkCard bookmark={_} key={`favorite_bookmark_${_.id}`} />
         ))}
+        {
+          activeBookmarks.length === 0 && <p>You don't have any bookmarks</p>
+        }
       </Card>
     </>
   )
