@@ -32,7 +32,7 @@ export function PostFavorites({ post }: PostFavoritesProps) {
         <h3 ref={dropdownRef}>20</h3>
         {
           dropdownRef?.current && isOpen && (
-            <DropdownMenu mountOn={dropdownRef.current}>
+            <DropdownMenu mountOn={dropdownRef.current} onToggle={() => setIsOpen(false)}>
               <div style={{ paddingBottom: '1rem', fontWeight: 500 }}>Add to:</div>
               {
                 fetchBookmarkCollections.data?.map(_ => (
