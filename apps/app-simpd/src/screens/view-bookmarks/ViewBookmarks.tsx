@@ -39,15 +39,13 @@ export function ViewBookmarksScreen() {
       </Helmet>
       <PageTitle title="Bookmarks" />
       <BookmarksNavigation bookmarkCollections={bookmarkCollectionFetchMany.data ?? []} onCreation={onLoadBookmarkCollections} />
-      <Card header={bookmarkCollection && bookmarkCollection.name}>
-        {isLoading && <i className="fa fa-spinner fa-spin" />}
-        {activeBookmarks.map(_ => (
-          <BookmarkCard bookmark={_} key={`favorite_bookmark_${_.id}`} />
-        ))}
-        {
-          activeBookmarks.length === 0 && <p>You don't have any bookmarks</p>
-        }
-      </Card>
+      {isLoading && <Card><i className="fa fa-spinner fa-spin" /></Card>}
+      {activeBookmarks.map(_ => (
+        <BookmarkCard bookmark={_} key={`favorite_bookmark_${_.id}`} />
+      ))}
+      {
+        activeBookmarks.length === 0 && <Card><p>You don't have any bookmarks</p></Card>
+      }
     </>
   )
 }

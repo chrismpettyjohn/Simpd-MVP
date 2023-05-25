@@ -15,6 +15,6 @@ export function BookmarkCard({ bookmark }: BookmarkCardProps) {
   }
 
   return (
-    <PostCard post={postFetchOne.data!} hideAuthor />
+    <PostCard post={postFetchOne.data!} hideTools />
   )
 }
