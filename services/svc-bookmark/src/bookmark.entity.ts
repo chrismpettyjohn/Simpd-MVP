@@ -1,4 +1,3 @@
-import {BookmarkType} from '@simpd/lib-client';
 import {
   Column,
   CreateDateColumn,
@@ -12,18 +11,14 @@ import {
 
 @Entity({name: 'bookmarks', schema: 'bookmarks'})
 @Unique('uniq_bookmark_resource', [
-  'type',
   'resourceID',
   'profileID',
   'bookmarkCollectionID',
 ])
-@Index(['type', 'resourceID', 'profileID', 'bookmarkCollectionID'])
+@Index(['resourceID', 'profileID', 'bookmarkCollectionID'])
 export class BookmarkEntity {
   @PrimaryGeneratedColumn()
   id?: number;
-
-  @Column()
-  type!: BookmarkType;
 
   @Column({name: 'resource_id'})
   @Index()

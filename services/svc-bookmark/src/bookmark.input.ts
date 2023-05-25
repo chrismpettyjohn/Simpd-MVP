@@ -1,13 +1,9 @@
-import {BookmarkType} from '@simpd/lib-client';
 import {Field, InputType} from '@nestjs/graphql';
 
 @InputType()
 export class BookmarkFindOneInput {
   @Field(() => Number, {nullable: true})
   id?: number;
-
-  @Field(() => BookmarkType, {nullable: true})
-  type?: BookmarkType;
 
   @Field(() => Number, {nullable: true})
   profileID?: number;
@@ -24,9 +20,6 @@ export class BookmarkFindManyInput {
   @Field(() => [Number], {nullable: true})
   ids?: number[];
 
-  @Field(() => [BookmarkType], {nullable: true})
-  types?: BookmarkType[];
-
   @Field(() => [Number], {nullable: true})
   profileIDs?: number[];
 
@@ -39,9 +32,6 @@ export class BookmarkFindManyInput {
 
 @InputType()
 export class BookmarkCreateInput {
-  @Field(() => BookmarkType)
-  type!: BookmarkType;
-
   @Field(() => Number)
   resourceID!: number;
 

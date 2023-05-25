@@ -5,7 +5,6 @@ import {Directive, Field, ObjectType} from '@nestjs/graphql';
 export class BookmarkModel {
   @Field(() => Number, {nullable: true})
   id?: number;
-
   @Field(() => String, {nullable: true})
   serviceKey?: string;
 

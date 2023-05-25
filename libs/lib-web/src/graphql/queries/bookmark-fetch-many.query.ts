@@ -17,7 +17,7 @@ export interface BookmarkFetchManyQueryResponse {
 export const BOOKMARK_FETCH_MANY_QUERY = gql`
   ${BOOKMARK_FRAGMENT}
   query($filter: BookmarkFindManyInput!) {
-    bookmark(
+    bookmarks(
       filter: $filter
     ) {
       ...BookmarkFragment

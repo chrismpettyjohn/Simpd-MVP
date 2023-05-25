@@ -56,7 +56,6 @@ export class BookmarkResolver {
     @Args('input') input: BookmarkCreateInput
   ): Promise<BookmarkEntity> {
     const newBookmark = await this.bookmarkRepo.create({
-      type: input.type,
       profileID: session.profileID,
       resourceID: input.resourceID,
       bookmarkCollectionID: input.bookmarkCollectionID,
