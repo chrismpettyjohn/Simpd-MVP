@@ -51,11 +51,13 @@ import {
   PostWithVideoCreateInput,
 } from './post.input';
 import {PostPrivacyService} from './post-privacy.service';
+import {PostReactionService} from './post-reaction.service';
 
 @Resolver(() => PostUnion)
 export class PostResolver {
   constructor(
     private readonly postRepo: PostRepository<any, any>,
+    private readonly postReactionService: PostReactionService,
     private readonly postPrivacyService: PostPrivacyService,
     private readonly mediaClientService: MediaClientService,
     private readonly profileClientService: ProfileClientService,
@@ -91,6 +93,19 @@ export class PostResolver {
     }
   ): Promise<PostWire> {
     return this.post(session, {id: reference.id});
+  }
+
+  @Query(() => Number, {nullable: true})
+  @HasSession()
+  async postReactions(
+    @GetSession() session: SessionContents,
+    @Args('filter') filter: PostFilterByOneInput
+  ): Promise<number> {
+    const matchingPost = await this.post(session, filter);
+    const reactions = await this.postReactionService.findMany({
+      resourceIDs: [matchingPost.id],
+    });
+    return reactions.length;
   }
 
   @Query(() => Number, {nullable: true})

@@ -84,11 +84,16 @@ enum ReactionType {
 }
 
 type Query {
+  postReactions(filter: PostReactionFilterManyInput!): [PostReactionModel!]!
   postShares(filter: PostFilterByOneInput!): Float
   post(filter: PostFilterByOneInput!): PostUnion!
   posts(filter: PostFilterByManyInput): [PostUnion!]!
   postReaction(filter: PostReactionFilterOneInput!): PostReactionModel!
-  postReactions(filter: PostReactionFilterManyInput!): [PostReactionModel!]!
+}
+
+input PostReactionFilterManyInput {
+  postIDs: [Float!]
+  profileIDs: [Float!]
 }
 
 input PostFilterByOneInput {
@@ -105,11 +110,6 @@ input PostFilterByManyInput {
 input PostReactionFilterOneInput {
   postID: Float
   profileID: Float
-}
-
-input PostReactionFilterManyInput {
-  postIDs: [Float!]
-  profileIDs: [Float!]
 }
 
 type Mutation {
