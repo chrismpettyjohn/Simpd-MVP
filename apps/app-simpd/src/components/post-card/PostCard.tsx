@@ -8,7 +8,7 @@ import { PostFavorites } from './post-favorites/PostFavorites';
 import { TextPostContent } from './text-post-content/TextPostContent';
 import { ImagePostContent } from './image-post-content/ImagePostContent';
 import { AuthorBlockLarge } from '../author-block-large/AuthorBlockLarge';
-import { PostCardContent, PostCardElement, PostStatsContainer } from './PostCard.styled';
+import { PostCardContent, PostCardElement, PostCardHeader, PostStatsContainer, } from './PostCard.styled';
 import { SharedPostContent } from './shared-post-content/SharedPostContent';
 
 const getPostCardElement = (post: PostFragment) => {
@@ -32,8 +32,12 @@ export function PostCard({ post, hideAuthor = false }: PostCardProps) {
   return (
     <Link to={`/posts/${post.id}`}>
       <PostCardElement>
+        {!hideAuthor && (
+          <PostCardHeader>
+            <AuthorBlockLarge profile={post.profile} />
+          </PostCardHeader>
+        )}
         <PostCardContent>
-          {!hideAuthor && <AuthorBlockLarge profile={post.profile} />}
           {postContent}
           <PostStatsContainer onClick={e => e.stopPropagation()}>
             <PostReactions post={post} />

@@ -2,12 +2,8 @@ import { styled } from "styled-components";
 
 export const AuthorBlockLargeElement = styled.div`
   flex: 0 0 auto;
-  width: 100%;
   height: auto;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: ${({ theme }) => theme.space.twoUnits};
   
   img {
     cursor: pointer;
@@ -23,8 +19,8 @@ export const AuthorBlockLargeElement = styled.div`
 `
 
 export const AuthorBlockUserInfoContainer = styled.div`
+    align-items: center;
     margin-left: ${({ theme }) => theme.space.oneUnit};
-    margin-top: ${({ theme }) => `-${theme.space.oneUnit}`};
     color: ${({ theme }) => theme.color.s90};
 
     h1 {

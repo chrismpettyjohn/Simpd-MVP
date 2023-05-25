@@ -22,6 +22,14 @@ export const PostCardElement = styled.div`
   }
 `
 
+export const PostCardHeader = styled.div`
+    background: ${({ theme }) => theme.color.s40};
+    color: ${({ theme }) => theme.color.s90};
+    display: flex;
+    width: 100%;
+    padding: ${({ theme }) => theme.space.twoUnits};
+`
+
 export const PostCardContent = styled.div`
   width: 100%;
   padding: ${({ theme }) => theme.space.twoUnits};
@@ -32,6 +40,7 @@ export const PostCardImage = styled.img`
     height: 400px;
     object-fit: cover;
 `
+
 
 export const PostCardText = styled.div`
     color: ${({ theme }) => theme.color.s90};
