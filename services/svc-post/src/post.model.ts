@@ -1,9 +1,13 @@
-import {Directive, Field, ObjectType, createUnionType} from '@nestjs/graphql';
 import {PostType, PostWire, ProfileModel} from '@simpd/lib-client';
+import {
+  Field,
+  InterfaceType,
+  ObjectType,
+  createUnionType,
+} from '@nestjs/graphql';
 
-@ObjectType()
-@Directive('@key(fields: "id")')
-export class PostWithTextModel {
+@InterfaceType()
+export class PostBaseModel {
   @Field(() => Number, {nullable: true})
   id?: number;
 
@@ -14,98 +18,55 @@ export class PostWithTextModel {
   profile?: ProfileModel;
 
   @Field(() => PostType, {nullable: true})
-  type?: PostType.Text;
+  type?: PostType;
+
+  @Field(() => Number, {nullable: true})
+  totalShares?: number;
 
   @Field(() => String, {nullable: true})
   content?: string;
 }
 
-@ObjectType()
-@Directive('@key(fields: "id")')
-export class PostWithImageModel {
-  @Field(() => Number, {nullable: true})
-  id?: number;
+@ObjectType({implements: () => PostBaseModel})
+export class PostWithTextModel extends PostBaseModel {
+  @Field(() => PostType, {nullable: true})
+  type?: PostType.Text;
+}
 
-  @Field(() => Number, {nullable: true})
-  profileID?: number;
-
-  @Field(() => ProfileModel, {nullable: true})
-  profile?: ProfileModel;
-
+@ObjectType({implements: () => PostBaseModel})
+export class PostWithImageModel extends PostBaseModel {
   @Field(() => PostType, {nullable: true})
   type?: PostType.Image;
 
   @Field(() => Number, {nullable: true})
   mediaID?: number;
-
-  @Field(() => String, {nullable: true})
-  content?: string;
 }
 
-@ObjectType()
-@Directive('@key(fields: "id")')
-export class PostWithVideoModel {
-  @Field(() => Number, {nullable: true})
-  id?: number;
-
-  @Field(() => Number, {nullable: true})
-  profileID?: number;
-
-  @Field(() => ProfileModel, {nullable: true})
-  profile?: ProfileModel;
-
+@ObjectType({implements: () => PostBaseModel})
+export class PostWithVideoModel extends PostBaseModel {
   @Field(() => PostType, {nullable: true})
   type?: PostType.Video;
 
   @Field(() => Number, {nullable: true})
   mediaID?: number;
-
-  @Field(() => String, {nullable: true})
-  content?: string;
 }
 
-@ObjectType()
-@Directive('@key(fields: "id")')
-export class PostWithAlbumModel {
-  @Field(() => Number, {nullable: true})
-  id?: number;
-
-  @Field(() => Number, {nullable: true})
-  profileID?: number;
-
-  @Field(() => ProfileModel, {nullable: true})
-  profile?: ProfileModel;
-
+@ObjectType({implements: () => PostBaseModel})
+export class PostWithAlbumModel extends PostBaseModel {
   @Field(() => PostType, {nullable: true})
   type?: PostType.Album;
 
   @Field(() => [Number!], {nullable: true})
   mediaIDs?: number[];
-
-  @Field(() => String, {nullable: true})
-  content?: string;
 }
 
-@ObjectType()
-@Directive('@key(fields: "id")')
-export class PostWithSharedContentModel {
-  @Field(() => Number, {nullable: true})
-  id?: number;
-
-  @Field(() => Number, {nullable: true})
-  profileID?: number;
-
-  @Field(() => ProfileModel, {nullable: true})
-  profile?: ProfileModel;
-
+@ObjectType({implements: () => PostBaseModel})
+export class PostWithSharedContentModel extends PostBaseModel {
   @Field(() => PostType, {nullable: true})
   type?: PostType.SharedContent;
 
   @Field(() => Number, {nullable: true})
   postID?: number;
-
-  @Field(() => String, {nullable: true})
-  content?: string;
 }
 
 export const PostUnion = createUnionType({

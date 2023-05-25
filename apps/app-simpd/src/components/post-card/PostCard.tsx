@@ -2,7 +2,7 @@ import { Link } from 'wouter';
 import React, { useMemo } from 'react';
 import { PostCardProps } from './PostCard.types';
 import { PostShares } from './post-shares/PostShares';
-import { PostFragment, PostType } from '@simpd/lib-web';
+import { PostFragment, PostType, PostWithTextFragment } from '@simpd/lib-web';
 import { PostReactions } from './post-reactions/PostReactions';
 import { PostFavorites } from './post-favorites/PostFavorites';
 import { TextPostContent } from './text-post-content/TextPostContent';
@@ -13,7 +13,7 @@ import { SharedPostContent } from './shared-post-content/SharedPostContent';
 
 const getPostCardElement = (post: PostFragment) => {
   if (post.type === PostType.Text) {
-    return <TextPostContent post={post} />;
+    return <TextPostContent post={post as PostWithTextFragment} />;
   }
 
   if (post.type === PostType.Image) {
@@ -24,7 +24,9 @@ const getPostCardElement = (post: PostFragment) => {
     return <SharedPostContent post={post as any} />
   }
 
-  throw new Error('Unsupported post type');
+  console.log(post);
+
+  return null;
 }
 
 export function PostCard({ post, hideAuthor = false }: PostCardProps) {

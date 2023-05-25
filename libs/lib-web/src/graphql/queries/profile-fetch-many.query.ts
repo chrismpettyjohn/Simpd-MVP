@@ -15,11 +15,9 @@ export interface ProfileFetchManyQueryResponse {
 
 export const PROFILE_FETCH_MANY_QUERY = gql`
   ${PROFILE_FRAGMENT}
-  query($userIDs: [Float!]) {
+  query($filter: ProfileFilterByManyInput!) {
     profiles(
-      filter: {
-        userIDs: $userIDs
-      }
+      filter: $filter
     ) {
       ...ProfileFragment
     }
