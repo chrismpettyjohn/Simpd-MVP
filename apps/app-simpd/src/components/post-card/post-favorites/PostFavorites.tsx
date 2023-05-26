@@ -20,7 +20,7 @@ export function PostFavorites({ post }: PostFavoritesProps) {
 
   const onShareToCollection = async (bookmarkCollectionID: number) => {
     await createBookmark.execute({ bookmarkCollectionID, resourceID: post.id })
-    toast.success(`Successfully added post to your favorites`);
+    toast.success(`❤️ Successfully added post to your favorites`);
   }
 
   useEffect(() => {

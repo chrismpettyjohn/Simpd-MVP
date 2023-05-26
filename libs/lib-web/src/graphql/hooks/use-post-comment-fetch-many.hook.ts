@@ -10,9 +10,12 @@ export interface UsePostCommentFetchManyQueryResponse {
 }
 
 export function usePostCommentFetchMany(): UsePostCommentFetchManyQueryResponse {
-  const [getPostComment, { loading, error, data }] = useLazyQuery<PostCommentFetchManyQueryResponse, PostCommentFetchManyQueryVariables>(POST_COMMENT_FETCH_MANY_QUERY);
+  const [getPostComment, { loading, error, data, refetch }] = useLazyQuery<PostCommentFetchManyQueryResponse, PostCommentFetchManyQueryVariables>(POST_COMMENT_FETCH_MANY_QUERY);
 
   const onFetchPostComment = async (filter: PostCommentFetchManyInput) => {
+    if (data) {
+      await refetch();
+    }
     const matchingPostComments = await getPostComment({ variables: { filter } })
     return matchingPostComments.data!.postComments;
   }

@@ -1,12 +1,12 @@
 import {Field, InputType} from '@nestjs/graphql';
 
 @InputType()
-export class PostCommentCreateInput {
+export class PostCommentCreateOneInput {
   @Field(() => Number)
   postID!: number;
 
   @Field(() => String)
-  comment!: string;
+  content!: string;
 }
 
 @InputType()

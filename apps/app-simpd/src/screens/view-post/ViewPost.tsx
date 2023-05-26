@@ -1,11 +1,11 @@
 import { useRoute } from 'wouter';
 import { Helmet } from 'react-helmet'
 import React, { useEffect } from 'react'
-import { PageTitle } from '../../components/page-title/PageTitle';
-import { CardAccordion } from '../../components/card-accordion/CardAccordion';
-import { FullPageLoadingScreen, usePostFetchOne } from '@simpd/lib-web';
-import { UserProfileCard } from '../../components/user-profile-card/UserProfileCard';
 import { PostCard } from '../../components/post-card/PostCard';
+import { PageTitle } from '../../components/page-title/PageTitle';
+import { FullPageLoadingScreen, usePostFetchOne } from '@simpd/lib-web';
+import { PostCommentsCard } from 'components/post-comments-card/PostCommentsCard';
+import { UserProfileCard } from '../../components/user-profile-card/UserProfileCard';
 
 export function ViewPostScreen() {
   const fetchPost = usePostFetchOne();
@@ -13,11 +13,15 @@ export function ViewPostScreen() {
 
   const postID = Number(params!.id);
 
+  const onFetchPosts = async () => {
+    await fetchPost.fetch({ id: postID });
+  }
+
   useEffect(() => {
     if (!postID) {
       return;
     }
-    fetchPost.fetch({ id: postID });
+    onFetchPosts();
   }, [postID]);
 
   if (fetchPost.loading || !fetchPost.data) {
@@ -33,9 +37,7 @@ export function ViewPostScreen() {
       <PageTitle title="View Post" />
       <UserProfileCard allowChanges={false} profile={fetchPost.data!.profile} />
       <PostCard post={fetchPost.data} hideAuthor />
-      <CardAccordion header="Comments">
-        Coming soon
-      </CardAccordion>
+      <PostCommentsCard post={fetchPost.data} />
     </>
   )
 }

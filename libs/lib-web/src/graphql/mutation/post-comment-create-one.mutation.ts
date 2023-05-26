@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 import { POST_COMMENT_FRAGMENT, PostCommentFragment } from "graphql/fragments/post-comment.fragment";
 export interface PostCommentCreateOneInput {
   postID: number;
-  comment: string;
+  content: string;
 }
 
 export interface PostCommentCreateOneMutationVariables {
@@ -19,7 +19,7 @@ export const POST_COMMENT_CREATE_ONE_MUTATION = gql`
     postCommentCreate(
       input: $input
     ) {
-      success
+      ...PostCommentFragment
     }
   }
 `

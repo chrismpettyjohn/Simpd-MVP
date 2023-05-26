@@ -12,6 +12,7 @@ import {
 import {
   SVC_POST_COMMENT_INTERNAL_EVENT_CREATE_ONE,
   SVC_POST_COMMENT_INTERNAL_EVENT_DELETE_ONE,
+  SVC_POST_COMMENT_INTERNAL_EVENT_FIND_MANY,
   SVC_POST_COMMENT_INTERNAL_EVENT_FIND_ONE,
   SVC_POST_COMMENT_INTERNAL_EVENT_UPDATE_ONE,
   SVC_POST_COMMENT_NAME,
@@ -30,7 +31,7 @@ export class PostCommentClientService {
   }
   async findMany(filter: PostCommentFindManyInput): Promise<PostCommentWire[]> {
     const matchingPostComments$ = this.client.send(
-      SVC_POST_COMMENT_INTERNAL_EVENT_FIND_ONE,
+      SVC_POST_COMMENT_INTERNAL_EVENT_FIND_MANY,
       filter
     );
     return await lastValueFrom(matchingPostComments$);

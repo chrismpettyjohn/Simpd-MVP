@@ -1,9 +1,8 @@
-import {CommentWire} from '@simpd/lib-client';
-import {PostCommentModel} from './post-comment.model';
+import {CommentWire, PostCommentWire} from '@simpd/lib-client';
 
 export function commentWireToPostCommentWire(
   comment: CommentWire
-): PostCommentModel {
+): PostCommentWire {
   return {
     id: comment.id,
     postID: comment.resourceID,

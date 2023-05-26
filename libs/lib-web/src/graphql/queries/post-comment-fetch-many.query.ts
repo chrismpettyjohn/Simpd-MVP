@@ -16,7 +16,7 @@ export interface PostCommentFetchManyQueryResponse {
 
 export const POST_COMMENT_FETCH_MANY_QUERY = gql`
   ${POST_COMMENT_FRAGMENT}
-  query($filter: PostCommentFindManyInput!) {
+  query($filter: PostCommentFilterManyInput!) {
     postComments(
       filter: $filter
     ) {

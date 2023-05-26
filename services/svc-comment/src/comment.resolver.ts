@@ -75,7 +75,7 @@ export class CommentResolver {
     const newComment = await this.commentRepo.create({
       serviceKey: input.serviceKey,
       resourceID: input.resourceID,
-      content: input.comment,
+      content: input.content,
       profileID: input.profileID,
     });
     return newComment;

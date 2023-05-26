@@ -8,4 +8,4 @@ export const SVC_COMMENT_INTERNAL_EVENT_FIND_ONE = 'commentFindOne';
 export const SVC_COMMENT_INTERNAL_EVENT_FIND_MANY = 'commentFindMany';
 export const SVC_COMMENT_INTERNAL_EVENT_CREATE_ONE = 'commentCreateOne';
 export const SVC_COMMENT_INTERNAL_EVENT_UPDATE_ONE = 'commentUpdateOne';
-export const SVC_COMMENT_INTERNAL_EVENT_DELETE_ONE = 'commentDeletedOne';
+export const SVC_COMMENT_INTERNAL_EVENT_DELETE_ONE = 'commentDeleteOne';

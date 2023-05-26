@@ -1,18 +1,32 @@
-import {SessionWire} from '@simpd/lib-client';
+import {ProfileModel, SessionWire} from '@simpd/lib-client';
 import {GetSession, HasSession} from '@simpd/lib-api';
 import {PostCommentModel} from './post-comment.model';
 import {PostCommentService} from './post-comment.service';
-import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
 import {commentWireToPostCommentWire} from './post-comment.wire';
 import {
   PostCommentFilterManyInput,
   PostCommentFilterOneInput,
-  PostCommentCreateInput,
+  PostCommentCreateOneInput,
 } from './post-comment.input';
 
 @Resolver(() => PostCommentModel)
 export class PostCommentResolver {
   constructor(private readonly postCommentService: PostCommentService) {}
+
+  @ResolveField(() => ProfileModel)
+  profile(@Parent() postComment: PostCommentModel): ProfileModel {
+    return {
+      id: postComment.profileID,
+    };
+  }
 
   @Query(() => PostCommentModel)
   @HasSession()
@@ -44,12 +58,12 @@ export class PostCommentResolver {
   @HasSession()
   async postCommentCreate(
     @GetSession() session: SessionWire,
-    @Args('input') input: PostCommentCreateInput
+    @Args('input') input: PostCommentCreateOneInput
   ): Promise<PostCommentModel> {
     const newComment = await this.postCommentService.createOne({
       profileID: session.profileID,
       resourceID: input.postID,
-      content: input.comment,
+      content: input.content,
     });
     return commentWireToPostCommentWire(newComment);
   }

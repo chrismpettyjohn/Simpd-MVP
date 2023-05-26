@@ -33,5 +33,5 @@ export class CommentCreateInput {
   resourceID!: number;
 
   @Field(() => String)
-  comment!: string;
+  content!: string;
 }
