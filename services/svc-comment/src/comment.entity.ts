@@ -26,7 +26,7 @@ export class CommentEntity {
   profileID!: number;
 
   @Column({type: 'text'})
-  comment!: string;
+  content!: string;
 
   @CreateDateColumn({name: 'created_at', type: 'timestamp'})
   createdAt?: Date;

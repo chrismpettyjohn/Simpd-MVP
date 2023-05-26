@@ -1,21 +1,16 @@
-import { CommentType } from '@simpd/lib-client';
-import { Field, ObjectType, registerEnumType } from '@nestjs/graphql';
+import {Field, ObjectType} from '@nestjs/graphql';
 
 @ObjectType()
 export class PostCommentModel {
-  @Field(() => Number, { nullable: true })
+  @Field(() => Number, {nullable: true})
   id!: number;
 
-  @Field(() => Number, { nullable: true })
+  @Field(() => Number, {nullable: true})
   postID!: number;
 
-  @Field(() => Number, { nullable: true })
+  @Field(() => Number, {nullable: true})
   profileID!: number;
 
-  @Field(() => CommentType, { nullable: true })
-  comment!: CommentType;
+  @Field(() => String, {nullable: true})
+  content!: string;
 }
-
-registerEnumType(CommentType, {
-  name: 'CommentType',
-});

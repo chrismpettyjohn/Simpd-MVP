@@ -3,6 +3,7 @@ export * from './svc-bookmark/bookmark-client.service';
 export * from './svc-bookmark/bookmark-client.types';
 export * from './svc-bookmark/bookmark.const';
 export * from './svc-bookmark/bookmark.module';
+export * from './svc-comment/base-comment-client.service';
 export * from './svc-comment/comment-client.decorator';
 export * from './svc-comment/comment-client.service';
 export * from './svc-comment/comment-client.types';

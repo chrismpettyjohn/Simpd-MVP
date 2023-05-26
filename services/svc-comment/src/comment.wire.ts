@@ -8,7 +8,7 @@ export function commentEntityToCommentWire(
     id: commentEntity.id!,
     serviceKey: commentEntity.serviceKey,
     resourceID: commentEntity.resourceID,
-    comment: commentEntity.comment,
+    content: commentEntity.content,
     profileID: commentEntity.profileID,
   };
 }

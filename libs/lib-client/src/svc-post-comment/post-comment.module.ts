@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { NATS_ADDRESS } from '../constants';
-import { SVC_POST_COMMENT_NAME } from './post-comment.const';
-import { PostCommentClientService } from './post-comment-client.service';
-import { ClientsModule, Transport } from '@nestjs/microservices';
+import {Module} from '@nestjs/common';
+import {NATS_ADDRESS} from '../constants';
+import {SVC_POST_COMMENT_NAME} from './post-comment.const';
+import {ClientsModule, Transport} from '@nestjs/microservices';
+import {PostCommentClientService} from './post-comment-client.service';
 
 @Module({
   imports: [
@@ -19,4 +19,4 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
   providers: [PostCommentClientService],
   exports: [PostCommentClientService],
 })
-export class PostCommentClientModule { }
+export class PostCommentClientModule {}
