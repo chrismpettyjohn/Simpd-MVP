@@ -11,6 +11,6 @@ export interface PostSharesQueryResponse {
 
 export const POST_SHARES_QUERY = gql`
   query($filter: PostFilterByOneInput!) {
-    postShares(filter: $filter)
+    postShareCount(filter: $filter)
   }
 `

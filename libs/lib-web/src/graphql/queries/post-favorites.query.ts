@@ -11,6 +11,6 @@ export interface PostFavoritesQueryResponse {
 
 export const POST_FAVORITES_QUERY = gql`
   query($filter: PostFilterByOneInput!) {
-    postFavorites(filter: $filter)
+    postFavoriteCount(filter: $filter)
   }
 `

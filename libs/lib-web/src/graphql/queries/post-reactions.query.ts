@@ -11,6 +11,6 @@ export interface PostReactionsQueryResponse {
 
 export const POST_REACTIONS_QUERY = gql`
   query($filter: PostFilterByOneInput!) {
-    postReactions(filter: $filter)
+    postReactionCount(filter: $filter)
   }
 `

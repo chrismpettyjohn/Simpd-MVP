@@ -96,7 +96,7 @@ export class PostResolver {
 
   @Query(() => Number, {nullable: true})
   @HasSession()
-  async postFavorites(
+  async postFavoriteCount(
     @GetSession() session: SessionContents,
     @Args('filter') filter: PostFilterByOneInput
   ): Promise<number> {
@@ -109,7 +109,7 @@ export class PostResolver {
 
   @Query(() => Number, {nullable: true})
   @HasSession()
-  async postReactions(
+  async postReactionCount(
     @GetSession() session: SessionContents,
     @Args('filter') filter: PostFilterByOneInput
   ): Promise<number> {
@@ -123,7 +123,7 @@ export class PostResolver {
 
   @Query(() => Number, {nullable: true})
   @HasSession()
-  async postShares(
+  async postShareCount(
     @GetSession() session: SessionContents,
     @Args('filter') filter: PostFilterByOneInput
   ): Promise<number> {
