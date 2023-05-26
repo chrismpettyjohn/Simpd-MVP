@@ -1,5 +1,7 @@
 import {In} from 'typeorm';
 import {PostRepository} from './post.repository';
+import {PostPrivacyService} from './post-privacy.service';
+import {PostReactionService} from './post-reaction.service';
 import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {UnauthorizedException, BadRequestException} from '@nestjs/common';
 import {
@@ -11,7 +13,6 @@ import {
   postEntityToPostWithVideoWire,
 } from './post.wire';
 import {
-  PostBaseModel,
   PostUnion,
   PostWithAlbumModel,
   PostWithImageModel,
@@ -22,13 +23,12 @@ import {
 import {
   Args,
   Mutation,
-  Parent,
   Query,
-  ResolveField,
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
 import {
+  BookmarkClientService,
   MediaClientService,
   MediaType,
   PostType,
@@ -50,12 +50,11 @@ import {
   PostWithTextCreateInput,
   PostWithVideoCreateInput,
 } from './post.input';
-import {PostPrivacyService} from './post-privacy.service';
-import {PostReactionService} from './post-reaction.service';
 
 @Resolver(() => PostUnion)
 export class PostResolver {
   constructor(
+    private readonly bookmarkClientService: BookmarkClientService,
     private readonly postRepo: PostRepository<any, any>,
     private readonly postReactionService: PostReactionService,
     private readonly postPrivacyService: PostPrivacyService,
@@ -93,6 +92,19 @@ export class PostResolver {
     }
   ): Promise<PostWire> {
     return this.post(session, {id: reference.id});
+  }
+
+  @Query(() => Number, {nullable: true})
+  @HasSession()
+  async postFavorites(
+    @GetSession() session: SessionContents,
+    @Args('filter') filter: PostFilterByOneInput
+  ): Promise<number> {
+    const matchingPost = await this.post(session, filter);
+    const matchingFavorites = await this.bookmarkClientService.findMany({
+      resourceIDs: [matchingPost.id!],
+    });
+    return matchingFavorites.length;
   }
 
   @Query(() => Number, {nullable: true})

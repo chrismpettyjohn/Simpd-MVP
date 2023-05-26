@@ -4,11 +4,12 @@ import { PostFavoritesProps } from './PostFavorites.types';
 import { DropdownMenu } from 'components/dropdown-menu/DropdownMenu';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { DropdownMenuOption } from 'components/dropdown-menu/DropdownMenu.sty';
-import { sessionContext, useBookmarkCollectionFetchMany, useBookmarkCreate } from '@simpd/lib-web';
+import { sessionContext, useBookmarkCollectionFetchMany, useBookmarkCreate, usePostFavorites } from '@simpd/lib-web';
 
 export function PostFavorites({ post }: PostFavoritesProps) {
   const createBookmark = useBookmarkCreate();
   const [isOpen, setIsOpen] = useState(false);
+  const fetchPostFavorites = usePostFavorites();
   const { session } = useContext(sessionContext);
   const dropdownRef = useRef<HTMLHeadingElement>(null);
   const fetchBookmarkCollections = useBookmarkCollectionFetchMany();
@@ -24,12 +25,15 @@ export function PostFavorites({ post }: PostFavoritesProps) {
 
   useEffect(() => {
     fetchBookmarkCollections.fetch({ profileIDs: [session!.profileID] });
+    fetchPostFavorites.fetch({ id: post.id });
   }, [session!.profileID]);
+
+  const isLoading = fetchPostFavorites.loading || createBookmark.loading;
 
   return (
     <PostStatElement onClick={onToggle}>
       <div style={{ position: 'relative' }}>
-        <h3 ref={dropdownRef}>20</h3>
+        <h3 ref={dropdownRef}>{fetchPostFavorites.data ?? 0}</h3>
         {
           dropdownRef?.current && isOpen && (
             <DropdownMenu mountOn={dropdownRef.current} onToggle={() => setIsOpen(false)}>
@@ -46,7 +50,7 @@ export function PostFavorites({ post }: PostFavoritesProps) {
         }
       </div>
       <p>
-        <i className="fa fa-heart" />
+        {isLoading ? <i className="fa fa-spinner fa-spin" /> : <i className="fa fa-heart" />}
       </p>
     </PostStatElement>
   )

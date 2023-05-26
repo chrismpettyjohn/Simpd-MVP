@@ -1,8 +1,13 @@
 import {lastValueFrom} from 'rxjs';
 import {Inject, Injectable} from '@nestjs/common';
 import {ClientProxy} from '@nestjs/microservices';
-import {BookmarkFindOneInput, BookmarkWire} from './bookmark-client.types';
 import {
+  BookmarkFindManyInput,
+  BookmarkFindOneInput,
+  BookmarkWire,
+} from './bookmark-client.types';
+import {
+  SVC_BOOKMARK_INTERNAL_EVENT_FIND_MANY,
   SVC_BOOKMARK_INTERNAL_EVENT_FIND_ONE,
   SVC_BOOKMARK_NAME,
 } from './bookmark.const';
@@ -17,5 +22,13 @@ export class BookmarkClientService {
       input
     );
     return await lastValueFrom(matchingBookmark$);
+  }
+
+  async findMany(input: BookmarkFindManyInput): Promise<BookmarkWire[]> {
+    const matchingBookmarks$ = this.client.send(
+      SVC_BOOKMARK_INTERNAL_EVENT_FIND_MANY,
+      input
+    );
+    return await lastValueFrom(matchingBookmarks$);
   }
 }
