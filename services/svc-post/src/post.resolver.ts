@@ -30,6 +30,7 @@ import {
   BookmarkClientService,
   MediaClientService,
   MediaType,
+  PostReactionClientService,
   PostType,
   PostWire,
   PostWithAlbumWire,
@@ -53,6 +54,7 @@ import {
 @Resolver(() => PostUnion)
 export class PostResolver {
   constructor(
+    private readonly postReactionClientService: PostReactionClientService,
     private readonly bookmarkClientService: BookmarkClientService,
     private readonly postRepo: PostRepository<any, any>,
     private readonly postPrivacyService: PostPrivacyService,
@@ -113,8 +115,8 @@ export class PostResolver {
   ): Promise<number> {
     const matchingPost = await this.post(session, filter);
     // TODO
-    const reactions = await this.postReactionService.findMany({
-      resourceIDs: [matchingPost.id],
+    const reactions = await this.postReactionClientService.findMany({
+      postIDs: [matchingPost.id],
     });
     return reactions.length;
   }

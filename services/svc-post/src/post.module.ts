@@ -7,6 +7,7 @@ import {PostPrivacyService} from './post-privacy.service';
 import {
   BookmarkClientModule,
   MediaClientModule,
+  PostReactionClientModule,
   PrivacyClientModule,
   ProfileClientModule,
   ReactionClientModule,
@@ -27,6 +28,7 @@ import {
     MediaClientModule,
     ReactionClientModule,
     BookmarkClientModule,
+    PostReactionClientModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
       entities: [PostEntity],

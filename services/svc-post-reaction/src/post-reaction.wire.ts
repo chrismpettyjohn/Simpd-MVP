@@ -1,7 +1,7 @@
 import {ReactionWire} from '@simpd/lib-client';
 import {PostReactionModel} from './post-reaction.model';
 
-export function reactionWireToPostReactionWire(
+export function postReactionWireToPostReactionWire(
   reaction: ReactionWire
 ): PostReactionModel {
   return {

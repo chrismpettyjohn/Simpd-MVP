@@ -3,7 +3,7 @@ import {GetSession, HasSession} from '@simpd/lib-api';
 import {PostReactionModel} from './post-reaction.model';
 import {PostReactionService} from './post-reaction.service';
 import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
-import {reactionWireToPostReactionWire} from './post-reaction.wire';
+import {postReactionWireToPostReactionWire} from './post-reaction.wire';
 import {
   PostReactionFilterManyInput,
   PostReactionFilterOneInput,
@@ -24,7 +24,7 @@ export class PostReactionResolver {
       resourceID: filter.postID,
       profileID: filter.profileID,
     });
-    return reactionWireToPostReactionWire(matchingReaction);
+    return postReactionWireToPostReactionWire(matchingReaction);
   }
 
   @Query(() => [PostReactionModel])
@@ -37,7 +37,7 @@ export class PostReactionResolver {
       resourceIDs: filter.postIDs,
       profileIDs: filter.profileIDs,
     });
-    return matchingReactions.map(reactionWireToPostReactionWire);
+    return matchingReactions.map(postReactionWireToPostReactionWire);
   }
 
   @Mutation(() => PostReactionModel)
@@ -51,7 +51,7 @@ export class PostReactionResolver {
       resourceID: input.postID,
       reaction: input.reaction,
     });
-    return reactionWireToPostReactionWire(newReaction);
+    return postReactionWireToPostReactionWire(newReaction);
   }
 
   @Mutation(() => Boolean)

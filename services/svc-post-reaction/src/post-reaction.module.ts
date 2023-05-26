@@ -1,6 +1,8 @@
 import {Module} from '@nestjs/common';
 import {PostReactionService} from './post-reaction.service';
 import {PostReactionResolver} from './post-reaction.resolver';
+import {PostReactionController} from './post-reaction.controller';
+import {GraphQLModule, CommonModule, SessionModule} from '@simpd/lib-api';
 import {
   BookmarkClientModule,
   MediaClientModule,
@@ -8,7 +10,6 @@ import {
   ProfileClientModule,
   ReactionClientModule,
 } from '@simpd/lib-client';
-import {GraphQLModule, CommonModule, SessionModule} from '@simpd/lib-api';
 
 @Module({
   imports: [
@@ -22,6 +23,6 @@ import {GraphQLModule, CommonModule, SessionModule} from '@simpd/lib-api';
     GraphQLModule.forRoot(),
   ],
   providers: [PostReactionService, PostReactionResolver],
-  controllers: [],
+  controllers: [PostReactionController],
 })
 export class PostReactionModule {}

@@ -2,38 +2,35 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type CommentModel {
+type ReportModel {
   id: Float
-  serviceKey: String
-  resourceID: Float
-  comment: String
-  profileID: Float
+  key: String
+  name: String
+  description: String
 }
 
 type Query {
-  comment(filter: CommentFilterByOneInput!): CommentModel!
-  comments(filter: CommentFilterByManyInput): [CommentModel!]!
+  report(filter: ReportFilterByOneInput!): ReportModel!
+  reports(filter: ReportFilterByManyInput): [ReportModel!]!
 }
 
-input CommentFilterByOneInput {
+input ReportFilterByOneInput {
   id: Float
   keys: [String!]
 }
 
-input CommentFilterByManyInput {
+input ReportFilterByManyInput {
   ids: [Float!]
-  serviceKey: String
-  resourceIDs: [Float!]!
+  keys: [String!]
 }
 
 type Mutation {
-  commentCreate(input: CommentCreateInput!): CommentModel!
-  commentDelete(filter: CommentFilterByOneInput!): Boolean!
+  reportCreate(input: ReportCreateInput!): ReportModel!
+  reportDelete(filter: ReportFilterByOneInput!): Boolean!
 }
 
-input CommentCreateInput {
-  profileID: Float!
-  serviceKey: String!
-  resourceID: Float!
-  content: String!
+input ReportCreateInput {
+  key: String!
+  name: String!
+  description: String!
 }
