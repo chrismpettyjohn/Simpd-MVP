@@ -21,6 +21,9 @@
       "@simpd/svc-post": [
         "services/svc-post/src"
       ],
+      "@simpd/svc-post-comment": [
+        "services/svc-post-comment/src"
+      ],
       "@simpd/svc-privacy": [
         "services/svc-privacy/src"
       ],
