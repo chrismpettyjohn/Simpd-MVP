@@ -89,6 +89,17 @@
       "watch_delay": 1000
     },
     {
+      "name": "svc-post-reaction",
+      "cwd": "./services/svc-post-reaction",
+      "script": "pnpm",
+      "args": "run web-server:start",
+      "watch": [
+        "src",
+        "../../libs/**/src/**/*"
+      ],
+      "watch_delay": 1000
+    },
+    {
       "name": "svc-privacy",
       "cwd": "./services/svc-privacy",
       "script": "pnpm",

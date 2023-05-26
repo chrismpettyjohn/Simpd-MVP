@@ -1,7 +1,6 @@
 import {In} from 'typeorm';
 import {PostRepository} from './post.repository';
 import {PostPrivacyService} from './post-privacy.service';
-import {PostReactionService} from './post-reaction.service';
 import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {UnauthorizedException, BadRequestException} from '@nestjs/common';
 import {
@@ -56,7 +55,6 @@ export class PostResolver {
   constructor(
     private readonly bookmarkClientService: BookmarkClientService,
     private readonly postRepo: PostRepository<any, any>,
-    private readonly postReactionService: PostReactionService,
     private readonly postPrivacyService: PostPrivacyService,
     private readonly mediaClientService: MediaClientService,
     private readonly profileClientService: ProfileClientService,
@@ -114,6 +112,7 @@ export class PostResolver {
     @Args('filter') filter: PostFilterByOneInput
   ): Promise<number> {
     const matchingPost = await this.post(session, filter);
+    // TODO
     const reactions = await this.postReactionService.findMany({
       resourceIDs: [matchingPost.id],
     });
