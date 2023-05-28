@@ -1,14 +1,14 @@
 import {ReactionType} from '../svc-reaction/reaction-client.types';
 
-export interface ChatReactionWire {
+export interface CommentReactionWire {
   id: number;
-  chatID: number;
+  commentID: number;
   profileID: number;
   reaction: ReactionType;
 }
 
-export interface ChatReactionFindManyInput {
+export interface CommentReactionFindManyInput {
   ids?: number[];
-  chatIDs: number[];
+  commentIDs: number[];
   profileIDs?: number[];
 }

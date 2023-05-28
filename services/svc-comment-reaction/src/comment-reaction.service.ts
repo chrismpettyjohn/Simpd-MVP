@@ -2,12 +2,12 @@ import {Injectable} from '@nestjs/common';
 import {
   BaseReactionClientService,
   ReactionClientService,
-  SVC_CHAT_REACTION_NAME,
+  SVC_COMMENT_REACTION_NAME,
 } from '@simpd/lib-client';
 
 @Injectable()
-export class ChatReactionService extends BaseReactionClientService {
+export class CommentReactionService extends BaseReactionClientService {
   constructor(reactionClientService: ReactionClientService) {
-    super(SVC_CHAT_REACTION_NAME, reactionClientService);
+    super(SVC_COMMENT_REACTION_NAME, reactionClientService);
   }
 }

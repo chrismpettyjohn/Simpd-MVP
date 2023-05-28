@@ -2,12 +2,12 @@ import {ReactionType} from '@simpd/lib-client';
 import {Field, ObjectType, registerEnumType} from '@nestjs/graphql';
 
 @ObjectType()
-export class ChatReactionModel {
+export class CommentReactionModel {
   @Field(() => Number, {nullable: true})
   id!: number;
 
   @Field(() => Number, {nullable: true})
-  chatID!: number;
+  commentID!: number;
 
   @Field(() => Number, {nullable: true})
   profileID!: number;

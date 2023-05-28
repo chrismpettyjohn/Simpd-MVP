@@ -2,27 +2,27 @@ import {Field, InputType} from '@nestjs/graphql';
 import {ReactionType} from '@simpd/lib-client';
 
 @InputType()
-export class ChatReactionCreateInput {
+export class CommentReactionCreateInput {
   @Field(() => Number)
-  chatID!: number;
+  commentID!: number;
 
   @Field(() => ReactionType)
   reaction!: ReactionType;
 }
 
 @InputType()
-export class ChatReactionFilterOneInput {
+export class CommentReactionFilterOneInput {
   @Field(() => Number, {nullable: true})
-  chatID?: number;
+  commentID?: number;
 
   @Field(() => Number, {nullable: true})
   profileID?: number;
 }
 
 @InputType()
-export class ChatReactionFilterManyInput {
+export class CommentReactionFilterManyInput {
   @Field(() => [Number], {nullable: true})
-  chatIDs?: number[];
+  commentIDs?: number[];
 
   @Field(() => [Number], {nullable: true})
   profileIDs?: number[];

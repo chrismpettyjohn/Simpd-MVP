@@ -12,8 +12,8 @@
       "watch_delay": 1000
     },
     {
-      "name": "svc-chat-reaction",
-      "cwd": "./services/svc-chat-reaction",
+      "name": "svc-comment",
+      "cwd": "./services/svc-comment",
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
@@ -23,8 +23,8 @@
       "watch_delay": 1000
     },
     {
-      "name": "svc-comment",
-      "cwd": "./services/svc-comment",
+      "name": "svc-comment-reaction",
+      "cwd": "./services/svc-chat-reaction",
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [

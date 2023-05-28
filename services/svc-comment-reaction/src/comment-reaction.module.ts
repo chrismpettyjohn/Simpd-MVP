@@ -1,7 +1,7 @@
 import {Module} from '@nestjs/common';
-import {ChatReactionService} from './chat-reaction.service';
-import {ChatReactionResolver} from './chat-reaction.resolver';
-import {ChatReactionController} from './chat-reaction.controller';
+import {CommentReactionService} from './comment-reaction.service';
+import {CommentReactionResolver} from './comment-reaction.resolver';
+import {CommentReactionController} from './comment-reaction.controller';
 import {GraphQLModule, CommonModule, SessionModule} from '@simpd/lib-api';
 import {
   BookmarkClientModule,
@@ -22,7 +22,7 @@ import {
     BookmarkClientModule,
     GraphQLModule.forRoot(),
   ],
-  providers: [ChatReactionService, ChatReactionResolver],
-  controllers: [ChatReactionController],
+  providers: [CommentReactionService, CommentReactionResolver],
+  controllers: [CommentReactionController],
 })
-export class ChatReactionModule {}
+export class CommentReactionModule {}

@@ -379,7 +379,7 @@ importers:
         specifier: 5.0.4
         version: 5.0.4
 
-  services/svc-chat-reaction:
+  services/svc-comment:
     dependencies:
       '@apollo/server':
         specifier: 4.7.0
@@ -455,7 +455,7 @@ importers:
         specifier: 5.0.4
         version: 5.0.4
 
-  services/svc-comment:
+  services/svc-comment-reaction:
     dependencies:
       '@apollo/server':
         specifier: 4.7.0

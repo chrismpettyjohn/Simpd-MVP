@@ -2,39 +2,35 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type MediaDetailsModel {
-  sizeInBytes: Float
-  originalFileName: String
-}
-
-type MediaModel {
+type ReportModel {
   id: Float
-  type: MediaType
-  profileID: Float
-  url: String
-  details: MediaDetailsModel
-}
-
-enum MediaType {
-  Image
-  Video
-  Other
+  key: String
+  name: String
+  description: String
 }
 
 type Query {
-  media(filter: MediaFilterByOneInput!): MediaModel!
-  medias(filter: MediaFilterByManyInput): [MediaModel!]!
+  report(filter: ReportFilterByOneInput!): ReportModel!
+  reports(filter: ReportFilterByManyInput): [ReportModel!]!
 }
 
-input MediaFilterByOneInput {
+input ReportFilterByOneInput {
   id: Float
+  keys: [String!]
 }
 
-input MediaFilterByManyInput {
+input ReportFilterByManyInput {
   ids: [Float!]
-  profileIDs: [Float!]
+  keys: [String!]
 }
 
 type Mutation {
-  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
+  reportCreate(input: ReportCreateInput!): ReportModel!
+  reportDelete(filter: ReportFilterByOneInput!): Boolean!
+}
+
+input ReportCreateInput {
+  key: String!
+  name: String!
+  description: String!
 }

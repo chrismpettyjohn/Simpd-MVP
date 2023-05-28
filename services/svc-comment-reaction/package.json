@@ -1,5 +1,5 @@
 {
-  "name": "@simpd/svc-chat-reaction",
+  "name": "@simpd/svc-comment-reaction",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/types",
