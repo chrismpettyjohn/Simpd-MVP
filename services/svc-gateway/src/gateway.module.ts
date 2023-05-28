@@ -19,6 +19,8 @@ import {
 import {
   SVC_BOOKMARK_NAME,
   SVC_BOOKMARK_WEB_ADDRESS,
+  SVC_CHAT_REACTION_NAME,
+  SVC_CHAT_REACTION_WEB_ADDRESS,
   SVC_COMMENT_NAME,
   SVC_COMMENT_WEB_ADDRESS,
   SVC_FORM_NAME,
@@ -55,6 +57,7 @@ import {
         supergraphSdl: new IntrospectAndCompose({
           subgraphs: [
             {name: SVC_BOOKMARK_NAME, url: SVC_BOOKMARK_WEB_ADDRESS},
+            {name: SVC_CHAT_REACTION_NAME, url: SVC_CHAT_REACTION_WEB_ADDRESS},
             {name: SVC_COMMENT_NAME, url: SVC_COMMENT_WEB_ADDRESS},
             {name: SVC_FORM_NAME, url: SVC_FORM_WEB_ADDRESS},
             {name: SVC_POST_NAME, url: SVC_POST_WEB_ADDRESS},
