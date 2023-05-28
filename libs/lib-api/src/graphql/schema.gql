@@ -2,35 +2,35 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ReportModel {
+type SubscriptionGroupModel {
   id: Float
-  key: String
+  profileID: Float
   name: String
   description: String
 }
 
 type Query {
-  report(filter: ReportFilterByOneInput!): ReportModel!
-  reports(filter: ReportFilterByManyInput): [ReportModel!]!
+  subscriptionGroup(filter: SubscriptionGroupFilterByOneInput!): SubscriptionGroupModel!
+  subscriptionGroups(filter: SubscriptionGroupFilterByManyInput): [SubscriptionGroupModel!]!
 }
 
-input ReportFilterByOneInput {
-  id: Float
-  keys: [String!]
+input SubscriptionGroupFilterByOneInput {
+  id: Float!
+  profileID: Float!
 }
 
-input ReportFilterByManyInput {
+input SubscriptionGroupFilterByManyInput {
   ids: [Float!]
-  keys: [String!]
+  profileIDs: [String!]
 }
 
 type Mutation {
-  reportCreate(input: ReportCreateInput!): ReportModel!
-  reportDelete(filter: ReportFilterByOneInput!): Boolean!
+  subscriptionGroupCreate(input: SubscriptionGroupCreateInput!): SubscriptionGroupModel!
+  subscriptionGroupDelete(filter: SubscriptionGroupFilterByOneInput!): Boolean!
 }
 
-input ReportCreateInput {
-  key: String!
+input SubscriptionGroupCreateInput {
+  profileID: Float!
   name: String!
   description: String!
 }
