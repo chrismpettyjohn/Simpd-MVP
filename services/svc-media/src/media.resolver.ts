@@ -1,9 +1,9 @@
-import { In } from 'typeorm';
-import { MediaModel } from './media.model';
-import { MediaService } from './media.service';
-import { MediaRepository } from './media.repository';
-import { mediaEntityToMediaWire } from './media.wire';
-import { MediaFilterByManyInput, MediaFilterByOneInput } from './media.input';
+import {In} from 'typeorm';
+import {MediaModel} from './media.model';
+import {MediaService} from './media.service';
+import {MediaRepository} from './media.repository';
+import {mediaEntityToMediaWire} from './media.wire';
+import {MediaFilterByManyInput, MediaFilterByOneInput} from './media.input';
 import {
   Args,
   Mutation,
@@ -13,14 +13,14 @@ import {
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
-import { MediaWire } from '@simpd/lib-client';
+import {MediaWire} from '@simpd/lib-client';
 
 @Resolver(() => MediaModel)
 export class MediaResolver {
   constructor(
     private readonly mediaRepo: MediaRepository,
     private readonly mediaService: MediaService
-  ) { }
+  ) {}
 
   // TODO: Add Privacy Guard
   @ResolveReference()
@@ -28,7 +28,7 @@ export class MediaResolver {
     __typename: string;
     id: number;
   }): Promise<MediaModel> {
-    return this.media({ id: reference.id });
+    return this.media({id: reference.id});
   }
 
   @ResolveField(() => String)
@@ -48,7 +48,7 @@ export class MediaResolver {
 
   @Query(() => [MediaModel])
   async medias(
-    @Args('filter', { type: () => MediaFilterByManyInput, nullable: true })
+    @Args('filter', {type: () => MediaFilterByManyInput, nullable: true})
     filter?: MediaFilterByManyInput
   ): Promise<MediaModel[]> {
     const matchingMedia = await this.mediaRepo.find({
