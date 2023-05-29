@@ -39,6 +39,9 @@
       "@simpd/svc-message": [
         "services/svc-message/src"
       ],
+      "@simpd/svc-message-reaction": [
+        "services/svc-message-reaction/src"
+      ],
       "@simpd/svc-post": [
         "services/svc-post/src"
       ],

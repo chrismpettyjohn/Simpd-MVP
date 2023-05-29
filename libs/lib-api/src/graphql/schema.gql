@@ -2,130 +2,35 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ProfileModel {
-  id: Float!
-}
-
-type PostWithTextModel implements PostBaseModel {
+type SubscriptionGroupModel {
   id: Float
   profileID: Float
-  profile: ProfileModel
-  type: PostType
-  totalShares: Float
-  content: String
-  tagIDs: [Float!]
-}
-
-interface PostBaseModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  type: PostType
-  totalShares: Float
-  content: String
-  tagIDs: [Float!]
-}
-
-enum PostType {
-  Text
-  Image
-  Video
-  Album
-  SharedContent
-}
-
-type PostWithImageModel implements PostBaseModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  type: PostType
-  totalShares: Float
-  content: String
-  tagIDs: [Float!]
-  mediaID: Float
-}
-
-type PostWithVideoModel implements PostBaseModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  type: PostType
-  totalShares: Float
-  content: String
-  tagIDs: [Float!]
-  mediaID: Float
-}
-
-type PostWithAlbumModel implements PostBaseModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  type: PostType
-  totalShares: Float
-  content: String
-  tagIDs: [Float!]
-  mediaIDs: [Float!]
-}
-
-type PostWithSharedContentModel implements PostBaseModel {
-  id: Float
-  profileID: Float
-  profile: ProfileModel
-  type: PostType
-  totalShares: Float
-  content: String
-  tagIDs: [Float!]
-  postID: Float
+  name: String
+  description: String
 }
 
 type Query {
-  postFavoriteCount(filter: PostFilterByOneInput!): Float
-  postReactionCount(filter: PostFilterByOneInput!): Float
-  postShareCount(filter: PostFilterByOneInput!): Float
-  post(filter: PostFilterByOneInput!): PostUnion!
-  posts(filter: PostFilterByManyInput): [PostUnion!]!
+  subscriptionGroup(filter: SubscriptionGroupFilterByOneInput!): SubscriptionGroupModel!
+  subscriptionGroups(filter: SubscriptionGroupFilterByManyInput): [SubscriptionGroupModel!]!
 }
 
-input PostFilterByOneInput {
+input SubscriptionGroupFilterByOneInput {
   id: Float!
+  profileID: Float!
 }
 
-union PostUnion = PostWithTextModel | PostWithImageModel | PostWithVideoModel | PostWithAlbumModel | PostWithSharedContentModel
-
-input PostFilterByManyInput {
+input SubscriptionGroupFilterByManyInput {
   ids: [Float!]
-  profileIDs: [Float!]
+  profileIDs: [String!]
 }
 
 type Mutation {
-  postWithTextCreate(input: PostWithTextCreateInput!): PostWithTextModel!
-  postWithImageCreate(input: PostWithImageCreateInput!): PostWithImageModel!
-  postWithVideoCreate(input: PostWithVideoCreateInput!): PostWithVideoModel!
-  postWithAlbumCreate(input: PostWithAlbumInput!): PostWithAlbumModel!
-  postWithSharedContentCreate(input: PostWithSharedContentInput!): PostWithSharedContentModel!
-  postDelete(filter: PostFilterByOneInput!): Boolean!
+  subscriptionGroupCreate(input: SubscriptionGroupCreateInput!): SubscriptionGroupModel!
+  subscriptionGroupDelete(filter: SubscriptionGroupFilterByOneInput!): Boolean!
 }
 
-input PostWithTextCreateInput {
-  content: String!
-}
-
-input PostWithImageCreateInput {
-  content: String!
-  mediaID: Float!
-}
-
-input PostWithVideoCreateInput {
-  content: String!
-  mediaID: Float!
-}
-
-input PostWithAlbumInput {
-  content: String!
-  mediaIDs: [Float!]!
-}
-
-input PostWithSharedContentInput {
-  content: String!
-  postID: Float!
+input SubscriptionGroupCreateInput {
+  profileID: Float!
+  name: String!
+  description: String!
 }
