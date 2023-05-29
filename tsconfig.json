@@ -15,6 +15,9 @@
       "@simpd/lib-client": [
         "libs/lib-client/src"
       ],
+      "@simpd/lib-stripe": [
+        "libs/lib-stripe/src"
+      ],
       "@simpd/lib-web": [
         "libs/lib-web/src"
       ],

@@ -248,6 +248,19 @@ importers:
         specifier: '*'
         version: 7.8.0
 
+  libs/lib-stripe:
+    dependencies:
+      stripe:
+        specifier: 12.7.0
+        version: 12.7.0
+    devDependencies:
+      '@nestjs/common':
+        specifier: '*'
+        version: 9.4.0(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)
+      '@nestjs/core':
+        specifier: '*'
+        version: 9.4.0(@nestjs/common@9.4.0)(@nestjs/microservices@9.4.0)(@nestjs/platform-express@9.4.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)
+
   libs/lib-web:
     dependencies:
       '@apollo/react-hooks':
@@ -982,6 +995,9 @@ importers:
       '@simpd/lib-client':
         specifier: workspace:*
         version: link:../../libs/lib-client
+      '@simpd/lib-stripe':
+        specifier: workspace:*
+        version: link:../../libs/lib-stripe
       class-validator:
         specifier: 0.14.0
         version: 0.14.0
@@ -1061,6 +1077,9 @@ importers:
       '@simpd/lib-client':
         specifier: workspace:*
         version: link:../../libs/lib-client
+      '@simpd/lib-stripe':
+        specifier: workspace:*
+        version: link:../../libs/lib-stripe
       class-validator:
         specifier: 0.14.0
         version: 0.14.0
@@ -1140,6 +1159,9 @@ importers:
       '@simpd/lib-client':
         specifier: workspace:*
         version: link:../../libs/lib-client
+      '@simpd/lib-stripe':
+        specifier: workspace:*
+        version: link:../../libs/lib-stripe
       class-validator:
         specifier: 0.14.0
         version: 0.14.0
@@ -1219,6 +1241,9 @@ importers:
       '@simpd/lib-client':
         specifier: workspace:*
         version: link:../../libs/lib-client
+      '@simpd/lib-stripe':
+        specifier: workspace:*
+        version: link:../../libs/lib-stripe
       class-validator:
         specifier: 0.14.0
         version: 0.14.0
@@ -1298,6 +1323,9 @@ importers:
       '@simpd/lib-client':
         specifier: workspace:*
         version: link:../../libs/lib-client
+      '@simpd/lib-stripe':
+        specifier: workspace:*
+        version: link:../../libs/lib-stripe
       class-validator:
         specifier: 0.14.0
         version: 0.14.0
@@ -1377,6 +1405,9 @@ importers:
       '@simpd/lib-client':
         specifier: workspace:*
         version: link:../../libs/lib-client
+      '@simpd/lib-stripe':
+        specifier: workspace:*
+        version: link:../../libs/lib-stripe
       class-validator:
         specifier: 0.14.0
         version: 0.14.0
@@ -13582,6 +13613,14 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
     dev: true
+
+  /stripe@12.7.0:
+    resolution: {integrity: sha512-4yY9gNFznBI6fZtR0B4y2a+o2EJe+s7p4DiHECKphwa36zYIczpWzO1g4dF0PF3lhTRw5FWTaHGBjwaD5FEiDQ==}
+    engines: {node: '>=12.*'}
+    dependencies:
+      '@types/node': 18.16.0
+      qs: 6.11.0
+    dev: false
 
   /strong-log-transformer@2.1.0:
     resolution: {integrity: sha512-B3Hgul+z0L9a236FAUC9iZsL+nVHgoCJnqCbN588DjYxvGXaXaaFbfmQ/JhvKjZwsOukuR72XbHv71Qkug0HxA==}
