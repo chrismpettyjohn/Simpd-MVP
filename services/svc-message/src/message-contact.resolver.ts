@@ -1,14 +1,14 @@
-import {ProfileModel} from '@simpd/lib-client';
-import {MessageContactModel} from './message.model';
-import {MessageRepository} from './message.repository';
-import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
-import {Parent, Query, ResolveField, Resolver} from '@nestjs/graphql';
+import { ProfileModel } from '@simpd/lib-client';
+import { MessageContactModel } from './message.model';
+import { MessageRepository } from './message.repository';
+import { GetSession, HasSession, SessionContents } from '@simpd/lib-api';
+import { Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 
 @Resolver(() => MessageContactModel)
 export class MessageContactResolver {
-  constructor(private readonly messageRepo: MessageRepository) {}
+  constructor(private readonly messageRepo: MessageRepository) { }
 
-  @ResolveField()
+  @ResolveField(() => ProfileModel)
   profile(@Parent() messageContact: MessageContactModel): ProfileModel {
     return {
       id: messageContact.profileID!,
@@ -20,7 +20,7 @@ export class MessageContactResolver {
   async messageContacts(
     @GetSession() session: SessionContents
   ): Promise<MessageContactModel[]> {
-    const contacts: Array<{sending_profile_id: number}> = await this.messageRepo
+    const contacts: Array<{ sending_profile_id: number }> = await this.messageRepo
       .getInstance()
       .query(
         `

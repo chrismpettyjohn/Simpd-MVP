@@ -6,8 +6,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ],
       "watch_delay": 1000
     },
@@ -17,19 +16,17 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ],
       "watch_delay": 1000
     },
     {
       "name": "svc-comment-reaction",
-      "cwd": "./services/svc-chat-reaction",
+      "cwd": "./services/svc-comment-reaction",
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ],
       "watch_delay": 1000
     },
@@ -39,8 +36,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ],
       "watch_delay": 1000
     },
@@ -51,8 +47,6 @@
       "args": "run web-server:start",
       "watch": [
         "src",
-        "../**/src/**/*",
-        "../../libs/**/src/**/*"
       ],
       "watch_delay": 1000
     },
@@ -62,8 +56,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ],
       "watch_delay": 1000
     },
@@ -73,8 +66,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ],
       "watch_delay": 1000
     },
@@ -84,8 +76,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ],
       "watch_delay": 1000
     },
@@ -95,8 +86,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ],
       "watch_delay": 1000
     },
@@ -106,8 +96,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ],
       "watch_delay": 1000
     },
@@ -117,8 +106,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ],
       "watch_delay": 1000
     },
@@ -128,8 +116,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ],
       "watch_delay": 1000
     },
@@ -139,8 +126,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ],
       "watch_delay": 1000
     },
@@ -161,8 +147,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ],
       "watch_delay": 1000
     },
@@ -172,8 +157,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ]
     },
     {
@@ -182,8 +166,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ]
     },
     {
@@ -192,8 +175,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ]
     },
     {
@@ -202,8 +184,7 @@
       "script": "pnpm",
       "args": "run web-server:start",
       "watch": [
-        "src",
-        "../../libs/**/src/**/*"
+        "src"
       ],
       "watch_delay": 1000
     },
@@ -211,19 +192,13 @@
       "name": "app-playground",
       "cwd": "./apps/app-playground",
       "script": "pnpm",
-      "args": "run start",
-      "watch": [
-        "src",
-        "../../libs/**/src/**/*"
-      ],
-      "watch_delay": 1000
+      "args": "run start"
     },
     {
       "name": "app-simpd",
       "cwd": "./apps/app-simpd",
       "script": "pnpm",
-      "args": "run start",
-      "watch_delay": 1000
+      "args": "run start"
     }
   ]
 }

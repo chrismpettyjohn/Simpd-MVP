@@ -1,4 +1,4 @@
-import {ReactionType} from '@simpd/lib-client';
+import { ReactionType } from '@simpd/lib-client';
 import {
   Column,
   CreateDateColumn,
@@ -9,30 +9,30 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity({name: 'reactions', schema: 'reactions'})
+@Entity({ name: 'reactions', schema: 'reactions' })
 @Unique('uniq_reaction_per_resource', ['serviceKey', 'resourceID', 'profileID'])
 export class ReactionEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column({name: 'service_key'})
+  @Column({ name: 'service_key' })
   @Index()
   serviceKey!: string;
 
-  @Column({name: 'resource_id'})
+  @Column({ name: 'resource_id' })
   @Index()
   resourceID!: number;
 
-  @Column({name: 'profile_id'})
+  @Column({ name: 'profile_id' })
   @Index()
   profileID!: number;
 
-  @Column()
+  @Column({ type: 'varchar' })
   reaction!: ReactionType;
 
-  @CreateDateColumn({name: 'created_at', type: 'timestamp'})
+  @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
   createdAt?: Date;
 
-  @UpdateDateColumn({name: 'updated_at', type: 'timestamp'})
+  @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
   updatedAt?: Date;
 }

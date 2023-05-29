@@ -2,64 +2,55 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type BookmarkModel {
-  id: Float
-  serviceKey: String
-  resourceID: Float
-  profileID: Float
-  bookmarkCollectionID: Float
+type RoleScopesModel {
+  """User can create profile"""
+  profileCreate: Boolean
+
+  """
+  User can create bypass privacy restrictions.  Typically reserved for Administrative Purposes.
+  """
+  bypassUserPrivacy: Boolean
 }
 
-type BookmarkCollectionModel {
+type RoleModel {
   id: Float
-  profileID: Float
   name: String
+  description: String
+  scopes: RoleScopesModel
 }
 
 type Query {
-  bookmark(filter: BookmarkFindOneInput!): BookmarkModel!
-  bookmarks(filter: BookmarkFindManyInput): [BookmarkModel!]!
-  bookmarkCollection(filter: BookmarkCollectionFindOneInput!): BookmarkCollectionModel!
-  bookmarkCollections(filter: BookmarkCollectionFindManyInput): [BookmarkCollectionModel!]!
+  role(filter: RoleFilterByOneInput!): RoleModel!
+  roles(filter: RoleFilterByManyInput): [RoleModel!]!
 }
 
-input BookmarkFindOneInput {
+input RoleFilterByOneInput {
   id: Float
-  profileID: Float
-  resourceID: Float
-  bookmarkCollectionID: Float
 }
 
-input BookmarkFindManyInput {
+input RoleFilterByManyInput {
   ids: [Float!]
-  profileIDs: [Float!]
-  resourceIDs: [Float!]
-  bookmarkCollectionIDs: [Float!]
-}
-
-input BookmarkCollectionFindOneInput {
-  id: Float
-  profileID: Float
-}
-
-input BookmarkCollectionFindManyInput {
-  ids: [Float!]
-  profileIDs: [Float!]
 }
 
 type Mutation {
-  bookmarkCreate(input: BookmarkCreateInput!): BookmarkModel!
-  bookmarkDelete(filter: BookmarkFindOneInput!): Boolean!
-  bookmarkCollectionCreate(input: BookmarkCollectionCreateInput!): BookmarkCollectionModel!
-  bookmarkCollectionCreateRandomized: BookmarkCollectionModel!
-  bookmarkCollectionDelete(filter: BookmarkCollectionFindOneInput!): Boolean!
+  roleCreate(input: RoleCreateInput!): RoleModel!
+  roleUpdate(filter: RoleFilterByOneInput!, input: RoleUpdateInput!): RoleModel!
+  roleDelete(filter: RoleFilterByOneInput!): Boolean!
 }
 
-input BookmarkCreateInput {
-  resourceID: Float!
-  bookmarkCollectionID: Float!
-}
-
-input BookmarkCollectionCreateInput {
+input RoleCreateInput {
   name: String!
+  description: String!
+  scopes: RoleScopesInput!
+}
+
+input RoleScopesInput {
+  profileCreate: Boolean!
+  bypassUserPrivacy: Boolean!
+}
+
+input RoleUpdateInput {
+  name: String
+  description: String
+  scopes: RoleScopesInput
 }
