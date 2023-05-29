@@ -43,7 +43,7 @@ export class TagResolver {
     return this.tagRepo.find({
       where: {
         id: filter?.ids && In(filter.ids),
-        key: filter?.keys && In(filter.keys),
+        name: filter?.names && In(filter.names),
       },
     });
   }
@@ -52,7 +52,6 @@ export class TagResolver {
   @HasSession()
   async tagCreate(@Args('input') input: TagCreateInput): Promise<TagEntity> {
     const newTag = await this.tagRepo.create({
-      key: input.key,
       name: input.name,
       description: input.description,
     });

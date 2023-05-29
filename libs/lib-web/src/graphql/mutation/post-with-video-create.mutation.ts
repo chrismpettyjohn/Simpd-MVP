@@ -3,6 +3,7 @@ import { POST_WITH_VIDEO_FRAGMENT, PostWithVideoFragment } from "../fragments/po
 
 export interface PostWithVideoCreateInput {
   content: string;
+  tagIDs: number[];
   mediaID: number;
 }
 

@@ -13,6 +13,7 @@ export interface BasePost {
   profileID: number;
   profile: ProfileModel;
   type: PostType;
+  tagIDs: number[];
 }
 
 export interface BasePostWithText {

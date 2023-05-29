@@ -15,6 +15,7 @@ interface PostBaseFragment {
   profile: ProfileFragment;
   type: PostType;
   content: string;
+  tagIDs: number[];
 }
 
 export const POST_WITH_TEXT_FRAGMENT = gql`
@@ -27,6 +28,7 @@ export const POST_WITH_TEXT_FRAGMENT = gql`
       ...ProfileFragment
     }
     content
+    tagIDs
   }
 `
 
@@ -45,6 +47,7 @@ export const POST_WITH_IMAGE_FRAGMENT = gql`
       ...ProfileFragment
     }
     content
+    tagIDs
     mediaID
   }
 `
@@ -65,6 +68,7 @@ export const POST_WITH_VIDEO_FRAGMENT = gql`
       ...ProfileFragment
     }
     content
+    tagIDs
     mediaID
   }
 `
@@ -105,6 +109,7 @@ export const POST_WITH_SHARED_CONTENT_FRAGMENT = gql`
       ...ProfileFragment
     }
     content
+    tagIDs
     postID
   }
 `

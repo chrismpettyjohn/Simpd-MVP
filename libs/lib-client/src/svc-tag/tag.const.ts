@@ -4,4 +4,6 @@ export const SVC_TAG_WEB_ADDRESS =
   process.env.SVC_TAG_WEB_ADDRESS ??
   `http://localhost:${SVC_TAG_WEB_PORT}/graphql`;
 
-export const SVC_TAG_INTERNAL_EVENT_FIND_ONE = 'tagFindOneByID';
+export const SVC_TAG_INTERNAL_EVENT_FIND_ONE = 'tagFindOne';
+export const SVC_TAG_INTERNAL_EVENT_FIND_MANY = 'tagFindMany';
+export const SVC_TAG_INTERNAL_EVENT_CREATE_ONE = 'tagCreateOne';

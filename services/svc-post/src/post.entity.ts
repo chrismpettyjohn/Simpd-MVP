@@ -18,5 +18,8 @@ export class PostEntity<
   postType!: Type;
 
   @Column({name: 'post_data', type: 'json'})
-  postData!: Omit<Data, 'type' | 'profileID' | 'id' | 'profile'>;
+  postData!: Omit<Data, 'type' | 'profileID' | 'id' | 'profile' | 'tagIDs'>;
+
+  @Column({name: 'tag_ids', type: 'json', default: []})
+  tagIDs!: number[];
 }

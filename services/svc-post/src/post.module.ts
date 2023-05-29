@@ -1,5 +1,6 @@
 import {Module} from '@nestjs/common';
 import {PostEntity} from './post.entity';
+import {PostService} from './post.service';
 import {PostResolver} from './post.resolver';
 import {PostController} from './post.controller';
 import {PostRepository} from './post.repository';
@@ -11,6 +12,7 @@ import {
   PrivacyClientModule,
   ProfileClientModule,
   ReactionClientModule,
+  TagClientModule,
 } from '@simpd/lib-client';
 import {
   GraphQLModule,
@@ -23,6 +25,7 @@ import {
   imports: [
     CommonModule,
     SessionModule,
+    TagClientModule,
     ProfileClientModule,
     PrivacyClientModule,
     MediaClientModule,
@@ -35,7 +38,7 @@ import {
       synchronize: true,
     }),
   ],
-  providers: [PostRepository, PostResolver, PostPrivacyService],
+  providers: [PostRepository, PostResolver, PostPrivacyService, PostService],
   controllers: [PostController],
 })
 export class PostModule {}

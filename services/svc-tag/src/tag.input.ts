@@ -6,7 +6,7 @@ export class TagFilterByManyInput {
   ids?: number[];
 
   @Field(() => [String], {nullable: true})
-  keys?: string[];
+  names?: string[];
 }
 
 @InputType()
@@ -14,15 +14,12 @@ export class TagFilterByOneInput {
   @Field(() => Number, {nullable: true})
   id?: number;
 
-  @Field(() => [String], {nullable: true})
-  keys?: string[];
+  @Field(() => String, {nullable: true})
+  name?: string;
 }
 
 @InputType()
 export class TagCreateInput {
-  @Field(() => String)
-  key!: string;
-
   @Field(() => String)
   name!: string;
 

@@ -47,6 +47,7 @@
       "args": "run web-server:start",
       "watch": [
         "src",
+        "../**/src"
       ],
       "watch_delay": 1000
     },

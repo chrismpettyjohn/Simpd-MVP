@@ -1,4 +1,4 @@
-import {PostType, PostWire, ProfileModel} from '@simpd/lib-client';
+import {PostType, PostWire, ProfileModel, TagModel} from '@simpd/lib-client';
 import {
   Field,
   InterfaceType,
@@ -25,6 +25,9 @@ export class PostBaseModel {
 
   @Field(() => String, {nullable: true})
   content?: string;
+
+  @Field(() => [Number], {nullable: true})
+  tagIDs?: number[];
 }
 
 @ObjectType({implements: () => PostBaseModel})

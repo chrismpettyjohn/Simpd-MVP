@@ -26,6 +26,7 @@ export * from './graphql/fragments/post.fragment';
 export * from './graphql/fragments/profile.fragment';
 export * from './graphql/fragments/user.fragment';
 export * from './graphql/fragments/session.fragment';
+export * from './graphql/fragments/tag.fragment';
 export * from './graphql/hooks/use-bookmark-collection-create-one-randomized.hook';
 export * from './graphql/hooks/use-bookmark-collection-create-one.hook';
 export * from './graphql/hooks/use-bookmark-collection-fetch-many.hook';

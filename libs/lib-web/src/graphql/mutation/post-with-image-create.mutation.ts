@@ -3,6 +3,7 @@ import { POST_WITH_IMAGE_FRAGMENT, PostWithImageFragment } from "../fragments/po
 
 export interface PostWithImageCreateInput {
   content: string;
+  tagIDs: number[];
   mediaID: number;
 }
 

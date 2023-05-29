@@ -15,9 +15,6 @@ export class TagEntity {
 
   @Column({unique: true})
   @Index()
-  key!: string;
-
-  @Column()
   name!: string;
 
   @Column({type: 'text'})

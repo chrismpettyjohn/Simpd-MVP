@@ -15,7 +15,7 @@ export class PostFilterByOneInput {
   id!: number;
 }
 
-@InputType()
+@InputType({})
 export class PostWithTextCreateInput {
   @Field(() => String)
   content!: string;
@@ -23,36 +23,35 @@ export class PostWithTextCreateInput {
 
 @InputType()
 export class PostWithImageCreateInput {
-  @Field(() => Number)
-  mediaID!: number;
-
   @Field(() => String)
   content!: string;
+  @Field(() => Number)
+  mediaID!: number;
 }
 
 @InputType()
 export class PostWithVideoCreateInput {
-  @Field(() => Number)
-  mediaID!: number;
-
   @Field(() => String)
   content!: string;
+
+  @Field(() => Number)
+  mediaID!: number;
 }
 
 @InputType()
 export class PostWithAlbumInput {
-  @Field(() => [Number!])
-  mediaIDs!: number[];
-
   @Field(() => String)
   content!: string;
+
+  @Field(() => [Number!])
+  mediaIDs!: number[];
 }
 
 @InputType()
 export class PostWithSharedContentInput {
-  @Field(() => Number)
-  postID!: number;
-
   @Field(() => String)
   content!: string;
+
+  @Field(() => Number)
+  postID!: number;
 }

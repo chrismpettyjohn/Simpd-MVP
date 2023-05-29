@@ -86,6 +86,7 @@ export * from './svc-tag/tag-client.decorator';
 export * from './svc-tag/tag-client.service';
 export * from './svc-tag/tag-client.types';
 export * from './svc-tag/tag.const';
+export * from './svc-tag/tag.model';
 export * from './svc-tag/tag.module';
 export * from './svc-user/user-client.decorator';
 export * from './svc-user/user-client.types';

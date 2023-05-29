@@ -8,6 +8,6 @@ export const USER_FRAGMENT = gql`
 `
 
 export interface UserFragment {
-  id: string;
+  id: number;
   email: string;
 }

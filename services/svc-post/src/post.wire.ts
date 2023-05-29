@@ -44,6 +44,7 @@ export function postEntityToBasePost(postEntity: PostEntity): BasePost {
     profile: {
       id: postEntity.profileID,
     },
+    tagIDs: postEntity.tagIDs,
   };
 }
 

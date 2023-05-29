@@ -1,11 +1,19 @@
 export interface TagWire {
   id: number;
-  key: string;
   name: string;
   description: string;
 }
 
 export interface TagFindOneInput {
   id?: number;
-  key?: string;
+  names?: string;
+}
+
+export interface TagFindManyInput {
+  names?: string[];
+}
+
+export interface TagCreateOneInput {
+  name: string;
+  description: string;
 }

@@ -1,4 +1,5 @@
 import {In} from 'typeorm';
+import {PostService} from './post.service';
 import {PostRepository} from './post.repository';
 import {PostPrivacyService} from './post-privacy.service';
 import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
@@ -54,6 +55,7 @@ import {
 @Resolver(() => PostUnion)
 export class PostResolver {
   constructor(
+    private readonly postService: PostService,
     private readonly postReactionClientService: PostReactionClientService,
     private readonly bookmarkClientService: BookmarkClientService,
     private readonly postRepo: PostRepository<any, any>,
@@ -192,11 +194,17 @@ export class PostResolver {
       throw new UnauthorizedException();
     }
 
+    const tagIDs = await this.postService.fetchOrCreateHashtagsFromText(
+      input.content
+    );
+
     const newTextPost = await this.textPostRepo.create({
       profileID: matchingProfile.id,
       postData: {
         content: input.content,
       },
+
+      tagIDs,
       postType: PostType.Text,
     });
     return postEntityToPostWithTextWire(newTextPost);
@@ -228,12 +236,17 @@ export class PostResolver {
       throw new BadRequestException('media is not image');
     }
 
+    const tagIDs = await this.postService.fetchOrCreateHashtagsFromText(
+      input.content
+    );
+
     const newImagePost = await this.imagePostRepo.create({
       profileID: matchingProfile.id,
       postData: {
         mediaID: input.mediaID,
         content: input.content,
       },
+      tagIDs,
       postType: PostType.Image,
     });
     return postEntityToPostWithImageWire(newImagePost);
@@ -265,12 +278,17 @@ export class PostResolver {
       throw new BadRequestException('media is not image');
     }
 
+    const tagIDs = await this.postService.fetchOrCreateHashtagsFromText(
+      input.content
+    );
+
     const newVideoPost = await this.videoPostRepo.create({
       profileID: matchingProfile.id,
       postData: {
         mediaID: input.mediaID,
         content: input.content,
       },
+      tagIDs,
       postType: PostType.Video,
     });
     return postEntityToPostWithVideoWire(newVideoPost);
@@ -307,12 +325,17 @@ export class PostResolver {
       throw new UnauthorizedException();
     }
 
+    const tagIDs = await this.postService.fetchOrCreateHashtagsFromText(
+      input.content
+    );
+
     const newAlbumPost = await this.albumPostRepo.create({
       profileID: matchingProfile.id,
       postData: {
         mediaIDs: input.mediaIDs,
         content: input.content,
       },
+      tagIDs,
       postType: PostType.Album,
     });
     return postEntityToPostWithAlbumWire(newAlbumPost);
@@ -334,7 +357,9 @@ export class PostResolver {
       throw new UnauthorizedException();
     }
 
-    // TODO: Implement privacy check
+    const tagIDs = await this.postService.fetchOrCreateHashtagsFromText(
+      input.content
+    );
 
     const newSharedContentPost = await this.sharedContentPostRepo.create({
       profileID: matchingProfile.id,
@@ -342,6 +367,7 @@ export class PostResolver {
         postID: input.postID,
         content: input.content,
       },
+      tagIDs,
       postType: PostType.SharedContent,
     });
     return postEntityToPostWithSharedContentWire(newSharedContentPost);
