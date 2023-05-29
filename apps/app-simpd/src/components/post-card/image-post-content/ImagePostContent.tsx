@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { PostCardProps } from '../PostCard.types';
-import { PostCardImage, PostCardText } from '../PostCard.styled';
+import { PostCardImage } from '../PostCard.styled';
+import { PostContent } from '../post-content/PostContent';
 import { PostWithImageFragment, useMediaFetchOne } from '@simpd/lib-web';
 
 export function ImagePostContent({ post }: PostCardProps<PostWithImageFragment>) {
@@ -26,9 +27,7 @@ export function ImagePostContent({ post }: PostCardProps<PostWithImageFragment>)
           <PostCardImage src={mediaFetchOne.data.url} />
         )
       }
-      <PostCardText>
-        {post.content}
-      </PostCardText>
+      <PostContent post={post} />
     </>
   )
 }

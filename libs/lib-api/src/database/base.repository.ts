@@ -7,6 +7,15 @@ import {
 } from 'typeorm';
 
 export abstract class BaseRepository<Entity extends ObjectLiteral> {
+  readonly DEFAULT_OPTIONS: any = {
+    where: {
+      id: -1,
+    },
+    order: {
+      id: 'DESC',
+    },
+  };
+
   constructor(readonly repo: Repository<Entity>) {}
 
   async create(newEntity: Entity): Promise<Entity> {
@@ -22,30 +31,51 @@ export abstract class BaseRepository<Entity extends ObjectLiteral> {
   }
 
   find({...opts}: FindManyOptions<Entity>): Promise<Entity[]> {
-    return this.repo.find(opts);
+    return this.repo.find({
+      ...this.DEFAULT_OPTIONS,
+      ...opts,
+    });
   }
 
   findOne({...opts}: FindOneOptions<Entity>): Promise<Entity | null> {
-    return this.repo.findOne(opts);
+    return this.repo.findOne({
+      ...this.DEFAULT_OPTIONS,
+      ...opts,
+    });
   }
 
   findOneOrFail({...opts}: FindOneOptions<Entity>): Promise<Entity> {
-    return this.repo.findOneOrFail(opts);
+    return this.repo.findOneOrFail({
+      ...this.DEFAULT_OPTIONS,
+      ...opts,
+    });
   }
 
   async update(
-    conditions: FindOptionsWhere<Entity>,
+    opts: FindOptionsWhere<Entity>,
     changes: Partial<Entity>
   ): Promise<void> {
-    await this.repo.update(conditions, changes as any);
+    await this.repo.update(
+      {
+        ...this.DEFAULT_OPTIONS,
+        ...opts,
+      },
+      changes as any
+    );
   }
 
-  async delete(conditions: FindOptionsWhere<Entity>): Promise<void> {
-    await this.repo.delete(conditions);
+  async delete(opts: FindOptionsWhere<Entity>): Promise<void> {
+    await this.repo.delete({
+      ...this.DEFAULT_OPTIONS,
+      ...opts,
+    });
   }
 
-  async softDelete(conditions: FindOptionsWhere<Entity>): Promise<void> {
-    await this.repo.softDelete(conditions);
+  async softDelete(opts: FindOptionsWhere<Entity>): Promise<void> {
+    await this.repo.softDelete({
+      ...this.DEFAULT_OPTIONS,
+      ...opts,
+    });
   }
 
   getInstance(): Repository<Entity> {

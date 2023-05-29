@@ -6,13 +6,10 @@ export class PostService {
   constructor(private readonly tagClientService: TagClientService) {}
 
   async fetchOrCreateHashtagsFromText(text: string): Promise<number[]> {
-    console.log('test');
     const hashtags = text
       .split(' ')
       .filter(_ => _.startsWith('#'))
       .map(_ => _.replace('#', '').trim().toLowerCase());
-
-    console.log(hashtags);
 
     const matchingHashtags: TagWire[] = await this.tagClientService.findMany({
       names: hashtags,

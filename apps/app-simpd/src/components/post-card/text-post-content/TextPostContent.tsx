@@ -1,12 +1,8 @@
 import React from 'react';
 import { PostCardProps } from '../PostCard.types';
-import { PostCardText } from '../PostCard.styled';
 import { PostWithTextFragment } from '@simpd/lib-web';
+import { PostContent } from '../post-content/PostContent';
 
 export function TextPostContent({ post }: PostCardProps<PostWithTextFragment>) {
-  return (
-    <PostCardText>
-      {post.content}
-    </PostCardText>
-  )
+  return <PostContent post={post} />
 }

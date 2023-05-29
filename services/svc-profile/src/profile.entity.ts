@@ -1,4 +1,12 @@
-import {Column, Entity, Index, PrimaryGeneratedColumn} from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  Index,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity({name: 'profiles', schema: 'profiles'})
 export class ProfileEntity {
@@ -35,4 +43,13 @@ export class ProfileEntity {
 
   @Column({name: 'subscription_group_ids', type: 'json', default: []})
   subscriptionGroupIDs!: number[];
+
+  @CreateDateColumn({name: 'created_at', type: 'timestamp'})
+  createdAt?: Date;
+
+  @UpdateDateColumn({name: 'updated_at', type: 'timestamp'})
+  updatedAt?: Date;
+
+  @DeleteDateColumn({name: 'deleted_at', type: 'timestamp'})
+  deletedAt?: Date;
 }

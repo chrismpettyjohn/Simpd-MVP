@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'wouter';
 import { SignInScreen } from './sign-in/SignIn';
+import { ViewTagScreen } from './view-tag/ViewTag';
 import { SignOutScreen } from './sign-out/SignOut';
 import { MessagesScreen } from './messages/Messages';
 import { ViewPostScreen } from './view-post/ViewPost';
@@ -136,6 +137,14 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     view: (
       <UserGuard redirect>
         <ViewPostScreen />
+      </UserGuard>
+    )
+  },
+  {
+    path: '/tags/:name',
+    view: (
+      <UserGuard redirect>
+        <ViewTagScreen />
       </UserGuard>
     )
   },

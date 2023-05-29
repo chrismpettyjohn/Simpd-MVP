@@ -2,6 +2,7 @@ import { PostCard } from '../PostCard';
 import React, { useEffect } from 'react';
 import { PostCardProps } from '../PostCard.types';
 import { PostCardText } from '../PostCard.styled';
+import { PostContent } from '../post-content/PostContent';
 import { PostWithSharedContentFragment, usePostFetchOne } from '@simpd/lib-web';
 
 export function SharedPostContent({ post }: PostCardProps<PostWithSharedContentFragment>) {
@@ -22,10 +23,7 @@ export function SharedPostContent({ post }: PostCardProps<PostWithSharedContentF
           <i className="fa fa-spinner fa-spin" />
         )
       }
-      <PostCardText>
-        {post.content}
-      </PostCardText>
-
+      <PostContent post={post} />
 
       {
         postFetchOne.data && (
