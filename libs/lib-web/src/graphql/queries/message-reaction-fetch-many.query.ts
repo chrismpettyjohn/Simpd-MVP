@@ -16,7 +16,7 @@ export interface MessageReactionFetchManyQueryResponse {
 
 export const MESSAGE_REACTION_FETCH_MANY_QUERY = gql`
   ${MESSAGE_REACTION_FRAGMENT}
-  query($filter: MessageReactionFilterInput!) {
+  query($filter: MessageReactionFilterManyInput!) {
     messageReactions(
       filter: $filter
     ) {

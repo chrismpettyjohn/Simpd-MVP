@@ -16,7 +16,7 @@ export interface MessageReactionFetchOneQueryResponse {
 
 export const MESSAGE_REACTION_FETCH_ONE_QUERY = gql`
   ${MESSAGE_REACTION_FRAGMENT}
-  query($filter: MessageReactionFilterInput!) {
+  query($filter: MessageReactionFilterOneInput!) {
     messageReaction(
       filter: $filter
     ) {

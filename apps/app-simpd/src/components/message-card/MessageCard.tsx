@@ -1,5 +1,6 @@
 import React from 'react'
 import { MessageCardProps } from './MessageCard.types';
+import { MessageReactions } from './message-reactions/MessageReactions';
 import { AuthorBlockSmall } from '../author-block-small/AuthorBlockSmall';
 import { MessageCardElement, MessageCardTextContainer } from './MessageCard.sty';
 
@@ -15,6 +16,7 @@ export function MessageCard({ message, profile }: MessageCardProps) {
           {message.content}
         </span>
       </MessageCardTextContainer>
+      <MessageReactions message={message} />
     </MessageCardElement>
   )
 }
