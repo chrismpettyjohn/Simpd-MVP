@@ -2,35 +2,38 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type SubscriptionGroupModel {
+type MessageReactionModel {
   id: Float
+  messageID: Float
   profileID: Float
-  name: String
-  description: String
+  reaction: ReactionType
+}
+
+enum ReactionType {
+  Like
 }
 
 type Query {
-  subscriptionGroup(filter: SubscriptionGroupFilterByOneInput!): SubscriptionGroupModel!
-  subscriptionGroups(filter: SubscriptionGroupFilterByManyInput): [SubscriptionGroupModel!]!
+  messageReaction(filter: MessageReactionFilterOneInput!): MessageReactionModel!
+  messageReactions(filter: MessageReactionFilterManyInput!): [MessageReactionModel!]!
 }
 
-input SubscriptionGroupFilterByOneInput {
-  id: Float!
-  profileID: Float!
+input MessageReactionFilterOneInput {
+  messageID: Float
+  profileID: Float
 }
 
-input SubscriptionGroupFilterByManyInput {
-  ids: [Float!]
-  profileIDs: [String!]
+input MessageReactionFilterManyInput {
+  messageIDs: [Float!]
+  profileIDs: [Float!]
 }
 
 type Mutation {
-  subscriptionGroupCreate(input: SubscriptionGroupCreateInput!): SubscriptionGroupModel!
-  subscriptionGroupDelete(filter: SubscriptionGroupFilterByOneInput!): Boolean!
+  messageReactionCreate(input: MessageReactionCreateInput!): MessageReactionModel!
+  messageReactionDelete(filter: MessageReactionFilterOneInput!): Boolean!
 }
 
-input SubscriptionGroupCreateInput {
-  profileID: Float!
-  name: String!
-  description: String!
+input MessageReactionCreateInput {
+  messageID: Float!
+  reaction: ReactionType!
 }
