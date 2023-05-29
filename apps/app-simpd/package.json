@@ -1,11 +1,7 @@
 {
   "name": "@simpd/app-simpd",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/types",
-  "files": [
-    "dist"
-  ],
+  "main": "src/index.ts",
   "scripts": {
     "start": "vite --host",
     "build": "tsc && vite build"

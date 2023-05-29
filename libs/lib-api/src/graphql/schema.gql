@@ -2,35 +2,64 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type SubscriptionGroupModel {
+type BookmarkModel {
+  id: Float
+  serviceKey: String
+  resourceID: Float
+  profileID: Float
+  bookmarkCollectionID: Float
+}
+
+type BookmarkCollectionModel {
   id: Float
   profileID: Float
   name: String
-  description: String
 }
 
 type Query {
-  subscriptionGroup(filter: SubscriptionGroupFilterByOneInput!): SubscriptionGroupModel!
-  subscriptionGroups(filter: SubscriptionGroupFilterByManyInput): [SubscriptionGroupModel!]!
+  bookmark(filter: BookmarkFindOneInput!): BookmarkModel!
+  bookmarks(filter: BookmarkFindManyInput): [BookmarkModel!]!
+  bookmarkCollection(filter: BookmarkCollectionFindOneInput!): BookmarkCollectionModel!
+  bookmarkCollections(filter: BookmarkCollectionFindManyInput): [BookmarkCollectionModel!]!
 }
 
-input SubscriptionGroupFilterByOneInput {
-  id: Float!
-  profileID: Float!
+input BookmarkFindOneInput {
+  id: Float
+  profileID: Float
+  resourceID: Float
+  bookmarkCollectionID: Float
 }
 
-input SubscriptionGroupFilterByManyInput {
+input BookmarkFindManyInput {
   ids: [Float!]
-  profileIDs: [String!]
+  profileIDs: [Float!]
+  resourceIDs: [Float!]
+  bookmarkCollectionIDs: [Float!]
+}
+
+input BookmarkCollectionFindOneInput {
+  id: Float
+  profileID: Float
+}
+
+input BookmarkCollectionFindManyInput {
+  ids: [Float!]
+  profileIDs: [Float!]
 }
 
 type Mutation {
-  subscriptionGroupCreate(input: SubscriptionGroupCreateInput!): SubscriptionGroupModel!
-  subscriptionGroupDelete(filter: SubscriptionGroupFilterByOneInput!): Boolean!
+  bookmarkCreate(input: BookmarkCreateInput!): BookmarkModel!
+  bookmarkDelete(filter: BookmarkFindOneInput!): Boolean!
+  bookmarkCollectionCreate(input: BookmarkCollectionCreateInput!): BookmarkCollectionModel!
+  bookmarkCollectionCreateRandomized: BookmarkCollectionModel!
+  bookmarkCollectionDelete(filter: BookmarkCollectionFindOneInput!): Boolean!
 }
 
-input SubscriptionGroupCreateInput {
-  profileID: Float!
+input BookmarkCreateInput {
+  resourceID: Float!
+  bookmarkCollectionID: Float!
+}
+
+input BookmarkCollectionCreateInput {
   name: String!
-  description: String!
 }

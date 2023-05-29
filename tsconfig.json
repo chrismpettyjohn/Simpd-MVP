@@ -3,8 +3,29 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@simpd/app-simpd": [
+        "apps/app-simpd/src"
+      ],
+      "@simpd/app-playground": [
+        "apps/app-playground/src"
+      ],
+      "@simpd/lib-api": [
+        "libs/lib-api/src"
+      ],
+      "@simpd/lib-client": [
+        "libs/lib-client/src"
+      ],
+      "@simpd/lib-web": [
+        "libs/lib-web/src"
+      ],
+      "@simpd/svc-bookmark": [
+        "services/svc-bookmark/src"
+      ],
       "@simpd/svc-comment": [
         "services/svc-comment/src"
+      ],
+      "@simpd/svc-comment-reaction": [
+        "services/svc-comment-reaction/src"
       ],
       "@simpd/svc-form": [
         "services/svc-form/src"
@@ -24,6 +45,9 @@
       "@simpd/svc-post-comment": [
         "services/svc-post-comment/src"
       ],
+      "@simpd/svc-post-reaction": [
+        "services/svc-post-reaction/src"
+      ],
       "@simpd/svc-privacy": [
         "services/svc-privacy/src"
       ],
@@ -35,9 +59,6 @@
       ],
       "@simpd/svc-report": [
         "services/svc-report/src"
-      ],
-      "@simpd/svc-user": [
-        "services/svc-user/src"
       ],
       "@simpd/svc-role": [
         "services/svc-role/src"
@@ -51,21 +72,9 @@
       "@simpd/svc-tag": [
         "services/svc-tag/src"
       ],
-      "@simpd/app-simpd": [
-        "apps/app-simpd/src"
-      ],
-      "@simpd/app-playground": [
-        "apps/app-playground/src"
-      ],
-      "@simpd/lib-api": [
-        "libs/lib-api/src"
-      ],
-      "@simpd/lib-client": [
-        "libs/lib-client/src"
-      ],
-      "@simpd/lib-web": [
-        "libs/lib-web/src"
-      ],
+      "@simpd/svc-user": [
+        "services/svc-user/src"
+      ]
     },
     "noEmit": true
   },
