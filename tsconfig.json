@@ -42,6 +42,24 @@
       "@simpd/svc-message-reaction": [
         "services/svc-message-reaction/src"
       ],
+      "@simpd/svc-payment-attempt": [
+        "services/svc-payment-attempt/src"
+      ],
+      "@simpd/svc-payment-invoice": [
+        "services/svc-payment-invoice/src"
+      ],
+      "@simpd/svc-payment-method": [
+        "services/svc-payment-method/src"
+      ],
+      "@simpd/svc-payment-receipt": [
+        "services/svc-payment-receipt/src"
+      ],
+      "@simpd/svc-payment-recurring-invoice": [
+        "services/svc-payment-recurring-invoice/src"
+      ],
+      "@simpd/svc-payment-transactions": [
+        "services/svc-payment-transactions/src"
+      ],
       "@simpd/svc-post": [
         "services/svc-post/src"
       ],

@@ -82,6 +82,56 @@
       "watch_delay": 1000
     },
     {
+      "name": "svc-payment-attempt",
+      "cwd": "./services/svc-payment-attempt",
+      "script": "pnpm",
+      "args": "run web-server:start",
+      "watch": [
+        "src"
+      ],
+      "watch_delay": 1000
+    },
+    {
+      "name": "svc-payment-invoice",
+      "cwd": "./services/svc-payment-invoice",
+      "script": "pnpm",
+      "args": "run web-server:start",
+      "watch": [
+        "src"
+      ],
+      "watch_delay": 1000
+    },
+    {
+      "name": "svc-payment-method",
+      "cwd": "./services/svc-payment-method",
+      "script": "pnpm",
+      "args": "run web-server:start",
+      "watch": [
+        "src"
+      ],
+      "watch_delay": 1000
+    },
+    {
+      "name": "svc-payment-recurring-invoice",
+      "cwd": "./services/svc-payment-recurring-invoice",
+      "script": "pnpm",
+      "args": "run web-server:start",
+      "watch": [
+        "src"
+      ],
+      "watch_delay": 1000
+    },
+    {
+      "name": "svc-payment-transaction",
+      "cwd": "./services/svc-payment-transaction",
+      "script": "pnpm",
+      "args": "run web-server:start",
+      "watch": [
+        "src"
+      ],
+      "watch_delay": 1000
+    },
+    {
       "name": "svc-post",
       "cwd": "./services/svc-post",
       "script": "pnpm",

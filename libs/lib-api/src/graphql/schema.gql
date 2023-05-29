@@ -2,38 +2,3 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type MessageReactionModel {
-  id: Float
-  messageID: Float
-  profileID: Float
-  reaction: ReactionType
-}
-
-enum ReactionType {
-  Like
-}
-
-type Query {
-  messageReaction(filter: MessageReactionFilterOneInput!): MessageReactionModel!
-  messageReactions(filter: MessageReactionFilterManyInput!): [MessageReactionModel!]!
-}
-
-input MessageReactionFilterOneInput {
-  messageID: Float
-  profileID: Float
-}
-
-input MessageReactionFilterManyInput {
-  messageIDs: [Float!]
-  profileIDs: [Float!]
-}
-
-type Mutation {
-  messageReactionCreate(input: MessageReactionCreateInput!): MessageReactionModel!
-  messageReactionDelete(filter: MessageReactionFilterOneInput!): Boolean!
-}
-
-input MessageReactionCreateInput {
-  messageID: Float!
-  reaction: ReactionType!
-}
