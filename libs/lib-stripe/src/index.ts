@@ -1,2 +1,2 @@
-export * from './stripe.const'
-export * from './stripe.module'
+export * from './stripe.const';
+export * from './stripe.module';
