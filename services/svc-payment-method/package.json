@@ -21,6 +21,7 @@
     "rxjs": "7.8.0",
     "class-validator": "0.14.0",
     "dataloader": "2.2.2",
+    "stripe": "12.7.0",
     "@simpd/lib-api": "workspace:*",
     "@simpd/lib-client": "workspace:*",
     "@simpd/lib-stripe": "workspace:*",

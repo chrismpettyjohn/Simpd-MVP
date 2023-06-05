@@ -72,6 +72,7 @@ export interface PaymentMethodWire {
   id: number;
   userID: number;
   provider: PaymentProvider;
+  providerID: string;
   billingAddress: PaymentMethodBillingAddressWire;
   providerDetails: PaymentMethodProviderDetails;
   cardDetails: PaymentMethodCardDetailsWire;

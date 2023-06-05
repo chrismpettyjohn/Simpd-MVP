@@ -32,7 +32,10 @@ export class PaymentMethodEntity {
   @Column({type: 'varchar'})
   provider!: PaymentProvider;
 
-  @Column({name: 'provider__details', type: 'json'})
+  @Column({name: 'provider_id', type: 'varchar'})
+  providerID!: string;
+
+  @Column({name: 'provider_details', type: 'json'})
   providerDetails!: PaymentMethodProviderDetails;
 
   @CreateDateColumn({name: 'created_at', type: 'timestamp'})

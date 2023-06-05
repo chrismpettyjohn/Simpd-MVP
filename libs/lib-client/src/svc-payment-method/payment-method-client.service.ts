@@ -3,6 +3,7 @@ import {Inject, Injectable} from '@nestjs/common';
 import {ClientProxy} from '@nestjs/microservices';
 import {PaymentMethodWire} from './payment-method.types';
 import {
+  SVC_PAYMENT_METHOD_INTERNAL_EVENT_CREATE_ONE,
   SVC_PAYMENT_METHOD_INTERNAL_EVENT_DELETE_ONE,
   SVC_PAYMENT_METHOD_INTERNAL_EVENT_FIND_ONE,
   SVC_PAYMENT_METHOD_INTERNAL_EVENT_UPDATE_ONE,
@@ -33,7 +34,7 @@ export class PaymentMethodClientService {
     input: PaymentMethodCreateOneInput
   ): Promise<PaymentMethodWire> {
     const newPaymentMethod = this.client.send(
-      SVC_PAYMENT_METHOD_INTERNAL_EVENT_FIND_ONE,
+      SVC_PAYMENT_METHOD_INTERNAL_EVENT_CREATE_ONE,
       input
     );
     return await lastValueFrom(newPaymentMethod);

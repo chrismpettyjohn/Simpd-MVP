@@ -255,10 +255,6 @@ importers:
         version: 7.8.0
 
   libs/lib-stripe:
-    dependencies:
-      stripe:
-        specifier: 12.7.0
-        version: 12.7.0
     devDependencies:
       '@nestjs/common':
         specifier: '*'
@@ -266,6 +262,9 @@ importers:
       '@nestjs/core':
         specifier: '*'
         version: 9.4.0(@nestjs/common@9.4.0)(@nestjs/microservices@9.4.0)(@nestjs/platform-express@9.4.0)(reflect-metadata@0.1.13)(rxjs@7.8.0)
+      stripe:
+        specifier: '*'
+        version: 12.7.0
 
   libs/lib-web:
     dependencies:
@@ -1022,6 +1021,9 @@ importers:
       rxjs:
         specifier: 7.8.0
         version: 7.8.0
+      stripe:
+        specifier: 12.7.0
+        version: 12.7.0
       typeorm:
         specifier: 0.3.15
         version: 0.3.15(ts-node@10.9.1)
@@ -1104,6 +1106,9 @@ importers:
       rxjs:
         specifier: 7.8.0
         version: 7.8.0
+      stripe:
+        specifier: 12.7.0
+        version: 12.7.0
       typeorm:
         specifier: 0.3.15
         version: 0.3.15(ts-node@10.9.1)
@@ -1186,6 +1191,9 @@ importers:
       rxjs:
         specifier: 7.8.0
         version: 7.8.0
+      stripe:
+        specifier: 12.7.0
+        version: 12.7.0
       typeorm:
         specifier: 0.3.15
         version: 0.3.15(ts-node@10.9.1)
@@ -1268,6 +1276,9 @@ importers:
       rxjs:
         specifier: 7.8.0
         version: 7.8.0
+      stripe:
+        specifier: 12.7.0
+        version: 12.7.0
       typeorm:
         specifier: 0.3.15
         version: 0.3.15(ts-node@10.9.1)
@@ -1350,6 +1361,9 @@ importers:
       rxjs:
         specifier: 7.8.0
         version: 7.8.0
+      stripe:
+        specifier: 12.7.0
+        version: 12.7.0
       typeorm:
         specifier: 0.3.15
         version: 0.3.15(ts-node@10.9.1)
@@ -1432,6 +1446,9 @@ importers:
       rxjs:
         specifier: 7.8.0
         version: 7.8.0
+      stripe:
+        specifier: 12.7.0
+        version: 12.7.0
       typeorm:
         specifier: 0.3.15
         version: 0.3.15(ts-node@10.9.1)
@@ -2228,6 +2245,9 @@ importers:
       rxjs:
         specifier: 7.8.0
         version: 7.8.0
+      stripe:
+        specifier: 12.7.0
+        version: 12.7.0
       typeorm:
         specifier: 0.3.15
         version: 0.3.15(ts-node@10.9.1)
@@ -13715,7 +13735,6 @@ packages:
     dependencies:
       '@types/node': 18.16.0
       qs: 6.11.0
-    dev: false
 
   /strong-log-transformer@2.1.0:
     resolution: {integrity: sha512-B3Hgul+z0L9a236FAUC9iZsL+nVHgoCJnqCbN588DjYxvGXaXaaFbfmQ/JhvKjZwsOukuR72XbHv71Qkug0HxA==}

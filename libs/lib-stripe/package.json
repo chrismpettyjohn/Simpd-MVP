@@ -7,15 +7,14 @@
     "clean": "rimraf -rf ./dist && rimraf -rf ./build",
     "compile": "tsc -p tsconfig.build.json"
   },
-  "dependencies": {
-    "stripe": "12.7.0"
-  },
   "devDependencies": {
     "@nestjs/common": "*",
-    "@nestjs/core": "*"
+    "@nestjs/core": "*",
+    "stripe": "*"
   },
   "peerDependencies": {
     "@nestjs/common": "*",
-    "@nestjs/core": "*"
+    "@nestjs/core": "*",
+    "stripe": "*"
   }
 }

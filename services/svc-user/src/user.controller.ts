@@ -22,12 +22,11 @@ export class UserController {
   ) {}
 
   @MessagePattern(SVC_USER_INTERNAL_EVENT_FIND_ONE)
-  async userFindOneByID(data: UserFindOneInput): Promise<UserFindOneResponse> {
+  async userFindOneByID(
+    filter: UserFindOneInput
+  ): Promise<UserFindOneResponse> {
     const matchingUser = await this.userRepo.findOneOrFail({
-      where: {
-        id: data.id,
-        email: data.email,
-      },
+      where: filter,
     });
     return userEntityToUserWire(matchingUser);
   }
