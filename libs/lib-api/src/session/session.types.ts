@@ -10,5 +10,6 @@ export interface SessionContents {
 }
 
 export interface RequestWithSession extends Request {
+  rawBody: any;
   session: SessionContents;
 }

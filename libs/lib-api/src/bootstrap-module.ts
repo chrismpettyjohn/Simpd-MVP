@@ -1,4 +1,5 @@
 import Express from 'express';
+import BodyParser from 'body-parser';
 import {NATS_ADDRESS} from './constants';
 import {ExpressAdapter} from '@nestjs/platform-express';
 import {NestApplication, NestFactory} from '@nestjs/core';
@@ -9,8 +10,20 @@ export async function bootstrapDynamicService(module: any, port: number) {
 
   const app: NestApplication = await NestFactory.create(
     module,
-    new ExpressAdapter(expressApp)
+    new ExpressAdapter(expressApp),
+    {
+      bodyParser: false,
+    }
   );
+
+  const rawBodyBuffer = (req: any, res: any, buf: any, encoding: any) => {
+    if (buf && buf.length) {
+      req.rawBody = buf.toString(encoding || 'utf8');
+    }
+  };
+
+  app.use(BodyParser.urlencoded({verify: rawBodyBuffer, extended: true}));
+  app.use(BodyParser.json({verify: rawBodyBuffer}));
 
   app.enableCors({
     origin: ['http://localhost:5173', 'http://localhost:5174'],
