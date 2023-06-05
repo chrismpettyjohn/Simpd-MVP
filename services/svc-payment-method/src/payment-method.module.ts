@@ -1,6 +1,9 @@
 import {Module} from '@nestjs/common';
 import {ProfileClientModule} from '@simpd/lib-client';
 import {PaymentMethodEntity} from './payment-method.entity';
+import {PaymentMethodService} from './payment-method.service';
+import {PaymentMethodController} from './payment-method.controller';
+import {PaymentMethodRepository} from './payment-method.repository';
 import {
   GraphQLModule,
   DatabaseModule,
@@ -19,7 +22,7 @@ import {
       synchronize: true,
     }),
   ],
-  providers: [],
-  controllers: [],
+  providers: [PaymentMethodRepository, PaymentMethodService],
+  controllers: [PaymentMethodController],
 })
 export class PaymentMethodModule {}

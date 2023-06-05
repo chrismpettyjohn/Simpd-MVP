@@ -69,12 +69,13 @@ export interface PaymentMethodCardDetailsWire {
 }
 
 export interface PaymentMethodWire {
-  id: string;
+  id: number;
+  userID: number;
   provider: PaymentProvider;
-  billing_address: PaymentMethodBillingAddressWire;
-  payment_method: PaymentMethodCardDetailsWire;
-  provider_details: PaymentMethodProviderDetails;
-  created_at: string;
-  updated_at: string;
-  deleted_at?: string;
+  billingAddress: PaymentMethodBillingAddressWire;
+  providerDetails: PaymentMethodProviderDetails;
+  cardDetails: PaymentMethodCardDetailsWire;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt?: string;
 }

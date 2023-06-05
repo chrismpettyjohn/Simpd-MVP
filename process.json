@@ -222,6 +222,15 @@
       ]
     },
     {
+      "name": "svc-stripe-webhook",
+      "cwd": "./services/svc-stripe-webhook",
+      "script": "pnpm",
+      "args": "run web-server:start",
+      "watch": [
+        "src"
+      ]
+    },
+    {
       "name": "svc-subscription-group",
       "cwd": "./services/svc-subscription-group",
       "script": "pnpm",

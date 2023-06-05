@@ -2,6 +2,7 @@ import {
   PaymentMethodBillingAddressWire,
   PaymentMethodCardDetailsWire,
   PaymentMethodProviderDetails,
+  PaymentProvider,
 } from '@simpd/lib-client';
 import {
   Column,
@@ -13,7 +14,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity({name: 'payment_methods', schema: 'payment_methods'})
+@Entity({name: 'payment_methods', schema: 'payment-methods'})
 export class PaymentMethodEntity {
   @PrimaryGeneratedColumn()
   id?: number;
@@ -27,6 +28,9 @@ export class PaymentMethodEntity {
 
   @Column({name: 'card_details', type: 'json'})
   cardDetails!: PaymentMethodCardDetailsWire;
+
+  @Column({type: 'varchar'})
+  provider!: PaymentProvider;
 
   @Column({name: 'provider__details', type: 'json'})
   providerDetails!: PaymentMethodProviderDetails;
