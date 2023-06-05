@@ -17,6 +17,9 @@ export function SettingsNavigation() {
       <Link to="/settings/contact">
         <SettingsNavIcon className="fa fa-address-book" />
       </Link>
+      <Link to="/settings/payment">
+        <SettingsNavIcon className="fa fa-credit-card" />
+      </Link>
       <Link to="/settings/security">
         <SettingsNavIcon className="fa fa-shield" />
       </Link>

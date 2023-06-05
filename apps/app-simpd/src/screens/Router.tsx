@@ -14,6 +14,7 @@ import { CreateAccountScreen } from './create-account/CreateAccount';
 import { MessageThreadScreen } from './message-thread/MessageThread';
 import { ViewBookmarksScreen } from './view-bookmarks/ViewBookmarks';
 import { ListBookmarksScreen } from './list-bookmarks/ListBookmarks';
+import { SettingsPaymentScreen } from './settings-payment/SettingsPayment';
 import { SettingsProfileScreen } from './settings-profile/SettingsProfile';
 import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
 import { SettingsIdentityScreen } from './settings-identity/SettingsIdentity';
@@ -105,6 +106,14 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     view: (
       <UserGuard redirect>
         <SettingsIdentityScreen />
+      </UserGuard>
+    ),
+  },
+  {
+    path: '/settings/payment',
+    view: (
+      <UserGuard redirect>
+        <SettingsPaymentScreen />
       </UserGuard>
     ),
   },

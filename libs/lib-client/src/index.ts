@@ -44,6 +44,7 @@ export * from './svc-payment-invoice/payment-invoice.module';
 export * from './svc-payment-invoice/use-payment-invoice-client.decorator';
 export * from './svc-payment-method/payment-method-client.decorator';
 export * from './svc-payment-method/payment-method.const';
+export * from './svc-payment-method/payment-method.types';
 export * from './svc-payment-method/payment-method.module';
 export * from './svc-payment-method/use-payment-method-client.decorator';
 export * from './svc-payment-receipt/payment-receipt-client.decorator';

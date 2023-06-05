@@ -1,5 +1,6 @@
 import {Module} from '@nestjs/common';
 import {ProfileClientModule} from '@simpd/lib-client';
+import {PaymentMethodEntity} from './payment-method.entity';
 import {
   GraphQLModule,
   DatabaseModule,
@@ -14,7 +15,7 @@ import {
     ProfileClientModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
-      entities: [],
+      entities: [PaymentMethodEntity],
       synchronize: true,
     }),
   ],
