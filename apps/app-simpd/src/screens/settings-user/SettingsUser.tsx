@@ -1,19 +1,17 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { PageTitle } from '../../components/page-title/PageTitle';
-import { SwitchProfileCard } from './switch-profile-card/SwitchProfileCard';
 import { SettingsNavigation } from '../../components/settings-navigation/SettingsNavigation';
 
-export function SettingsIdentityScreen() {
+export function SettingsUserScreen() {
   return (
     <>
       <Helmet>
-        <title>Settings-Identity - Simpd</title>
-        <meta property="og:title" content="Settings-Identity - Simpd" />
+        <title>Settings-User - Simpd</title>
+        <meta property="og:title" content="Settings-User - Simpd" />
       </Helmet>
-      <PageTitle title="Settings-Identity" />
+      <PageTitle title="Settings-User" />
       <SettingsNavigation />
-      <SwitchProfileCard />
     </>
   )
 }

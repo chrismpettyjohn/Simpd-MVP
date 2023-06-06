@@ -2,39 +2,39 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type MediaDetailsModel {
-  sizeInBytes: Float
-  originalFileName: String
+type PaymentMethodBillingAddressModel {
+  country: String
+  city: String
+  streetAddress1: String
+  streetAddress2: String
+  postalCode: String
+  state: String
 }
 
-type MediaModel {
+type PaymentMethodCardDetailsModel {
+  brand: String
+  country: String
+  exp_month: Float
+  exp_year: Float
+  last4: String
+}
+
+type PaymentMethodModel {
   id: Float
-  type: MediaType
-  profileID: Float
-  url: String
-  details: MediaDetailsModel
+  userID: Float
+  billingAddress: PaymentMethodBillingAddressModel
+  cardDetails: PaymentMethodCardDetailsModel
 }
 
-enum MediaType {
-  Image
-  Video
-  Other
+type PaymentMethodMutationResponseModel {
+  success: Boolean
 }
 
 type Query {
-  media(filter: MediaFilterByOneInput!): MediaModel!
-  medias(filter: MediaFilterByManyInput): [MediaModel!]!
-}
-
-input MediaFilterByOneInput {
-  id: Float
-}
-
-input MediaFilterByManyInput {
-  ids: [Float!]
-  profileIDs: [Float!]
+  paymentMethod: PaymentMethodModel!
+  paymentMethods: [PaymentMethodModel!]!
 }
 
 type Mutation {
-  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
+  paymentMethodDeleteOne: PaymentMethodMutationResponseModel!
 }

@@ -12,7 +12,7 @@ export function SettingsProfileScreen() {
         <title>Settings-Profile - Simpd</title>
         <meta property="og:title" content="Settings-Profile - Simpd" />
       </Helmet>
-      <PageTitle title="Settings" />
+      <PageTitle title="Settings-Profile" />
       <SettingsNavigation />
       <ProfileSettingsCard />
     </>

@@ -19,6 +19,7 @@ import { SettingsProfileScreen } from './settings-profile/SettingsProfile';
 import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
 import { SettingsIdentityScreen } from './settings-identity/SettingsIdentity';
 import { MessageStartThreadScreen } from './message-start-thread/MessageStartThread';
+import { SettingsUserScreen } from './settings-user/SettingsUser';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -122,6 +123,14 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     view: (
       <UserGuard redirect>
         <SettingsProfileScreen />
+      </UserGuard>
+    ),
+  },
+  {
+    path: '/settings/user',
+    view: (
+      <UserGuard redirect>
+        <SettingsUserScreen />
       </UserGuard>
     ),
   },

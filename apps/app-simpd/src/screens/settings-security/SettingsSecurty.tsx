@@ -11,7 +11,7 @@ export function SettingsSecurityScreen() {
         <title>Settings - Security - Simpd</title>
         <meta property="og:title" content="Settings - ProSecurityfile - Simpd" />
       </Helmet>
-      <PageTitle title="Settings" />
+      <PageTitle title="Settings-Security" />
       <SettingsNavigation />
       <ChangePasswordCard />
     </>

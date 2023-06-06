@@ -5,17 +5,14 @@ import { SettingsNavIcon } from './SettingsNavigation.sty';
 export function SettingsNavigation() {
   return (
     <div className="settings-profile-settings-navigation">
+      <Link to="/settings/user">
+        <SettingsNavIcon className="fa fa-user" />
+      </Link>
       <Link to="/settings/identity">
         <SettingsNavIcon className="fa fa-users" />
       </Link>
       <Link to="/settings/profile">
         <SettingsNavIcon className="fa fa-id-badge" />
-      </Link>
-      <Link to="/settings/notifications">
-        <SettingsNavIcon className="fa fa-bell" />
-      </Link>
-      <Link to="/settings/contact">
-        <SettingsNavIcon className="fa fa-address-book" />
       </Link>
       <Link to="/settings/payment">
         <SettingsNavIcon className="fa fa-credit-card" />
