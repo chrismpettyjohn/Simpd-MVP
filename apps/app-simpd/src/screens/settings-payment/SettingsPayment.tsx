@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { PageTitle } from '../../components/page-title/PageTitle';
 import { SettingsNavigation } from '../../components/settings-navigation/SettingsNavigation';
 import { AddPaymentMethodCard } from 'components/add-payment-method-card/AddPaymentMethodCard';
-import { ManagePaymentMethodCard } from '../../components/manage-payment-method-card/ManagePaymentMethodCard';
+import { ManagePaymentMethodsCard } from '../../components/manage-payment-methods-card/ManagePaymentMethodsCard';
 
 export function SettingsPaymentScreen() {
   return (
@@ -15,7 +15,7 @@ export function SettingsPaymentScreen() {
       <PageTitle title="Settings-Payment" />
       <SettingsNavigation />
       <AddPaymentMethodCard />
-      <ManagePaymentMethodCard />
+      <ManagePaymentMethodsCard />
     </>
   )
 }

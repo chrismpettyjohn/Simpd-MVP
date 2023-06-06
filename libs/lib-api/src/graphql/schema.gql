@@ -31,8 +31,16 @@ type PaymentMethodMutationResponseModel {
 }
 
 type Query {
-  paymentMethod: PaymentMethodModel!
-  paymentMethods: [PaymentMethodModel!]!
+  paymentMethod(filter: PaymentMethodFindOneInput!): PaymentMethodModel!
+  paymentMethods(filter: PaymentMethodFindManyInput!): [PaymentMethodModel!]!
+}
+
+input PaymentMethodFindOneInput {
+  id: Float
+}
+
+input PaymentMethodFindManyInput {
+  ids: [Float!]
 }
 
 type Mutation {

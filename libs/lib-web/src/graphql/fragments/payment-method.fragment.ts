@@ -4,7 +4,7 @@ export const PAYMENT_METHOD_FRAGMENT = gql`
   fragment PaymentMethodFragment on PaymentMethodModel {
     id
     userID
-    billingAddress: {
+    billingAddress {
       country
       city
       streetAddress1
@@ -12,7 +12,7 @@ export const PAYMENT_METHOD_FRAGMENT = gql`
       postalCode
       state
     }
-    cardDetails: {
+    cardDetails {
       brand
       country
       exp_month

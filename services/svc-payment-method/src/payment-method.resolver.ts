@@ -1,5 +1,5 @@
 import {In} from 'typeorm';
-import {Resolver, Query, Mutation} from '@nestjs/graphql';
+import {Resolver, Query, Mutation, Args} from '@nestjs/graphql';
 import {PaymentMethodRepository} from './payment-method.repository';
 import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {paymentMethodEntityToPaymentMethodModel} from './payment-method.wire';
@@ -19,6 +19,7 @@ export class PaymentMethodResolver {
   @Query(() => PaymentMethodModel)
   @HasSession()
   async paymentMethod(
+    @Args('filter', {type: () => PaymentMethodFindOneInput})
     filter: PaymentMethodFindOneInput,
     @GetSession() session: SessionContents
   ): Promise<PaymentMethodModel> {
@@ -34,6 +35,7 @@ export class PaymentMethodResolver {
   @Query(() => [PaymentMethodModel])
   @HasSession()
   async paymentMethods(
+    @Args('filter', {type: () => PaymentMethodFindManyInput})
     filter: PaymentMethodFindManyInput,
     @GetSession() session: SessionContents
   ): Promise<PaymentMethodModel[]> {

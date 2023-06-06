@@ -6,6 +6,7 @@ export class PaymentMethodFindOneInput {
   id?: number;
 }
 
+@InputType()
 export class PaymentMethodFindManyInput {
   @Field(() => [Number], {nullable: true})
   ids?: number[];
