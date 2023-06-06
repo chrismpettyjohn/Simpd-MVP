@@ -1,5 +1,5 @@
 {
-  "name": "@simpd/svc-payment-transaction",
+  "name": "@simpd/svc-payment-receipt",
   "version": "1.0.0",
   "main": "src/index.ts",
   "scripts": {
