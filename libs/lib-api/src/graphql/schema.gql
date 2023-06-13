@@ -2,47 +2,34 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type PaymentMethodBillingAddressModel {
-  country: String
-  city: String
-  streetAddress1: String
-  streetAddress2: String
-  postalCode: String
-  state: String
+type PrivacyPolicyInput {
+  allowedSubscriptionGroupIDs: [Float!]
 }
 
-type PaymentMethodCardDetailsModel {
-  brand: String
-  country: String
-  exp_month: Float
-  exp_year: Float
-  last4: String
-}
-
-type PaymentMethodModel {
+type PrivacyModel {
   id: Float
-  userID: Float
-  billingAddress: PaymentMethodBillingAddressModel
-  cardDetails: PaymentMethodCardDetailsModel
-}
-
-type PaymentMethodMutationResponseModel {
-  success: Boolean
+  serviceKey: String
+  resourceID: Float
+  name: String
+  description: String
+  policy: PrivacyPolicyInput
 }
 
 type Query {
-  paymentMethod(filter: PaymentMethodFindOneInput!): PaymentMethodModel!
-  paymentMethods(filter: PaymentMethodFindManyInput!): [PaymentMethodModel!]!
+  privacy(filter: PrivacyFilterByOneInput!): PrivacyModel!
+  privacys(filter: PrivacyFilterByManyInput): [PrivacyModel!]!
 }
 
-input PaymentMethodFindOneInput {
+input PrivacyFilterByOneInput {
   id: Float
+  resourceID: Float
 }
 
-input PaymentMethodFindManyInput {
+input PrivacyFilterByManyInput {
   ids: [Float!]
+  resourceIDs: [Float!]
 }
 
 type Mutation {
-  paymentMethodDeleteOne: PaymentMethodMutationResponseModel!
+  privacyDelete(filter: PrivacyFilterByOneInput!): Boolean!
 }
