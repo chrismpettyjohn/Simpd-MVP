@@ -2,34 +2,48 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type PrivacyPolicyInput {
-  allowedSubscriptionGroupIDs: [Float!]
-}
-
-type PrivacyModel {
+type TipModel {
   id: Float
-  serviceKey: String
-  resourceID: Float
-  name: String
-  description: String
-  policy: PrivacyPolicyInput
+  userID: Float
+  profileID: Float
+  receivingUserID: Float
+  receivingProfileID: Float
+  paymentInvoiceID: Float
+  amount: Float
+  message: String
 }
 
 type Query {
-  privacy(filter: PrivacyFilterByOneInput!): PrivacyModel!
-  privacys(filter: PrivacyFilterByManyInput): [PrivacyModel!]!
+  tip(filter: TipFilterByOneInput!): TipModel!
+  tips(filter: TipFilterByManyInput): [TipModel!]!
 }
 
-input PrivacyFilterByOneInput {
+input TipFilterByOneInput {
   id: Float
-  resourceID: Float
+  userID: Float
+  profileID: Float
+  receivingUserID: Float
+  receivingProfileID: Float
+  paymentInvoiceID: Float
 }
 
-input PrivacyFilterByManyInput {
+input TipFilterByManyInput {
   ids: [Float!]
-  resourceIDs: [Float!]
+  userIDs: [Float!]
+  profileIDs: [Float!]
+  receivingUserIDs: [Float!]
+  receivingProfileIDs: [Float!]
+  paymentInvoiceIDs: [Float!]
 }
 
 type Mutation {
-  privacyDelete(filter: PrivacyFilterByOneInput!): Boolean!
+  tipCreate(input: TipCreateInput!): TipModel!
+  tipDelete(filter: TipFilterByOneInput!): Boolean!
+}
+
+input TipCreateInput {
+  receivingUserID: Float!
+  receivingProfileID: Float!
+  amount: Float!
+  message: String!
 }
