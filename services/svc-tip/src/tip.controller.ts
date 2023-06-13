@@ -10,7 +10,7 @@ import {
   SVC_TIP_INTERNAL_EVENT_FIND_MANY,
   SVC_TIP_INTERNAL_EVENT_CREATE_ONE,
   TipFindManyInput,
-  TipCreateOneInput,
+  TipCreateInput,
 } from '@simpd/lib-client';
 
 @Controller()
@@ -50,7 +50,7 @@ export class TipController {
   }
 
   @MessagePattern(SVC_TIP_INTERNAL_EVENT_CREATE_ONE)
-  async tipCreateOne(input: TipCreateOneInput): Promise<TipWire> {
+  async tipCreateOne(input: TipCreateInput): Promise<TipWire> {
     const matchingTip = await this.tipRepo.create(input);
     return tipEntityToTipWire(matchingTip);
   }

@@ -1,6 +1,7 @@
 import {In} from 'typeorm';
 import {TipModel} from './tip.model';
 import {TipEntity} from './tip.entity';
+import {TipService} from './tip.service';
 import {TipRepository} from './tip.repository';
 import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {
@@ -18,7 +19,10 @@ import {
 
 @Resolver(() => TipModel)
 export class TipResolver {
-  constructor(private readonly tipRepo: TipRepository) {}
+  constructor(
+    private readonly tipRepo: TipRepository,
+    private readonly tipService: TipService
+  ) {}
 
   @ResolveReference()
   resolveReference(reference: {
@@ -61,17 +65,11 @@ export class TipResolver {
     @Args('input') input: TipCreateInput,
     @GetSession() session: SessionContents
   ): Promise<TipEntity> {
-    const newPaymentInvoice = {};
-
-    const newTip = await this.tipRepo.create({
-      userID: session.userID,
-      profileID: session.profileID,
-      receivingUserID: input.receivingUserID,
-      receivingProfileID: input.receivingProfileID,
-      paymentInvoiceID: newPaymentInvoice.id,
-      amount: input.amount,
-      message: input.message,
-    });
+    const newTip = await this.tipService.createOne(
+      input,
+      session.userID,
+      session.profileID
+    );
     return newTip;
   }
 

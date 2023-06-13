@@ -4,4 +4,9 @@ export const SVC_PAYMENT_INVOICE_WEB_ADDRESS =
   process.env.SVC_PAYMENT_INVOICE_WEB_ADDRESS ??
   `http://localhost:${SVC_PAYMENT_INVOICE_WEB_PORT}/graphql`;
 
-export const SVC_PAYMENT_INVOICE_INTERNAL_EVENT_FIND_ONE = 'messageFindOneByID';
+export const SVC_PAYMENT_INVOICE_INTERNAL_EVENT_FIND_ONE =
+  'paymentInvoiceFindOne';
+export const SVC_PAYMENT_INVOICE_INTERNAL_EVENT_FIND_MANY =
+  'paymentInvoiceFindMany';
+export const SVC_PAYMENT_INVOICE_INTERNAL_EVENT_CREATE_ONE =
+  'paymentInvoiceCreateOne';

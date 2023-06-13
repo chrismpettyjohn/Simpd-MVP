@@ -27,7 +27,7 @@ export interface TipFindManyInput {
   paymentInvoiceIDs?: number[];
 }
 
-export interface TipCreateOneInput {
+export interface TipCreateInput {
   userID: number;
   profileID: number;
   receivingUserID: number;

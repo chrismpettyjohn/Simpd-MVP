@@ -2,7 +2,7 @@ import {lastValueFrom} from 'rxjs';
 import {Inject, Injectable} from '@nestjs/common';
 import {ClientProxy} from '@nestjs/microservices';
 import {
-  TipCreateOneInput,
+  TipCreateInput,
   TipFindManyInput,
   TipFindOneInput,
   TipWire,
@@ -33,7 +33,7 @@ export class TipClientService {
     );
     return await lastValueFrom(matchingTips);
   }
-  async createOne(input: TipCreateOneInput): Promise<TipWire> {
+  async createOne(input: TipCreateInput): Promise<TipWire> {
     const createdTip = this.client.send(
       SVC_TIP_INTERNAL_EVENT_CREATE_ONE,
       input
