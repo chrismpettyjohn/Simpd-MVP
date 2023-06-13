@@ -99,6 +99,9 @@
       "@simpd/svc-tag": [
         "services/svc-tag/src"
       ],
+      "@simpd/svc-tip": [
+        "services/svc-tip/src"
+      ],
       "@simpd/svc-user": [
         "services/svc-user/src"
       ]

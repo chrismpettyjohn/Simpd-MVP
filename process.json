@@ -249,6 +249,15 @@
       ]
     },
     {
+      "name": "svc-tip",
+      "cwd": "./services/svc-tip",
+      "script": "pnpm",
+      "args": "run web-server:start",
+      "watch": [
+        "src"
+      ]
+    },
+    {
       "name": "svc-user",
       "cwd": "./services/svc-user",
       "script": "pnpm",
