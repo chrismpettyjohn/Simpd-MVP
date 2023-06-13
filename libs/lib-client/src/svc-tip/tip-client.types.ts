@@ -1,19 +1,38 @@
 export interface TipWire {
   id: number;
-  name: string;
-  description: string;
+  userID: number;
+  profileID: number;
+  receivingUserID: number;
+  receivingProfileID: number;
+  paymentInvoiceID: number;
+  amount: number;
+  message: string;
 }
 
 export interface TipFindOneInput {
   id?: number;
-  names?: string;
+  userID?: number;
+  profileID?: number;
+  receivingUserID?: number;
+  receivingProfileID?: number;
+  paymentInvoiceID?: number;
 }
 
 export interface TipFindManyInput {
-  names?: string[];
+  ids?: number[];
+  userIDs?: number[];
+  profileIDs?: number[];
+  receivingUserIDs?: number[];
+  receivingProfileIDs?: number[];
+  paymentInvoiceIDs?: number[];
 }
 
 export interface TipCreateOneInput {
-  name: string;
-  description: string;
+  userID: number;
+  profileID: number;
+  receivingUserID: number;
+  receivingProfileID: number;
+  paymentInvoiceID: number;
+  amount: number;
+  message: string;
 }

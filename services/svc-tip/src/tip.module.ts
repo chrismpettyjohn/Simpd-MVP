@@ -1,4 +1,7 @@
 import {Module} from '@nestjs/common';
+import {TipEntity} from './tip.entity';
+import {TipRepository} from './tip.repository';
+import {TipController} from './tip.controller';
 import {ProfileClientModule} from '@simpd/lib-client';
 import {
   GraphQLModule,
@@ -14,11 +17,11 @@ import {
     ProfileClientModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
-      entities: [],
+      entities: [TipEntity],
       synchronize: true,
     }),
   ],
-  providers: [],
-  controllers: [],
+  providers: [TipRepository],
+  controllers: [TipController],
 })
 export class TipModule {}
