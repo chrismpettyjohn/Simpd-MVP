@@ -1,12 +1,15 @@
 import {Module} from '@nestjs/common';
 import {ProfileClientModule} from '@simpd/lib-client';
+import {PaymentInvoiceEntity} from './payment-invoice.entity';
+import {PaymentInvoiceResolver} from './payment-invoice.resolver';
+import {PaymentInvoiceRepository} from './payment-invoice.repository';
+import {PaymentInvoiceController} from './payment-invoice.controller';
 import {
   GraphQLModule,
   DatabaseModule,
   CommonModule,
   SessionModule,
 } from '@simpd/lib-api';
-
 @Module({
   imports: [
     CommonModule,
@@ -14,11 +17,11 @@ import {
     ProfileClientModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
-      entities: [],
+      entities: [PaymentInvoiceEntity],
       synchronize: true,
     }),
   ],
-  providers: [],
-  controllers: [],
+  providers: [PaymentInvoiceResolver, PaymentInvoiceRepository],
+  controllers: [PaymentInvoiceController],
 })
 export class PaymentInvoiceModule {}
