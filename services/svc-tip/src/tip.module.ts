@@ -1,5 +1,6 @@
 import {Module} from '@nestjs/common';
 import {TipEntity} from './tip.entity';
+import {TipResolver} from './tip.resolver';
 import {TipRepository} from './tip.repository';
 import {TipController} from './tip.controller';
 import {ProfileClientModule} from '@simpd/lib-client';
@@ -21,7 +22,7 @@ import {
       synchronize: true,
     }),
   ],
-  providers: [TipRepository],
+  providers: [TipRepository, TipResolver],
   controllers: [TipController],
 })
 export class TipModule {}
