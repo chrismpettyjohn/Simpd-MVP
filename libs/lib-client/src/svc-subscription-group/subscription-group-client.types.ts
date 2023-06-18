@@ -13,6 +13,6 @@ export interface SubscriptionGroupCreateOneInput {
 }
 
 export interface SubscriptionGroupFindOneInput {
-  id: number;
-  profileID: number;
+  id?: number;
+  profileID?: number;
 }

@@ -13,10 +13,10 @@ export function useTipCreate(): UseTipCreateResponse {
   const [createTip, { loading, error, data }] = useMutation<TipCreateMutationResponse, TipCreateMutationVariables>(TIP_CREATE_MUTATION);
 
   const onCreateTip = async (input: TipCreateMutationVariables) => {
-    const matchingSession = await createTip({
+    const newTip = await createTip({
       variables: input
     })
-    return matchingSession.data!.tipCreate;
+    return newTip.data!.tipCreate;
   }
 
   return {

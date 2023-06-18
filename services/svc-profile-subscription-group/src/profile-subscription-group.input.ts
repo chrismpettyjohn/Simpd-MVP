@@ -23,6 +23,12 @@ export class ProfileSubscriptionGroupCreateInput {
   @Field(() => Number)
   profileID!: number;
 
+  @Field(() => String)
+  name!: string;
+
+  @Field(() => String)
+  description!: string;
+
   @Field(() => Number)
-  subscriptionGroupID!: number;
+  monthlyCost!: number;
 }

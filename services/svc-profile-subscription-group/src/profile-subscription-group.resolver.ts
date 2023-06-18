@@ -1,8 +1,8 @@
 import {In} from 'typeorm';
 import {UnauthorizedException} from '@nestjs/common';
+import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {ProfileSubscriptionGroupModel} from './profile-subscription-group.model';
 import {ProfileSubscriptionGroupEntity} from './profile-subscription-group.entity';
-import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {ProfileSubscriptionGroupRepository} from './profile-subscription-group.repository';
 import {
   Args,
@@ -16,13 +16,17 @@ import {
   ProfileSubscriptionGroupFilterByManyInput,
   ProfileSubscriptionGroupFilterByOneInput,
 } from './profile-subscription-group.input';
-import {ProfileClientService} from '@simpd/lib-client';
+import {
+  ProfileClientService,
+  SubscriptionGroupClientService,
+} from '@simpd/lib-client';
 
 @Resolver(() => ProfileSubscriptionGroupModel)
 export class ProfileSubscriptionGroupResolver {
   constructor(
+    private readonly profileClientService: ProfileClientService,
     private readonly subscriptionGroupRepo: ProfileSubscriptionGroupRepository,
-    private readonly profileClientService: ProfileClientService
+    private readonly subscriptionGroupClientService: SubscriptionGroupClientService
   ) {}
 
   @ResolveReference()
@@ -78,12 +82,20 @@ export class ProfileSubscriptionGroupResolver {
       throw new UnauthorizedException();
     }
 
+    const newSubscriptionGroup =
+      await this.subscriptionGroupClientService.createOne({
+        name: input.name,
+        description: input.description,
+        monthlyCost: input.monthlyCost,
+      });
+
     const newProfileSubscriptionGroup = await this.subscriptionGroupRepo.create(
       {
         profileID: input.profileID,
-        subscriptionGroupID: input.subscriptionGroupID,
+        subscriptionGroupID: newSubscriptionGroup.id,
       }
     );
+
     return newProfileSubscriptionGroup;
   }
 

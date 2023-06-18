@@ -30,5 +30,7 @@ type Mutation {
 
 input ProfileSubscriptionGroupCreateInput {
   profileID: Float!
-  subscriptionGroupID: Float!
+  name: String!
+  description: String!
+  monthlyCost: Float!
 }
