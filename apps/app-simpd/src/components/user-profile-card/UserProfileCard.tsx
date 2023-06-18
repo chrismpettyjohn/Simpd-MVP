@@ -1,12 +1,16 @@
 import { Link } from 'wouter';
 import './UserProfileCard.css';
-import React, { useContext } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import { UserProfileCardProps } from './UserProfileCard.types';
 import { SendTipDialog } from '../send-tip-dialog/SendTipDialog';
 import { ProfileFragment, sessionContext } from '@simpd/lib-web';
 import { ChangeCoverPhoto } from './change-cover-photo/ChangeCoverPhoto';
 import { ChangeProfilePicture } from './change-profile-picture/ChangeProfilePicture';
 import { UserProfileCardCoverPhoto, UserProfileCardContainer, UserProfileCardInfoContainer, UserProfileCardAvatar, UserProfileCardActionsContainer, UserProfileCardContent } from './UserProfileCard.sty';
+
+function LinkBlock({ allowChanges, children, href }: { allowChanges: boolean, children: ReactNode, href: string }) {
+  return allowChanges ? <>{children}</> : <Link to={href}>{children}</Link>;
+}
 
 export function UserProfileCard({ allowChanges = true, profile, onChanges = () => null }: UserProfileCardProps) {
   const { session, setSession } = useContext(sessionContext);
@@ -29,17 +33,21 @@ export function UserProfileCard({ allowChanges = true, profile, onChanges = () =
   return (
     <UserProfileCardContainer>
       <UserProfileCardContent>
-        <UserProfileCardCoverPhoto backgroundUrl={profile.coverPhoto?.url ?? ''}>
-          {
-            allowChanges && isAuthenticatedAsProfile && <ChangeCoverPhoto profile={profile} onChange={onUpdateProfilePicture} />
-          }
-        </UserProfileCardCoverPhoto>
-        <UserProfileCardInfoContainer>
-          <UserProfileCardAvatar backgroundUrl={profile.profilePicture?.url ?? ''}>
+        <LinkBlock allowChanges={allowChanges} href={`/profiles/${profile.username}`}>
+          <UserProfileCardCoverPhoto backgroundUrl={profile.coverPhoto?.url ?? ''}>
             {
-              allowChanges && isAuthenticatedAsProfile && <ChangeProfilePicture profile={profile} onChange={onUpdateCoverPhoto} />
+              allowChanges && isAuthenticatedAsProfile && <ChangeCoverPhoto profile={profile} onChange={onUpdateProfilePicture} />
             }
-          </UserProfileCardAvatar>
+          </UserProfileCardCoverPhoto>
+        </LinkBlock>
+        <UserProfileCardInfoContainer>
+          <LinkBlock allowChanges={allowChanges} href={`/profiles/${profile.username}`}>
+            <UserProfileCardAvatar backgroundUrl={profile.profilePicture?.url ?? ''}>
+              {
+                allowChanges && isAuthenticatedAsProfile && <ChangeProfilePicture profile={profile} onChange={onUpdateCoverPhoto} />
+              }
+            </UserProfileCardAvatar>
+          </LinkBlock>
           {
             !isAuthenticatedAsProfile && (
               <UserProfileCardActionsContainer>
