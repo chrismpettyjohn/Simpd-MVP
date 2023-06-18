@@ -2,53 +2,47 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type MessageModel {
+type PaymentMethodBillingAddressModel {
+  country: String
+  city: String
+  streetAddress1: String
+  streetAddress2: String
+  postalCode: String
+  state: String
+}
+
+type PaymentMethodCardDetailsModel {
+  brand: String
+  country: String
+  exp_month: Float
+  exp_year: Float
+  last4: String
+}
+
+type PaymentMethodModel {
   id: Float
-  sendingProfileID: Float
-  receivingProfileID: Float
-  content: String
-  readAt: DateTime
-  createdAt: DateTime
-  updatedAt: DateTime
-  sendingProfile: ProfileModel!
-  receivingProfile: ProfileModel!
+  userID: Float
+  billingAddress: PaymentMethodBillingAddressModel
+  cardDetails: PaymentMethodCardDetailsModel
 }
 
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
-
-type MessageContactModel {
-  profileID: Float
-  profile: ProfileModel!
-}
-
-type ProfileModel {
-  id: Float!
+type PaymentMethodMutationResponseModel {
+  success: Boolean
 }
 
 type Query {
-  message(filter: MessageFilterByOneInput!): MessageModel!
-  messages(filter: MessageFilterByManyInput!): [MessageModel!]!
-  messageContacts: [MessageContactModel!]!
+  paymentMethod(filter: PaymentMethodFindOneInput!): PaymentMethodModel!
+  paymentMethods(filter: PaymentMethodFindManyInput!): [PaymentMethodModel!]!
 }
 
-input MessageFilterByOneInput {
+input PaymentMethodFindOneInput {
   id: Float
 }
 
-input MessageFilterByManyInput {
+input PaymentMethodFindManyInput {
   ids: [Float!]
-  receivingProfileID: Float
 }
 
 type Mutation {
-  messageCreate(input: MessageCreateInput!): MessageModel!
-  messageDelete(filter: MessageFilterByOneInput!): Boolean!
-}
-
-input MessageCreateInput {
-  receivingProfileID: Float!
-  content: String!
+  paymentMethodDeleteOne: PaymentMethodMutationResponseModel!
 }

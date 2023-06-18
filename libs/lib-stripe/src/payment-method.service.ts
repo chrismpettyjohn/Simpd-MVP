@@ -6,28 +6,32 @@ import {generateStripeClient} from './stripe-client.decorator';
 export class StripePaymentMethodService {
   private readonly stripeClient: Stripe = generateStripeClient();
 
-  async createCustomer(email: string): Promise<Stripe.Customer> {
-    return this.stripeClient.customers.create({email});
+  async createPaymentMethod(
+    newPaymentMethod: Stripe.PaymentMethodCreateParams
+  ): Promise<Stripe.PaymentMethod> {
+    return this.stripeClient.paymentMethods.create(newPaymentMethod);
   }
 
-  async getCustomer(
-    customerId: string
-  ): Promise<Stripe.Customer | Stripe.DeletedCustomer> {
-    return this.stripeClient.customers.retrieve(customerId);
+  async getPaymentMethod(
+    paymentMethodId: string
+  ): Promise<Stripe.PaymentMethod> {
+    return this.stripeClient.paymentMethods.retrieve(paymentMethodId);
   }
 
-  async updateCustomer(
-    customerId: string,
-    data: Stripe.CustomerUpdateParams
-  ): Promise<Stripe.Customer> {
-    return this.stripeClient.customers.update(customerId, data);
+  async updatePaymentMethod(
+    paymentMethodId: string,
+    data: Stripe.PaymentMethodUpdateParams
+  ): Promise<Stripe.PaymentMethod> {
+    return this.stripeClient.paymentMethods.update(paymentMethodId, data);
   }
 
-  async deleteCustomer(customerId: string): Promise<Stripe.DeletedCustomer> {
-    return this.stripeClient.customers.del(customerId);
+  async deletePaymentMethod(
+    paymentMethodId: string
+  ): Promise<Stripe.PaymentMethod> {
+    return this.stripeClient.paymentMethods.detach(paymentMethodId);
   }
 
-  async listCustomers(): Promise<Stripe.ApiList<Stripe.Customer>> {
-    return this.stripeClient.customers.list();
+  async listPaymentMethods(): Promise<Stripe.ApiList<Stripe.PaymentMethod>> {
+    return this.stripeClient.paymentMethods.list();
   }
 }

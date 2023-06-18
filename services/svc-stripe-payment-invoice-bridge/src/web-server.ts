@@ -4,5 +4,5 @@ import {StripePaymentInvoiceBridgeModule} from './stripe-payment-invoice-bridge.
 
 reactiveMicroserviceBootstrap(
   StripePaymentInvoiceBridgeModule,
-  'payment-attempt'
+  'stripe-payment-invoice-bridge'
 );

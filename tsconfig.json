@@ -93,6 +93,9 @@
       "@simpd/svc-stripe-payment-invoice-bridge": [
         "services/svc-stripe-payment-invoice-bridge/src"
       ],
+      "@simpd/svc-stripe-payment-method-bridge": [
+        "services/svc-stripe-payment-method-bridge/src"
+      ],
       "@simpd/svc-stripe-webhook": [
         "services/svc-stripe-webhook/src"
       ],

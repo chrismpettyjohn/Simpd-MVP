@@ -12,3 +12,5 @@ export const SVC_PAYMENT_METHOD_INTERNAL_EVENT_UPDATE_ONE =
   'paymentMethodUpdateOne';
 export const SVC_PAYMENT_METHOD_INTERNAL_EVENT_DELETE_ONE =
   'paymentMethodDeleteOne';
+export const SVC_PAYMENT_METHOD_INTERNAL_EVENT_METHOD_CREATED =
+  'paymentMethodCreated';
