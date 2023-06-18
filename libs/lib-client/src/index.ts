@@ -95,6 +95,7 @@ export * from './svc-subscription-group/subscription-group-client.service';
 export * from './svc-subscription-group/subscription-group-client.types';
 export * from './svc-subscription-group/subscription-group.const';
 export * from './svc-subscription-group/subscription-group.module';
+export * from './svc-subscription-group/subscription-group.model';
 export * from './svc-tag/tag-client.service';
 export * from './svc-tag/tag-client.types';
 export * from './svc-tag/tag.const';

@@ -9,7 +9,10 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity({name: 'subscription-groups', schema: 'subscription-groups'})
+@Entity({
+  name: 'profile-subscription-groups',
+  schema: 'profile-subscription-groups',
+})
 @Unique(['profileID', 'subscriptionGroupID'])
 export class ProfileSubscriptionGroupEntity {
   @PrimaryGeneratedColumn()

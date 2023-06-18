@@ -6,12 +6,12 @@ export class SubscriptionGroupModel {
   @Field(() => Number, {nullable: true})
   id?: number;
 
-  @Field(() => Number, {nullable: true})
-  profileID?: number;
-
   @Field(() => String, {nullable: true})
   name?: string;
 
   @Field(() => String, {nullable: true})
   description?: string;
+
+  @Field(() => Number, {nullable: true})
+  monthlyCost?: number;
 }

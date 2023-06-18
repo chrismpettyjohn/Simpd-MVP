@@ -2,35 +2,22 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ProfileSubscriptionGroupModel {
+type SubscriptionGroupModel {
   id: Float
-  profileID: Float
-  subscriptionGroupID: Float
+  name: String
+  description: String
+  monthlyCost: Float
 }
 
 type Query {
-  profileSubscriptionGroup(filter: ProfileSubscriptionGroupFilterByOneInput!): ProfileSubscriptionGroupModel!
-  profileSubscriptionGroups(filter: ProfileSubscriptionGroupFilterByManyInput): [ProfileSubscriptionGroupModel!]!
+  subscriptionGroup(filter: SubscriptionGroupFilterByOneInput!): SubscriptionGroupModel!
+  subscriptionGroups(filter: SubscriptionGroupFilterByManyInput): [SubscriptionGroupModel!]!
 }
 
-input ProfileSubscriptionGroupFilterByOneInput {
+input SubscriptionGroupFilterByOneInput {
   id: Float
-  profileID: Float
 }
 
-input ProfileSubscriptionGroupFilterByManyInput {
+input SubscriptionGroupFilterByManyInput {
   ids: [Float!]
-  profileIDs: [String!]
-}
-
-type Mutation {
-  profileSubscriptionGroupCreate(input: ProfileSubscriptionGroupCreateInput!): ProfileSubscriptionGroupModel!
-  profileSubscriptionGroupDelete(filter: ProfileSubscriptionGroupFilterByOneInput!): Boolean!
-}
-
-input ProfileSubscriptionGroupCreateInput {
-  profileID: Float!
-  name: String!
-  description: String!
-  monthlyCost: Float!
 }

@@ -1,6 +1,5 @@
 export interface SubscriptionGroupWire {
   id: number;
-  profileID: number;
   name: string;
   description: string;
   monthlyCost: number;
@@ -14,5 +13,4 @@ export interface SubscriptionGroupCreateOneInput {
 
 export interface SubscriptionGroupFindOneInput {
   id?: number;
-  profileID?: number;
 }

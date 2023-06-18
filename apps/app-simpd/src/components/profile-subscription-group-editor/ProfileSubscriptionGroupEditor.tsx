@@ -1,13 +1,18 @@
-import React, { SyntheticEvent, useState } from 'react';
+import { Button } from '../button/Button';
+import React, { SyntheticEvent, useMemo, useState } from 'react';
 import { ProfileSubscriptionGroupCreateInput } from '@simpd/lib-web';
 import { ProfileSubscriptionGroupEditorProps } from './ProfileSubscriptionGroupEditor.types';
 
-export function ProfileSubscriptionGroupEditor({ defaultProfileSubscriptionGroup }: ProfileSubscriptionGroupEditorProps) {
-  const [profileSubscriptionGroupDTO, setProfileSubscriptionGroupDTO] = useState<ProfileSubscriptionGroupCreateInput>({
-    name: defaultProfileSubscriptionGroup?.subscriptionGroup?.name ?? '',
-    description: defaultProfileSubscriptionGroup?.subscriptionGroup?.description ?? '',
-    monthlyCost: defaultProfileSubscriptionGroup?.subscriptionGroup?.monthlyCost ?? 0,
-  })
+export function ProfileSubscriptionGroupEditor({ defaultProfileSubscriptionGroup, onSave }: ProfileSubscriptionGroupEditorProps) {
+  const [isLoading, setIsLoading] = useState(false);
+  const defaultProfileSubscriptionGroupDTO = useMemo<ProfileSubscriptionGroupCreateInput>(() => {
+    return {
+      name: defaultProfileSubscriptionGroup?.subscriptionGroup?.name ?? '',
+      description: defaultProfileSubscriptionGroup?.subscriptionGroup?.description ?? '',
+      monthlyCost: defaultProfileSubscriptionGroup?.subscriptionGroup?.monthlyCost ?? 0,
+    }
+  }, [defaultProfileSubscriptionGroup]);
+  const [profileSubscriptionGroupDTO, setProfileSubscriptionGroupDTO] = useState<ProfileSubscriptionGroupCreateInput>(defaultProfileSubscriptionGroupDTO);
 
   const onUpdateProfile = (changes: Partial<ProfileSubscriptionGroupCreateInput>) => {
     setProfileSubscriptionGroupDTO(_ => ({
@@ -16,8 +21,17 @@ export function ProfileSubscriptionGroupEditor({ defaultProfileSubscriptionGroup
     }));
   }
 
-  const onSaveProfileSubscriptionGroup = (event: SyntheticEvent) => {
-    event.preventDefault();
+  const onSaveProfileSubscriptionGroup = async (event: SyntheticEvent) => {
+    try {
+      event.preventDefault();
+      setIsLoading(true);
+      await onSave(profileSubscriptionGroupDTO);
+      setIsLoading(false);
+      setProfileSubscriptionGroupDTO(defaultProfileSubscriptionGroupDTO);
+    } catch (e: any) {
+      setIsLoading(false);
+      throw e;
+    }
   }
 
   return (
@@ -44,6 +58,12 @@ export function ProfileSubscriptionGroupEditor({ defaultProfileSubscriptionGroup
         value={profileSubscriptionGroupDTO.monthlyCost}
         onChange={e => onUpdateProfile({ monthlyCost: Number(e.target?.value ?? 0) })}
       />
+      <br /><br />
+      <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-end' }}>
+        <Button type="submit" disabled={isLoading} onClick={onSaveProfileSubscriptionGroup}>
+          {isLoading ? <i className="fa fa-spinner fa-spin" /> : <>Save</>}
+        </Button>
+      </div>
     </form>
   )
 }

@@ -20,9 +20,6 @@ export class ProfileSubscriptionGroupFilterByOneInput {
 
 @InputType()
 export class ProfileSubscriptionGroupCreateInput {
-  @Field(() => Number)
-  profileID!: number;
-
   @Field(() => String)
   name!: string;
 

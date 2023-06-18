@@ -1,5 +1,4 @@
 import {In} from 'typeorm';
-import {UnauthorizedException} from '@nestjs/common';
 import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {ProfileSubscriptionGroupModel} from './profile-subscription-group.model';
 import {ProfileSubscriptionGroupEntity} from './profile-subscription-group.entity';
@@ -7,7 +6,9 @@ import {ProfileSubscriptionGroupRepository} from './profile-subscription-group.r
 import {
   Args,
   Mutation,
+  Parent,
   Query,
+  ResolveField,
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
@@ -17,14 +18,13 @@ import {
   ProfileSubscriptionGroupFilterByOneInput,
 } from './profile-subscription-group.input';
 import {
-  ProfileClientService,
   SubscriptionGroupClientService,
+  SubscriptionGroupModel,
 } from '@simpd/lib-client';
 
 @Resolver(() => ProfileSubscriptionGroupModel)
 export class ProfileSubscriptionGroupResolver {
   constructor(
-    private readonly profileClientService: ProfileClientService,
     private readonly subscriptionGroupRepo: ProfileSubscriptionGroupRepository,
     private readonly subscriptionGroupClientService: SubscriptionGroupClientService
   ) {}
@@ -39,6 +39,15 @@ export class ProfileSubscriptionGroupResolver {
         id: reference.id,
       },
     });
+  }
+
+  @ResolveField(() => SubscriptionGroupModel)
+  subscriptionGroup(
+    @Parent() parent: ProfileSubscriptionGroupEntity
+  ): SubscriptionGroupModel {
+    return {
+      id: parent.subscriptionGroupID,
+    };
   }
 
   @Query(() => ProfileSubscriptionGroupModel)
@@ -72,16 +81,7 @@ export class ProfileSubscriptionGroupResolver {
     @GetSession() session: SessionContents,
     @Args('input') input: ProfileSubscriptionGroupCreateInput
   ): Promise<ProfileSubscriptionGroupEntity> {
-    const matchingProfile = await this.profileClientService.findOne({
-      id: input.profileID,
-    });
-
-    const userOwnsProfile = matchingProfile.userID === session.userID;
-
-    if (!userOwnsProfile) {
-      throw new UnauthorizedException();
-    }
-
+    console.log(session);
     const newSubscriptionGroup =
       await this.subscriptionGroupClientService.createOne({
         name: input.name,
@@ -91,7 +91,7 @@ export class ProfileSubscriptionGroupResolver {
 
     const newProfileSubscriptionGroup = await this.subscriptionGroupRepo.create(
       {
-        profileID: input.profileID,
+        profileID: session.profileID,
         subscriptionGroupID: newSubscriptionGroup.id,
       }
     );
