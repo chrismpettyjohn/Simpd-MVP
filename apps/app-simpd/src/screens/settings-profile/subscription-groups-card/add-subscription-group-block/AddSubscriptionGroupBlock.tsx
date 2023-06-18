@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import { CardAccordion } from '../../../../components/card-accordion/CardAccordion';
 import { ProfileSubscriptionGroupCreateInput, useProfileSubscriptionGroupCreate } from '@simpd/lib-web';
 import { ProfileSubscriptionGroupEditor } from '../../../../components/profile-subscription-group-editor/ProfileSubscriptionGroupEditor';
 
@@ -18,6 +19,8 @@ export function AddSubscriptionGroupBlock() {
   }
 
   return (
-    <ProfileSubscriptionGroupEditor onSave={onAddSubscriptionGroup} />
+    <CardAccordion header="Add Subscription Group">
+      <ProfileSubscriptionGroupEditor onSave={onAddSubscriptionGroup} />
+    </CardAccordion>
   )
 }

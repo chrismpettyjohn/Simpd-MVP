@@ -23,7 +23,7 @@ export function ChangeProfilePicture({ profile, onChange }: ChangeProfilePicture
       profileID: profile.id,
       username: profile.username,
       changes: {
-        coverPhotoMediaID: newMedia.id
+        profilePictureMediaID: newMedia.id
       }
     })
     onChange(newProfile)
@@ -32,7 +32,7 @@ export function ChangeProfilePicture({ profile, onChange }: ChangeProfilePicture
   return (
     <div>
       <UserProfileChangeMediaIcon className="fa fa-file-import" onClick={onSelectFile} />
-      {createPortal(<input id="change-profile-pic-file-inp" style={{ visibility: 'hidden' }} type="file" ref={inputRef} />, document.body)}
+      {createPortal(<input id="change-profile-pic-file-inp" style={{ visibility: 'hidden' }} type="file" ref={inputRef} onChange={onUploadProfilePicture} />, document.body)}
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { CardAccordion } from '../../../components/card-accordion/CardAccordion';
 import { sessionContext, useProfileSubscriptionGroupFetchMany } from '@simpd/lib-web';
-import { UserProfileCard } from '../../../components/user-profile-card/UserProfileCard';
 import { AddSubscriptionGroupBlock } from './add-subscription-group-block/AddSubscriptionGroupBlock';
 import { ViewSubscriptionGroupBlock } from './view-subscription-group-block/ViewSubscriptionGroupBlock';
 
@@ -21,7 +20,6 @@ export function SubscriptionGroupsCard() {
 
   return (
     <>
-      <UserProfileCard profile={session!.profile!} />
       <CardAccordion header="Subscription Groups">
         {
           profileSubscriptionGroupFetchMany.loading && (

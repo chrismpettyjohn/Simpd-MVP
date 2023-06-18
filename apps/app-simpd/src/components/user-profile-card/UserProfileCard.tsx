@@ -29,21 +29,17 @@ export function UserProfileCard({ allowChanges = true, profile, onChanges = () =
   return (
     <UserProfileCardContainer>
       <UserProfileCardContent>
-        <Link to={`/profiles/${profile.username}`}>
-          <UserProfileCardCoverPhoto backgroundUrl={profile.coverPhoto?.url ?? ''}>
-            {
-              allowChanges && isAuthenticatedAsProfile && <ChangeCoverPhoto profile={profile} onChange={onUpdateProfilePicture} />
-            }
-          </UserProfileCardCoverPhoto>
-        </Link>
+        <UserProfileCardCoverPhoto backgroundUrl={profile.coverPhoto?.url ?? ''}>
+          {
+            allowChanges && isAuthenticatedAsProfile && <ChangeCoverPhoto profile={profile} onChange={onUpdateProfilePicture} />
+          }
+        </UserProfileCardCoverPhoto>
         <UserProfileCardInfoContainer>
-          <Link to={`/profiles/${profile.username}`}>
-            <UserProfileCardAvatar backgroundUrl={profile.profilePicture?.url ?? ''}>
-              {
-                allowChanges && isAuthenticatedAsProfile && <ChangeProfilePicture profile={profile} onChange={onUpdateCoverPhoto} />
-              }
-            </UserProfileCardAvatar>
-          </Link>
+          <UserProfileCardAvatar backgroundUrl={profile.profilePicture?.url ?? ''}>
+            {
+              allowChanges && isAuthenticatedAsProfile && <ChangeProfilePicture profile={profile} onChange={onUpdateCoverPhoto} />
+            }
+          </UserProfileCardAvatar>
           {
             !isAuthenticatedAsProfile && (
               <UserProfileCardActionsContainer>
