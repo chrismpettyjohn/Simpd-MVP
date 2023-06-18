@@ -11,6 +11,7 @@ import {
   SVC_PAYMENT_INVOICE_INTERNAL_EVENT_CREATE_ONE,
   SVC_PAYMENT_INVOICE_INTERNAL_EVENT_FIND_MANY,
   SVC_PAYMENT_INVOICE_INTERNAL_EVENT_FIND_ONE,
+  SVC_PAYMENT_INVOICE_INTERNAL_EVENT_INVOICE_CREATED,
   SVC_PAYMENT_INVOICE_NAME,
 } from './payment-invoice.const';
 
@@ -45,5 +46,12 @@ export class PaymentInvoiceClientService {
       input
     );
     return await lastValueFrom(newPaymentInvoice);
+  }
+
+  async invoiceCreated(newPaymentInvoice: PaymentInvoiceWire): Promise<void> {
+    this.client.emit(
+      SVC_PAYMENT_INVOICE_INTERNAL_EVENT_INVOICE_CREATED,
+      newPaymentInvoice
+    );
   }
 }

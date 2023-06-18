@@ -5,6 +5,7 @@ export * from './common/environment.const';
 export * from './database/base.repository';
 export * from './database/database.module';
 export * from './database/database.types';
+export * from './event-provider/event-provider.service';
 export * from './graphql/graphql.module';
 export * from './role/role-has-required-scope.decorator';
 export * from './role/role-has-required-scope.guard';

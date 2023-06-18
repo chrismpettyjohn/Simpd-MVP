@@ -1,5 +1,8 @@
 import {Module} from '@nestjs/common';
-import {ProfileClientModule} from '@simpd/lib-client';
+import {
+  PaymentInvoiceClientModule,
+  ProfileClientModule,
+} from '@simpd/lib-client';
 import {PaymentInvoiceEntity} from './payment-invoice.entity';
 import {PaymentInvoiceResolver} from './payment-invoice.resolver';
 import {PaymentInvoiceRepository} from './payment-invoice.repository';
@@ -20,6 +23,7 @@ import {
       entities: [PaymentInvoiceEntity],
       synchronize: true,
     }),
+    PaymentInvoiceClientModule,
   ],
   providers: [PaymentInvoiceResolver, PaymentInvoiceRepository],
   controllers: [PaymentInvoiceController],

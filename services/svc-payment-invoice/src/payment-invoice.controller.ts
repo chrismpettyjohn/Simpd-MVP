@@ -11,11 +11,15 @@ import {
   SVC_PAYMENT_INVOICE_INTERNAL_EVENT_CREATE_ONE,
   PaymentInvoiceFindManyInput,
   PaymentInvoiceCreateInput,
+  PaymentInvoiceClientService,
 } from '@simpd/lib-client';
 
 @Controller()
 export class PaymentInvoiceController {
-  constructor(private readonly paymentInvoiceRepo: PaymentInvoiceRepository) {}
+  constructor(
+    private readonly paymentInvoiceRepo: PaymentInvoiceRepository,
+    private readonly paymentInvoiceClientService: PaymentInvoiceClientService
+  ) {}
 
   @MessagePattern(SVC_PAYMENT_INVOICE_INTERNAL_EVENT_FIND_ONE)
   async paymentInvoiceFindOne(
@@ -51,7 +55,10 @@ export class PaymentInvoiceController {
   async paymentInvoiceCreateOne(
     input: PaymentInvoiceCreateInput
   ): Promise<PaymentInvoiceWire> {
-    const matchingPaymentInvoice = await this.paymentInvoiceRepo.create(input);
-    return paymentInvoiceEntityToPaymentInvoiceWire(matchingPaymentInvoice);
+    const newPaymentInvoice = await this.paymentInvoiceRepo.create(input);
+    const paymentInvoiceWire =
+      paymentInvoiceEntityToPaymentInvoiceWire(newPaymentInvoice);
+    await this.paymentInvoiceClientService.invoiceCreated(paymentInvoiceWire);
+    return paymentInvoiceEntityToPaymentInvoiceWire(paymentInvoiceWire);
   }
 }

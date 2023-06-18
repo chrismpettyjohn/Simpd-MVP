@@ -2,38 +2,37 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type CommentModel {
+type PaymentInvoiceModel {
   id: Float
-  serviceKey: String
-  resourceID: Float
-  comment: String
+  userID: Float
   profileID: Float
+  amount: Float
+  description: String
 }
 
 type Query {
-  comment(filter: CommentFilterByOneInput!): CommentModel!
-  comments(filter: CommentFilterByManyInput): [CommentModel!]!
+  paymentInvoice(filter: PaymentInvoiceFindOneInput!): PaymentInvoiceModel!
+  paymentInvoices(filter: PaymentInvoiceFindManyInput): [PaymentInvoiceModel!]!
 }
 
-input CommentFilterByOneInput {
+input PaymentInvoiceFindOneInput {
   id: Float
-  keys: [String!]
+  userID: Float
+  profileID: Float
 }
 
-input CommentFilterByManyInput {
+input PaymentInvoiceFindManyInput {
   ids: [Float!]
-  serviceKey: String
-  resourceIDs: [Float!]!
+  userIDs: [Float!]
+  profileIDs: [Float!]
 }
 
 type Mutation {
-  commentCreate(input: CommentCreateInput!): CommentModel!
-  commentDelete(filter: CommentFilterByOneInput!): Boolean!
+  paymentInvoiceCreate(input: PaymentInvoiceCreateInput!): PaymentInvoiceModel!
+  paymentInvoiceDelete(filter: PaymentInvoiceFindOneInput!): Boolean!
 }
 
-input CommentCreateInput {
-  profileID: Float!
-  serviceKey: String!
-  resourceID: Float!
-  content: String!
+input PaymentInvoiceCreateInput {
+  amount: Float!
+  description: String!
 }
