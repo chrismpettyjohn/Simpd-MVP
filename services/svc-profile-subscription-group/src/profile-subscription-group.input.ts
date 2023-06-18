@@ -5,8 +5,8 @@ export class ProfileSubscriptionGroupFilterByManyInput {
   @Field(() => [Number], {nullable: true})
   ids?: number[];
 
-  @Field(() => [String], {nullable: true})
-  profileIDs!: string[];
+  @Field(() => [Number], {nullable: true})
+  profileIDs!: number[];
 }
 
 @InputType()
@@ -26,6 +26,6 @@ export class ProfileSubscriptionGroupCreateInput {
   @Field(() => String)
   description!: string;
 
-  @Field(() => Number)
-  monthlyCost!: number;
+  @Field(() => String)
+  monthlyCostInDollarsAndCents!: string;
 }

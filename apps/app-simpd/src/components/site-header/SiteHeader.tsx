@@ -22,7 +22,7 @@ export function SiteHeader() {
                 Updates
               </SiteHeaderLink>
             </Link>
-            <Link to="/settings/identity">
+            <Link to="/settings/user">
               <SiteHeaderLink>
                 <i className="fa fa-wrench" style={{ marginRight: 8 }} />
                 Settings

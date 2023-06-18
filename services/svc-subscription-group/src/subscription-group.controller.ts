@@ -9,6 +9,7 @@ import {
   SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_CREATE_ONE,
   SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE,
 } from '@simpd/lib-client';
+import {convertDollarsAndCentsToCents} from './helpers';
 
 @Controller()
 export class SubscriptionGroupController {
@@ -23,7 +24,9 @@ export class SubscriptionGroupController {
     const matchingSubscriptionGroup = await this.subscriptionGroupRepo.create({
       name: input.name,
       description: input.description,
-      monthlyCost: input.monthlyCost,
+      monthlyCostInCents: convertDollarsAndCentsToCents(
+        input.monthlyCostInDollarsAndCents
+      ),
     });
     return subscriptionGroupEntityToSubscriptionGroupWire(
       matchingSubscriptionGroup

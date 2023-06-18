@@ -13,5 +13,8 @@ export class SubscriptionGroupModel {
   description?: string;
 
   @Field(() => Number, {nullable: true})
-  monthlyCost?: number;
+  monthlyCostInCents?: number;
+
+  @Field(() => String, {nullable: true})
+  monthlyCostInDollarsAndCents?: string;
 }

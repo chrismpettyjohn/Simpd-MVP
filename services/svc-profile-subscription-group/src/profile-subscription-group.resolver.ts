@@ -81,12 +81,11 @@ export class ProfileSubscriptionGroupResolver {
     @GetSession() session: SessionContents,
     @Args('input') input: ProfileSubscriptionGroupCreateInput
   ): Promise<ProfileSubscriptionGroupEntity> {
-    console.log(session);
     const newSubscriptionGroup =
       await this.subscriptionGroupClientService.createOne({
         name: input.name,
         description: input.description,
-        monthlyCost: input.monthlyCost,
+        monthlyCostInDollarsAndCents: input.monthlyCostInDollarsAndCents,
       });
 
     const newProfileSubscriptionGroup = await this.subscriptionGroupRepo.create(

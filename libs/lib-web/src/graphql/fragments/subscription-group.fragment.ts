@@ -4,7 +4,8 @@ export interface SubscriptionGroupFragment {
   id: number;
   name: string;
   description: string;
-  monthlyCost: number;
+  monthlyCostInCents: number;
+  monthlyCostInDollarsAndCents: string;
 }
 
 export const SUBSCRIPTION_GROUP_FRAGMENT = gql`
@@ -12,6 +13,7 @@ export const SUBSCRIPTION_GROUP_FRAGMENT = gql`
     id
     name
     description
-    monthlyCost
+    monthlyCostInCents
+    monthlyCostInDollarsAndCents
   }
 `

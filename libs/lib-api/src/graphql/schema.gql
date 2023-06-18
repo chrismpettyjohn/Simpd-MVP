@@ -3,21 +3,38 @@
 # ------------------------------------------------------
 
 type SubscriptionGroupModel {
+  id: Float!
+}
+
+type ProfileSubscriptionGroupModel {
   id: Float
-  name: String
-  description: String
-  monthlyCost: Float
+  profileID: Float
+  subscriptionGroupID: Float
+  subscriptionGroup: SubscriptionGroupModel!
 }
 
 type Query {
-  subscriptionGroup(filter: SubscriptionGroupFilterByOneInput!): SubscriptionGroupModel!
-  subscriptionGroups(filter: SubscriptionGroupFilterByManyInput): [SubscriptionGroupModel!]!
+  profileSubscriptionGroup(filter: ProfileSubscriptionGroupFilterByOneInput!): ProfileSubscriptionGroupModel!
+  profileSubscriptionGroups(filter: ProfileSubscriptionGroupFilterByManyInput): [ProfileSubscriptionGroupModel!]!
 }
 
-input SubscriptionGroupFilterByOneInput {
+input ProfileSubscriptionGroupFilterByOneInput {
   id: Float
+  profileID: Float
 }
 
-input SubscriptionGroupFilterByManyInput {
+input ProfileSubscriptionGroupFilterByManyInput {
   ids: [Float!]
+  profileIDs: [Float!]
+}
+
+type Mutation {
+  profileSubscriptionGroupCreate(input: ProfileSubscriptionGroupCreateInput!): ProfileSubscriptionGroupModel!
+  profileSubscriptionGroupDelete(filter: ProfileSubscriptionGroupFilterByOneInput!): Boolean!
+}
+
+input ProfileSubscriptionGroupCreateInput {
+  name: String!
+  description: String!
+  monthlyCostInDollarsAndCents: String!
 }

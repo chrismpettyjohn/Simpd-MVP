@@ -18,8 +18,8 @@ export class SubscriptionGroupEntity {
   @Column({type: 'text'})
   description!: string;
 
-  @Column({type: 'numeric', precision: 2})
-  monthlyCost!: number;
+  @Column({name: 'monthly_cost_in_cents', type: 'bigint'})
+  monthlyCostInCents!: number;
 
   @CreateDateColumn({name: 'created_at', type: 'timestamp'})
   createdAt?: Date;

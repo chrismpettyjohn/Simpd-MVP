@@ -9,7 +9,7 @@ export function ProfileSubscriptionGroupEditor({ defaultProfileSubscriptionGroup
     return {
       name: defaultProfileSubscriptionGroup?.subscriptionGroup?.name ?? '',
       description: defaultProfileSubscriptionGroup?.subscriptionGroup?.description ?? '',
-      monthlyCost: defaultProfileSubscriptionGroup?.subscriptionGroup?.monthlyCost ?? 0,
+      monthlyCostInDollarsAndCents: defaultProfileSubscriptionGroup?.subscriptionGroup?.monthlyCostInDollarsAndCents ?? '0.00',
     }
   }, [defaultProfileSubscriptionGroup]);
   const [profileSubscriptionGroupDTO, setProfileSubscriptionGroupDTO] = useState<ProfileSubscriptionGroupCreateInput>(defaultProfileSubscriptionGroupDTO);
@@ -55,8 +55,11 @@ export function ProfileSubscriptionGroupEditor({ defaultProfileSubscriptionGroup
       <input
         type="text"
         className="settings-profile-textinput4 input"
-        value={profileSubscriptionGroupDTO.monthlyCost}
-        onChange={e => onUpdateProfile({ monthlyCost: Number(e.target?.value ?? 0) })}
+        value={profileSubscriptionGroupDTO.monthlyCostInDollarsAndCents}
+        onChange={e => {
+          console.log(e.target?.value);
+          onUpdateProfile({ monthlyCostInDollarsAndCents: Number(e.target?.value ?? 0).toFixed(2) });
+        }}
       />
       <br /><br />
       <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-end' }}>

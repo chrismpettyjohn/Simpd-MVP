@@ -4,7 +4,7 @@ import { PROFILE_SUBSCRIPTION_GROUP_FRAGMENT, ProfileSubscriptionGroupFragment }
 export interface ProfileSubscriptionGroupCreateInput {
   name: string;
   description: string;
-  monthlyCost: number;
+  monthlyCostInDollarsAndCents: string;
 }
 
 export interface ProfileSubscriptionGroupCreateMutationVariables {
