@@ -49,6 +49,17 @@ export class UserResolver {
     return user.email;
   }
 
+  @HasSession()
+  @ResolveField(() => Boolean, {nullable: true})
+  // TODO: Determine if user is verified by checking for payment methods, etc
+  isVerified(
+    @GetSession() session: SessionContents,
+    @Parent() user: UserEntity
+  ): boolean {
+    this.userService.canAccessUser(session.userID, user.id!);
+    return true;
+  }
+
   @ResolveReference()
   resolveReference(reference: {
     __typename: string;

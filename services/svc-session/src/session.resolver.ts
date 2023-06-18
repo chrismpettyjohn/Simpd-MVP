@@ -3,6 +3,7 @@ import {SessionModel} from './session.model';
 import {SessionEntity} from './session.entity';
 import {SessionService} from './session.service';
 import {SessionRepository} from './session.repository';
+import {ProfileModel, UserModel} from '@simpd/lib-client';
 import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {
   Args,
@@ -19,7 +20,6 @@ import {
   SessionFilterByManyInput,
   SessionFilterByOneInput,
 } from './session.input';
-import {ProfileModel} from '@simpd/lib-client';
 
 @Resolver(() => SessionModel)
 export class SessionResolver {
@@ -35,6 +35,13 @@ export class SessionResolver {
     id: number;
   }): Promise<SessionEntity> {
     return this.session({id: reference.id});
+  }
+
+  @ResolveField(() => UserModel, {nullable: true})
+  user(@Parent() session: SessionEntity): UserModel {
+    return {
+      id: session.userID,
+    };
   }
 
   @Query(() => SessionModel, {nullable: true})

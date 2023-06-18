@@ -1,11 +1,12 @@
+import { Link } from 'wouter';
 import './UserProfileCard.css';
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import { UserProfileCardProps } from './UserProfileCard.types';
+import { SendTipDialog } from '../send-tip-dialog/SendTipDialog';
 import { ProfileFragment, sessionContext } from '@simpd/lib-web';
 import { ChangeCoverPhoto } from './change-cover-photo/ChangeCoverPhoto';
 import { ChangeProfilePicture } from './change-profile-picture/ChangeProfilePicture';
 import { UserProfileCardCoverPhoto, UserProfileCardContainer, UserProfileCardInfoContainer, UserProfileCardAvatar, UserProfileCardActionsContainer, UserProfileCardContent } from './UserProfileCard.sty';
-import { Link } from 'wouter';
 
 export function UserProfileCard({ allowChanges = true, profile, onChanges = () => null }: UserProfileCardProps) {
   const { session, setSession } = useContext(sessionContext);
@@ -48,6 +49,7 @@ export function UserProfileCard({ allowChanges = true, profile, onChanges = () =
               <UserProfileCardActionsContainer>
                 <i className="fa fa-star" />
                 <i className="fa fa-share" />
+                <SendTipDialog profile={profile} />
               </UserProfileCardActionsContainer>
             )
           }

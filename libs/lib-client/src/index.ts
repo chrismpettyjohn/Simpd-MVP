@@ -134,4 +134,5 @@ export * from './svc-user/user-client.decorator';
 export * from './svc-user/user-client.types';
 export * from './svc-user/user-client.service';
 export * from './svc-user/user.const';
+export * from './svc-user/user.model';
 export * from './svc-user/user.module';

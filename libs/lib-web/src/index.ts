@@ -5,6 +5,8 @@ export * from './components/guest-guard/GuestGuard';
 export * from './components/guest-guard/GuestGuard.types';
 export * from './components/user-guard/UserGuard';
 export * from './components/user-guard/UserGuard.types';
+export * from './components/verified-user-guard/VerifiedUserGuard';
+export * from './components/verified-user-guard/VerifiedUserGuard.types';
 export * from './components/ClickOutsideDetector';
 export * from './context/session/SessionContext';
 export * from './context/session/SessionContext.types';
