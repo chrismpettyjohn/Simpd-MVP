@@ -6,7 +6,9 @@ import {generateStripeClient} from './stripe-client.decorator';
 export class StripeInvoiceService {
   private readonly stripeClient: Stripe = generateStripeClient();
 
-  createInvoice(): Promise<Stripe.Invoice> {
-    return this.stripeClient.invoices.create({});
+  createInvoice(
+    newInvoice: Stripe.InvoiceCreateParams
+  ): Promise<Stripe.Invoice> {
+    return this.stripeClient.invoices.create(newInvoice);
   }
 }

@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import {Injectable} from '@nestjs/common';
+import {Injectable, NotFoundException} from '@nestjs/common';
 import {generateStripeClient} from './stripe-client.decorator';
 
 @Injectable()
@@ -14,6 +14,18 @@ export class StripeCustomerService {
     customerId: string
   ): Promise<Stripe.Customer | Stripe.DeletedCustomer> {
     return this.stripeClient.customers.retrieve(customerId);
+  }
+
+  async getCustomerByEmail(
+    email: string
+  ): Promise<Stripe.Customer | Stripe.DeletedCustomer> {
+    const matchingCustomers = await this.stripeClient.customers.search({
+      query: email,
+    });
+    if (matchingCustomers.data.length === 0) {
+      throw new NotFoundException(`No customer found with email ${email}`);
+    }
+    return matchingCustomers.data[0];
   }
 
   async updateCustomer(

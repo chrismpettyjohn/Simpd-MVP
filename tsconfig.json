@@ -78,6 +78,9 @@
       "@simpd/svc-profile": [
         "services/svc-profile/src"
       ],
+      "@simpd/svc-profile-user-bridge": [
+        "services/svc-profile-user-bridge/src"
+      ],
       "@simpd/svc-reaction": [
         "services/svc-reaction/src"
       ],

@@ -20,3 +20,16 @@ export interface ProfileFindOneInput {
 export interface ProfileFindManyInput {
   userID?: number;
 }
+
+export interface ProfileCreateOneInput {
+  userID: number;
+  username: string;
+  displayName: string;
+  biography?: string;
+  location?: string;
+  websiteURL?: string;
+  wishlistURL?: string;
+  profilePictureMediaID?: number;
+  coverPhotoMediaID?: number;
+  subscriptionGroupIDs: number[];
+}

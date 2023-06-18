@@ -4,7 +4,7 @@ import {UserService} from './user-service';
 import {UserResolver} from './user.resolver';
 import {UserController} from './user.controller';
 import {UserRepository} from './user.repository';
-import {RoleClientModule} from '@simpd/lib-client';
+import {RoleClientModule, UserClientModule} from '@simpd/lib-client';
 import {
   GraphQLModule,
   DatabaseModule,
@@ -17,6 +17,7 @@ import {
     CommonModule,
     SessionModule,
     RoleClientModule,
+    UserClientModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
       entities: [UserEntity],

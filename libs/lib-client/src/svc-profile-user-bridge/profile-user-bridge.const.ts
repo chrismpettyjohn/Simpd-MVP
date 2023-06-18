@@ -1,0 +1,2 @@
+export const SVC_PROFILE_USER_BRIDGE_NAME = 'ProfileUserBridge';
+export const SVC_PROFILE_USER_BRIDGE_MICROSERVICE_PORT = 3064;

@@ -182,6 +182,16 @@
       "watch_delay": 1000
     },
     {
+      "name": "svc-profile-user-bridge",
+      "cwd": "./services/svc-profile-user-bridge",
+      "script": "pnpm",
+      "args": "run web-server:start",
+      "watch": [
+        "src"
+      ],
+      "watch_delay": 1000
+    },
+    {
       "name": "svc-reaction",
       "cwd": "./services/svc-reaction",
       "script": "pnpm",

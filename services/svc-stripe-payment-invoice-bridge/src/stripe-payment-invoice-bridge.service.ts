@@ -1,12 +1,13 @@
 import {Injectable} from '@nestjs/common';
-import {StripeInvoiceService} from '@simpd/lib-stripe';
 import {PaymentInvoiceWire, UserClientService} from '@simpd/lib-client';
+import {StripeCustomerService, StripeInvoiceService} from '@simpd/lib-stripe';
 
 @Injectable()
 export class StripePaymentInvoiceBridgeService {
   constructor(
-    private readonly stripePaymentInvoiceService: StripeInvoiceService,
-    private readonly userClientService: UserClientService
+    private readonly userClientService: UserClientService,
+    private readonly stripeCustomerService: StripeCustomerService,
+    private readonly stripePaymentInvoiceService: StripeInvoiceService
   ) {}
 
   async onPaymentInvoiceCreated(
@@ -18,6 +19,14 @@ export class StripePaymentInvoiceBridgeService {
       id: paymentInvoice.id,
     });
 
-    await this.stripePaymentInvoiceService.createInvoice({});
+    const stripeCustomer = await this.stripeCustomerService.getCustomerByEmail(
+      matchingUser.email
+    );
+
+    await this.stripePaymentInvoiceService.createInvoice({
+      customer: stripeCustomer.id,
+      description: paymentInvoice.description,
+      application_fee_amount: paymentInvoice.amount,
+    });
   }
 }
