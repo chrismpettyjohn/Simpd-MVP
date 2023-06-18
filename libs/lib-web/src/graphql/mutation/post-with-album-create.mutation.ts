@@ -17,7 +17,7 @@ export interface PostWithAlbumCreateMutationResponse {
 
 export const POST_WITH_ALBUM_CREATE_MUTATION = gql`
   ${POST_WITH_ALBUM_FRAGMENT}
-  mutation($input: PostWithAlbumCreateInput!) {
+  mutation($input: PostWithAlbumInput!) {
     postWithAlbumCreate(
       input: $input
     ) {

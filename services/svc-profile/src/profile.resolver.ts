@@ -125,6 +125,7 @@ export class ProfileResolver {
     @Args('filter') filter: ProfileFilterByOneInput,
     @Args('input') input: ProfileUpdateInput
   ): Promise<ProfileModel> {
+    console.log(filter, input);
     const matchingProfile = await this.profileRepo.findOneOrFail({
       where: filter,
     });
@@ -133,13 +134,7 @@ export class ProfileResolver {
       throw new UnauthorizedException();
     }
 
-    await this.profileRepo.update(
-      {
-        id: filter.id,
-        username: filter.username,
-      },
-      input
-    );
+    await this.profileRepo.update(filter, input);
     return this.profile(filter);
   }
 

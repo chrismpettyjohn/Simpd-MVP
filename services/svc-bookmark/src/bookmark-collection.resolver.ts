@@ -49,6 +49,7 @@ export class BookmarkCollectionResolver {
     return this.bookmarkRepo.find({
       where: {
         id: filter?.ids && In(filter.ids),
+        profileID: filter?.profileIDs && In(filter.profileIDs),
       },
     });
   }

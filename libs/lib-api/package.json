@@ -29,7 +29,8 @@
     "express": "*",
     "@types/express": "*",
     "@simpd/lib-client": "workspace:*",
-    "rxjs": "*"
+    "rxjs": "*",
+    "lodash": "*"
   },
   "peerDependencies": {
     "@nestjs/common": "*",
@@ -44,6 +45,7 @@
     "express": "*",
     "@simpd/lib-client": "workspace:*",
     "rxjs": "*",
-    "spdy": "*"
+    "spdy": "*",
+    "lodash": "*"
   }
 }

@@ -1,3 +1,4 @@
+import {omit} from 'lodash';
 import {
   FindManyOptions,
   FindOneOptions,
@@ -57,7 +58,7 @@ export abstract class BaseRepository<Entity extends ObjectLiteral> {
   ): Promise<void> {
     await this.repo.update(
       {
-        ...this.DEFAULT_OPTIONS,
+        ...omit(this.DEFAULT_OPTIONS, ['where', 'order']),
         ...opts,
       },
       changes as any

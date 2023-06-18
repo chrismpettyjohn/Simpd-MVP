@@ -5,6 +5,7 @@ import { PostShares } from './post-shares/PostShares';
 import { PostReactions } from './post-reactions/PostReactions';
 import { PostFavorites } from './post-favorites/PostFavorites';
 import { TextPostContent } from './text-post-content/TextPostContent';
+import { AlbumPostContent } from './album-post-content/AlbumPostContent';
 import { ImagePostContent } from './image-post-content/ImagePostContent';
 import { AuthorBlockLarge } from '../author-block-large/AuthorBlockLarge';
 import { SharedPostContent } from './shared-post-content/SharedPostContent';
@@ -22,6 +23,10 @@ const getPostCardElement = (post: PostFragment) => {
 
   if (post.type === PostType.SharedContent) {
     return <SharedPostContent post={post as any} />
+  }
+
+  if (post.type === PostType.Album) {
+    return <AlbumPostContent post={post as any} />
   }
 
   return null;
