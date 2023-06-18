@@ -2,37 +2,34 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type PaymentInvoiceModel {
+type PrivacyPolicyInput {
+  allowedSubscriptionGroupIDs: [Float!]
+}
+
+type PrivacyModel {
   id: Float
-  userID: Float
-  profileID: Float
-  amount: Float
+  serviceKey: String
+  resourceID: Float
+  name: String
   description: String
+  policy: PrivacyPolicyInput
 }
 
 type Query {
-  paymentInvoice(filter: PaymentInvoiceFindOneInput!): PaymentInvoiceModel!
-  paymentInvoices(filter: PaymentInvoiceFindManyInput): [PaymentInvoiceModel!]!
+  privacy(filter: PrivacyFilterByOneInput!): PrivacyModel!
+  privacys(filter: PrivacyFilterByManyInput): [PrivacyModel!]!
 }
 
-input PaymentInvoiceFindOneInput {
+input PrivacyFilterByOneInput {
   id: Float
-  userID: Float
-  profileID: Float
+  resourceID: Float
 }
 
-input PaymentInvoiceFindManyInput {
+input PrivacyFilterByManyInput {
   ids: [Float!]
-  userIDs: [Float!]
-  profileIDs: [Float!]
+  resourceIDs: [Float!]
 }
 
 type Mutation {
-  paymentInvoiceCreate(input: PaymentInvoiceCreateInput!): PaymentInvoiceModel!
-  paymentInvoiceDelete(filter: PaymentInvoiceFindOneInput!): Boolean!
-}
-
-input PaymentInvoiceCreateInput {
-  amount: Float!
-  description: String!
+  privacyDelete(filter: PrivacyFilterByOneInput!): Boolean!
 }

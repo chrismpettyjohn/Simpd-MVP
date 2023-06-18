@@ -17,5 +17,6 @@ export * from './session/session-is-valid.guard';
 export * from './session/session.module';
 export * from './session/session.types';
 export * from './session/session.utility';
-export * from './bootstrap-module';
+export * from './dynamic-service.bootstrap';
+export * from './reactive-microservice.bootstrap';
 export * from './constants';

@@ -222,6 +222,15 @@
       ]
     },
     {
+      "name": "svc-stripe-payment-invoice-bridge",
+      "cwd": "./services/svc-stripe-payment-invoice-bridge",
+      "script": "pnpm",
+      "args": "run web-server:start",
+      "watch": [
+        "src"
+      ]
+    },
+    {
       "name": "svc-stripe-webhook",
       "cwd": "./services/svc-stripe-webhook",
       "script": "pnpm",
