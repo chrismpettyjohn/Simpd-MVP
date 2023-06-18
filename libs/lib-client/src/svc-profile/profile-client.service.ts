@@ -1,6 +1,6 @@
-import { lastValueFrom } from 'rxjs';
-import { Inject, Injectable } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
+import {lastValueFrom} from 'rxjs';
+import {Inject, Injectable} from '@nestjs/common';
+import {ClientProxy} from '@nestjs/microservices';
 import {
   ProfileCreateOneInput,
   ProfileFindManyInput,
@@ -16,7 +16,7 @@ import {
 
 @Injectable()
 export class ProfileClientService {
-  constructor(@Inject(SVC_PROFILE_NAME) private client: ClientProxy) { }
+  constructor(@Inject(SVC_PROFILE_NAME) private client: ClientProxy) {}
 
   async create(input: ProfileCreateOneInput): Promise<ProfileWire> {
     const newProfile$ = this.client.send(

@@ -4,6 +4,7 @@ import {
   UserWire,
   SVC_USER_INTERNAL_EVENT_USER_CREATED,
 } from '@simpd/lib-client';
+import {ProfileUserBridgeService} from './profile-user-bridge.service';
 @Controller()
 export class UserEventController {
   constructor(
