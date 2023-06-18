@@ -6,6 +6,7 @@ import {
   SVC_PAYMENT_METHOD_INTERNAL_EVENT_CREATE_ONE,
   SVC_PAYMENT_METHOD_INTERNAL_EVENT_DELETE_ONE,
   SVC_PAYMENT_METHOD_INTERNAL_EVENT_FIND_ONE,
+  SVC_PAYMENT_METHOD_INTERNAL_EVENT_METHOD_CREATED,
   SVC_PAYMENT_METHOD_INTERNAL_EVENT_UPDATE_ONE,
   SVC_PAYMENT_METHOD_NAME,
 } from './payment-method.const';
@@ -59,5 +60,12 @@ export class PaymentMethodClientService {
       filter
     );
     return await lastValueFrom(paymentMethodDeleted);
+  }
+
+  async created(paymentMethod: PaymentMethodWire) {
+    await this.client.emit(
+      SVC_PAYMENT_METHOD_INTERNAL_EVENT_METHOD_CREATED,
+      paymentMethod
+    );
   }
 }

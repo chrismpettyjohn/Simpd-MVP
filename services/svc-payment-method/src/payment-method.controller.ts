@@ -2,6 +2,7 @@ import {Controller} from '@nestjs/common';
 import {MessagePattern} from '@nestjs/microservices';
 import {PaymentMethodRepository} from './payment-method.repository';
 import {paymentMethodEntityToPaymentMethodWire} from './payment-method.wire';
+import {PaymentMethodClientService} from 'libs/lib-client/src/svc-payment-method/payment-method-client.service';
 import {
   PaymentMethodCreateOneInput,
   PaymentMethodDeleteOneResponse,
@@ -19,7 +20,10 @@ import {
 
 @Controller()
 export class PaymentMethodController {
-  constructor(private readonly paymentMethodRepo: PaymentMethodRepository) {}
+  constructor(
+    private readonly paymentMethodRepo: PaymentMethodRepository,
+    private readonly paymentMethodClientService: PaymentMethodClientService
+  ) {}
 
   @MessagePattern(SVC_PAYMENT_METHOD_INTERNAL_EVENT_FIND_ONE)
   async paymentMethodFindOne(
@@ -36,7 +40,10 @@ export class PaymentMethodController {
     input: PaymentMethodCreateOneInput
   ): Promise<PaymentMethodWire> {
     const newPaymentMethod = await this.paymentMethodRepo.create(input);
-    return paymentMethodEntityToPaymentMethodWire(newPaymentMethod);
+    const paymentMethodWire =
+      paymentMethodEntityToPaymentMethodWire(newPaymentMethod);
+    await this.paymentMethodClientService.created(paymentMethodWire);
+    return paymentMethodWire;
   }
 
   @MessagePattern(SVC_PAYMENT_METHOD_INTERNAL_EVENT_UPDATE_ONE)

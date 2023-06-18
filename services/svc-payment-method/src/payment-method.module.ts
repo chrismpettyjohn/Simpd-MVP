@@ -1,5 +1,8 @@
 import {Module} from '@nestjs/common';
-import {ProfileClientModule} from '@simpd/lib-client';
+import {
+  PaymentMethodClientModule,
+  ProfileClientModule,
+} from '@simpd/lib-client';
 import {PaymentMethodEntity} from './payment-method.entity';
 import {PaymentMethodResolver} from './payment-method.resolver';
 import {PaymentMethodController} from './payment-method.controller';
@@ -21,6 +24,7 @@ import {
       entities: [PaymentMethodEntity],
       synchronize: true,
     }),
+    PaymentMethodClientModule,
   ],
   providers: [PaymentMethodRepository, PaymentMethodResolver],
   controllers: [PaymentMethodController],
