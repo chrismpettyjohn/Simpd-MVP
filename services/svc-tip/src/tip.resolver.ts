@@ -65,11 +65,7 @@ export class TipResolver {
     @Args('input') input: TipCreateInput,
     @GetSession() session: SessionContents
   ): Promise<TipEntity> {
-    const newTip = await this.tipService.createOne(
-      input,
-      session.userID,
-      session.profileID
-    );
+    const newTip = await this.tipService.createOne(input, session.profileID);
     return newTip;
   }
 

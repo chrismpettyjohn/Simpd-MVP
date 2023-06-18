@@ -2,64 +2,47 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type BookmarkModel {
+type TipModel {
   id: Float
-  serviceKey: String
-  resourceID: Float
+  userID: Float
   profileID: Float
-  bookmarkCollectionID: Float
-}
-
-type BookmarkCollectionModel {
-  id: Float
-  profileID: Float
-  name: String
+  receivingUserID: Float
+  receivingProfileID: Float
+  paymentInvoiceID: Float
+  amount: Float
+  message: String
 }
 
 type Query {
-  bookmark(filter: BookmarkFindOneInput!): BookmarkModel!
-  bookmarks(filter: BookmarkFindManyInput): [BookmarkModel!]!
-  bookmarkCollection(filter: BookmarkCollectionFindOneInput!): BookmarkCollectionModel!
-  bookmarkCollections(filter: BookmarkCollectionFindManyInput): [BookmarkCollectionModel!]!
+  tip(filter: TipFilterByOneInput!): TipModel!
+  tips(filter: TipFilterByManyInput): [TipModel!]!
 }
 
-input BookmarkFindOneInput {
+input TipFilterByOneInput {
   id: Float
+  userID: Float
   profileID: Float
-  resourceID: Float
-  bookmarkCollectionID: Float
+  receivingUserID: Float
+  receivingProfileID: Float
+  paymentInvoiceID: Float
 }
 
-input BookmarkFindManyInput {
+input TipFilterByManyInput {
   ids: [Float!]
+  userIDs: [Float!]
   profileIDs: [Float!]
-  resourceIDs: [Float!]
-  bookmarkCollectionIDs: [Float!]
-}
-
-input BookmarkCollectionFindOneInput {
-  id: Float
-  profileID: Float
-}
-
-input BookmarkCollectionFindManyInput {
-  ids: [Float!]
-  profileIDs: [Float!]
+  receivingUserIDs: [Float!]
+  receivingProfileIDs: [Float!]
+  paymentInvoiceIDs: [Float!]
 }
 
 type Mutation {
-  bookmarkCreate(input: BookmarkCreateInput!): BookmarkModel!
-  bookmarkDelete(filter: BookmarkFindOneInput!): Boolean!
-  bookmarkCollectionCreate(input: BookmarkCollectionCreateInput!): BookmarkCollectionModel!
-  bookmarkCollectionCreateRandomized: BookmarkCollectionModel!
-  bookmarkCollectionDelete(filter: BookmarkCollectionFindOneInput!): Boolean!
+  tipCreate(input: TipCreateInput!): TipModel!
+  tipDelete(filter: TipFilterByOneInput!): Boolean!
 }
 
-input BookmarkCreateInput {
-  resourceID: Float!
-  bookmarkCollectionID: Float!
-}
-
-input BookmarkCollectionCreateInput {
-  name: String!
+input TipCreateInput {
+  receivingProfileID: Float!
+  amount: Float!
+  message: String!
 }

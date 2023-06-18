@@ -45,9 +45,6 @@ export class TipFilterByManyInput {
 @InputType()
 export class TipCreateInput {
   @Field(() => Number)
-  receivingUserID!: number;
-
-  @Field(() => Number)
   receivingProfileID!: number;
 
   @Field(() => Number)

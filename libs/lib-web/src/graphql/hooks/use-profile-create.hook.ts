@@ -12,7 +12,7 @@ export interface UseProfileCreateResponse {
 export function useProfileCreate(): UseProfileCreateResponse {
   const [createProfile, { loading, error, data }] = useMutation<ProfileCreateMutationResponse, ProfileCreateMutationVariables>(PROFILE_CREATE_MUTATION);
 
-  const onCreateSession = async (input: ProfileCreateMutationVariables) => {
+  const onCreateProfile = async (input: ProfileCreateMutationVariables) => {
     const matchingSession = await createProfile({
       variables: input
     })
@@ -20,7 +20,7 @@ export function useProfileCreate(): UseProfileCreateResponse {
   }
 
   return {
-    execute: onCreateSession,
+    execute: onCreateProfile,
     error,
     loading,
     data: data?.profileCreate,
