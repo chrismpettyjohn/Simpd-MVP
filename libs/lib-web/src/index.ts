@@ -31,6 +31,7 @@ export * from './graphql/fragments/profile-subscription-group.fragment';
 export * from './graphql/fragments/profile.fragment';
 export * from './graphql/fragments/user.fragment';
 export * from './graphql/fragments/session.fragment';
+export * from './graphql/fragments/subscription-group.fragment';
 export * from './graphql/fragments/tag.fragment';
 export * from './graphql/fragments/tip.fragment';
 export * from './graphql/hooks/use-bookmark-collection-create-one-randomized.hook';
