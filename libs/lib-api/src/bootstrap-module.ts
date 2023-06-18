@@ -5,7 +5,11 @@ import {ExpressAdapter} from '@nestjs/platform-express';
 import {NestApplication, NestFactory} from '@nestjs/core';
 import {MicroserviceOptions, Transport} from '@nestjs/microservices';
 
-export async function bootstrapDynamicService(module: any, port: number) {
+export async function bootstrapDynamicService(
+  module: any,
+  port: number,
+  queueGroup: string
+) {
   const expressApp: Express.Express = Express();
 
   const app: NestApplication = await NestFactory.create(
@@ -35,6 +39,7 @@ export async function bootstrapDynamicService(module: any, port: number) {
     transport: Transport.NATS,
     options: {
       servers: [NATS_ADDRESS],
+      queue: queueGroup,
     },
   });
 

@@ -5,5 +5,6 @@ import {PaymentTransactionModule} from './payment-transaction.module';
 
 bootstrapDynamicService(
   PaymentTransactionModule,
-  SVC_PAYMENT_TRANSACTION_WEB_PORT
+  SVC_PAYMENT_TRANSACTION_WEB_PORT,
+  'payment-transaction'
 );

@@ -2,48 +2,38 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type TipModel {
+type CommentModel {
   id: Float
-  userID: Float
+  serviceKey: String
+  resourceID: Float
+  comment: String
   profileID: Float
-  receivingUserID: Float
-  receivingProfileID: Float
-  paymentInvoiceID: Float
-  amount: Float
-  message: String
 }
 
 type Query {
-  tip(filter: TipFilterByOneInput!): TipModel!
-  tips(filter: TipFilterByManyInput): [TipModel!]!
+  comment(filter: CommentFilterByOneInput!): CommentModel!
+  comments(filter: CommentFilterByManyInput): [CommentModel!]!
 }
 
-input TipFilterByOneInput {
+input CommentFilterByOneInput {
   id: Float
-  userID: Float
-  profileID: Float
-  receivingUserID: Float
-  receivingProfileID: Float
-  paymentInvoiceID: Float
+  keys: [String!]
 }
 
-input TipFilterByManyInput {
+input CommentFilterByManyInput {
   ids: [Float!]
-  userIDs: [Float!]
-  profileIDs: [Float!]
-  receivingUserIDs: [Float!]
-  receivingProfileIDs: [Float!]
-  paymentInvoiceIDs: [Float!]
+  serviceKey: String
+  resourceIDs: [Float!]!
 }
 
 type Mutation {
-  tipCreate(input: TipCreateInput!): TipModel!
-  tipDelete(filter: TipFilterByOneInput!): Boolean!
+  commentCreate(input: CommentCreateInput!): CommentModel!
+  commentDelete(filter: CommentFilterByOneInput!): Boolean!
 }
 
-input TipCreateInput {
-  receivingUserID: Float!
-  receivingProfileID: Float!
-  amount: Float!
-  message: String!
+input CommentCreateInput {
+  profileID: Float!
+  serviceKey: String!
+  resourceID: Float!
+  content: String!
 }

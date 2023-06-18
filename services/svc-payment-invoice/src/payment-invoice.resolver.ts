@@ -1,7 +1,7 @@
-import { In } from 'typeorm';
-import { PaymentInvoiceModel } from './payment-invoice.model';
-import { PaymentInvoiceRepository } from './payment-invoice.repository';
-import { GetSession, HasSession, SessionContents } from '@simpd/lib-api';
+import {In} from 'typeorm';
+import {PaymentInvoiceModel} from './payment-invoice.model';
+import {PaymentInvoiceRepository} from './payment-invoice.repository';
+import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {
   PaymentInvoiceCreateInput,
   PaymentInvoiceFindManyInput,
@@ -17,16 +17,14 @@ import {
 
 @Resolver(() => PaymentInvoiceModel)
 export class PaymentInvoiceResolver {
-  constructor(
-    private readonly paymentInvoiceRepo: PaymentInvoiceRepository,
-  ) { }
+  constructor(private readonly paymentInvoiceRepo: PaymentInvoiceRepository) {}
 
   @ResolveReference()
   resolveReference(reference: {
     __typename: string;
     id: number;
   }): Promise<PaymentInvoiceModel> {
-    return this.paymentInvoice({ id: reference.id });
+    return this.paymentInvoice({id: reference.id});
   }
 
   @Query(() => PaymentInvoiceModel)
@@ -40,7 +38,7 @@ export class PaymentInvoiceResolver {
 
   @Query(() => [PaymentInvoiceModel])
   paymentInvoices(
-    @Args('filter', { type: () => PaymentInvoiceFindManyInput, nullable: true })
+    @Args('filter', {type: () => PaymentInvoiceFindManyInput, nullable: true})
     filter?: PaymentInvoiceFindManyInput
   ): Promise<PaymentInvoiceModel[]> {
     return this.paymentInvoiceRepo.find({
