@@ -3,6 +3,7 @@ import './SettingsProfile.css';
 import { Helmet } from 'react-helmet';
 import { PageTitle } from '../../components/page-title/PageTitle';
 import { ProfileSettingsCard } from './profile-settings-card/ProfileSettingsCard';
+import { SubscriptionGroupsCard } from './subscription-groups-card/SubscriptionGroupsCard';
 import { SettingsNavigation } from '../../components/settings-navigation/SettingsNavigation';
 
 export function SettingsProfileScreen() {
@@ -15,6 +16,7 @@ export function SettingsProfileScreen() {
       <PageTitle title="Settings-Profile" />
       <SettingsNavigation />
       <ProfileSettingsCard />
+      <SubscriptionGroupsCard />
     </>
   )
 }

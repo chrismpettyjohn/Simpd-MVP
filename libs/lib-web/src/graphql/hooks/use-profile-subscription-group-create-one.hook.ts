@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-\import { ProfileSubscriptionGroupFragment } from "../fragments/profile-subscription-group.fragment";
+import { ProfileSubscriptionGroupFragment } from "../fragments/profile-subscription-group.fragment";
 import { PROFILE_SUBSCRIPTION_GROUP_CREATE_MUTATION, ProfileSubscriptionGroupCreateMutationResponse, ProfileSubscriptionGroupCreateMutationVariables } from "../mutation/profile-subscription-group-create-one.mutation";
 
 export interface UseProfileSubscriptionGroupCreateResponse {
