@@ -2,47 +2,45 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type PaymentMethodBillingAddressModel {
-  country: String
-  city: String
-  streetAddress1: String
-  streetAddress2: String
-  postalCode: String
-  state: String
-}
-
-type PaymentMethodCardDetailsModel {
-  brand: String
-  country: String
-  exp_month: Float
-  exp_year: Float
-  last4: String
-}
-
-type PaymentMethodModel {
+type UserModel {
   id: Float
-  userID: Float
-  billingAddress: PaymentMethodBillingAddressModel
-  cardDetails: PaymentMethodCardDetailsModel
-}
-
-type PaymentMethodMutationResponseModel {
-  success: Boolean
+  email: String
 }
 
 type Query {
-  paymentMethod(filter: PaymentMethodFindOneInput!): PaymentMethodModel!
-  paymentMethods(filter: PaymentMethodFindManyInput!): [PaymentMethodModel!]!
+  user(filter: UserFilterByOneInput!): UserModel!
+  users(filter: UserFilterByManyInput): [UserModel!]!
 }
 
-input PaymentMethodFindOneInput {
+input UserFilterByOneInput {
   id: Float
+  email: String
 }
 
-input PaymentMethodFindManyInput {
+input UserFilterByManyInput {
   ids: [Float!]
+  emails: [String!]
 }
 
 type Mutation {
-  paymentMethodDeleteOne: PaymentMethodMutationResponseModel!
+  userCreate(input: UserCreateInput!): UserModel!
+  userUpdate(filter: UserFilterByOneInput!, input: UserUpdateInput!): UserModel!
+  userChangePassword(filter: UserFilterByOneInput!, input: UserChangePasswordInput!): Boolean!
+  userDelete(filter: UserFilterByOneInput!): Boolean!
+}
+
+input UserCreateInput {
+  email: String!
+  password: String!
+}
+
+input UserUpdateInput {
+  email: String
+  password: String
+}
+
+input UserChangePasswordInput {
+  currentPassword: String!
+  newPassword: String!
+  newPasswordAgain: String!
 }

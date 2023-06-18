@@ -30,6 +30,7 @@ export class UserController {
     });
     return userEntityToUserWire(matchingUser);
   }
+
   @MessagePattern(SVC_USER_INTERNAL_EVENT_PASSWORD_COMPARISON)
   async userPasswordComparison(
     data: UserPasswordComparisonInput

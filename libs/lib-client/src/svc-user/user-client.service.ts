@@ -5,6 +5,7 @@ import {
   SVC_USER_INTERNAL_EVENT_FIND_ONE,
   SVC_USER_INTERNAL_EVENT_PASSWORD_COMPARISON,
   SVC_USER_INTERNAL_EVENT_UPDATE_ONE,
+  SVC_USER_INTERNAL_EVENT_USER_CREATED,
   SVC_USER_NAME,
 } from './user.const';
 import {
@@ -44,5 +45,9 @@ export class UserClientService {
       params
     );
     return await lastValueFrom(userUpdate);
+  }
+
+  async created(newUser: UserWire): Promise<void> {
+    await this.client.emit(SVC_USER_INTERNAL_EVENT_USER_CREATED, newUser);
   }
 }

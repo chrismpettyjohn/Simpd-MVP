@@ -9,3 +9,4 @@ export const SVC_USER_INTERNAL_EVENT_FIND_ONE = 'userFindOne';
 export const SVC_USER_INTERNAL_EVENT_PASSWORD_COMPARISON =
   'userPasswordComparison';
 export const SVC_USER_INTERNAL_EVENT_UPDATE_ONE = 'userUpdateOne';
+export const SVC_USER_INTERNAL_EVENT_USER_CREATED = 'userCreated';

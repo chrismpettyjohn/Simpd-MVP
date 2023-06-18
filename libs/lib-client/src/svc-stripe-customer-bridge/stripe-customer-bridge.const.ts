@@ -1,0 +1,2 @@
+export const SVC_STRIPE_CUSTOMER_BRIDGE_NAME = 'StripeCustomerBridge';
+export const SVC_STRIPE_CUSTOMER_BRIDGE_MICROSERVICE_PORT = 3062;

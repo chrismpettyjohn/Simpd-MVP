@@ -108,6 +108,7 @@ export * from './svc-session/session-client.types';
 export * from './svc-session/session-client.service';
 export * from './svc-session/session.const';
 export * from './svc-session/session.module';
+export * from './svc-stripe-customer-bridge/stripe-customer-bridge.const';
 export * from './svc-stripe-payment-invoice-bridge/stripe-payment-invoice-bridge.const';
 export * from './svc-stripe-payment-method-bridge/stripe-payment-method-bridge.const';
 export * from './svc-stripe-webhook/stripe-webhook.const';

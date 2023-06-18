@@ -4,6 +4,7 @@ import {UserEntity} from './user.entity';
 import {UserService} from './user-service';
 import {UserRepository} from './user.repository';
 import {DEFAULT_USER_ROLE_ID} from './user.const';
+import {UserClientService} from '@simpd/lib-client';
 import {BadRequestException, UnauthorizedException} from '@nestjs/common';
 import {
   GetSession,
@@ -27,13 +28,15 @@ import {
   UserFilterByOneInput,
   UserUpdateInput,
 } from './user.input';
+import {userEntityToUserWire} from './user.wire';
 
 @Resolver(() => UserModel)
 export class UserResolver {
   constructor(
     private readonly userRepo: UserRepository,
     private readonly userService: UserService,
-    private readonly hashService: HashService
+    private readonly hashService: HashService,
+    private readonly userClientService: UserClientService
   ) {}
 
   @HasSession()
@@ -83,6 +86,7 @@ export class UserResolver {
       email: input.email,
       hashedPassword: this.hashService.generate(input.password),
     });
+    await this.userClientService.created(userEntityToUserWire(newUser));
     return newUser;
   }
 
