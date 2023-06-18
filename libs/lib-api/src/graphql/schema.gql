@@ -2,34 +2,45 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type PrivacyPolicyInput {
-  allowedSubscriptionGroupIDs: [Float!]
-}
-
-type PrivacyModel {
+type UserModel {
   id: Float
-  serviceKey: String
-  resourceID: Float
-  name: String
-  description: String
-  policy: PrivacyPolicyInput
+  email: String
 }
 
 type Query {
-  privacy(filter: PrivacyFilterByOneInput!): PrivacyModel!
-  privacys(filter: PrivacyFilterByManyInput): [PrivacyModel!]!
+  user(filter: UserFilterByOneInput!): UserModel!
+  users(filter: UserFilterByManyInput): [UserModel!]!
 }
 
-input PrivacyFilterByOneInput {
+input UserFilterByOneInput {
   id: Float
-  resourceID: Float
+  email: String
 }
 
-input PrivacyFilterByManyInput {
+input UserFilterByManyInput {
   ids: [Float!]
-  resourceIDs: [Float!]
+  emails: [String!]
 }
 
 type Mutation {
-  privacyDelete(filter: PrivacyFilterByOneInput!): Boolean!
+  userCreate(input: UserCreateInput!): UserModel!
+  userUpdate(filter: UserFilterByOneInput!, input: UserUpdateInput!): UserModel!
+  userChangePassword(filter: UserFilterByOneInput!, input: UserChangePasswordInput!): Boolean!
+  userDelete(filter: UserFilterByOneInput!): Boolean!
+}
+
+input UserCreateInput {
+  email: String!
+  password: String!
+}
+
+input UserUpdateInput {
+  email: String
+  password: String
+}
+
+input UserChangePasswordInput {
+  currentPassword: String!
+  newPassword: String!
+  newPasswordAgain: String!
 }

@@ -6,6 +6,7 @@ import {NestApplication, NestFactory} from '@nestjs/core';
 import {MicroserviceOptions, Transport} from '@nestjs/microservices';
 
 export async function dynamicServiceBootstrap(
+  name: string,
   module: any,
   port: number,
   queueGroup: string
@@ -38,6 +39,7 @@ export async function dynamicServiceBootstrap(
   await app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.NATS,
     options: {
+      name,
       servers: [NATS_ADDRESS],
       queue: queueGroup,
     },
