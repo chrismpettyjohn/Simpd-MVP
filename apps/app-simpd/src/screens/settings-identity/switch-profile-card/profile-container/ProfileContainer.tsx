@@ -25,11 +25,11 @@ export function ProfileContainer({ profile }: ProfileContainerProps) {
         <ProfileIndicator className="fa fa-circle" selected={isActive} />
         {profile.username}
       </h3>
-      <Button disabled={isActive} onClick={onSwitchProfile}>
-        {
-          switchProfile.loading ? <><i className="fa fa-spinner fa-spin" style={{ marginRight: 4 }} /> Using Profile</> : <>Use Profile</>
-        }
-      </Button>
+      {
+        !isActive
+          ? (<Button disabled={isActive} onClick={onSwitchProfile}>switchProfile.loading ? <><i className="fa fa-spinner fa-spin" style={{ marginRight: 4 }} /> Using Profile</> : <>Use Profile</></Button>)
+          : null
+      }
     </ProfileElement>
   )
 }
