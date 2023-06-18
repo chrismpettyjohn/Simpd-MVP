@@ -50,6 +50,8 @@ import {
   SVC_USER_WEB_ADDRESS,
   SVC_TIP_NAME,
   SVC_TIP_WEB_ADDRESS,
+  SVC_PROFILE_SUBSCRIPTION_GROUP_NAME,
+  SVC_PROFILE_SUBSCRIPTION_GROUP_WEB_ADDRESS,
 } from '@simpd/lib-client';
 
 @Module({
@@ -85,6 +87,10 @@ import {
               url: SVC_PAYMENT_METHOD_WEB_ADDRESS,
             },
             {name: SVC_PROFILE_NAME, url: SVC_PROFILE_WEB_ADDRESS},
+            {
+              name: SVC_PROFILE_SUBSCRIPTION_GROUP_NAME,
+              url: SVC_PROFILE_SUBSCRIPTION_GROUP_WEB_ADDRESS,
+            },
             {name: SVC_REPORT_NAME, url: SVC_REPORT_WEB_ADDRESS},
             {name: SVC_SESSION_NAME, url: SVC_SESSION_WEB_ADDRESS},
             {name: SVC_TAG_NAME, url: SVC_TAG_WEB_ADDRESS},

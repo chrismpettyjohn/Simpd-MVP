@@ -5,22 +5,23 @@ import {
   Entity,
   Index,
   PrimaryGeneratedColumn,
+  Unique,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity({name: 'subscription-groups', schema: 'subscription-groups'})
-export class SubscriptionGroupEntity {
+@Unique(['profileID', 'subscriptionGroupID'])
+export class ProfileSubscriptionGroupEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column()
-  name!: string;
+  @Column({name: 'profile_id', type: 'integer'})
+  @Index()
+  profileID!: number;
 
-  @Column({type: 'text'})
-  description!: string;
-
-  @Column({type: 'numeric', precision: 2})
-  monthlyCost!: number;
+  @Column({name: 'subscription_group_id', type: 'integer'})
+  @Index()
+  subscriptionGroupID!: number;
 
   @CreateDateColumn({name: 'created_at', type: 'timestamp'})
   createdAt?: Date;

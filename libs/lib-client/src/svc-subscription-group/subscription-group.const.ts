@@ -4,5 +4,7 @@ export const SVC_SUBSCRIPTION_GROUP_WEB_ADDRESS =
   process.env.SVC_SUBSCRIPTION_GROUP_WEB_ADDRESS ??
   `http://localhost:${SVC_SUBSCRIPTION_GROUP_WEB_PORT}/graphql`;
 
+export const SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_CREATE_ONE =
+  'subscriptionGroupCreateOne';
 export const SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE =
-  'subscriptionGroupFindOneByID';
+  'subscriptionGroupFindOne';
