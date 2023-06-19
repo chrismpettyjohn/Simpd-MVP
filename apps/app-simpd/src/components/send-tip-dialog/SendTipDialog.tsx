@@ -24,7 +24,7 @@ export function SendTipDialog({ profile }: SendTipDialogProps) {
         return;
       }
 
-      if (!message) {
+      if (message === '') {
         toast.error(`Don't be a pussy.  Say something.`);
         return;
       }
