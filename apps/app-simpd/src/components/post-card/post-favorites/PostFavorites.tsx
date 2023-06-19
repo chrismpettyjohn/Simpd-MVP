@@ -1,27 +1,50 @@
 import { toast } from 'react-toastify';
+import { Dropdown, Space } from 'antd';
 import { PostStatElement } from '../PostCard.styled';
 import { PostFavoritesProps } from './PostFavorites.types';
-import { DropdownMenu } from 'components/dropdown-menu/DropdownMenu';
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { DropdownMenuOption } from 'components/dropdown-menu/DropdownMenu.sty';
+import React, { SyntheticEvent, useContext, useEffect, useMemo, useRef } from 'react';
 import { sessionContext, useBookmarkCollectionFetchMany, useBookmarkCreate, usePostFavorites } from '@simpd/lib-web';
 
 export function PostFavorites({ post }: PostFavoritesProps) {
   const createBookmark = useBookmarkCreate();
-  const [isOpen, setIsOpen] = useState(false);
   const fetchPostFavorites = usePostFavorites();
   const { session } = useContext(sessionContext);
   const dropdownRef = useRef<HTMLHeadingElement>(null);
   const fetchBookmarkCollections = useBookmarkCollectionFetchMany();
 
-  const onToggle = () => {
-    setIsOpen(_ => !_);
-  }
-
   const onShareToCollection = async (bookmarkCollectionID: number) => {
     await createBookmark.execute({ bookmarkCollectionID, resourceID: post.id })
     toast.success(`❤️ Successfully added post to your favorites`);
   }
+
+  const menuItems = useMemo(() => {
+    if (!fetchBookmarkCollections.data) {
+      return [];
+    }
+
+    return [
+      {
+        key: 'save-post',
+        label: <b>Save post to...</b>
+      },
+      ...fetchBookmarkCollections.data?.map(_ => {
+        const onClick = (event: SyntheticEvent) => {
+          event.stopPropagation();
+          onShareToCollection(_.id);
+        }
+
+        return {
+          key: _.id,
+          label: (
+            <div style={{ cursor: 'pointer' }} onClick={onClick}>
+              {_.name}
+              <i className="fa fa-share" style={{ marginLeft: 4 }} />
+            </div>
+          ),
+        }
+      }),
+    ]
+  }, [fetchBookmarkCollections.data]);
 
   useEffect(() => {
     fetchBookmarkCollections.fetch({ profileIDs: [session!.profileID] });
@@ -31,27 +54,27 @@ export function PostFavorites({ post }: PostFavoritesProps) {
   const isLoading = fetchPostFavorites.loading || createBookmark.loading;
 
   return (
-    <PostStatElement onClick={onToggle}>
-      <div style={{ position: 'relative' }}>
+    <>
+      <PostStatElement>
         <h3 ref={dropdownRef}>{fetchPostFavorites.data ?? 0}</h3>
-        {
-          dropdownRef?.current && isOpen && (
-            <DropdownMenu mountOn={dropdownRef.current} onToggle={() => setIsOpen(false)}>
-              <div style={{ paddingBottom: '1rem', fontWeight: 500 }}>Add to:</div>
-              {
-                fetchBookmarkCollections.data?.map(_ => (
-                  <DropdownMenuOption key={`bookmark_collection_${_.id}`} onClick={() => onShareToCollection(_.id)}>
-                    {_.name}
-                  </DropdownMenuOption>
-                ))
-              }
-            </DropdownMenu>
-          )
-        }
-      </div>
-      <p>
-        {isLoading ? <i className="fa fa-spinner fa-spin" /> : <i className="fa fa-heart" />}
-      </p>
-    </PostStatElement>
+        <p>
+          {
+            isLoading && <i className="fa fa-spinner fa-spin" />
+          }
+          {!isLoading && (
+            <>
+              <Space direction="vertical">
+                <Space wrap>
+                  <Dropdown menu={{ items: menuItems }} placement="bottomLeft">
+                    <i className="fa fa-heart" />
+                  </Dropdown>
+                </Space>
+              </Space>
+            </>
+          )}
+        </p>
+      </PostStatElement>
+
+    </>
   )
 }
