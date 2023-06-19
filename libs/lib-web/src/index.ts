@@ -27,6 +27,7 @@ export * from './graphql/fragments/payment-method.fragment';
 export * from './graphql/fragments/post-comment.fragment';
 export * from './graphql/fragments/post-reaction.fragment';
 export * from './graphql/fragments/post.fragment';
+export * from './graphql/fragments/privacy.fragment';
 export * from './graphql/fragments/profile-subscription-group.fragment';
 export * from './graphql/fragments/profile.fragment';
 export * from './graphql/fragments/user.fragment';

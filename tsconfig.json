@@ -69,6 +69,9 @@
       "@simpd/svc-post-comment": [
         "services/svc-post-comment/src"
       ],
+      "@simpd/svc-post-privacy": [
+        "services/svc-post-privacy/src"
+      ],
       "@simpd/svc-post-reaction": [
         "services/svc-post-reaction/src"
       ],

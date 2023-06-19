@@ -2,13 +2,15 @@ import { Card } from '../card/Card';
 import { Button } from '../button/Button';
 import React, { SyntheticEvent, useState } from 'react';
 import { CreateNewPostCardProps } from './CreateNewPostCard.types';
-import { MediaType, PostFragment, usePostWithAlbumCreate, usePostWithImageCreate, usePostWithTextCreate, usePostWithVideoCreate } from '@simpd/lib-web';
+import { MediaType, PostFragment, useMediaUpload, usePostWithAlbumCreate, usePostWithImageCreate, usePostWithTextCreate, usePostWithVideoCreate } from '@simpd/lib-web';
 import { ProfileSubscriptionGroupDropdown } from '../profile-subscription-group-dropdown/ProfileSubscriptionGroupDropdown';
 import { UploadMediaDropdown } from '../upload-media-dropdown/UploadMediaDropdown';
 
 export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
-  const [files, setFiles] = useState<File[]>([]);
+  const mediaUpload = useMediaUpload();
+  const privacy
   const [content, setContent] = useState('');
+  const [files, setFiles] = useState<File[]>([]);
   const postWithTextCreate = usePostWithTextCreate();
   const postWithImageCreate = usePostWithImageCreate();
   const postWithVideoCreate = usePostWithVideoCreate();
@@ -41,32 +43,36 @@ export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
 
     let newPost: PostFragment | null = null;
 
-    // if (files.length === 0) {
-    //   newPost = await postWithTextCreate.execute({ content });
-    // }
+    const uploadedMedia = await Promise.all(files.map(file => mediaUpload.onUpload((file))));
 
-    // if (files.length > 1) {
-    //   const mediaIDs = media.map(_ => _.id);
-    //   newPost = await postWithAlbumCreate.execute({ content, mediaIDs: mediaIDs });
-    // }
+    if (uploadedMedia.length === 0) {
+      newPost = await postWithTextCreate.execute({ content });
+    }
 
-    // if (files.length === 1 && media[0].type === MediaType.Image) {
-    //   newPost = await postWithImageCreate.execute({ content, mediaID: media[0].id });
-    // }
+    if (uploadedMedia.length > 1) {
+      const mediaIDs = uploadedMedia.map(_ => _.id);
+      newPost = await postWithAlbumCreate.execute({ content, mediaIDs: mediaIDs });
+    }
 
-    // if (files.length === 1 && media[0].type === MediaType.Video) {
-    //   newPost = await postWithVideoCreate.execute({ content, mediaID: media[0].id });
-    // }
+    if (uploadedMedia.length === 1 && uploadedMedia[0].type === MediaType.Image) {
+      newPost = await postWithImageCreate.execute({ content, mediaID: uploadedMedia[0].id });
+    }
+
+    if (uploadedMedia.length === 1 && uploadedMedia[0].type === MediaType.Video) {
+      newPost = await postWithVideoCreate.execute({ content, mediaID: uploadedMedia[0].id });
+    }
 
     if (!newPost) {
       throw new Error('Failed to create post');
     }
 
+    if (subscriptionGroupIDs.length > 0) {
+      const newPrivacyPolicy = 
+    }
+
     onCreate(newPost);
     setContent('');
   }
-
-  console.log(subscriptionGroupIDs)
 
   return (
     <Card>
