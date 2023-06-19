@@ -16,6 +16,11 @@ export interface PrivacyFindOneInput {
   resourceID: number;
 }
 
+export interface PrivacyFindManyInput {
+  serviceKey: string;
+  resourceIDs: number[];
+}
+
 export interface PrivacyCreateOneInput {
   serviceKey: string;
   resourceID: number;

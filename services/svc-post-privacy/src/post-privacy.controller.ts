@@ -16,7 +16,10 @@ export class PostPrivacyController {
   async postPrivacyFindMany(
     filter: PostPrivacyFindManyInput
   ): Promise<PostPrivacyWire[]> {
-    const matchingPrivacys = await this.postPrivacyService.findMany(filter);
+    const matchingPrivacys = await this.postPrivacyService.findMany({
+
+      resourceIDs: filter.postIDs,
+    });
     return matchingPrivacys.map(postPrivacyWireToPostPrivacyWire);
   }
 }

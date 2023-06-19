@@ -7,7 +7,6 @@ export function postPrivacyWireToPostPrivacyWire(
   return {
     id: privacy.id,
     postID: privacy.resourceID,
-    profileID: privacy.profileID,
-    privacy: privacy.privacy,
+    profileID: privacy.resourceID,
   };
 }

@@ -8,7 +8,6 @@ import { UploadMediaDropdown } from '../upload-media-dropdown/UploadMediaDropdow
 
 export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
   const mediaUpload = useMediaUpload();
-  const privacy
   const [content, setContent] = useState('');
   const [files, setFiles] = useState<File[]>([]);
   const postWithTextCreate = usePostWithTextCreate();
@@ -67,7 +66,7 @@ export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
     }
 
     if (subscriptionGroupIDs.length > 0) {
-      const newPrivacyPolicy = 
+      alert('todo: add subscription group ids')
     }
 
     onCreate(newPost);

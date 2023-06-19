@@ -1,5 +1,4 @@
-import { PrivacyType } from '@simpd/lib-client';
-import { Field, ObjectType, registerEnumType } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class PostPrivacyModel {
@@ -11,11 +10,4 @@ export class PostPrivacyModel {
 
   @Field(() => Number, { nullable: true })
   profileID!: number;
-
-  @Field(() => PrivacyType, { nullable: true })
-  privacy!: PrivacyType;
 }
-
-registerEnumType(PrivacyType, {
-  name: 'PrivacyType',
-});
