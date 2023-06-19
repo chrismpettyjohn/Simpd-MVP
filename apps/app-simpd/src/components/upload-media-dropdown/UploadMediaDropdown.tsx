@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 import { Button, Dropdown, Space } from 'antd';
-import React, { ChangeEvent, useMemo, useRef, useState } from 'react';
+import React, { ChangeEvent, useMemo, useRef } from 'react';
 import { UploadMediaDropdownProps } from './UploadMediaDropdown.types';
 
 const UPLOAD_NEW_MEDIA_KEY = 'upload-new-media';

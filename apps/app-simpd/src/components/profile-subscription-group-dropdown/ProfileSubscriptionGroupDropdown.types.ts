@@ -1,4 +1,4 @@
 export interface ProfileSubscriptionGroupDropdownProps {
   subscriptionGroupIDs: number[];
-  onChange: (subscriptionGroupsIDs: number[]) => void;
+  onToggleSubscriptionGroupID(subscriptionGroupID: number): void;
 }
