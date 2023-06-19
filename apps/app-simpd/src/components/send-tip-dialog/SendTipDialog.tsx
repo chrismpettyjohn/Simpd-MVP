@@ -1,9 +1,8 @@
-import React, { SyntheticEvent, useState } from 'react';
-import { Dialog } from '../dialog/Dialog';
+import { toast } from 'react-toastify';
+import { Button, Input, Modal } from 'antd';
+import React, { SyntheticEvent, useMemo, useState } from 'react';
 import { SendTipDialogProps } from './SendTipDialog.types';
 import { VerifiedUserGuard, useTipCreate } from '@simpd/lib-web';
-import { toast } from 'react-toastify';
-import { Button } from '../button/Button';
 
 export function SendTipDialog({ profile }: SendTipDialogProps) {
   const [amount, setAmount] = useState(0);
@@ -43,36 +42,37 @@ export function SendTipDialog({ profile }: SendTipDialogProps) {
     }
   }
 
+  const modalFooter = useMemo(() => {
+    return (
+      <Button disabled={isLoading} onClick={onSendTip}>
+        {isLoading ? <i className="fa fa-spinner fa-spin" /> : <>Send Tip</>}
+      </Button>
+    )
+  }, [isLoading]);
+
   return (
     <VerifiedUserGuard redirect={false}>
       <i className="fa fa-dollar-sign" onClick={onToggle} />
       {
         isOpen && (
-          <Dialog header="Send Tip" onToggle={onToggle}>
+          <Modal title="Send tip" open onCancel={onToggle} footer={modalFooter}>
             <form onSubmit={onSendTip}>
               <div>
-                <label className="settings-profile-text04">Tip Amount</label>
-                <input
+                <label>Tip Amount</label>
+                <Input
                   type="number"
-                  className="settings-profile-textinput1 input"
                   value={amount}
                   onChange={e => setAmount(Number(e.target?.value ?? 0))}
                 />
                 <br />
-                <label className="settings-profile-text04">Note</label>
-                <textarea
-                  className="settings-profile-textarea textarea"
+                <label>Note</label>
+                <Input.TextArea
                   value={message}
                   onChange={e => setMessage(e.target?.value ?? '')}
                 />
               </div>
-              <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-end' }}>
-                <Button type="button" disabled={isLoading} onClick={onSendTip}>
-                  {isLoading ? <i className="fa fa-spinner fa-spin" /> : <>Send Tip</>}
-                </Button>
-              </div>
             </form>
-          </Dialog>
+          </Modal>
         )
       }
     </VerifiedUserGuard>
