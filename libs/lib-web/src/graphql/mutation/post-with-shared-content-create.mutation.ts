@@ -3,7 +3,7 @@ import { POST_WITH_SHARED_CONTENT_FRAGMENT, PostWithSharedContentFragment } from
 
 export interface PostWithSharedContentCreateInput {
   content: string;
-  tagIDs: number[];
+  tagIDs?: number[];
   postID: number;
 }
 

@@ -3,7 +3,7 @@ import { POST_WITH_TEXT_FRAGMENT, PostWithTextFragment } from "../fragments/post
 
 export interface PostWithTextCreateInput {
   content: string;
-  tagIDs: number[];
+  tagIDs?: number[];
 }
 
 export interface PostWithTextCreateMutationVariables {

@@ -5,14 +5,25 @@ import { CreateNewPostCardProps } from './CreateNewPostCard.types';
 import { UploadNewMedia } from './upload-new-media/UploadNewMedia';
 import { MediaFragment, MediaType, PostFragment, usePostWithAlbumCreate, usePostWithImageCreate, usePostWithTextCreate, usePostWithVideoCreate } from '@simpd/lib-web';
 import { ProfileSubscriptionGroupDropdown } from '../profile-subscription-group-dropdown/ProfileSubscriptionGroupDropdown';
+import { UploadMediaDropdown } from '../upload-media-dropdown/UploadMediaDropdown';
 
 export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
+  const [files, setFiles] = useState<File[]>([]);
   const [content, setContent] = useState('');
   const postWithTextCreate = usePostWithTextCreate();
   const postWithImageCreate = usePostWithImageCreate();
   const postWithVideoCreate = usePostWithVideoCreate();
   const postWithAlbumCreate = usePostWithAlbumCreate();
   const [media, setMedia] = useState<MediaFragment[]>([]);
+  const [subscriptionGroupIDs, setSubscriptionGroupIDS] = useState<number[]>([]);
+
+  const onAddFile = (file: File) => {
+    setFiles(_ => [file, ..._]);
+  }
+
+  const onRemoveFile = (file: File) => {
+    setFiles(_ => _.filter(_ => _.name !== file.name));
+  }
 
   const onAddMedia = (newMedia: MediaFragment) => {
     setMedia(_ => [newMedia, ..._])
@@ -56,6 +67,8 @@ export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
     setContent('');
   }
 
+  console.log(subscriptionGroupIDs)
+
   return (
     <Card>
       <form onSubmit={onCreateNewPost}>
@@ -68,8 +81,8 @@ export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
         />
         <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', marginTop: 16, }}>
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-            <UploadNewMedia onCreation={onAddMedia} />
-            <ProfileSubscriptionGroupDropdown subscriptionGroupIDs={[]} onChange={() => { }} />
+            <UploadMediaDropdown files={files} onAddFile={onAddFile} onRemoveFile={onRemoveFile} />
+            <ProfileSubscriptionGroupDropdown subscriptionGroupIDs={subscriptionGroupIDs} onChange={setSubscriptionGroupIDS} />
             {
               media.map(_ => (
                 <div key={`media_upload_${_.id}`} style={{ background: 'white', borderRadius: 4, color: 'black', cursor: 'pointer', padding: 4, width: 75, overflow: 'hidden' }} onClick={() => onRemoveMedia(_.id)}>
