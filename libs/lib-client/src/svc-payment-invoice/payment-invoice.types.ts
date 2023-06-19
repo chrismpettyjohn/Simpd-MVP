@@ -9,7 +9,8 @@ export interface PaymentInvoiceWire {
   id: number;
   userID: number;
   profileID: number;
-  amount: number;
+  amountInCents: number;
+  amountInDollarsAndCents: string;
   description: string;
 }
 
@@ -28,7 +29,7 @@ export interface PaymentInvoiceFindManyInput {
 export interface PaymentInvoiceCreateInput {
   userID: number;
   profileID: number;
-  amount: number;
+  amountInDollarsAndCents: string;
   description: string;
 }
 

@@ -9,7 +9,7 @@ export function tipEntityToTipWire(tipEntity: TipEntity): TipWire {
     receivingUserID: tipEntity.receivingUserID,
     receivingProfileID: tipEntity.receivingProfileID,
     paymentInvoiceID: tipEntity.paymentInvoiceID,
-    amount: tipEntity.amount,
+    amount: tipEntity.amountInCents,
     message: tipEntity.message,
   };
 }

@@ -14,7 +14,10 @@ export class PaymentInvoiceModel {
   profileID?: number;
 
   @Field(() => Number, {nullable: true})
-  amount?: number;
+  amountInCents?: number;
+
+  @Field(() => String, {nullable: true})
+  amountInDollarsAndCents?: string;
 
   @Field(() => String, {nullable: true})
   description?: string;

@@ -1,7 +1,12 @@
 import {In} from 'typeorm';
 import {PaymentInvoiceModel} from './payment-invoice.model';
 import {PaymentInvoiceRepository} from './payment-invoice.repository';
-import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
+import {
+  GetSession,
+  HasSession,
+  SessionContents,
+  convertDollarsAndCentsToCents,
+} from '@simpd/lib-api';
 import {
   PaymentInvoiceCreateInput,
   PaymentInvoiceFindManyInput,
@@ -59,7 +64,9 @@ export class PaymentInvoiceResolver {
     const newPaymentInvoice = await this.paymentInvoiceRepo.create({
       userID: session.userID,
       profileID: session.profileID,
-      amount: input.amount,
+      amountInCents: convertDollarsAndCentsToCents(
+        input.amountInDollarsAndCents
+      ),
       description: input.description,
     });
     return newPaymentInvoice;

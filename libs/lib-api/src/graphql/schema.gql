@@ -2,39 +2,38 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type SubscriptionGroupModel {
-  id: Float!
-}
-
-type ProfileSubscriptionGroupModel {
+type PaymentInvoiceModel {
   id: Float
+  userID: Float
   profileID: Float
-  subscriptionGroupID: Float
-  subscriptionGroup: SubscriptionGroupModel!
+  amountInCents: Float
+  amountInDollarsAndCents: String
+  description: String
 }
 
 type Query {
-  profileSubscriptionGroup(filter: ProfileSubscriptionGroupFilterByOneInput!): ProfileSubscriptionGroupModel!
-  profileSubscriptionGroups(filter: ProfileSubscriptionGroupFilterByManyInput): [ProfileSubscriptionGroupModel!]!
+  paymentInvoice(filter: PaymentInvoiceFindOneInput!): PaymentInvoiceModel!
+  paymentInvoices(filter: PaymentInvoiceFindManyInput): [PaymentInvoiceModel!]!
 }
 
-input ProfileSubscriptionGroupFilterByOneInput {
+input PaymentInvoiceFindOneInput {
   id: Float
+  userID: Float
   profileID: Float
 }
 
-input ProfileSubscriptionGroupFilterByManyInput {
+input PaymentInvoiceFindManyInput {
   ids: [Float!]
+  userIDs: [Float!]
   profileIDs: [Float!]
 }
 
 type Mutation {
-  profileSubscriptionGroupCreate(input: ProfileSubscriptionGroupCreateInput!): ProfileSubscriptionGroupModel!
-  profileSubscriptionGroupDelete(filter: ProfileSubscriptionGroupFilterByOneInput!): Boolean!
+  paymentInvoiceCreate(input: PaymentInvoiceCreateInput!): PaymentInvoiceModel!
+  paymentInvoiceDelete(filter: PaymentInvoiceFindOneInput!): Boolean!
 }
 
-input ProfileSubscriptionGroupCreateInput {
-  name: String!
+input PaymentInvoiceCreateInput {
+  amountInDollarsAndCents: String!
   description: String!
-  monthlyCostInDollarsAndCents: String!
 }

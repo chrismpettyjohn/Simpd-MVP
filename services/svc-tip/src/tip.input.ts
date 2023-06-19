@@ -47,8 +47,8 @@ export class TipCreateInput {
   @Field(() => Number)
   receivingProfileID!: number;
 
-  @Field(() => Number)
-  amount!: number;
+  @Field(() => String)
+  amountInDollarsAndCents!: string;
 
   @Field(() => String)
   message!: string;

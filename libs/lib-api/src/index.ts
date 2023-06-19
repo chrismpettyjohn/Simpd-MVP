@@ -1,4 +1,5 @@
 export * from './common/common.module';
+export * from './common/currency.helpers';
 export * from './common/date.helpers';
 export * from './common/hash.service';
 export * from './common/environment.const';

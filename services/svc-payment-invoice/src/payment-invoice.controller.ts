@@ -1,6 +1,7 @@
 import {In} from 'typeorm';
 import {Controller} from '@nestjs/common';
 import {MessagePattern} from '@nestjs/microservices';
+import {convertDollarsAndCentsToCents} from '@simpd/lib-api';
 import {PaymentInvoiceRepository} from './payment-invoice.repository';
 import {paymentInvoiceEntityToPaymentInvoiceWire} from './pament-invoice.wire';
 import {
@@ -55,7 +56,12 @@ export class PaymentInvoiceController {
   async paymentInvoiceCreateOne(
     input: PaymentInvoiceCreateInput
   ): Promise<PaymentInvoiceWire> {
-    const newPaymentInvoice = await this.paymentInvoiceRepo.create(input);
+    const newPaymentInvoice = await this.paymentInvoiceRepo.create({
+      ...input,
+      amountInCents: convertDollarsAndCentsToCents(
+        input.amountInDollarsAndCents
+      ),
+    });
     const paymentInvoiceWire =
       paymentInvoiceEntityToPaymentInvoiceWire(newPaymentInvoice);
     await this.paymentInvoiceClientService.invoiceCreated(paymentInvoiceWire);

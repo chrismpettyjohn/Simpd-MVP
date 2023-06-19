@@ -21,8 +21,8 @@ export class PaymentInvoiceEntity {
   @Index()
   profileID!: number;
 
-  @Column({type: 'numeric'})
-  amount!: number;
+  @Column({name: 'amount_in_cents', type: 'bigint'})
+  amountInCents!: number;
 
   @Column({type: 'text'})
   description!: string;

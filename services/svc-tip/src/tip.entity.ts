@@ -32,9 +32,6 @@ export class TipEntity {
   @Column({name: 'payment_invoice_id'})
   paymentInvoiceID!: number;
 
-  @Column({type: 'numeric'})
-  amount!: number;
-
   @Column({type: 'text'})
   message!: string;
 

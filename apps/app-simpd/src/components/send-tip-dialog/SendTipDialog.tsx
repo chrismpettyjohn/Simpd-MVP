@@ -5,7 +5,7 @@ import { SendTipDialogProps } from './SendTipDialog.types';
 import { VerifiedUserGuard, useTipCreate } from '@simpd/lib-web';
 
 export function SendTipDialog({ profile }: SendTipDialogProps) {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('0.00');
   const [message, setMessage] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const sendTip = useTipCreate();
@@ -30,7 +30,7 @@ export function SendTipDialog({ profile }: SendTipDialogProps) {
       }
       await sendTip.execute({
         input: {
-          amount,
+          amountInDollarsAndCents: amount,
           message,
           receivingProfileID: profile.id,
         }
@@ -62,7 +62,7 @@ export function SendTipDialog({ profile }: SendTipDialogProps) {
                 <Input
                   type="number"
                   value={amount}
-                  onChange={e => setAmount(Number(e.target?.value ?? 0))}
+                  onChange={e => setAmount(Number(e.target.value).toFixed(2))}
                 />
                 <br />
                 <label>Note</label>

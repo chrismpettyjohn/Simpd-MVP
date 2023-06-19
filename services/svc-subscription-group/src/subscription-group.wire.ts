@@ -1,6 +1,6 @@
 import {SubscriptionGroupWire} from '@simpd/lib-client';
-import {convertCentsToDollarsAndCents} from './helpers';
 import {SubscriptionGroupEntity} from './subscription-group.entity';
+import {convertCentsToDollarsAndCents} from '@simpd/lib-api';
 
 export function subscriptionGroupEntityToSubscriptionGroupWire(
   subscriptionGroupEntity: SubscriptionGroupEntity

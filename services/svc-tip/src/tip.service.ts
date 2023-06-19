@@ -27,7 +27,7 @@ export class TipService {
     const newPaymentInvoice = await this.paymentInvoiceClientService.createOne({
       userID: sendingProfile.userID,
       profileID: sendingProfile.id,
-      amount: input.amount,
+      amountInDollarsAndCents: input.amountInDollarsAndCents,
       description: `Tip to profile ${receivingProfile.id} for ${input.message}`,
     });
 
@@ -37,7 +37,6 @@ export class TipService {
       receivingUserID: receivingProfile.userID,
       receivingProfileID: receivingProfile.id,
       paymentInvoiceID: newPaymentInvoice.id,
-      amount: input.amount,
       message: input.message,
     });
   }

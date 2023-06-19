@@ -25,8 +25,8 @@ export class PaymentInvoiceFindManyInput {
 
 @InputType()
 export class PaymentInvoiceCreateInput {
-  @Field(() => Number)
-  amount!: number;
+  @Field(() => String)
+  amountInDollarsAndCents!: string;
 
   @Field(() => String)
   description!: string;

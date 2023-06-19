@@ -9,7 +9,7 @@ import {
   SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_CREATE_ONE,
   SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE,
 } from '@simpd/lib-client';
-import {convertDollarsAndCentsToCents} from './helpers';
+import {convertDollarsAndCentsToCents} from '@simpd/lib-api';
 
 @Controller()
 export class SubscriptionGroupController {

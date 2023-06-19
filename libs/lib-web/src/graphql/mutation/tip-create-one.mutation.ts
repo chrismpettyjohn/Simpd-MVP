@@ -3,7 +3,7 @@ import { TIP_FRAGMENT, TipFragment } from "../fragments/tip.fragment";
 
 export interface TipCreateInput {
   receivingProfileID: number;
-  amount: number;
+  amountInDollarsAndCents: string;
   message: string;
 }
 
