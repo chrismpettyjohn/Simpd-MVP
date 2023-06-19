@@ -2,38 +2,39 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type PaymentInvoiceModel {
+type MediaDetailsModel {
+  sizeInBytes: Float
+  originalFileName: String
+}
+
+type MediaModel {
   id: Float
-  userID: Float
+  type: MediaType
   profileID: Float
-  amountInCents: Float
-  amountInDollarsAndCents: String
-  description: String
+  url: String
+  details: MediaDetailsModel
+}
+
+enum MediaType {
+  Image
+  Video
+  Other
 }
 
 type Query {
-  paymentInvoice(filter: PaymentInvoiceFindOneInput!): PaymentInvoiceModel!
-  paymentInvoices(filter: PaymentInvoiceFindManyInput): [PaymentInvoiceModel!]!
+  media(filter: MediaFilterByOneInput!): MediaModel!
+  medias(filter: MediaFilterByManyInput): [MediaModel!]!
 }
 
-input PaymentInvoiceFindOneInput {
+input MediaFilterByOneInput {
   id: Float
-  userID: Float
-  profileID: Float
 }
 
-input PaymentInvoiceFindManyInput {
+input MediaFilterByManyInput {
   ids: [Float!]
-  userIDs: [Float!]
   profileIDs: [Float!]
 }
 
 type Mutation {
-  paymentInvoiceCreate(input: PaymentInvoiceCreateInput!): PaymentInvoiceModel!
-  paymentInvoiceDelete(filter: PaymentInvoiceFindOneInput!): Boolean!
-}
-
-input PaymentInvoiceCreateInput {
-  amountInDollarsAndCents: String!
-  description: String!
+  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
 }

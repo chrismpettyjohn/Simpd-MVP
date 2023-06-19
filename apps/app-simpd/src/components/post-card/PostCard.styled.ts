@@ -33,6 +33,7 @@ export const PostCardHeader = styled.div`
 export const PostCardContent = styled.div`
   width: 100%;
   padding: ${({ theme }) => theme.space.twoUnits};
+  overflow: hidden;
 `
 
 export const PostCardImage = styled.img`
