@@ -28,3 +28,4 @@ export type PrivacyUpdateOneInput = Omit<
   Partial<PrivacyCreateOneInput>,
   'resourceID'
 >;
+

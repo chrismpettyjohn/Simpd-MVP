@@ -3,7 +3,7 @@ import { POST_WITH_ALBUM_FRAGMENT, PostWithAlbumFragment } from "../fragments/po
 
 export interface PostWithAlbumCreateInput {
   content: string;
-  tagIDs: number[];
+  tagIDs?: number[];
   mediaIDs: number[];
 }
 

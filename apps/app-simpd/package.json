@@ -21,7 +21,8 @@
     "styled-components": "6.0.0-rc.1",
     "@stripe/stripe-js": "1.54.0",
     "@stripe/react-stripe-js": "2.1.0",
-    "@simpd/lib-web": "workspace:*"
+    "@simpd/lib-web": "workspace:*",
+    "antd": "5.6.1"
   },
   "devDependencies": {
     "@types/node": "18.15.11",

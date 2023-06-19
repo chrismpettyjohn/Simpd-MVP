@@ -4,6 +4,7 @@ import React, { SyntheticEvent, useState } from 'react';
 import { CreateNewPostCardProps } from './CreateNewPostCard.types';
 import { UploadNewMedia } from './upload-new-media/UploadNewMedia';
 import { MediaFragment, MediaType, PostFragment, usePostWithAlbumCreate, usePostWithImageCreate, usePostWithTextCreate, usePostWithVideoCreate } from '@simpd/lib-web';
+import { ProfileSubscriptionGroupDropdown } from '../profile-subscription-group-dropdown/ProfileSubscriptionGroupDropdown';
 
 export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
   const [content, setContent] = useState('');
@@ -68,6 +69,7 @@ export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
         <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', marginTop: 16, }}>
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             <UploadNewMedia onCreation={onAddMedia} />
+            <ProfileSubscriptionGroupDropdown subscriptionGroupIDs={[]} onChange={() => { }} />
             {
               media.map(_ => (
                 <div key={`media_upload_${_.id}`} style={{ background: 'white', borderRadius: 4, color: 'black', cursor: 'pointer', padding: 4, width: 75, overflow: 'hidden' }} onClick={() => onRemoveMedia(_.id)}>

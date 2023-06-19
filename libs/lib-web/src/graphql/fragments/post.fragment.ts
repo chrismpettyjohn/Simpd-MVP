@@ -15,7 +15,7 @@ interface PostBaseFragment {
   profile: ProfileFragment;
   type: PostType;
   content: string;
-  tagIDs: number[];
+  tagIDs?: number[];
 }
 
 export const POST_WITH_TEXT_FRAGMENT = gql`
