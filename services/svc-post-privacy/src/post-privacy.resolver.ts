@@ -62,9 +62,7 @@ export class PostPrivacyResolver {
     @Args('input') input: PostPrivacyCreateInput
   ): Promise<PostPrivacyModel> {
     const newPrivacy = await this.postPrivacyService.createOne({
-      name: input.name,
       resourceID: input.postID,
-      description: input.description,
       policy: {
         allowedSubscriptionGroupIDs: input.policy.allowedSubscriptionGroupIDs,
       },

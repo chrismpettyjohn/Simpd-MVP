@@ -6,8 +6,6 @@ export interface PrivacyWire {
   id: number;
   serviceKey: string;
   resourceID: number;
-  name: string;
-  description: string;
   policy: PrivacyPolicy;
 }
 
@@ -24,8 +22,6 @@ export interface PrivacyFindManyInput {
 export interface PrivacyCreateOneInput {
   serviceKey: string;
   resourceID: number;
-  name: string;
-  description: string;
   policy: PrivacyPolicy;
 }
 

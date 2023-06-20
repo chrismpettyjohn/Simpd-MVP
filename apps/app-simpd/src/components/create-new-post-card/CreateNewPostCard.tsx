@@ -2,14 +2,15 @@ import { Card } from '../card/Card';
 import { Button } from '../button/Button';
 import React, { SyntheticEvent, useState } from 'react';
 import { CreateNewPostCardProps } from './CreateNewPostCard.types';
-import { MediaType, PostFragment, useMediaUpload, usePostWithAlbumCreate, usePostWithImageCreate, usePostWithTextCreate, usePostWithVideoCreate } from '@simpd/lib-web';
-import { ProfileSubscriptionGroupDropdown } from '../profile-subscription-group-dropdown/ProfileSubscriptionGroupDropdown';
 import { UploadMediaDropdown } from '../upload-media-dropdown/UploadMediaDropdown';
+import { ProfileSubscriptionGroupDropdown } from '../profile-subscription-group-dropdown/ProfileSubscriptionGroupDropdown';
+import { MediaType, PostFragment, useMediaUpload, usePostPrivacyCreate, usePostWithAlbumCreate, usePostWithImageCreate, usePostWithTextCreate, usePostWithVideoCreate } from '@simpd/lib-web';
 
 export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
   const mediaUpload = useMediaUpload();
   const [content, setContent] = useState('');
   const [files, setFiles] = useState<File[]>([]);
+  const postPrivacyCreate = usePostPrivacyCreate();
   const postWithTextCreate = usePostWithTextCreate();
   const postWithImageCreate = usePostWithImageCreate();
   const postWithVideoCreate = usePostWithVideoCreate();
@@ -66,7 +67,12 @@ export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
     }
 
     if (subscriptionGroupIDs.length > 0) {
-      alert('todo: add subscription group ids')
+      await postPrivacyCreate.execute({
+        postID: newPost.id,
+        policy: {
+          allowedSubscriptionGroupIDs: subscriptionGroupIDs,
+        }
+      });
     }
 
     onCreate(newPost);

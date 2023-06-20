@@ -34,11 +34,10 @@ export class PrivacyController {
 
   @MessagePattern(SVC_PRIVACY_INTERNAL_EVENT_CREATE_ONE)
   async privacyCreateOne(input: PrivacyCreateOneInput): Promise<PrivacyWire> {
+    console.log(input);
     const newPrivacy = await this.privacyRepo.create({
       serviceKey: input.serviceKey,
       resourceID: input.resourceID,
-      name: input.name,
-      description: input.description,
       policy: input.policy,
     });
     return privacyEntityToPrivacyWire(newPrivacy);
@@ -56,8 +55,6 @@ export class PrivacyController {
       },
       {
         resourceID: input.resourceID,
-        name: input.name,
-        description: input.description,
         policy: input.policy,
       }
     );

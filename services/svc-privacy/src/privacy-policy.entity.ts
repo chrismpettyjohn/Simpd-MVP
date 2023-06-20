@@ -18,15 +18,9 @@ export class PrivacyPolicyEntity {
   @Index()
   serviceKey!: string;
 
-  @Column({name: 'resource_id'})
+  @Column({name: 'resource_id', type: 'int'})
   @Index()
   resourceID!: number;
-
-  @Column()
-  name!: string;
-
-  @Column({type: 'text'})
-  description!: string;
 
   @Column({type: 'json'})
   policy!: PrivacyPolicy;

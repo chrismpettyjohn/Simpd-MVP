@@ -4,8 +4,6 @@ import { POST_PRIVACY_FRAGMENT, PostPrivacyFragment } from "../fragments/post-pr
 
 export interface PostPrivacyCreateInput {
   postID: number;
-  name: string;
-  description: string;
   policy: PrivacyPolicy
 }
 

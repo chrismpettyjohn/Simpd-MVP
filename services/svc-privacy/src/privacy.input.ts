@@ -33,12 +33,6 @@ export class PrivacyCreateInput {
   @Field(() => Number)
   resourceID!: number;
 
-  @Field(() => String)
-  name!: string;
-
-  @Field(() => String)
-  description!: string;
-
   @Field(() => PrivacyPolicyInput)
   policy!: PrivacyPolicyInput;
 }

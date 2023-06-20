@@ -6,12 +6,6 @@ export class PostPrivacyCreateInput {
   @Field(() => Number)
   postID!: number;
 
-  @Field(() => String)
-  name!: string;
-
-  @Field(() => String)
-  description!: string;
-
   @Field(() => PrivacyPolicyInput)
   policy!: PrivacyPolicyInput;
 }

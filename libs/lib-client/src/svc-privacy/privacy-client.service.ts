@@ -1,7 +1,6 @@
 import {lastValueFrom} from 'rxjs';
 import {Inject, Injectable} from '@nestjs/common';
 import {ClientProxy} from '@nestjs/microservices';
-import {SVC_POST_PRIVACY_INTERNAL_EVENT_FIND_MANY} from '../svc-post-privacy/post-privacy.const';
 import {
   PrivacyCreateOneInput,
   PrivacyFindManyInput,
@@ -28,18 +27,10 @@ export class PrivacyClientService {
     return await lastValueFrom(matchingPrivacy$);
   }
 
-  async findMany(input: PrivacyFindManyInput): Promise<PrivacyWire[]> {
-    const matchingPrivacies$ = this.client.send(
-      SVC_POST_PRIVACY_INTERNAL_EVENT_FIND_MANY,
-      {input}
-    );
-    return await lastValueFrom(matchingPrivacies$);
-  }
-
   async createOne(input: PrivacyCreateOneInput): Promise<PrivacyWire> {
     const createdPrivacy$ = this.client.send(
       SVC_PRIVACY_INTERNAL_EVENT_CREATE_ONE,
-      {input}
+      input
     );
     return await lastValueFrom(createdPrivacy$);
   }

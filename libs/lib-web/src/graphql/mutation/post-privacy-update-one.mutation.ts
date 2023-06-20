@@ -1,17 +1,11 @@
 import gql from "graphql-tag";
-import { PrivacyPolicy } from "../fragments/privacy.fragment";
+import { PostPrivacyCreateInput } from "./post-privacy-create-one.mutation";
 import { PostPrivacyFetchOneInput } from "../queries/post-privacy-fetch-one.query";
 import { POST_PRIVACY_FRAGMENT, PostPrivacyFragment } from "../fragments/post-privacy.fragment";
 
-export interface PostPrivacyUpdateInput {
-  postID: number;
-  name: string;
-  description: string;
-  policy: PrivacyPolicy
-}
 
 export interface PostPrivacyUpdateMutationVariables {
-  input: PostPrivacyUpdateInput;
+  input: Partial<PostPrivacyCreateInput>;
   filter: PostPrivacyFetchOneInput;
 }
 

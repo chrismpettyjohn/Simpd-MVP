@@ -8,8 +8,6 @@ export function privacyEntityToPrivacyWire(
     id: privacyEntity.id!,
     serviceKey: privacyEntity.serviceKey,
     resourceID: privacyEntity.resourceID,
-    name: privacyEntity.name,
-    description: privacyEntity.description,
     policy: privacyEntity.policy,
   };
 }
