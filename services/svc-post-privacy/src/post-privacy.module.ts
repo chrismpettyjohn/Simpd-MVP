@@ -1,8 +1,7 @@
-import { Module } from '@nestjs/common';
-import { PostPrivacyService } from './post-privacy.service';
-import { PostPrivacyResolver } from './post-privacy.resolver';
-import { PostPrivacyController } from './post-privacy.controller';
-import { GraphQLModule, CommonModule, SessionModule } from '@simpd/lib-api';
+import {Module} from '@nestjs/common';
+import {PostPrivacyService} from './post-privacy.service';
+import {PostPrivacyResolver} from './post-privacy.resolver';
+import {GraphQLModule, CommonModule, SessionModule} from '@simpd/lib-api';
 import {
   BookmarkClientModule,
   MediaClientModule,
@@ -20,7 +19,6 @@ import {
     BookmarkClientModule,
     GraphQLModule.forRoot(),
   ],
-  providers: [PostPrivacyService, PostPrivacyResolver],
-  controllers: [PostPrivacyController],
+  providers: [PostPrivacyResolver, PostPrivacyService],
 })
-export class PostPrivacyModule { }
+export class PostPrivacyModule {}

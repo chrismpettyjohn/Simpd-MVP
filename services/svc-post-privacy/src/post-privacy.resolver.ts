@@ -1,43 +1,58 @@
-import { SessionWire } from '@simpd/lib-client';
-import { GetSession, HasSession } from '@simpd/lib-api';
-import { PostPrivacyModel } from './post-privacy.model';
-import { PostPrivacyService } from './post-privacy.service';
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { postPrivacyWireToPostPrivacyWire } from './post-privacy.wire';
+import {GetSession, HasSession} from '@simpd/lib-api';
+import {PostPrivacyModel} from './post-privacy.model';
+import {PostPrivacyService} from './post-privacy.service';
+import {PrivacyModel, SessionWire} from '@simpd/lib-client';
+import {privacyWireToPostPrivacyWire} from './post-privacy.wire';
+import {
+  Args,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
 import {
   PostPrivacyFilterManyInput,
   PostPrivacyFilterOneInput,
   PostPrivacyCreateInput,
 } from './post-privacy.input';
 
+// TODO: User owns post guard
 @Resolver(() => PostPrivacyModel)
 export class PostPrivacyResolver {
-  constructor(private readonly postPrivacyService: PostPrivacyService) { }
+  constructor(private readonly postPrivacyService: PostPrivacyService) {}
+
+  @ResolveField()
+  privacy(@Parent() postPrivacy: PostPrivacyModel): PrivacyModel {
+    return {
+      id: postPrivacy.id,
+    };
+  }
 
   @Query(() => PostPrivacyModel)
   @HasSession()
   async postPrivacy(
-    @Args('filter', { type: () => PostPrivacyFilterOneInput })
+    @Args('filter', {type: () => PostPrivacyFilterOneInput})
     filter: PostPrivacyFilterOneInput
   ): Promise<PostPrivacyModel> {
     const matchingPrivacy = await this.postPrivacyService.findOne({
-      resourceID: filter.postID,
-      profileID: filter.profileID,
+      resourceID: filter.postID ?? -1,
     });
-    return postPrivacyWireToPostPrivacyWire(matchingPrivacy);
+
+    return privacyWireToPostPrivacyWire(matchingPrivacy);
   }
 
   @Query(() => [PostPrivacyModel])
   @HasSession()
   async postPrivacys(
-    @Args('filter', { type: () => PostPrivacyFilterManyInput })
+    @Args('filter', {type: () => PostPrivacyFilterManyInput})
     filter: PostPrivacyFilterManyInput
   ): Promise<PostPrivacyModel[]> {
-    const matchingPrivacys = await this.postPrivacyService.findMany({
-      resourceIDs: filter.postIDs,
-      profileIDs: filter.profileIDs,
+    const matchingPrivacies = await this.postPrivacyService.findMany({
+      resourceIDs: filter.postIDs ?? [-1],
     });
-    return matchingPrivacys.map(postPrivacyWireToPostPrivacyWire);
+
+    return matchingPrivacies.map(privacyWireToPostPrivacyWire);
   }
 
   @Mutation(() => PostPrivacyModel)
@@ -47,23 +62,25 @@ export class PostPrivacyResolver {
     @Args('input') input: PostPrivacyCreateInput
   ): Promise<PostPrivacyModel> {
     const newPrivacy = await this.postPrivacyService.createOne({
-      profileID: session.profileID,
+      name: input.name,
       resourceID: input.postID,
-      privacy: input.privacy,
+      description: input.description,
+      policy: {
+        allowedSubscriptionGroupIDs: input.policy.allowedSubscriptionGroupIDs,
+      },
     });
-    return postPrivacyWireToPostPrivacyWire(newPrivacy);
+    return privacyWireToPostPrivacyWire(newPrivacy);
   }
 
   @Mutation(() => Boolean)
   @HasSession()
   async postPrivacyDelete(
     @GetSession() session: SessionWire,
-    @Args('filter', { type: () => PostPrivacyFilterOneInput })
+    @Args('filter', {type: () => PostPrivacyFilterOneInput})
     filter: PostPrivacyFilterOneInput
   ) {
     await this.postPrivacyService.deleteOne({
-      resourceID: filter.postID,
-      profileID: session.profileID,
+      resourceID: filter.postID ?? -1,
     });
     return true;
   }

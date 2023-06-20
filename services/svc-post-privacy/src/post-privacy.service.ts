@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { SVC_POST_NAME } from 'libs/lib-client/src/svc-post/post.const';
+import {Injectable} from '@nestjs/common';
+import {SVC_POST_NAME} from 'libs/lib-client/src/svc-post/post.const';
 import {
   BasePrivacyClientService,
   PrivacyClientService,

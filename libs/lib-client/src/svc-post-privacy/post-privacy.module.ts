@@ -1,8 +1,7 @@
-import { Module } from '@nestjs/common';
-import { NATS_ADDRESS } from '../constants';
-import { SVC_POST_PRIVACY_NAME } from './post-privacy.const';
-import { ClientsModule, Transport } from '@nestjs/microservices';
-import { PostPrivacyClientService } from './post-privacy-client.service';
+import {Module} from '@nestjs/common';
+import {NATS_ADDRESS} from '../constants';
+import {SVC_POST_PRIVACY_NAME} from './post-privacy.const';
+import {ClientsModule, Transport} from '@nestjs/microservices';
 
 @Module({
   imports: [
@@ -16,7 +15,5 @@ import { PostPrivacyClientService } from './post-privacy-client.service';
       },
     ]),
   ],
-  providers: [PostPrivacyClientService],
-  exports: [PostPrivacyClientService],
 })
-export class PostPrivacyClientModule { }
+export class PostPrivacyClientModule {}

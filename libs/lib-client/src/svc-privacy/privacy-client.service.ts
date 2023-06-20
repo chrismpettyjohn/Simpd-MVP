@@ -1,7 +1,7 @@
-import { lastValueFrom } from 'rxjs';
-import { Inject, Injectable } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
-import { SVC_POST_PRIVACY_INTERNAL_EVENT_FIND_MANY } from '../svc-post-privacy/post-privacy.const';
+import {lastValueFrom} from 'rxjs';
+import {Inject, Injectable} from '@nestjs/common';
+import {ClientProxy} from '@nestjs/microservices';
+import {SVC_POST_PRIVACY_INTERNAL_EVENT_FIND_MANY} from '../svc-post-privacy/post-privacy.const';
 import {
   PrivacyCreateOneInput,
   PrivacyFindManyInput,
@@ -18,12 +18,12 @@ import {
 
 @Injectable()
 export class PrivacyClientService {
-  constructor(@Inject(SVC_PRIVACY_NAME) private client: ClientProxy) { }
+  constructor(@Inject(SVC_PRIVACY_NAME) private client: ClientProxy) {}
 
   async findOne(input: PrivacyFindOneInput): Promise<PrivacyWire | null> {
     const matchingPrivacy$ = this.client.send(
       SVC_PRIVACY_INTERNAL_EVENT_FIND_ONE,
-      { input }
+      {input}
     );
     return await lastValueFrom(matchingPrivacy$);
   }
@@ -31,7 +31,7 @@ export class PrivacyClientService {
   async findMany(input: PrivacyFindManyInput): Promise<PrivacyWire[]> {
     const matchingPrivacies$ = this.client.send(
       SVC_POST_PRIVACY_INTERNAL_EVENT_FIND_MANY,
-      { input }
+      {input}
     );
     return await lastValueFrom(matchingPrivacies$);
   }
@@ -39,7 +39,7 @@ export class PrivacyClientService {
   async createOne(input: PrivacyCreateOneInput): Promise<PrivacyWire> {
     const createdPrivacy$ = this.client.send(
       SVC_PRIVACY_INTERNAL_EVENT_CREATE_ONE,
-      { input }
+      {input}
     );
     return await lastValueFrom(createdPrivacy$);
   }
@@ -50,7 +50,7 @@ export class PrivacyClientService {
   ): Promise<boolean> {
     const createdPrivacy$ = this.client.send(
       SVC_PRIVACY_INTERNAL_EVENT_UPDATE_ONE,
-      { filter, input }
+      {filter, input}
     );
     return await lastValueFrom(createdPrivacy$);
   }
@@ -58,7 +58,7 @@ export class PrivacyClientService {
   async deleteOne(filter: PrivacyFindOneInput): Promise<boolean> {
     const createdPrivacy$ = this.client.send(
       SVC_PRIVACY_INTERNAL_EVENT_DELETE_ONE,
-      { filter }
+      {filter}
     );
     return await lastValueFrom(createdPrivacy$);
   }
