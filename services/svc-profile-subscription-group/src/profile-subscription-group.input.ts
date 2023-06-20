@@ -2,19 +2,13 @@ import {Field, InputType} from '@nestjs/graphql';
 
 @InputType()
 export class ProfileSubscriptionGroupFilterByManyInput {
-  @Field(() => [Number], {nullable: true})
-  ids?: number[];
-
-  @Field(() => [Number], {nullable: true})
+  @Field(() => [Number])
   profileIDs!: number[];
 }
 
 @InputType()
 export class ProfileSubscriptionGroupFilterByOneInput {
-  @Field(() => Number, {nullable: true})
-  id?: number;
-
-  @Field(() => Number, {nullable: true})
+  @Field(() => Number)
   profileID?: number;
 }
 

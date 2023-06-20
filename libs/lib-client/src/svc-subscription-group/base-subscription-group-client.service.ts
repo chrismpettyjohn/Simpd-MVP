@@ -1,12 +1,16 @@
-import { SubscriptionGroupClientService } from "./subscription-group-client.service";
-import { SubscriptionGroupCreateOneInput, SubscriptionGroupFindManyInput, SubscriptionGroupFindOneInput, SubscriptionGroupWire } from "./subscription-group-client.types";
-
+import {SubscriptionGroupClientService} from './subscription-group-client.service';
+import {
+  SubscriptionGroupCreateOneInput,
+  SubscriptionGroupFindManyInput,
+  SubscriptionGroupFindOneInput,
+  SubscriptionGroupWire,
+} from './subscription-group-client.types';
 
 export class BaseSubscriptionGroupClientService {
   constructor(
     private readonly serviceKey: string,
     private readonly subscriptionGroupClientService: SubscriptionGroupClientService
-  ) { }
+  ) {}
 
   async createOne(
     input: Omit<SubscriptionGroupCreateOneInput, 'serviceKey'>

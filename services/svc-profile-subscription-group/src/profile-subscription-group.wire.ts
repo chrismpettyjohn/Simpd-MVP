@@ -1,12 +1,18 @@
-import {ProfileSubscriptionGroupWire} from '@simpd/lib-client';
-import {ProfileSubscriptionGroupEntity} from './profile-subscription-group.entity';
+import {
+  ProfileSubscriptionGroupWire,
+  SubscriptionGroupWire,
+} from '@simpd/lib-client';
 
-export function subscriptionGroupEntityToProfileSubscriptionGroupWire(
-  subscriptionGroupEntity: ProfileSubscriptionGroupEntity
+export function subscriptionGroupWireToProfileSubscriptionGroupWire(
+  subscriptionGroupWire: SubscriptionGroupWire
 ): ProfileSubscriptionGroupWire {
   return {
-    id: subscriptionGroupEntity.id!,
-    profileID: subscriptionGroupEntity.profileID,
-    subscriptionGroupID: subscriptionGroupEntity.subscriptionGroupID,
+    id: subscriptionGroupWire.id!,
+    profileID: subscriptionGroupWire.resourceID,
+    name: subscriptionGroupWire.name,
+    description: subscriptionGroupWire.description,
+    monthlyCostInCents: subscriptionGroupWire.monthlyCostInCents,
+    monthlyCostInDollarsAndCents:
+      subscriptionGroupWire.monthlyCostInDollarsAndCents,
   };
 }

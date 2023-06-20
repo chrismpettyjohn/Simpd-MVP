@@ -4,11 +4,8 @@ import {Directive, Field, ObjectType} from '@nestjs/graphql';
 @Directive('@key(fields: "id")')
 export class ProfileSubscriptionGroupModel {
   @Field(() => Number, {nullable: true})
-  id?: number;
+  id!: number;
 
   @Field(() => Number, {nullable: true})
-  profileID?: number;
-
-  @Field(() => Number, {nullable: true})
-  subscriptionGroupID?: number;
+  profileID!: number;
 }

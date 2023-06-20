@@ -1,22 +1,24 @@
 export interface ProfileSubscriptionGroupWire {
   id: number;
   profileID: number;
-  subscriptionGroupID: number;
+  name: string;
+  description: string;
+  monthlyCostInCents: number;
+  monthlyCostInDollarsAndCents: string;
 }
 
 export interface ProfileSubscriptionGroupCreateOneInput {
   profileID: number;
-  subscriptionGroupID: number;
+  name: string;
+  description: string;
+  monthlyCostInCents: number;
+  monthlyCostInDollarsAndCents: string;
 }
 
 export interface ProfileSubscriptionGroupFindOneInput {
-  id?: number;
-  profileID?: number;
-  subscriptionGroupID?: number;
+  profileID: number;
 }
 
 export interface ProfileSubscriptionGroupFindManyInput {
-  ids?: number[];
-  profileIDs?: number[];
-  subscriptionGroupIDs?: number[];
+  profileIDs: number[];
 }

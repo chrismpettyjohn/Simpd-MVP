@@ -6,7 +6,6 @@ export const PROFILE_SUBSCRIPTION_GROUP_FRAGMENT = gql`
   fragment ProfileSubscriptionGroupFragment on ProfileSubscriptionGroupModel {
     id
     profileID
-    subscriptionGroupID
     subscriptionGroup {
       ...SubscriptionGroupFragment
     }
@@ -16,6 +15,5 @@ export const PROFILE_SUBSCRIPTION_GROUP_FRAGMENT = gql`
 export interface ProfileSubscriptionGroupFragment {
   id: number;
   profileID: number;
-  subscriptionGroupID: number;
   subscriptionGroup: SubscriptionGroupFragment;
 }

@@ -1,15 +1,17 @@
+import {In} from 'typeorm';
 import {Controller} from '@nestjs/common';
 import {MessagePattern} from '@nestjs/microservices';
+import {convertDollarsAndCentsToCents} from '@simpd/lib-api';
 import {SubscriptionGroupRepository} from './subscription-group.repository';
 import {subscriptionGroupEntityToSubscriptionGroupWire} from './subscription-group.wire';
 import {
   SubscriptionGroupCreateOneInput,
+  SubscriptionGroupFindManyInput,
   SubscriptionGroupFindOneInput,
   SubscriptionGroupWire,
   SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_CREATE_ONE,
   SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE,
 } from '@simpd/lib-client';
-import {convertDollarsAndCentsToCents} from '@simpd/lib-api';
 
 @Controller()
 export class SubscriptionGroupController {
@@ -22,6 +24,8 @@ export class SubscriptionGroupController {
     input: SubscriptionGroupCreateOneInput
   ): Promise<SubscriptionGroupWire> {
     const matchingSubscriptionGroup = await this.subscriptionGroupRepo.create({
+      serviceKey: input.serviceKey,
+      resourceID: input.resourceID,
       name: input.name,
       description: input.description,
       monthlyCostInCents: convertDollarsAndCentsToCents(
@@ -40,11 +44,27 @@ export class SubscriptionGroupController {
     const matchingSubscriptionGroup =
       await this.subscriptionGroupRepo.findOneOrFail({
         where: {
-          id: data.id,
+          serviceKey: data.serviceKey,
+          resourceID: data.resourceID,
         },
       });
     return subscriptionGroupEntityToSubscriptionGroupWire(
       matchingSubscriptionGroup
+    );
+  }
+
+  @MessagePattern(SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE)
+  async subscriptionGroupFindMany(
+    data: SubscriptionGroupFindManyInput
+  ): Promise<SubscriptionGroupWire[]> {
+    const matchingSubscriptionGroups = await this.subscriptionGroupRepo.find({
+      where: {
+        serviceKey: data.serviceKey,
+        resourceID: In(data.resourceIDs),
+      },
+    });
+    return matchingSubscriptionGroups.map(
+      subscriptionGroupEntityToSubscriptionGroupWire
     );
   }
 }

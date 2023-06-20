@@ -1,8 +1,8 @@
 import {Repository} from 'typeorm';
-import {SubscriptionGroupEntity} from './subscription-group.entity';
 import {Injectable} from '@nestjs/common';
 import {BaseRepository} from '@simpd/lib-api';
 import {InjectRepository} from '@nestjs/typeorm';
+import {SubscriptionGroupEntity} from './subscription-group.entity';
 
 @Injectable()
 export class SubscriptionGroupRepository extends BaseRepository<SubscriptionGroupEntity> {

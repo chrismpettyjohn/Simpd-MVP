@@ -4,17 +4,23 @@ import {Directive, Field, ObjectType} from '@nestjs/graphql';
 @Directive('@key(fields: "id")')
 export class SubscriptionGroupModel {
   @Field(() => Number, {nullable: true})
-  id?: number;
+  id!: number;
 
   @Field(() => String, {nullable: true})
-  name?: string;
-
-  @Field(() => String, {nullable: true})
-  description?: string;
+  serviceKey!: string;
 
   @Field(() => Number, {nullable: true})
-  monthlyCostInCents?: number;
+  resourceID!: number;
 
   @Field(() => String, {nullable: true})
-  monthlyCostInDollarsAndCents?: string;
+  name!: string;
+
+  @Field(() => String, {nullable: true})
+  description!: string;
+
+  @Field(() => Number, {nullable: true})
+  monthlyCostInCents!: number;
+
+  @Field(() => String, {nullable: true})
+  monthlyCostInDollarsAndCents!: string;
 }

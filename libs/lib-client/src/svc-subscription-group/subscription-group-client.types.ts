@@ -17,17 +17,11 @@ export interface SubscriptionGroupCreateOneInput {
 }
 
 export interface SubscriptionGroupFindOneInput {
-  id?: number;
   serviceKey: string;
-  resourceID?: number;
-  name?: string;
-  description?: string;
+  resourceID: number;
 }
 
 export interface SubscriptionGroupFindManyInput {
-  ids?: number[];
   serviceKey: string;
-  resourceIDs?: number[];
-  names?: string[];
-  descriptions?: string[];
+  resourceIDs: number[];
 }

@@ -3,14 +3,25 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  Index,
   PrimaryGeneratedColumn,
+  Unique,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity({name: 'subscription-groups', schema: 'subscription-groups'})
+@Unique(['serviceKey', 'resourceID'])
 export class SubscriptionGroupEntity {
   @PrimaryGeneratedColumn()
   id?: number;
+
+  @Column({name: 'service_key'})
+  @Index()
+  serviceKey!: string;
+
+  @Column({name: 'resource_id', type: 'integer'})
+  @Index()
+  resourceID!: number;
 
   @Column()
   name!: string;

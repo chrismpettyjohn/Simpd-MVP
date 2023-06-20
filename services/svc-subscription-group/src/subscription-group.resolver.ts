@@ -1,14 +1,14 @@
 import {In} from 'typeorm';
+import {SubscriptionGroupWire} from '@simpd/lib-client';
 import {SubscriptionGroupModel} from './subscription-group.model';
 import {SubscriptionGroupEntity} from './subscription-group.entity';
+import {Args, Query, ResolveReference, Resolver} from '@nestjs/graphql';
 import {SubscriptionGroupRepository} from './subscription-group.repository';
+import {subscriptionGroupEntityToSubscriptionGroupWire} from './subscription-group.wire';
 import {
   SubscriptionGroupFilterByManyInput,
   SubscriptionGroupFilterByOneInput,
 } from './subscription-group.input';
-import {Args, Query, ResolveReference, Resolver} from '@nestjs/graphql';
-import {SubscriptionGroupWire} from '@simpd/lib-client';
-import {subscriptionGroupEntityToSubscriptionGroupWire} from './subscription-group.wire';
 
 @Resolver(() => SubscriptionGroupModel)
 export class SubscriptionGroupResolver {

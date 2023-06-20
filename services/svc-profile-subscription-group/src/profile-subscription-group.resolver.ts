@@ -1,8 +1,16 @@
-import {In} from 'typeorm';
 import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {ProfileSubscriptionGroupModel} from './profile-subscription-group.model';
-import {ProfileSubscriptionGroupEntity} from './profile-subscription-group.entity';
-import {ProfileSubscriptionGroupRepository} from './profile-subscription-group.repository';
+import {ProfileSubscriptionGroupService} from './profile-subscription-group.service';
+import {subscriptionGroupWireToProfileSubscriptionGroupWire} from './profile-subscription-group.wire';
+import {
+  ProfileSubscriptionGroupWire,
+  SubscriptionGroupModel,
+} from '@simpd/lib-client';
+import {
+  ProfileSubscriptionGroupCreateInput,
+  ProfileSubscriptionGroupFilterByManyInput,
+  ProfileSubscriptionGroupFilterByOneInput,
+} from './profile-subscription-group.input';
 import {
   Args,
   Mutation,
@@ -12,38 +20,24 @@ import {
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
-import {
-  ProfileSubscriptionGroupCreateInput,
-  ProfileSubscriptionGroupFilterByManyInput,
-  ProfileSubscriptionGroupFilterByOneInput,
-} from './profile-subscription-group.input';
-import {
-  SubscriptionGroupClientService,
-  SubscriptionGroupModel,
-} from '@simpd/lib-client';
 
 @Resolver(() => ProfileSubscriptionGroupModel)
 export class ProfileSubscriptionGroupResolver {
   constructor(
-    private readonly subscriptionGroupRepo: ProfileSubscriptionGroupRepository,
-    private readonly subscriptionGroupClientService: SubscriptionGroupClientService
+    private readonly profileSubscriptionGroupService: ProfileSubscriptionGroupService
   ) {}
 
   @ResolveReference()
   resolveReference(reference: {
     __typename: string;
     id: number;
-  }): Promise<ProfileSubscriptionGroupEntity> {
-    return this.subscriptionGroupRepo.findOneOrFail({
-      where: {
-        id: reference.id,
-      },
-    });
+  }): Promise<ProfileSubscriptionGroupWire> {
+    return this.profileSubscriptionGroup({profileID: reference.id});
   }
 
   @ResolveField(() => SubscriptionGroupModel)
   subscriptionGroup(
-    @Parent() parent: ProfileSubscriptionGroupEntity
+    @Parent() parent: ProfileSubscriptionGroupModel
   ): SubscriptionGroupModel {
     return {
       id: parent.subscriptionGroupID,
@@ -53,26 +47,30 @@ export class ProfileSubscriptionGroupResolver {
   @Query(() => ProfileSubscriptionGroupModel)
   async profileSubscriptionGroup(
     @Args('filter') filter: ProfileSubscriptionGroupFilterByOneInput
-  ): Promise<ProfileSubscriptionGroupEntity> {
-    return this.subscriptionGroupRepo.findOneOrFail({
-      where: filter,
-    });
+  ): Promise<ProfileSubscriptionGroupWire> {
+    const matchingSubscriptionGroup =
+      await this.profileSubscriptionGroupService.findOne({
+        resourceID: filter.profileID,
+      });
+    return subscriptionGroupWireToProfileSubscriptionGroupWire(
+      matchingSubscriptionGroup
+    );
   }
 
   @Query(() => [ProfileSubscriptionGroupModel])
-  profileSubscriptionGroups(
+  async profileSubscriptionGroups(
     @Args('filter', {
       type: () => ProfileSubscriptionGroupFilterByManyInput,
-      nullable: true,
     })
-    filter?: ProfileSubscriptionGroupFilterByManyInput
-  ): Promise<ProfileSubscriptionGroupEntity[]> {
-    return this.subscriptionGroupRepo.find({
-      where: {
-        id: filter?.ids && In(filter.ids),
-        profileID: filter?.profileIDs && In(filter.profileIDs),
-      },
-    });
+    filter: ProfileSubscriptionGroupFilterByManyInput
+  ): Promise<ProfileSubscriptionGroupWire[]> {
+    const matchingSubscriptionGroups =
+      await this.profileSubscriptionGroupService.findMany({
+        resourceIDs: filter.profileIDs,
+      });
+    return matchingSubscriptionGroups.map(
+      subscriptionGroupWireToProfileSubscriptionGroupWire
+    );
   }
 
   @Mutation(() => ProfileSubscriptionGroupModel)
@@ -80,29 +78,27 @@ export class ProfileSubscriptionGroupResolver {
   async profileSubscriptionGroupCreate(
     @GetSession() session: SessionContents,
     @Args('input') input: ProfileSubscriptionGroupCreateInput
-  ): Promise<ProfileSubscriptionGroupEntity> {
-    const newSubscriptionGroup =
-      await this.subscriptionGroupClientService.createOne({
+  ): Promise<ProfileSubscriptionGroupWire> {
+    const newProfileSubscriptionGroup =
+      await this.profileSubscriptionGroupService.createOne({
         name: input.name,
         description: input.description,
         monthlyCostInDollarsAndCents: input.monthlyCostInDollarsAndCents,
+        resourceID: session.profileID,
       });
 
-    const newProfileSubscriptionGroup = await this.subscriptionGroupRepo.create(
-      {
-        profileID: session.profileID,
-        subscriptionGroupID: newSubscriptionGroup.id,
-      }
+    return subscriptionGroupWireToProfileSubscriptionGroupWire(
+      newProfileSubscriptionGroup
     );
-
-    return newProfileSubscriptionGroup;
   }
 
   @Mutation(() => Boolean)
   async profileSubscriptionGroupDelete(
     @Args('filter') filter: ProfileSubscriptionGroupFilterByOneInput
   ) {
-    await this.subscriptionGroupRepo.softDelete(filter);
+    await this.profileSubscriptionGroupService.deleteOne({
+      resourceID: filter.profileID,
+    });
     return true;
   }
 }

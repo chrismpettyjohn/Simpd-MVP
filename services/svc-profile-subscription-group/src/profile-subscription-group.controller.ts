@@ -1,7 +1,7 @@
 import {Controller} from '@nestjs/common';
 import {MessagePattern} from '@nestjs/microservices';
-import {ProfileSubscriptionGroupRepository} from './profile-subscription-group.repository';
-import {subscriptionGroupEntityToProfileSubscriptionGroupWire} from './profile-subscription-group.wire';
+import {ProfileSubscriptionGroupService} from './profile-subscription-group.service';
+import {subscriptionGroupWireToProfileSubscriptionGroupWire} from './profile-subscription-group.wire';
 import {
   ProfileSubscriptionGroupCreateOneInput,
   ProfileSubscriptionGroupFindOneInput,
@@ -13,7 +13,7 @@ import {
 @Controller()
 export class ProfileSubscriptionGroupController {
   constructor(
-    private readonly subscriptionGroupRepo: ProfileSubscriptionGroupRepository
+    private readonly profileSubscriptionGroupService: ProfileSubscriptionGroupService
   ) {}
 
   @MessagePattern(SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_CREATE_ONE)
@@ -21,11 +21,13 @@ export class ProfileSubscriptionGroupController {
     input: ProfileSubscriptionGroupCreateOneInput
   ): Promise<ProfileSubscriptionGroupWire> {
     const matchingProfileSubscriptionGroup =
-      await this.subscriptionGroupRepo.create({
-        profileID: input.profileID,
-        subscriptionGroupID: input.subscriptionGroupID,
+      await this.profileSubscriptionGroupService.createOne({
+        resourceID: input.profileID,
+        name: input.name,
+        description: input.description,
+        monthlyCostInDollarsAndCents: input.monthlyCostInDollarsAndCents,
       });
-    return subscriptionGroupEntityToProfileSubscriptionGroupWire(
+    return subscriptionGroupWireToProfileSubscriptionGroupWire(
       matchingProfileSubscriptionGroup
     );
   }
@@ -35,12 +37,10 @@ export class ProfileSubscriptionGroupController {
     data: ProfileSubscriptionGroupFindOneInput
   ): Promise<ProfileSubscriptionGroupWire> {
     const matchingProfileSubscriptionGroup =
-      await this.subscriptionGroupRepo.findOneOrFail({
-        where: {
-          id: data.id,
-        },
+      await this.profileSubscriptionGroupService.findOne({
+        resourceID: data.profileID,
       });
-    return subscriptionGroupEntityToProfileSubscriptionGroupWire(
+    return subscriptionGroupWireToProfileSubscriptionGroupWire(
       matchingProfileSubscriptionGroup
     );
   }

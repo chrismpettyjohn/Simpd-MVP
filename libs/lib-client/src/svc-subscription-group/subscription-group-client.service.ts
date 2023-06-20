@@ -1,6 +1,6 @@
-import { lastValueFrom } from 'rxjs';
-import { Inject, Injectable } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
+import {lastValueFrom} from 'rxjs';
+import {Inject, Injectable} from '@nestjs/common';
+import {ClientProxy} from '@nestjs/microservices';
 import {
   SubscriptionGroupCreateOneInput,
   SubscriptionGroupFindManyInput,
@@ -19,7 +19,7 @@ import {
 export class SubscriptionGroupClientService {
   constructor(
     @Inject(SVC_SUBSCRIPTION_GROUP_NAME) private client: ClientProxy
-  ) { }
+  ) {}
 
   async createOne(
     filter: SubscriptionGroupCreateOneInput
@@ -50,9 +50,7 @@ export class SubscriptionGroupClientService {
     );
     return await lastValueFrom(matchingSubscriptionGroup$);
   }
-  async deleteOne(
-    filter: SubscriptionGroupFindOneInput
-  ): Promise<boolean> {
+  async deleteOne(filter: SubscriptionGroupFindOneInput): Promise<boolean> {
     const matchingSubscriptionGroup$ = this.client.send(
       SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_DELETE_ONE,
       filter
