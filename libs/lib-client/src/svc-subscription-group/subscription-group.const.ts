@@ -8,3 +8,9 @@ export const SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_CREATE_ONE =
   'subscriptionGroupCreateOne';
 export const SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE =
   'subscriptionGroupFindOne';
+export const SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_MANY =
+  'subscriptionGroupFindMany';
+export const SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_UPDATE_ONE =
+  'subscriptionGroupUpdateOne';
+export const SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_DELETE_ONE =
+  'subscriptionGroupDeleteOne';

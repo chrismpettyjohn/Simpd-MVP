@@ -96,6 +96,7 @@ export * from './svc-stripe-customer-bridge/stripe-customer-bridge.const';
 export * from './svc-stripe-payment-invoice-bridge/stripe-payment-invoice-bridge.const';
 export * from './svc-stripe-payment-method-bridge/stripe-payment-method-bridge.const';
 export * from './svc-stripe-webhook/stripe-webhook.const';
+export * from './svc-subscription-group/base-subscription-group-client.service';
 export * from './svc-subscription-group/subscription-group-client.service';
 export * from './svc-subscription-group/subscription-group-client.types';
 export * from './svc-subscription-group/subscription-group.const';

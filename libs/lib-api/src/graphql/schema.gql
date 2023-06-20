@@ -2,46 +2,39 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type UserModel {
-  id: Float
-  email: String
-  isVerified: Boolean
+type PrivacyModel {
+  id: Float!
+}
+
+type PostPrivacyModel {
+  privacyID: Float
+  privacy: PrivacyModel
+  postID: Float
 }
 
 type Query {
-  user(filter: UserFilterByOneInput!): UserModel!
-  users(filter: UserFilterByManyInput): [UserModel!]!
+  postPrivacy(filter: PostPrivacyFilterOneInput!): PostPrivacyModel!
+  postPrivacys(filter: PostPrivacyFilterManyInput!): [PostPrivacyModel!]!
 }
 
-input UserFilterByOneInput {
-  id: Float
-  email: String
+input PostPrivacyFilterOneInput {
+  postID: Float
 }
 
-input UserFilterByManyInput {
-  ids: [Float!]
-  emails: [String!]
+input PostPrivacyFilterManyInput {
+  postIDs: [Float!]
 }
 
 type Mutation {
-  userCreate(input: UserCreateInput!): UserModel!
-  userUpdate(filter: UserFilterByOneInput!, input: UserUpdateInput!): UserModel!
-  userChangePassword(filter: UserFilterByOneInput!, input: UserChangePasswordInput!): Boolean!
-  userDelete(filter: UserFilterByOneInput!): Boolean!
+  postPrivacyCreate(input: PostPrivacyCreateInput!): PostPrivacyModel!
+  postPrivacyDelete(filter: PostPrivacyFilterOneInput!): Boolean!
 }
 
-input UserCreateInput {
-  email: String!
-  password: String!
+input PostPrivacyCreateInput {
+  postID: Float!
+  policy: PrivacyPolicyInput!
 }
 
-input UserUpdateInput {
-  email: String
-  password: String
-}
-
-input UserChangePasswordInput {
-  currentPassword: String!
-  newPassword: String!
-  newPasswordAgain: String!
+input PrivacyPolicyInput {
+  allowedSubscriptionGroupIDs: [Float!]!
 }
