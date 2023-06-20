@@ -2,39 +2,36 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type PrivacyModel {
+type SubscriptionGroupModel {
   id: Float!
 }
 
-type PostPrivacyModel {
-  privacyID: Float
-  privacy: PrivacyModel
-  postID: Float
+type ProfileSubscriptionGroupModel {
+  id: Float
+  profileID: Float
+  subscriptionGroup: SubscriptionGroupModel!
 }
 
 type Query {
-  postPrivacy(filter: PostPrivacyFilterOneInput!): PostPrivacyModel!
-  postPrivacys(filter: PostPrivacyFilterManyInput!): [PostPrivacyModel!]!
+  profileSubscriptionGroup(filter: ProfileSubscriptionGroupFilterByOneInput!): ProfileSubscriptionGroupModel!
+  profileSubscriptionGroups(filter: ProfileSubscriptionGroupFilterByManyInput!): [ProfileSubscriptionGroupModel!]!
 }
 
-input PostPrivacyFilterOneInput {
-  postID: Float
+input ProfileSubscriptionGroupFilterByOneInput {
+  profileID: Float!
 }
 
-input PostPrivacyFilterManyInput {
-  postIDs: [Float!]
+input ProfileSubscriptionGroupFilterByManyInput {
+  profileIDs: [Float!]!
 }
 
 type Mutation {
-  postPrivacyCreate(input: PostPrivacyCreateInput!): PostPrivacyModel!
-  postPrivacyDelete(filter: PostPrivacyFilterOneInput!): Boolean!
+  profileSubscriptionGroupCreate(input: ProfileSubscriptionGroupCreateInput!): ProfileSubscriptionGroupModel!
+  profileSubscriptionGroupDelete(filter: ProfileSubscriptionGroupFilterByOneInput!): Boolean!
 }
 
-input PostPrivacyCreateInput {
-  postID: Float!
-  policy: PrivacyPolicyInput!
-}
-
-input PrivacyPolicyInput {
-  allowedSubscriptionGroupIDs: [Float!]!
+input ProfileSubscriptionGroupCreateInput {
+  name: String!
+  description: String!
+  monthlyCostInDollarsAndCents: String!
 }

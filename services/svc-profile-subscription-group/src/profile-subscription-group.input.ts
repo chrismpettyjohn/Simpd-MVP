@@ -1,4 +1,4 @@
-import {Field, InputType} from '@nestjs/graphql';
+import { Field, InputType } from '@nestjs/graphql';
 
 @InputType()
 export class ProfileSubscriptionGroupFilterByManyInput {
@@ -9,7 +9,7 @@ export class ProfileSubscriptionGroupFilterByManyInput {
 @InputType()
 export class ProfileSubscriptionGroupFilterByOneInput {
   @Field(() => Number)
-  profileID?: number;
+  profileID!: number;
 }
 
 @InputType()

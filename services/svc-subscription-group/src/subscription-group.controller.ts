@@ -1,15 +1,16 @@
-import {In} from 'typeorm';
-import {Controller} from '@nestjs/common';
-import {MessagePattern} from '@nestjs/microservices';
-import {convertDollarsAndCentsToCents} from '@simpd/lib-api';
-import {SubscriptionGroupRepository} from './subscription-group.repository';
-import {subscriptionGroupEntityToSubscriptionGroupWire} from './subscription-group.wire';
+import { In } from 'typeorm';
+import { Controller } from '@nestjs/common';
+import { MessagePattern } from '@nestjs/microservices';
+import { convertDollarsAndCentsToCents } from '@simpd/lib-api';
+import { SubscriptionGroupRepository } from './subscription-group.repository';
+import { subscriptionGroupEntityToSubscriptionGroupWire } from './subscription-group.wire';
 import {
   SubscriptionGroupCreateOneInput,
   SubscriptionGroupFindManyInput,
   SubscriptionGroupFindOneInput,
   SubscriptionGroupWire,
   SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_CREATE_ONE,
+  SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_MANY,
   SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE,
 } from '@simpd/lib-client';
 
@@ -17,7 +18,7 @@ import {
 export class SubscriptionGroupController {
   constructor(
     private readonly subscriptionGroupRepo: SubscriptionGroupRepository
-  ) {}
+  ) { }
 
   @MessagePattern(SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_CREATE_ONE)
   async subscriptionGroupCreateOne(
@@ -53,7 +54,7 @@ export class SubscriptionGroupController {
     );
   }
 
-  @MessagePattern(SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE)
+  @MessagePattern(SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_MANY)
   async subscriptionGroupFindMany(
     data: SubscriptionGroupFindManyInput
   ): Promise<SubscriptionGroupWire[]> {
