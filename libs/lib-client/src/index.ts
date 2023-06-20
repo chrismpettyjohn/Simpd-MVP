@@ -80,6 +80,7 @@ export * from './svc-privacy/base-privacy-client.service';
 export * from './svc-privacy/privacy-client.service';
 export * from './svc-privacy/privacy-client.types';
 export * from './svc-privacy/privacy.const';
+export * from './svc-privacy/privacy.input';
 export * from './svc-privacy/privacy.model';
 export * from './svc-privacy/privacy.module';
 export * from './svc-role/role-client.types';

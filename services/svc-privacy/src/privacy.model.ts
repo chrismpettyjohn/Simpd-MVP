@@ -2,7 +2,7 @@ import {Directive, Field, ObjectType} from '@nestjs/graphql';
 import {PrivacyPolicy} from '@simpd/lib-client';
 
 @ObjectType()
-export class PrivacyPolicyInput implements PrivacyPolicy {
+export class PrivacyPolicyModel implements PrivacyPolicy {
   @Field(() => [Number], {nullable: true})
   allowedSubscriptionGroupIDs!: number[];
 }
@@ -25,6 +25,6 @@ export class PrivacyModel {
   @Field(() => String, {nullable: true})
   description?: string;
 
-  @Field(() => PrivacyPolicyInput, {nullable: true})
-  policy?: PrivacyPolicyInput;
+  @Field(() => PrivacyPolicyModel, {nullable: true})
+  policy?: PrivacyPolicyModel;
 }

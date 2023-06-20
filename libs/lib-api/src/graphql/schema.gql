@@ -2,34 +2,34 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type TagModel {
+type PrivacyPolicyModel {
+  allowedSubscriptionGroupIDs: [Float!]
+}
+
+type PrivacyModel {
   id: Float
-  key: String
+  serviceKey: String
+  resourceID: Float
   name: String
   description: String
+  policy: PrivacyPolicyModel
 }
 
 type Query {
-  tag(filter: TagFilterByOneInput!): TagModel!
-  tags(filter: TagFilterByManyInput): [TagModel!]!
+  privacy(filter: PrivacyFilterByOneInput!): PrivacyModel!
+  privacys(filter: PrivacyFilterByManyInput): [PrivacyModel!]!
 }
 
-input TagFilterByOneInput {
+input PrivacyFilterByOneInput {
   id: Float
-  name: String
+  resourceID: Float
 }
 
-input TagFilterByManyInput {
+input PrivacyFilterByManyInput {
   ids: [Float!]
-  names: [String!]
+  resourceIDs: [Float!]
 }
 
 type Mutation {
-  tagCreate(input: TagCreateInput!): TagModel!
-  tagDelete(filter: TagFilterByOneInput!): Boolean!
-}
-
-input TagCreateInput {
-  name: String!
-  description: String!
+  privacyDelete(filter: PrivacyFilterByOneInput!): Boolean!
 }

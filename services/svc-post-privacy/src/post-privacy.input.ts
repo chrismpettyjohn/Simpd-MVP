@@ -1,11 +1,5 @@
-import {PrivacyPolicy} from '@simpd/lib-client';
 import {Field, InputType} from '@nestjs/graphql';
-
-@InputType()
-export class PostPrivacyPolicyInput implements PrivacyPolicy {
-  @Field(() => [Number])
-  allowedSubscriptionGroupIDs!: number[];
-}
+import {PrivacyPolicyInput} from '@simpd/lib-client';
 
 @InputType()
 export class PostPrivacyCreateInput {
@@ -18,8 +12,8 @@ export class PostPrivacyCreateInput {
   @Field(() => String)
   description!: string;
 
-  @Field(() => PostPrivacyPolicyInput)
-  policy!: PostPrivacyPolicyInput;
+  @Field(() => PrivacyPolicyInput)
+  policy!: PrivacyPolicyInput;
 }
 
 @InputType()
