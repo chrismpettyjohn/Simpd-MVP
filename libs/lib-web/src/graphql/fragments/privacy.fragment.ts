@@ -12,6 +12,9 @@ export const PRIVACY_FRAGMENT = gql`
     }
   }
 `
+export interface PrivacyPolicy {
+  allowedSubscriptionGroupIDs: number[];
+}
 
 export interface PrivacyFragment {
   id: number;
@@ -19,7 +22,5 @@ export interface PrivacyFragment {
   resourceID: number;
   name: string;
   description: string;
-  policy: {
-    allowedSubscriptionGroupIDs: number[];
-  }
+  policy: PrivacyPolicy
 }
