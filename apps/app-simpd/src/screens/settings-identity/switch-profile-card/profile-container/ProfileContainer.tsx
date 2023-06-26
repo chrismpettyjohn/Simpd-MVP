@@ -27,7 +27,11 @@ export function ProfileContainer({ profile }: ProfileContainerProps) {
       </h3>
       {
         !isActive
-          ? (<Button disabled={isActive} onClick={onSwitchProfile}>switchProfile.loading ? <><i className="fa fa-spinner fa-spin" style={{ marginRight: 4 }} /> Using Profile</> : <>Use Profile</></Button>)
+          ? (<Button disabled={isActive} onClick={onSwitchProfile}>
+            {
+              switchProfile.loading ? <><i className="fa fa-spinner fa-spin" style={{ marginRight: 4 }} /> Using Profile</> : <>Use Profile</>
+            }
+          </Button>)
           : null
       }
     </ProfileElement>
