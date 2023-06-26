@@ -53,6 +53,9 @@ export function UserProfileCard({ allowChanges = true, profile, onChanges = () =
               <UserProfileCardActionsContainer>
                 <i className="fa fa-star" />
                 <i className="fa fa-share" />
+                <Link to={`/profiles/${profile.username}/subscriptions`}>
+                  <i className="fa fa-file-invoice-dollar" />
+                </Link>
                 <SendTipDialog profile={profile} />
               </UserProfileCardActionsContainer>
             )

@@ -8,31 +8,34 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity({ name: 'profile_subscription_groups', schema: 'profiles_subscription_groups' })
+@Entity({
+  name: 'profile_subscription_groups',
+  schema: 'profiles_subscription_groups',
+})
 export class ProfileSubscriptionGroupMembershipMembershipEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column({ name: 'profile_id' })
+  @Column({name: 'profile_id'})
   @Index()
   profileID!: number;
 
-  @Column({ name: 'subscription_group_id' })
+  @Column({name: 'subscription_group_id'})
   @Index()
   subscriptionGroupID!: number;
 
-  @UpdateDateColumn({ name: 'auto_new', type: 'boolean' })
+  @UpdateDateColumn({name: 'auto_new', type: 'boolean'})
   autoRenew!: boolean;
 
-  @UpdateDateColumn({ name: 'renews_on', type: 'timestamp' })
+  @UpdateDateColumn({name: 'renews_on', type: 'timestamp'})
   renewsOn!: Date;
 
-  @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
+  @CreateDateColumn({name: 'created_at', type: 'timestamp'})
   createdAt?: Date;
 
-  @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
+  @UpdateDateColumn({name: 'updated_at', type: 'timestamp'})
   updatedAt?: Date;
 
-  @DeleteDateColumn({ name: 'deleted_at', type: 'timestamp' })
+  @DeleteDateColumn({name: 'deleted_at', type: 'timestamp'})
   deletedAt?: Date;
 }

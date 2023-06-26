@@ -20,6 +20,7 @@ import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
 import { SettingsIdentityScreen } from './settings-identity/SettingsIdentity';
 import { MessageStartThreadScreen } from './message-start-thread/MessageStartThread';
 import { SettingsUserScreen } from './settings-user/SettingsUser';
+import { UserProfileSubscriptionsScreen } from './user-profile-subscriptions/UserProfileSubscriptions';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -147,6 +148,14 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     view: (
       <UserGuard redirect>
         <UserProfileScreen />
+      </UserGuard>
+    ),
+  },
+  {
+    path: '/profiles/:username/subscriptions',
+    view: (
+      <UserGuard redirect>
+        <UserProfileSubscriptionsScreen />
       </UserGuard>
     ),
   },

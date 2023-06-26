@@ -1,8 +1,8 @@
 import { useRoute } from 'wouter';
 import { Helmet } from 'react-helmet'
 import React, { useEffect, useState } from 'react'
-import { PostCard } from '../../components/post-card/PostCard';
 import { PageTitle } from '../../components/page-title/PageTitle';
+import { ProfileTimeline } from './profile-timeline/ProfileTimeline';
 import { UserProfileCard } from '../../components/user-profile-card/UserProfileCard';
 import { ProfileFragment, usePostFetchMany, useProfileFetchOne } from '@simpd/lib-web';
 
@@ -41,11 +41,15 @@ export function UserProfileScreen() {
       <PageTitle title="User Profile" />
       {
         userProfile && (
-          <UserProfileCard profile={userProfile} onChanges={onUpdateProfile} />
+          <>
+            <UserProfileCard profile={userProfile} onChanges={onUpdateProfile} />
+            {
+              fetchPosts.data && (
+                <ProfileTimeline posts={fetchPosts.data} />
+              )
+            }
+          </>
         )
-      }
-      {
-        fetchPosts.data?.map(_ => <PostCard key={`profile_post_${_.id}`} post={_} hideAuthor />)
       }
     </>
   )
