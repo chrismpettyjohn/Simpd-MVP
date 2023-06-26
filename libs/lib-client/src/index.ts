@@ -54,6 +54,10 @@ export * from './svc-profile-subscription-group/profile-subscription-group-clien
 export * from './svc-profile-subscription-group/profile-subscription-group-client.types';
 export * from './svc-profile-subscription-group/profile-subscription-group.const';
 export * from './svc-profile-subscription-group/profile-subscription-group.module';
+export * from './svc-profile-subscription-group-membership/profile-subscription-group-membership-client.service';
+export * from './svc-profile-subscription-group-membership/profile-subscription-group-membership-client.types';
+export * from './svc-profile-subscription-group-membership/profile-subscription-group-membership.const';
+export * from './svc-profile-subscription-group-membership/profile-subscription-group-membership.module';
 export * from './svc-reaction/base-reaction-client.service';
 export * from './svc-reaction/reaction-client.service';
 export * from './svc-reaction/reaction-client.types';

@@ -202,6 +202,16 @@
       "watch_delay": 1000
     },
     {
+      "name": "svc-profile-subscription-group-membership",
+      "cwd": "./services/svc-profile-subscription-group-membership",
+      "script": "pnpm",
+      "args": "run web-server:start",
+      "watch": [
+        "src"
+      ],
+      "watch_delay": 1000
+    },
+    {
       "name": "svc-profile-user-bridge",
       "cwd": "./services/svc-profile-user-bridge",
       "script": "pnpm",

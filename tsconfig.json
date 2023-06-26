@@ -84,6 +84,9 @@
       "@simpd/svc-profile-subscription-group": [
         "services/svc-profile-subscription-group/src"
       ],
+      "@simpd/svc-profile-subscription-group-membership": [
+        "services/svc-profile-subscription-group-membership/src"
+      ],
       "@simpd/svc-profile-user-bridge": [
         "services/svc-profile-user-bridge/src"
       ],
