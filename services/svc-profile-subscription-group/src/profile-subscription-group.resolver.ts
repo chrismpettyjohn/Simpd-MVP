@@ -1,7 +1,7 @@
-import { GetSession, HasSession, SessionContents } from '@simpd/lib-api';
-import { ProfileSubscriptionGroupModel } from './profile-subscription-group.model';
-import { ProfileSubscriptionGroupService } from './profile-subscription-group.service';
-import { subscriptionGroupWireToProfileSubscriptionGroupWire } from './profile-subscription-group.wire';
+import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
+import {ProfileSubscriptionGroupModel} from './profile-subscription-group.model';
+import {ProfileSubscriptionGroupService} from './profile-subscription-group.service';
+import {subscriptionGroupWireToProfileSubscriptionGroupWire} from './profile-subscription-group.wire';
 import {
   ProfileSubscriptionGroupWire,
   SubscriptionGroupModel,
@@ -25,14 +25,14 @@ import {
 export class ProfileSubscriptionGroupResolver {
   constructor(
     private readonly profileSubscriptionGroupService: ProfileSubscriptionGroupService
-  ) { }
+  ) {}
 
   @ResolveReference()
   resolveReference(reference: {
     __typename: string;
     id: number;
   }): Promise<ProfileSubscriptionGroupWire> {
-    return this.profileSubscriptionGroup({ profileID: reference.id });
+    return this.profileSubscriptionGroup({profileID: reference.id});
   }
 
   @ResolveField(() => SubscriptionGroupModel)

@@ -97,7 +97,6 @@ export class PostResolver {
   }
 
   @Query(() => Number, {nullable: true})
-  @HasSession()
   async postFavoriteCount(
     @GetSession() session: SessionContents,
     @Args('filter') filter: PostFilterByOneInput

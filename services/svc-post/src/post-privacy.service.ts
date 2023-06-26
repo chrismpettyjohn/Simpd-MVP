@@ -1,6 +1,11 @@
 import {PostRepository} from './post.repository';
 import {SVC_POST_NAME} from 'libs/lib-client/src/svc-post/post.const';
-import {PrivacyClientService, ProfileClientService} from '@simpd/lib-client';
+import {
+  PrivacyClientService,
+  ProfileClientService,
+  SubscriptionGroupClientService,
+  SubscriptionGroupWire,
+} from '@simpd/lib-client';
 import {
   Injectable,
   NotFoundException,
@@ -12,7 +17,8 @@ export class PostPrivacyService {
   constructor(
     private readonly postRepo: PostRepository<any, any>,
     private readonly profileClientService: ProfileClientService,
-    private readonly privacyClientService: PrivacyClientService
+    private readonly privacyClientService: PrivacyClientService,
+    private readonly subscriptionGroupClientService: SubscriptionGroupClientService
   ) {}
 
   async profileCanAccessPost(profileID: number, postID: number): Promise<void> {
@@ -43,6 +49,20 @@ export class PostPrivacyService {
     if (!privacyPolicyExists) {
       // TODO: Default to profile based blocks
       return;
+    }
+
+    if (matchingPrivacyPolicy!.policy.allowedSubscriptionGroupIDs.length > 0) {
+      // TODO: Add ability for profiles to join a subscription group
+      const subscriptionGroupsProfileIsIn: SubscriptionGroupWire[] = [];
+      const profileIsApartOfAllowedSubscriptionGroup =
+        !!subscriptionGroupsProfileIsIn.find(_ =>
+          matchingPrivacyPolicy?.policy.allowedSubscriptionGroupIDs.includes(
+            _.id
+          )
+        );
+      if (!profileIsApartOfAllowedSubscriptionGroup) {
+        throw new UnauthorizedException();
+      }
     }
 
     const profileHasAllowedSubscriptionGroup =

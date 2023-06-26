@@ -12,6 +12,7 @@ import {
   PrivacyClientModule,
   ProfileClientModule,
   ReactionClientModule,
+  SubscriptionGroupClientModule,
   TagClientModule,
 } from '@simpd/lib-client';
 import {
@@ -32,6 +33,7 @@ import {
     ReactionClientModule,
     BookmarkClientModule,
     PostReactionClientModule,
+    SubscriptionGroupClientModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
       entities: [PostEntity],

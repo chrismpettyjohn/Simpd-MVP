@@ -1,9 +1,9 @@
-import { In } from 'typeorm';
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
-import { convertDollarsAndCentsToCents } from '@simpd/lib-api';
-import { SubscriptionGroupRepository } from './subscription-group.repository';
-import { subscriptionGroupEntityToSubscriptionGroupWire } from './subscription-group.wire';
+import {In} from 'typeorm';
+import {Controller} from '@nestjs/common';
+import {MessagePattern} from '@nestjs/microservices';
+import {convertDollarsAndCentsToCents} from '@simpd/lib-api';
+import {SubscriptionGroupRepository} from './subscription-group.repository';
+import {subscriptionGroupEntityToSubscriptionGroupWire} from './subscription-group.wire';
 import {
   SubscriptionGroupCreateOneInput,
   SubscriptionGroupFindManyInput,
@@ -18,7 +18,7 @@ import {
 export class SubscriptionGroupController {
   constructor(
     private readonly subscriptionGroupRepo: SubscriptionGroupRepository
-  ) { }
+  ) {}
 
   @MessagePattern(SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_CREATE_ONE)
   async subscriptionGroupCreateOne(
