@@ -3,8 +3,8 @@ import {SVC_POST_NAME} from 'libs/lib-client/src/svc-post/post.const';
 import {
   PrivacyClientService,
   ProfileClientService,
-  SubscriptionGroupClientService,
-  SubscriptionGroupWire,
+  ProfileSubscriptionGroupMembershipClientService,
+  ProfileSubscriptionGroupMembershipWire,
 } from '@simpd/lib-client';
 import {
   Injectable,
@@ -18,7 +18,7 @@ export class PostPrivacyService {
     private readonly postRepo: PostRepository<any, any>,
     private readonly profileClientService: ProfileClientService,
     private readonly privacyClientService: PrivacyClientService,
-    private readonly subscriptionGroupClientService: SubscriptionGroupClientService
+    private readonly profileSubscriptionGroupMembershipClientService: ProfileSubscriptionGroupMembershipClientService
   ) {}
 
   async profileCanAccessPost(profileID: number, postID: number): Promise<void> {
@@ -52,12 +52,18 @@ export class PostPrivacyService {
     }
 
     if (matchingPrivacyPolicy!.policy.allowedSubscriptionGroupIDs.length > 0) {
-      // TODO: Add ability for profiles to join a subscription group
-      const subscriptionGroupsProfileIsIn: SubscriptionGroupWire[] = [];
+      const allowedSubscriptionGroupIDs =
+        matchingPrivacyPolicy!.policy.allowedSubscriptionGroupIDs;
+
+      const subscriptionGroupsProfileIsIn: ProfileSubscriptionGroupMembershipWire[] =
+        await this.profileSubscriptionGroupMembershipClientService.findMany({
+          profileIDs: [profileID],
+          subscriptionGroupIDs: [...allowedSubscriptionGroupIDs],
+        });
       const profileIsApartOfAllowedSubscriptionGroup =
         !!subscriptionGroupsProfileIsIn.find(_ =>
           matchingPrivacyPolicy?.policy.allowedSubscriptionGroupIDs.includes(
-            _.id
+            _.subscriptionGroupID
           )
         );
       if (!profileIsApartOfAllowedSubscriptionGroup) {

@@ -11,6 +11,7 @@ import {
   PostReactionClientModule,
   PrivacyClientModule,
   ProfileClientModule,
+  ProfileSubscriptionGroupMembershipClientModule,
   ReactionClientModule,
   SubscriptionGroupClientModule,
   TagClientModule,
@@ -34,6 +35,7 @@ import {
     BookmarkClientModule,
     PostReactionClientModule,
     SubscriptionGroupClientModule,
+    ProfileSubscriptionGroupMembershipClientModule,
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
       entities: [PostEntity],

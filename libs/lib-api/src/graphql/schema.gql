@@ -2,32 +2,130 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ProfileSubscriptionGroupMembershipModel {
+type ProfileModel {
+  id: Float!
+}
+
+type PostWithTextModel implements PostBaseModel {
   id: Float
   profileID: Float
-  subscriptionGroupID: Float
-  autoRenew: Boolean
-  renewsOn: DateTime
+  profile: ProfileModel
+  type: PostType
+  totalShares: Float
+  content: String
+  tagIDs: [Float!]
 }
 
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
+interface PostBaseModel {
+  id: Float
+  profileID: Float
+  profile: ProfileModel
+  type: PostType
+  totalShares: Float
+  content: String
+  tagIDs: [Float!]
+}
+
+enum PostType {
+  Text
+  Image
+  Video
+  Album
+  SharedContent
+}
+
+type PostWithImageModel implements PostBaseModel {
+  id: Float
+  profileID: Float
+  profile: ProfileModel
+  type: PostType
+  totalShares: Float
+  content: String
+  tagIDs: [Float!]
+  mediaID: Float
+}
+
+type PostWithVideoModel implements PostBaseModel {
+  id: Float
+  profileID: Float
+  profile: ProfileModel
+  type: PostType
+  totalShares: Float
+  content: String
+  tagIDs: [Float!]
+  mediaID: Float
+}
+
+type PostWithAlbumModel implements PostBaseModel {
+  id: Float
+  profileID: Float
+  profile: ProfileModel
+  type: PostType
+  totalShares: Float
+  content: String
+  tagIDs: [Float!]
+  mediaIDs: [Float!]
+}
+
+type PostWithSharedContentModel implements PostBaseModel {
+  id: Float
+  profileID: Float
+  profile: ProfileModel
+  type: PostType
+  totalShares: Float
+  content: String
+  tagIDs: [Float!]
+  postID: Float
+}
 
 type Query {
-  subscriptionGroupMembership(filter: ProfileSubscriptionGroupMembershipFilterByOneInput!): ProfileSubscriptionGroupMembershipModel!
-  subscriptionGroupMemberships(filter: ProfileSubscriptionGroupMembershipFilterByManyInput!): [ProfileSubscriptionGroupMembershipModel!]!
+  postFavoriteCount(filter: PostFilterByOneInput!): Float
+  postReactionCount(filter: PostFilterByOneInput!): Float
+  postShareCount(filter: PostFilterByOneInput!): Float
+  post(filter: PostFilterByOneInput!): PostUnion!
+  posts(filter: PostFilterByManyInput): [PostUnion!]!
 }
 
-input ProfileSubscriptionGroupMembershipFilterByOneInput {
-  subscriptionGroupID: Float
+input PostFilterByOneInput {
+  id: Float!
 }
 
-input ProfileSubscriptionGroupMembershipFilterByManyInput {
-  subscriptionGroupIDs: [Float!]
+union PostUnion = PostWithTextModel | PostWithImageModel | PostWithVideoModel | PostWithAlbumModel | PostWithSharedContentModel
+
+input PostFilterByManyInput {
+  ids: [Float!]
+  profileIDs: [Float!]
 }
 
 type Mutation {
-  subscriptionGroupMembershipDelete(filter: ProfileSubscriptionGroupMembershipFilterByOneInput!): Boolean!
+  postWithTextCreate(input: PostWithTextCreateInput!): PostWithTextModel!
+  postWithImageCreate(input: PostWithImageCreateInput!): PostWithImageModel!
+  postWithVideoCreate(input: PostWithVideoCreateInput!): PostWithVideoModel!
+  postWithAlbumCreate(input: PostWithAlbumInput!): PostWithAlbumModel!
+  postWithSharedContentCreate(input: PostWithSharedContentInput!): PostWithSharedContentModel!
+  postDelete(filter: PostFilterByOneInput!): Boolean!
+}
+
+input PostWithTextCreateInput {
+  content: String!
+}
+
+input PostWithImageCreateInput {
+  content: String!
+  mediaID: Float!
+}
+
+input PostWithVideoCreateInput {
+  content: String!
+  mediaID: Float!
+}
+
+input PostWithAlbumInput {
+  content: String!
+  mediaIDs: [Float!]!
+}
+
+input PostWithSharedContentInput {
+  content: String!
+  postID: Float!
 }
