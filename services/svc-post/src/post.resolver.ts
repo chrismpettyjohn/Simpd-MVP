@@ -93,7 +93,7 @@ export class PostResolver {
       __typename: string;
       id: number;
     }
-  ): Promise<PostWire> {
+  ): Promise<PostWire | null> {
     return this.post(session, {id: reference.id});
   }
 
@@ -101,8 +101,11 @@ export class PostResolver {
   async postFavoriteCount(
     @GetSession() session: SessionContents,
     @Args('filter') filter: PostFilterByOneInput
-  ): Promise<number> {
+  ): Promise<number | null> {
     const matchingPost = await this.post(session, filter);
+    if (!matchingPost) {
+      return null;
+    }
     const matchingFavorites = await this.bookmarkClientService.findMany({
       resourceIDs: [matchingPost.id!],
     });
@@ -114,8 +117,13 @@ export class PostResolver {
   async postReactionCount(
     @GetSession() session: SessionContents,
     @Args('filter') filter: PostFilterByOneInput
-  ): Promise<number> {
+  ): Promise<number | null> {
     const matchingPost = await this.post(session, filter);
+
+    if (!matchingPost) {
+      return null;
+    }
+
     // TODO
     const reactions = await this.postReactionClientService.findMany({
       postIDs: [matchingPost.id],
@@ -128,8 +136,13 @@ export class PostResolver {
   async postShareCount(
     @GetSession() session: SessionContents,
     @Args('filter') filter: PostFilterByOneInput
-  ): Promise<number> {
+  ): Promise<number | null> {
     const matchingPost = await this.post(session, filter);
+
+    if (!matchingPost) {
+      return null;
+    }
+
     const shares: [{count: number}] = await this.postRepo
       .getInstance()
       .query(
@@ -138,20 +151,24 @@ export class PostResolver {
     return shares[0].count;
   }
 
-  @Query(() => PostUnion)
+  @Query(() => PostUnion, {nullable: true})
   @HasSession()
   async post(
     @GetSession() session: SessionContents,
     @Args('filter') filter: PostFilterByOneInput
-  ): Promise<PostWire> {
-    await this.postPrivacyService.profileCanAccessPost(
-      session.profileID,
-      filter.id
-    );
-    const post = await this.postRepo.findOneOrFail({
-      where: filter,
-    });
-    return postEntityToPostWire(post);
+  ): Promise<PostWire | null> {
+    try {
+      await this.postPrivacyService.profileCanAccessPost(
+        session.profileID,
+        filter.id
+      );
+      const post = await this.postRepo.findOneOrFail({
+        where: filter,
+      });
+      return postEntityToPostWire(post);
+    } catch {
+      return null;
+    }
   }
 
   @Query(() => [PostUnion])

@@ -82,7 +82,7 @@ type Query {
   postFavoriteCount(filter: PostFilterByOneInput!): Float
   postReactionCount(filter: PostFilterByOneInput!): Float
   postShareCount(filter: PostFilterByOneInput!): Float
-  post(filter: PostFilterByOneInput!): PostUnion!
+  post(filter: PostFilterByOneInput!): PostUnion
   posts(filter: PostFilterByManyInput): [PostUnion!]!
 }
 
