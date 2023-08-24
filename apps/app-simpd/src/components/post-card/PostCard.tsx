@@ -32,7 +32,7 @@ const getPostCardElement = (post: PostFragment) => {
   return null;
 }
 
-export function PostCard({ post, hideAuthor = false, hideTools = false }: PostCardProps) {
+export function PostCard({ post, hideAuthor = false, hideChildren = false, hideTools = false }: PostCardProps) {
   const postContent = useMemo(() => getPostCardElement(post), [post]);
   return (
     <Link to={`/posts/${post.id}`}>
@@ -47,7 +47,7 @@ export function PostCard({ post, hideAuthor = false, hideTools = false }: PostCa
             {postContent}
           </div>
           {
-            !hideTools && (
+            !hideTools && !hideChildren && (
               <PostStatsContainer onClick={e => e.stopPropagation()}>
                 <PostReactions post={post} />
                 <PostFavorites post={post} />

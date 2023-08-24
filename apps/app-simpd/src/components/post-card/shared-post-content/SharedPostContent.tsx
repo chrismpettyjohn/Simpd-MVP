@@ -31,7 +31,7 @@ export function SharedPostContent({ post }: PostCardProps<PostWithSharedContentF
             <PostCardText>
               <b>{postFetchOne.data.profile.username} said:</b>
             </PostCardText>
-            <PostCard hideAuthor post={postFetchOne.data} />
+            <PostCard hideAuthor hideChildren post={postFetchOne.data} />
           </>
         )
       }
