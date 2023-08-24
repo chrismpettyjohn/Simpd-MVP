@@ -17,8 +17,6 @@ export function ViewPostScreen() {
     await fetchPost.fetch({ id: postID });
   }
 
-  console.log(fetchPost, postID)
-
   useEffect(() => {
     if (!postID) {
       return;

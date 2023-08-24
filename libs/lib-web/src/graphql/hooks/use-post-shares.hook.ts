@@ -18,13 +18,13 @@ export function usePostShares(): UsePostSharesResponse {
       await refetch();
     }
     const matchingPosts = await getPostShares({ variables: { filter } })
-    return matchingPosts.data!.postShares;
+    return matchingPosts.data!.postShareCount;
   }
 
   return {
     fetch: onFetchPostShares,
     error,
     loading,
-    data: data?.postShares,
+    data: data?.postShareCount,
   }
 }

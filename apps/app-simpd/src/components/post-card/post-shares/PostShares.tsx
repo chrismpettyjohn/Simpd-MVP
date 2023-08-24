@@ -24,6 +24,8 @@ export function PostShares({ post }: PostSharesProps) {
     fetchPostShares.fetch({ id: post.id });
   }, [post]);
 
+  console.log(fetchPostShares)
+
   return (
     <PostStatElement onClick={onSharePost}>
       <h3>{fetchPostShares.data ?? 0}</h3>

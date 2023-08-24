@@ -6,7 +6,7 @@ export interface PostSharesVariables {
 }
 
 export interface PostSharesQueryResponse {
-  postShares: number;
+  postShareCount: number;
 }
 
 export const POST_SHARES_QUERY = gql`
