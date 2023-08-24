@@ -5,7 +5,7 @@ export function privacyWireToPostPrivacyWire(
   privacy: PrivacyWire
 ): PostPrivacyModel {
   return {
-    privacyID: privacy.id,
+    id: privacy.id,
     postID: privacy.resourceID,
   };
 }

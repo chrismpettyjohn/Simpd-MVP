@@ -4,7 +4,7 @@ import {PrivacyModel} from '@simpd/lib-client';
 @ObjectType()
 export class PostPrivacyModel {
   @Field(() => Number, {nullable: true})
-  privacyID!: number;
+  id!: number;
 
   @Field(() => PrivacyModel, {nullable: true})
   privacy?: PrivacyModel;
