@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { POST_COMMENT_FRAGMENT, PostCommentFragment } from "graphql/fragments/post-comment.fragment";
+import { POST_COMMENT_FRAGMENT, PostCommentFragment } from "../../graphql/fragments/post-comment.fragment";
 export interface PostCommentCreateOneInput {
   postID: number;
   content: string;

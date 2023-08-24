@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { PostFetchOneInput } from "graphql/queries/post-fetch-one.query";
-import { POST_SHARES_QUERY, PostSharesQueryResponse, PostSharesVariables } from "graphql/queries/post-shares.query";
+import { PostFetchOneInput } from "../../graphql/queries/post-fetch-one.query";
+import { POST_SHARES_QUERY, PostSharesQueryResponse, PostSharesVariables } from "../../graphql/queries/post-shares.query";
 
 
 export interface UsePostSharesResponse {

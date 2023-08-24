@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
 import { TagFragment } from "../fragments/tag.fragment";
-import { TAG_FETCH_ONE_QUERY, TagFetchOneInput, TagFetchOneQueryResponse, TagFetchOneQueryVariables } from "graphql/queries/tag-fetch-one.query";
+import { TAG_FETCH_ONE_QUERY, TagFetchOneInput, TagFetchOneQueryResponse, TagFetchOneQueryVariables } from "../../graphql/queries/tag-fetch-one.query";
 
 export interface UseTagFetchOneQueryResponse {
   fetch(filter: TagFetchOneInput): Promise<TagFragment>;

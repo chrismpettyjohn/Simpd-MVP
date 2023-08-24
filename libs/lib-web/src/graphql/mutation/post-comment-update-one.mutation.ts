@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
-import { POST_COMMENT_FRAGMENT } from "graphql/fragments/post-comment.fragment";
-import { PostCommentFetchOneInput } from "graphql/queries/post-comment-fetch-one.query";
+import { POST_COMMENT_FRAGMENT } from "../../graphql/fragments/post-comment.fragment";
+import { PostCommentFetchOneInput } from "../../graphql/queries/post-comment-fetch-one.query";
 
 export interface PostCommentUpdateOneInput {
   comment: string;

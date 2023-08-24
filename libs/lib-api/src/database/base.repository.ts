@@ -58,7 +58,7 @@ export abstract class BaseRepository<Entity extends ObjectLiteral> {
   ): Promise<void> {
     await this.repo.update(
       {
-        ...omit(this.DEFAULT_OPTIONS, ['where', 'order']),
+        ...(omit(this.DEFAULT_OPTIONS, ['where', 'order']) as any),
         ...opts,
       },
       changes as any

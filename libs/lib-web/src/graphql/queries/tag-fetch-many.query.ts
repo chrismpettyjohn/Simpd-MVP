@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { TAG_FRAGMENT, TagFragment } from "graphql/fragments/tag.fragment";
+import { TAG_FRAGMENT, TagFragment } from "../../graphql/fragments/tag.fragment";
 
 export interface TagFetchManyInput {
   ids?: number[];

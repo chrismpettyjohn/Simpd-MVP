@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { MESSAGE_CONTACT_FRAGMENT, MessageContactFragment } from "graphql/fragments/message-contact.fragment";
+import { MESSAGE_CONTACT_FRAGMENT, MessageContactFragment } from "../../graphql/fragments/message-contact.fragment";
 
 export interface MessageContactFetchManyQueryResponse {
   messageContacts: MessageContactFragment[];

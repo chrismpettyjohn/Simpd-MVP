@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { PostFetchOneInput } from "graphql/queries/post-fetch-one.query";
-import { POST_FAVORITES_QUERY, PostFavoritesQueryResponse, PostFavoritesVariables } from "graphql/queries/post-favorites.query";
+import { PostFetchOneInput } from "../../graphql/queries/post-fetch-one.query";
+import { POST_FAVORITES_QUERY, PostFavoritesQueryResponse, PostFavoritesVariables } from "../../graphql/queries/post-favorites.query";
 
 
 export interface UsePostFavoritesResponse {

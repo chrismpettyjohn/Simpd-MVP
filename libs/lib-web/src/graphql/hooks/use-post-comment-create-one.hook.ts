@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { PostCommentFragment } from "graphql/fragments/post-comment.fragment";
-import { POST_COMMENT_CREATE_ONE_MUTATION, PostCommentCreateOneInput, PostCommentCreateOneMutationResponse, PostCommentCreateOneMutationVariables } from "graphql/mutation/post-comment-create-one.mutation";
+import { PostCommentFragment } from "../../graphql/fragments/post-comment.fragment";
+import { POST_COMMENT_CREATE_ONE_MUTATION, PostCommentCreateOneInput, PostCommentCreateOneMutationResponse, PostCommentCreateOneMutationVariables } from "../../graphql/mutation/post-comment-create-one.mutation";
 
 export interface UsePostCommentCreateOneResponse {
   execute(input: PostCommentCreateOneInput): Promise<PostCommentFragment>;

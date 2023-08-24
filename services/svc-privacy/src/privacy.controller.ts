@@ -4,20 +4,23 @@ import {PrivacyRepository} from './privacy.repository';
 import {privacyEntityToPrivacyWire} from './privacy.wire';
 import {
   PrivacyCreateOneInput,
+  PrivacyFindManyInput,
   PrivacyFindOneInput,
   PrivacyWire,
   SVC_PRIVACY_INTERNAL_EVENT_CREATE_ONE,
   SVC_PRIVACY_INTERNAL_EVENT_DELETE_ONE,
+  SVC_PRIVACY_INTERNAL_EVENT_FIND_MANY,
   SVC_PRIVACY_INTERNAL_EVENT_FIND_ONE,
   SVC_PRIVACY_INTERNAL_EVENT_UPDATE_ONE,
 } from '@simpd/lib-client';
+import {In} from 'typeorm';
 
 @Controller()
 export class PrivacyController {
   constructor(private readonly privacyRepo: PrivacyRepository) {}
 
   @MessagePattern(SVC_PRIVACY_INTERNAL_EVENT_FIND_ONE)
-  async privacyFindOneByID(
+  async privacyFindOne(
     filter: PrivacyFindOneInput
   ): Promise<PrivacyWire | null> {
     const matchingPrivacy = await this.privacyRepo.findOne({
@@ -30,6 +33,16 @@ export class PrivacyController {
       return null;
     }
     return privacyEntityToPrivacyWire(matchingPrivacy);
+  }
+  @MessagePattern(SVC_PRIVACY_INTERNAL_EVENT_FIND_MANY)
+  async privacyFindMany(filter: PrivacyFindManyInput): Promise<PrivacyWire[]> {
+    const matchingPrivacies = await this.privacyRepo.find({
+      where: {
+        serviceKey: filter.serviceKey,
+        resourceID: filter.resourceIDs && In(filter.resourceIDs),
+      },
+    });
+    return matchingPrivacies.map(privacyEntityToPrivacyWire);
   }
 
   @MessagePattern(SVC_PRIVACY_INTERNAL_EVENT_CREATE_ONE)

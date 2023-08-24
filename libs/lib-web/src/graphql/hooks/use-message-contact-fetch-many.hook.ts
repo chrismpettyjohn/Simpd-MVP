@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { MessageContactFragment } from "graphql/fragments/message-contact.fragment";
-import { MESSAGE_CONTACT_FETCH_MANY_QUERY, MessageContactFetchManyQueryResponse } from "graphql/queries/message-contact-fetch-many.query";
+import { MessageContactFragment } from "../../graphql/fragments/message-contact.fragment";
+import { MESSAGE_CONTACT_FETCH_MANY_QUERY, MessageContactFetchManyQueryResponse } from "../../graphql/queries/message-contact-fetch-many.query";
 
 export interface UseMessageContactFetchManyQueryResponse {
   fetch(): Promise<MessageContactFragment[]>;

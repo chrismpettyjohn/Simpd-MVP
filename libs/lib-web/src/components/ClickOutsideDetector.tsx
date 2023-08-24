@@ -38,6 +38,8 @@ export const ClickOutsideDetector = forwardRef(function ClickOutsideDetector(
         document.removeEventListener('keyup', onKeyUp);
       };
     }
+
+    return;
   });
 
   return <div ref={container} {...props} />;

@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { MessageReactionFetchOneInput } from "graphql/queries/message-reaction-fetch-one.query";
+import { MessageReactionFetchOneInput } from "../../graphql/queries/message-reaction-fetch-one.query";
 
 export interface MessageReactionDeleteMutationVariables {
   filter: MessageReactionFetchOneInput;

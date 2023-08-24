@@ -11,6 +11,7 @@ import {
   SVC_PRIVACY_INTERNAL_EVENT_CREATE_ONE,
   SVC_PRIVACY_INTERNAL_EVENT_DELETE_ONE,
   SVC_PRIVACY_INTERNAL_EVENT_FIND_ONE,
+  SVC_PRIVACY_INTERNAL_EVENT_FIND_MANY,
   SVC_PRIVACY_INTERNAL_EVENT_UPDATE_ONE,
   SVC_PRIVACY_NAME,
 } from './privacy.const';
@@ -25,6 +26,13 @@ export class PrivacyClientService {
       {input}
     );
     return await lastValueFrom(matchingPrivacy$);
+  }
+  async findMany(input: PrivacyFindManyInput): Promise<PrivacyWire[]> {
+    const matchingPrivacies$ = this.client.send(
+      SVC_PRIVACY_INTERNAL_EVENT_FIND_MANY,
+      {input}
+    );
+    return await lastValueFrom(matchingPrivacies$);
   }
 
   async createOne(input: PrivacyCreateOneInput): Promise<PrivacyWire> {

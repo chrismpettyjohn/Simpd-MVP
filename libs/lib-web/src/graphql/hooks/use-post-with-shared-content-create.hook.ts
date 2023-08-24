@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { PostWithSharedContentFragment } from "graphql/fragments/post.fragment";
-import { POST_WITH_SHARED_CONTENT_CREATE_MUTATION, PostWithSharedContentCreateInput, PostWithSharedContentCreateMutationResponse, PostWithSharedContentCreateMutationVariables } from "graphql/mutation/post-with-shared-content-create.mutation";
+import { PostWithSharedContentFragment } from "../../graphql/fragments/post.fragment";
+import { POST_WITH_SHARED_CONTENT_CREATE_MUTATION, PostWithSharedContentCreateInput, PostWithSharedContentCreateMutationResponse, PostWithSharedContentCreateMutationVariables } from "../../graphql/mutation/post-with-shared-content-create.mutation";
 
 export interface UsePostWithSharedContentCreateResponse {
   execute(input: PostWithSharedContentCreateInput): Promise<PostWithSharedContentFragment>;

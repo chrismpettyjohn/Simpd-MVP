@@ -9,7 +9,7 @@ export function PostCommentsCard({ post }: PostCommentsCardProps) {
   const postCommentsFetchMany = usePostCommentFetchMany();
 
   const onFetchPostComments = async () => {
-    await postCommentsFetchMany.fetch({ postIDs: [post.id] });
+    await postCommentsFetchMany.fetch({ ids: [post.id] });
   }
 
   useEffect(() => {

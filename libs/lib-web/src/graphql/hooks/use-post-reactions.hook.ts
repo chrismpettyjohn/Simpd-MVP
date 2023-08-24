@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { PostFetchOneInput } from "graphql/queries/post-fetch-one.query";
-import { POST_REACTIONS_QUERY, PostReactionsQueryResponse, PostReactionsVariables } from "graphql/queries/post-reactions.query";
+import { PostFetchOneInput } from "../../graphql/queries/post-fetch-one.query";
+import { POST_REACTIONS_QUERY, PostReactionsQueryResponse, PostReactionsVariables } from "../../graphql/queries/post-reactions.query";
 
 
 export interface UsePostReactionsResponse {

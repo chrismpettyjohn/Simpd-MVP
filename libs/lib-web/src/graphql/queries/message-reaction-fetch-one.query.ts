@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { MESSAGE_REACTION_FRAGMENT, MessageReactionFragment } from "graphql/fragments/message-reaction.fragment";
+import { MESSAGE_REACTION_FRAGMENT, MessageReactionFragment } from "../../graphql/fragments/message-reaction.fragment";
 
 export interface MessageReactionFetchOneInput {
   id?: number;

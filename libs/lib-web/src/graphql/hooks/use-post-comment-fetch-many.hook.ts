@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
-import { PostCommentFragment } from "graphql/fragments/post-comment.fragment";
-import { POST_COMMENT_FETCH_MANY_QUERY, PostCommentFetchManyInput, PostCommentFetchManyQueryResponse, PostCommentFetchManyQueryVariables } from "graphql/queries/post-comment-fetch-many.query";
+import { PostCommentFragment } from "../../graphql/fragments/post-comment.fragment";
+import { POST_COMMENT_FETCH_MANY_QUERY, PostCommentFetchManyInput, PostCommentFetchManyQueryResponse, PostCommentFetchManyQueryVariables } from "../../graphql/queries/post-comment-fetch-many.query";
 
 export interface UsePostCommentFetchManyQueryResponse {
   fetch(filter: PostCommentFetchManyInput): Promise<PostCommentFragment[]>;

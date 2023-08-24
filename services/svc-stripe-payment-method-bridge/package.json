@@ -1,5 +1,5 @@
 {
-  "name": "@simpd/svc-stripe-payment-invoice-bridge",
+  "name": "@simpd/svc-stripe-payment-method-bridge",
   "version": "1.0.0",
   "main": "src/index.ts",
   "scripts": {

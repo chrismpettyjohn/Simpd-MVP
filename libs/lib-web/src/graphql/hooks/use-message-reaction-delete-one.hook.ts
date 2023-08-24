@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { MessageReactionFetchOneInput } from "graphql/queries/message-reaction-fetch-one.query";
+import { MessageReactionFetchOneInput } from "../../graphql/queries/message-reaction-fetch-one.query";
 import { MESSAGE_REACTION_DELETE_ONE_MUTATION, MessageReactionDeleteMutationResponse, MessageReactionDeleteMutationVariables } from "../mutation/message-reaction-delete-one.mutation";
 
 export interface UseMessageReactionDeleteResponse {

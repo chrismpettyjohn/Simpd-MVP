@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { PostCommentFetchOneInput } from "graphql/queries/post-comment-fetch-one.query";
-import { POST_COMMENT_UPDATE_ONE_MUTATION, PostCommentUpdateOneInput, PostCommentUpdateOneMutationResponse, PostCommentUpdateOneMutationVariables } from "graphql/mutation/post-comment-update-one.mutation";
+import { PostCommentFetchOneInput } from "../../graphql/queries/post-comment-fetch-one.query";
+import { POST_COMMENT_UPDATE_ONE_MUTATION, PostCommentUpdateOneInput, PostCommentUpdateOneMutationResponse, PostCommentUpdateOneMutationVariables } from "../../graphql/mutation/post-comment-update-one.mutation";
 
 export interface UsePostCommentUpdateOneResponse {
   execute(filter: PostCommentFetchOneInput, changes: PostCommentUpdateOneInput): Promise<boolean>;

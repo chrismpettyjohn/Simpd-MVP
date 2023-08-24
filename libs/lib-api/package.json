@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@types/body-parser": "*",
+    "@types/lodash": "*",
     "@types/bcryptjs": "*",
     "@nestjs/common": "*",
     "@nestjs/core": "*",
