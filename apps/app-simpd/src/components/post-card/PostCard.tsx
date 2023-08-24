@@ -43,7 +43,7 @@ export function PostCard({ post, hideAuthor = false, hideTools = false }: PostCa
           </PostCardHeader>
         )}
         <PostCardContent>
-          <div style={{ overflow: 'hidden', height: 400 }}>
+          <div style={{ overflow: 'hidden' }}>
             {postContent}
           </div>
           {
