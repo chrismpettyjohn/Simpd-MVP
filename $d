@@ -1,0 +1,14 @@
+# Database
+DATABASE_HOST=localhost
+DATABASE_PORT=postgres
+DATABASE_USER=root
+DATABASE_PASS=password
+DATABASE_NAME=simpd
+
+# Authentication
+JWT_SECRET=HfGeN
+JWT_EXPIRATION_IN_MS=2400000000
+
+# GraphQL
+GRAPHQL_PLAYGROUND=true
+
