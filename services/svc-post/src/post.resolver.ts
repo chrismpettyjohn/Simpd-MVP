@@ -51,6 +51,7 @@ import {
   PostWithTextCreateInput,
   PostWithVideoCreateInput,
 } from './post.input';
+import {PostEntity} from './post.entity';
 
 @Resolver(() => PostUnion)
 export class PostResolver {
@@ -167,14 +168,21 @@ export class PostResolver {
       },
     });
 
-    await Promise.all(
-      matchingPosts.map(post =>
+    const accessiblePosts: PostEntity[] = [];
+
+    const canUserAccessPost = async (post: PostEntity) => {
+      try {
         this.postPrivacyService.profileCanAccessPost(
           session.profileID,
           post.id!
-        )
-      )
-    );
+        );
+        accessiblePosts.push(post);
+      } catch {
+        // Disregard and return nothing
+      }
+    };
+
+    await Promise.all(matchingPosts.map(canUserAccessPost));
 
     return matchingPosts.map(postEntityToPostWire);
   }
