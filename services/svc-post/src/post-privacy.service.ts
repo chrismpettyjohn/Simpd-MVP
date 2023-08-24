@@ -51,6 +51,12 @@ export class PostPrivacyService {
       return;
     }
 
+    const profileMadePost = matchingPost.profileID === profileID;
+
+    if (profileMadePost) {
+      return;
+    }
+
     if (matchingPrivacyPolicy!.policy.allowedSubscriptionGroupIDs.length > 0) {
       const allowedSubscriptionGroupIDs =
         matchingPrivacyPolicy!.policy.allowedSubscriptionGroupIDs;
