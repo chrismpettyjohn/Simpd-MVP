@@ -7,7 +7,6 @@ export class ProfileUserBridgeService {
   constructor(private readonly profileClientService: ProfileClientService) {}
 
   async onUserCreated(user: UserWire): Promise<void> {
-    console.log('Received user created event', user);
     const words = RandomWords(3);
     const username = words.join('-');
     const displayName = username.toUpperCase();

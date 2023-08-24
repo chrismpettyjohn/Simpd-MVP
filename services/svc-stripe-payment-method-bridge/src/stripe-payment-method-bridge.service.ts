@@ -12,8 +12,6 @@ export class StripePaymentMethodBridgeService {
   async onPaymentMethodCreated(
     paymentMethod: PaymentMethodWire
   ): Promise<void> {
-    console.log('Received invoice created event', paymentMethod);
-
     const matchingUser = await this.userClientService.findOne({
       id: paymentMethod.id,
     });

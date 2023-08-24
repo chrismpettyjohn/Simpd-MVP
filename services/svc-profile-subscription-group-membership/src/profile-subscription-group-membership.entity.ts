@@ -10,7 +10,7 @@ import {
 
 @Entity({
   name: 'profile_subscription_groups',
-  schema: 'profiles_subscription_groups',
+  schema: 'profile_subscription_groups',
 })
 export class ProfileSubscriptionGroupMembershipMembershipEntity {
   @PrimaryGeneratedColumn()
@@ -24,7 +24,7 @@ export class ProfileSubscriptionGroupMembershipMembershipEntity {
   @Index()
   subscriptionGroupID!: number;
 
-  @UpdateDateColumn({name: 'auto_new', type: 'boolean'})
+  @Column({name: 'auto_renew', type: 'boolean', default: false})
   autoRenew!: boolean;
 
   @UpdateDateColumn({name: 'renews_on', type: 'timestamp'})

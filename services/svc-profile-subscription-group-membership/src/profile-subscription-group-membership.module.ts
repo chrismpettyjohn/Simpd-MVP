@@ -23,6 +23,7 @@ import {
     GraphQLModule.forRoot(),
     DatabaseModule.forRoot({
       entities: [ProfileSubscriptionGroupMembershipMembershipEntity],
+      synchronize: true,
     }),
   ],
   providers: [

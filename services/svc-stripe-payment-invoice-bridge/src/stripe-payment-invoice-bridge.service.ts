@@ -13,8 +13,6 @@ export class StripePaymentInvoiceBridgeService {
   async onPaymentInvoiceCreated(
     paymentInvoice: PaymentInvoiceWire
   ): Promise<void> {
-    console.log('Received invoice created event', paymentInvoice);
-
     const matchingUser = await this.userClientService.findOne({
       id: paymentInvoice.id,
     });
@@ -26,7 +24,7 @@ export class StripePaymentInvoiceBridgeService {
     await this.stripePaymentInvoiceService.createInvoice({
       customer: stripeCustomer.id,
       description: paymentInvoice.description,
-      application_fee_amount: paymentInvoice.amount,
+      application_fee_amount: paymentInvoice.amountInCents,
     });
   }
 }

@@ -64,9 +64,9 @@ export class ProfileSubscriptionGroupMembershipController {
     const matchingProfileSubscriptionGroupMemberships =
       await this.profileSubscriptionGroupMembershipRepo.find({
         where: {
-          profileID: filter.profileIDs && In(filter.profileIDs),
-          subscriptionGroupID:
-            filter.subscriptionGroupIDs && In(filter.subscriptionGroupIDs),
+          // profileID: filter.profileIDs && In(filter.profileIDs),
+          // subscriptionGroupID:
+          //   filter.subscriptionGroupIDs && In(filter.subscriptionGroupIDs),
         },
       });
     return matchingProfileSubscriptionGroupMemberships.map(

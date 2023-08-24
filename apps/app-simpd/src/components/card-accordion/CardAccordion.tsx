@@ -3,8 +3,8 @@ import { CardAccordionProps } from './CardAccordion.types';
 import { CardAccordionHeaderContent } from './CardAccordion.sty';
 import { CardBody, CardBodyContent, CardContainer, CardHeader } from '../card/Card.sty';
 
-export function CardAccordion({ defaultIsOpen, header, children }: CardAccordionProps) {
-  const [isOpen, setIsOpen] = useState(!!defaultIsOpen);
+export function CardAccordion({ defaultIsOpen = false, header, children }: CardAccordionProps) {
+  const [isOpen, setIsOpen] = useState(defaultIsOpen);
 
   const onToggle = () => {
     setIsOpen(_ => !_);

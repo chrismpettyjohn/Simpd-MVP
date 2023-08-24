@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "command": "pnpm run dev:start --inspect-brk",
+      "name": "Start",
+      "request": "launch",
+      "type": "node-terminal",
+      "postDebugTask": "Stop"
+    }
+  ]
+}

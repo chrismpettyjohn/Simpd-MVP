@@ -125,7 +125,6 @@ export class ProfileResolver {
     @Args('filter') filter: ProfileFilterByOneInput,
     @Args('input') input: ProfileUpdateInput
   ): Promise<ProfileModel> {
-    console.log(filter, input);
     const matchingProfile = await this.profileRepo.findOneOrFail({
       where: filter,
     });

@@ -60,26 +60,25 @@ export class PostPrivacyService {
           profileIDs: [profileID],
           subscriptionGroupIDs: [...allowedSubscriptionGroupIDs],
         });
-      const profileIsApartOfAllowedSubscriptionGroup =
-        !!subscriptionGroupsProfileIsIn.find(_ =>
-          matchingPrivacyPolicy?.policy.allowedSubscriptionGroupIDs.includes(
-            _.subscriptionGroupID
-          )
+
+      const subscriptionGroupIDsProfileIsIn = subscriptionGroupsProfileIsIn.map(
+        _ => _.subscriptionGroupID
+      );
+
+      const allowedSubscriptionGroupsProfileIsApartOf =
+        allowedSubscriptionGroupIDs.filter(_ =>
+          subscriptionGroupIDsProfileIsIn.includes(_)
         );
-      if (!profileIsApartOfAllowedSubscriptionGroup) {
+
+      console.log(
+        allowedSubscriptionGroupIDs,
+        subscriptionGroupIDsProfileIsIn,
+        allowedSubscriptionGroupsProfileIsApartOf
+      );
+
+      if (!allowedSubscriptionGroupsProfileIsApartOf?.length) {
         throw new UnauthorizedException();
       }
-    }
-
-    const profileHasAllowedSubscriptionGroup =
-      matchingProfile.subscriptionGroupIDs.filter(subGroupID =>
-        matchingPrivacyPolicy!.policy.allowedSubscriptionGroupIDs.includes(
-          subGroupID
-        )
-      ).length > 0;
-
-    if (!profileHasAllowedSubscriptionGroup) {
-      throw new UnauthorizedException();
     }
   }
 }
