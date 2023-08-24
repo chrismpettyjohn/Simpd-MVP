@@ -6,7 +6,7 @@ export interface PostFavoritesVariables {
 }
 
 export interface PostFavoritesQueryResponse {
-  postFavorites: number;
+  postFavoriteCount: number;
 }
 
 export const POST_FAVORITES_QUERY = gql`

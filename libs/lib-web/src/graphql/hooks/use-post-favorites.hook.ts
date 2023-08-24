@@ -18,13 +18,13 @@ export function usePostFavorites(): UsePostFavoritesResponse {
       await refetch();
     }
     const matchingPosts = await getPostFavorites({ variables: { filter } })
-    return matchingPosts.data!.postFavorites;
+    return matchingPosts.data!.postFavoriteCount;
   }
 
   return {
     fetch: onFetchPostFavorites,
     error,
     loading,
-    data: data?.postFavorites,
+    data: data?.postFavoriteCount,
   }
 }
