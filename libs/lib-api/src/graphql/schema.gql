@@ -2,34 +2,64 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type PrivacyPolicyModel {
-  allowedSubscriptionGroupIDs: [Float!]
-}
-
-type PrivacyModel {
+type BookmarkModel {
   id: Float
   serviceKey: String
   resourceID: Float
+  profileID: Float
+  bookmarkCollectionID: Float
+}
+
+type BookmarkCollectionModel {
+  id: Float
+  profileID: Float
   name: String
-  description: String
-  policy: PrivacyPolicyModel
 }
 
 type Query {
-  privacy(filter: PrivacyFilterByOneInput!): PrivacyModel!
-  privacys(filter: PrivacyFilterByManyInput): [PrivacyModel!]!
+  bookmark(filter: BookmarkFindOneInput!): BookmarkModel!
+  bookmarks(filter: BookmarkFindManyInput): [BookmarkModel!]!
+  bookmarkCollection(filter: BookmarkCollectionFindOneInput!): BookmarkCollectionModel!
+  bookmarkCollections(filter: BookmarkCollectionFindManyInput): [BookmarkCollectionModel!]!
 }
 
-input PrivacyFilterByOneInput {
+input BookmarkFindOneInput {
   id: Float
+  profileID: Float
   resourceID: Float
+  bookmarkCollectionID: Float
 }
 
-input PrivacyFilterByManyInput {
+input BookmarkFindManyInput {
   ids: [Float!]
+  profileIDs: [Float!]
   resourceIDs: [Float!]
+  bookmarkCollectionIDs: [Float!]
+}
+
+input BookmarkCollectionFindOneInput {
+  id: Float
+  profileID: Float
+}
+
+input BookmarkCollectionFindManyInput {
+  ids: [Float!]
+  profileIDs: [Float!]
 }
 
 type Mutation {
-  privacyDelete(filter: PrivacyFilterByOneInput!): Boolean!
+  bookmarkCreate(input: BookmarkCreateInput!): BookmarkModel!
+  bookmarkDelete(filter: BookmarkFindOneInput!): Boolean!
+  bookmarkCollectionCreate(input: BookmarkCollectionCreateInput!): BookmarkCollectionModel!
+  bookmarkCollectionCreateRandomized: BookmarkCollectionModel!
+  bookmarkCollectionDelete(filter: BookmarkCollectionFindOneInput!): Boolean!
+}
+
+input BookmarkCreateInput {
+  resourceID: Float!
+  bookmarkCollectionID: Float!
+}
+
+input BookmarkCollectionCreateInput {
+  name: String!
 }
