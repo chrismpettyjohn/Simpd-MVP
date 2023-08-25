@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { LOCAL_STORAGE_SESSION_TOKEN } from "../app/app.constant";
+import { MEDIA_API_URL, LOCAL_STORAGE_SESSION_TOKEN } from "../app/app.constant";
 
 export interface useMediaUploadResponse {
   onUpload(file: File): Promise<number>;
   loading: boolean;
 }
 
-const MEDIA_API = 'http://localhost:3012';
+const MEDIA_API = `${MEDIA_API_URL}/media`
 
 export function useMediaUpload() {
   const [loading, setLoading] = useState(false);
@@ -22,7 +22,7 @@ export function useMediaUpload() {
       setLoading(true);
       const formData = new FormData();
       formData.append('file', file);
-      const response = await fetch(`${MEDIA_API}/media`, {
+      const response = await fetch(MEDIA_API, {
         headers: {
           Authorization: `Bearer ${bearerToken}`,
         },
