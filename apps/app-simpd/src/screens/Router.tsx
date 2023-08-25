@@ -21,6 +21,7 @@ import { SettingsIdentityScreen } from './settings-identity/SettingsIdentity';
 import { MessageStartThreadScreen } from './message-start-thread/MessageStartThread';
 import { SettingsUserScreen } from './settings-user/SettingsUser';
 import { UserProfileSubscriptionsScreen } from './user-profile-subscriptions/UserProfileSubscriptions';
+import { DiscoverProfilesScreen } from './discover-profiles/DiscoverProfiles';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -54,6 +55,14 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
         <DashboardScreen />
       </UserGuard>
     ),
+  },
+  {
+    path: '/discover',
+    view: (
+      <UserGuard redirect>
+        <DiscoverProfilesScreen />
+      </UserGuard>
+    )
   },
   {
     path: '/bookmarks',

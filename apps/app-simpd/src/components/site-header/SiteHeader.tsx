@@ -47,6 +47,9 @@ export function SiteHeader() {
             <Link to="/dashboard">
               <i className="fa fa-home" />
             </Link>
+            <Link to="/discover">
+              <i className="fa fa-bullhorn" />
+            </Link>
             <Link to="/messages">
               <i className="fa fa-comment" />
             </Link>
