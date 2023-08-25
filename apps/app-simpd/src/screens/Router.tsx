@@ -137,14 +137,6 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     ),
   },
   {
-    path: '/settings/user',
-    view: (
-      <UserGuard redirect>
-        <SettingsUserScreen />
-      </UserGuard>
-    ),
-  },
-  {
     path: '/settings/security',
     view: (
       <UserGuard redirect>

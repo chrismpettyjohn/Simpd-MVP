@@ -14,9 +14,8 @@ export function NotificationsScreen() {
       <NotificationElement>
         <PageTitle title="Notifications" />
         <NotificationContainer>
-          <NotificationCard />
-          <NotificationCard />
-          <NotificationCard />
+          <p>
+            <b>This page is not implemented.</b></p>
           <NotificationCard />
         </NotificationContainer>
       </NotificationElement>

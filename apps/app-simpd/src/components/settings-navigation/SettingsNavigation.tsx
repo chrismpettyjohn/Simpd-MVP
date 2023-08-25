@@ -5,9 +5,6 @@ import { SettingsNavIcon } from './SettingsNavigation.sty';
 export function SettingsNavigation() {
   return (
     <div className="settings-profile-settings-navigation">
-      <Link to="/settings/user">
-        <SettingsNavIcon className="fa fa-user" />
-      </Link>
       <Link to="/settings/identity">
         <SettingsNavIcon className="fa fa-users" />
       </Link>
