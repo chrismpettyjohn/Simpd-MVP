@@ -82,6 +82,16 @@
       "watch_delay": 1000
     },
     {
+      "name": "svc-notification",
+      "cwd": "./services/svc-notification",
+      "script": "pnpm",
+      "args": "run web-server:start",
+      "watch": [
+        "src"
+      ],
+      "watch_delay": 1000
+    },
+    {
       "name": "svc-payment-attempt",
       "cwd": "./services/svc-payment-attempt",
       "script": "pnpm",

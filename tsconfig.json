@@ -45,6 +45,9 @@
       "@simpd/svc-message-reaction": [
         "services/svc-message-reaction/src"
       ],
+      "@simpd/svc-notification": [
+        "services/svc-notification/src"
+      ],
       "@simpd/svc-payment-attempt": [
         "services/svc-payment-attempt/src"
       ],
