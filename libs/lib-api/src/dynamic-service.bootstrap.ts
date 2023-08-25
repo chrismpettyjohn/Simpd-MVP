@@ -1,9 +1,9 @@
 import Express from 'express';
 import BodyParser from 'body-parser';
-import {NATS_ADDRESS} from './constants';
-import {ExpressAdapter} from '@nestjs/platform-express';
-import {NestApplication, NestFactory} from '@nestjs/core';
-import {MicroserviceOptions, Transport} from '@nestjs/microservices';
+import { NATS_ADDRESS } from './constants';
+import { ExpressAdapter } from '@nestjs/platform-express';
+import { NestApplication, NestFactory } from '@nestjs/core';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 
 export async function dynamicServiceBootstrap(
   name: string,
@@ -27,11 +27,11 @@ export async function dynamicServiceBootstrap(
     }
   };
 
-  app.use(BodyParser.urlencoded({verify: rawBodyBuffer, extended: true}));
-  app.use(BodyParser.json({verify: rawBodyBuffer}));
+  app.use(BodyParser.urlencoded({ verify: rawBodyBuffer, extended: true }));
+  app.use(BodyParser.json({ verify: rawBodyBuffer }));
 
   app.enableCors({
-    origin: ['http://localhost:5173', 'http://localhost:5174'],
+    origin: ['http://localhost:5173', 'http://localhost:5174', 'http://143.110.231.18:5173', 'http://143.110.231.18:5174',],
     methods: ['GET', 'POST'],
     credentials: true,
   });
