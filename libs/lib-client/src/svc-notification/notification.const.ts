@@ -6,3 +6,5 @@ export const SVC_NOTIFICATION_WEB_ADDRESS =
 
 export const SVC_NOTIFICATION_INTERNAL_EVENT_FIND_ONE =
   'notificationFindOneByID';
+export const SVC_NOTIFICATION_INTERNAL_EVENT_CREATE_ONE =
+  'notificationCreateOne';

@@ -12,3 +12,10 @@ export interface NotificationWire {
 export interface NotificationFindOneInput {
   id?: number;
 }
+
+export interface NotificationCreateOneInput<EventMeta extends any> {
+  resourceType: string;
+  profileID: number;
+  eventKey: string;
+  eventMetadata: EventMeta;
+}

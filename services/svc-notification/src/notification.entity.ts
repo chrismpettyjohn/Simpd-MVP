@@ -24,7 +24,10 @@ export class NotificationEntity {
   resourceID!: number;
 
   @Column({type: 'text'})
-  content!: string;
+  eventKey!: string;
+
+  @Column({type: 'json'})
+  eventMetadata!: object;
 
   @Column({name: 'read_at', type: 'timestamp', nullable: true})
   readAt?: Date;

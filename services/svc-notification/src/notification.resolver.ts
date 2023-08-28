@@ -2,10 +2,8 @@ import {In} from 'typeorm';
 import {NotificationModel} from './notification.model';
 import {NotificationEntity} from './notification.entity';
 import {NotificationRepository} from './notification.repository';
-import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
 import {
   Args,
-  Mutation,
   Parent,
   Query,
   ResolveField,
@@ -13,7 +11,6 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import {
-  NotificationCreateInput,
   NotificationFilterByManyInput,
   NotificationFilterByOneInput,
 } from './notification.input';
@@ -62,30 +59,8 @@ export class NotificationResolver {
     return this.notificationRepo.find({
       where: {
         id: filter.ids && In(filter.ids),
-        receivingProfileID: filter.receivingProfileID,
+        profileID: filter.receivingProfileID,
       },
     });
-  }
-
-  @Mutation(() => NotificationModel)
-  @HasSession()
-  async notificationCreate(
-    @GetSession() session: SessionContents,
-    @Args('input') input: NotificationCreateInput
-  ): Promise<NotificationEntity> {
-    const newNotification = await this.notificationRepo.create({
-      sendingProfileID: session.profileID,
-      receivingProfileID: input.receivingProfileID,
-      content: input.content,
-    });
-    return newNotification;
-  }
-
-  @Mutation(() => Boolean)
-  async notificationDelete(
-    @Args('filter') filter: NotificationFilterByOneInput
-  ) {
-    await this.notificationRepo.softDelete(filter);
-    return true;
   }
 }

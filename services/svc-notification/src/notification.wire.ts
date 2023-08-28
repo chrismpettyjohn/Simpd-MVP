@@ -9,7 +9,7 @@ export function notificationEntityToNotificationWire(
     profileID: notificationEntity.profileID,
     resourceID: notificationEntity.resourceID,
     resourceType: notificationEntity.resourceType,
-    content: notificationEntity.content,
+    content: notificationEntity.eventKey,
     readAt: notificationEntity.readAt?.toDateString(),
     createdAt: notificationEntity.createdAt!.toDateString(),
     updatedAt: notificationEntity.updatedAt?.toDateString(),

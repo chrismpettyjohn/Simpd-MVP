@@ -15,11 +15,10 @@ export class NotificationFilterByOneInput {
   id?: number;
 }
 
-@InputType()
-export class NotificationCreateInput {
-  @Field(() => Number)
-  receivingProfileID!: number;
-
-  @Field(() => String)
-  content!: string;
+export interface NotificationCreateOneInput<EventMeta extends any> {
+  resourceID: number;
+  resourceType: string;
+  profileID: number;
+  eventKey: string;
+  eventMetadata: EventMeta;
 }

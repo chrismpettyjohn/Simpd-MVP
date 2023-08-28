@@ -2,69 +2,37 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type MediaModel {
+type NotificationModel {
+  id: Float
+  sendingProfileID: Float
+  receivingProfileID: Float
+  content: String
+  readAt: DateTime
+  createdAt: DateTime
+  updatedAt: DateTime
+  sendingProfile: ProfileModel!
+  receivingProfile: ProfileModel!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type ProfileModel {
   id: Float!
 }
 
-type ProfileModel {
-  id: Float
-  userID: Float
-  username: String
-  displayName: String
-  biography: String
-  location: String
-  websiteURL: String
-  wishlistURL: String
-  profilePictureMediaID: Float
-  profilePicture: MediaModel
-  coverPhotoMediaID: Float
-  coverPhoto: MediaModel
-}
-
 type Query {
-  profile(filter: ProfileFilterByOneInput!): ProfileModel!
-  profiles(filter: ProfileFilterByManyInput): [ProfileModel!]!
+  notification(filter: NotificationFilterByOneInput!): NotificationModel!
+  notifications(filter: NotificationFilterByManyInput!): [NotificationModel!]!
 }
 
-input ProfileFilterByOneInput {
+input NotificationFilterByOneInput {
   id: Float
-  username: String
 }
 
-input ProfileFilterByManyInput {
+input NotificationFilterByManyInput {
   ids: [Float!]
-  userIDs: [Float!]
-  usernames: [String!]
-  sortBy: [ProfileSortBy!]
-  limit: Float
-}
-
-enum ProfileSortBy {
-  NEWEST_PROFILE
-}
-
-type Mutation {
-  profileCreate(input: ProfileCreateInput!): ProfileModel!
-  profileCreateRandomized: ProfileModel!
-  profileUpdate(filter: ProfileFilterByOneInput!, input: ProfileUpdateInput!): ProfileModel!
-  profileDelete(filter: ProfileFilterByOneInput!): Boolean!
-}
-
-input ProfileCreateInput {
-  username: String!
-  displayName: String!
-  biography: String!
-  profilePictureMediaID: Float
-  coverPhotoMediaID: Float
-}
-
-input ProfileUpdateInput {
-  username: String
-  displayName: String
-  biography: String
-  location: String
-  websiteURL: String
-  wishlistURL: String
-  profilePictureMediaID: Float
-  coverPhotoMediaID: Float
+  receivingProfileID: Float
 }
