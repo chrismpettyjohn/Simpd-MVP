@@ -8,6 +8,7 @@ export enum ProfileSortBy {
 export interface ProfileFetchManyInput {
   userIDs?: number[];
   sortBy?: ProfileSortBy[];
+  limit?: number;
 }
 
 export interface ProfileFetchManyQueryVariables {

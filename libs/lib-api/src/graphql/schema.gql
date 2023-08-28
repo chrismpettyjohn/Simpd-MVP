@@ -36,6 +36,7 @@ input ProfileFilterByManyInput {
   userIDs: [Float!]
   usernames: [String!]
   sortBy: [ProfileSortBy!]
+  limit: Float
 }
 
 enum ProfileSortBy {

@@ -17,6 +17,9 @@ export class ProfileFilterByManyInput {
 
   @Field(() => [ProfileSortBy], {nullable: true})
   sortBy?: ProfileSortBy[];
+
+  @Field(() => Number, {nullable: true})
+  limit?: number;
 }
 
 @InputType()

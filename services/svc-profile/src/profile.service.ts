@@ -17,6 +17,7 @@ export class ProfileService {
         userID: filters.userIDs && In(filters.userIDs),
         username: filters.usernames && In(filters.usernames),
       },
+      take: filters.limit,
     };
 
     if (filters.sortBy) {

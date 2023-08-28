@@ -7,7 +7,8 @@ export function NewProfilesGrid() {
 
   useEffect(() => {
     fetchProfiles.fetch({
-      sortBy: [ProfileSortBy.NEWEST_PROFILE]
+      sortBy: [ProfileSortBy.NEWEST_PROFILE],
+      limit: 10
     })
   }, []);
 
