@@ -1,5 +1,9 @@
 import {Field, InputType} from '@nestjs/graphql';
 
+export enum ProfileSortBy {
+  NEWEST_PROFILE = 'NEWEST_PROFILE',
+}
+
 @InputType()
 export class ProfileFilterByManyInput {
   @Field(() => [Number], {nullable: true})
@@ -10,6 +14,9 @@ export class ProfileFilterByManyInput {
 
   @Field(() => [String], {nullable: true})
   usernames?: string[];
+
+  @Field(() => [ProfileSortBy], {nullable: true})
+  sortBy?: ProfileSortBy[];
 }
 
 @InputType()

@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import { Card } from '../../components/card/Card';
 import { PageTitle } from '../../components/page-title/PageTitle';
 import { DiscoverProfilesHeader } from './DiscoverProfiles.styled';
+import { NewProfilesGrid } from './new-profiles-grid/NewProfilesGrid';
 
 export function DiscoverProfilesScreen() {
   return (
@@ -18,7 +19,7 @@ export function DiscoverProfilesScreen() {
       </Card>
       <DiscoverProfilesHeader>New Creators</DiscoverProfilesHeader>
       <Card>
-        coming soon
+        <NewProfilesGrid />
       </Card>
     </>
   )

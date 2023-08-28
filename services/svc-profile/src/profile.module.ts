@@ -1,6 +1,8 @@
 import {Module} from '@nestjs/common';
 import {ProfileEntity} from './profile.entity';
+import {registerEnumType} from '@nestjs/graphql';
 import {ProfileResolver} from './profile.resolver';
+import {ProfileSortBy} from './profile.input';
 import {ProfileController} from './profile.controller';
 import {ProfileRepository} from './profile.repository';
 import {
@@ -9,6 +11,7 @@ import {
   CommonModule,
   SessionModule,
 } from '@simpd/lib-api';
+import {ProfileService} from './profile.service';
 
 @Module({
   imports: [
@@ -20,7 +23,11 @@ import {
       synchronize: true,
     }),
   ],
-  providers: [ProfileRepository, ProfileResolver],
+  providers: [ProfileRepository, ProfileResolver, ProfileService],
   controllers: [ProfileController],
 })
 export class ProfileModule {}
+
+registerEnumType(ProfileSortBy, {
+  name: 'ProfileSortBy',
+});

@@ -2,34 +2,68 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type PrivacyPolicyModel {
-  allowedSubscriptionGroupIDs: [Float!]
+type MediaModel {
+  id: Float!
 }
 
-type PrivacyModel {
+type ProfileModel {
   id: Float
-  serviceKey: String
-  resourceID: Float
-  name: String
-  description: String
-  policy: PrivacyPolicyModel
+  userID: Float
+  username: String
+  displayName: String
+  biography: String
+  location: String
+  websiteURL: String
+  wishlistURL: String
+  profilePictureMediaID: Float
+  profilePicture: MediaModel
+  coverPhotoMediaID: Float
+  coverPhoto: MediaModel
 }
 
 type Query {
-  privacy(filter: PrivacyFilterByOneInput!): PrivacyModel!
-  privacys(filter: PrivacyFilterByManyInput): [PrivacyModel!]!
+  profile(filter: ProfileFilterByOneInput!): ProfileModel!
+  profiles(filter: ProfileFilterByManyInput): [ProfileModel!]!
 }
 
-input PrivacyFilterByOneInput {
+input ProfileFilterByOneInput {
   id: Float
-  resourceID: Float
+  username: String
 }
 
-input PrivacyFilterByManyInput {
+input ProfileFilterByManyInput {
   ids: [Float!]
-  resourceIDs: [Float!]
+  userIDs: [Float!]
+  usernames: [String!]
+  sortBy: [ProfileSortBy!]
+}
+
+enum ProfileSortBy {
+  NEWEST_PROFILE
 }
 
 type Mutation {
-  privacyDelete(filter: PrivacyFilterByOneInput!): Boolean!
+  profileCreate(input: ProfileCreateInput!): ProfileModel!
+  profileCreateRandomized: ProfileModel!
+  profileUpdate(filter: ProfileFilterByOneInput!, input: ProfileUpdateInput!): ProfileModel!
+  profileDelete(filter: ProfileFilterByOneInput!): Boolean!
+}
+
+input ProfileCreateInput {
+  username: String!
+  displayName: String!
+  biography: String!
+  profilePictureMediaID: Float
+  coverPhotoMediaID: Float
+}
+
+input ProfileUpdateInput {
+  username: String
+  displayName: String
+  biography: String
+  location: String
+  websiteURL: String
+  wishlistURL: String
+  profilePictureMediaID: Float
+  coverPhotoMediaID: Float
 }

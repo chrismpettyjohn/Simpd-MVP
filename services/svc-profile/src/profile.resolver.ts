@@ -2,6 +2,7 @@ import {In} from 'typeorm';
 import RandomWords from 'random-words';
 import {ProfileModel} from './profile.model';
 import {ProfileEntity} from './profile.entity';
+import {ProfileService} from './profile.service';
 import {UnauthorizedException} from '@nestjs/common';
 import {GetSession, HasSession} from '@simpd/lib-api';
 import {ProfileRepository} from './profile.repository';
@@ -24,7 +25,10 @@ import {
 
 @Resolver(() => ProfileModel)
 export class ProfileResolver {
-  constructor(private readonly profileRepo: ProfileRepository) {}
+  constructor(
+    private readonly profileRepo: ProfileRepository,
+    private readonly profileService: ProfileService
+  ) {}
 
   // TODO: Add Privacy Guard
   @ResolveReference()
@@ -65,15 +69,9 @@ export class ProfileResolver {
   @Query(() => [ProfileModel])
   profiles(
     @Args('filter', {type: () => ProfileFilterByManyInput, nullable: true})
-    filter?: ProfileFilterByManyInput
+    filter: ProfileFilterByManyInput = {}
   ): Promise<ProfileEntity[]> {
-    return this.profileRepo.find({
-      where: {
-        id: filter?.ids && In(filter.ids),
-        userID: filter?.userIDs && In(filter.userIDs),
-        username: filter?.usernames && In(filter.usernames),
-      },
-    });
+    return this.profileService.findMany(filter);
   }
 
   @Mutation(() => ProfileModel)

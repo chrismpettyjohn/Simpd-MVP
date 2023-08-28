@@ -1,8 +1,13 @@
 import gql from "graphql-tag";
 import { PROFILE_FRAGMENT, ProfileFragment } from "../fragments/profile.fragment";
 
+export enum ProfileSortBy {
+  NEWEST_PROFILE = 'NEWEST_PROFILE'
+}
+
 export interface ProfileFetchManyInput {
   userIDs?: number[];
+  sortBy?: ProfileSortBy[];
 }
 
 export interface ProfileFetchManyQueryVariables {
