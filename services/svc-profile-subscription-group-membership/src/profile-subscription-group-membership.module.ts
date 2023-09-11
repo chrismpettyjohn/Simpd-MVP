@@ -13,6 +13,7 @@ import {
   ProfileClientModule,
   SubscriptionGroupClientModule,
 } from '@simpd/lib-client';
+import {ProfileSubscriptionGroupMembershipService} from './profile-subscription-group-membership.service';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import {
   providers: [
     ProfileSubscriptionGroupMembershipResolver,
     ProfileSubscriptionGroupMembershipRepository,
+    ProfileSubscriptionGroupMembershipService,
   ],
   controllers: [ProfileSubscriptionGroupMembershipController],
 })

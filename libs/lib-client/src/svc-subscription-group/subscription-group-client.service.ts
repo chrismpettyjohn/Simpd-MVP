@@ -5,6 +5,7 @@ import {
   SubscriptionGroupCreateOneInput,
   SubscriptionGroupFindManyInput,
   SubscriptionGroupFindOneInput,
+  SubscriptionGroupServiceKey,
   SubscriptionGroupWire,
 } from './subscription-group-client.types';
 import {
@@ -16,14 +17,16 @@ import {
 } from './subscription-group.const';
 
 @Injectable()
-export class SubscriptionGroupClientService {
+export class SubscriptionGroupClientService<
+  Service extends SubscriptionGroupServiceKey
+> {
   constructor(
     @Inject(SVC_SUBSCRIPTION_GROUP_NAME) private client: ClientProxy
   ) {}
 
   async createOne(
-    filter: SubscriptionGroupCreateOneInput
-  ): Promise<SubscriptionGroupWire> {
+    filter: SubscriptionGroupCreateOneInput<Service>
+  ): Promise<SubscriptionGroupWire<Service>> {
     const newSubscriptionGroup = this.client.send(
       SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_CREATE_ONE,
       filter
@@ -32,8 +35,8 @@ export class SubscriptionGroupClientService {
   }
 
   async findOne(
-    filter: SubscriptionGroupFindOneInput
-  ): Promise<SubscriptionGroupWire> {
+    filter: SubscriptionGroupFindOneInput<Service>
+  ): Promise<SubscriptionGroupWire<Service>> {
     const matchingSubscriptionGroup$ = this.client.send(
       SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_ONE,
       filter
@@ -42,15 +45,17 @@ export class SubscriptionGroupClientService {
   }
 
   async findMany(
-    input: SubscriptionGroupFindManyInput
-  ): Promise<SubscriptionGroupWire[]> {
+    input: SubscriptionGroupFindManyInput<Service>
+  ): Promise<SubscriptionGroupWire<Service>[]> {
     const matchingSubscriptionGroup$ = this.client.send(
       SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_FIND_MANY,
       input
     );
     return await lastValueFrom(matchingSubscriptionGroup$);
   }
-  async deleteOne(filter: SubscriptionGroupFindOneInput): Promise<boolean> {
+  async deleteOne(
+    filter: SubscriptionGroupFindOneInput<Service>
+  ): Promise<boolean> {
     const matchingSubscriptionGroup$ = this.client.send(
       SVC_SUBSCRIPTION_GROUP_INTERNAL_EVENT_DELETE_ONE,
       filter

@@ -22,3 +22,9 @@ export interface ProfileSubscriptionGroupMembershipFindManyInput {
   profileIDs: number[];
   subscriptionGroupIDs?: number[];
 }
+
+export interface ProfileSubcriptionGroupMembershipWasCreatedMessage {
+  recipientProfileID: number;
+  subscriberProfileID: number;
+  subscriptionGroupID: number;
+}

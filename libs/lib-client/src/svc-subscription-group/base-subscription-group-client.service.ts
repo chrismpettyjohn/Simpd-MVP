@@ -3,18 +3,21 @@ import {
   SubscriptionGroupCreateOneInput,
   SubscriptionGroupFindManyInput,
   SubscriptionGroupFindOneInput,
+  SubscriptionGroupServiceKey,
   SubscriptionGroupWire,
 } from './subscription-group-client.types';
 
-export class BaseSubscriptionGroupClientService {
+export class BaseSubscriptionGroupClientService<
+  Service extends SubscriptionGroupServiceKey
+> {
   constructor(
-    private readonly serviceKey: string,
-    private readonly subscriptionGroupClientService: SubscriptionGroupClientService
+    private readonly serviceKey: Service,
+    private readonly subscriptionGroupClientService: SubscriptionGroupClientService<Service>
   ) {}
 
   async createOne(
-    input: Omit<SubscriptionGroupCreateOneInput, 'serviceKey'>
-  ): Promise<SubscriptionGroupWire> {
+    input: Omit<SubscriptionGroupCreateOneInput<Service>, 'serviceKey'>
+  ): Promise<SubscriptionGroupWire<Service>> {
     return await this.subscriptionGroupClientService.createOne({
       ...input,
       serviceKey: this.serviceKey,
@@ -22,8 +25,8 @@ export class BaseSubscriptionGroupClientService {
   }
 
   async findOne(
-    filter: Omit<SubscriptionGroupFindOneInput, 'serviceKey'>
-  ): Promise<SubscriptionGroupWire> {
+    filter: Omit<SubscriptionGroupFindOneInput<Service>, 'serviceKey'>
+  ): Promise<SubscriptionGroupWire<Service>> {
     return await this.subscriptionGroupClientService.findOne({
       ...filter,
       serviceKey: this.serviceKey,
@@ -31,8 +34,8 @@ export class BaseSubscriptionGroupClientService {
   }
 
   async findMany(
-    filter: Omit<SubscriptionGroupFindManyInput, 'serviceKey'>
-  ): Promise<SubscriptionGroupWire[]> {
+    filter: Omit<SubscriptionGroupFindManyInput<Service>, 'serviceKey'>
+  ): Promise<SubscriptionGroupWire<Service>[]> {
     return await this.subscriptionGroupClientService.findMany({
       ...filter,
       serviceKey: this.serviceKey,
@@ -40,7 +43,7 @@ export class BaseSubscriptionGroupClientService {
   }
 
   async deleteOne(
-    filter: Omit<SubscriptionGroupFindOneInput, 'serviceKey'>
+    filter: Omit<SubscriptionGroupFindOneInput<Service>, 'serviceKey'>
   ): Promise<boolean> {
     return await this.subscriptionGroupClientService.deleteOne({
       ...filter,

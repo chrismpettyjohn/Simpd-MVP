@@ -1,6 +1,8 @@
-export interface SubscriptionGroupWire {
+export interface SubscriptionGroupWire<
+  Service extends SubscriptionGroupServiceKey
+> {
   id: number;
-  serviceKey: string;
+  serviceKey: Service;
   resourceID: number;
   name: string;
   description: string;
@@ -8,20 +10,31 @@ export interface SubscriptionGroupWire {
   monthlyCostInDollarsAndCents: string;
 }
 
-export interface SubscriptionGroupCreateOneInput {
-  serviceKey: string;
+export interface SubscriptionGroupCreateOneInput<
+  Service extends SubscriptionGroupServiceKey
+> {
+  serviceKey: Service;
   resourceID: number;
   name: string;
   description: string;
   monthlyCostInDollarsAndCents: string;
 }
 
-export interface SubscriptionGroupFindOneInput {
-  serviceKey: string;
-  resourceID: number;
+export enum SubscriptionGroupServiceKey {
+  Profile = 'profile',
 }
 
-export interface SubscriptionGroupFindManyInput {
-  serviceKey: string;
+export interface SubscriptionGroupFindOneInput<
+  Service extends SubscriptionGroupServiceKey
+> {
+  id?: number;
+  serviceKey: Service;
+  resourceID?: number;
+}
+
+export interface SubscriptionGroupFindManyInput<
+  Service extends SubscriptionGroupServiceKey
+> {
+  serviceKey: Service;
   resourceIDs: number[];
 }

@@ -1,44 +1,40 @@
-import {In} from 'typeorm';
 import {Controller} from '@nestjs/common';
 import {MessagePattern} from '@nestjs/microservices';
+import {ProfileSubscriptionGroupMembershipService} from './profile-subscription-group-membership.service';
 import {ProfileSubscriptionGroupMembershipRepository} from './profile-subscription-group-membership.repository';
 import {subscriptionGroupMembershipWireToProfileSubscriptionGroupMembershipWire} from './profile-subscription-group-membership.wire';
 import {
+  INTERNAL_EVENT_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_CREATE_ONE,
+  INTERNAL_EVENT_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_FIND_MANY,
+  INTERNAL_EVENT_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_FIND_ONE,
   ProfileSubscriptionGroupMembershipCreateOneInput,
   ProfileSubscriptionGroupMembershipFindManyInput,
   ProfileSubscriptionGroupMembershipFindOneInput,
   ProfileSubscriptionGroupMembershipWire,
-  SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_INTERNAL_EVENT_CREATE_ONE,
-  SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_INTERNAL_EVENT_FIND_MANY,
-  SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_INTERNAL_EVENT_FIND_ONE,
 } from '@simpd/lib-client';
 
 @Controller()
 export class ProfileSubscriptionGroupMembershipController {
   constructor(
-    private readonly profileSubscriptionGroupMembershipRepo: ProfileSubscriptionGroupMembershipRepository
+    private readonly profileSubscriptionGroupMembershipRepo: ProfileSubscriptionGroupMembershipRepository,
+    private readonly profileSubscriptionGroupMembershipService: ProfileSubscriptionGroupMembershipService
   ) {}
 
   @MessagePattern(
-    SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_INTERNAL_EVENT_CREATE_ONE
+    INTERNAL_EVENT_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_CREATE_ONE
   )
   async subscriptionGroupMembershipCreateOne(
     input: ProfileSubscriptionGroupMembershipCreateOneInput
   ): Promise<ProfileSubscriptionGroupMembershipWire> {
-    const matchingProfileSubscriptionGroupMembership =
-      await this.profileSubscriptionGroupMembershipRepo.create({
-        profileID: input.profileID,
-        subscriptionGroupID: input.subscriptionGroupID,
-        renewsOn: input.renewsOn,
-        autoRenew: input.autoRenew,
-      });
+    const newProfileSubscriptionGroupMembership =
+      await this.profileSubscriptionGroupMembershipService.create(input);
     return subscriptionGroupMembershipWireToProfileSubscriptionGroupMembershipWire(
-      matchingProfileSubscriptionGroupMembership
+      newProfileSubscriptionGroupMembership
     );
   }
 
   @MessagePattern(
-    SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_INTERNAL_EVENT_FIND_ONE
+    INTERNAL_EVENT_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_FIND_ONE
   )
   async subscriptionGroupMembershipFindOne(
     filter: ProfileSubscriptionGroupMembershipFindOneInput
@@ -56,7 +52,7 @@ export class ProfileSubscriptionGroupMembershipController {
   }
 
   @MessagePattern(
-    SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_INTERNAL_EVENT_FIND_MANY
+    INTERNAL_EVENT_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_FIND_MANY
   )
   async subscriptionGroupMembershipFindMany(
     filter: ProfileSubscriptionGroupMembershipFindManyInput

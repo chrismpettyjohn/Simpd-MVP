@@ -2,16 +2,18 @@ import {lastValueFrom} from 'rxjs';
 import {Inject, Injectable} from '@nestjs/common';
 import {ClientProxy} from '@nestjs/microservices';
 import {
+  ProfileSubcriptionGroupMembershipWasCreatedMessage,
   ProfileSubscriptionGroupMembershipCreateOneInput,
   ProfileSubscriptionGroupMembershipFindManyInput,
   ProfileSubscriptionGroupMembershipFindOneInput,
   ProfileSubscriptionGroupMembershipWire,
 } from './profile-subscription-group-membership-client.types';
 import {
-  SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_INTERNAL_EVENT_CREATE_ONE,
-  SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_INTERNAL_EVENT_DELETE_ONE,
-  SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_INTERNAL_EVENT_FIND_MANY,
-  SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_INTERNAL_EVENT_FIND_ONE,
+  INTERNAL_EVENT_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_CREATE_ONE,
+  INTERNAL_EVENT_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_DELETE_ONE,
+  INTERNAL_EVENT_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_FIND_MANY,
+  INTERNAL_EVENT_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_FIND_ONE,
+  INTERNAL_MESSAGE_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_WAS_CREATED,
   SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_NAME,
 } from './profile-subscription-group-membership.const';
 
@@ -26,17 +28,26 @@ export class ProfileSubscriptionGroupMembershipClientService {
     input: ProfileSubscriptionGroupMembershipCreateOneInput
   ): Promise<ProfileSubscriptionGroupMembershipWire> {
     const newProfileSubscriptionGroupMembership = this.client.send(
-      SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_INTERNAL_EVENT_CREATE_ONE,
+      INTERNAL_EVENT_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_CREATE_ONE,
       input
     );
     return await lastValueFrom(newProfileSubscriptionGroupMembership);
+  }
+
+  async _onCreated(
+    input: ProfileSubcriptionGroupMembershipWasCreatedMessage
+  ): Promise<void> {
+    await this.client.send(
+      INTERNAL_MESSAGE_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_WAS_CREATED,
+      input
+    );
   }
 
   async findOne(
     filter: ProfileSubscriptionGroupMembershipFindOneInput
   ): Promise<ProfileSubscriptionGroupMembershipWire> {
     const matchingProfileSubscriptionGroupMembership$ = this.client.send(
-      SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_INTERNAL_EVENT_FIND_ONE,
+      INTERNAL_EVENT_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_FIND_ONE,
       filter
     );
     return await lastValueFrom(matchingProfileSubscriptionGroupMembership$);
@@ -45,7 +56,7 @@ export class ProfileSubscriptionGroupMembershipClientService {
     filter: ProfileSubscriptionGroupMembershipFindManyInput
   ): Promise<ProfileSubscriptionGroupMembershipWire[]> {
     const matchingProfileSubscriptionGroupMemberships$ = this.client.send(
-      SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_INTERNAL_EVENT_FIND_MANY,
+      INTERNAL_EVENT_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_FIND_MANY,
       filter
     );
     return await lastValueFrom(matchingProfileSubscriptionGroupMemberships$);
@@ -55,7 +66,7 @@ export class ProfileSubscriptionGroupMembershipClientService {
     filter: ProfileSubscriptionGroupMembershipFindOneInput
   ): Promise<boolean> {
     const newProfileSubscriptionGroupMembership = this.client.send(
-      SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_INTERNAL_EVENT_DELETE_ONE,
+      INTERNAL_EVENT_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_DELETE_ONE,
       filter
     );
     return await lastValueFrom(newProfileSubscriptionGroupMembership);

@@ -3,8 +3,10 @@ import {Inject, Injectable} from '@nestjs/common';
 import {ClientProxy} from '@nestjs/microservices';
 import {
   NotificationCreateOneInput,
+  NotificationTypes,
   NotificationFindOneInput,
   NotificationWire,
+  NotificationEvent,
 } from './notification-client.types';
 import {
   SVC_NOTIFICATION_INTERNAL_EVENT_CREATE_ONE,
@@ -16,7 +18,9 @@ import {
 export class NotificationClientService {
   constructor(@Inject(SVC_NOTIFICATION_NAME) private client: ClientProxy) {}
 
-  async findOne(input: NotificationFindOneInput): Promise<NotificationWire> {
+  async findOne<EventMetadata extends any>(
+    input: NotificationFindOneInput
+  ): Promise<NotificationWire<EventMetadata>> {
     const matchingNotification$ = this.client.send(
       SVC_NOTIFICATION_INTERNAL_EVENT_FIND_ONE,
       input
@@ -24,9 +28,9 @@ export class NotificationClientService {
     return await lastValueFrom(matchingNotification$);
   }
 
-  async createOne(
-    input: NotificationCreateOneInput<any>
-  ): Promise<NotificationWire> {
+  async createOne<Event extends NotificationEvent>(
+    input: NotificationCreateOneInput<Event>
+  ): Promise<NotificationWire<Event>> {
     const createdNotification$ = await this.client.send(
       SVC_NOTIFICATION_INTERNAL_EVENT_CREATE_ONE,
       input
