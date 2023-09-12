@@ -1,8 +1,15 @@
 import {In} from 'typeorm';
 import {MessageModel} from './message.model';
 import {MessageEntity} from './message.entity';
+import {ProfileModel} from '@simpd/lib-client';
+import {MessageService} from './message.service';
 import {MessageRepository} from './message.repository';
 import {GetSession, HasSession, SessionContents} from '@simpd/lib-api';
+import {
+  MessageCreateInput,
+  MessageFilterByManyInput,
+  MessageFilterByOneInput,
+} from './message.input';
 import {
   Args,
   Mutation,
@@ -12,16 +19,13 @@ import {
   ResolveReference,
   Resolver,
 } from '@nestjs/graphql';
-import {
-  MessageCreateInput,
-  MessageFilterByManyInput,
-  MessageFilterByOneInput,
-} from './message.input';
-import {ProfileModel} from '@simpd/lib-client';
 
 @Resolver(() => MessageModel)
 export class MessageResolver {
-  constructor(private readonly messageRepo: MessageRepository) {}
+  constructor(
+    private readonly messageRepo: MessageRepository,
+    private readonly messageService: MessageService
+  ) {}
 
   @ResolveReference()
   resolveReference(reference: {
@@ -73,7 +77,7 @@ export class MessageResolver {
     @GetSession() session: SessionContents,
     @Args('input') input: MessageCreateInput
   ): Promise<MessageEntity> {
-    const newMessage = await this.messageRepo.create({
+    const newMessage = await this.messageService.create({
       sendingProfileID: session.profileID,
       receivingProfileID: input.receivingProfileID,
       content: input.content,

@@ -1,8 +1,13 @@
 import {lastValueFrom} from 'rxjs';
 import {Inject, Injectable} from '@nestjs/common';
 import {ClientProxy} from '@nestjs/microservices';
-import {MessageFindOneInput, MessageWire} from './message-client.types';
 import {
+  MessageFindOneInput,
+  MessageWasCreatedInternalMessage,
+  MessageWire,
+} from './message-client.types';
+import {
+  INTERNAL_MESSAGE_SVC_MESSAGE_WAS_CREATED,
   SVC_MESSAGE_INTERNAL_EVENT_FIND_ONE,
   SVC_MESSAGE_NAME,
 } from './message.const';
@@ -17,5 +22,9 @@ export class MessageClientService {
       input
     );
     return await lastValueFrom(matchingMessage$);
+  }
+
+  async _onCreated(input: MessageWasCreatedInternalMessage): Promise<void> {
+    await this.client.send(INTERNAL_MESSAGE_SVC_MESSAGE_WAS_CREATED, input);
   }
 }

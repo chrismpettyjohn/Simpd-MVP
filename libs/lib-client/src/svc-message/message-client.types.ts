@@ -11,3 +11,7 @@ export interface MessageWire {
 export interface MessageFindOneInput {
   id?: number;
 }
+
+export interface MessageWasCreatedInternalMessage {
+  messageID: number;
+}

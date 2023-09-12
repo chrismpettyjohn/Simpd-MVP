@@ -1,8 +1,11 @@
 import {Injectable} from '@nestjs/common';
 import {MessagePattern} from '@nestjs/microservices';
 import {
+  INTERNAL_MESSAGE_SVC_MESSAGE_WAS_CREATED,
   INTERNAL_MESSAGE_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_WAS_CREATED,
   INTERNAL_MESSAGE_SVC_TIP_WAS_CREATED,
+  MessageClientService,
+  MessageWasCreatedInternalMessage,
   NotificationClientService,
   NotificationResourceType,
   ProfileSubcriptionGroupMembershipWasCreatedMessage,
@@ -14,6 +17,7 @@ import {
 export class FeatureProfileNotificationsService {
   constructor(
     private readonly tipClientService: TipClientService,
+    private readonly messageClientService: MessageClientService,
     private readonly notificationClientService: NotificationClientService
   ) {}
 
@@ -52,7 +56,20 @@ export class FeatureProfileNotificationsService {
     });
   }
 
-  onMessageReceived() {}
+  @MessagePattern(INTERNAL_MESSAGE_SVC_MESSAGE_WAS_CREATED)
+  async onMessageReceived(message: MessageWasCreatedInternalMessage) {
+    const matchingMessage = await this.messageClientService.findOne({
+      id: message.messageID,
+    });
+    await this.notificationClientService.createOne<'PROFILE_MESSAGE_RECEIVED'>({
+      resourceType: NotificationResourceType.Profile,
+      profileID: matchingMessage.receivingProfileID,
+      eventKey: 'PROFILE_MESSAGE_RECEIVED',
+      eventMetadata: {
+        messageID: matchingMessage.id!,
+      },
+    });
+  }
 
   onNewComment() {}
 
