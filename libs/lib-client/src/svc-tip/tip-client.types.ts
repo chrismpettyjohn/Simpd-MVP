@@ -36,3 +36,7 @@ export interface TipCreateInput {
   amount: number;
   message: string;
 }
+
+export interface TipWasCreatedInternalMessage {
+  tipID: number;
+}

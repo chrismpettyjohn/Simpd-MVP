@@ -5,9 +5,11 @@ import {
   TipCreateInput,
   TipFindManyInput,
   TipFindOneInput,
+  TipWasCreatedInternalMessage,
   TipWire,
 } from './tip-client.types';
 import {
+  INTERNAL_MESSAGE_SVC_TIP_WAS_CREATED,
   SVC_TIP_INTERNAL_EVENT_CREATE_ONE,
   SVC_TIP_INTERNAL_EVENT_FIND_MANY,
   SVC_TIP_INTERNAL_EVENT_FIND_ONE,
@@ -33,11 +35,16 @@ export class TipClientService {
     );
     return await lastValueFrom(matchingTips);
   }
+
   async createOne(input: TipCreateInput): Promise<TipWire> {
     const createdTip = this.client.send(
       SVC_TIP_INTERNAL_EVENT_CREATE_ONE,
       input
     );
     return await lastValueFrom(createdTip);
+  }
+
+  async _onCreated(input: TipWasCreatedInternalMessage): Promise<void> {
+    await this.client.send(INTERNAL_MESSAGE_SVC_TIP_WAS_CREATED, input);
   }
 }

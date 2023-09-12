@@ -2,14 +2,18 @@ import {Injectable} from '@nestjs/common';
 import {MessagePattern} from '@nestjs/microservices';
 import {
   INTERNAL_MESSAGE_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_WAS_CREATED,
+  INTERNAL_MESSAGE_SVC_TIP_WAS_CREATED,
   NotificationClientService,
   NotificationResourceType,
   ProfileSubcriptionGroupMembershipWasCreatedMessage,
+  TipClientService,
+  TipWasCreatedInternalMessage,
 } from '@simpd/lib-client';
 
 @Injectable()
 export class FeatureProfileNotificationsService {
   constructor(
+    private readonly tipClientService: TipClientService,
     private readonly notificationClientService: NotificationClientService
   ) {}
 
@@ -33,7 +37,20 @@ export class FeatureProfileNotificationsService {
     );
   }
 
-  onTipReceived() {}
+  @MessagePattern(INTERNAL_MESSAGE_SVC_TIP_WAS_CREATED)
+  async onTipReceived(message: TipWasCreatedInternalMessage) {
+    const matchingTip = await this.tipClientService.findOne({
+      id: message.tipID,
+    });
+    await this.notificationClientService.createOne<'PROFILE_TIP_RECEIVED'>({
+      resourceType: NotificationResourceType.Profile,
+      profileID: matchingTip.receivingProfileID,
+      eventKey: 'PROFILE_TIP_RECEIVED',
+      eventMetadata: {
+        tipID: matchingTip.id!,
+      },
+    });
+  }
 
   onMessageReceived() {}
 

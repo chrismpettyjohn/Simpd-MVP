@@ -7,3 +7,6 @@ export const SVC_TIP_WEB_ADDRESS =
 export const SVC_TIP_INTERNAL_EVENT_FIND_ONE = 'tipFindOne';
 export const SVC_TIP_INTERNAL_EVENT_FIND_MANY = 'tipFindMany';
 export const SVC_TIP_INTERNAL_EVENT_CREATE_ONE = 'tipCreateOne';
+
+export const INTERNAL_MESSAGE_SVC_TIP_WAS_CREATED =
+  'INTERNAL_MESSAGE_SVC_TIP_WAS_CREATED';

@@ -1,3 +1,9 @@
 import {Module} from '@nestjs/common';
-@Module({})
+import {
+  ProfileSubscriptionGroupClientModule,
+  TipClientModule,
+} from '@simpd/lib-client';
+@Module({
+  imports: [ProfileSubscriptionGroupClientModule, TipClientModule],
+})
 export class FeatureProfileNotificationsModule {}

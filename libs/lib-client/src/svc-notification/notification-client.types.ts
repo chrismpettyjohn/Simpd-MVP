@@ -27,6 +27,7 @@ export interface NotificationCreateOneInput<Event extends NotificationEvent> {
 
 export interface NotificationTypes {
   PROFILE_SUBSCRIPTION_RECEIVED: NotificationProfileSubcriptionReceived;
+  PROFILE_TIP_RECEIVED: NotificationProfileTipReceived;
 }
 
 export type NotificationEvent = keyof NotificationTypes;
@@ -37,4 +38,8 @@ export interface NotificationProfileSubcriptionReceived {
   recipientProfileID: number;
   subscriberProfileID: number;
   subscriptionGroupID: number;
+}
+
+export interface NotificationProfileTipReceived {
+  tipID: number;
 }
