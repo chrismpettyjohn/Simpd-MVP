@@ -1,6 +1,7 @@
 import {Injectable} from '@nestjs/common';
 import {MessagePattern} from '@nestjs/microservices';
 import {
+  INTERNAL_MESSAGE_SVC_COMMENT_WAS_CREATED,
   INTERNAL_MESSAGE_SVC_MESSAGE_WAS_CREATED,
   INTERNAL_MESSAGE_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_WAS_CREATED,
   INTERNAL_MESSAGE_SVC_TIP_WAS_CREATED,
@@ -8,6 +9,9 @@ import {
   MessageWasCreatedInternalMessage,
   NotificationClientService,
   NotificationResourceType,
+  PostClientService,
+  PostCommentClientService,
+  PostCommentWasCreatedInternalMessage,
   ProfileSubcriptionGroupMembershipWasCreatedMessage,
   TipClientService,
   TipWasCreatedInternalMessage,
@@ -17,7 +21,9 @@ import {
 export class FeatureProfileNotificationsService {
   constructor(
     private readonly tipClientService: TipClientService,
+    private readonly postClientService: PostClientService,
     private readonly messageClientService: MessageClientService,
+    private readonly postCommentClientService: PostCommentClientService,
     private readonly notificationClientService: NotificationClientService
   ) {}
 
@@ -71,7 +77,23 @@ export class FeatureProfileNotificationsService {
     });
   }
 
-  onNewComment() {}
+  @MessagePattern(INTERNAL_MESSAGE_SVC_COMMENT_WAS_CREATED)
+  async onNewPostComment(message: PostCommentWasCreatedInternalMessage) {
+    const matchingPostComment = await this.postCommentClientService.findOne({
+      id: message.postCommentID,
+    });
+    const matchingPost = await this.postClientService.findOne({
+      id: matchingPostComment.postID,
+    });
+    await this.notificationClientService.createOne<'POST_COMMENT_RECEIVED'>({
+      resourceType: NotificationResourceType.Profile,
+      profileID: matchingPost.profileID,
+      eventKey: 'POST_COMMENT_RECEIVED',
+      eventMetadata: {
+        postCommentID: matchingPostComment.id!,
+      },
+    });
+  }
 
   onNewShare() {}
 

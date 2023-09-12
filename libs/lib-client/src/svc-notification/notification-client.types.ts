@@ -29,6 +29,7 @@ export interface NotificationTypes {
   PROFILE_SUBSCRIPTION_RECEIVED: NotificationProfileSubcriptionReceived;
   PROFILE_TIP_RECEIVED: NotificationProfileTipReceived;
   PROFILE_MESSAGE_RECEIVED: NotificationProfileMessageReceived;
+  POST_COMMENT_RECEIVED: NotificationPostCommentReceived;
 }
 
 export type NotificationEvent = keyof NotificationTypes;
@@ -47,4 +48,8 @@ export interface NotificationProfileTipReceived {
 
 export interface NotificationProfileMessageReceived {
   messageID: number;
+}
+
+export interface NotificationPostCommentReceived {
+  postCommentID: number;
 }

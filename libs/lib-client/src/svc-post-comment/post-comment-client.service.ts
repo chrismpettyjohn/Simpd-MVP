@@ -7,9 +7,11 @@ import {
   PostCommentFindOneInput,
   PostCommentMutationResponse,
   PostCommentUpdateOneInput,
+  PostCommentWasCreatedInternalMessage,
   PostCommentWire,
 } from './post-comment-client.types';
 import {
+  INTERNAL_MESSAGE_SVC_COMMENT_WAS_CREATED,
   SVC_POST_COMMENT_INTERNAL_EVENT_CREATE_ONE,
   SVC_POST_COMMENT_INTERNAL_EVENT_DELETE_ONE,
   SVC_POST_COMMENT_INTERNAL_EVENT_FIND_MANY,
@@ -42,6 +44,10 @@ export class PostCommentClientService {
       input
     );
     return await lastValueFrom(newPostComment);
+  }
+
+  async _onCreated(input: PostCommentWasCreatedInternalMessage): Promise<void> {
+    await this.client.send(INTERNAL_MESSAGE_SVC_COMMENT_WAS_CREATED, input);
   }
 
   async updateOne(

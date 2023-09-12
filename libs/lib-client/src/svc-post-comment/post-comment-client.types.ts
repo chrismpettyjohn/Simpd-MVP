@@ -30,3 +30,7 @@ export interface PostCommentUpdateOneInput {
 export interface PostCommentMutationResponse {
   success: boolean;
 }
+
+export interface PostCommentWasCreatedInternalMessage {
+  postCommentID: number;
+}
