@@ -1,12 +1,14 @@
 import {Controller} from '@nestjs/common';
 import {MessagePattern} from '@nestjs/microservices';
 import {PostReactionService} from './post-reaction.service';
+import {postReactionWireToPostReactionWire} from './post-reaction.wire';
 import {
   PostReactionFindManyInput,
+  PostReactionFindOneInput,
   PostReactionWire,
   SVC_POST_REACTION_INTERNAL_EVENT_FIND_MANY,
+  SVC_POST_REACTION_INTERNAL_EVENT_FIND_ONE,
 } from '@simpd/lib-client';
-import {postReactionWireToPostReactionWire} from './post-reaction.wire';
 
 @Controller()
 export class PostReactionController {
@@ -18,5 +20,13 @@ export class PostReactionController {
   ): Promise<PostReactionWire[]> {
     const matchingReactions = await this.postReactionService.findMany(filter);
     return matchingReactions.map(postReactionWireToPostReactionWire);
+  }
+
+  @MessagePattern(SVC_POST_REACTION_INTERNAL_EVENT_FIND_ONE)
+  async postReactionFindOne(
+    filter: PostReactionFindOneInput
+  ): Promise<PostReactionWire> {
+    const matchingReaction = await this.postReactionService.findOne(filter);
+    return postReactionWireToPostReactionWire(matchingReaction);
   }
 }

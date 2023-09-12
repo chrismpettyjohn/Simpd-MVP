@@ -12,6 +12,7 @@ export interface MessageReactionFindManyInput {
   messageIDs: number[];
   profileIDs?: number[];
 }
+
 export interface MessageReactionFindOneInput {
   id: number;
 }

@@ -4,6 +4,7 @@ import {
   INTERNAL_MESSAGE_SVC_COMMENT_WAS_CREATED,
   INTERNAL_MESSAGE_SVC_MESSAGE_REACTION_WAS_CREATED,
   INTERNAL_MESSAGE_SVC_MESSAGE_WAS_CREATED,
+  INTERNAL_MESSAGE_SVC_POST_REACTION_WAS_CREATED,
   INTERNAL_MESSAGE_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_WAS_CREATED,
   INTERNAL_MESSAGE_SVC_TIP_WAS_CREATED,
   MessageClientService,
@@ -15,6 +16,8 @@ import {
   PostClientService,
   PostCommentClientService,
   PostCommentWasCreatedInternalMessage,
+  PostReactionClientService,
+  PostReactionWasCreatedInternalMessage,
   ProfileSubcriptionGroupMembershipWasCreatedMessage,
   TipClientService,
   TipWasCreatedInternalMessage,
@@ -28,6 +31,7 @@ export class FeatureProfileNotificationsService {
     private readonly messageClientService: MessageClientService,
     private readonly postCommentClientService: PostCommentClientService,
     private readonly notificationClientService: NotificationClientService,
+    private readonly postReactionClientService: PostReactionClientService,
     private readonly messageReactionClientService: MessageReactionClientService
   ) {}
 
@@ -123,7 +127,23 @@ export class FeatureProfileNotificationsService {
     });
   }
 
-  onNewPostReaction() {}
+  @MessagePattern(INTERNAL_MESSAGE_SVC_POST_REACTION_WAS_CREATED)
+  async onNewPostReaction(message: PostReactionWasCreatedInternalMessage) {
+    const matchingPostReaction = await this.postReactionClientService.findOne({
+      id: message.postReactionID,
+    });
+    const matchingPost = await this.postClientService.findOne({
+      id: matchingPostReaction.postID,
+    });
+    await this.notificationClientService.createOne<'POST_REACTION_RECEIVED'>({
+      resourceType: NotificationResourceType.Profile,
+      profileID: matchingPost.profileID,
+      eventKey: 'POST_REACTION_RECEIVED',
+      eventMetadata: {
+        postReactionID: matchingPostReaction.id!,
+      },
+    });
+  }
 
   onNewPostShare() {}
 }

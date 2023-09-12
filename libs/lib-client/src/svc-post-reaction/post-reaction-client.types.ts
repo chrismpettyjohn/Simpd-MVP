@@ -12,3 +12,11 @@ export interface PostReactionFindManyInput {
   postIDs: number[];
   profileIDs?: number[];
 }
+
+export interface PostReactionFindOneInput {
+  id: number;
+}
+
+export interface PostReactionWasCreatedInternalMessage {
+  postReactionID: number;
+}

@@ -5,6 +5,7 @@ import {
   NotificationClientModule,
   PostClientModule,
   PostCommentClientModule,
+  PostReactionClientModule,
   ProfileSubscriptionGroupClientModule,
   TipClientModule,
 } from '@simpd/lib-client';
@@ -17,6 +18,7 @@ import {
     PostCommentClientModule,
     NotificationClientModule,
     MessageReactionClientModule,
+    PostReactionClientModule,
   ],
 })
 export class FeatureProfileNotificationsModule {}
