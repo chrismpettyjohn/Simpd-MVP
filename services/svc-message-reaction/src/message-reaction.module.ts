@@ -6,6 +6,7 @@ import {GraphQLModule, CommonModule, SessionModule} from '@simpd/lib-api';
 import {
   BookmarkClientModule,
   MediaClientModule,
+  MessageReactionClientModule,
   PrivacyClientModule,
   ProfileClientModule,
   ReactionClientModule,
@@ -20,6 +21,7 @@ import {
     MediaClientModule,
     ReactionClientModule,
     BookmarkClientModule,
+    MessageReactionClientModule,
     GraphQLModule.forRoot(),
   ],
   providers: [MessageReactionService, MessageReactionResolver],

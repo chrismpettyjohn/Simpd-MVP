@@ -74,6 +74,7 @@ export * from './svc-report/report.const';
 export * from './svc-report/report.module';
 export * from './svc-post/post-client.types';
 export * from './svc-post/post-client.service';
+export * from './svc-post/post.module';
 export * from './svc-post-comment/post-comment-client.types';
 export * from './svc-post-comment/post-comment-client.service';
 export * from './svc-post-comment/post-comment.const';

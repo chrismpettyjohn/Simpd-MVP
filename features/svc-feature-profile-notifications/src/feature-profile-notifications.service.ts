@@ -2,10 +2,13 @@ import {Injectable} from '@nestjs/common';
 import {MessagePattern} from '@nestjs/microservices';
 import {
   INTERNAL_MESSAGE_SVC_COMMENT_WAS_CREATED,
+  INTERNAL_MESSAGE_SVC_MESSAGE_REACTION_WAS_CREATED,
   INTERNAL_MESSAGE_SVC_MESSAGE_WAS_CREATED,
   INTERNAL_MESSAGE_SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_WAS_CREATED,
   INTERNAL_MESSAGE_SVC_TIP_WAS_CREATED,
   MessageClientService,
+  MessageReactionClientService,
+  MessageReactionWasCreatedInternalMessage,
   MessageWasCreatedInternalMessage,
   NotificationClientService,
   NotificationResourceType,
@@ -24,7 +27,8 @@ export class FeatureProfileNotificationsService {
     private readonly postClientService: PostClientService,
     private readonly messageClientService: MessageClientService,
     private readonly postCommentClientService: PostCommentClientService,
-    private readonly notificationClientService: NotificationClientService
+    private readonly notificationClientService: NotificationClientService,
+    private readonly messageReactionClientService: MessageReactionClientService
   ) {}
 
   @MessagePattern(
@@ -77,6 +81,30 @@ export class FeatureProfileNotificationsService {
     });
   }
 
+  @MessagePattern(INTERNAL_MESSAGE_SVC_MESSAGE_REACTION_WAS_CREATED)
+  async onNewMessageReaction(
+    message: MessageReactionWasCreatedInternalMessage
+  ) {
+    const matchingMessageReaction =
+      await this.messageReactionClientService.findOne({
+        id: message.messageReactionID,
+      });
+    const matchingMessage = await this.messageClientService.findOne({
+      id: matchingMessageReaction.messageID,
+    });
+
+    await this.notificationClientService.createOne<'MESSAGE_REACTION_RECEIVED'>(
+      {
+        resourceType: NotificationResourceType.Profile,
+        profileID: matchingMessage.receivingProfileID,
+        eventKey: 'MESSAGE_REACTION_RECEIVED',
+        eventMetadata: {
+          messageReactionID: matchingMessageReaction.id!,
+        },
+      }
+    );
+  }
+
   @MessagePattern(INTERNAL_MESSAGE_SVC_COMMENT_WAS_CREATED)
   async onNewPostComment(message: PostCommentWasCreatedInternalMessage) {
     const matchingPostComment = await this.postCommentClientService.findOne({
@@ -95,7 +123,7 @@ export class FeatureProfileNotificationsService {
     });
   }
 
-  onNewShare() {}
+  onNewPostReaction() {}
 
-  onNewReaction() {}
+  onNewPostShare() {}
 }
