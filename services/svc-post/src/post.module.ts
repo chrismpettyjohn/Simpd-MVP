@@ -8,6 +8,7 @@ import {PostPrivacyService} from './post-privacy.service';
 import {
   BookmarkClientModule,
   MediaClientModule,
+  PostClientModule,
   PostReactionClientModule,
   PrivacyClientModule,
   ProfileClientModule,
@@ -28,6 +29,7 @@ import {
     CommonModule,
     SessionModule,
     TagClientModule,
+    PostClientModule,
     ProfileClientModule,
     PrivacyClientModule,
     MediaClientModule,

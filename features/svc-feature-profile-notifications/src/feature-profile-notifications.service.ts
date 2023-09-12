@@ -18,10 +18,14 @@ import {
   PostCommentWasCreatedInternalMessage,
   PostReactionClientService,
   PostReactionWasCreatedInternalMessage,
+  PostType,
+  PostWasCreatedInternalMessage,
+  PostWithSharedContentWire,
   ProfileSubcriptionGroupMembershipWasCreatedMessage,
   TipClientService,
   TipWasCreatedInternalMessage,
 } from '@simpd/lib-client';
+import {INTERNAL_MESSAGE_SVC_POST_WAS_CREATED} from 'libs/lib-client/src/svc-post/post.const';
 
 @Injectable()
 export class FeatureProfileNotificationsService {
@@ -145,5 +149,30 @@ export class FeatureProfileNotificationsService {
     });
   }
 
-  onNewPostShare() {}
+  @MessagePattern(INTERNAL_MESSAGE_SVC_POST_WAS_CREATED)
+  async onNewPostShare(message: PostWasCreatedInternalMessage) {
+    const matchingPost = await this.postClientService.findOne({
+      id: message.postID,
+    });
+
+    if (matchingPost.type !== PostType.SharedContent) {
+      return;
+    }
+
+    const postContent: PostWithSharedContentWire = matchingPost;
+
+    const originalPost = await this.postClientService.findOne({
+      id: postContent.postID,
+    });
+
+    await this.notificationClientService.createOne<'POST_WAS_SHARED'>({
+      resourceType: NotificationResourceType.Profile,
+      profileID: originalPost.profileID,
+      eventKey: 'POST_WAS_SHARED',
+      eventMetadata: {
+        originalPostID: originalPost.id!,
+        sharedPostID: matchingPost.id!,
+      },
+    });
+  }
 }

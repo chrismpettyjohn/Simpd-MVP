@@ -67,3 +67,7 @@ export type PostWire = BasePost & PostSubset;
 export interface PostFindOneInput {
   id: number;
 }
+
+export interface PostWasCreatedInternalMessage {
+  postID: number;
+}

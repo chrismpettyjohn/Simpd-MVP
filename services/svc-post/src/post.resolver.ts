@@ -62,27 +62,7 @@ export class PostResolver {
     private readonly postRepo: PostRepository<any, any>,
     private readonly postPrivacyService: PostPrivacyService,
     private readonly mediaClientService: MediaClientService,
-    private readonly profileClientService: ProfileClientService,
-    private readonly textPostRepo: PostRepository<
-      PostWithTextWire,
-      PostType.Text
-    >,
-    private readonly imagePostRepo: PostRepository<
-      PostWithImageWire,
-      PostType.Image
-    >,
-    private readonly videoPostRepo: PostRepository<
-      PostWithImageWire,
-      PostType.Video
-    >,
-    private readonly albumPostRepo: PostRepository<
-      PostWithAlbumWire,
-      PostType.Album
-    >,
-    private readonly sharedContentPostRepo: PostRepository<
-      PostWithSharedContentWire,
-      PostType.SharedContent
-    >
+    private readonly profileClientService: ProfileClientService
   ) {}
 
   @ResolveReference()
@@ -223,7 +203,7 @@ export class PostResolver {
       input.content
     );
 
-    const newTextPost = await this.textPostRepo.create({
+    const newTextPost = await this.postService.create({
       profileID: matchingProfile.id,
       postData: {
         content: input.content,
@@ -265,7 +245,7 @@ export class PostResolver {
       input.content
     );
 
-    const newImagePost = await this.imagePostRepo.create({
+    const newImagePost = await this.postService.create({
       profileID: matchingProfile.id,
       postData: {
         mediaID: input.mediaID,
@@ -307,7 +287,7 @@ export class PostResolver {
       input.content
     );
 
-    const newVideoPost = await this.videoPostRepo.create({
+    const newVideoPost = await this.postService.create({
       profileID: matchingProfile.id,
       postData: {
         mediaID: input.mediaID,
@@ -354,7 +334,7 @@ export class PostResolver {
       input.content
     );
 
-    const newAlbumPost = await this.albumPostRepo.create({
+    const newAlbumPost = await this.postService.create({
       profileID: matchingProfile.id,
       postData: {
         mediaIDs: input.mediaIDs,
@@ -386,7 +366,7 @@ export class PostResolver {
       input.content
     );
 
-    const newSharedContentPost = await this.sharedContentPostRepo.create({
+    const newSharedContentPost = await this.postService.create({
       profileID: matchingProfile.id,
       postData: {
         postID: input.postID,

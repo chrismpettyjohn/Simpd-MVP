@@ -1,9 +1,14 @@
 import {Injectable} from '@nestjs/common';
-import {TagClientService, TagWire} from '@simpd/lib-client';
+import {PostRepository} from './post.repository';
+import {PostClientService, TagClientService, TagWire} from '@simpd/lib-client';
 
 @Injectable()
 export class PostService {
-  constructor(private readonly tagClientService: TagClientService) {}
+  constructor(
+    private readonly tagClientService: TagClientService,
+    private readonly postRepo: PostRepository<any, any>,
+    private readonly postClientService: PostClientService
+  ) {}
 
   async fetchOrCreateHashtagsFromText(text: string): Promise<number[]> {
     const hashtags = text
@@ -26,5 +31,11 @@ export class PostService {
     );
 
     return [...matchingHashtags, ...newHashtags].map(_ => _.id);
+  }
+
+  async create(input: any): Promise<any> {
+    const newPost = await this.postRepo.create(input);
+    await this.postClientService._onCreated({postID: newPost.id!});
+    return newPost as any;
   }
 }

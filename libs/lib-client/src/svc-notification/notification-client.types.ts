@@ -31,6 +31,7 @@ export interface NotificationTypes {
   PROFILE_MESSAGE_RECEIVED: NotificationProfileMessageReceived;
   POST_COMMENT_RECEIVED: NotificationPostCommentReceived;
   POST_REACTION_RECEIVED: NotificationPostReactionReceived;
+  POST_WAS_SHARED: NotificationPostWasShared;
   MESSAGE_REACTION_RECEIVED: NotificationMessageReactionReceived;
 }
 
@@ -58,6 +59,11 @@ export interface NotificationPostCommentReceived {
 
 export interface NotificationPostReactionReceived {
   postReactionID: number;
+}
+
+export interface NotificationPostWasShared {
+  originalPostID: number;
+  sharedPostID: number;
 }
 
 export interface NotificationMessageReactionReceived {

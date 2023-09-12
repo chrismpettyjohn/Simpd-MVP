@@ -1,8 +1,16 @@
 import {lastValueFrom} from 'rxjs';
 import {Inject, Injectable} from '@nestjs/common';
 import {ClientProxy} from '@nestjs/microservices';
-import {PostFindOneInput, PostWire} from './post-client.types';
-import {SVC_POST_INTERNAL_EVENT_FIND_ONE, SVC_POST_NAME} from './post.const';
+import {
+  PostFindOneInput,
+  PostWasCreatedInternalMessage,
+  PostWire,
+} from './post-client.types';
+import {
+  INTERNAL_MESSAGE_SVC_POST_WAS_CREATED,
+  SVC_POST_INTERNAL_EVENT_FIND_ONE,
+  SVC_POST_NAME,
+} from './post.const';
 
 @Injectable()
 export class PostClientService {
@@ -14,5 +22,9 @@ export class PostClientService {
       input
     );
     return await lastValueFrom(matchingPost$);
+  }
+
+  async _onCreated(input: PostWasCreatedInternalMessage): Promise<void> {
+    await this.client.send(INTERNAL_MESSAGE_SVC_POST_WAS_CREATED, input);
   }
 }
