@@ -16,12 +16,11 @@ import { ViewBookmarksScreen } from './view-bookmarks/ViewBookmarks';
 import { ListBookmarksScreen } from './list-bookmarks/ListBookmarks';
 import { SettingsPaymentScreen } from './settings-payment/SettingsPayment';
 import { SettingsProfileScreen } from './settings-profile/SettingsProfile';
+import { DiscoverProfilesScreen } from './discover-profiles/DiscoverProfiles';
 import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
 import { SettingsIdentityScreen } from './settings-identity/SettingsIdentity';
 import { MessageStartThreadScreen } from './message-start-thread/MessageStartThread';
-import { SettingsUserScreen } from './settings-user/SettingsUser';
 import { UserProfileSubscriptionsScreen } from './user-profile-subscriptions/UserProfileSubscriptions';
-import { DiscoverProfilesScreen } from './discover-profiles/DiscoverProfiles';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -33,7 +32,7 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     ),
   },
   {
-    path: '/create-account',
+    path: '/register',
     view: (
       <GuestGuard redirect>
         <CreateAccountScreen />

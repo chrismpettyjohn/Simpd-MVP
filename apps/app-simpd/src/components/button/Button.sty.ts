@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 
 export const ButtonElement = styled.button`
+  border-radius: ${({ theme }) => theme.radius.oneUnit};
   color: var(--dl-color-simpd-s90);
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSize.oneUnit};

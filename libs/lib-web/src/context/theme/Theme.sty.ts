@@ -4,6 +4,21 @@ export enum SimpdWebThemeName {
 
 export interface SimpdWebTheme {
   name: SimpdWebThemeName;
+  breakpoints: {
+    phone: string;
+    tablet: string;
+    desktop: string;
+  };
+  color: {
+    black: string;
+    brand: string;
+    s20: string;
+    s30: string;
+    s40: string;
+    s50: string;
+    s60: string;
+    s90: string;
+  };
   fontFamily: {
     primary: string;
   }
@@ -12,15 +27,6 @@ export interface SimpdWebTheme {
     oneUnit: string;
     twoUnits: string;
   }
-  color: {
-    black: string;
-    brand: string;
-    s20: string;
-    s30: string;
-    s40: string;
-    s50: string;
-    s90: string;
-  };
   space: {
     quarterUnit: string;
     halfUnit: string;
@@ -29,8 +35,8 @@ export interface SimpdWebTheme {
     threeUnits: string;
   };
   radius: {
-    four: string;
-    eight: string;
+    oneUnit: string;
+    twoUnits: string;
     round: string;
   };
   icon: {
@@ -43,13 +49,10 @@ export interface SimpdWebTheme {
 
 export const simpdWebTheme: SimpdWebTheme = {
   name: SimpdWebThemeName.Brand,
-  fontFamily: {
-    primary: 'Maven Pro'
-  },
-  fontSize: {
-    halfUnit: '.8rem',
-    oneUnit: '1.25rem',
-    twoUnits: '1.83rem',
+  breakpoints: {
+    phone: '400px',
+    tablet: '800px',
+    desktop: '1400px',
   },
   color: {
     black: '#000000',
@@ -58,7 +61,16 @@ export const simpdWebTheme: SimpdWebTheme = {
     s30: '#2c2c2eff',
     s40: '#454547ff',
     s50: '#8D8D93',
+    s60: '#F6DEDE',
     s90: '#ffffffff',
+  },
+  fontFamily: {
+    primary: `'Montserrat Alternates', sans-serif`
+  },
+  fontSize: {
+    halfUnit: '.8rem',
+    oneUnit: '1.25rem',
+    twoUnits: '1.83rem',
   },
   space: {
     quarterUnit: '4px',
@@ -68,8 +80,8 @@ export const simpdWebTheme: SimpdWebTheme = {
     threeUnits: '48px',
   },
   radius: {
-    four: '4px',
-    eight: '8px',
+    oneUnit: '4px',
+    twoUnits: '8px',
     round: '100%',
   },
   icon: {

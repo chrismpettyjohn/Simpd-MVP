@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export const DropdownMenuContainer = styled.div`
   background: ${({ theme }) => theme.color.s20};
-  border-radius: ${({ theme }) => theme.radius.four};
+  border-radius: ${({ theme }) => theme.radius.oneUnit};
   height: 300px;
   width: 150px;
   overflow-y: auto;
@@ -16,7 +16,7 @@ export const DropdownMenuContainer = styled.div`
 export const DropdownMenuOption = styled.div`
   background: ${({ theme }) => theme.color.s40};
   border: ${({ theme }) => `2px solid ${theme.color.s40}`};
-  border-radius: ${({ theme }) => theme.radius.four};
+  border-radius: ${({ theme }) => theme.radius.oneUnit};
   color: ${({ theme }) => theme.color.s90};
   padding: ${({ theme }) => theme.space.halfUnit};
   margin-bottom: ${({ theme }) => theme.space.halfUnit};

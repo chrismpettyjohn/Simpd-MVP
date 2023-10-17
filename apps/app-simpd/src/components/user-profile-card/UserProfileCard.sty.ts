@@ -11,7 +11,7 @@ export const UserProfileCardContainer = styled.div`
   align-items: stretch;
   border-color: var(--dl-color-gray-black);
   border-width: 1px;
-  border-radius:  ${({ theme }) => theme.radius.four};
+  border-radius:  ${({ theme }) => theme.radius.oneUnit};
   justify-content: space-between;
   background-color: ${({ theme }) => theme.color.s20};
   border-top-width: 0px;
@@ -45,7 +45,7 @@ export const UserProfileCardCoverPhoto = styled.div <{ backgroundUrl: string }>`
   cursor: pointer;
   display: flex;
   align-items: center;
-  border-radius: ${({ theme }) => theme.radius.four};
+  border-radius: ${({ theme }) => theme.radius.oneUnit};
   background-size: cover;
   justify-content: center;
   background-image: ${({ backgroundUrl }) => `linear-gradient(315deg, rgb(189, 195, 199) 0.00%, rgba(0, 0, 0, 0.2) 1.00%, rgb(0, 0, 0) 100.00%), url('${backgroundUrl}')`};

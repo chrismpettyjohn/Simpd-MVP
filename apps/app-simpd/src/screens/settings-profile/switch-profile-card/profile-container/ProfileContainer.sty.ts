@@ -9,7 +9,7 @@ export const ProfileElement = styled.div`
   width: 100%;
   padding: ${({ theme }) => theme.space.twoUnits};
   margin-bottom: ${({ theme }) => theme.space.twoUnits};
-  border-radius: ${({ theme }) => theme.radius.four};
+  border-radius: ${({ theme }) => theme.radius.oneUnit};
 `
 
 export const ProfileButton = styled.button`

@@ -11,7 +11,7 @@ export const PostCardElement = styled.div`
   max-height: 800px;
   transition: 0.3s;
   align-items: center;
-  border-radius: ${({ theme }) => theme.radius.four};
+  border-radius: ${({ theme }) => theme.radius.oneUnit};
   margin-top: ${({ theme }) => theme.space.twoUnits};
   flex-direction: column;
   justify-content: center;
@@ -54,7 +54,7 @@ export const PostCardText = styled.div`
 
 export const PostStatsContainer = styled.div`
   background: ${({ theme }) => theme.color.s40};
-  border-radius: ${({ theme }) => theme.radius.eight};
+  border-radius: ${({ theme }) => theme.radius.twoUnits};
   cursor: auto;
   display: flex;
   justify-content: space-between;

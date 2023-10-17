@@ -5,7 +5,7 @@ export const SiteHeaderContainer = styled.div`
   flex-direction: column;
   height: auto;
   width: 100%;
-  border-radius: ${({ theme }) => theme.radius.four};
+  border-radius: ${({ theme }) => theme.radius.oneUnit};
   margin-top: ${({ theme }) => theme.space.twoUnits};
 `
 
@@ -14,8 +14,8 @@ export const SiteHeaderBrandContainer = styled.div`
   width: 100%;
   align-self: stretch;
   background-color:${({ theme }) => theme.color.brand};
-  border-top-left-radius: ${({ theme }) => theme.radius.four};
-  border-top-right-radius: ${({ theme }) => theme.radius.four};
+  border-top-left-radius: ${({ theme }) => theme.radius.oneUnit};
+  border-top-right-radius: ${({ theme }) => theme.radius.oneUnit};
   color: ${({ theme }) => theme.color.s90};
   width: auto;
   font-size: ${({ theme }) => theme.fontSize.twoUnits};
@@ -31,8 +31,8 @@ export const SiteHeaderElement = styled.header`
   display: flex;
   justify-content: flex-start;
   background-color: #1C1C1E;
-  border-bottom-left-radius: ${({ theme }) => theme.radius.four};
-  border-bottom-right-radius: ${({ theme }) => theme.radius.four};
+  border-bottom-left-radius: ${({ theme }) => theme.radius.oneUnit};
+  border-bottom-right-radius: ${({ theme }) => theme.radius.oneUnit};
 
 `
 
@@ -72,7 +72,7 @@ export const SiteHeaderToolsContainer = styled.div`
 
 export const SiteHeaderTools = styled.div`
   background: ${({ theme }) => theme.color.s40};
-  border-radius:  ${({ theme }) => theme.radius.four};
+  border-radius:  ${({ theme }) => theme.radius.oneUnit};
   color: ${({ theme }) => theme.color.s90};
   display: flex;
   padding: ${({ theme }) => theme.space.oneUnit};

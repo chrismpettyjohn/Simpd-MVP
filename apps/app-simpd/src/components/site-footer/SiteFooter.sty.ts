@@ -5,14 +5,9 @@ export const FooterElement = styled.footer`
   display: flex;
   position: relative;
   align-items: center;
-  padding-top: ${({ theme }) => theme.space.twoUnits};
-  padding-left: ${({ theme }) => theme.space.threeUnits};
-  padding-right: ${({ theme }) => theme.space.threeUnits};
-  padding-bottom: ${({ theme }) => theme.space.twoUnits};
-  justify-content: center;
-  background-color: ${({ theme }) => theme.color.black};
   color: ${({ theme }) => theme.color.brand};
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
+  justify-content: space-between;
 `

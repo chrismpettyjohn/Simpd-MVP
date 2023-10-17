@@ -13,7 +13,7 @@ export const NotificationCardElement = styled.div`
   border-color: ${({ theme }) => theme.color.s40};
   border-style: solid;
   border-width: 1px;
-  border-radius:${({ theme }) => theme.radius.eight};
+  border-radius:${({ theme }) => theme.radius.twoUnits};
   justify-content: space-between;
   background-color: ${({ theme }) => theme.color.s20};
   margin-bottom: ${({ theme }) => theme.space.twoUnits};

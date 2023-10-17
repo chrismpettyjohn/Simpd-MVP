@@ -5,6 +5,11 @@ import { SiteHeaderBrandContainer, SiteHeaderContainer, SiteHeaderElement, SiteH
 
 export function SiteHeader() {
   const { session } = useContext(sessionContext);
+
+  if (!session) {
+    return null;
+  }
+
   return (
     <SiteHeaderContainer>
       <UserGuard>
