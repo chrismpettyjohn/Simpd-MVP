@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "src/index.ts",
   "scripts": {
-    "web-server:start": "node_modules/.bin/ts-node --swc -r tsconfig-paths/register src/web-server.ts",
-    "web-server:dev": "nodemon --exec pnpm run web-server:start"
+    "dev:start": "node_modules/.bin/ts-node --swc -r tsconfig-paths/register src/web-server.ts",
+    "dev:dev": "nodemon --exec pnpm run dev:start"
   },
   "dependencies": {
     "@nestjs/common": "9.4.0",

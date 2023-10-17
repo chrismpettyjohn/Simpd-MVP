@@ -4,7 +4,7 @@
       "name": "svc-feature-profile-notifications",
       "cwd": "./features/svc-feature-profile-notifications",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -14,7 +14,7 @@
       "name": "svc-bookmark",
       "cwd": "./services/svc-bookmark",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -24,7 +24,7 @@
       "name": "svc-comment",
       "cwd": "./services/svc-comment",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -34,7 +34,7 @@
       "name": "svc-comment-reaction",
       "cwd": "./services/svc-comment-reaction",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -44,7 +44,7 @@
       "name": "svc-form",
       "cwd": "./services/svc-form",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -54,7 +54,7 @@
       "name": "svc-gateway",
       "cwd": "./services/svc-gateway",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src",
         "../**/src"
@@ -65,7 +65,7 @@
       "name": "svc-media",
       "cwd": "./services/svc-media",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -75,7 +75,7 @@
       "name": "svc-message",
       "cwd": "./services/svc-message",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -85,7 +85,7 @@
       "name": "svc-message-reaction",
       "cwd": "./services/svc-message-reaction",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -95,7 +95,7 @@
       "name": "svc-notification",
       "cwd": "./services/svc-notification",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -105,7 +105,7 @@
       "name": "svc-payment-attempt",
       "cwd": "./services/svc-payment-attempt",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -115,7 +115,7 @@
       "name": "svc-payment-invoice",
       "cwd": "./services/svc-payment-invoice",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -125,7 +125,7 @@
       "name": "svc-payment-method",
       "cwd": "./services/svc-payment-method",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -135,7 +135,7 @@
       "name": "svc-payment-recurring-invoice",
       "cwd": "./services/svc-payment-recurring-invoice",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -145,7 +145,7 @@
       "name": "svc-payment-transaction",
       "cwd": "./services/svc-payment-transaction",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -155,7 +155,7 @@
       "name": "svc-post",
       "cwd": "./services/svc-post",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -165,7 +165,7 @@
       "name": "svc-post-comment",
       "cwd": "./services/svc-post-comment",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -175,7 +175,7 @@
       "name": "svc-post-privacy",
       "cwd": "./services/svc-post-privacy",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -185,7 +185,7 @@
       "name": "svc-post-reaction",
       "cwd": "./services/svc-post-reaction",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -195,7 +195,7 @@
       "name": "svc-privacy",
       "cwd": "./services/svc-privacy",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -205,7 +205,7 @@
       "name": "svc-profile",
       "cwd": "./services/svc-profile",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -215,7 +215,7 @@
       "name": "svc-profile-subscription-group",
       "cwd": "./services/svc-profile-subscription-group",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -225,7 +225,7 @@
       "name": "svc-profile-subscription-group-membership",
       "cwd": "./services/svc-profile-subscription-group-membership",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -235,7 +235,7 @@
       "name": "svc-profile-user-bridge",
       "cwd": "./services/svc-profile-user-bridge",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -245,7 +245,7 @@
       "name": "svc-reaction",
       "cwd": "./services/svc-reaction",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -255,7 +255,7 @@
       "name": "svc-report",
       "cwd": "./services/svc-report",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "./services/svc-report/src",
         "./libs/**/src"
@@ -266,7 +266,7 @@
       "name": "svc-role",
       "cwd": "./services/svc-role",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
@@ -276,7 +276,7 @@
       "name": "svc-session",
       "cwd": "./services/svc-session",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ]
@@ -285,7 +285,7 @@
       "name": "svc-stripe-customer-bridge",
       "cwd": "./services/svc-stripe-customer-bridge",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ]
@@ -294,7 +294,7 @@
       "name": "svc-stripe-payment-invoice-bridge",
       "cwd": "./services/svc-stripe-payment-invoice-bridge",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ]
@@ -303,7 +303,7 @@
       "name": "svc-stripe-payment-method-bridge",
       "cwd": "./services/svc-stripe-payment-method-bridge",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ]
@@ -312,7 +312,7 @@
       "name": "svc-stripe-webhook",
       "cwd": "./services/svc-stripe-webhook",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ]
@@ -321,7 +321,7 @@
       "name": "svc-subscription-group",
       "cwd": "./services/svc-subscription-group",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ]
@@ -330,7 +330,7 @@
       "name": "svc-tag",
       "cwd": "./services/svc-tag",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ]
@@ -339,7 +339,7 @@
       "name": "svc-tip",
       "cwd": "./services/svc-tip",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ]
@@ -348,7 +348,7 @@
       "name": "svc-user",
       "cwd": "./services/svc-user",
       "script": "pnpm",
-      "args": "run web-server:start",
+      "args": "run dev:start",
       "watch": [
         "src"
       ],
