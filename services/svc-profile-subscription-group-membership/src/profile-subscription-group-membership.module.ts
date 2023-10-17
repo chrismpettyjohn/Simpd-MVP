@@ -11,6 +11,7 @@ import {ProfileSubscriptionGroupMembershipController} from './profile-subscripti
 import {ProfileSubscriptionGroupMembershipMembershipEntity} from './profile-subscription-group-membership.entity';
 import {
   ProfileClientModule,
+  ProfileSubscriptionGroupMembershipClientModule,
   SubscriptionGroupClientModule,
 } from '@simpd/lib-client';
 import {ProfileSubscriptionGroupMembershipService} from './profile-subscription-group-membership.service';
@@ -26,6 +27,7 @@ import {ProfileSubscriptionGroupMembershipService} from './profile-subscription-
       entities: [ProfileSubscriptionGroupMembershipMembershipEntity],
       synchronize: true,
     }),
+    ProfileSubscriptionGroupMembershipClientModule,
   ],
   providers: [
     ProfileSubscriptionGroupMembershipResolver,

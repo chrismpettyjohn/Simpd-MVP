@@ -7,6 +7,7 @@ import {TipController} from './tip.controller';
 import {
   PaymentInvoiceClientModule,
   ProfileClientModule,
+  TipClientModule,
 } from '@simpd/lib-client';
 import {
   GraphQLModule,
@@ -26,6 +27,7 @@ import {
       entities: [TipEntity],
       synchronize: true,
     }),
+    TipClientModule,
   ],
   providers: [TipRepository, TipResolver, TipService],
   controllers: [TipController],

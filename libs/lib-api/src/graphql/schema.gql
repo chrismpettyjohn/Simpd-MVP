@@ -2,39 +2,32 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type MediaDetailsModel {
-  sizeInBytes: Float
-  originalFileName: String
-}
-
-type MediaModel {
+type ProfileSubscriptionGroupMembershipModel {
   id: Float
-  type: MediaType
   profileID: Float
-  url: String
-  details: MediaDetailsModel
+  subscriptionGroupID: Float
+  autoRenew: Boolean
+  renewsOn: DateTime
 }
 
-enum MediaType {
-  Image
-  Video
-  Other
-}
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type Query {
-  media(filter: MediaFilterByOneInput!): MediaModel!
-  medias(filter: MediaFilterByManyInput): [MediaModel!]!
+  subscriptionGroupMembership(filter: ProfileSubscriptionGroupMembershipFilterByOneInput!): ProfileSubscriptionGroupMembershipModel!
+  subscriptionGroupMemberships(filter: ProfileSubscriptionGroupMembershipFilterByManyInput!): [ProfileSubscriptionGroupMembershipModel!]!
 }
 
-input MediaFilterByOneInput {
-  id: Float
+input ProfileSubscriptionGroupMembershipFilterByOneInput {
+  subscriptionGroupID: Float
 }
 
-input MediaFilterByManyInput {
-  ids: [Float!]
-  profileIDs: [Float!]
+input ProfileSubscriptionGroupMembershipFilterByManyInput {
+  subscriptionGroupIDs: [Float!]
 }
 
 type Mutation {
-  mediaDelete(filter: MediaFilterByOneInput!): Boolean!
+  subscriptionGroupMembershipDelete(filter: ProfileSubscriptionGroupMembershipFilterByOneInput!): Boolean!
 }
