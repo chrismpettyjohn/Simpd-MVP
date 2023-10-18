@@ -1,5 +1,4 @@
 import { useRoute } from 'wouter';
-import { Helmet } from 'react-helmet'
 import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect } from 'react'
 import { PageTitle } from '../../components/page-title/PageTitle';
@@ -33,10 +32,6 @@ export function ViewBookmarksScreen() {
 
   return (
     <>
-      <Helmet>
-        <title>Bookmarks - Simpd</title>
-        <meta property="og:title" content="Bookmarks - Simpd" />
-      </Helmet>
       <PageTitle title="Bookmarks" />
       <BookmarksNavigation bookmarkCollections={bookmarkCollectionFetchMany.data ?? []} onCreation={onLoadBookmarkCollections} />
       {isLoading && <Card><i className="fa fa-spinner fa-spin" /></Card>}

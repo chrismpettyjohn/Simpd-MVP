@@ -1,5 +1,4 @@
 import './SettingsProfile.css';
-import { Helmet } from 'react-helmet';
 import React, { useContext } from 'react';
 import { sessionContext } from '@simpd/lib-web';
 import { PageTitle } from '../../components/page-title/PageTitle';
@@ -13,10 +12,6 @@ export function SettingsProfileScreen() {
 
   return (
     <>
-      <Helmet>
-        <title>Settings-Profile - Simpd</title>
-        <meta property="og:title" content="Settings-Profile - Simpd" />
-      </Helmet>
       <PageTitle title="Settings-Profile" />
       <SettingsNavigation />
       <UserProfileCard profile={session!.profile!} />

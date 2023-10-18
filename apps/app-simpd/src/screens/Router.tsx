@@ -1,16 +1,18 @@
 import React from 'react';
 import { Switch, Route } from 'wouter';
 import { SignInScreen } from './sign-in/SignIn';
+import { SignUpScreen } from './sign-up/SignUp';
+import { LandingScreen } from './landing/Landing';
 import { ViewTagScreen } from './view-tag/ViewTag';
 import { SignOutScreen } from './sign-out/SignOut';
 import { MessagesScreen } from './messages/Messages';
 import { ViewPostScreen } from './view-post/ViewPost';
 import { GuestGuard, UserGuard } from '@simpd/lib-web';
 import { DashboardScreen } from './dashboard/Dashboard';
+
 import { UserProfileScreen } from './user-profile/UserProfile';
 import { PageNotFoundScreen } from './page-not-found/PageNotFound';
 import { NotificationsScreen } from './notifications/Notifications';
-import { CreateAccountScreen } from './create-account/CreateAccount';
 import { MessageThreadScreen } from './message-thread/MessageThread';
 import { ViewBookmarksScreen } from './view-bookmarks/ViewBookmarks';
 import { ListBookmarksScreen } from './list-bookmarks/ListBookmarks';
@@ -24,6 +26,14 @@ import { UserProfileSubscriptionsScreen } from './user-profile-subscriptions/Use
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
+    path: '/',
+    view: (
+      <GuestGuard redirect>
+        <LandingScreen />
+      </GuestGuard>
+    ),
+  },
+  {
     path: '/sign-in',
     view: (
       <GuestGuard redirect>
@@ -32,10 +42,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     ),
   },
   {
-    path: '/register',
+    path: '/sign-up',
     view: (
       <GuestGuard redirect>
-        <CreateAccountScreen />
+        <SignUpScreen />
       </GuestGuard>
     ),
   },

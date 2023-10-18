@@ -1,5 +1,4 @@
 import { useRoute } from 'wouter';
-import { Helmet } from 'react-helmet'
 import React, { useEffect, useState } from 'react'
 import { PageTitle } from '../../components/page-title/PageTitle';
 import { ProfileTimeline } from './profile-timeline/ProfileTimeline';
@@ -34,10 +33,6 @@ export function UserProfileScreen() {
 
   return (
     <>
-      <Helmet>
-        <title>User-Profile - Simpd</title>
-        <meta property="og:title" content="User-Profile - Simpd" />
-      </Helmet>
       <PageTitle title="User Profile" />
       {
         userProfile && (

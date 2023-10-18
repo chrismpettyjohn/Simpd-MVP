@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
 export interface PageTitleProps {
-  title: ReactNode;
+  title?: ReactNode;
   children?: ReactNode;
 }

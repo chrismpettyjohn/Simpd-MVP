@@ -3,46 +3,21 @@ import { styled } from "styled-components";
 export const CardContainer = styled.div`
   width: 100%;
   height: 100%;
-  box-shadow: 5px 5px 10px 10px #1c1c1e;
-  margin-top: ${({ theme }) => theme.space.twoUnits};
-  align-items: flex-start;
+  background: linear-gradient(178deg, rgba(203, 188, 188, 0.4) 0.2%, rgba(189, 171, 171, 0.1) 99.37%);
+  border: 1px solid #F6DEDE
+  border-radius: ${({ theme }) => theme.radius.eight};
   position: relative;
 `
 
 export const CardHeader = styled.div`
-  width: 100%;
-  background-color: ${({ theme }) => theme.color.s30};
 `
 
 export const CardHeaderContent = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: ${({ theme }) => theme.space.oneUnit};
-
-  h1 {
-    color: ${({ theme }) => theme.color.s90};
-    font-size: 2rem;
-  }
-
-  svg, i {
-    color: ${({ theme }) => theme.color.s90};
-    cursor: pointer;
-    font-size: ${({ theme }) => theme.icon.threeUnits};
-
-    &:hover {
-      fill: ${({ theme }) => theme.color.brand};
-    }
-  }
 `
 
 export const CardBody = styled.div`
-  background-color: ${({ theme }) => theme.color.s20};
   width: 100%;
 `
 
 export const CardBodyContent = styled.div`
-  color: ${({ theme }) => theme.color.s90};
-  font-size: 1.5rem;
-  padding: ${({ theme }) => theme.space.oneUnit};
 `

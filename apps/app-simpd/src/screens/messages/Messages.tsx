@@ -1,13 +1,11 @@
 import './Messages.css';
 import { Link } from 'wouter';
-import { Helmet } from 'react-helmet';
 import React, { useEffect } from 'react';
-import { MessagesContainer } from './Messages.sty';
+import { Card } from 'components/card/Card';
 import { Button } from '../../components/button/Button';
 import { PageTitle } from '../../components/page-title/PageTitle';
 import { FullPageLoadingScreen, useMessageContactFetchMany } from '@simpd/lib-web';
 import { MessagePreviewCard } from 'components/message-preview-card/MessagePreviewCard';
-import { Card } from 'components/card/Card';
 
 export function MessagesScreen() {
   const messageContactFetchMany = useMessageContactFetchMany();
@@ -22,10 +20,6 @@ export function MessagesScreen() {
 
   return (
     <>
-      <Helmet>
-        <title>Messages - Simpd</title>
-        <meta property="og:title" content="Messages - Simpd" />
-      </Helmet>
       <PageTitle title="Messages">
         <input
           type="text"

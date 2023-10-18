@@ -1,12 +1,14 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { PageTitleProps } from './PageTitle.types';
-import { PageTitleContainer } from './PageTitle.sty';
 
-export function PageTitle({ children, title }: PageTitleProps) {
+export function PageTitle({ title }: PageTitleProps) {
+  const pageTitle = `Simpd ${title ? `- ${title}` : ''}`;
+
   return (
-    <PageTitleContainer>
-      <h1>{title}</h1>
-      {children}
-    </PageTitleContainer>
+    <Helmet>
+      <title>{pageTitle}</title>
+      <meta property="og:title" content={pageTitle} />
+    </Helmet>
   )
 }

@@ -1,5 +1,4 @@
 import './ListBookmarks.css';
-import { Helmet } from 'react-helmet'
 import React, { useContext, useEffect } from 'react'
 import { PageTitle } from '../../components/page-title/PageTitle';
 import { sessionContext, useBookmarkCollectionFetchMany } from '@simpd/lib-web';
@@ -21,10 +20,6 @@ export function ListBookmarksScreen() {
 
   return (
     <>
-      <Helmet>
-        <title>Bookmarks - Simpd</title>
-        <meta property="og:title" content="Bookmarks - Simpd" />
-      </Helmet>
       <PageTitle title="Bookmarks" />
       <BookmarksNavigation bookmarkCollections={bookmarkCollectionFetchMany.data ?? []} onCreation={onLoadBookmarkCollections} />
     </>

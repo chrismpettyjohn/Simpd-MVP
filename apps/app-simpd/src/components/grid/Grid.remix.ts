@@ -1,14 +1,14 @@
-import { Grid } from "./Grid";
 import styled from "styled-components";
+import { GridElement } from "./Grid.sty";
 
-export const GridLarge = styled(Grid)`
+export const GridLarge = styled(GridElement)`
   ${({ theme }) => `
     @media (min-width: ${theme.breakpoints.desktop}) {
       grid-template-columns: 1fr 1fr;
     }
   `}
 `
-export const GridLargeSmall = styled(Grid)`
+export const GridLargeSmall = styled(GridElement)`
   ${({ theme }) => `
     @media (min-width: ${theme.breakpoints.desktop}) {
       grid-template-columns: 2fr 1fr;
@@ -16,14 +16,14 @@ export const GridLargeSmall = styled(Grid)`
   `}
 `
 
-export const GridSmallLarge = styled(Grid)`
+export const GridSmallLarge = styled(GridElement)`
   ${({ theme }) => `
     @media (min-width: ${theme.breakpoints.desktop}) {
       grid-template-columns: 1fr 2fr;
     }
   `}
 `
-export const GridMedium = styled(Grid)`
+export const GridMedium = styled(GridElement)`
   ${({ theme }) => `
     @media (min-width: ${theme.breakpoints.desktop}) {
       grid-template-columns: 1fr 1fr 1fr;

@@ -1,5 +1,4 @@
 import { useRoute } from 'wouter';
-import { Helmet } from 'react-helmet'
 import React, { useEffect } from 'react'
 import { PostCard } from '../../components/post-card/PostCard';
 import { PageTitle } from '../../components/page-title/PageTitle';
@@ -30,10 +29,6 @@ export function ViewPostScreen() {
 
   return (
     <>
-      <Helmet>
-        <title>View Post - Simpd</title>
-        <meta property="og:title" content="View Post - Simpd" />
-      </Helmet>
       <PageTitle title="View Post" />
       <UserProfileCard allowChanges={false} profile={fetchPost.data!.profile} />
       <PostCard post={fetchPost.data} hideAuthor />
