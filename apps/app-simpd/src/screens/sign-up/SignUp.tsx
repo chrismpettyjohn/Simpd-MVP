@@ -1,16 +1,10 @@
 import jwtDecode from 'jwt-decode';
 import { Link, useLocation } from 'wouter';
 import { Form } from '../../components/form/Form';
-import { Card } from '../../components/card/Card';
 import { Input } from '../../components/input/Input';
-import { CreateAccountContainerElement } from './SignUp.sty';
-import { GridLarge } from '../../components/grid/Grid.remix';
-import { SiteLogo } from '../../components/site-logo/SiteLogo';
-import { PageTitle } from '../../components/page-title/PageTitle';
 import { ButtonBrand } from '../../components/button/Button.remix';
 import React, { SyntheticEvent, useContext, useState } from 'react';
-import { SiteFooter } from '../../components/site-footer/SiteFooter';
-import { SiteCaption } from '../../components/site-caption/SiteCaption';
+import { GuestContainer } from '../../components/guest-container/GuestContainer';
 import { LOCAL_STORAGE_SESSION_TOKEN, SessionContents, UserCreateInput, sessionContext, useProfileCreateRandomized, useProfileFetchOne, useSessionCreate, useSessionFetchOne, useUserCreate } from '@simpd/lib-web';
 
 export function SignUpScreen() {
@@ -56,48 +50,33 @@ export function SignUpScreen() {
   }
 
   return (
-    <>
-      <PageTitle title="Create account" />
-      <GridLarge>
-        <CreateAccountContainerElement>
-          <SiteLogo style={{ height: '7em' }} />
-          <SiteCaption />
-          <Card>
-            <Form onSubmit={onSubmit}>
-              <label>Email</label>
-              <input
-                type="email"
-                placeholder="Email Address"
-                value={userDTO.email}
-                onChange={e => onChanges({ email: e.currentTarget.value ?? '' })}
-              />
-              <br />
-              <br />
-              <label>Password</label>
-              <Input
-                type="password"
-                placeholder="Password"
-                value={userDTO.password}
-                onChange={e => onChanges({ password: e.currentTarget.value ?? '' })}
-              />
-              <br />
-              <br />
-              <div>
-                <ButtonBrand disabled={isLoading} type="submit">
-                  {
-                    isLoading ? <i className="fa fa-spinner fa-spin" /> : <>Create account</>
-                  }
-                </ButtonBrand>
-                <Link to="/sign-in">
-                  Already have an account? <b>Log in</b>
-                </Link>
-              </div>
-            </Form>
-          </Card>
-        </CreateAccountContainerElement>
-        <img src="https://static.wixstatic.com/media/502135_e27572d936094e359f829ddcd2ab387d~mv2.jpg/v1/fill/w_429,h_604,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/alex-azabache--Hm_xIcYbUY-unsplash.jpg" style={{ width: '100%', height: '100%', objectFit: 'fill' }} />
-      </GridLarge>
-      <SiteFooter />
-    </>
+    <GuestContainer>
+      <Form onSubmit={onSubmit}>
+        <label>Email</label>
+        <Input
+          type="email"
+          placeholder="Email Address"
+          value={userDTO.email}
+          onChange={e => onChanges({ email: e.currentTarget.value ?? '' })}
+        />
+        <label>Password</label>
+        <Input
+          type="password"
+          placeholder="Password"
+          value={userDTO.password}
+          onChange={e => onChanges({ password: e.currentTarget.value ?? '' })}
+        />
+        <ButtonBrand disabled={isLoading} type="submit" style={{ width: '100%' }}>
+          {
+            isLoading ? <i className="fa fa-spinner fa-spin" /> : <>Sign up</>
+          }
+        </ButtonBrand>
+        <Link to="/sign-in">
+          <a>
+            Already have an account? <b>Sign in</b>
+          </a>
+        </Link>
+      </Form>
+    </GuestContainer>
   )
 }

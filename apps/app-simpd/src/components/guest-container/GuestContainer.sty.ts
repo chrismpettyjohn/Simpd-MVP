@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
-export const CreateAccountContainerElement = styled.div`
+export const GuestContainerElement = styled.div`
   align-items: center;
   display: flex;
   flex: 1;
   flex-direction: column;
   background: linear-gradient(180deg, #000000 0%, #71023F 100%);
   justify-content: center;
-  min-height: 100%;
   padding: ${({ theme }) => theme.space.twoUnits};  
 
   h2 {

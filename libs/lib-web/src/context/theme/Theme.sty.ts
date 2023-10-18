@@ -80,8 +80,8 @@ export const simpdWebTheme: SimpdWebTheme = {
     threeUnits: '48px',
   },
   radius: {
-    oneUnit: '4px',
-    twoUnits: '8px',
+    oneUnit: '8px',
+    twoUnits: '14px',
     round: '100%',
   },
   icon: {
