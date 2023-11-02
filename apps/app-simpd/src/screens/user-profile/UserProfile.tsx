@@ -2,6 +2,7 @@ import { useRoute } from 'wouter';
 import React, { useEffect, useState } from 'react'
 import { PageTitle } from '../../components/page-title/PageTitle';
 import { ProfileTimeline } from './profile-timeline/ProfileTimeline';
+import { UserContainer } from '../../components/user-container/UserContainer';
 import { UserProfileCard } from '../../components/user-profile-card/UserProfileCard';
 import { ProfileFragment, usePostFetchMany, useProfileFetchOne } from '@simpd/lib-web';
 
@@ -32,7 +33,7 @@ export function UserProfileScreen() {
   }, [params?.username]);
 
   return (
-    <>
+    <UserContainer>
       <PageTitle title="User Profile" />
       {
         userProfile && (
@@ -46,6 +47,6 @@ export function UserProfileScreen() {
           </>
         )
       }
-    </>
+    </UserContainer>
   )
 }

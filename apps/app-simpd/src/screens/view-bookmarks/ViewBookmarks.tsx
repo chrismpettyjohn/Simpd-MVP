@@ -3,6 +3,7 @@ import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect } from 'react'
 import { PageTitle } from '../../components/page-title/PageTitle';
 import { BookmarkCard } from 'components/bookmark-card/BookmarkCard';
+import { UserContainer } from '../../components/user-container/UserContainer';
 import { BookmarksNavigation } from '../../components/bookmarks-navigation/BookmarksNavigation';
 import { BookmarkCollectionFragment, sessionContext, useBookmarkCollectionFetchMany, useBookmarkFetchMany } from '@simpd/lib-web';
 
@@ -31,7 +32,7 @@ export function ViewBookmarksScreen() {
   const activeBookmarks = bookmarkFetchMany.data?.filter(_ => _.bookmarkCollectionID === bookmarkCollection?.id) ?? [];
 
   return (
-    <>
+    <UserContainer>
       <PageTitle title="Bookmarks" />
       <BookmarksNavigation bookmarkCollections={bookmarkCollectionFetchMany.data ?? []} onCreation={onLoadBookmarkCollections} />
       {isLoading && <Card><i className="fa fa-spinner fa-spin" /></Card>}
@@ -41,6 +42,6 @@ export function ViewBookmarksScreen() {
       {
         activeBookmarks.length === 0 && <Card><p>You don't have any bookmarks</p></Card>
       }
-    </>
+    </UserContainer >
   )
 }

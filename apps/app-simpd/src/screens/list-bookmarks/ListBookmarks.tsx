@@ -1,6 +1,7 @@
 import './ListBookmarks.css';
 import React, { useContext, useEffect } from 'react'
 import { PageTitle } from '../../components/page-title/PageTitle';
+import { UserContainer } from '../../components/user-container/UserContainer';
 import { sessionContext, useBookmarkCollectionFetchMany } from '@simpd/lib-web';
 import { BookmarksNavigation } from '../../components/bookmarks-navigation/BookmarksNavigation';
 
@@ -19,9 +20,9 @@ export function ListBookmarksScreen() {
   }, []);
 
   return (
-    <>
+    <UserContainer>
       <PageTitle title="Bookmarks" />
       <BookmarksNavigation bookmarkCollections={bookmarkCollectionFetchMany.data ?? []} onCreation={onLoadBookmarkCollections} />
-    </>
+    </UserContainer>
   )
 }

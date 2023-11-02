@@ -1,11 +1,12 @@
 import React from 'react'
 import { PageTitle } from '../../components/page-title/PageTitle';
-import { NotificationCard } from '../../components/notification-card/NotificationCard';
+import { UserContainer } from '../../components/user-container/UserContainer';
 import { NotificationContainer, NotificationElement } from './Notifications.sty';
+import { NotificationCard } from '../../components/notification-card/NotificationCard';
 
 export function NotificationsScreen() {
   return (
-    <>
+    <UserContainer>
       <NotificationElement>
         <PageTitle title="Notifications" />
         <NotificationContainer>
@@ -14,6 +15,6 @@ export function NotificationsScreen() {
           <NotificationCard />
         </NotificationContainer>
       </NotificationElement>
-    </>
+    </UserContainer>
   )
 }

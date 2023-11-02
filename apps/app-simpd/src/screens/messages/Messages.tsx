@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { Card } from 'components/card/Card';
 import { Button } from '../../components/button/Button';
 import { PageTitle } from '../../components/page-title/PageTitle';
+import { UserContainer } from '../../components/user-container/UserContainer';
 import { FullPageLoadingScreen, useMessageContactFetchMany } from '@simpd/lib-web';
 import { MessagePreviewCard } from 'components/message-preview-card/MessagePreviewCard';
 
@@ -19,7 +20,7 @@ export function MessagesScreen() {
   }
 
   return (
-    <>
+    <UserContainer>
       <PageTitle title="Messages">
         <input
           type="text"
@@ -46,6 +47,6 @@ export function MessagesScreen() {
           )
         }
       </Card>
-    </>
+    </UserContainer>
   )
 }

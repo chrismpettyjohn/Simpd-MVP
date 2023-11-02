@@ -1,11 +1,12 @@
 import React from 'react';
 import { Card } from '../../components/card/Card';
-import { CardBody, CardBodyContent, CardContainer } from '../../components/card/Card.sty';
 import { Button } from '../../components/button/Button';
+import { UserContainer } from '../../components/user-container/UserContainer';
+import { CardBody, CardBodyContent, CardContainer } from '../../components/card/Card.sty';
 
 export function MessageStartThreadScreen() {
   return (
-    <>
+    <UserContainer>
       <CardContainer>
         <CardBody>
           <CardBodyContent style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -33,7 +34,7 @@ export function MessageStartThreadScreen() {
           </Button>
         </div>
       </Card>
-    </>
+    </UserContainer>
 
   );
 }

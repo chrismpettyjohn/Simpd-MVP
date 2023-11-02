@@ -5,6 +5,7 @@ import { PageTitle } from '../../components/page-title/PageTitle';
 import { FullPageLoadingScreen, usePostFetchOne } from '@simpd/lib-web';
 import { PostCommentsCard } from 'components/post-comments-card/PostCommentsCard';
 import { UserProfileCard } from '../../components/user-profile-card/UserProfileCard';
+import { UserContainer } from '../../components/user-container/UserContainer';
 
 export function ViewPostScreen() {
   const fetchPost = usePostFetchOne();
@@ -28,11 +29,11 @@ export function ViewPostScreen() {
   }
 
   return (
-    <>
+    <UserContainer>
       <PageTitle title="View Post" />
       <UserProfileCard allowChanges={false} profile={fetchPost.data!.profile} />
       <PostCard post={fetchPost.data} hideAuthor />
       <PostCommentsCard post={fetchPost.data} />
-    </>
+    </UserContainer>
   )
 }
