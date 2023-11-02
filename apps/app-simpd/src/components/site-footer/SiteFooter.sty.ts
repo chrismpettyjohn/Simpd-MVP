@@ -14,6 +14,12 @@ export const FooterElement = styled.footer`
   font-style: normal;
   font-weight: 700;
   justify-content: space-between;
+  a {
+    opacity: 0.8;
+    &:hover {
+      opacity: 1;
+    }
+  }
 `
 
 export const FooterContentElement = styled.div`

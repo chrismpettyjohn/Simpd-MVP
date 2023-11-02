@@ -4,8 +4,9 @@ export const SiteBodyElement = createGlobalStyle`
    body, html, #root {
       background: ${({ theme }) => theme.color.s10};
       color: ${({ theme }) => theme.color.s60};
-      font-family: '${({ theme }) => theme.fontFamily.primary};
-      height: 100%;
+      font-family: ${({ theme }) => theme.fontFamily.primary};
+      height: 100vh;
+      width: 100vw;
       margin: 0;
       padding: 0;
    }

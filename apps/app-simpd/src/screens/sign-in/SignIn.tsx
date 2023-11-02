@@ -6,6 +6,7 @@ import { ButtonBrand } from '../../components/button/Button.remix';
 import React, { SyntheticEvent, useContext, useState } from 'react';
 import { GuestContainer } from '../../components/guest-container/GuestContainer';
 import { SessionContents, sessionContext, useProfileFetchOne, useSessionCreate, useSessionFetchOne } from '@simpd/lib-web';
+import { SocialMediaSignInButtons } from '../../components/social-media-sign-in-buttons/SocialMediaSignInButtons';
 
 export function SignInScreen() {
   const [, setLocation] = useLocation();
@@ -53,6 +54,11 @@ export function SignInScreen() {
           value={password}
           onChange={e => setPassword(e.currentTarget.value)}
         />
+        <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
+          <Link to="/forgot-password">
+            <a style={{ color: '#c2a1aa' }}> Forgot Password?</a>
+          </Link>
+        </div>
         <ButtonBrand disabled={isDisabled} type="submit" style={{ width: '100%' }}>
           {
             sessionCreate.loading ? <i className="fa fa-spinner fa-spin" /> : <>Sign in</>
@@ -60,10 +66,11 @@ export function SignInScreen() {
         </ButtonBrand>
         <Link to="/sign-up">
           <a>
-            Want to make an account? <b>Sign up</b>
+            Want to create an account? <b>Sign up</b>
           </a>
         </Link>
       </Form>
+      <SocialMediaSignInButtons />
     </GuestContainer>
   )
 }

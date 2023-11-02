@@ -1,7 +1,8 @@
 import { toast } from 'react-toastify';
+import React, { useContext, useEffect, useState } from 'react';
 import { PostCard } from '../../components/post-card/PostCard';
 import { PageTitle } from '../../components/page-title/PageTitle';
-import React, { useContext, useEffect, useState } from 'react';
+import { UserContainer } from '../../components/user-container/UserContainer';
 import { PostFragment, sessionContext, usePostFetchMany } from '@simpd/lib-web';
 import { CreateNewPostCard } from '../../components/create-new-post-card/CreateNewPostCard';
 
@@ -25,7 +26,7 @@ export function DashboardScreen() {
   }, []);
 
   return (
-    <>
+    <UserContainer>
       <PageTitle title="Dashboard">
         <input
           type="text"
@@ -47,6 +48,6 @@ export function DashboardScreen() {
           <PostCard key={`timeline_post_${_.id}`} post={_} />
         ))
       }
-    </>
+    </UserContainer>
   )
 }

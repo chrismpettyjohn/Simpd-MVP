@@ -6,6 +6,7 @@ import { ButtonBrand } from '../../components/button/Button.remix';
 import React, { SyntheticEvent, useContext, useState } from 'react';
 import { GuestContainer } from '../../components/guest-container/GuestContainer';
 import { LOCAL_STORAGE_SESSION_TOKEN, SessionContents, UserCreateInput, sessionContext, useProfileCreateRandomized, useProfileFetchOne, useSessionCreate, useSessionFetchOne, useUserCreate } from '@simpd/lib-web';
+import { SocialMediaSignInButtons } from '../../components/social-media-sign-in-buttons/SocialMediaSignInButtons';
 
 export function SignUpScreen() {
   const [userDTO, setUserDTO] = useState<UserCreateInput>({
@@ -76,6 +77,7 @@ export function SignUpScreen() {
             Already have an account? <b>Sign in</b>
           </a>
         </Link>
+        <SocialMediaSignInButtons />
       </Form>
     </GuestContainer>
   )
