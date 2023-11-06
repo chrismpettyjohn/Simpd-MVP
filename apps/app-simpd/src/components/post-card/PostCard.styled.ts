@@ -1,13 +1,11 @@
 import { styled } from "styled-components";
 
 export const PostCardElement = styled.div`
-  flex: 0 0 auto;
   width: 100%;
   cursor: pointer;
   height: 100%;
   display: flex;
   position: relative;
-  box-shadow: 5px 5px 10px 10px #1c1c1e;
   max-height: 800px;
   transition: 0.3s;
   align-items: center;
@@ -15,7 +13,7 @@ export const PostCardElement = styled.div`
   margin-top: ${({ theme }) => theme.space.twoUnits};
   flex-direction: column;
   justify-content: center;
-  background-color: ${({ theme }) => theme.color.s30};
+  background-color: ${({ theme }) => theme.color.s10};
 
   &:hover {
     box-shadow: 5px 5px 10px 10px #711b1e;
@@ -27,7 +25,6 @@ export const PostCardHeader = styled.div`
     color: ${({ theme }) => theme.color.s90};
     display: flex;
     width: 100%;
-    padding: ${({ theme }) => theme.space.twoUnits};
 `
 
 export const PostCardContent = styled.div`
@@ -58,8 +55,6 @@ export const PostStatsContainer = styled.div`
   cursor: auto;
   display: flex;
   justify-content: space-between;
-  padding-left: ${({ theme }) => theme.space.twoUnits};
-  padding-right: ${({ theme }) => theme.space.twoUnits};
   margin-top: ${({ theme }) => theme.space.twoUnits};
   width: 100%;
 `

@@ -1,24 +1,24 @@
 import React from 'react';
 import { CardProps } from './Card.types';
-import { CardBody, CardBodyContent, CardContainer, CardHeader, CardHeaderContent } from './Card.sty';
+import { CardBody, CardContainer } from './Card.sty';
+import { Container } from '../container/Container';
 
 export function Card({ header, children, ...props }: CardProps) {
   return (
     <CardContainer {...props}>
-      <CardHeader>
+      <Container>
         {
           header && (
-            <CardHeaderContent>
+            <>
               <h1>{header}</h1>
-            </CardHeaderContent>
+            </>
           )
         }
-      </CardHeader>
-      <CardBody>
-        <CardBodyContent>
+        <CardBody>
+
           {children}
-        </CardBodyContent>
-      </CardBody>
+        </CardBody>
+      </Container>
     </CardContainer>
   )
 }

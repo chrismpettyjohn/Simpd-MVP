@@ -5,8 +5,8 @@ export const SiteBodyElement = createGlobalStyle`
       background: ${({ theme }) => theme.color.s10};
       color: ${({ theme }) => theme.color.s60};
       font-family: ${({ theme }) => theme.fontFamily.primary};
-      height: 100vh;
-      width: 100vw;
+      min-height: 100%;
+      min-hwidth: 100%;
       margin: 0;
       padding: 0;
    }

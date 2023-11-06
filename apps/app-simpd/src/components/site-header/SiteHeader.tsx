@@ -1,7 +1,7 @@
-import { Link } from 'wouter';
+import { Input } from '../input/Input';
 import React, { useContext } from 'react'
-import { UserGuard, sessionContext } from '@simpd/lib-web';
-import { SiteHeaderContainer } from './SiteHeader.sty';
+import { sessionContext } from '@simpd/lib-web';
+import { SiteHeaderContainer, SiteHeaderContent } from './SiteHeader.sty';
 
 export function SiteHeader() {
   const { session } = useContext(sessionContext);
@@ -12,7 +12,9 @@ export function SiteHeader() {
 
   return (
     <SiteHeaderContainer>
-      hi
+      <SiteHeaderContent>
+        <Input placeholder="Search for some hoes.." />
+      </SiteHeaderContent>
     </SiteHeaderContainer>
   )
 }

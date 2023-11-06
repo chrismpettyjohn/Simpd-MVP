@@ -8,7 +8,7 @@ export const SITE_NAVIGATION_LINKS: Array<{ label: ReactNode, href: string }> = 
         Home
       </>
     ),
-    href: '/home',
+    href: '/dashboard',
   },
   {
     label: (

@@ -7,7 +7,7 @@ export function SiteSidebar() {
   return (
     <SiteSidebarElement>
       <SiteSidebarContent>
-        <SiteLogo style={{ height: '5em' }} />
+        <SiteLogo altLogo style={{ height: '4em' }} />
         <SiteNavigation />
       </SiteSidebarContent>
     </SiteSidebarElement>

@@ -45,7 +45,9 @@ export function DashboardScreen() {
       }
       {
         posts.map(_ => (
-          <PostCard key={`timeline_post_${_.id}`} post={_} />
+          <div key={`timeline_post_${_.id}`} style={{ marginBottom: 10 }}>
+            <PostCard post={_} />
+          </div>
         ))
       }
     </UserContainer>

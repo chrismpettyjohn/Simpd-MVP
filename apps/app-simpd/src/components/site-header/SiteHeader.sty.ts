@@ -7,3 +7,11 @@ export const SiteHeaderContainer = styled.div`
   width: 100%;
   background: black;
 `
+
+export const SiteHeaderContent = styled.div`
+  display: flex;
+  justify-items: center;
+  flex: 1;
+  flex-direction: column;
+  padding: ${({ theme }) => theme.space.twoUnits};
+`

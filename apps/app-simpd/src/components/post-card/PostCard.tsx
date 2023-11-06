@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
 import React, { useMemo } from 'react';
 import { PostCardProps } from './PostCard.types';
+import { Container } from '../container/Container';
 import { PostShares } from './post-shares/PostShares';
 import { PostReactions } from './post-reactions/PostReactions';
 import { PostFavorites } from './post-favorites/PostFavorites';
@@ -39,7 +40,9 @@ export function PostCard({ post, hideAuthor = false, hideChildren = false, hideT
       <PostCardElement>
         {!hideAuthor && (
           <PostCardHeader>
-            <AuthorBlockLarge profile={post.profile} />
+            <Container>
+              <AuthorBlockLarge profile={post.profile} />
+            </Container>
           </PostCardHeader>
         )}
         <PostCardContent>
@@ -49,9 +52,11 @@ export function PostCard({ post, hideAuthor = false, hideChildren = false, hideT
           {
             !hideTools && !hideChildren && (
               <PostStatsContainer onClick={e => e.stopPropagation()}>
-                <PostReactions post={post} />
-                <PostFavorites post={post} />
-                <PostShares post={post} />
+                <Container style={{ justifyContent: 'space-between', paddingTop: 0, paddingBottom: 0 }}>
+                  <PostReactions post={post} />
+                  <PostFavorites post={post} />
+                  <PostShares post={post} />
+                </Container>
               </PostStatsContainer>
             )
           }
