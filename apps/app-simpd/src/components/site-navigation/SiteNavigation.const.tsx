@@ -1,7 +1,12 @@
 import React, { ReactNode } from "react";
 
-export const SITE_NAVIGATION_LINKS: Array<{ label: ReactNode, href: string }> = [
+export type NavigationLink = { type: 'link'; label: ReactNode; href: string };
+export type NavigationBreak = { type: 'break'; };
+export type NavigationBlock = NavigationLink | NavigationBreak;
+
+export const SITE_NAVIGATION_LINKS: NavigationBlock[] = [
   {
+    type: 'link',
     label: (
       <>
         <i className="fa fa-home" style={{ marginRight: 8 }} />
@@ -11,6 +16,7 @@ export const SITE_NAVIGATION_LINKS: Array<{ label: ReactNode, href: string }> = 
     href: '/dashboard',
   },
   {
+    type: 'link',
     label: (
       <>
         <i className="fa fa-bell" style={{ marginRight: 8 }} />
@@ -20,6 +26,7 @@ export const SITE_NAVIGATION_LINKS: Array<{ label: ReactNode, href: string }> = 
     href: '/notifications',
   },
   {
+    type: 'link',
     label: (
       <>
         <i className="fa fa-comments-alt" style={{ marginRight: 8 }} />
@@ -29,6 +36,7 @@ export const SITE_NAVIGATION_LINKS: Array<{ label: ReactNode, href: string }> = 
     href: '/messages',
   },
   {
+    type: 'link',
     label: (
       <>
         <i className="fa fa-images" style={{ marginRight: 8 }} />
@@ -38,6 +46,7 @@ export const SITE_NAVIGATION_LINKS: Array<{ label: ReactNode, href: string }> = 
     href: '/albums',
   },
   {
+    type: 'link',
     label: (
       <>
         <i className="fa fa-heart" style={{ marginRight: 8 }} />
@@ -47,6 +56,7 @@ export const SITE_NAVIGATION_LINKS: Array<{ label: ReactNode, href: string }> = 
     href: '/transactions',
   },
   {
+    type: 'link',
     label: (
       <>
         <i className="fa fa-images" style={{ marginRight: 8 }} />
@@ -56,6 +66,10 @@ export const SITE_NAVIGATION_LINKS: Array<{ label: ReactNode, href: string }> = 
     href: '/collections',
   },
   {
+    type: 'break',
+  },
+  {
+    type: 'link',
     label: (
       <>
         <i className="fa fa-chart-bar" style={{ marginRight: 8 }} />
@@ -65,6 +79,7 @@ export const SITE_NAVIGATION_LINKS: Array<{ label: ReactNode, href: string }> = 
     href: '/insights',
   },
   {
+    type: 'link',
     label: (
       <>
         <i className="fa fa-clock" style={{ marginRight: 8 }} />
@@ -74,6 +89,7 @@ export const SITE_NAVIGATION_LINKS: Array<{ label: ReactNode, href: string }> = 
     href: '/scheduled',
   },
   {
+    type: 'link',
     label: (
       <>
         <i className="fa fa-edit" style={{ marginRight: 8 }} />
@@ -83,6 +99,10 @@ export const SITE_NAVIGATION_LINKS: Array<{ label: ReactNode, href: string }> = 
     href: '/drafts',
   },
   {
+    type: 'break',
+  },
+  {
+    type: 'link',
     label: (
       <>
         <i className="fa fa-user-alt" style={{ marginRight: 8 }} />
@@ -92,6 +112,7 @@ export const SITE_NAVIGATION_LINKS: Array<{ label: ReactNode, href: string }> = 
     href: '/profile',
   },
   {
+    type: 'link',
     label: (
       <>
         <i className="fa fa-cog" style={{ marginRight: 8 }} />

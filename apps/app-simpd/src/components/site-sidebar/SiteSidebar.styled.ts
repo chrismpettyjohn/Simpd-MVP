@@ -11,4 +11,26 @@ export const SiteSidebarContent = styled.div`
   flex: 1;
   flex-direction: column;
   padding: ${({ theme }) => theme.space.twoUnits};
+
+  ul {
+    list-style-type: none;
+
+    li {
+      font-size: ${({ theme }) => theme.fontSize.oneUnit};
+      text-transform: lowercase;
+      display: flex;
+      text-align: left;
+      margin-bottom: ${({ theme }) => theme.space.oneUnit};
+      &:hover {
+        color: ${({ theme }) => theme.color.brand};
+        cursor: pointer;
+      }
+    }
+    
+    hr {
+      margin-top: ${({ theme }) => theme.space.twoUnits};
+      margin-bottom: ${({ theme }) => theme.space.twoUnits};
+    }
+  }
+
 `

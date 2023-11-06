@@ -56,10 +56,10 @@ export const simpdWebTheme: SimpdWebTheme = {
   },
   color: {
     black: '#000000',
-    brand: '#711b1eff',
+    brand: '#CC0048',
     s20: '#1c1c1eff',
     s30: '#2c2c2eff',
-    s40: '#454547ff',
+    s40: 'linear-gradient(178deg, rgba(203, 188, 188, 0.4) 0.2%, rgba(189, 171, 171, 0.1) 99.37%)',
     s50: '#8D8D93',
     s60: '#F6DEDE',
     s90: '#ffffffff',

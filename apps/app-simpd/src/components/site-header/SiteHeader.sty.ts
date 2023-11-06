@@ -13,5 +13,8 @@ export const SiteHeaderContent = styled.div`
   justify-items: center;
   flex: 1;
   flex-direction: column;
-  padding: ${({ theme }) => theme.space.twoUnits};
+  padding-top: ${({ theme }) => theme.space.twoUnits};
+  padding-bottom: ${({ theme }) => theme.space.twoUnits};
+  padding-left: ${({ theme }) => theme.space.threeUnits};
+  padding-right: ${({ theme }) => theme.space.threeUnits};
 `

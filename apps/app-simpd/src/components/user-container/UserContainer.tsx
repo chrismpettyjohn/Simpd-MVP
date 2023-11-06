@@ -9,8 +9,8 @@ export function UserContainer({ children }: UserContainerProps) {
     <UserContainerElement>
       <SiteSidebar />
       <UserContainerPageContent>
+        <SiteHeader />
         <UserContainerPageInnerContent>
-          <SiteHeader />
           {children}
         </UserContainerPageInnerContent>
       </UserContainerPageContent>

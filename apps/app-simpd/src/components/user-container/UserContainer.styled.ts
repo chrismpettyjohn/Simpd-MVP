@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Container } from "../container/Container";
 
 export const UserContainerElement = styled.div`
   background: black;
@@ -12,8 +11,13 @@ export const UserContainerElement = styled.div`
 export const UserContainerPageContent = styled.div`
   display: flex;
   flex: 1;
+  flex-direction: column;
 `
 
-export const UserContainerPageInnerContent = styled(Container)`
+export const UserContainerPageInnerContent = styled.div`
+  display: flex;
   flex-direction: column;
+  padding-left: ${({ theme }) => theme.space.threeUnits};
+  padding-right: ${({ theme }) => theme.space.threeUnits};
+  width: ${({ theme }) => `calc(100% - ${theme.space.threeUnits} - ${theme.space.threeUnits})`};
 `

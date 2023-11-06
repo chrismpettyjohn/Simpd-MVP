@@ -2,14 +2,14 @@ import React from 'react';
 import { Card } from '../../components/card/Card';
 import { Button } from '../../components/button/Button';
 import { UserContainer } from '../../components/user-container/UserContainer';
-import { CardBody, CardBodyContent, CardContainer } from '../../components/card/Card.sty';
+import { CardBody, CardContainer } from '../../components/card/Card.sty';
 
 export function MessageStartThreadScreen() {
   return (
     <UserContainer>
       <CardContainer>
         <CardBody>
-          <CardBodyContent style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <h2>
               Start Conversation
             </h2>
@@ -19,7 +19,7 @@ export function MessageStartThreadScreen() {
               placeholder="Username"
               style={{ width: '50%', height: 'fit-content' }}
             />
-          </CardBodyContent>
+          </div>
         </CardBody>
       </CardContainer>
       <Card>
