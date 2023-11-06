@@ -4,10 +4,11 @@ import React, { SyntheticEvent, useState } from 'react';
 import { CreateNewPostCardProps } from './CreateNewPostCard.types';
 import { UploadMediaDropdown } from '../upload-media-dropdown/UploadMediaDropdown';
 import { ProfileSubscriptionGroupDropdown } from '../profile-subscription-group-dropdown/ProfileSubscriptionGroupDropdown';
-import { MediaType, PostFragment, useMediaUpload, usePostPrivacyCreate, usePostWithAlbumCreate, usePostWithImageCreate, usePostWithTextCreate, usePostWithVideoCreate } from '@simpd/lib-web';
+import { MediaType, PostFragment, useMediaFetchOne, useMediaUpload, usePostPrivacyCreate, usePostWithAlbumCreate, usePostWithImageCreate, usePostWithTextCreate, usePostWithVideoCreate } from '@simpd/lib-web';
 
 export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
   const mediaUpload = useMediaUpload();
+  const mediaLookup = useMediaFetchOne();
   const [content, setContent] = useState('');
   const [files, setFiles] = useState<File[]>([]);
   const postPrivacyCreate = usePostPrivacyCreate();
@@ -54,12 +55,16 @@ export function CreateNewPostCard({ onCreate }: CreateNewPostCardProps) {
       newPost = await postWithAlbumCreate.execute({ content, mediaIDs: mediaIDs });
     }
 
-    if (uploadedMedia.length === 1 && uploadedMedia[0].type === MediaType.Image) {
-      newPost = await postWithImageCreate.execute({ content, mediaID: uploadedMedia[0].id });
-    }
+    if (uploadedMedia.length === 1) {
+      const matchingMedia = await mediaLookup.fetch({ id: uploadedMedia[0] });
 
-    if (uploadedMedia.length === 1 && uploadedMedia[0].type === MediaType.Video) {
-      newPost = await postWithVideoCreate.execute({ content, mediaID: uploadedMedia[0].id });
+      if (matchingMedia.type == MediaType.Image) {
+        newPost = await postWithImageCreate.execute({ content, mediaID: uploadedMedia[0] });
+      }
+
+      if (matchingMedia.type == MediaType.Video) {
+        newPost = await postWithVideoCreate.execute({ content, mediaID: uploadedMedia[0] });
+      }
     }
 
     if (!newPost) {

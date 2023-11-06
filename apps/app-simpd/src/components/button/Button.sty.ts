@@ -1,22 +1,25 @@
 import { styled } from "styled-components";
 
 export const ButtonElement = styled.button`
-  border-radius: ${({ theme }) => theme.radius.oneUnit};
-  color: var(--dl-color-simpd-s90);
+  color: ${({ theme }) => theme.color.s90};
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSize.oneUnit};
   font-style: normal;
-  transition: 0.3s;
+  text-transform: lowercase;
   font-weight: 500;
   line-height: 1.66rem;
-  border-color: var(--dl-color-simpd-s50);
-  background-color: var(--dl-color-simpd-s40);
+  border-color: transparent;
+  border-radius: ${({ theme }) => theme.radius.twoUnits};
+  background-color: ${({ theme }) => theme.color.s40};
   height: fit-content;
   width: fit-content;
-  padding: ${({ theme }) => theme.space.oneUnit};
+  padding-top: ${({ theme }) => theme.space.oneUnit};
+  padding-bottom: ${({ theme }) => theme.space.oneUnit};
+  padding-left: ${({ theme }) => theme.space.threeUnits};
+  padding-right:${({ theme }) => theme.space.threeUnits};
 
   &:hover {
-    border-color: var(--dl-color-simpd-s90);
-    background-color: var(--dl-color-simpd-s40);
+    border-color: ${({ theme }) => theme.color.s90};
+    background-color: ${({ theme }) => theme.color.s40};
   }
 `

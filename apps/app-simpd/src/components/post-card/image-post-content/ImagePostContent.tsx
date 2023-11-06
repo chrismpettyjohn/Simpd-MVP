@@ -17,6 +17,7 @@ export function ImagePostContent({ post }: PostCardProps<PostWithImageFragment>)
 
   return (
     <>
+      <PostContent post={post} />
       {
         mediaFetchOne.loading && (
           <i className="fa fa-spinner fa-spin" />
@@ -27,7 +28,6 @@ export function ImagePostContent({ post }: PostCardProps<PostWithImageFragment>)
           <PostCardImage src={mediaFetchOne.data.url} />
         )
       }
-      <PostContent post={post} />
     </>
   )
 }

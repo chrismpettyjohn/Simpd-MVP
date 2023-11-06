@@ -21,6 +21,10 @@ export const SiteSidebarContent = styled.div`
       display: flex;
       text-align: left;
       margin-bottom: ${({ theme }) => theme.space.oneUnit};
+      i {
+        font-size: ${({ theme }) => theme.fontSize.twoUnits};
+        margin-right: ${({ theme }) => theme.space.threeUnits};
+      }
       &:hover {
         color: ${({ theme }) => theme.color.brand};
         cursor: pointer;

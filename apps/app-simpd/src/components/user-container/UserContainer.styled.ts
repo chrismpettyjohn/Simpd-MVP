@@ -4,8 +4,14 @@ export const UserContainerElement = styled.div`
   background: black;
   display: flex;
   flex: 1;
-  gap: ${({ theme }) => theme.space.oneUnit};
   height: 100%;
+`
+
+export const UserContainerInnerContent = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.space.oneUnit};
+  margin: 0 auto;
+  width: 1728px;
 `
 
 export const UserContainerPageContent = styled.div`

@@ -23,6 +23,7 @@ import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
 import { SettingsIdentityScreen } from './settings-identity/SettingsIdentity';
 import { MessageStartThreadScreen } from './message-start-thread/MessageStartThread';
 import { UserProfileSubscriptionsScreen } from './user-profile-subscriptions/UserProfileSubscriptions';
+import { PostCreateScreen } from './post-create/PostCreate';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -168,6 +169,14 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
         <UserProfileSubscriptionsScreen />
       </UserGuard>
     ),
+  },
+  {
+    path: '/posts/create',
+    view: (
+      <UserGuard redirect>
+        <PostCreateScreen />
+      </UserGuard>
+    )
   },
   {
     path: '/posts/:id',

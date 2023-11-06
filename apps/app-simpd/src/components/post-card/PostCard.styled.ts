@@ -9,7 +9,6 @@ export const PostCardElement = styled.div`
   max-height: 800px;
   transition: 0.3s;
   align-items: center;
-  border-radius: ${({ theme }) => theme.radius.oneUnit};
   margin-top: ${({ theme }) => theme.space.twoUnits};
   flex-direction: column;
   justify-content: center;
@@ -28,14 +27,12 @@ export const PostCardHeader = styled.div`
 
 export const PostCardContent = styled.div`
   width: 100%;
-  padding: ${({ theme }) => theme.space.twoUnits};
   overflow: hidden;
 `
 
 export const PostCardImage = styled.img`
-    width: auto;
-    max-width: 100%;
-    height: 400px;
+    width: 100%;
+    height: 520px;
 `
 
 
@@ -50,12 +47,13 @@ export const PostCardText = styled.div`
 
 export const PostStatsContainer = styled.div`
   background: ${({ theme }) => theme.color.s40};
-  border-radius: ${({ theme }) => theme.radius.twoUnits};
+  border-bottom-left-radius: ${({ theme }) => theme.radius.twoUnits};
+  border-bottom-right-radius: ${({ theme }) => theme.radius.twoUnits};
   cursor: auto;
   display: flex;
   justify-content: space-between;
-  margin-top: ${({ theme }) => theme.space.twoUnits};
   width: 100%;
+  margin-top: -10px;
 `
 
 export const PostStatElement = styled.div`
