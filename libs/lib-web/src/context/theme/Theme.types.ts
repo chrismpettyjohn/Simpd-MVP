@@ -5,7 +5,6 @@ export enum SimpdWebThemeName {
 export interface SimpdWebTheme {
   name: SimpdWebThemeName;
   breakpoints: {
-    phone: string;
     laptop: string;
   };
   color: {
