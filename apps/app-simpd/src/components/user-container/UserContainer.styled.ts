@@ -18,6 +18,7 @@ export const UserContainerPageContent = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
+  max-width: ${ ({ theme }) => theme.maxWidth}
 `
 
 export const UserContainerPageInnerContent = styled.div`

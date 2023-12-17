@@ -1,51 +1,5 @@
-export enum SimpdWebThemeName {
-  Brand = 'brand',
-}
+import { SimpdWebTheme, SimpdWebThemeName } from "context/theme/Theme.types";
 
-export interface SimpdWebTheme {
-  name: SimpdWebThemeName;
-  breakpoints: {
-    phone: string;
-    tablet: string;
-    desktop: string;
-  };
-  color: {
-    black: string;
-    brand: string;
-    s20: string;
-    s30: string;
-    s40: string;
-    s50: string;
-    s60: string;
-    s90: string;
-  };
-  fontFamily: {
-    primary: string;
-  }
-  fontSize: {
-    halfUnit: string;
-    oneUnit: string;
-    twoUnits: string;
-  }
-  space: {
-    quarterUnit: string;
-    halfUnit: string;
-    oneUnit: string;
-    twoUnits: string;
-    threeUnits: string;
-  };
-  radius: {
-    oneUnit: string;
-    twoUnits: string;
-    round: string;
-  };
-  icon: {
-    oneUnit: string;
-    twoUnits: string;
-    threeUnits: string;
-  }
-  maxWidth: string;
-}
 
 export const simpdWebTheme: SimpdWebTheme = {
   name: SimpdWebThemeName.Brand,
@@ -89,5 +43,5 @@ export const simpdWebTheme: SimpdWebTheme = {
     twoUnits: '1.8rem',
     threeUnits: '2.4rem',
   },
-  maxWidth: '1500px'
+  maxWidth: '1200px'
 }

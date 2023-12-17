@@ -5,6 +5,7 @@ export const SiteHeaderContainer = styled.div`
   flex-direction: column;
   height: auto;
   width: 100%;
+  max-width: ${ ({ theme }) => theme.maxWidth};
   background: black;
 `
 

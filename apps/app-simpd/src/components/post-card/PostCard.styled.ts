@@ -33,7 +33,8 @@ export const PostCardContent = styled.div`
 
 export const PostCardImage = styled.img`
     width: 100%;
-    height: 520px;
+    max-height: ${ ({ theme }) => `${Number(theme.maxWidth / 1.77)}px`};
+    max-width: ${ ({ theme }) => theme.maxWidth};
 `
 
 
