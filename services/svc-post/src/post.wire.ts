@@ -1,4 +1,4 @@
-import { PostEntity } from './post.entity';
+import {PostEntity} from './post.entity';
 import {
   BasePost,
   PostType,

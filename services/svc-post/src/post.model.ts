@@ -1,4 +1,4 @@
-import { PostType, PostWire, ProfileModel, TagModel } from '@simpd/lib-client';
+import {PostType, PostWire, ProfileModel, TagModel} from '@simpd/lib-client';
 import {
   Field,
   InterfaceType,
@@ -8,73 +8,73 @@ import {
 
 @InterfaceType()
 export class PostBaseModel {
-  @Field(() => Number, { nullable: true })
+  @Field(() => Number, {nullable: true})
   id?: number;
 
-  @Field(() => Number, { nullable: true })
+  @Field(() => Number, {nullable: true})
   profileID?: number;
 
-  @Field(() => ProfileModel, { nullable: true })
+  @Field(() => ProfileModel, {nullable: true})
   profile?: ProfileModel;
 
-  @Field(() => PostType, { nullable: true })
+  @Field(() => PostType, {nullable: true})
   type?: PostType;
 
-  @Field(() => Number, { nullable: true })
+  @Field(() => Number, {nullable: true})
   totalShares?: number;
 
-  @Field(() => String, { nullable: true })
+  @Field(() => String, {nullable: true})
   content?: string;
 
-  @Field(() => [Number], { nullable: true })
+  @Field(() => [Number], {nullable: true})
   tagIDs?: number[];
 
-  @Field(() => String, { nullable: true })
+  @Field(() => String, {nullable: true})
   createdAt?: string;
 
-  @Field(() => String, { nullable: true })
+  @Field(() => String, {nullable: true})
   updatedAt?: string;
 }
 
-@ObjectType({ implements: () => PostBaseModel })
+@ObjectType({implements: () => PostBaseModel})
 export class PostWithTextModel extends PostBaseModel {
-  @Field(() => PostType, { nullable: true })
+  @Field(() => PostType, {nullable: true})
   type?: PostType.Text;
 }
 
-@ObjectType({ implements: () => PostBaseModel })
+@ObjectType({implements: () => PostBaseModel})
 export class PostWithImageModel extends PostBaseModel {
-  @Field(() => PostType, { nullable: true })
+  @Field(() => PostType, {nullable: true})
   type?: PostType.Image;
 
-  @Field(() => Number, { nullable: true })
+  @Field(() => Number, {nullable: true})
   mediaID?: number;
 }
 
-@ObjectType({ implements: () => PostBaseModel })
+@ObjectType({implements: () => PostBaseModel})
 export class PostWithVideoModel extends PostBaseModel {
-  @Field(() => PostType, { nullable: true })
+  @Field(() => PostType, {nullable: true})
   type?: PostType.Video;
 
-  @Field(() => Number, { nullable: true })
+  @Field(() => Number, {nullable: true})
   mediaID?: number;
 }
 
-@ObjectType({ implements: () => PostBaseModel })
+@ObjectType({implements: () => PostBaseModel})
 export class PostWithAlbumModel extends PostBaseModel {
-  @Field(() => PostType, { nullable: true })
+  @Field(() => PostType, {nullable: true})
   type?: PostType.Album;
 
-  @Field(() => [Number!], { nullable: true })
+  @Field(() => [Number!], {nullable: true})
   mediaIDs?: number[];
 }
 
-@ObjectType({ implements: () => PostBaseModel })
+@ObjectType({implements: () => PostBaseModel})
 export class PostWithSharedContentModel extends PostBaseModel {
-  @Field(() => PostType, { nullable: true })
+  @Field(() => PostType, {nullable: true})
   type?: PostType.SharedContent;
 
-  @Field(() => Number, { nullable: true })
+  @Field(() => Number, {nullable: true})
   postID?: number;
 }
 
