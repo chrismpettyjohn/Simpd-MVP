@@ -21,6 +21,7 @@ export interface SimpdWebTheme {
     primary: string;
   }
   fontSize: {
+    quarterUnit: string;
     halfUnit: string;
     oneUnit: string;
     twoUnits: string;

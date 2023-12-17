@@ -20,6 +20,7 @@ export const simpdWebTheme: SimpdWebTheme = {
     primary: `'Montserrat Alternates', sans-serif`
   },
   fontSize: {
+    quarterUnit: '.4rem',
     halfUnit: '.8rem',
     oneUnit: '1.25rem',
     twoUnits: '1.83rem',
