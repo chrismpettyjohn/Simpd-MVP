@@ -13,6 +13,8 @@ export const SiteSidebarContent = styled.div`
 
   ul {
     list-style-type: none;
+    padding: 0;
+    margin: 0;
 
     li {
       font-size: ${({ theme }) => theme.fontSize.oneUnit};
