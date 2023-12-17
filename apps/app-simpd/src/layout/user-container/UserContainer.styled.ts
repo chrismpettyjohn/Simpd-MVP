@@ -5,6 +5,7 @@ export const UserContainerElement = styled.div`
   display: flex;
   flex: 1;
   height: 100%;
+  overflow-y: auto;
 `
 
 export const UserContainerInnerContent = styled.div`
