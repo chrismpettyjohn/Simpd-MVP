@@ -2,7 +2,7 @@ import React from 'react';
 import { SiteLogo } from '../site-logo/SiteLogo';
 import { SiteNavigation } from '../site-navigation/SiteNavigation';
 import { SiteSidebarContent, SiteSidebarElement } from './SiteSidebar.styled';
-import { ButtonBrand } from '../button/Button.remix';
+import { ButtonBrand } from '../../components/button/Button.remix';
 import { Link } from 'wouter';
 
 export function SiteSidebar() {

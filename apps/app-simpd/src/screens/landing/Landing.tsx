@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'wouter';
-import { SiteLogo } from '../../components/site-logo/SiteLogo';
+import { SiteLogo } from '../../layout/site-logo/SiteLogo';
 import { PageTitle } from '../../components/page-title/PageTitle';
-import { SiteCaption } from '../../components/site-caption/SiteCaption';
-import { SiteFooter } from '../../components/site-footer/SiteFooter';
+import { SiteCaption } from '../../layout/site-caption/SiteCaption';
+import { SiteFooter } from '../../layout/site-footer/SiteFooter';
 import { LandingBubbleElement, LandingBubbleGridElement, LandingContainerElement } from './Landing.sty';
 
 const BUBBLE_IMAGES: string[] = [

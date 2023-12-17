@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card } from '../card/Card';
-import { SiteLogo } from '../site-logo/SiteLogo';
-import { SiteFooter } from '../site-footer/SiteFooter';
-import { SiteCaption } from '../site-caption/SiteCaption';
+import { SiteLogo } from '../../layout/site-logo/SiteLogo';
+import { SiteFooter } from '../../layout/site-footer/SiteFooter';
+import { SiteCaption } from '../../layout/site-caption/SiteCaption';
 import { GuestContainerProps } from './GuestContainer.types';
 import { GuestContainerElement } from './GuestContainer.sty';
 

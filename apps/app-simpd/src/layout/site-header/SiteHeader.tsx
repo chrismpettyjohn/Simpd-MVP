@@ -1,4 +1,4 @@
-import { Input } from '../input/Input';
+import { Input } from '../../components/input/Input';
 import React, { useContext } from 'react'
 import { sessionContext } from '@simpd/lib-web';
 import { SiteHeaderContainer, SiteHeaderContent } from './SiteHeader.sty';
