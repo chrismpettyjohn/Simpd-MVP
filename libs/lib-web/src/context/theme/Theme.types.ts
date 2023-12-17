@@ -6,8 +6,7 @@ export interface SimpdWebTheme {
   name: SimpdWebThemeName;
   breakpoints: {
     phone: string;
-    tablet: string;
-    desktop: string;
+    laptop: string;
   };
   color: {
     black: string;

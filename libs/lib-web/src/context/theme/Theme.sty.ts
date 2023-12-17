@@ -5,8 +5,7 @@ export const simpdWebTheme: SimpdWebTheme = {
   name: SimpdWebThemeName.Brand,
   breakpoints: {
     phone: '400px',
-    tablet: '800px',
-    desktop: '1400px',
+    laptop: '800px',
   },
   color: {
     black: '#000000',
