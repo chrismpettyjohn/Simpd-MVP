@@ -1,3 +1,4 @@
+import DayJS from 'dayjs';
 import { Link } from 'wouter';
 import React, { useMemo } from 'react';
 import { PostCardProps } from './PostCard.types';
@@ -34,15 +35,19 @@ const getPostCardElement = (post: PostFragment) => {
 }
 
 export function PostCard({ post, hideAuthor = false, hideChildren = false, hideTools = false }: PostCardProps) {
+  const postedAt = useMemo(() => DayJS(post.createdAt).fromNow(), [post.createdAt]);
   const postContent = useMemo(() => getPostCardElement(post), [post]);
   return (
     <Link to={`/posts/${post.id}`}>
       <PostCardElement>
         {!hideAuthor && (
           <PostCardHeader>
-            <Container>
+            <div style={{ display: 'flex' }}>
               <AuthorBlockLarge profile={post.profile} />
-            </Container>
+            </div>
+            <div style={{ display: 'flex' }}>
+              {postedAt}
+            </div>
           </PostCardHeader>
         )}
         <PostCardContent>

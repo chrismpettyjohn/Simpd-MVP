@@ -22,6 +22,7 @@ export const PostCardElement = styled.div`
 export const PostCardHeader = styled.div`
     color: ${({ theme }) => theme.color.s90};
     display: flex;
+    justify-content: space-between;
     width: 100%;
 `
 

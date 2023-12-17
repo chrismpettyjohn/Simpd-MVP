@@ -1,4 +1,4 @@
-import {PostEntity} from './post.entity';
+import { PostEntity } from './post.entity';
 import {
   BasePost,
   PostType,
@@ -45,6 +45,8 @@ export function postEntityToBasePost(postEntity: PostEntity): BasePost {
       id: postEntity.profileID,
     },
     tagIDs: postEntity.tagIDs,
+    createdAt: postEntity.createdAt!.toISOString(),
+    updatedAt: postEntity.updatedAt!.toISOString(),
   };
 }
 

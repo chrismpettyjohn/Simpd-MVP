@@ -1,4 +1,4 @@
-import {ProfileModel} from '../svc-profile/profile.model';
+import { ProfileModel } from '../svc-profile/profile.model';
 
 export enum PostType {
   Text = 'text',
@@ -14,6 +14,8 @@ export interface BasePost {
   profile: ProfileModel;
   type: PostType;
   tagIDs: number[];
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface BasePostWithText {

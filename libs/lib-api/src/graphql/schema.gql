@@ -2,34 +2,46 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type TagModel {
+type UserModel {
   id: Float
-  key: String
-  name: String
-  description: String
+  email: String
+  isVerified: Boolean
 }
 
 type Query {
-  tag(filter: TagFilterByOneInput!): TagModel!
-  tags(filter: TagFilterByManyInput): [TagModel!]!
+  user(filter: UserFilterByOneInput!): UserModel!
+  users(filter: UserFilterByManyInput): [UserModel!]!
 }
 
-input TagFilterByOneInput {
+input UserFilterByOneInput {
   id: Float
-  name: String
+  email: String
 }
 
-input TagFilterByManyInput {
+input UserFilterByManyInput {
   ids: [Float!]
-  names: [String!]
+  emails: [String!]
 }
 
 type Mutation {
-  tagCreate(input: TagCreateInput!): TagModel!
-  tagDelete(filter: TagFilterByOneInput!): Boolean!
+  userCreate(input: UserCreateInput!): UserModel!
+  userUpdate(filter: UserFilterByOneInput!, input: UserUpdateInput!): UserModel!
+  userChangePassword(filter: UserFilterByOneInput!, input: UserChangePasswordInput!): Boolean!
+  userDelete(filter: UserFilterByOneInput!): Boolean!
 }
 
-input TagCreateInput {
-  name: String!
-  description: String!
+input UserCreateInput {
+  email: String!
+  password: String!
+}
+
+input UserUpdateInput {
+  email: String
+  password: String
+}
+
+input UserChangePasswordInput {
+  currentPassword: String!
+  newPassword: String!
+  newPasswordAgain: String!
 }

@@ -16,6 +16,8 @@ interface PostBaseFragment {
   type: PostType;
   content: string;
   tagIDs?: number[];
+  createdAt: number;
+  updatedAt: number;
 }
 
 export const POST_WITH_TEXT_FRAGMENT = gql`
@@ -28,6 +30,8 @@ export const POST_WITH_TEXT_FRAGMENT = gql`
       ...ProfileFragment
     }
     content
+    createdAt
+    updatedAt
     tagIDs
   }
 `
@@ -47,6 +51,8 @@ export const POST_WITH_IMAGE_FRAGMENT = gql`
       ...ProfileFragment
     }
     content
+    createdAt
+    updatedAt
     tagIDs
     mediaID
   }
@@ -68,6 +74,8 @@ export const POST_WITH_VIDEO_FRAGMENT = gql`
       ...ProfileFragment
     }
     content
+    createdAt
+    updatedAt
     tagIDs
     mediaID
   }
@@ -89,6 +97,8 @@ export const POST_WITH_ALBUM_FRAGMENT = gql`
       ...ProfileFragment
     }
     content
+    createdAt
+    updatedAt
     mediaIDs
   }
 `
@@ -109,6 +119,8 @@ export const POST_WITH_SHARED_CONTENT_FRAGMENT = gql`
       ...ProfileFragment
     }
     content
+    createdAt
+    updatedAt
     tagIDs
     postID
   }
