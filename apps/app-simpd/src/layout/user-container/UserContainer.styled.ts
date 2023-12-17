@@ -13,6 +13,9 @@ export const UserContainerInnerContent = styled.div`
   gap: ${({ theme }) => theme.space.oneUnit};
   margin: 0 auto;
   width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: ${({ theme }) => theme.maxWidth};
   ${({ theme }) => `
     @media (min-width: ${theme.breakpoints.laptop}) {
       flex-direction: row;
