@@ -10,6 +10,7 @@ export const SiteSidebarContent = styled.div`
   flex: 1;
   flex-direction: column;
   padding: ${({ theme }) => theme.space.twoUnits};
+  gap: ${({ theme }) => theme.space.twoUnits};
 
   ul {
     list-style-type: none;
@@ -20,7 +21,7 @@ export const SiteSidebarContent = styled.div`
       font-size: ${({ theme }) => theme.fontSize.oneUnit};
       text-transform: lowercase;
       display: flex;
-      margin-bottom: ${({ theme }) => theme.space.oneUnit};
+      margin-bottom: ${({ theme }) => theme.space.twoUnits};
       i {
         font-size: ${({ theme }) => theme.fontSize.twoUnits};
         margin-right: ${({ theme }) => theme.space.threeUnits};
@@ -37,4 +38,13 @@ export const SiteSidebarContent = styled.div`
     }
   }
 
+`
+
+export const SiteSidebarHeader = styled.div` 
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  margin-bottom: ${({ theme }) => theme.space.twoUnits};
+  width: 100%;
 `

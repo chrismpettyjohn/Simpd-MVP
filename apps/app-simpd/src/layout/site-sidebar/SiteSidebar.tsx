@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { SiteLogo } from '../site-logo/SiteLogo';
 import { SiteNavigation } from '../site-navigation/SiteNavigation';
-import { SiteSidebarContent, SiteSidebarElement } from './SiteSidebar.styled';
+import { SiteSidebarContent, SiteSidebarElement, SiteSidebarHeader } from './SiteSidebar.styled';
 import { ButtonBrand } from '../../components/button/Button.remix';
 import { Link } from 'wouter';
 import { useWindowDimensions } from 'hooks/use-window-dimensions.hook';
@@ -29,7 +29,7 @@ export function SiteSidebar() {
   return (
     <SiteSidebarElement>
       <SiteSidebarContent>
-        <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', alignItems: 'center' }}>
+        <SiteSidebarHeader>
 
           <SiteLogo altLogo style={{ height: '4em' }} />
           {
@@ -37,7 +37,7 @@ export function SiteSidebar() {
               <i className={isOpen ? 'fa fa-caret-down fa-3x' : 'fa fa-caret-right fa-3x'} onClick={toggle} />
             )
           }
-        </div>
+        </SiteSidebarHeader>
         {
           isOpen && (
             <>
