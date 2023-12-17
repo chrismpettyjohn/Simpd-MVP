@@ -28,9 +28,14 @@ export function PostShares({ post }: PostSharesProps) {
 
   return (
     <PostStatElement onClick={onSharePost}>
-      <h3>{fetchPostShares.data ?? 0}</h3>
-      <p>
-        <i className={createPostWithSharedContent.loading ? 'fa fa-spinner fa-spin' : 'fa fa-share'} />
+      <i className="fa fa-share fa-2x" />
+      <h4>share</h4>
+      <p >
+        <small>
+          {
+            fetchPostShares.loading ? <i className="fa fa-spinner fa-spin" /> : <>{fetchPostShares.data}</>
+          }
+        </small>
       </p>
     </PostStatElement>
   )

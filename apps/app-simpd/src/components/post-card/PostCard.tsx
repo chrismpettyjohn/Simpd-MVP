@@ -13,6 +13,8 @@ import { AuthorBlockLarge } from '../author-block-large/AuthorBlockLarge';
 import { SharedPostContent } from './shared-post-content/SharedPostContent';
 import { PostFragment, PostType, PostWithTextFragment } from '@simpd/lib-web';
 import { PostCardContent, PostCardElement, PostCardHeader, PostStatsContainer, } from './PostCard.styled';
+import { PostComments } from 'components/post-card/post-comments/PostComments';
+import { PostMessage } from 'components/post-card/post-message/PostMessage';
 
 const getPostCardElement = (post: PostFragment) => {
   if (post.type === PostType.Text) {
@@ -58,7 +60,9 @@ export function PostCard({ post, hideAuthor = false, hideChildren = false, hideT
                 <Container style={{ justifyContent: 'space-between', paddingTop: 0, paddingBottom: 0 }}>
                   <PostReactions post={post} />
                   <PostFavorites post={post} />
+                  <PostComments post={post} />
                   <PostShares post={post} />
+                  <PostMessage post={post} />
                 </Container>
               </PostStatsContainer>
             )

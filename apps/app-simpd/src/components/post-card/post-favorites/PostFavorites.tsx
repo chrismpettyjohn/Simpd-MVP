@@ -56,22 +56,24 @@ export function PostFavorites({ post }: PostFavoritesProps) {
   return (
     <>
       <PostStatElement>
-        <h3 ref={dropdownRef}>{fetchPostFavorites.data ?? 0}</h3>
-        <p>
-          {
-            isLoading && <i className="fa fa-spinner fa-spin" />
-          }
-          {!isLoading && (
-            <>
-              <Space direction="vertical">
-                <Space wrap>
-                  <Dropdown menu={{ items: menuItems }} placement="bottomLeft">
-                    <i className="fa fa-heart" />
-                  </Dropdown>
-                </Space>
+        {!isLoading && (
+          <>
+            <Space direction="vertical">
+              <Space wrap>
+                <Dropdown menu={{ items: menuItems }} placement="bottomLeft">
+                  <i className="fa fa-folders fa-2x" />
+                </Dropdown>
               </Space>
-            </>
-          )}
+            </Space>
+          </>
+        )}
+        <h4 ref={dropdownRef}>favorite</h4>
+        <p>
+          <small>
+            {
+              isLoading ? <i className="fa fa-spinner fa-spin" /> : <>{fetchBookmarkCollections.data?.length ?? 0}</>
+            }
+          </small>
         </p>
       </PostStatElement>
 

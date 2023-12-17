@@ -40,13 +40,14 @@ export function PostReactions({ post }: PostReactionsProps) {
 
   return (
     <PostStatElement onClick={onReactToPost}>
-      <h3>
-        {
-          isLoading ? <i className="fa fa-spinner fa-spin" /> : <>{postReactionFetchMany.data?.length ?? 0}</>
-        }
-      </h3>
+      <i className="fa fa-smile-wink fa-2x" />
+      <h4>flirt</h4>
       <p>
-        <i className="fa fa-thumbs-up" />
+        <small>
+          {
+            isLoading ? <i className="fa fa-spinner fa-spin" /> : <>{postReactionFetchMany.data?.length ?? 0}</>
+          }
+        </small>
       </p>
     </PostStatElement>
   )

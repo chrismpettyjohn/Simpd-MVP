@@ -33,8 +33,8 @@ export const PostCardContent = styled.div`
 
 export const PostCardImage = styled.img`
     width: 100%;
-    max-height: ${ ({ theme }) => `${Number(theme.maxWidth / 1.77)}px`};
-    max-width: ${ ({ theme }) => theme.maxWidth};
+    max-height: ${({ theme }) => `${Number(theme.maxWidth / 1.77)}px`};
+    max-width: ${({ theme }) => theme.maxWidth};
 `
 
 
@@ -59,22 +59,29 @@ export const PostStatsContainer = styled.div`
 `
 
 export const PostStatElement = styled.div`
-  padding: ${({ theme }) => theme.space.halfUnit};
+  padding: ${({ theme }) => theme.space.oneUnit};
   color: ${({ theme }) => theme.color.s90};
   cursor: pointer;
   text-align: center;
 
-  h3 {
-    font-size: ${({ theme }) => theme.fontSize.oneUnit};
+  h4 {
+    color: ${({ theme }) => theme.color.s50};
+    font-size: ${({ theme }) => theme.fontSize.halfUnit};
+    margin: ${({ theme }) => theme.space.halfUnit};
   }
   p {
     font-size: ${({ theme }) => theme.icon.halfUnit};
-    margin-top:${({ theme }) => `-${theme.space.oneUnit}`};
+    margin-top:${({ theme }) => `-${theme.space.halfUnit}`};
   }
   
   &:hover {
     p, h3 {
       color: ${({ theme }) => theme.color.brand};
     }
+  }
+
+  small {
+    color: ${({ theme }) => theme.color.s50};
+    font-style: italic;
   }
 `
