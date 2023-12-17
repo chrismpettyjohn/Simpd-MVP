@@ -3,7 +3,7 @@ import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect } from 'react'
 import { PageTitle } from '../../components/page-title/PageTitle';
 import { BookmarkCard } from 'components/bookmark-card/BookmarkCard';
-import { UserContainer } from '../../components/user-container/UserContainer';
+import { UserContainer } from '../../layout/user-container/UserContainer';
 import { BookmarksNavigation } from '../../components/bookmarks-navigation/BookmarksNavigation';
 import { BookmarkCollectionFragment, sessionContext, useBookmarkCollectionFetchMany, useBookmarkFetchMany } from '@simpd/lib-web';
 

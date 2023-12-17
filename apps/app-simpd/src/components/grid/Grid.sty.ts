@@ -7,7 +7,7 @@ export const GridElement = styled.div`
   gap: ${({ theme }) => theme.space.oneUnit};
   grid-template-columns: 1fr;
   ${({ theme }) => `
-    @media (min-width: ${theme.breakpoints.desktop}) {
+    @media (min-width: ${theme.breakpoints.laptop}) {
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   `}

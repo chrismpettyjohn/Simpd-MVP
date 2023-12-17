@@ -6,7 +6,7 @@ export const SiteSidebarElement = styled.div`
   flex: 1fr;
 `
 export const SiteSidebarContent = styled.div`
-  display: flex;
+  display: hidden;
   flex: 1;
   flex-direction: column;
   padding: ${({ theme }) => theme.space.twoUnits};

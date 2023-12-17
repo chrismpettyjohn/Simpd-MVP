@@ -5,7 +5,7 @@ import { PageTitle } from '../../components/page-title/PageTitle';
 import { FullPageLoadingScreen, usePostFetchOne } from '@simpd/lib-web';
 import { PostCommentsCard } from 'components/post-comments-card/PostCommentsCard';
 import { UserProfileCard } from '../../components/user-profile-card/UserProfileCard';
-import { UserContainer } from '../../components/user-container/UserContainer';
+import { UserContainer } from '../../layout/user-container/UserContainer';
 
 export function ViewPostScreen() {
   const fetchPost = usePostFetchOne();

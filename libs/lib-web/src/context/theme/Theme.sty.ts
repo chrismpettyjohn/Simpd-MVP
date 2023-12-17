@@ -4,7 +4,7 @@ import { SimpdWebTheme, SimpdWebThemeName } from "context/theme/Theme.types";
 export const simpdWebTheme: SimpdWebTheme = {
   name: SimpdWebThemeName.Brand,
   breakpoints: {
-    laptop: '800px',
+    laptop: '1200px',
   },
   color: {
     black: '#000000',

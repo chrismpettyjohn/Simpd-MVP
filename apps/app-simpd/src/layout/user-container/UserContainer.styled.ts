@@ -9,16 +9,22 @@ export const UserContainerElement = styled.div`
 
 export const UserContainerInnerContent = styled.div`
   display: flex;
+  flex-direction: column;
   gap: ${({ theme }) => theme.space.oneUnit};
   margin: 0 auto;
-  width: 1728px;
+  width: 100%;
+  ${({ theme }) => `
+    @media (min-width: ${theme.breakpoints.laptop}) {
+      flex-direction: row;
+    }
+  `}
 `
 
 export const UserContainerPageContent = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  max-width: ${ ({ theme }) => theme.maxWidth}
+  max-width: ${({ theme }) => theme.maxWidth}
 `
 
 export const UserContainerPageInnerContent = styled.div`

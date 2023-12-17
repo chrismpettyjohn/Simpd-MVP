@@ -3,7 +3,7 @@ import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect } from 'react';
 import { MessageCard } from 'components/message-card/MessageCard';
 import { SendMessageCard } from 'components/send-message-card/SendMessageCard';
-import { UserContainer } from '../../components/user-container/UserContainer';
+import { UserContainer } from '../../layout/user-container/UserContainer';
 import { FullPageLoadingScreen, sessionContext, useMessageFetchMany, useProfileFetchOne } from '@simpd/lib-web';
 
 export function MessageThreadScreen() {

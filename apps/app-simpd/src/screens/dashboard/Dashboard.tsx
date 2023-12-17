@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { PostCard } from '../../components/post-card/PostCard';
 import { sessionContext, usePostFetchMany } from '@simpd/lib-web';
 import { PageTitle } from '../../components/page-title/PageTitle';
-import { UserContainer } from '../../components/user-container/UserContainer';
+import { UserContainer } from '../../layout/user-container/UserContainer';
 
 export function DashboardScreen() {
   const postFetchMany = usePostFetchMany();

@@ -1,7 +1,7 @@
 import { useRoute } from 'wouter';
 import React, { useEffect, useState } from 'react'
 import { PageTitle } from '../../components/page-title/PageTitle';
-import { UserContainer } from '../../components/user-container/UserContainer';
+import { UserContainer } from '../../layout/user-container/UserContainer';
 import { CardAccordion } from '../../components/card-accordion/CardAccordion';
 import { UserProfileCard } from '../../components/user-profile-card/UserProfileCard';
 import { ProfileFragment, useProfileFetchOne, useProfileSubscriptionGroupFetchMany } from '@simpd/lib-web';

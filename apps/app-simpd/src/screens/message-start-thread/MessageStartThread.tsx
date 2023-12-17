@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from '../../components/card/Card';
 import { Button } from '../../components/button/Button';
-import { UserContainer } from '../../components/user-container/UserContainer';
+import { UserContainer } from '../../layout/user-container/UserContainer';
 import { CardBody, CardContainer } from '../../components/card/Card.sty';
 
 export function MessageStartThreadScreen() {

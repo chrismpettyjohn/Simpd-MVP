@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { Card } from 'components/card/Card';
 import { Button } from '../../components/button/Button';
 import { PageTitle } from '../../components/page-title/PageTitle';
-import { UserContainer } from '../../components/user-container/UserContainer';
+import { UserContainer } from '../../layout/user-container/UserContainer';
 import { FullPageLoadingScreen, useMessageContactFetchMany } from '@simpd/lib-web';
 import { MessagePreviewCard } from 'components/message-preview-card/MessagePreviewCard';
 

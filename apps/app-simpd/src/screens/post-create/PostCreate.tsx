@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserContainer } from '../../components/user-container/UserContainer';
+import { UserContainer } from '../../layout/user-container/UserContainer';
 import { CreateNewPostCard } from '../../components/create-new-post-card/CreateNewPostCard';
 
 export function PostCreateScreen() {

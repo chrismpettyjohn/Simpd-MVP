@@ -13,7 +13,7 @@ export * from './context/session/SessionContext.types';
 export * from './context/session/SessionContextProvider';
 export * from './context/theme/Theme.sty';
 export * from './context/theme/Theme.types';
-export * from './context/theme/ThemeContext';
+export * from './context/theme/ThemeContextProvider.types';
 export * from './context/theme/ThemeContextProvider';
 export * from './context/SimpdContextProviders';
 export * from './context/SimpdContextProviders.types';

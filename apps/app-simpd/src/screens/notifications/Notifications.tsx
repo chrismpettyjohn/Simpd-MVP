@@ -1,6 +1,6 @@
 import React from 'react'
 import { PageTitle } from '../../components/page-title/PageTitle';
-import { UserContainer } from '../../components/user-container/UserContainer';
+import { UserContainer } from '../../layout/user-container/UserContainer';
 import { NotificationContainer, NotificationElement } from './Notifications.sty';
 import { NotificationCard } from '../../components/notification-card/NotificationCard';
 

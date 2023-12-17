@@ -1,7 +1,7 @@
 import React from 'react';
 import { simpdWebTheme } from './Theme.sty';
 import { ThemeProvider } from 'styled-components';
-import { ThemeContextProviderProps } from './ThemeContext';
+import { ThemeContextProviderProps } from './ThemeContextProvider.types';
 
 export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
   return (
