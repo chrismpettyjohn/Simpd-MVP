@@ -19,7 +19,7 @@ export function NotificationCard() {
         <NotificationCardNewBadge>
           NEW
         </NotificationCardNewBadge>
-        9:03pm
+        <small>9:03pm</small>
       </NotificationCardActionContainer>
     </NotificationCardElement >
   )

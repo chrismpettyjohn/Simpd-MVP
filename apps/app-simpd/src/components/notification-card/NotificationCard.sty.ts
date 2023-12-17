@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 
 export const NotificationCardElement = styled.div`
   align-items: center;
+  cursor: pointer;
   display: flex;
   flex: 1;
   gap: ${({ theme }) => theme.space.oneUnit};
@@ -31,7 +32,9 @@ export const NotificationCardActionContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
+  small {
+    color: ${({ theme }) => theme.color.s50};
+  }
 `
 
 export const NotificationCardNewBadge = styled.div`
@@ -43,4 +46,5 @@ export const NotificationCardNewBadge = styled.div`
   height: 60px;
   width: 60px;
   font-size: ${({ theme }) => theme.fontSize.halfUnit};
+  margin-bottom: ${({ theme }) => theme.space.halfUnit};
 `
