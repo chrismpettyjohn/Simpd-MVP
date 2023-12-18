@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SiteLogo } from '../site-logo/SiteLogo';
 import { SiteNavigation } from '../site-navigation/SiteNavigation';
 import { SiteSidebarContent, SiteSidebarElement, SiteSidebarHeader } from './SiteSidebar.styled';
 import { ButtonBrand } from '../../components/button/Button.remix';
 import { Link } from 'wouter';
 import { useWindowDimensions } from 'hooks/use-window-dimensions.hook';
-import { ThemeContext, useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 import { SimpdWebTheme } from '@simpd/lib-web';
 
 export function SiteSidebar() {

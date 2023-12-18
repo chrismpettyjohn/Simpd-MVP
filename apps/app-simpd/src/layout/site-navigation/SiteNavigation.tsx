@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { useSiteNavigation } from './use-site-navigation.hook';
 
 export function SiteNavigation() {
+  const [path] = useLocation();
   const siteNavBlocks = useSiteNavigation();
   return (
     <ul>
@@ -13,8 +14,7 @@ export function SiteNavigation() {
         }
         return (
           <Link key={key} to={_.href}>
-            <li >
-
+            <li className={_.href === path ? 'active' : ''}>
               {_.label}
             </li>
           </Link>

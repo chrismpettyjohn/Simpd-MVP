@@ -38,6 +38,11 @@ export const SiteSidebarContent = styled.div`
     }
   }
 
+
+      .active {
+        color: ${({ theme }) => theme.color.brand} !important;
+      }
+
 `
 
 export const SiteSidebarHeader = styled.div` 
