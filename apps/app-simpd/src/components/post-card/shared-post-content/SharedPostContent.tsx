@@ -14,7 +14,7 @@ export function SharedPostContent({ post }: PostCardProps<PostWithSharedContentF
 
   useEffect(() => {
     onLoadPost();
-  }, [post]);
+  }, [post.id]);
 
   return (
     <>
@@ -24,7 +24,7 @@ export function SharedPostContent({ post }: PostCardProps<PostWithSharedContentF
         )
       }
       <PostContent post={post} />
-
+      Shared a post
       {
         postFetchOne.data && (
           <>
@@ -33,6 +33,12 @@ export function SharedPostContent({ post }: PostCardProps<PostWithSharedContentF
             </PostCardText>
             <PostCard hideAuthor hideChildren post={postFetchOne.data} />
           </>
+        )
+      }
+
+      {
+        !postFetchOne.loading && !postFetchOne.data && (
+          <div style={{ fontWeight: 'bold', color: 'red' }}>You can't see this content</div >
         )
       }
     </>

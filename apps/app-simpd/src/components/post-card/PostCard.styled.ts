@@ -13,6 +13,8 @@ export const PostCardElement = styled.div`
   flex-direction: column;
   justify-content: center;
   background-color: ${({ theme }) => theme.color.s10};
+  padding: ${({ theme }) => theme.space.halfUnit};
+  
 
   &:hover {
     box-shadow: 5px 5px 10px 10px #711b1e;
@@ -24,9 +26,14 @@ export const PostCardHeader = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-bottom: ${({ theme }) => theme.space.oneUnit};
 `
 
 export const PostCardContent = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.space.oneUnit};
   width: 100%;
   overflow: hidden;
 `
@@ -54,7 +61,7 @@ export const PostStatsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: -10px;
+  margin-top: ${({ theme }) => theme.space.oneUnit};
 `
 
 export const PostStatElement = styled.div`
@@ -74,7 +81,7 @@ export const PostStatElement = styled.div`
   }
   
   &:hover {
-    p, h3 {
+    i, h4, small {
       color: ${({ theme }) => theme.color.brand};
     }
   }
