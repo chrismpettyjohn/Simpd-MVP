@@ -1,29 +1,30 @@
 import React from 'react';
 import { Link, useRoute } from 'wouter';
-import { BookmarkCollectionLink } from './BookmarksNavigation.sty';
+import { BookmarkCollectionLink, BookmarkCollectionList } from './BookmarksNavigation.sty';
 import { BookmarksNavigationProps } from './BookmarksNavigation.types';
 import { AddBookmarkCollection } from '../add-bookmark-collection/AddBookmarkCollection';
 
 export function BookmarksNavigation({ bookmarkCollections, onCreation }: BookmarksNavigationProps) {
-  const [, params] = useRoute<{ bookmarkCollectionID: string }>('/bookmarks/:bookmarkCollectionID');
+  const [, params] = useRoute<{ favoriteID: string }>('/favorites/:favoriteID');
+  const favoriteID = params?.favoriteID ? Number(params.favoriteID) : undefined;
 
   return (
-    <header data-role="Header" className="favorites-header1">
+    <BookmarkCollectionList>
       {
         bookmarkCollections.map(_ => {
-          const isActive = !!params?.bookmarkCollectionID && Number(params?.bookmarkCollectionID) === _.id;
+          const isActive = favoriteID === _.id;
           return (
-            <Link to={`/bookmarks/${_.id}`} key={`bookmark_collection_${_.id}`}>
-              <BookmarkCollectionLink className="favorites-text2" active={isActive}>
+            <Link to={`/favorites/${_.id}`} key={`favorite${_.id}`}>
+              <BookmarkCollectionLink active={isActive}>
                 {_.name}
               </BookmarkCollectionLink>
             </Link>
           )
         })
       }
-      <span className="favorites-text3">
+      <span>
         <AddBookmarkCollection onCreation={onCreation} />
       </span>
-    </header>
+    </BookmarkCollectionList>
   )
 }

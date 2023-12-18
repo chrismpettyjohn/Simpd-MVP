@@ -14,8 +14,6 @@ import { UserProfileScreen } from './user-profile/UserProfile';
 import { PageNotFoundScreen } from './page-not-found/PageNotFound';
 import { NotificationsScreen } from './notifications/Notifications';
 import { MessageThreadScreen } from './message-thread/MessageThread';
-import { ViewBookmarksScreen } from './view-bookmarks/ViewBookmarks';
-import { ListBookmarksScreen } from './list-bookmarks/ListBookmarks';
 import { SettingsPaymentScreen } from './settings-payment/SettingsPayment';
 import { SettingsProfileScreen } from './settings-profile/SettingsProfile';
 import { DiscoverProfilesScreen } from './discover-profiles/DiscoverProfiles';
@@ -23,6 +21,8 @@ import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
 import { SettingsIdentityScreen } from './settings-identity/SettingsIdentity';
 import { UserProfileSubscriptionsScreen } from './user-profile-subscriptions/UserProfileSubscriptions';
 import { PostCreateScreen } from './post-create/PostCreate';
+import { FavoritesListScreen } from './favorites-list/FavoritesList';
+import { AlbumListScreen } from 'screens/album-list/AlbumList';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -74,18 +74,26 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     )
   },
   {
-    path: '/bookmarks',
+    path: '/albums',
     view: (
       <UserGuard redirect>
-        <ListBookmarksScreen />
+        <AlbumListScreen />
       </UserGuard>
     ),
   },
   {
-    path: '/bookmarks/:bookmarkCollectionID',
+    path: '/favorites',
     view: (
       <UserGuard redirect>
-        <ViewBookmarksScreen />
+        <FavoritesListScreen />
+      </UserGuard>
+    ),
+  },
+  {
+    path: '/favorites/:favoriteID',
+    view: (
+      <UserGuard redirect>
+        <FavoritesListScreen />
       </UserGuard>
     ),
   },

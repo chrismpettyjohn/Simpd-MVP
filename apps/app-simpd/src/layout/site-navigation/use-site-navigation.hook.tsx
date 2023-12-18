@@ -64,10 +64,10 @@ export function useSiteNavigation(): NavigationBlock[] {
         label: (
           <>
             <i className="fa fa-images" style={{ marginRight: 8 }} />
-            Collections
+            Favorites
           </>
         ),
-        href: '/collections',
+        href: '/favorites',
       },
       {
         type: 'break',

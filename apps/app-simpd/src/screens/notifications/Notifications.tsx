@@ -9,6 +9,7 @@ export function NotificationsScreen() {
     <UserContainer>
       <>
         <PageTitle title="Notifications" />
+        <h1>Notifications</h1>
         <NotificationContainer>
           <NotificationCard />
           <NotificationCard />

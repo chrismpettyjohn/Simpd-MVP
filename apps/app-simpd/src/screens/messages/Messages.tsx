@@ -19,10 +19,9 @@ export function MessagesScreen() {
   return (
     <UserContainer>
       <PageTitle title="Messages" />
-      <h2>Favorites</h2>
       <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', alignItems: 'center' }}>
 
-        <h2>Messages</h2>
+        <h1>Messages</h1>
         <Link to="/messages/create">
           <i className="fa fa-pen-square fa-2x" style={{ cursor: 'pointer' }} />
         </Link>
