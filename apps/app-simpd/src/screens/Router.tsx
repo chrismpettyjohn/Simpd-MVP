@@ -23,6 +23,7 @@ import { UserProfileSubscriptionsScreen } from './user-profile-subscriptions/Use
 import { PostCreateScreen } from './post-create/PostCreate';
 import { FavoritesListScreen } from './favorites-list/FavoritesList';
 import { AlbumListScreen } from 'screens/album-list/AlbumList';
+import { TransactionList } from 'screens/transaction-list/TransactionList';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -150,6 +151,14 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     view: (
       <UserGuard redirect>
         <SettingsSecurityScreen />
+      </UserGuard>
+    ),
+  },
+  {
+    path: '/transactions',
+    view: (
+      <UserGuard redirect>
+        <TransactionList />
       </UserGuard>
     ),
   },

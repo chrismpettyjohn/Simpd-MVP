@@ -54,7 +54,7 @@ export function useSiteNavigation(): NavigationBlock[] {
         label: (
           <>
             <i className="fa fa-heart" style={{ marginRight: 8 }} />
-            Transactions
+            Contributions
           </>
         ),
         href: '/transactions',
