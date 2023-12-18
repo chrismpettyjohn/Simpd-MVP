@@ -1,7 +1,8 @@
 import React from 'react'
 import { NotificationCardAuthor, NotificationCardContentContainer, NotificationCardElement, NotificationCardActionContainer, NotificationCardNewBadge } from './NotificationCard.sty';
+import { NotificationCardProps } from 'components/notification-card/NotificationCard.types';
 
-export function NotificationCard() {
+export function NotificationCard({ notification }: NotificationCardProps) {
   return (
     <NotificationCardElement>
       <NotificationCardAuthor

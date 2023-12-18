@@ -53,7 +53,9 @@ export function PostCard({ post, hideAuthor = false, hideChildren = false, hideT
           </PostCardHeader>
         )}
         <PostCardContent>
-          {postContent}
+          <div style={{ minHeight: 60 }}>
+            {postContent}
+          </div>
           {
             !hideTools && !hideChildren && (
               <PostStatsContainer onClick={e => e.stopPropagation()}>

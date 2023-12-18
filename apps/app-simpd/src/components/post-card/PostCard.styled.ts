@@ -49,8 +49,7 @@ export const PostCardText = styled.div`
 
 export const PostStatsContainer = styled.div`
   background: ${({ theme }) => theme.color.s40};
-  border-bottom-left-radius: ${({ theme }) => theme.radius.twoUnits};
-  border-bottom-right-radius: ${({ theme }) => theme.radius.twoUnits};
+  border-radius: ${({ theme }) => theme.radius.twoUnits};
   cursor: auto;
   display: flex;
   justify-content: space-between;

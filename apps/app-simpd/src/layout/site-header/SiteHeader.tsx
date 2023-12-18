@@ -2,7 +2,6 @@ import { Input } from '../../components/input/Input';
 import React, { useContext, useMemo } from 'react'
 import { sessionContext } from '@simpd/lib-web';
 import { SiteHeaderAvatar, SiteHeaderContainer, SiteHeaderContent } from './SiteHeader.sty';
-import { UserProfileCardAvatar } from 'components/user-profile-card/UserProfileCard.sty';
 import { Dropdown } from 'antd';
 import { ItemType } from 'antd/es/menu/hooks/useItems';
 import { Link } from 'wouter';
