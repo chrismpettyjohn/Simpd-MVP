@@ -22,11 +22,11 @@ import { SettingsIdentityScreen } from './settings-identity/SettingsIdentity';
 import { UserProfileSubscriptionsScreen } from './user-profile-subscriptions/UserProfileSubscriptions';
 import { PostCreateScreen } from './post-create/PostCreate';
 import { FavoritesListScreen } from './favorites-list/FavoritesList';
-import { AlbumListScreen } from 'screens/album-list/AlbumList';
-import { TransactionList } from 'screens/transaction-list/TransactionList';
-import { InsightsDashboardScreen } from 'screens/insights-dashboard/InsightsDashboard';
-import { ScheduledContentScreen } from 'screens/scheduled-content/ScheduledContentScreen';
-import { DraftsListScreen } from 'screens/drafts-list/DraftsList';
+import { AlbumListScreen } from './/album-list/AlbumList';
+import { TransactionListScreen } from './transaction-list/TransactionList';
+import { InsightsDashboardScreen } from './insights-dashboard/InsightsDashboard';
+import { ScheduledContentScreen } from './scheduled-content/ScheduledContentScreen';
+import { DraftsListScreen } from './drafts-list/DraftsList';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -161,7 +161,7 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     path: '/transactions',
     view: (
       <UserGuard redirect>
-        <TransactionList />
+        <TransactionListScreen />
       </UserGuard>
     ),
   },
