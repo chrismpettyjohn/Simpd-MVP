@@ -48,16 +48,14 @@ export function MessageThreadScreen() {
   return (
     <UserContainer>
 
-      <Card>
-        <div style={{ height: '45vh', overflow: 'hidden', overflowY: 'auto', padding: 8 }}>
-          {
-            messageFetchMany.data?.map(_ => (
-              <MessageCard key={`message_card_${_.id}`} message={_} profile={_.sendingProfileID === session?.profileID ? session.profile : _.sendingProfile} />
-            ))
-          }
-        </div>
-        <SendMessageCard receivingProfileID={receivingProfile.id} onMessageSent={onLoadMessages} />
-      </Card>
+      <div style={{ height: '45vh', overflow: 'hidden', overflowY: 'auto', padding: 8 }}>
+        {
+          messageFetchMany.data?.map(_ => (
+            <MessageCard key={`message_card_${_.id}`} message={_} profile={_.sendingProfileID === session?.profileID ? session.profile : _.sendingProfile} />
+          ))
+        }
+      </div>
+      <SendMessageCard receivingProfileID={receivingProfile.id} onMessageSent={onLoadMessages} />
     </UserContainer>
   );
 }

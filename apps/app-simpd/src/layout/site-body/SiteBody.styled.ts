@@ -21,6 +21,10 @@ export const SiteBodyElement = createGlobalStyle`
       padding: 0;
    }
 
+   .text-secondary {
+      color: ${({ theme }) => theme.color.s50};
+   }
+
    a {
       color: ${({ theme }) => theme.color.s60};
       cursor: pointer;

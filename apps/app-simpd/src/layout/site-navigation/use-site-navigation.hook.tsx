@@ -123,7 +123,7 @@ export function useSiteNavigation(): NavigationBlock[] {
             Settings
           </>
         ),
-        href: '/settings',
+        href: '/settings/identity',
       }
     ]
   }, [session])

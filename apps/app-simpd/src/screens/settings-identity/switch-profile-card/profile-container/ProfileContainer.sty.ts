@@ -4,9 +4,9 @@ export const ProfileElement = styled.div`
   background-color: ${({ theme }) => theme.color.s30};
   color: ${({ theme }) => theme.color.s90};
   display: flex;
+  flex: 1;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   padding: ${({ theme }) => theme.space.twoUnits};
   margin-bottom: ${({ theme }) => theme.space.twoUnits};
   border-radius: ${({ theme }) => theme.radius.oneUnit};

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'wouter';
-import { SettingsNavIcon } from './SettingsNavigation.sty';
+import { SettingsNavIcon, SettingsNavigationElement } from './SettingsNavigation.sty';
 
 export function SettingsNavigation() {
   return (
-    <div className="settings-profile-settings-navigation">
+    <SettingsNavigationElement>
       <Link to="/settings/identity">
         <SettingsNavIcon className="fa fa-users" />
       </Link>
@@ -17,6 +17,6 @@ export function SettingsNavigation() {
       <Link to="/settings/security">
         <SettingsNavIcon className="fa fa-shield" />
       </Link>
-    </div>
+    </SettingsNavigationElement>
   )
 }

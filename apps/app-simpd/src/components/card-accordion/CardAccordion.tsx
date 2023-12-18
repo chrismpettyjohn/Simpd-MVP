@@ -17,7 +17,7 @@ export function CardAccordion({ defaultIsOpen = false, header, children }: CardA
           header && (
             <CardAccordionHeaderContent onClick={onToggle}>
               <h1>{header}</h1>
-              <i className={`fa ${isOpen ? 'fa-caret-down' : 'fa-caret-right'}`} />
+              <i className={`fa ${isOpen ? 'fa-caret-down' : 'fa-caret-right'} fa-2x`} />
             </CardAccordionHeaderContent>
           )
         }

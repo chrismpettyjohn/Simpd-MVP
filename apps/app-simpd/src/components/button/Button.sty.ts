@@ -10,13 +10,13 @@ export const ButtonElement = styled.button`
   line-height: 1.66rem;
   border-color: transparent;
   border-radius: ${({ theme }) => theme.radius.twoUnits};
-  background-color: ${({ theme }) => theme.color.s40};
+  background-color: ${({ theme }) => theme.color.s50};
   height: fit-content;
   width: fit-content;
-  padding-top: ${({ theme }) => theme.space.oneUnit};
-  padding-bottom: ${({ theme }) => theme.space.oneUnit};
-  padding-left: ${({ theme }) => theme.space.threeUnits};
-  padding-right:${({ theme }) => theme.space.threeUnits};
+  padding-top: ${({ theme }) => theme.space.halfUnit};
+  padding-bottom: ${({ theme }) => theme.space.halfUnit};
+  padding-left: ${({ theme }) => theme.space.twoUnits};
+  padding-right:${({ theme }) => theme.space.twoUnits};
 
   &:hover {
     border-color: ${({ theme }) => theme.color.s90};

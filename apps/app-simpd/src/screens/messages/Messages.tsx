@@ -1,8 +1,5 @@
-import './Messages.css';
 import { Link } from 'wouter';
 import React, { useEffect } from 'react';
-import { Card } from 'components/card/Card';
-import { Button } from '../../components/button/Button';
 import { PageTitle } from '../../components/page-title/PageTitle';
 import { UserContainer } from '../../layout/user-container/UserContainer';
 import { FullPageLoadingScreen, useMessageContactFetchMany } from '@simpd/lib-web';
@@ -21,32 +18,25 @@ export function MessagesScreen() {
 
   return (
     <UserContainer>
-      <PageTitle title="Messages">
-        <input
-          type="text"
-          placeholder="Search messages"
-          className="messages-textinput input"
-          style={{ width: '75%' }}
-        />
+      <PageTitle title="Messages" />
+      <h2>Favorites</h2>
+      <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', alignItems: 'center' }}>
+
+        <h2>Messages</h2>
         <Link to="/messages/create">
-          <Button>
-            <i className="fa fa-plus-circle" style={{ marginRight: 8 }} />
-            Message
-          </Button>
+          <i className="fa fa-pen-square fa-2x" style={{ cursor: 'pointer' }} />
         </Link>
-      </PageTitle>
-      <Card>
-        {
-          messageContactFetchMany.data?.map(_ => (
-            <MessagePreviewCard key={`message_contact_${_.profileID}`} messageContact={_} />
-          ))
-        }
-        {
-          !messageContactFetchMany.data?.length && (
-            <p style={{ fontSize: '1.18rem', color: 'white' }}>No messages to display.</p>
-          )
-        }
-      </Card>
+      </div>
+      {
+        messageContactFetchMany.data?.map(_ => (
+          <MessagePreviewCard key={`message_contact_${_.profileID}`} messageContact={_} />
+        ))
+      }
+      {
+        !messageContactFetchMany.data?.length && (
+          <p style={{ fontSize: '1.18rem', color: 'white' }}>No messages to display.</p>
+        )
+      }
     </UserContainer>
   )
 }
