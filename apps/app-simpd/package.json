@@ -22,7 +22,8 @@
     "@stripe/stripe-js": "1.54.0",
     "@stripe/react-stripe-js": "2.1.0",
     "@simpd/lib-web": "workspace:*",
-    "antd": "5.6.1"
+    "antd": "5.6.1",
+    "react-select": "5.8.0"
   },
   "devDependencies": {
     "@types/node": "18.15.11",

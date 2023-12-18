@@ -1,10 +1,9 @@
 import { useRoute } from 'wouter';
-import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect } from 'react';
 import { MessageCard } from 'components/message-card/MessageCard';
 import { SendMessageCard } from 'components/send-message-card/SendMessageCard';
-import { UserContainer } from '../../layout/user-container/UserContainer';
 import { FullPageLoadingScreen, sessionContext, useMessageFetchMany, useProfileFetchOne } from '@simpd/lib-web';
+import { MessageContainer } from 'layout/message-container/MessageContainer';
 
 export function MessageThreadScreen() {
   const { session } = useContext(sessionContext);
@@ -46,7 +45,7 @@ export function MessageThreadScreen() {
   }
 
   return (
-    <UserContainer>
+    <MessageContainer>
 
       <div style={{ height: '45vh', overflow: 'hidden', overflowY: 'auto', padding: 8 }}>
         {
@@ -56,6 +55,6 @@ export function MessageThreadScreen() {
         }
       </div>
       <SendMessageCard receivingProfileID={receivingProfile.id} onMessageSent={onLoadMessages} />
-    </UserContainer>
+    </MessageContainer>
   );
 }
