@@ -1,18 +1,27 @@
-import { UserFragment } from '@simpd/lib-web';
+import { ProfileFragment, useProfileFetchMany } from '@simpd/lib-web';
 import { Modal } from 'antd';
-import { UserSelect } from 'components/user-select/UserSelect';
-import React, { useState } from 'react';
+import { ProfileSelect } from '../profile-select/ProfileSelect';
+import React, { useEffect, useState } from 'react';
 
 export function MessageCreateDialog() {
   const [isOpen, setIsOpen] = useState(false);
-  const [recipientUserID, setRecipientUserID] = useState<number>();
+  const [recipientProfileID, setRecipientProfileID] = useState<number>();
+  const contacts = useProfileFetchMany();
+
+  async function onFetchContacts() {
+    await contacts.fetch({});
+  }
+
+  useEffect(() => {
+    onFetchContacts();
+  }, []);
 
   function toggle() {
     setIsOpen(_ => !_);
   }
 
-  function onChangeRecipient(user?: UserFragment) {
-    setRecipientUserID(user?.id);
+  function onChangeRecipient(profile?: ProfileFragment) {
+    setRecipientProfileID(profile?.id);
   }
 
   return (
@@ -24,7 +33,7 @@ export function MessageCreateDialog() {
             <div>
 
               <label>Recipient</label>
-              <UserSelect onChange={onChangeRecipient} />
+              <ProfileSelect profiles={contacts.data} profileID={recipientProfileID} onChange={onChangeRecipient} />
             </div>
           </Modal>
 

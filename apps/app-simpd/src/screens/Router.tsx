@@ -27,6 +27,7 @@ import { TransactionListScreen } from './transaction-list/TransactionList';
 import { InsightsDashboardScreen } from './insights-dashboard/InsightsDashboard';
 import { ScheduledContentScreen } from './scheduled-content/ScheduledContentScreen';
 import { DraftsListScreen } from './drafts-list/DraftsList';
+import { VideoCallScreen } from 'screens/video-call/VideoCall';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -114,6 +115,14 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     view: (
       <UserGuard redirect>
         <MessageThreadScreen />
+      </UserGuard>
+    )
+  },
+  {
+    path: '/video-call/:username',
+    view: (
+      <UserGuard redirect>
+        <VideoCallScreen />
       </UserGuard>
     )
   },

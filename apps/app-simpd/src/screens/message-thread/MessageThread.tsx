@@ -18,8 +18,11 @@ export function MessageThreadScreen() {
   }
 
   const onLoadMessages = async () => {
+    if (!profileFetchOne.data?.id) {
+      return;
+    }
     const messagesWithUser = await messageFetchMany.fetch({
-      //
+      receivingProfileID: profileFetchOne.data.id
     })
   }
 
@@ -45,15 +48,12 @@ export function MessageThreadScreen() {
   }
 
   return (
-    <MessageContainer>
-
-      <div style={{ height: '45vh', overflow: 'hidden', overflowY: 'auto', padding: 8 }}>
-        {
-          messageFetchMany.data?.map(_ => (
-            <MessageCard key={`message_card_${_.id}`} message={_} profile={_.sendingProfileID === session?.profileID ? session.profile : _.sendingProfile} />
-          ))
-        }
-      </div>
+    <MessageContainer profile={profileFetchOne.data}>
+      {
+        messageFetchMany.data?.map(_ => (
+          <MessageCard key={`message_card_${_.id}`} message={_} profile={_.sendingProfileID === session?.profileID ? session.profile : _.sendingProfile} />
+        ))
+      }
       <SendMessageCard receivingProfileID={receivingProfile.id} onMessageSent={onLoadMessages} />
     </MessageContainer>
   );

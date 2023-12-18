@@ -3,10 +3,18 @@ import { SiteSidebar } from '../../layout/site-sidebar/SiteSidebar';
 import { UserContainerElement, UserContainerInnerContent, UserContainerPageContent, UserContainerPageInnerContent } from '../user-container/UserContainer.styled';
 import { MessageContainerProps } from 'layout/message-container/MessageContainer.types';
 import { MessageHeaderContainer, MessageHeaderContent } from 'layout/message-container/MessageContainer.styled';
-import { Input } from '../../components/input/Input';
-import { MessageCreateDialog } from 'components/message-create-dialog/MessageCreateDialog';
+import { ProfileSelect } from 'components/profile-select/ProfileSelect';
+import { ProfileFragment } from '@simpd/lib-web';
+import { Link, useLocation } from 'wouter';
 
-export function MessageContainer({ children, message }: MessageContainerProps) {
+export function MessageContainer({ children, profile }: MessageContainerProps) {
+  const [, setLocation] = useLocation();
+  function onMessageRecipient(profile?: ProfileFragment) {
+    if (!profile?.username) {
+      return;
+    }
+    setLocation(`/messages/threads/${profile.username}`)
+  }
   return (
     <UserContainerElement>
       <UserContainerInnerContent>
@@ -15,19 +23,20 @@ export function MessageContainer({ children, message }: MessageContainerProps) {
           <MessageHeaderContainer>
             <MessageHeaderContent>
               {
-                message && (
-                  <>
-                    <h1>message thread</h1>
-                  </>
+                profile && (
+                  <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', alignItems: 'center' }}>
+                    <h1>{profile.displayName}</h1>
+                    <Link href={`/video-call/${profile.username}`}>
+                      <i className="fa fa-video fa-2x" style={{ cursor: 'pointer' }} />
+                    </Link>
+                  </div>
                 )
               }
               {
-                !message && (
+                !profile && (
                   <>
-                    <Input placeholder="Search for some hoes.." />
-                    <div style={{ display: 'flex', flex: 1, width: '100%', alignItems: 'center', justifyContent: 'flex-end' }}>
-                      <MessageCreateDialog />
-                    </div>
+
+                    <ProfileSelect profileID={undefined} onChange={onMessageRecipient} />
                   </>
                 )
               }
