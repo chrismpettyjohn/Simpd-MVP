@@ -24,6 +24,9 @@ import { PostCreateScreen } from './post-create/PostCreate';
 import { FavoritesListScreen } from './favorites-list/FavoritesList';
 import { AlbumListScreen } from 'screens/album-list/AlbumList';
 import { TransactionList } from 'screens/transaction-list/TransactionList';
+import { InsightsDashboardScreen } from 'screens/insights-dashboard/InsightsDashboard';
+import { ScheduledContentScreen } from 'screens/scheduled-content/ScheduledContentScreen';
+import { DraftsListScreen } from 'screens/drafts-list/DraftsList';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -161,6 +164,30 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
         <TransactionList />
       </UserGuard>
     ),
+  },
+  {
+    path: '/insights',
+    view: (
+      <UserGuard redirect>
+        <InsightsDashboardScreen />
+      </UserGuard>
+    )
+  },
+  {
+    path: '/scheduled',
+    view: (
+      <UserGuard redirect>
+        <ScheduledContentScreen />
+      </UserGuard>
+    )
+  },
+  {
+    path: '/drafts',
+    view: (
+      <UserGuard redirect>
+        <DraftsListScreen />
+      </UserGuard>
+    )
   },
   {
     path: '/profiles/:username',

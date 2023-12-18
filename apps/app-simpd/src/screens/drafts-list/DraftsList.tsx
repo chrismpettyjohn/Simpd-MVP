@@ -1,12 +1,12 @@
-import React from 'react';
 import { PageTitle } from 'components/page-title/PageTitle';
 import { UserContainer } from 'layout/user-container/UserContainer';
+import React from 'react';
 
-export function TransactionList() {
+export function DraftsListScreen() {
   return (
     <UserContainer>
-      <PageTitle title="Transactions" />
-      <h1>Transactions</h1>
+      <PageTitle title="Drafts" />
+      <h1>Drafts</h1>
     </UserContainer>
   )
 }
