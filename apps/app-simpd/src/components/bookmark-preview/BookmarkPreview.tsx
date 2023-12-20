@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { usePostFetchOne } from '@simpd/lib-web';
-import { BookmarkCardProps } from './BookmarkCard.types';
+import { BookmarkPreviewProps } from './BookmarkPreview.types';
 import { PostCard } from 'components/post-card/PostCard';
 
-export function BookmarkCard({ bookmark }: BookmarkCardProps) {
+export function BookmarkPreview({ bookmark }: BookmarkPreviewProps) {
   const postFetchOne = usePostFetchOne();
 
   useEffect(() => {

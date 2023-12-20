@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const AlbumContentHeaderInformation = styled.div`
+
+
+export const BookmarkCollectionViewContentHeaderInformation = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.color.s90};
   display: flex;

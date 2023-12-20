@@ -21,7 +21,6 @@ import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
 import { SettingsIdentityScreen } from './settings-identity/SettingsIdentity';
 import { UserProfileSubscriptionsScreen } from './user-profile-subscriptions/UserProfileSubscriptions';
 import { PostCreateScreen } from './post-create/PostCreate';
-import { FavoritesListScreen } from './favorites-list/FavoritesList';
 import { AlbumListScreen } from './/album-list/AlbumList';
 import { TransactionListScreen } from './transaction-list/TransactionList';
 import { InsightsDashboardScreen } from './insights-dashboard/InsightsDashboard';
@@ -29,6 +28,8 @@ import { ScheduledContentScreen } from './scheduled-content/ScheduledContentScre
 import { DraftsListScreen } from './drafts-list/DraftsList';
 import { VideoCallScreen } from 'screens/video-call/VideoCall';
 import { AlbumContentScreen } from 'screens/album-content/AlbumContent';
+import { BookmarkCollectionListScreen } from 'screens/bookmark-collection-list/BookmarkCollectionList';
+import { BookmarkCollectionViewScreen } from 'screens/bookmark-collection-view/BookmarkCollectionView';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -99,7 +100,7 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     path: '/favorites',
     view: (
       <UserGuard redirect>
-        <FavoritesListScreen />
+        <BookmarkCollectionListScreen />
       </UserGuard>
     ),
   },
@@ -107,7 +108,7 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     path: '/favorites/:favoriteID',
     view: (
       <UserGuard redirect>
-        <FavoritesListScreen />
+        <BookmarkCollectionViewScreen />
       </UserGuard>
     ),
   },

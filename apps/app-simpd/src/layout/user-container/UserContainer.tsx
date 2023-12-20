@@ -4,13 +4,13 @@ import { SiteSidebar } from '../../layout/site-sidebar/SiteSidebar';
 import { UserContainerProps } from './UserContainer.types';
 import { UserContainerElement, UserContainerInnerContent, UserContainerPageContent, UserContainerPageInnerContent } from './UserContainer.styled';
 
-export function UserContainer({ children }: UserContainerProps) {
+export function UserContainer({ children, headerProps }: UserContainerProps) {
   return (
     <UserContainerElement>
       <UserContainerInnerContent>
         <SiteSidebar />
         <UserContainerPageContent>
-          <SiteHeader />
+          <SiteHeader {...headerProps} />
           <UserContainerPageInnerContent>
             {children}
           </UserContainerPageInnerContent>

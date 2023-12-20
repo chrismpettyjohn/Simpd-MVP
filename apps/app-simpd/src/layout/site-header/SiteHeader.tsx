@@ -1,12 +1,12 @@
-import { Input } from '../../components/input/Input';
 import React, { useContext, useMemo } from 'react'
 import { sessionContext } from '@simpd/lib-web';
 import { SiteHeaderAvatar, SiteHeaderContainer, SiteHeaderContent } from './SiteHeader.sty';
 import { Dropdown } from 'antd';
 import { ItemType } from 'antd/es/menu/hooks/useItems';
 import { Link } from 'wouter';
+import { SiteHeaderProps } from 'layout/site-header/SiteHeader.types';
 
-export function SiteHeader() {
+export function SiteHeader({ children, showUser = true }: SiteHeaderProps) {
   const { session } = useContext(sessionContext);
 
   if (!session) {
@@ -32,10 +32,10 @@ export function SiteHeader() {
   return (
     <SiteHeaderContainer>
       <SiteHeaderContent>
-        <Input placeholder="Search for some hoes.." />
         <div style={{ display: 'flex', flex: 1, width: '100%', alignItems: 'center', justifyContent: 'flex-end' }}>
+          {children}
           {
-            session?.profile?.profilePicture && (
+            session?.profile?.profilePicture && showUser && (
 
               <>
                 <Dropdown menu={{ items: userTools }} placement="bottomLeft">
