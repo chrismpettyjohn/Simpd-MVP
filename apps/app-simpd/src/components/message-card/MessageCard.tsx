@@ -2,21 +2,40 @@ import React from 'react'
 import { MessageCardProps } from './MessageCard.types';
 import { MessageReactions } from './message-reactions/MessageReactions';
 import { AuthorBlockSmall } from '../author-block-small/AuthorBlockSmall';
-import { MessageCardElement, MessageCardTextContainer } from './MessageCard.sty';
+import { MessageContent, MessageElement, MessageText, MessageTime } from './MessageCard.sty';
 
-export function MessageCard({ message, profile }: MessageCardProps) {
+export function MessageCard({ message, profile, direction = 'left' }: MessageCardProps) {
+
+  if (direction === 'left') {
+    return (
+      <MessageElement>
+        <MessageContent>
+          <AuthorBlockSmall profile={profile} />
+          <MessageText>
+            {message.content}
+          </MessageText>
+        </MessageContent>
+        <MessageTime>
+          10:00am
+        </MessageTime>
+      </MessageElement>
+    )
+  }
+
   return (
-    <MessageCardElement>
-      <AuthorBlockSmall profile={profile} />
-      <MessageCardTextContainer>
-        <h1 className="author-container">
-          They Said:
-        </h1>
-        <span className="message-content">
+    <MessageElement>
+      <MessageContent>
+        <AuthorBlockSmall profile={profile} />
+        <MessageText>
           {message.content}
-        </span>
-      </MessageCardTextContainer>
-      <MessageReactions message={message} />
-    </MessageCardElement>
+        </MessageText>
+      </MessageContent>
+      <MessageTime>
+        10:00am
+      </MessageTime>
+    </MessageElement>
   )
 }
+
+
+// <MessageReactions message={message} />

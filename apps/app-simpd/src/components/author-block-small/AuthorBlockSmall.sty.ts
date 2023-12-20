@@ -1,12 +1,11 @@
 import { styled } from "styled-components";
 
 export const AuthorBlockSmallElement = styled.div`
-  flex: 0 0 auto;
-  width: 45%;
   display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  overflow: hidden;
+  justify-content: center;
 
   img {
     width: 100px;
@@ -14,7 +13,7 @@ export const AuthorBlockSmallElement = styled.div`
     object-fit: cover;
     border-color: ${({ theme }) => theme.color.s30};
     border-width: 2px;
-    border-radius: var(--dl-radius-radius-round);
+    border-radius: 100%;
   }
 `
 

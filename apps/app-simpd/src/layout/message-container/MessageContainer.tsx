@@ -2,10 +2,11 @@ import React from 'react';
 import { SiteSidebar } from '../../layout/site-sidebar/SiteSidebar';
 import { UserContainerElement, UserContainerInnerContent, UserContainerPageContent, UserContainerPageInnerContent } from '../user-container/UserContainer.styled';
 import { MessageContainerProps } from 'layout/message-container/MessageContainer.types';
-import { MessageHeaderContainer, MessageHeaderContent } from 'layout/message-container/MessageContainer.styled';
+import { MessageHeaderContactActivityStatus, MessageHeaderContactInformation, MessageHeaderContent, MessageHeaderElement, MessageHeaderWrapper } from 'layout/message-container/MessageContainer.styled';
 import { ProfileSelect } from 'components/profile-select/ProfileSelect';
 import { ProfileFragment } from '@simpd/lib-web';
 import { Link, useLocation } from 'wouter';
+import { ProfileIndicator } from 'screens/settings-identity/switch-profile-card/profile-container/ProfileContainer.sty';
 
 export function MessageContainer({ children, profile }: MessageContainerProps) {
   const [, setLocation] = useLocation();
@@ -20,16 +21,23 @@ export function MessageContainer({ children, profile }: MessageContainerProps) {
       <UserContainerInnerContent>
         <SiteSidebar />
         <UserContainerPageContent>
-          <MessageHeaderContainer>
-            <MessageHeaderContent>
+          <MessageHeaderElement>
+            <MessageHeaderWrapper>
+
               {
                 profile && (
-                  <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', alignItems: 'center' }}>
-                    <h1>{profile.displayName}</h1>
+                  <MessageHeaderContent>
+                    <MessageHeaderContactInformation>
+                      <h1>{profile.displayName}</h1>
+                      <div style={{ display: 'flex', gap: 4 }}>
+                        <ProfileIndicator className="fa fa-circle" selected={false} />
+                        <MessageHeaderContactActivityStatus>Unavailable</MessageHeaderContactActivityStatus>
+                      </div>
+                    </MessageHeaderContactInformation>
                     <Link href={`/video-call/${profile.username}`}>
                       <i className="fa fa-video fa-2x" style={{ cursor: 'pointer' }} />
                     </Link>
-                  </div>
+                  </MessageHeaderContent>
                 )
               }
               {
@@ -40,13 +48,13 @@ export function MessageContainer({ children, profile }: MessageContainerProps) {
                   </>
                 )
               }
-            </MessageHeaderContent>
-          </MessageHeaderContainer>
+            </MessageHeaderWrapper>
+          </MessageHeaderElement>
           <UserContainerPageInnerContent>
             {children}
           </UserContainerPageInnerContent>
         </UserContainerPageContent>
       </UserContainerInnerContent>
-    </UserContainerElement>
+    </UserContainerElement >
   )
 }

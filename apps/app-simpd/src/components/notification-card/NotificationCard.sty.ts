@@ -47,4 +47,5 @@ export const NotificationCardNewBadge = styled.div`
   width: 60px;
   font-size: ${({ theme }) => theme.fontSize.halfUnit};
   margin-bottom: ${({ theme }) => theme.space.halfUnit};
+  overflow: hidden;
 `

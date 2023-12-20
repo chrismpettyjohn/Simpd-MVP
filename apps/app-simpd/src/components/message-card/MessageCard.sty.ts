@@ -1,22 +1,24 @@
 import { styled } from "styled-components";
 
-export const MessageCardElement = styled.div`
+export const MessageElement = styled.div`
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: ${({ theme }) => theme.space.twoUnits};
+  padding: ${({ theme }) => theme.space.oneUnit};
+`
+
+export const MessageContent = styled.div`
   flex: 0 0 auto;
   width: 100%;
   cursor: pointer;
   display: flex;
-  padding: ${({ theme }) => theme.space.oneUnit};
   position: relative;
-  box-shadow: 5px 5px 10px 10px #1c1c1e;
   transition: 0.3s;
   align-items: center;
-  border-color: ${({ theme }) => theme.color.s40};
-  border-style: solid;
-  border-width: 1px;
-  border-radius:${({ theme }) => theme.radius.twoUnits};
   justify-content: space-between;
-  background-color: ${({ theme }) => theme.color.s20};
-  margin-bottom: ${({ theme }) => theme.space.twoUnits};
   overflow: hidden;
 
   &:hover {
@@ -25,31 +27,23 @@ export const MessageCardElement = styled.div`
   }
 `
 
-export const MessageCardTextContainer = styled.div`
-  flex: 0 0 auto;
-  width: 45%;
-  height: auto;
+export const MessageText = styled.div`
   align-items: center;
-  margin-left: var(--dl-space-space-twounits);
-  justify-content: flex-start;
+  background: linear-gradient(178deg, rgba(203, 188, 188, 0.4) 0.2%, rgba(189, 171, 171, 0.1) 99.37%);
+  border-radius: ${({ theme }) => theme.radius.oneUnit};
   color: ${({ theme }) => theme.color.s90};
-
-  h1 {
-    font-size:  ${({ theme }) => theme.fontSize.twoUnits};
-    margin-bottom: 0px;
-  }
-
-  .message-content {
-    font-size:  ${({ theme }) => theme.fontSize.oneUnit};
-  }
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: ${({ theme }) => theme.space.twoUnits};
 `
 
-export const MessageIconElement = styled.i`
-  color: ${({ theme }) => theme.color.s90};
-  font-size: ${({ theme }) => theme.icon.twoUnits};
-  cursor: pointer;
-  &:hover {
-    color: ${({ theme }) => theme.color.brand};
-  }
-}
+export const MessageTime = styled.div`
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  width: 100%;
 `

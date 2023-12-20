@@ -13,9 +13,6 @@ export function AuthorBlockSmall({ profile }: AuthorBlockSmallProps) {
           className="notification-card-image"
         />
         <AuthorBlockSmallInfoContainer>
-          <h1>
-            {profile.displayName}
-          </h1>
           <span>
             @{profile.username}
           </span>
