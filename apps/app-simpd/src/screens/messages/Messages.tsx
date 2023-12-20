@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { PageTitle } from '../../components/page-title/PageTitle';
 import { FullPageLoadingScreen, useMessageContactFetchMany } from '@simpd/lib-web';
 import { MessagePreviewCard } from 'components/message-preview-card/MessagePreviewCard';
-import { MessageContainer } from 'layout/message-container/MessageContainer';
+import { UserContainer } from 'layout/user-container/UserContainer';
 
 export function MessagesScreen() {
   const messageContactFetchMany = useMessageContactFetchMany();
@@ -16,7 +16,7 @@ export function MessagesScreen() {
   }
 
   return (
-    <MessageContainer>
+    <UserContainer>
       <PageTitle title="Messages" />
       <h1>Messages</h1>
       {
@@ -29,6 +29,6 @@ export function MessagesScreen() {
           <p style={{ fontSize: '1.18rem', color: 'white' }}>No messages to display.</p>
         )
       }
-    </MessageContainer>
+    </UserContainer>
   )
 }

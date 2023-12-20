@@ -1,15 +1,15 @@
 import React from 'react';
 import { PageTitle } from '../../components/page-title/PageTitle';
-import { UserContainer } from '../../layout/user-container/UserContainer';
 import { SwitchProfileCard } from './switch-profile-card/SwitchProfileCard';
 import { SettingsNavigation } from '../../components/settings-navigation/SettingsNavigation';
+import { SettingsContainer } from 'layout/settings-container/SettingsContainer';
 
 export function SettingsIdentityScreen() {
   return (
-    <UserContainer>
+    <SettingsContainer>
       <PageTitle title="Settings-Identity" />
       <SettingsNavigation />
       <SwitchProfileCard />
-    </UserContainer>
+    </SettingsContainer>
   )
 }

@@ -1,5 +1,5 @@
 import { useProfileFetchOne } from '@simpd/lib-web';
-import { MessageContainer } from 'layout/message-container/MessageContainer';
+import { UserContainer } from 'layout/user-container/UserContainer';
 import React, { useEffect } from 'react';
 import { useRoute } from 'wouter';
 
@@ -17,8 +17,8 @@ export function VideoCallScreen() {
   }, [username]);
 
   return (
-    <MessageContainer profile={profileFetchOne.data}>
+    <UserContainer headerProps={{ showUser: false }}>
       video call
-    </MessageContainer>
+    </UserContainer>
   )
 }
