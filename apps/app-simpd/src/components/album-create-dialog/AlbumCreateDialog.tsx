@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useLocation } from 'wouter';
 
-export function CreateAlbumDialog() {
+export function AlbumCreateDialog() {
   const [, setLocation] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const createAlbum = useAlbumCreate();

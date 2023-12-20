@@ -1,4 +1,5 @@
 import {In} from 'typeorm';
+import {UnauthorizedException} from '@nestjs/common';
 import {BookmarkModel} from './bookmark.model';
 import {BookmarkEntity} from './bookmark.entity';
 import {BookmarkRepository} from './bookmark.repository';
@@ -14,6 +15,7 @@ import {
   BookmarkCreateInput,
   BookmarkFindManyInput,
   BookmarkFindOneInput,
+  BookmarkUpdateInput,
 } from './bookmark.input';
 
 @Resolver(() => BookmarkModel)
@@ -64,7 +66,41 @@ export class BookmarkResolver {
   }
 
   @Mutation(() => Boolean)
-  async bookmarkDelete(@Args('filter') filter: BookmarkFindOneInput) {
+  @HasSession()
+  async bookmarkUpdate(
+    @GetSession() session: SessionContents,
+    @Args('filter') filter: BookmarkFindOneInput,
+    @Args('input') input: BookmarkUpdateInput
+  ): Promise<boolean> {
+    const matchingBookmark = await this.bookmarkRepo.findOneOrFail({
+      where: {id: filter.id},
+    });
+    const doesBookmarkBelongToUser =
+      matchingBookmark.profileID === session.profileID;
+    if (!doesBookmarkBelongToUser) {
+      throw new UnauthorizedException();
+    }
+    await this.bookmarkRepo.update(
+      {id: filter.id, profileID: session.profileID},
+      input
+    );
+    return true;
+  }
+
+  @Mutation(() => Boolean)
+  @HasSession()
+  async bookmarkDelete(
+    @GetSession() session: SessionContents,
+    @Args('filter') filter: BookmarkFindOneInput
+  ) {
+    const matchingBookmark = await this.bookmarkRepo.findOneOrFail({
+      where: {id: filter.id},
+    });
+    const doesAlbumBelongToUser =
+      matchingBookmark.profileID === session.profileID;
+    if (!doesAlbumBelongToUser) {
+      throw new UnauthorizedException();
+    }
     await this.bookmarkRepo.softDelete(filter);
     return true;
   }

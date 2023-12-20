@@ -2,46 +2,75 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type UserModel {
+type BookmarkModel {
   id: Float
-  email: String
-  isVerified: Boolean
+  serviceKey: String
+  resourceID: Float
+  profileID: Float
+  bookmarkCollectionID: Float
+}
+
+type BookmarkCollectionModel {
+  id: Float
+  profileID: Float
+  name: String
 }
 
 type Query {
-  user(filter: UserFilterByOneInput!): UserModel!
-  users(filter: UserFilterByManyInput): [UserModel!]!
+  bookmark(filter: BookmarkFindOneInput!): BookmarkModel!
+  bookmarks(filter: BookmarkFindManyInput): [BookmarkModel!]!
+  bookmarkCollection(filter: BookmarkCollectionFindOneInput!): BookmarkCollectionModel!
+  bookmarkCollections(filter: BookmarkCollectionFindManyInput): [BookmarkCollectionModel!]!
 }
 
-input UserFilterByOneInput {
+input BookmarkFindOneInput {
   id: Float
-  email: String
+  profileID: Float
+  resourceID: Float
+  bookmarkCollectionID: Float
 }
 
-input UserFilterByManyInput {
+input BookmarkFindManyInput {
   ids: [Float!]
-  emails: [String!]
+  profileIDs: [Float!]
+  resourceIDs: [Float!]
+  bookmarkCollectionIDs: [Float!]
+}
+
+input BookmarkCollectionFindOneInput {
+  id: Float
+  profileID: Float
+}
+
+input BookmarkCollectionFindManyInput {
+  ids: [Float!]
+  profileIDs: [Float!]
 }
 
 type Mutation {
-  userCreate(input: UserCreateInput!): UserModel!
-  userUpdate(filter: UserFilterByOneInput!, input: UserUpdateInput!): UserModel!
-  userChangePassword(filter: UserFilterByOneInput!, input: UserChangePasswordInput!): Boolean!
-  userDelete(filter: UserFilterByOneInput!): Boolean!
+  bookmarkCreate(input: BookmarkCreateInput!): BookmarkModel!
+  bookmarkUpdate(filter: BookmarkFindOneInput!, input: BookmarkUpdateInput!): Boolean!
+  bookmarkDelete(filter: BookmarkFindOneInput!): Boolean!
+  bookmarkCollectionCreate(input: BookmarkCollectionCreateInput!): BookmarkCollectionModel!
+  bookmarkCollectionCreateRandomized: BookmarkCollectionModel!
+  bookmarkCollectionUpdate(filter: BookmarkCollectionFindOneInput!, input: BookmarkCollectionUpdateInput!): Boolean!
+  bookmarkCollectionDelete(filter: BookmarkCollectionFindOneInput!): Boolean!
 }
 
-input UserCreateInput {
-  email: String!
-  password: String!
+input BookmarkCreateInput {
+  resourceID: Float!
+  bookmarkCollectionID: Float!
 }
 
-input UserUpdateInput {
-  email: String
-  password: String
+input BookmarkUpdateInput {
+  resourceID: Float
+  bookmarkCollectionID: Float
 }
 
-input UserChangePasswordInput {
-  currentPassword: String!
-  newPassword: String!
-  newPasswordAgain: String!
+input BookmarkCollectionCreateInput {
+  name: String!
+}
+
+input BookmarkCollectionUpdateInput {
+  name: String
 }

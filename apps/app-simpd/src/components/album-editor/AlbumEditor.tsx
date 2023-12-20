@@ -25,7 +25,7 @@ export function AlbumEditor({ defaultAlbum, onSave }: AlbumEditorProps) {
       event.preventDefault();
       await onSave(albumDTO);
     } catch (e: any) {
-      toast.error('Failed to create new album');
+      toast.error('Failed to save album');
       throw e;
     }
   }

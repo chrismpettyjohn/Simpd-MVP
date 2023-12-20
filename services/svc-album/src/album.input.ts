@@ -23,3 +23,12 @@ export class AlbumCreateInput {
   @Field(() => String)
   description!: string;
 }
+
+@InputType()
+export class AlbumUpdateInput implements Partial<AlbumCreateInput> {
+  @Field(() => String, {nullable: true})
+  name?: string;
+
+  @Field(() => String, {nullable: true})
+  description?: string;
+}

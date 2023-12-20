@@ -28,6 +28,7 @@ import { InsightsDashboardScreen } from './insights-dashboard/InsightsDashboard'
 import { ScheduledContentScreen } from './scheduled-content/ScheduledContentScreen';
 import { DraftsListScreen } from './drafts-list/DraftsList';
 import { VideoCallScreen } from 'screens/video-call/VideoCall';
+import { AlbumContentScreen } from 'screens/album-content/AlbumContent';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -79,12 +80,20 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     )
   },
   {
-    path: '/albums/:albumID?',
+    path: '/albums',
     view: (
       <UserGuard redirect>
         <AlbumListScreen />
       </UserGuard>
     ),
+  },
+  {
+    path: '/albums/:albumID',
+    view: (
+      <UserGuard redirect>
+        <AlbumContentScreen />
+      </UserGuard>
+    )
   },
   {
     path: '/favorites',

@@ -5,8 +5,8 @@ import { UserContainer } from 'layout/user-container/UserContainer';
 export function TransactionListScreen() {
   return (
     <UserContainer>
-      <PageTitle title="Transactions" />
-      <h1>Transactions</h1>
+      <PageTitle title="Contributions" />
+      <h1>Contributions</h1>
     </UserContainer>
   )
 }

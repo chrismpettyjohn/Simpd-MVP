@@ -38,3 +38,12 @@ export class BookmarkCreateInput {
   @Field(() => Number)
   bookmarkCollectionID!: number;
 }
+
+@InputType()
+export class BookmarkUpdateInput {
+  @Field(() => Number, {nullable: true})
+  resourceID?: number;
+
+  @Field(() => Number, {nullable: true})
+  bookmarkCollectionID?: number;
+}

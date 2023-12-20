@@ -1,4 +1,5 @@
 import {In} from 'typeorm';
+import {UnauthorizedException} from '@nestjs/common';
 import {AlbumModel} from './album.model';
 import {AlbumEntity} from './album.entity';
 import {AlbumRepository} from './album.repository';
@@ -14,6 +15,7 @@ import {
   AlbumCreateInput,
   AlbumFindManyInput,
   AlbumFindOneInput,
+  AlbumUpdateInput,
 } from './album.input';
 
 @Resolver(() => AlbumModel)
@@ -62,7 +64,38 @@ export class AlbumResolver {
   }
 
   @Mutation(() => Boolean)
-  async albumDelete(@Args('filter') filter: AlbumFindOneInput) {
+  @HasSession()
+  async albumUpdate(
+    @GetSession() session: SessionContents,
+    @Args('filter') filter: AlbumFindOneInput,
+    @Args('input') input: AlbumUpdateInput
+  ): Promise<boolean> {
+    const matchingAlbum = await this.albumRepo.findOneOrFail({
+      where: {id: filter.id},
+    });
+    const doesAlbumBelongToUser = matchingAlbum.profileID === session.profileID;
+    if (!doesAlbumBelongToUser) {
+      throw new UnauthorizedException();
+    }
+    await this.albumRepo.update(
+      {id: filter.id, profileID: session.profileID},
+      input
+    );
+    return true;
+  }
+
+  @Mutation(() => Boolean)
+  async albumDelete(
+    @GetSession() session: SessionContents,
+    @Args('filter') filter: AlbumFindOneInput
+  ) {
+    const matchingAlbum = await this.albumRepo.findOneOrFail({
+      where: {id: filter.id},
+    });
+    const doesAlbumBelongToUser = matchingAlbum.profileID === session.profileID;
+    if (!doesAlbumBelongToUser) {
+      throw new UnauthorizedException();
+    }
     await this.albumRepo.softDelete(filter);
     return true;
   }

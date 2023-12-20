@@ -40,6 +40,8 @@ export * from './graphql/fragments/subscription-group.fragment';
 export * from './graphql/fragments/tag.fragment';
 export * from './graphql/fragments/tip.fragment';
 export * from './graphql/hooks/use-album-create-one.hook';
+export * from './graphql/hooks/use-album-update-one.hook';
+export * from './graphql/hooks/use-album-delete-one.hook';
 export * from './graphql/hooks/use-album-fetch-many.hook';
 export * from './graphql/hooks/use-album-fetch-one.hook';
 export * from './graphql/hooks/use-bookmark-collection-create-one-randomized.hook';

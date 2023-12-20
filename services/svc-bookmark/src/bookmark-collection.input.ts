@@ -23,3 +23,9 @@ export class BookmarkCollectionCreateInput {
   @Field(() => String)
   name!: string;
 }
+
+@InputType()
+export class BookmarkCollectionUpdateInput {
+  @Field(() => String, {nullable: true})
+  name?: string;
+}
