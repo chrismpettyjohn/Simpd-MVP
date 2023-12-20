@@ -2,47 +2,46 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type TipModel {
+type UserModel {
   id: Float
-  userID: Float
-  profileID: Float
-  receivingUserID: Float
-  receivingProfileID: Float
-  paymentInvoiceID: Float
-  amount: Float
-  message: String
+  email: String
+  isVerified: Boolean
 }
 
 type Query {
-  tip(filter: TipFilterByOneInput!): TipModel!
-  tips(filter: TipFilterByManyInput): [TipModel!]!
+  user(filter: UserFilterByOneInput!): UserModel!
+  users(filter: UserFilterByManyInput): [UserModel!]!
 }
 
-input TipFilterByOneInput {
+input UserFilterByOneInput {
   id: Float
-  userID: Float
-  profileID: Float
-  receivingUserID: Float
-  receivingProfileID: Float
-  paymentInvoiceID: Float
+  email: String
 }
 
-input TipFilterByManyInput {
+input UserFilterByManyInput {
   ids: [Float!]
-  userIDs: [Float!]
-  profileIDs: [Float!]
-  receivingUserIDs: [Float!]
-  receivingProfileIDs: [Float!]
-  paymentInvoiceIDs: [Float!]
+  emails: [String!]
 }
 
 type Mutation {
-  tipCreate(input: TipCreateInput!): TipModel!
-  tipDelete(filter: TipFilterByOneInput!): Boolean!
+  userCreate(input: UserCreateInput!): UserModel!
+  userUpdate(filter: UserFilterByOneInput!, input: UserUpdateInput!): UserModel!
+  userChangePassword(filter: UserFilterByOneInput!, input: UserChangePasswordInput!): Boolean!
+  userDelete(filter: UserFilterByOneInput!): Boolean!
 }
 
-input TipCreateInput {
-  receivingProfileID: Float!
-  amountInDollarsAndCents: String!
-  message: String!
+input UserCreateInput {
+  email: String!
+  password: String!
+}
+
+input UserUpdateInput {
+  email: String
+  password: String
+}
+
+input UserChangePasswordInput {
+  currentPassword: String!
+  newPassword: String!
+  newPasswordAgain: String!
 }
