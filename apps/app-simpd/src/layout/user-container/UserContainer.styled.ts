@@ -38,4 +38,5 @@ export const UserContainerPageInnerContent = styled.div`
   padding-left: ${({ theme }) => theme.space.threeUnits};
   padding-right: ${({ theme }) => theme.space.threeUnits};
   width: ${({ theme }) => `calc(100% - ${theme.space.threeUnits} - ${theme.space.threeUnits})`};
+  height: 100%;
 `

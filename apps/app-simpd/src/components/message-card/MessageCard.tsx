@@ -3,6 +3,7 @@ import { MessageCardProps } from './MessageCard.types';
 import { MessageReactions } from './message-reactions/MessageReactions';
 import { AuthorBlockSmall } from '../author-block-small/AuthorBlockSmall';
 import { MessageContent, MessageElement, MessageText, MessageTime } from './MessageCard.sty';
+import { normalizeMessageDate } from 'components/message-card/MessageCard.const';
 
 export function MessageCard({ message, profile, direction = 'left' }: MessageCardProps) {
 
@@ -16,7 +17,7 @@ export function MessageCard({ message, profile, direction = 'left' }: MessageCar
           </MessageText>
         </MessageContent>
         <MessageTime>
-          10:00am
+          {normalizeMessageDate(message)}
         </MessageTime>
       </MessageElement>
     )
@@ -31,11 +32,8 @@ export function MessageCard({ message, profile, direction = 'left' }: MessageCar
         </MessageText>
       </MessageContent>
       <MessageTime>
-        10:00am
+        {normalizeMessageDate(message)}
       </MessageTime>
     </MessageElement>
   )
 }
-
-
-// <MessageReactions message={message} />

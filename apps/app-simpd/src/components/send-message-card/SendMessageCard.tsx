@@ -3,6 +3,8 @@ import { Button } from 'components/button/Button';
 import { useMessageCreate } from '@simpd/lib-web';
 import React, { ChangeEvent, useState } from 'react';
 import { SendMessageCardProps } from './SendMessageCard.types';
+import { SendMessageContainer } from 'components/send-message-card/SendMessageCard.styled';
+import { Input } from 'components/input/Input';
 
 export function SendMessageCard({ receivingProfileID, onMessageSent }: SendMessageCardProps) {
   const messageCreate = useMessageCreate();
@@ -19,18 +21,17 @@ export function SendMessageCard({ receivingProfileID, onMessageSent }: SendMessa
   }
 
   return (
-    <Card>
-      <textarea
-        className="settings-profile-textarea textarea"
+    <SendMessageContainer>
+      <input
         value={messageContent}
         onChange={onSetMessageContent}
         placeholder="What do you want to say?"
       />
-      <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-end' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
         <Button type="button" disabled={messageCreate.loading} onClick={onSendMessage}>
           {messageCreate.loading ? <i className="fa fa-spinner fa-spin" /> : <>Save</>}
         </Button>
       </div>
-    </Card>
+    </SendMessageContainer>
   )
 }

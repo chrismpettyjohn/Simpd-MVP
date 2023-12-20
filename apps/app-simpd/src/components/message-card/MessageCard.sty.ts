@@ -8,6 +8,7 @@ export const MessageElement = styled.div`
   justify-content: center;
   margin-bottom: ${({ theme }) => theme.space.twoUnits};
   padding: ${({ theme }) => theme.space.oneUnit};
+  width: 100%;
 `
 
 export const MessageContent = styled.div`
@@ -28,7 +29,6 @@ export const MessageContent = styled.div`
 `
 
 export const MessageText = styled.div`
-  align-items: center;
   background: linear-gradient(178deg, rgba(203, 188, 188, 0.4) 0.2%, rgba(189, 171, 171, 0.1) 99.37%);
   border-radius: ${({ theme }) => theme.radius.oneUnit};
   color: ${({ theme }) => theme.color.s90};
@@ -36,7 +36,6 @@ export const MessageText = styled.div`
   flex: 1;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
   padding: ${({ theme }) => theme.space.twoUnits};
 `
 

@@ -11,6 +11,8 @@ export const MESSAGE_FRAGMENT = gql`
       ...ProfileFragment
     }
     receivingProfileID
+    createdAt
+    updatedAt
   }
 `
 
@@ -20,4 +22,6 @@ export interface MessageFragment {
   sendingProfileID: number;
   sendingProfile: ProfileFragment;
   receivingProfileID: number;
+  createdAt: string;
+  updatedAt: string;
 }
