@@ -79,7 +79,7 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     )
   },
   {
-    path: '/albums',
+    path: '/albums/:albumID?',
     view: (
       <UserGuard redirect>
         <AlbumListScreen />

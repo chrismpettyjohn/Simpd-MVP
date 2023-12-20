@@ -1,20 +1,22 @@
 import gql from "graphql-tag";
 import { ALBUM_FRAGMENT } from "graphql/fragments/album.fragment";
-import { AlbumFetchOneInput } from "graphql/queries/album-fetch-one.query";
+import { AlbumCreateInput } from "graphql/mutation/album-create-one.mutation";
+import { AlbumFindOneInput } from "graphql/queries/album-fetch-one.query";
 
 export const ALBUM_UPDATE_ONE_MUTATION: any = gql`
   ${ALBUM_FRAGMENT}
-  mutation($filter, AlbumFetchOneInput!, $input: AlbumUpdateOneInput!) {
+  mutation($filter: AlbumFindOneInput!, $input: AlbumUpdateOneInput!) {
     albumUpdate(filter: $filter, input: $input) {
       success
     }
   }
 `
 
+export type AlbumUpdateOneInput = Partial<AlbumCreateInput>;
 
 export interface AlbumUpdateOneMutationVariables {
-  filter: AlbumFetchOneInput;
-  input: AlbumFetchOneInput;
+  filter: AlbumFindOneInput;
+  input: AlbumUpdateOneInput
 }
 
 export interface AlbumUpdateOneMutationResponse {

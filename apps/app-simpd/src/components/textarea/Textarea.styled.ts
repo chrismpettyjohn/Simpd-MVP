@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const InputElement = styled.input`
+export const TextareaElement = styled.textarea`
   border: 1px solid #F6DEDE;
   background: transparent;
   border-radius: ${({ theme }) => theme.radius.twoUnits};

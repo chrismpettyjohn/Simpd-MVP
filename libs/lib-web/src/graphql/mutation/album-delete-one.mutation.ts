@@ -1,10 +1,10 @@
 import gql from "graphql-tag";
 import { ALBUM_FRAGMENT } from "graphql/fragments/album.fragment";
-import { AlbumFetchOneInput } from "graphql/queries/album-fetch-one.query";
+import { AlbumFindOneInput } from "graphql/queries/album-fetch-one.query";
 
 export const ALBUM_DELETE_ONE_MUTATION: any = gql`
   ${ALBUM_FRAGMENT}
-  mutation($filter: AlbumFetchOneInput!) {
+  mutation($filter: AlbumFindOneInput!) {
     albumDelete(filter: $filter) {
       success
     }
@@ -13,7 +13,7 @@ export const ALBUM_DELETE_ONE_MUTATION: any = gql`
 
 
 export interface AlbumDeleteOneMutationVariables {
-  filter: AlbumFetchOneInput;
+  filter: AlbumFindOneInput;
 }
 
 export interface AlbumDeleteOneMutationResponse {

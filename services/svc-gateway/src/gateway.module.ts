@@ -56,6 +56,8 @@ import {
   SVC_POST_PRIVACY_WEB_ADDRESS,
   SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_NAME,
   SVC_PROFILE_SUBSCRIPTION_GROUP_MEMBERSHIP_WEB_ADDRESS,
+  SVC_ALBUM_NAME,
+  SVC_ALBUM_WEB_ADDRESS,
 } from '@simpd/lib-client';
 
 @Module({
@@ -68,6 +70,10 @@ import {
       gateway: {
         supergraphSdl: new IntrospectAndCompose({
           subgraphs: [
+            {
+              name: SVC_ALBUM_NAME,
+              url: SVC_ALBUM_WEB_ADDRESS,
+            },
             {name: SVC_BOOKMARK_NAME, url: SVC_BOOKMARK_WEB_ADDRESS},
             {
               name: SVC_COMMENT_REACTION_NAME,
