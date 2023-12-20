@@ -5,9 +5,9 @@ export const MessagePreviewCardElement = styled.div`
   border-left: 2px solid transparent;
   cursor: pointer;
   display: flex;
-  flex: 1;
   justify-content: center;
   padding-left: 4px;
+  width: 100%;
   &:hover {
     border-color: ${({ theme }) => theme.color.brand};
   }

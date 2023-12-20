@@ -1,10 +1,8 @@
-import { Card } from 'components/card/Card';
 import { Button } from 'components/button/Button';
 import { useMessageCreate } from '@simpd/lib-web';
 import React, { ChangeEvent, useState } from 'react';
 import { SendMessageCardProps } from './SendMessageCard.types';
 import { SendMessageContainer } from 'components/send-message-card/SendMessageCard.styled';
-import { Input } from 'components/input/Input';
 
 export function SendMessageCard({ receivingProfileID, onMessageSent }: SendMessageCardProps) {
   const messageCreate = useMessageCreate();
