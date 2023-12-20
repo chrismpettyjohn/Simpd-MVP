@@ -11,6 +11,16 @@
       "watch_delay": 1000
     },
     {
+      "name": "svc-album",
+      "cwd": "./services/svc-album",
+      "script": "pnpm",
+      "args": "run dev:start",
+      "watch": [
+        "src"
+      ],
+      "watch_delay": 1000
+    },
+    {
       "name": "svc-bookmark",
       "cwd": "./services/svc-bookmark",
       "script": "pnpm",

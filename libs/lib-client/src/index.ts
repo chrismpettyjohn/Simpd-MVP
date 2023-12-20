@@ -1,3 +1,7 @@
+export * from './svc-album/album-client.service';
+export * from './svc-album/album-client.types';
+export * from './svc-album/album.const';
+export * from './svc-album/album.module';
 export * from './svc-bookmark/bookmark-client.service';
 export * from './svc-bookmark/bookmark-client.types';
 export * from './svc-bookmark/bookmark.const';

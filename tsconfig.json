@@ -21,6 +21,9 @@
       "@simpd/lib-web": [
         "libs/lib-web/src"
       ],
+      "@simpd/svc-album": [
+        "services/svc-album/src"
+      ],
       "@simpd/svc-bookmark": [
         "services/svc-bookmark/src"
       ],
