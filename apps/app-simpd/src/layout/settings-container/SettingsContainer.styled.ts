@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const SettingsContainerElement = styled.div`
   background: linear-gradient(180deg, #000000 0%, #70023E 100%);
   display: flex;
-  flex: 1;
+  flex-direction: column;
   height: 100%;
   overflow-y: auto;
 `
@@ -22,6 +22,17 @@ export const SettingsContainerInnerContent = styled.div`
       flex-direction: row;
     }
   `}
+`
+
+export const SettingsContainerHeader = styled.div`
+  align-items: center;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  width: 100%;
+  max-width: ${({ theme }) => theme.maxWidth};
+  margin-top: ${({ theme }) => theme.space.oneUnit};
+  margin-bottom: ${({ theme }) => theme.space.oneUnit};
 `
 
 export const SettingsContainerPageContent = styled.div`

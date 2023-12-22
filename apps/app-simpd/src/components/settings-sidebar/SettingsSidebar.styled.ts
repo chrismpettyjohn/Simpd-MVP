@@ -6,8 +6,6 @@ export const SettingsSidebarElement = styled.div`
   display: flex;
   flex: 1fr;
   height: calc(100% - 2%);
-  margin-top: auto;
-  margin-bottom: auto;
 `
 export const SettingsSidebarContent = styled.div`
   display: hidden;
@@ -22,6 +20,7 @@ export const SettingsSidebarContent = styled.div`
     margin: 0;
 
     li {
+      align-items: center;
       font-size: ${({ theme }) => theme.fontSize.oneUnit};
       text-transform: lowercase;
       display: flex;
@@ -29,6 +28,7 @@ export const SettingsSidebarContent = styled.div`
       i {
         font-size: ${({ theme }) => theme.fontSize.twoUnits};
         margin-right: ${({ theme }) => theme.space.threeUnits};
+        width: 50px;
       }
       &:hover {
         color: ${({ theme }) => theme.color.brand};

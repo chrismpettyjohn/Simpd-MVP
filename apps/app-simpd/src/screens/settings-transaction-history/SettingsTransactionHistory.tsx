@@ -1,13 +1,11 @@
 import React from 'react'
 import { PageTitle } from '../../components/page-title/PageTitle';
-import { ChangePasswordCard } from './change-password-card/ChangePasswordCard';
 import { SettingsContainer } from 'layout/settings-container/SettingsContainer';
 
-export function SettingsSecurityScreen() {
+export function SettingsTransactionHistory() {
   return (
     <SettingsContainer>
-      <PageTitle title="Settings-Security" />
-      <ChangePasswordCard />
+      <PageTitle title="Settings-Transaction History" />
     </SettingsContainer>
   )
 }

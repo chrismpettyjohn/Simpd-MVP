@@ -53,16 +53,6 @@ export function useSiteNavigation(): NavigationBlock[] {
         type: 'link',
         label: (
           <>
-            <i className="fa fa-heart" style={{ marginRight: 8 }} />
-            Contributions
-          </>
-        ),
-        href: '/transactions',
-      },
-      {
-        type: 'link',
-        label: (
-          <>
             <i className="fa fa-images" style={{ marginRight: 8 }} />
             Favorites
           </>
@@ -115,16 +105,6 @@ export function useSiteNavigation(): NavigationBlock[] {
         ),
         href: `/profiles/${session?.profile?.username}`,
       },
-      {
-        type: 'link',
-        label: (
-          <>
-            <i className="fa fa-cog" style={{ marginRight: 8 }} />
-            Settings
-          </>
-        ),
-        href: '/settings/identity',
-      }
     ]
   }, [session])
 

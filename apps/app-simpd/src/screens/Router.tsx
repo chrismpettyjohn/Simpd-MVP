@@ -14,7 +14,7 @@ import { UserProfileScreen } from './user-profile/UserProfile';
 import { PageNotFoundScreen } from './page-not-found/PageNotFound';
 import { NotificationsScreen } from './notifications/Notifications';
 import { MessageThreadScreen } from './message-thread/MessageThread';
-import { SettingsPaymentScreen } from './settings-payment/SettingsPayment';
+import { SettingsPaymentMethodsScreen } from './settings-payment-methods/SettingsPaymentMethods';
 import { SettingsProfileScreen } from './settings-profile/SettingsProfile';
 import { DiscoverProfilesScreen } from './discover-profiles/DiscoverProfiles';
 import { SettingsSecurityScreen } from './settings-security/SettingsSecurty';
@@ -22,7 +22,6 @@ import { SettingsIdentityScreen } from './settings-identity/SettingsIdentity';
 import { UserProfileSubscriptionsScreen } from './user-profile-subscriptions/UserProfileSubscriptions';
 import { PostCreateScreen } from './post-create/PostCreate';
 import { AlbumListScreen } from './/album-list/AlbumList';
-import { TransactionListScreen } from './transaction-list/TransactionList';
 import { InsightsDashboardScreen } from './insights-dashboard/InsightsDashboard';
 import { ScheduledContentScreen } from './scheduled-content/ScheduledContentScreen';
 import { DraftsListScreen } from './drafts-list/DraftsList';
@@ -30,6 +29,9 @@ import { VideoCallScreen } from 'screens/video-call/VideoCall';
 import { AlbumContentScreen } from 'screens/album-content/AlbumContent';
 import { BookmarkCollectionListScreen } from 'screens/bookmark-collection-list/BookmarkCollectionList';
 import { BookmarkCollectionViewScreen } from 'screens/bookmark-collection-view/BookmarkCollectionView';
+import { SettingsTransactionHistory } from 'screens/settings-transaction-history/SettingsTransactionHistory';
+import { SettingsAccountScreen } from 'screens/settings-account/SettingsAccount';
+import { SettingsPrivacyScreen } from 'screens/settings-privacy/SettingsPrivacy';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -145,6 +147,14 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     ),
   },
   {
+    path: '/settings/account',
+    view: (
+      <UserGuard redirect>
+        <SettingsAccountScreen />
+      </UserGuard>
+    ),
+  },
+  {
     path: '/settings/identity',
     view: (
       <UserGuard redirect>
@@ -153,10 +163,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     ),
   },
   {
-    path: '/settings/payment',
+    path: '/settings/payment-methods',
     view: (
       <UserGuard redirect>
-        <SettingsPaymentScreen />
+        <SettingsPaymentMethodsScreen />
       </UserGuard>
     ),
   },
@@ -177,10 +187,18 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     ),
   },
   {
-    path: '/transactions',
+    path: '/settings/privacy',
     view: (
       <UserGuard redirect>
-        <TransactionListScreen />
+        <SettingsPrivacyScreen />
+      </UserGuard>
+    ),
+  },
+  {
+    path: '/settings/transactions',
+    view: (
+      <UserGuard redirect>
+        <SettingsTransactionHistory />
       </UserGuard>
     ),
   },

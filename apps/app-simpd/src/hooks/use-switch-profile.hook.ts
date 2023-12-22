@@ -30,7 +30,7 @@ export function useSwitchProfile(): UseSwitchProfileResponse {
     const matchingSession = await sessionFetchOne.fetch({ id: newSessionContents.sessionID });
     localStorage.setItem(LOCAL_STORAGE_SESSION_TOKEN, newBearerToken);
     setSession(matchingSession);
-    setLocation(`/profiles/${profile.username}`)
+    setLocation(`/settings/identity`)
   }
 
   return {

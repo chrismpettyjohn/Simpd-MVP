@@ -3,9 +3,10 @@ import { useWindowDimensions } from 'hooks/use-window-dimensions.hook';
 import { useTheme } from 'styled-components';
 import { SimpdWebTheme } from '@simpd/lib-web';
 import { SettingsSidebarContent, SettingsSidebarElement, SettingsSidebarHeader } from 'components/settings-sidebar/SettingsSidebar.styled';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 
 export function SettingsSidebar() {
+  const [pathname] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const window = useWindowDimensions();
   const theme: SimpdWebTheme = useTheme() as any;
@@ -38,50 +39,43 @@ export function SettingsSidebar() {
           <li>
             <b>Settings</b></li>
           <Link href="/settings/account">
-            <li>
+            <li className={pathname === '/settings/account' ? 'active' : ''}>
 
               <i className="fa fa-user" style={{ marginRight: 4 }} />
               Account
             </li>
           </Link>
-          <Link href="/settings/notifications">
-            <li>
-
-              <i className="fa fa-bell" style={{ marginRight: 4 }} />
-              Notifications
-            </li>
-          </Link>
-          <Link href="/settings/messages">
-            <li>
-
-              <i className="fa fa-comment" style={{ marginRight: 4 }} />
-              Messages
-            </li>
-          </Link>
           <Link href="/settings/privacy">
-            <li>
+            <li className={pathname === '/settings/privacy' ? 'active' : ''}>
 
               <i className="fa fa-lock" style={{ marginRight: 4 }} />
               Privacy
             </li>
           </Link>
           <Link href="/settings/transactions">
-            <li>
+            <li className={pathname === '/settings/transactions' ? 'active' : ''}>
 
               <i className="fa fa-usd-circle" style={{ marginRight: 4 }} />
-              Transactions
+              Transaction History
             </li>
           </Link>
           <Link href="/settings/payment-methods">
-            <li>
+            <li className={pathname === '/settings/payment-methods' ? 'active' : ''}>
 
               <i className="fa fa-credit-card" style={{ marginRight: 4 }} />
               Payment Methods
             </li>
           </Link>
           <hr />
-          <Link href="/settings/notifications">
-            <li>
+          <Link href="/settings/identity">
+            <li className={pathname === '/settings/identity' ? 'active' : ''}>
+
+              <i className="fa fa-users" style={{ marginRight: 4 }} />
+              Switch Profile
+            </li>
+          </Link>
+          <Link href="/settings/delete-account">
+            <li className={pathname === '/settings/delete-account' ? 'active' : ''}>
 
               <i className="fa fa-bell" style={{ marginRight: 4 }} />
               Delete Account
@@ -90,14 +84,14 @@ export function SettingsSidebar() {
           <hr />
           <li><b>Feedback</b></li>
           <Link href="/settings/feedback">
-            <li>
+            <li className={pathname === '/settings/feedback' ? 'active' : ''}>
 
               <i className="fa fa-bullhorn" style={{ marginRight: 4 }} />
               Feedback
             </li>
           </Link>
           <Link href="/settings/bugs">
-            <li>
+            <li className={pathname === '/settings/report-a-bug' ? 'active' : ''}>
 
               <i className="fa fa-bug" style={{ marginRight: 4 }} />
               Report a Bug
